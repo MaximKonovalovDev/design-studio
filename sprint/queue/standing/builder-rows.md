@@ -3,6 +3,9 @@ role: builder
 title: builder (board rows)
 copies: 2
 chain: start
+ready: board
+ready-file: sprint/board.md
+ready-role: builder
 ---
 design-studio crew, builder seat. Take the whole ready slice of `sprint/board.md` that moves the weakest Scorecard row of `VISION.md` most: up to 5 READY or TOP rows in the same files, that no claim in the last 3 h names. None left: `RESULT: NOOP - no ready row` (you rest 30 min).
 

@@ -367,7 +367,7 @@ const shellOf = (dir) => {
 // copy when this file changes.
 const createSeatReadiness = function createSeatReadiness({ read, file, claimsFile, now = Date.now, seen = new Map() }) {
   const json = (path) => { try { return JSON.parse(read(path)); } catch { return null; } };
-  const baseRole = (role) => String(role ?? "").replace(/-paid$/, "");
+  const baseRole = (role) => String(role ?? "").trim().split(/\s+/)[0].replace(/-paid$/, "");
   const no = (why) => ({ ok: false, why, items: [] });
   const activeClaims = () => {
     const ids = new Set();
@@ -381,9 +381,9 @@ const createSeatReadiness = function createSeatReadiness({ read, file, claimsFil
   const rows = (raw) => {
     const lines = String(raw).replace(/\r\n/g, "\n").split("\n");
     const cells = (line) => line.trim().replace(/^\||\|$/g, "").split(/(?<!\\)\|/).map((cell) => cell.trim());
-    const start = lines.findIndex((line) => /^\|/.test(line) && cells(line).includes("ID") && cells(line).includes("Status") && cells(line).includes("Role"));
+    const start = lines.findIndex((line) => /^\|/.test(line) && cells(line).includes("ID") && cells(line).includes("Status") && (cells(line).includes("Role") || cells(line).includes("Owner role")));
     if (start < 0) return null;
-    const header = cells(lines[start]);
+    const header = cells(lines[start]).map((cell) => cell === "Owner role" ? "Role" : cell);
     const out = [];
     for (let i = start + 2; i < lines.length && /^\s*\|/.test(lines[i]); i++) {
       const values = cells(lines[i]);
