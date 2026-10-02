@@ -3,8 +3,11 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { RUBRIC_ID, SHIP_FLOOR, CHECK_IDS, judgeSample, writeReview, selfCheck } from "../tools/judge.mjs";
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 const dir = () => mkdtempSync(`${tmpdir()}\\ds-judge-test-`);
 const brief = (over = {}) => ({
@@ -51,6 +54,30 @@ describe("judge rubric", () => {
     const text = readFileSync(out, "utf8");
     assert.ok(text.includes(RUBRIC_ID));
     assert.ok(/SHIP|REWORK/.test(text));
+  });
+
+  it("a genuine 7/10 on the real path does not ship", () => {
+    const d = dir();
+    writeFileSync(join(d, "brief.json"), JSON.stringify(brief()));
+    writeFileSync(join(d, "tokens.css"), ":root{--ink:#999999;--paper:#ffffff;--accent:#0f172a;--font-a:Arial;--font-b:Georgia;}");
+    writeFileSync(join(d, "page.html"), page());
+    const r = judgeSample(join(d, "brief.json"));
+    assert.equal(r.score, 7);
+    assert.equal(r.pass, false);
+  });
+
+  it("tool runs preserve thumb-256.png filename, dims and verdict", () => {
+    const d = dir();
+    writeFileSync(join(d, "brief.json"), JSON.stringify(brief()));
+    writeFileSync(join(d, "tokens.css"), ":root{--ink:#000000;--paper:#ffffff;--accent:#c2410c;--font-a:Arial;}");
+    writeFileSync(join(d, "page.html"), page());
+    writeFileSync(join(d, "thumb-256.png"), readFileSync(join(ROOT, "samples", "cover", "thumb-256.png")));
+    const r = judgeSample(join(d, "brief.json"));
+    const thumb = r.checks.find((c) => c.id === "thumbnail-legible");
+    assert.ok(thumb.detail.includes("thumb-256.png 256x144"), thumb.detail);
+    const out = writeReview(join(d, "brief.json"), r);
+    const text = readFileSync(out, "utf8");
+    assert.ok(text.includes("thumb-256.png 256x144"), "review names thumb dims");
   });
 
   it("self-check passes (fixtures + real samples/cover)", () => {

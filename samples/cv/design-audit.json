@@ -4,12 +4,12 @@
     {
       "name": "brief.json parses",
       "pass": true,
-      "detail": "עיצוב שמנצח"
+      "detail": "קורות חיים"
     },
     {
       "name": "brief size sane",
       "pass": true,
-      "detail": "1280x720"
+      "detail": "900x1270"
     },
     {
       "name": "tokens.css parses with 2+ colors",
@@ -49,12 +49,12 @@
     {
       "name": "out.png size matches brief",
       "pass": true,
-      "detail": "1280x720"
+      "detail": "900x1270"
     },
     {
       "name": "out.png non-trivial",
       "pass": true,
-      "detail": "28125B"
+      "detail": "49813B"
     },
     {
       "name": "contrast title",
@@ -74,21 +74,21 @@
     {
       "name": "title_box valid fractions",
       "pass": true,
-      "detail": "0.08,0.3,0.92,0.55"
+      "detail": "0.1,0.03,0.9,0.13"
     },
     {
       "name": "title legible at 256px",
       "pass": true,
-      "detail": "19.2px at 256px wide (floor 12px)"
+      "detail": "20.5px at 256px wide (floor 12px)"
     },
     {
       "name": "title fits its box",
       "pass": true,
-      "detail": "need ~528px, box 1075px"
+      "detail": "need ~360px, box 720px"
     }
   ],
   "errors": [],
-  "brief": "C:\\Users\\me\\Desktop\\design-studio\\samples\\hebrew-hero\\brief.json",
-  "image": "C:\\Users\\me\\Desktop\\design-studio\\samples\\hebrew-hero\\out.png",
+  "brief": "C:\\Users\\me\\Desktop\\design-studio\\samples\\cv\\brief.json",
+  "image": "C:\\Users\\me\\Desktop\\design-studio\\samples\\cv\\out.png",
   "at": "2026-10-02"
 }

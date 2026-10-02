@@ -4,7 +4,7 @@
     {
       "name": "brief.json parses",
       "pass": true,
-      "detail": "עיצוב שמנצח"
+      "detail": "תיק עבודות"
     },
     {
       "name": "brief size sane",
@@ -54,7 +54,7 @@
     {
       "name": "out.png non-trivial",
       "pass": true,
-      "detail": "28125B"
+      "detail": "35014B"
     },
     {
       "name": "contrast title",
@@ -74,7 +74,7 @@
     {
       "name": "title_box valid fractions",
       "pass": true,
-      "detail": "0.08,0.3,0.92,0.55"
+      "detail": "0.08,0.22,0.92,0.47"
     },
     {
       "name": "title legible at 256px",
@@ -84,11 +84,11 @@
     {
       "name": "title fits its box",
       "pass": true,
-      "detail": "need ~528px, box 1075px"
+      "detail": "need ~480px, box 1075px"
     }
   ],
   "errors": [],
-  "brief": "C:\\Users\\me\\Desktop\\design-studio\\samples\\hebrew-hero\\brief.json",
-  "image": "C:\\Users\\me\\Desktop\\design-studio\\samples\\hebrew-hero\\out.png",
+  "brief": "C:\\Users\\me\\Desktop\\design-studio\\samples\\jobhunt\\brief.json",
+  "image": "C:\\Users\\me\\Desktop\\design-studio\\samples\\jobhunt\\out.png",
   "at": "2026-10-02"
 }

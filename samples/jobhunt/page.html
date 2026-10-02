@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- samples/jobhunt/page.html (DS-13): bilingual Hebrew+English portfolio hero,
+     1280x720, dir=rtl. Logical properties only, Hebrew type via --font-hebrew,
+     color only via tokens.css. -->
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1280px; height: 720px;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--font-hebrew);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .sheet {
+    width: 1075px; text-align: center;
+    border-block-start: 6px solid var(--accent);
+    border-block-end: 2px solid var(--line);
+    padding-block: 44px 52px; padding-inline: 24px;
+  }
+  .kicker {
+    font-size: 28px; letter-spacing: 4px; color: var(--accent);
+    font-family: var(--font-hebrew); margin-block-end: 20px;
+  }
+  h1 {
+    font-family: var(--font-hebrew);
+    font-size: 96px; line-height: 1.2; color: var(--ink);
+    margin-block-end: 16px;
+  }
+  .sub { font-size: 32px; color: var(--muted); margin-block-end: 12px; }
+  .sub-en { font-size: 26px; color: var(--muted); margin-block-end: 36px; }
+  .row { display: flex; gap: 16px; justify-content: center; }
+  .cta {
+    display: inline-block; font-size: 30px; font-weight: bold;
+    color: var(--on-accent); background: var(--accent);
+    padding-block: 18px; padding-inline: 56px; border-radius: 12px;
+    text-decoration: none; font-family: var(--font-hebrew);
+  }
+  .ghost {
+    display: inline-block; font-size: 30px;
+    color: var(--accent); border: 3px solid var(--accent);
+    padding-block: 15px; padding-inline: 56px; border-radius: 12px;
+    text-decoration: none; font-family: var(--font-hebrew);
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="kicker">מעצב מוצר · תל אביב</div>
+    <h1>תיק עבודות</h1>
+    <p class="sub">עיצוב ממשקים עבריים שעוברים בדיקת שיפוט, לא רק מסך יפה.</p>
+    <p class="sub-en" dir="ltr">Hebrew-first product design, judged and shipped.</p>
+    <div class="row">
+      <a class="cta" href="#">צרו קשר</a>
+      <a class="ghost" href="#">עבודות נבחרות</a>
+    </div>
+  </div>
+</body>
+</html>

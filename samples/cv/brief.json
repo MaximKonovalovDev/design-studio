@@ -1,0 +1,15 @@
+{
+  "title": "קורות חיים",
+  "size": { "w": 900, "h": 1270 },
+  "dir": "rtl",
+  "tokens": "tokens.css",
+  "page": "page.html",
+  "image": "out.png",
+  "text": [
+    { "label": "title", "fg": "var(--ink)", "bg": "var(--paper)", "min": 4.5 },
+    { "label": "subtitle", "fg": "var(--muted)", "bg": "var(--paper)", "min": 4.5 },
+    { "label": "cta", "fg": "var(--on-accent)", "bg": "var(--accent)", "min": 4.5 }
+  ],
+  "title_box": [0.1, 0.03, 0.9, 0.13],
+  "title_px": 72
+}
