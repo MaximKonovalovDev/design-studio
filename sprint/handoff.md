@@ -1,22 +1,21 @@
-# design-studio handoff - round 6 (token 9f3a)
+# design-studio handoff - round 7 (token 9f3a)
 
-Round: 6
-Written: 2026-10-02T12:06Z by lead (token 9f3a)
+Round: 7
+Written: 2026-10-02T12:22Z by lead (token 9f3a)
 
 ## Heading
-- Hebrew RTL 0% -> 100% (3/3 ds-rtl-v1, 3 samples 17/17, vision-check PASS 6/0). Two Scorecard rows at our bar.
+- No Scorecard move (Brand-kit built, sweep next; Thumbnail next). Round banked three DONEs and three builds.
 
 ## Done
-- DS-06 DONE b995450 (judge 012 PASS, review byte-stable); DS-13/15/16 DONE b995450 (judge 013 PASS).
-- 011 ad-square dcc2d73 verified by lead's eyes (full-bleed hero plus proof strip plus footer, no blank).
-- DS-07/09/17 built DOING dcc2d73 (WORKSHOP/CANVAS/CONVERT PASS, tests 13/13); reviews 016 plus 017 queued.
-- S10 card filed once (donor plus steal seats collided on the row; one file survived, merge judges it once).
-- Pilot filed 014 (cv blank) plus 015 (jobhunt/cv outside check loop); both queued.
+- DS-07/09/17 DONE dcc2d73 (judge 016 PASS, 13/13 tests). 011 PASS, no row.
+- 014 cv fill plus 015 check-6 plus DS-10/18/03 builds 9300c54 (lead eyes on cv, all gates PASS).
+- K-02 DONE 9300c54 (first slice green 7 rounds). S12 card filed (5 cards).
+- Donors S11 NOOP (swept today); 018 README-stale queued; reviews 019/020/021 queued.
 
 ## Blockers and notes
-- Researcher row collision: donors plus steal both swept S10 concurrently (claims.txt can't serialize live runs). Next round I assign explicit distinct rows.
-- Keeper batch stale 4 rounds; substitution continues until batch.md advances. Consumed ready/ files await keeper cleanup.
+- 014 vs 015 raced on cv/out.png mid-round; my post-batch check rerun settled it (98813B final-source render green).
+- Keeper batch stale 5 rounds; substitution continues. Consumed ready/ files await keeper cleanup.
 - .opencode/* plus queue churn uncommitted, not mine. Loop ON.
 
 ## Next
-- Round 7 batch: 016 stub-slice review, 017 011 review, 014 cv fix, 015 check-loop parity, then seats with explicit steal rows.
+- Round 8 batch: 019 014-review, 020 015-review, 021 brand-slice review, 018 README fix, then seats.
