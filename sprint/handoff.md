@@ -1,22 +1,22 @@
-# design-studio handoff - round 3 (token 9f3a)
+# design-studio handoff - round 4 (token 9f3a)
 
-Round: 3
-Written: 2026-10-02T11:22Z by lead (token 9f3a)
+Round: 4
+Written: 2026-10-02T11:30Z by lead (token 9f3a)
 
 ## Heading
-- Judged quality holds 100%; no new Scorecard move. Round converted three builds to DONE and queued one repair.
+- No Scorecard move (Judged quality holds 100%). Round cleared stale packets with NOOPs and landed stranger-facing gaps.
 
 ## Done
-- DS-02 DONE c37eced (judge 004 PASS, TOKENS 16/16); DS-04 DONE 360bbd1 (judge 006 PASS, 11/11); DS-11 DONE 360bbd1 (judge 007 PASS, 30/30 plus serve 34/34). 001 PASS, no board row.
-- DS-06 judge 003 FAIL (review diverges from tool output, self-check fakes 7/10); repair 010 queued, row stays DOING.
-- 002 thumb fix c9d8891 verified by lead rerun: direct command 495B sliver -> 5567B miniature.
-- Vision re-swept (Brief-to-render 50% with 4-sample numbers); cards S06 plus brief-r2 filed, 10 await merge.
-- Pilot filed 008 (7 board-promised commands MODULE_NOT_FOUND) and 009 (no README entry); both queued.
+- 008 90ca5f2: 7 honest NOT-BUILT stubs (DS-05/07/08/09/10/17/18), exit 1 with row IDs, board Evidence says no PASS yet.
+- 009 90ca5f2: README.md 966B quickstart (brief to out.png in one command).
+- Stale packets closed: 002 NOOP (landed c9d8891, green); judges 004/006/007 PASS stand, 003 FAIL stands.
+- 005 FAIL (tool runs stripped thumb lines from the review) folded into 010 repair scope; row impact none, artifact green.
+- S08 card filed; 11 cards await merge (owed 4 rounds).
 
 ## Blockers and notes
-- Research merge owed 3 rounds (10 cards); judges owed 0 after this round. Round 4 must lead with 010 repair, then 008, 009, then merge.
-- DESIGN-REVIEW.md left dirty for the repair builder; .opencode/* plus queue churn uncommitted, not mine. Loop ON.
-- K-04 untrack still READY, unclaimed 3 rounds; needs a builder.
+- Research merge owed 4 rounds; 010-ds06-repair unscheduled 2 rounds (chain-mandated FAIL repair). Round 5 must lead with 010, then merge, then K-04 builder slice.
+- Round 5 is a retro round: `node C:/Users/me/Desktop/center/empire.mjs metrics design-studio` plus one PROPOSAL line.
+- DESIGN-REVIEW.md left dirty for 010; .opencode/* plus queue churn uncommitted, not mine. Loop ON.
 
 ## Next
-- Round 4 batch: 010-ds06-repair, 008-missing-commands, 009-no-entry, planner-research-merge, then seats incl. K-04.
+- Round 5 batch: 010-ds06-repair, planner-research-merge, K-04 slice, retro metrics, then seats.
