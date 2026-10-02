@@ -7,7 +7,7 @@ names its commit SHA. Each row names the Scorecard row of `VISION.md` it moves.
 |---|---|---|---|---|---|---|
 | K-01 | TOP | all | Fill the vision: Scorecard (5+ rows, 3+ real competitors), Parts, Open gaps, Steal map (10 competitors, 10 adjacent) | `node C:/Users/me/Desktop/center/vision-check.mjs design-studio` has no FAIL | planner | |
 | K-02 | READY | Brief-to-render speed | First measurable slice of the vision | `node tools/check.mjs` passes its first step, pasted in the commit | builder | |
-| K-03 | READY | all | Split the vision into board rows, each with its proof command | 10+ READY rows, each naming its Scorecard row and proof | planner | |
+| K-03 | DONE | all | Split the vision into board rows, each with its proof command | 10+ READY rows, each naming its Scorecard row and proof | planner | c37eced: 20 READY compliant, vision-check PASS 6/0 |
 | K-04 | READY | all | Untrack generated files: .gitignore INDEX*.md plus git rm --cached research/INDEX.md, sources only tracked | `git ls-files` shows 0 tracked generated files (INDEX*.md, *.log, *.jsonl over 1 MB) | builder | |
 | DS-01 | DOING | Brief-to-render speed | Minimal loop: tools/render.mjs (Edge headless screenshot) plus tools/audit.mjs (contrast, sizes, 256px title, RTL) plus tools/check.mjs over samples/cover | `node tools/check.mjs` RESULT PASS | builder | |
 | DS-02 | DOING | Brand-kit consistency | tokens-01: tokens.json to tokens.css plus docs page, no hardcoded colors | `node tools/tokens.mjs --check` PASS (built in this row) | builder | built 2026-10-02, TOKENS PASS 12/12, judge review queued round 2 |
