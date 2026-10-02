@@ -1,20 +1,21 @@
-# design-studio handoff - round 9 (token 9f3a)
+# design-studio handoff - round 10 (token 9f3a)
 
-Round: 9
-Written: 2026-10-02T13:00Z by lead (token 9f3a)
+Round: 10
+Written: 2026-10-02T13:15Z by lead (token 9f3a)
+PROPOSAL: sprint/queue/claims.txt | keeper seeds one header line when writing batch.md so seats never read a missing file | 15 read-missing (was 10 at r5, unapplied, all roles).
 
 ## Heading
-- Brand-kit consistency 0% -> 100% (5/5 ds-brand-v1, 3 gates green). Three Scorecard rows at our bar.
+- No Scorecard move (Landing honestly 0%, judges green). Round banked six DONEs and three builds.
 
 ## Done
-- DS-12/14/20 DONE (022 PASS; serve gate re-verified). K-01 DONE 901625c (vision complete).
-- 5 builds DOING 901625c: DS-32 gap linter, DS-23 sizes, DS-31 dir-token, DS-24 receipt, DS-29 winner (all F2P proven); reviews 023/024/025 queued.
-- S06b addendum filed; merge r9 judged thumbnail card a dupe (no new rows); pilot 0 defects.
+- DS-20/32/23/31/24/29 DONE 901625c (023/024/025 PASS). DS-05/21/30 built DOING 4512bec (AGENT-BLOCK 15/15, RENDER refine plus stream).
+- Merge r10: DS-34/35. Landing sweep 0% with reason plus card. Pilot conversion clean.
+- Hero multi-size 9/10 committed as tool truth (new size gate bites); reflow is follow-up material.
+- Reviews 026/027 queued. Judge PASS rate 15/18 (83%).
 
 ## Blockers and notes
-- Round-9 check.mjs RESULT FAIL traced to K-01 DONE-without-SHA (planner can't mint SHAs); fixed with 901625c, full PASS re-confirmed. Lesson: planner marks DONE-numbers, lead appends SHA same round.
-- Runner hit my repeat-guard again (my bad prompt); checks.md refresh owed. Round 10 is retro: metrics plus PROPOSAL.
-- Keeper batch stale 7 rounds; substitution continues. Loop ON.
+- My repeat-guard prompt keeps misfiring on fresh seats (runner r9); retired the guard, writing fresh packets instead.
+- Keeper batch stale 8 rounds; substitution continues. Loop ON.
 
 ## Next
-- Round 10 batch: 023/024/025 reviews, proper runner sweep, DS-05 agent-block builder, retro metrics, then pilot.
+- Round 11 batch: 026 DS-05 review, 027 render-slice review, hero reflow builder, DS-08/25/26 seats, then pilot.
