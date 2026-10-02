@@ -21,8 +21,8 @@
 // A full context (overflow, or a 400 on a context over 600k tokens) is
 // compacted once on the loop's model, then the continue goes out.
 // Ralph pattern (2026-10-02): at the continue point, when the lead session's
-// last-turn input tokens pass fresh_ctx_k*1000 (knob `fresh_ctx_k`, default 120),
-// a fresh sprint session replaces this one (the same path as `new`: retire, then
+// session context (last assistant message's total tokens, knob `fresh_ctx_k`, default 120)
+// passes fresh_ctx_k*1000, a fresh sprint session replaces this one (the same path as `new`: retire, then
 // /sprint takeover, which resumes from the handoff file) instead of the continue;
 // at most once per 30 min per repo, logged.
 // The continue keeps the loop's agent, model and variant, carries warnings
@@ -126,6 +126,12 @@ const REPOS = {
     handoff: "C:/Users/me/Desktop/design-studio/sprint/handoff.md", inbox: "C:/Users/me/Desktop/design-studio/sprint/inbox.md",
     state: "C:/Users/me/Desktop/design-studio/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/design-studio/sprint/loop-keeper.cmd.json",
     knobs: "C:/Users/me/Desktop/design-studio/.opencode/knobs.json", command: "C:/Users/me/Desktop/design-studio/.opencode/commands/sprint.md",
+  },
+  skillworks: {
+    lock: "C:/Users/me/Desktop/skillworks/sprint/lock.txt", halt: "C:/Users/me/Desktop/skillworks/sprint/halt",
+    handoff: "C:/Users/me/Desktop/skillworks/sprint/handoff.md", inbox: "C:/Users/me/Desktop/skillworks/sprint/inbox.md",
+    state: "C:/Users/me/Desktop/skillworks/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/skillworks/sprint/loop-keeper.cmd.json",
+    knobs: "C:/Users/me/Desktop/skillworks/.opencode/knobs.json", command: "C:/Users/me/Desktop/skillworks/.opencode/commands/sprint.md",
   },
 };
 const CFG = {
@@ -705,11 +711,17 @@ const makeKeeper = async ({ client, worktree, directory }, options) => {
     if (!Number.isFinite(n) || n < 0) return FRESH_CTX_DEFAULT_K;
     return n;
   };
-  // Last-turn input tokens of the lead session: the last assistant message's
-  // input count, falling back to its total when the input field is missing.
+  // Session context of the lead session: the last assistant message's
+  // total tokens (what `empire.mjs status` prints as ctx), falling back to
+  // its input count when the total field is missing. The last-turn input
+  // alone stays small after a compaction while the total keeps growing
+  // (factory 2026-10-02: ctx 290k total, last-turn input under 120k, no
+  // renewal before the 300k compaction), so the threshold reads the total.
   const inputTokensOf = (m) => {
     const t = m?.info?.tokens;
     if (!t) return 0;
+    const total = Number(t.total);
+    if (Number.isFinite(total) && total > 0) return total;
     if (Number.isFinite(Number(t.input))) return Number(t.input);
     return tokensOf(m);
   };
@@ -721,17 +733,17 @@ const makeKeeper = async ({ client, worktree, directory }, options) => {
   // (the status file survives a restart), so the 30 min window holds either way.
   let freshCtxAt = ho.freshCtxAt ?? Date.parse(status.freshCtxAt ?? "") ?? 0;
   if (!Number.isFinite(freshCtxAt)) freshCtxAt = 0;
-  // Pure check: due when the last turn's input passes fresh_ctx_k*1000 and no
+  // Pure check: due when the session context passes fresh_ctx_k*1000 and no
   // fresh session started inside the window. 0 = off.
   const freshCtxDue = (msgs) => {
     const k = freshCtxK();
     if (!k || k <= 0) return { due: false, why: `fresh_ctx_k=${k ?? 0} (off)` };
     const input = lastInputTokens(msgs);
     const threshold = k * 1000;
-    if (!(input > threshold)) return { due: false, why: `${input} <= ${threshold}`, input, threshold, k };
+    if (!(input > threshold)) return { due: false, why: `session context ${input} <= ${threshold}`, input, threshold, k };
     if (now() - freshCtxAt < FRESH_CTX_MIN_MS)
       return { due: false, why: `fresh session ${ago(now() - freshCtxAt)} ago (once per 30m)`, input, threshold, k };
-    return { due: true, why: `last-turn input ${input} > ${threshold} (fresh_ctx_k=${k})`, input, threshold, k };
+    return { due: true, why: `session context ${input} > ${threshold} (fresh_ctx_k=${k})`, input, threshold, k };
   };
   // Fresh-context renewal: the same path as `new` (retire, then /sprint takeover,
   // which resumes from the handoff file), instead of the continue.
@@ -739,7 +751,7 @@ const makeKeeper = async ({ client, worktree, directory }, options) => {
     const answer = await renew(id);
     freshCtxAt = now();
     write({ freshCtxAt: iso() });
-    log(`${id} fresh context: last-turn input ${input} > ${threshold} (fresh_ctx_k=${k}); ${answer}`);
+    log(`${id} fresh context: session context ${input} > ${threshold} (fresh_ctx_k=${k}); ${answer}`);
     return answer;
   };
   // Two modes (owner 2026-09-29): free only, or hybrid: with the knob paid_mode at 1 a role that has a -paid twin runs on the Go subscription.
@@ -2052,15 +2064,8 @@ Ready work: ${readyItem.id}. Claim only this item; selectors do not authorize sw
         }
         if (input?.tool === "task" && args) {
           const sprintV = await isSprint(input.sessionID);
-          if (!sprintV) {
-            // Wave-2 NON-loop cap (owner 2026-10-02): a plain Task in a chat that is not
-            // the sprint session is still stopped at helper_max_min; no other fix applies.
-            if (sprintV === false && input.callID) {
-              if (adhocRun.size > 200) adhocRun.delete(adhocRun.keys().next().value);
-              adhocRun.set(input.callID, { sid: input.sessionID, desc: String(args.description ?? ""), sub: String(args.subagent_type ?? ""), proof: PROOF_TEXT.test(String(args.prompt ?? "")), started: now() });
-            }
-            return;
-          }
+          // Owner chats are never capped (Maxim 2026-10-03: the cap cut 24 of his fix agents at 15 min).
+          if (!sprintV) return;
           const fg = foreground();
           if (fg) {
             if (args.background === true) { args.background = false; calls.foregrounded = (calls.foregrounded ?? 0) + 1; }
