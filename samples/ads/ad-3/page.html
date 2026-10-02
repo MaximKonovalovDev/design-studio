@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- samples/ads/ad-3/page.html (DS-14 creative 3/3): 1200x628 wide slot.
+     Landscape reflow of the offer for feed + listing-width placements.
+     Color only via tokens.css. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 628px; background: var(--paper); color: var(--ink); font-family: var(--font-body); display: block; }
+  .ad { width: 1200px; height: 628px; display: flex; flex-direction: row; text-align: left; }
+  .rule { width: 12px; background: var(--accent); }
+  .main { flex: 1; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 48px 72px; }
+  .kicker { font-size: 26px; letter-spacing: 8px; color: var(--accent); font-family: var(--font-body); margin-block-end: 20px; }
+  h1 { font-family: var(--font-display); font-size: 84px; line-height: 1.05; color: var(--ink); margin-block-end: 18px; }
+  .sub { font-size: 32px; color: var(--muted); margin-block-end: 36px; }
+  .cta { display: inline-block; font-size: 32px; font-weight: bold; color: var(--on-accent); background: var(--accent); padding: 20px 60px; border-radius: 12px; }
+  .side { width: 300px; background: var(--accent); color: var(--on-accent); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+  .side strong { font-family: var(--font-display); font-size: 44px; }
+  .side span { font-size: 22px; letter-spacing: 2px; }
+</style>
+</head>
+<body>
+  <div class="ad">
+    <div class="rule"></div>
+    <div class="main">
+      <div class="kicker">DESIGN-STUDIO AD 3/3</div>
+      <h1>SHIP IT TONIGHT</h1>
+      <p class="sub">One brief, every slot. Judged before it ships.</p>
+      <span class="cta">Get the kit</span>
+    </div>
+    <div class="side"><strong>1200</strong><span>&#215; 628 WIDE</span></div>
+  </div>
+</body>
+</html>
