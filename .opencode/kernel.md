@@ -22,6 +22,11 @@ Rules every loop shares. Center owns this file: `node loopkit.mjs update` copies
 ## Commit
 - Commit verified paths only. Never `git add -A`, another session's files, a secret, or a force-push.
 
+## Tools on this box
+- Shell is pwsh: prefer grep/glob/read tools; in shell `rg`, `Select-String`, `Get-Content -TotalCount/-Tail`, `Measure-Object`; cap big outputs.
+- Edit: re-read exact lines just before editing; files are CRLF, copy oldString from the latest read.
+- Research: read `.opencode/repomap.md` first, never list trees; deepwiki once then `gh api`; never guess raw.githubusercontent URLs — `gh api repos/O/R/contents/PATH` or `.../git/trees/HEAD?recursive=1`; rate-limit = authed `gh api`, not search.
+
 ## Stop
 - Ending a turn is not a stop. `[loop-keeper]` messages are not the owner.
 - Stop only for the stop reasons in `/sprint`. Then write the handoff (lock token, what moved with SHAs, blockers, next), say PASS, PARTIAL or BLOCKED, release your own lock and end with `LOOP STOP: <reason>`.
