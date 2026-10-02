@@ -1,23 +1,23 @@
-# design-studio handoff - round 14 (token 9f3a)
+# design-studio handoff - round 15 (token 9f3a)
 
-Round: 14
-Written: 2026-10-02T14:34Z by lead (token 9f3a)
+Round: 15
+Written: 2026-10-02T22:15Z by lead (token 9f3a)
 
 ## Heading
-- Thumbnail 0% holds (034 landed, DS-40 gate in, DS-39 315px next). Landing 0% holds (DS-35/36 DONE, DS-37/38 judges next).
+- Inventory answered. Used 16 tools plus 11 samples. Lacks donor copy plus 4 READY gates. Underused 8 skills.
 
 ## Done
-- DS-07 DONE 01ad842 (034 6 stories plus pins, WORKSHOP PASS 10/10, tests 7/0).
-- DS-35 DONE 1083012 plus 035 PASS (tokens 20 gates, tests 27/0). DS-36 DONE 1083012 plus 036 PASS (F2P 2xFAIL, rev PIN-OK).
-- DS-37/38 DOING built on disk uncommitted (registry +76 plus hero.emit.html, audit +61 plus ad-square re-render); judges 037/038 queued.
-- DS-40 DOING gate built 01ad842 (thumb-claim-vs-math plus 2 tests); judge 039 queued, closes after DS-39 re-pass.
-- Research S13 plus S01 plus landing-move c47963d, vision-check PASS 6/0. Pilot r14 0 defects. Planner NOOP, 10 READY kept.
+- 040 inventory DONE (tools 16/16 PASS, samples 11 renders, donors 0 files, skills 0 imports).
+- 041 github-images DONE 4 cards idea-only 0 lines (open-design eb79c35, screenshot-to-code bee961c, fabric 94cbfeb, dicebear 34df6f49).
+- 042 open-design-underused DONE 3 activations (system-per-family, poster-hero story, image workflow local).
+- Checks green: sprint/check RESULT PASS 20/0/0, tools/check RESULT PASS 6 samples.
 
 ## Blockers and notes
-- sprint/halt was deleted in the tree; restored OFF placeholder (loop ON). Do not commit sprint/halt.
-- Uncommitted leftovers: hero DESIGN-REVIEW.md +4, checks.md, done/*.md noise, DS-37/38 in-flight files.
-- Keeper legacy holds: planner-research-merge plus runner-checks ran empty, no trigger.
-- 016 lesson stands: judges rerun the suite, builders own cross-row coupling.
+- research/donors/open-design missing (Test-Path False). Recreate per open-design SKILL.md sparse checkout.
+- OD_BIN 0 calls in tools/*.mjs. Paid-API skills excluded (no key).
+- DS-37/38/40 still DOING uncommitted. DS-39/41/45/46 READY next.
+- Do not commit sprint/halt. Keeper files touched by keeper, not committed here.
 
 ## Next
-- Round 15 batch: 037/038/039 judges, DS-39 315px builder, DS-41 receipt builder, pilot, runner.
+- Round 16 batch: 037/038/039 judges, DS-39 315px builder, DS-41 receipt builder, pilot, runner.
+- Activate C1 manifest sidecar plus C2 poster story after Thumbnail closes.
