@@ -30,6 +30,34 @@ export const CHECK_IDS = [
   "composition",
 ];
 
+// DS-22 iterate + DS-27 S05 oid/action harness (pattern-only, no vendor copy):
+// onlook oid click-to-code -> data-oid names the element, not pixels;
+// screenshot-to-code update -> each failing gate names its next edit;
+// storybook StoryStore -> every oid is a loadable story.
+export const OIDS = { hero: "cover.hero", title: "cover.title", subtitle: "cover.subtitle", cta: "cover.cta" };
+export const FIX_ACTIONS = ["retitle", "recolor", "reflow", "retype"];
+const OID_BY_CHECK = { "brief-complete": "cover.title", "render-exists": "cover.hero", "audit-green": "cover.hero", "contrast-aa": "cover.title", "thumbnail-legible": "cover.title", "title-fits": "cover.title", "tokens-disciplined": "cover.cta", "type-pair": "cover.subtitle", "rtl-gate": "cover.hero", composition: "cover.cta" };
+const ACTION_BY_CHECK = { "brief-complete": "retitle", "render-exists": "reflow", "audit-green": "reflow", "contrast-aa": "recolor", "thumbnail-legible": "retitle", "title-fits": "reflow", "tokens-disciplined": "recolor", "type-pair": "retype", "rtl-gate": "reflow", composition: "retitle" };
+const NEXT_BY_CHECK = { "brief-complete": "next: fix brief.json title/size/text", "render-exists": "next: re-render page.html to out.png at brief size", "audit-green": "next: fix first auditBrief error", "contrast-aa": "next: edit cover.title fg/bg toward 7:1", "thumbnail-legible": "next: raise title_px or widen title_box", "title-fits": "next: shorten title or widen title_box", "tokens-disciplined": "next: replace hex with var(--*) from tokens.css", "type-pair": "next: declare --font-* + use var(--font-*) in page", "rtl-gate": "next: set <html dir per brief dir + logical props", composition: "next: carry brief.title + cta action into page.html" };
+export function oidFor(id) { return OID_BY_CHECK[id] ?? "cover.hero"; }
+export function fixActionFor(id) { return ACTION_BY_CHECK[id] ?? "reflow"; }
+export function nextEditFor(id) { return NEXT_BY_CHECK[id] ?? "next: open cover brief + page block"; }
+export function dispatchFix(action) {
+  switch (action) {
+    case "retitle": return "edit cover.title text in page.html + brief.json";
+    case "recolor": return "replace color via var(--*) in tokens.css scope";
+    case "reflow": return "reflow title_box + re-render out.png at brief size";
+    case "retype": return "wire var(--font-*) pair in page.html";
+    default: throw new Error(`unknown fix-action ${JSON.stringify(action)}`);
+  }
+}
+export function iterateSample(input) {
+  const r = judgeSample(input);
+  const next = r.checks.filter((c) => !c.pass).map((c) => ({ id: c.id, oid: oidFor(c.id), action: fixActionFor(c.id), next: nextEditFor(c.id) }));
+  return { result: r, next };
+}
+export function listStories(sample = "cover") { return Object.entries(OIDS).map(([el, oid]) => ({ sample, el, oid })); }
+
 function resolveSample(input) {
   const p = resolve(String(input ?? ""));
   if (existsSync(p)) {
@@ -64,8 +92,9 @@ export function judgeSample(input) {
   const checks = [];
   const errors = [];
   const check = (id, ok, detail) => {
-    checks.push({ id, pass: !!ok, detail: String(detail ?? "") });
-    if (!ok) errors.push(`${id}: ${detail}`);
+    const extra = ok ? "" : ` [${oidFor(id)} -> ${fixActionFor(id)}: ${nextEditFor(id)}]`;
+    checks.push({ id, pass: !!ok, detail: String(detail ?? "") + extra });
+    if (!ok) errors.push(`${id}: ${String(detail ?? "") + extra}`);
   };
 
   let brief = null;
@@ -260,6 +289,12 @@ export function writeReview(input, result = null) {
     ``,
     ...r.checks.map((c) => `- [${c.pass ? "x" : " "}] ${c.id}: ${c.detail}`),
     ``,
+    `## Next edits (iterate harness: failing gate -> oid + fix-action)`,
+    ``,
+    ...(r.checks.some((c) => !c.pass)
+      ? r.checks.filter((c) => !c.pass).map((c) => `- ${c.id} [${oidFor(c.id)} -> ${fixActionFor(c.id)}]: ${nextEditFor(c.id)}`)
+      : [`- (none — all gates green)`]),
+    ``,
     `## Verdict`,
     ``,
     verdict,
@@ -355,6 +390,29 @@ export function selfCheck() {
     });
     const r = judgeSample(join(d, "brief.json"));
     t("7/10 does not ship", r.score === 7 && r.pass === false && r.score < SHIP_FLOOR, `${r.score}/${r.max} floor ${SHIP_FLOOR}`);
+  }
+
+  // DS-22 iterate harness (F2P): failing gate names its next edit + oid.
+  {
+    const { d } = mk({
+      "brief.json": JSON.stringify(goodBrief({ w: 1280, h: 720 }, "missing.png")),
+      "tokens.css": ":root{--ink:#999999;--paper:#ffffff;--accent:#999999;--font-a:Arial;}",
+      "page.html": '<html dir="ltr"><body>no title here</body></html>',
+    });
+    const { next } = iterateSample(join(d, "brief.json"));
+    t("iterate names next edit + oid for failing gate", next.length > 0 && next.every((n) => n.oid.startsWith("cover.") && n.next.startsWith("next:") && FIX_ACTIONS.includes(n.action)), next.map((n) => `${n.id}[${n.oid}->${n.action}]`).slice(0, 3).join("; ") || "no next?");
+    t("findings cite cover.title", next.some((n) => n.oid === "cover.title"), next.map((n) => n.oid).join(",") || "no oids?");
+  }
+
+  // DS-27 S05 oid + typed-action dispatch (F2P): 4 oids + 4 actions + stories.
+  {
+    const coverHtml = readText(join(ROOT, "samples", "cover", "page.html")) ?? "";
+    const oids = ["cover.hero", "cover.title", "cover.subtitle", "cover.cta"];
+    t("samples/cover carries 4 data-oids", oids.every((o) => coverHtml.includes(`data-oid="${o}"`)), `${oids.filter((o) => coverHtml.includes(o)).length}/4 oids`);
+    const routed = FIX_ACTIONS.map((a) => { try { return !!dispatchFix(a); } catch { return false; } });
+    let unknownFails = false; try { dispatchFix("nope"); } catch { unknownFails = true; }
+    t("4 fix-actions route + unknown fails", routed.every(Boolean) && unknownFails, FIX_ACTIONS.join(","));
+    t("story harness lists 4 cover stories", listStories("cover").length === 4 && listStories("cover").every((s) => s.oid.startsWith("cover.")), listStories("cover").map((s) => s.oid).join(","));
   }
 
   const fails = results.filter((r) => !r.pass);

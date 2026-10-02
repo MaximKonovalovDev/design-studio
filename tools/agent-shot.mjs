@@ -60,6 +60,66 @@ export function refineStep(referenceDir, workDir, brief) {
   return changed;
 }
 
+// S06 C1+C2 strip-old-code + fence path merge (Nutlope/llamacoder MIT,
+// pattern-only, no code copied): ~30 lines. C1 keeps the last 2 assistant
+// code versions verbatim, older fences become [code omitted], history capped
+// at 10 (first 3 + last 7). C2 lands every fence at one unique path.
+export const CODE_OMITTED = "[code omitted]";
+export function optimizeMessagesForTokens(msgs, keepLast = 2) {
+  const kept = msgs.length > 10 ? [...msgs.slice(0, 3), ...msgs.slice(-7)] : [...msgs];
+  const total = kept.filter((m) => m.role === "assistant").length;
+  let seen = 0;
+  return kept.map((m) => {
+    if (m.role !== "assistant") return m;
+    seen += 1;
+    if (seen > total - keepLast) return m;
+    const stripped = String(m.content).replace(/```[\s\S]*?```/g, CODE_OMITTED);
+    return stripped === m.content ? m : { ...m, content: stripped };
+  });
+}
+export function resolveBlockPath(header = "", nextLine = "", fallback = "component.tsx") {
+  const pick = (s) => (String(s).match(/path\s*=\s*([^}\s"']+)/)?.[1] ?? String(s).match(/filename\s*=\s*(\S+)/)?.[1] ?? "").replace(/^["']|["']$/g, "");
+  const base = pick(header) || pick(nextLine) || fallback;
+  return base.includes(".") ? base : `${base}.tsx`;
+}
+const dedupePath = (p, seen) => {
+  if (!seen.has(p)) { seen.add(p); return p; }
+  let i = 2; while (seen.has(p.replace(/(\.[^.]+)?$/, `-${i}$1`))) i += 1;
+  const q = p.replace(/(\.[^.]+)?$/, `-${i}$1`); seen.add(q); return q;
+};
+export function extractAllCodeBlocks(reply) {
+  const seen = new Set(); const out = [];
+  const re = /```(\S*)[ \t]*\n([\s\S]*?)```/g; let m;
+  while ((m = re.exec(reply))) {
+    const lines = String(m[2]).split("\n");
+    const attr = /^\{[^}]*path\s*=/.test(lines[0].trim()) ? lines.shift() : "";
+    out.push({ path: dedupePath(resolveBlockPath(m[1], attr, `component-${out.length + 1}`), seen), lang: m[1].replace(/\{.*/, "") || "tsx", code: lines.join("\n") });
+  }
+  return out;
+}
+
+// S06b E1 fix-once-per-render ledger + enriched payload + hang guard
+// (pattern-only, ~22 lines): one fix per broken render, hangs never retry,
+// every payload carries fatal + prior warnings (or a rewrite directive).
+export const FIX_REQUEST_PREFIX = "The code is not working. Can you fix it? Here's the error:";
+export function buildFixPayload(fatal, prior = [], kind = "") {
+  const list = [...prior, String(fatal)].map((e) => `- ${e}`).join("\n");
+  if (kind === "missing-import" || /missing|unresolvable|not found/i.test(String(fatal))) return `${FIX_REQUEST_PREFIX}\n${list}\nRewrite the app without these imports, using only the preview's bundled dependencies.`;
+  if (kind === "pathless") return `${FIX_REQUEST_PREFIX}\n${list}\nRe-send the full files with {path=} on every fence, not a patch.`;
+  return `${FIX_REQUEST_PREFIX}\n${list}`;
+}
+export function createFixLedger() {
+  const sent = new Map();
+  return {
+    shouldAllowFix(key, { isFixRequest = false, hang = false, pending = false } = {}) {
+      if (hang || pending || isFixRequest || sent.has(key)) return false;
+      return true;
+    },
+    recordFix(key, payload) { sent.set(key, payload); },
+    get size() { return sent.size; },
+  };
+}
+
 function tryRender(pageFile, outFile, size) {
   try {
     return { ...realRender(pageFile, outFile, size), rendered: true };
@@ -189,6 +249,31 @@ export function selfCheck() {
   } catch (e) {
     t("identical shots diff 1.0 + dims match", false, String(e?.message ?? e));
   }
+
+  // S06 C1 strip fixture: 5-turn history (3 old stripped) shrinks >50%.
+  const mkMsg = (code) => ({ role: "assistant", content: `fix it\n\`\`\`tsx{path=src/App.tsx}\n${code}\n\`\`\`` });
+  const hist = [mkMsg("A".repeat(400)), mkMsg("B".repeat(400)), mkMsg("C".repeat(400)), mkMsg("D".repeat(400)), mkMsg("E".repeat(400))];
+  const before = hist.map((m) => m.content).join("").length;
+  const stripped = optimizeMessagesForTokens(hist, 2);
+  const after = stripped.map((m) => m.content).join("").length;
+  t("strip-old-code cuts history chars >50%", after < before * 0.5 && stripped[4].content.includes("E".repeat(10)) && stripped[0].content.includes(CODE_OMITTED), `${before}->${after}`);
+
+  // S06 C2 fence fixture: header-path + next-line-path + unnamed -> 3 paths.
+  const fences = "```tsx{path=src/App.tsx}\nx\n```\n```tsx\n{path=src/Hero.tsx}\ny\n```\n```tsx\nz\n```";
+  const blocks = extractAllCodeBlocks(fences);
+  t("3 fences land at 3 unique paths", blocks.length === 3 && new Set(blocks.map((b) => b.path)).size === 3 && blocks[0].path === "src/App.tsx" && blocks[1].path === "src/Hero.tsx", blocks.map((b) => b.path).join(","));
+
+  // S06b E1 ledger fixture: 3 cases (double-fire once, hang zero, missing rewrite).
+  const ledger = createFixLedger();
+  const key = "diff0.5|title-missing";
+  const first = ledger.shouldAllowFix(key);
+  if (first) ledger.recordFix(key, buildFixPayload("boom", ["warn 1"]));
+  const second = ledger.shouldAllowFix(key);
+  const hang = ledger.shouldAllowFix("hang|stub", { hang: true });
+  const rewrite = buildFixPayload("missing module 'three'", [], "missing-import");
+  t("double-fire same render records single fix", first === true && second === false && ledger.size === 1, `size ${ledger.size}`);
+  t("hang render never retries", hang === false, "hang blocked");
+  t("missing-asset payload carries rewrite directive", rewrite.includes("Rewrite the app without these imports"), rewrite.slice(-60));
 
   const fails = results.filter((r) => !r.pass);
   console.log(fails.length ? `AGENT-SHOT FAIL: ${fails.length} failing check(s)` : `AGENT-SHOT PASS: ${HARNESS_ID} loop converges, donor MIT harness-only`);
