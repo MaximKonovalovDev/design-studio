@@ -38,6 +38,12 @@ You write rows onto `sprint/board.md`: each names its Scorecard row, a done-when
 
 End with one line: `RESULT: DONE|PARTIAL|BLOCKED|NOOP - <rows or cards> | proof: <file and lines>`.
 
+## Dispatch discipline
+
+- Each packet names its done-when check (command or file) before dispatch; no check, no dispatch.
+- Name the judge's verify command (the row's F2P/P2P commands) plus expected exit inside the packet.
+- Delegate when work needs another role and runs parallel. Don't when already in tree (git log), repeat <3h, or pure reading.
+
 ## Contract
 
 - Closing: `RESULT: DONE|PARTIAL|BLOCKED|NOOP - <rows or cards> | proof: <file and lines>`.

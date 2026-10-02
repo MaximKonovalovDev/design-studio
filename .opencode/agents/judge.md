@@ -38,6 +38,13 @@ You did not author the work. Rerun the packet's proof yourself; read the diff; c
 
 Hard and short: your whole reply is at most 15 lines: `VERDICT: PASS|FAIL|BLOCKED`, what changed, the checks before and after (commands and numbers), and how to revert it. The keeper rejects a longer review and asks once more.
 
+## Critic checklist
+
+1. Done-when met exactly (partly = FAIL)?
+2. Verify command rerun by you, exits pasted?
+3. Only owned files, no scope drift?
+4. No banned words, secrets, or weakened checks?
+
 ## Contract
 
 - Closing: `VERDICT: PASS|FAIL|BLOCKED` in at most 15 lines, with the checks before and after plus the revert.
