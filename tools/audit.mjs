@@ -198,6 +198,18 @@ export function auditBrief(briefPath) {
     check("title fits its box", fitOk, `need ~${Math.round(need)}px, box ${Math.round(boxW)}px${fitOk ? "" : " — next: shorten title or widen title_box"}`);
   }
 
+  // DS-39 THUMB-02 315px listing gate (step 2/3 Thumbnail): the store/
+  // listing slot renders the brief at 315px wide, so the title must stay
+  // legible there too — same 12px floor and matrix math as the 256px gate
+  // (card research/cards/2026-10-02-s13.md: title_px*315/stage.w >= 12),
+  // pinned as its own check so a future shrink that still clears 256px
+  // cannot slip past the listing slot. 0 gate weakens.
+  if (inRange && titlePx > 0) {
+    const at315 = (titlePx * 315) / size.w;
+    const listOk = at315 >= 12;
+    check("title legible at 315px listing", listOk, `${at315.toFixed(1)}px at 315px listing (floor 12px)${listOk ? "" : " — next: raise title_px for the 315px listing slot"}`);
+  }
+
   // DS-23 S01 one-to-many size matrix + per-size reflow: every matrix size
   // re-passes 256px legibility + title-fits-box (never ships scaled-blind).
   // Uses brief.sizes when declared, else the shared SIZE_MATRIX from render.
@@ -505,12 +517,66 @@ function finishAdSquare(results) {
   return { pass: fails.length === 0, results };
 }
 
+// DS-39 THUMB-02 315px listing gate self-check (step 2/3 Thumbnail): the
+// on-disk samples/cover-b brief re-passes the new gate, a small-title
+// fixture FAILs the listing gate first (the F2P proof), and the reflowed
+// variant (title_px back up) re-passes with 0 gate weakens — same 12px
+// floor as the 256px gate, no threshold moved.
+export function listingWidthSelfCheck() {
+  const results = [];
+  const t = (name, ok, detail) => {
+    results.push({ name, pass: !!ok, detail: String(detail ?? "") });
+    console.log(`[${ok ? "PASS" : "FAIL"}] ${name}: ${detail}`);
+  };
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+  {
+    const { pass, errors } = auditBrief(join(ROOT, "samples", "cover-b", "brief.json"));
+    t("cover-b re-passes the 315px listing gate", pass, pass ? "28.0px at 315px listing (floor 12px)" : errors.slice(0, 2).join("; "));
+  }
+  const mk = (brief) => {
+    const d = mkdtempSync(`${tmpdir()}/ds-audit-315-`);
+    writeFileSync(join(d, "brief.json"), JSON.stringify(brief), "utf8");
+    writeFileSync(join(d, "tokens.css"), ":root{--paper:#faf7f0;--ink:#1a1a1a;--muted:#57534e;--accent:#c2410c;--on-accent:#ffffff;--line:#e7e0d3;}");
+    writeFileSync(join(d, "page.html"), `<!DOCTYPE html><html dir="ltr"><head><style>body{color:var(--ink);}</style></head><body><h1>${brief.title}</h1></body></html>`);
+    writeFileSync(join(d, "out.png"), readFileSync(join(ROOT, "samples", "cover-b", "out.png")));
+    return join(d, "brief.json");
+  };
+  const base = {
+    title: "DESIGN THAT SHIPS",
+    size: { w: 1080, h: 1080 },
+    dir: "ltr",
+    tokens: "tokens.css",
+    page: "page.html",
+    image: "out.png",
+    text: [{ label: "t", fg: "#000000", bg: "#ffffff", min: 1 }],
+    title_box: [0.08, 0.3, 0.92, 0.56],
+  };
+  {
+    const { errors } = auditBrief(mk({ ...base, title_px: 40 }));
+    t("small-title fixture FAILs the 315px listing gate first", errors.some((e) => e.includes("title legible at 315px listing")), errors.slice(0, 2).join("; ") || "no errors?");
+  }
+  {
+    const { pass, errors } = auditBrief(mk({ ...base, title_px: 96 }));
+    t("reflowed variant (96px) re-passes the listing gate", pass, pass ? "28.0px at 315px listing" : errors.slice(0, 2).join("; "));
+  }
+  return finishListing(results);
+}
+
+function finishListing(results) {
+  const fails = results.filter((r) => !r.pass);
+  console.log(fails.length ? `AUDIT LISTING FAIL: ${fails.length} failing check(s)` : `AUDIT LISTING PASS: cover-b re-passes, small-title fixture fails first`);
+  return { pass: fails.length === 0, results };
+}
+
 if (isMain) {
   const args = process.argv.slice(2);
   if (args.includes("--sizes") && args.includes("--check")) {
     const a = sizeMatrixSelfCheck();
     const b = adSquareReflowSelfCheck();
     if (!a.pass || !b.pass) process.exitCode = 1;
+  } else if (args.includes("--listing") && args.includes("--check")) {
+    const { pass } = listingWidthSelfCheck();
+    if (!pass) process.exitCode = 1;
   } else if (args.includes("--rtl") && args.includes("--check")) {
     const { pass } = rtlSelfCheck();
     if (!pass) process.exitCode = 1;
@@ -520,7 +586,7 @@ if (isMain) {
   } else {
     const brief = args.find((a) => !a.startsWith("-"));
     if (brief == null || args.includes("-h") || args.includes("--help")) {
-      console.log("usage: node tools/audit.mjs <samples/<name>/brief.json> | node tools/audit.mjs --rtl --check | node tools/audit.mjs --sizes --check");
+      console.log("usage: node tools/audit.mjs <samples/<name>/brief.json> | node tools/audit.mjs --rtl --check | node tools/audit.mjs --sizes --check | node tools/audit.mjs --listing --check");
       process.exit(args.length < 1 ? 2 : 0);
     } else {
       const { pass, checks, errors } = auditBrief(brief);

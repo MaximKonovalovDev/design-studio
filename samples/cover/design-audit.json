@@ -77,6 +77,11 @@
       "detail": "need ~816px, box 1075px"
     },
     {
+      "name": "title legible at 315px listing",
+      "pass": true,
+      "detail": "23.6px at 315px listing (floor 12px)"
+    },
+    {
       "name": "size 1280x720: title legible at 256px",
       "pass": true,
       "detail": "19.2px at 256px (floor 12px)"
