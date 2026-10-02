@@ -1,0 +1,3 @@
+# loopkit: local secrets stay local.
+.env
+node_modules/
