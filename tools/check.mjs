@@ -1,5 +1,5 @@
-// tools/check.mjs: DS-01 proof + the 4-sample suite (cover, ad-square, story,
-// hebrew-hero). Runs sprint/check.mjs, then renders + audits every sample
+// tools/check.mjs: DS-01 proof + the 6-sample suite (cover, ad-square, story,
+// hebrew-hero, jobhunt, cv). Runs sprint/check.mjs, then renders + audits every sample
 // (brief.json -> page.html -> out.png -> design-audit.json) plus a real
 // 256px thumbnail (thumb-256.png) beside each render, so the audit's
 // "title legible at 256px" gate is backed by pixels a human can open.
@@ -35,7 +35,7 @@ function renderThumb(dir, brief) {
 }
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const SAMPLES = ["cover", "ad-square", "story", "hebrew-hero"].map((n) => join(ROOT, "samples", n, "brief.json"));
+const SAMPLES = ["cover", "ad-square", "story", "hebrew-hero", "jobhunt", "cv"].map((n) => join(ROOT, "samples", n, "brief.json"));
 
 let fails = 0;
 
@@ -84,5 +84,5 @@ for (const SAMPLE of SAMPLES) {
   }
 }
 
-console.log(fails ? `RESULT FAIL: ${fails} failing check(s)` : "RESULT PASS: loop check plus 4 sample renders plus thumbs plus audits");
+console.log(fails ? `RESULT FAIL: ${fails} failing check(s)` : "RESULT PASS: loop check plus 6 sample renders plus thumbs plus audits");
 if (fails) process.exitCode = 1;

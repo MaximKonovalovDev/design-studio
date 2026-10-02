@@ -1,0 +1,16 @@
+<!-- templates/blocks/newsletter.html (DS-03 registry block: newsletter). One
+     email capture with a real action. Colors and type only via var(--*). -->
+<section class="ds-news">
+  <h2 class="ds-news-t">NEWSLETTER TITLE</h2>
+  <p class="ds-news-d">NEWSLETTER SUBTITLE</p>
+  <div class="ds-news-row">
+    <a class="ds-news-cta" href="#">SUBSCRIBE</a>
+  </div>
+</section>
+<style>
+  .ds-news { text-align: center; background: var(--paper); border: 2px solid var(--line); padding: var(--space-lg) var(--space-md); }
+  .ds-news-t { font-family: var(--font-display); color: var(--ink); }
+  .ds-news-d { color: var(--muted); font-family: var(--font-body); }
+  .ds-news-row { margin-block-start: var(--space-md); }
+  .ds-news-cta { display: inline-block; font-family: var(--font-body); font-weight: bold; color: var(--on-accent); background: var(--accent); padding: var(--space-sm) var(--space-md); text-decoration: none; }
+</style>

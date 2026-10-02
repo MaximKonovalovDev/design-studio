@@ -16,6 +16,8 @@
   }
   .page {
     width: 720px; margin-block: 38px;
+    block-size: 1194px;
+    display: flex; flex-direction: column;
     border-block-start: 6px solid var(--accent);
     padding-block-start: 28px;
   }
@@ -26,28 +28,40 @@
   }
   h1 {
     font-family: var(--font-hebrew);
-    font-size: 72px; line-height: 1.2; color: var(--ink);
-    text-align: center; margin-block-end: 8px;
+    font-size: 72px; line-height: 1.1; color: var(--ink);
+    text-align: center; margin-block-end: 6px;
   }
-  .tagline { font-size: 26px; color: var(--muted); text-align: center; margin-block-end: 28px; }
+  .tagline { font-size: 26px; color: var(--muted); text-align: center; margin-block-end: 10px; }
+  .summary { font-size: 22px; line-height: 1.5; color: var(--muted); text-align: center; margin-block-end: 2px; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
   h2 {
     font-family: var(--font-hebrew);
-    font-size: 30px; color: var(--accent);
+    font-size: 29px; color: var(--accent);
     border-block-end: 2px solid var(--line);
-    padding-block-end: 6px; margin-block: 22px 12px;
+    padding-block-end: 5px; margin-block: 14px 10px;
   }
-  .job { margin-block-end: 14px; }
+  .job { margin-block-end: 10px; border-inline-start: 3px solid var(--line); padding-inline-start: 14px; }
   .job-head { display: flex; justify-content: space-between; align-items: baseline; }
-  .role { font-size: 26px; font-weight: bold; color: var(--ink); }
-  .years { font-size: 22px; color: var(--muted); }
-  .desc { font-size: 23px; color: var(--muted); margin-block-start: 4px; }
+  .role { font-size: 25px; font-weight: bold; color: var(--ink); }
+  .years { font-size: 21px; color: var(--muted); }
+  .desc { font-size: 22px; line-height: 1.45; color: var(--muted); margin-block-start: 3px; }
   .skills { display: flex; gap: 10px; flex-wrap: wrap; }
   .pill {
-    font-size: 22px; color: var(--on-accent); background: var(--accent);
+    font-size: 21px; color: var(--on-accent); background: var(--accent);
     padding-block: 6px; padding-inline: 20px; border-radius: 20px;
     font-family: var(--font-hebrew);
   }
-  .contact { text-align: center; margin-block-start: 26px; font-size: 23px; color: var(--muted); }
+  .edu { display: flex; justify-content: space-between; align-items: baseline; margin-block-end: 4px; }
+  .edu-name { font-size: 23px; font-weight: bold; color: var(--ink); }
+  .edu-years { font-size: 21px; color: var(--muted); }
+  .edu-desc { font-size: 22px; color: var(--muted); margin-block: 2px 6px; }
+  .langs { font-size: 22px; color: var(--muted); text-align: center; margin-block-start: 2px; }
+  .contact {
+    margin-block-start: auto;
+    border-block-start: 2px solid var(--line);
+    padding-block: 16px 4px;
+    text-align: center; font-size: 22px; color: var(--muted);
+  }
   @media print {
     body { background: var(--paper); }
     .page { margin-block: 0; border-block-start: 6px solid var(--accent); }
@@ -59,22 +73,39 @@
     <div class="kicker">מעצב מוצר · תל אביב</div>
     <h1>קורות חיים</h1>
     <p class="tagline">עיצוב עברי שנשפט במספרים, לא בתחושה.</p>
+    <p class="summary">מעצב מוצר עם 9 שנות ניסיון במוצרים דו־לשוניים, מתמחה במערכות עיצוב ובשערי איכות לעברית.</p>
+    <div class="main">
     <h2>ניסיון</h2>
     <div class="job">
       <div class="job-head"><span class="role">מעצב מוצר בכיר</span><span class="years">2023–2026</span></div>
-      <p class="desc">הובלת עיצוב חנות עם ביקורת שיפוט קבועה לכל מסך.</p>
+      <p class="desc">הובלת עיצוב חנות עם ביקורת שיפוט קבועה לכל מסך, כולל מדדי המרה ותיעוד החלטות.</p>
     </div>
     <div class="job">
       <div class="job-head"><span class="role">מעצב ממשקים</span><span class="years">2020–2023</span></div>
-      <p class="desc">דפי נחיתה דו־לשוניים עם שער תקינות מלא לעברית.</p>
+      <p class="desc">דפי נחיתה דו־לשוניים עם שער תקינות מלא לעברית, כולל טיפוגרפיה ומצבי קצה.</p>
+    </div>
+    <div class="job">
+      <div class="job-head"><span class="role">מעצב חזותי</span><span class="years">2017–2020</span></div>
+      <p class="desc">שפה חזותית למותגי מסחר, ערכות אייקונים ומדריכי שימוש לצוותי פיתוח.</p>
     </div>
     <h2>מיומנויות</h2>
     <div class="skills">
       <span class="pill">עיצוב ממשקים</span>
       <span class="pill">טיפוגרפיה עברית</span>
       <span class="pill">בדיקות שיפוט</span>
+      <span class="pill">מערכות עיצוב</span>
+      <span class="pill">אבות־טיפוס</span>
+      <span class="pill">מחקר משתמשים</span>
     </div>
-    <p class="contact">hello@example.com · 050-0000000</p>
+    <h2>השכלה</h2>
+    <div class="edu"><span class="edu-name">תואר ראשון בתקשורת חזותית</span><span class="edu-years">2013–2017</span></div>
+    <p class="edu-desc">פרויקט גמר בטיפוגרפיה עברית, הצטיינות בתולדות העיצוב.</p>
+    <div class="edu"><span class="edu-name">קורס עיצוב מוצר מתקדם</span><span class="edu-years">2019</span></div>
+    <p class="edu-desc">מחקר משתמשים, מדידת המרה ועבודה מול צוותי פיתוח.</p>
+    <h2>שפות</h2>
+    <p class="langs">עברית · שפת אם — אנגלית · מקצועית מלאה</p>
+    </div>
+    <p class="contact">hello@example.com · 050-0000000 · תל אביב · תיק עבודות: example.com</p>
   </div>
 </body>
 </html>

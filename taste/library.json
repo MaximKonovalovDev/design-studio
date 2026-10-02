@@ -1,0 +1,545 @@
+{
+  "name": "ds-taste-v1",
+  "exemplars": [
+    {
+      "id": "taste-01-minimal",
+      "mood": "minimal",
+      "density": "airy",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 1"
+    },
+    {
+      "id": "taste-02-cinematic",
+      "mood": "cinematic",
+      "density": "dense",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 2"
+    },
+    {
+      "id": "taste-03-editorial",
+      "mood": "editorial",
+      "density": "airy",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 3"
+    },
+    {
+      "id": "taste-04-dark-tech",
+      "mood": "dark-tech",
+      "density": "dense",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 4"
+    },
+    {
+      "id": "taste-05-luxury",
+      "mood": "luxury",
+      "density": "airy",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 5"
+    },
+    {
+      "id": "taste-06-cultural",
+      "mood": "cultural",
+      "density": "dense",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 6"
+    },
+    {
+      "id": "taste-07-security",
+      "mood": "security",
+      "density": "airy",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 7"
+    },
+    {
+      "id": "taste-08-gaming",
+      "mood": "gaming",
+      "density": "dense",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 8"
+    },
+    {
+      "id": "taste-09-developer-tool",
+      "mood": "developer-tool",
+      "density": "airy",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 9"
+    },
+    {
+      "id": "taste-10-consumer-app",
+      "mood": "consumer-app",
+      "density": "dense",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 10"
+    },
+    {
+      "id": "taste-11-brutalist",
+      "mood": "brutalist",
+      "density": "airy",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 11"
+    },
+    {
+      "id": "taste-12-soft-light",
+      "mood": "soft-light",
+      "density": "dense",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 12"
+    },
+    {
+      "id": "taste-13-mono-ink",
+      "mood": "mono-ink",
+      "density": "airy",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 13"
+    },
+    {
+      "id": "taste-14-warm-paper",
+      "mood": "warm-paper",
+      "density": "dense",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 14"
+    },
+    {
+      "id": "taste-15-high-contrast",
+      "mood": "high-contrast",
+      "density": "airy",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 15"
+    },
+    {
+      "id": "taste-16-quiet-luxe",
+      "mood": "quiet-luxe",
+      "density": "dense",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 16"
+    },
+    {
+      "id": "taste-17-playful",
+      "mood": "playful",
+      "density": "airy",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 17"
+    },
+    {
+      "id": "taste-18-corporate",
+      "mood": "corporate",
+      "density": "dense",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 18"
+    },
+    {
+      "id": "taste-19-poster-bold",
+      "mood": "poster-bold",
+      "density": "airy",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 19"
+    },
+    {
+      "id": "taste-20-gallery-calm",
+      "mood": "gallery-calm",
+      "density": "dense",
+      "tokens": {
+        "colors": {
+          "paper": "#faf7f0",
+          "ink": "#1a1a1a",
+          "muted": "#57534e",
+          "accent": "#c2410c",
+          "on-accent": "#ffffff",
+          "line": "#e7e0d3"
+        },
+        "fonts": {
+          "display": "Arial Black, Segoe UI, Verdana, sans-serif",
+          "body": "Segoe UI, Verdana, Arial, sans-serif",
+          "hebrew": "Heebo, Assistant, Noto Sans Hebrew, Segoe UI, Arial, sans-serif"
+        },
+        "spacing": {
+          "xs": "8px",
+          "sm": "16px",
+          "md": "24px",
+          "lg": "48px"
+        }
+      },
+      "source": "od-taste exemplar 20"
+    }
+  ]
+}

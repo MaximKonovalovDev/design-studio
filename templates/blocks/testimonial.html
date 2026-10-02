@@ -1,0 +1,16 @@
+<!-- templates/blocks/testimonial.html (DS-03 registry block: testimonial). One
+     quote plus attribution. Colors and type only via var(--*); no hex here. -->
+<section class="ds-quote">
+  <p class="ds-quote-t">QUOTE</p>
+  <p class="ds-quote-a">ATTRIBUTION</p>
+</section>
+<style>
+  .ds-quote {
+    text-align: center;
+    border-inline-start: 6px solid var(--accent);
+    background: var(--paper);
+    padding: var(--space-md);
+  }
+  .ds-quote-t { font-family: var(--font-display); color: var(--ink); }
+  .ds-quote-a { color: var(--muted); font-family: var(--font-body); }
+</style>

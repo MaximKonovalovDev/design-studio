@@ -1,0 +1,11 @@
+<!-- templates/blocks/footer.html (DS-03 registry block: footer). Wordmark
+     plus one link row. Colors and type only via var(--*); no hex here. -->
+<footer class="ds-footer">
+  <p class="ds-word">WORDMARK</p>
+  <p class="ds-links"><a class="ds-link" href="#">LINK ONE</a> <a class="ds-link" href="#">LINK TWO</a></p>
+</footer>
+<style>
+  .ds-footer { text-align: center; border-block-start: 2px solid var(--line); background: var(--paper); padding: var(--space-md); }
+  .ds-word { font-family: var(--font-display); color: var(--ink); }
+  .ds-link { color: var(--accent); font-family: var(--font-body); }
+</style>

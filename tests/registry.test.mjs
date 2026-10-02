@@ -9,9 +9,9 @@ import { checkRegistry } from "../tools/registry.mjs";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 describe("registry", () => {
-  it("names 4 blocks and 4 templates at the 4 sizes", () => {
+  it("names 10 blocks and 4 templates at the 4 sizes", () => {
     const reg = JSON.parse(readFileSync(join(ROOT, "templates", "registry.json"), "utf8"));
-    assert.deepEqual(reg.blocks.map((b) => b.id), ["hero", "feature-grid", "pricing", "cta"]);
+    assert.deepEqual(reg.blocks.map((b) => b.id), ["hero", "feature-grid", "pricing", "cta", "testimonial", "faq", "stats", "gallery", "newsletter", "footer"]);
     const sizes = Object.fromEntries(reg.templates.map((t) => [t.id, `${t.size.w}x${t.size.h}`]));
     assert.deepEqual(sizes, { cover: "1280x720", "ad-square": "1080x1080", story: "1080x1920", capsule: "616x353" });
   });

@@ -32,7 +32,7 @@ export function checkRegistry(registryPath = REGISTRY) {
   }
   ok("registry.json parses", true, `${reg.blocks?.length ?? 0} blocks, ${reg.templates?.length ?? 0} templates`);
 
-  for (const id of ["hero", "feature-grid", "pricing", "cta"]) {
+  for (const id of ["hero", "feature-grid", "pricing", "cta", "testimonial", "faq", "stats", "gallery", "newsletter", "footer"]) {
     const b = (reg.blocks ?? []).find((x) => x.id === id);
     ok(`block ${id} registered`, !!b?.file, b?.file ?? "missing");
   }
@@ -90,7 +90,7 @@ if (isMain) {
   if (args.includes("--check") || args.length === 0) {
     const { pass, results } = checkRegistry();
     for (const r of results) console.log(`[${r.pass ? "PASS" : "FAIL"}] ${r.name}: ${r.detail}`);
-    console.log(pass ? "REGISTRY PASS: 4 blocks + 4 templates, 0 hardcoded colors" : `REGISTRY FAIL: ${results.filter((r) => !r.pass).length} failing check(s)`);
+    console.log(pass ? "REGISTRY PASS: 10 blocks + 4 templates, 0 hardcoded colors" : `REGISTRY FAIL: ${results.filter((r) => !r.pass).length} failing check(s)`);
     if (!pass) process.exitCode = 1;
   } else {
     console.log("usage: node tools/registry.mjs [--check]");

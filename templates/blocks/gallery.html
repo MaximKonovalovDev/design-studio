@@ -1,0 +1,13 @@
+<!-- templates/blocks/gallery.html (DS-03 registry block: gallery). Three
+     captioned tiles, CSS shapes only (no binaries). Colors via var(--*). -->
+<section class="ds-gallery">
+  <figure class="ds-tile"><span class="ds-art"></span><figcaption class="ds-cap">CAPTION ONE</figcaption></figure>
+  <figure class="ds-tile"><span class="ds-art"></span><figcaption class="ds-cap">CAPTION TWO</figcaption></figure>
+  <figure class="ds-tile"><span class="ds-art"></span><figcaption class="ds-cap">CAPTION THREE</figcaption></figure>
+</section>
+<style>
+  .ds-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+  .ds-tile { border: 2px solid var(--line); background: var(--paper); padding: var(--space-sm); text-align: center; }
+  .ds-art { display: block; height: 96px; background: var(--line); border-block-end: 4px solid var(--accent); }
+  .ds-cap { color: var(--muted); font-family: var(--font-body); }
+</style>

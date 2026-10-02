@@ -1,0 +1,13 @@
+<!-- templates/blocks/faq.html (DS-03 registry block: FAQ). Three questions,
+     direction-agnostic (RTL-safe). Colors and type only via var(--*); no hex. -->
+<section class="ds-faq">
+  <div class="ds-qa"><h2 class="ds-q">QUESTION ONE</h2><p class="ds-a">ANSWER ONE</p></div>
+  <div class="ds-qa"><h2 class="ds-q">QUESTION TWO</h2><p class="ds-a">ANSWER TWO</p></div>
+  <div class="ds-qa"><h2 class="ds-q">QUESTION THREE</h2><p class="ds-a">ANSWER THREE</p></div>
+</section>
+<style>
+  .ds-faq { display: grid; gap: var(--space-md); text-align: start; }
+  .ds-qa { border: 2px solid var(--line); background: var(--paper); padding: var(--space-md); }
+  .ds-q { font-family: var(--font-display); color: var(--ink); }
+  .ds-a { color: var(--muted); font-family: var(--font-body); }
+</style>

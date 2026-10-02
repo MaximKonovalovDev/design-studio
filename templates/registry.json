@@ -4,7 +4,13 @@
     { "id": "hero", "file": "blocks/hero.html", "uses": ["--paper", "--ink", "--muted", "--accent", "--font-display", "--font-body"] },
     { "id": "feature-grid", "file": "blocks/feature-grid.html", "uses": ["--paper", "--ink", "--muted", "--line", "--font-display", "--font-body"] },
     { "id": "pricing", "file": "blocks/pricing.html", "uses": ["--paper", "--ink", "--muted", "--accent", "--on-accent", "--line", "--font-display", "--font-body"] },
-    { "id": "cta", "file": "blocks/cta.html", "uses": ["--accent", "--on-accent", "--font-body"] }
+    { "id": "cta", "file": "blocks/cta.html", "uses": ["--accent", "--on-accent", "--font-body"] },
+    { "id": "testimonial", "file": "blocks/testimonial.html", "uses": ["--paper", "--ink", "--muted", "--accent", "--font-display", "--font-body"] },
+    { "id": "faq", "file": "blocks/faq.html", "uses": ["--paper", "--ink", "--muted", "--line", "--font-display", "--font-body"] },
+    { "id": "stats", "file": "blocks/stats.html", "uses": ["--paper", "--ink", "--muted", "--accent", "--font-display", "--font-body"] },
+    { "id": "gallery", "file": "blocks/gallery.html", "uses": ["--paper", "--muted", "--line", "--accent", "--font-body"] },
+    { "id": "newsletter", "file": "blocks/newsletter.html", "uses": ["--paper", "--ink", "--muted", "--accent", "--on-accent", "--line", "--font-display", "--font-body"] },
+    { "id": "footer", "file": "blocks/footer.html", "uses": ["--paper", "--ink", "--accent", "--line", "--font-display", "--font-body"] }
   ],
   "templates": [
     { "id": "cover", "file": "pages/cover.html", "size": { "w": 1280, "h": 720 }, "blocks": ["hero", "cta"] },

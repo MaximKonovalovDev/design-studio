@@ -1,0 +1,6 @@
+{
+  "name": "ds-brandkits-v1",
+  "kits": [
+    { "id": "studio", "name": "Design Studio", "file": "studio.json" }
+  ]
+}

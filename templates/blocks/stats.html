@@ -1,0 +1,13 @@
+<!-- templates/blocks/stats.html (DS-03 registry block: stats band). Three
+     numbers with labels. Colors and type only via var(--*); no hex here. -->
+<section class="ds-stats">
+  <div class="ds-stat"><p class="ds-num">STAT ONE</p><p class="ds-lab">LABEL ONE</p></div>
+  <div class="ds-stat"><p class="ds-num">STAT TWO</p><p class="ds-lab">LABEL TWO</p></div>
+  <div class="ds-stat"><p class="ds-num">STAT THREE</p><p class="ds-lab">LABEL THREE</p></div>
+</section>
+<style>
+  .ds-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); text-align: center; }
+  .ds-stat { border-block-start: 6px solid var(--accent); background: var(--paper); padding: var(--space-md); }
+  .ds-num { font-family: var(--font-display); color: var(--ink); }
+  .ds-lab { color: var(--muted); font-family: var(--font-body); }
+</style>
