@@ -2051,7 +2051,16 @@ Ready work: ${readyItem.id}. Claim only this item; selectors do not authorize sw
           return;
         }
         if (input?.tool === "task" && args) {
-          if (!(await isSprint(input.sessionID))) return;
+          const sprintV = await isSprint(input.sessionID);
+          if (!sprintV) {
+            // Wave-2 NON-loop cap (owner 2026-10-02): a plain Task in a chat that is not
+            // the sprint session is still stopped at helper_max_min; no other fix applies.
+            if (sprintV === false && input.callID) {
+              if (adhocRun.size > 200) adhocRun.delete(adhocRun.keys().next().value);
+              adhocRun.set(input.callID, { sid: input.sessionID, desc: String(args.description ?? ""), sub: String(args.subagent_type ?? ""), proof: PROOF_TEXT.test(String(args.prompt ?? "")), started: now() });
+            }
+            return;
+          }
           const fg = foreground();
           if (fg) {
             if (args.background === true) { args.background = false; calls.foregrounded = (calls.foregrounded ?? 0) + 1; }
