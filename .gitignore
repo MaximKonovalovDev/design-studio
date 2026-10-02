@@ -1,3 +1,8 @@
 # loopkit: local secrets stay local.
 .env
 node_modules/
+
+# K-04: generated files stay untracked, sources only.
+INDEX*.md
+*.log
+*.jsonl
