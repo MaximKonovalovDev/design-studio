@@ -4,9 +4,10 @@
 // open, not just math. No new dependency: Edge headless via tools/render.mjs.
 //   node tools/thumb.mjs <samples/<name>/brief.json> [thumb.png]
 //   node tools/thumb.mjs --check   (self-test: math only, no browser)
-import { readFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { readFileSync, writeFileSync } from "node:fs";
+import { basename, dirname, join, resolve } from "node:path";
+import { tmpdir } from "node:os";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { render, parseSize } from "./render.mjs";
 
 export const THUMB_W = 256;
@@ -25,8 +26,21 @@ export function thumbBrief(briefPath, outPath = null) {
   const size = parseSize(`${brief.size.w}x${brief.size.h}`);
   const t = thumbSize(size.w, size.h);
   const out = resolve(outPath ?? join(dir, "thumb-256.png"));
-  // Thumbnails are legitimately tiny PNGs; keep a 200B floor against blanks.
-  const r = render(join(dir, brief.page ?? "page.html"), out, t, { minBytes: 200 });
+  // Fixed-width pages (e.g. body { width: 1280px }) crop to a sliver when
+  // the viewport itself is 256px wide. Render the full brief page inside a
+  // scaled iframe instead, so the 256px shot is a real miniature of the hero.
+  const scale = t.w / size.w;
+  const pageUrl = pathToFileURL(join(dir, brief.page ?? "page.html")).href;
+  const wrap =
+    `<!DOCTYPE html><html><head><meta charset="utf-8"><style>` +
+    `*{margin:0;padding:0}html,body{width:${t.w}px;height:${t.h}px;overflow:hidden;background:#fff}` +
+    `iframe{border:0;width:${size.w}px;height:${size.h}px;transform:scale(${scale});transform-origin:top left;}` +
+    `</style></head><body><iframe src="${pageUrl}"></iframe></body></html>`;
+  const wrapFile = join(tmpdir(), `ds-thumb-${basename(dir)}-${process.pid}.html`);
+  writeFileSync(wrapFile, wrap, "utf8");
+  // Scaled heroes carry text edges (cover measures ~5KB); a blank crop is
+  // ~495B, so a 1024B floor rejects blanks without punishing simple designs.
+  const r = render(wrapFile, out, t, { minBytes: 1024 });
   return { out, ...r };
 }
 
