@@ -8,7 +8,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync, mkdtempSync, readdi
 import { tmpdir } from "node:os";
 import { dirname, resolve, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { pngDims } from "./render.mjs";
+import { pngDims, SIZE_MATRIX } from "./render.mjs";
 
 export function luminance(hex) {
   const m = String(hex ?? "").match(/^#([0-9a-fA-F]{6})$/);
@@ -111,7 +111,10 @@ export function auditBrief(briefPath) {
   }
 
   // RTL gate.
-  const wantDir = brief.dir ?? "ltr";
+  // DS-31 S09 direction-as-data token: brief.dir (alias brief.direction) is the
+  // single wantDir token; every alignment question goes through it, never by
+  // hunting physical left/right (already banned below).
+  const wantDir = String(brief.dir ?? brief.direction ?? "ltr").toLowerCase();
   if (html != null) {
     const m = html.match(/<html[^>]*\bdir\s*=\s*"(ltr|rtl)"/i);
     if (wantDir === "rtl") {
@@ -127,8 +130,17 @@ export function auditBrief(briefPath) {
         declaresHebrew && usesHebrew,
         declaresHebrew ? (usesHebrew ? "page uses var(--font-hebrew)" : "page never uses var(--font-hebrew)") : "tokens.css lacks --font-hebrew",
       );
-    } else {
+      // S09 direction-token gate: wantDir=rtl must match <html dir>, and a
+      // flex row-reverse/column-reverse without declared intent fails first
+      // (warn-first: FAIL with the fix hint, never silent).
+      check("direction token matches html dir", !!m && m[1].toLowerCase() === wantDir, m ? `wantDir=${wantDir} dir=${m[1]}` : `wantDir=${wantDir} no dir`);
+      const rev = html.match(/flex-direction\s*:\s*(row-reverse|column-reverse)/i);
+      const intent = /data-dir-intent\s*=\s*["']?reverse/i.test(html) || brief.allowReverse === true;
+      check("no row-reverse without intent", !rev || intent, rev ? (intent ? "reverse intent declared" : `${rev[1]} without intent: add data-dir-intent="reverse" or keep logical order`) : "no reverse flex");
+    } else if (wantDir === "ltr") {
       check("ltr: html dir matches brief", !m || m[1].toLowerCase() === "ltr", m ? `dir=${m[1]}` : "no dir, ltr default");
+    } else {
+      check("direction token valid", false, `wantDir=${JSON.stringify(brief.dir)} must be "ltr" or "rtl"`);
     }
   }
 
@@ -160,7 +172,8 @@ export function auditBrief(briefPath) {
         const min = Number(s.min ?? 4.5);
         if (!(min >= 1 && min <= 21)) throw new Error(`minimum ${s.min} outside 1..21`);
         const ratio = contrastRatio(fg, bg);
-        check(`contrast ${label}`, ratio >= min, `${ratio.toFixed(2)}:1 vs ${min}:1 (${fg} on ${bg})`);
+        const ok = ratio >= min;
+        check(`contrast ${label}`, ok, `${ratio.toFixed(2)}:1 vs ${min}:1 (${fg} on ${bg})${ok ? "" : ` — next: edit ${label} fg/bg toward 7:1`}`);
       } catch (e) {
         check(`contrast ${label}`, false, String(e.message || e));
       }
@@ -177,13 +190,67 @@ export function auditBrief(briefPath) {
     check("title_px declared", false, "brief needs title_px (title font size in px)");
   } else if (inRange) {
     const at256 = (titlePx * 256) / size.w;
-    check("title legible at 256px", at256 >= 12, `${at256.toFixed(1)}px at 256px wide (floor 12px)`);
+    const legOk = at256 >= 12;
+    check("title legible at 256px", legOk, `${at256.toFixed(1)}px at 256px wide (floor 12px)${legOk ? "" : " — next: raise title_px or widen title_box"}`);
     const boxW = (box[2] - box[0]) * size.w;
     const need = String(brief.title ?? "").length * titlePx * 0.5;
-    check("title fits its box", need <= boxW, `need ~${Math.round(need)}px, box ${Math.round(boxW)}px`);
+    const fitOk = need <= boxW;
+    check("title fits its box", fitOk, `need ~${Math.round(need)}px, box ${Math.round(boxW)}px${fitOk ? "" : " — next: shorten title or widen title_box"}`);
   }
 
+  // DS-23 S01 one-to-many size matrix + per-size reflow: every matrix size
+  // re-passes 256px legibility + title-fits-box (never ships scaled-blind).
+  // Uses brief.sizes when declared, else the shared SIZE_MATRIX from render.
+  if (inRange && titlePx > 0) {
+    const matrix = Array.isArray(brief.sizes) && brief.sizes.length ? brief.sizes : SIZE_MATRIX;
+    for (const s of matrix) {
+      const sw = Number(s?.w);
+      if (!(sw >= 16)) continue;
+      const at = (titlePx * 256) / sw;
+      const okL = at >= 12;
+      check(`size ${sw}x${Number(s?.h)}: title legible at 256px`, okL, `${at.toFixed(1)}px at 256px (floor 12px)${okL ? "" : " — next: raise title_px for this width"}`);
+      const bW = (box[2] - box[0]) * sw;
+      const needPx = String(brief.title ?? "").length * titlePx * 0.5;
+      const okF = needPx <= bW;
+      check(`size ${sw}x${Number(s?.h)}: title fits its box`, okF, `need ~${Math.round(needPx)}px, box ${Math.round(bW)}px${okF ? "" : " — next: reflow title_px/box for this size"}`);
+    }
+  }
+
+  // S07 C1 reference-in parity (donor abi/screenshot-to-code create-from-
+  // reference, MIT pattern only): only gates when the brief opts in via
+  // brief.reference or a reference.png beside the brief; skipped otherwise
+  // so pre-reference samples keep passing. When gated the reference must be
+  // a PNG with the same dims as out.png (parity of intent vs pixels).
+  checkReferenceParity(dir, brief, join(dir, brief.image ?? "out.png"), check);
+
   return finish(errors.length === 0, checks, errors, dir, { brief: briefFile, image: imageFile });
+}
+
+// Exported for tools/check.mjs winner line plus unit tests. Takes the same
+// check() collector auditBrief uses so the gate lands in design-audit.json.
+export function checkReferenceParity(dir, brief, imageFile, check) {
+  const declared = typeof brief.reference === "string" ? brief.reference : null;
+  const autoFile = join(dir, "reference.png");
+  const refFile = declared ? join(dir, declared) : autoFile;
+  const optedIn = declared != null || existsSync(autoFile);
+  if (!optedIn) {
+    check("reference.png parity", true, "no reference declared, skipped");
+    return { pass: true, skipped: true };
+  }
+  if (!existsSync(refFile)) {
+    check("reference.png parity", false, `${declared ?? "reference.png"} missing — next: add reference.png beside brief.json`);
+    return { pass: false };
+  }
+  try {
+    const refDims = pngDims(readFileSync(refFile));
+    const outDims = pngDims(readFileSync(imageFile));
+    const ok = refDims.w === outDims.w && refDims.h === outDims.h;
+    check("reference.png parity", ok, ok ? `${refDims.w}x${refDims.h} matches out.png` : `reference ${refDims.w}x${refDims.h} != out ${outDims.w}x${outDims.h} — next: re-export reference at brief size`);
+    return { pass: ok };
+  } catch (e) {
+    check("reference.png parity", false, `${String(e.message || e)} — next: replace reference.png with a real PNG`);
+    return { pass: false };
+  }
 }
 
 function finish(pass, checks, errors, dir, extra = {}) {
@@ -290,6 +357,23 @@ export function rtlSelfCheck() {
     void pass;
     t("ltr pages skip the rtl gates", errors.every((e) => !e.startsWith("rtl:")), errors.slice(0, 2).join("; ") || "no rtl errors");
   }
+  // DS-31 S09 direction-token gate: row-reverse without intent fails first,
+  // with intent passes; token mismatch fails.
+  {
+    const bad = rtlPage("<p>שלום</p>").replace(".hero{", ".hero{flex-direction:row-reverse;");
+    const { errors } = auditBrief(mkRtl(bad));
+    t("rtl row-reverse without intent fails the direction-token gate", errors.some((e) => e.includes("no row-reverse without intent")), errors.slice(0, 2).join("; ") || "no errors?");
+  }
+  {
+    const okRev = rtlPage("<p>שלום</p>").replace(".hero{", ".hero{flex-direction:row-reverse;").replace('<div class="hero">', '<div class="hero" data-dir-intent="reverse">');
+    const { pass, errors } = auditBrief(mkRtl(okRev));
+    t("rtl row-reverse with intent passes the direction-token gate", pass, pass ? "intent declared" : errors.slice(0, 2).join("; "));
+  }
+  {
+    const mismatch = rtlPage("<p>שלום</p>", 'lang="he" dir="ltr"');
+    const { errors } = auditBrief(mkRtl(mismatch));
+    t("rtl token mismatch (brief rtl, html ltr) fails the token gate", errors.some((e) => e.includes("direction token matches html dir")), errors.slice(0, 2).join("; ") || "no errors?");
+  }
 
   // 6. Every Hebrew sample on disk passes the full audit.
   let rtlSamples = [];
@@ -323,15 +407,63 @@ function finishSelf(results) {
   return { pass: fails.length === 0, results };
 }
 
+// DS-23 S01 size-matrix self-check: cover re-passes every matrix size, while a
+// long-title narrow-box fixture FAILs at least one per-size reflow gate (the
+// F2P proof). Images are byte copies of samples/cover/out.png (real render).
+export function sizeMatrixSelfCheck() {
+  const results = [];
+  const t = (name, ok, detail) => {
+    results.push({ name, pass: !!ok, detail: String(detail ?? "") });
+    console.log(`[${ok ? "PASS" : "FAIL"}] ${name}: ${detail}`);
+  };
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+  const coverPng = join(ROOT, "samples", "cover", "out.png");
+  if (!existsSync(coverPng)) {
+    t("fixture image samples/cover/out.png exists", false, "render cover first");
+    return finishSizes(results);
+  }
+  t("fixture image samples/cover/out.png exists", true, "real render");
+  t("size matrix covers 1280x720+1080x1080+1200x628", SIZE_MATRIX.length === 3 && SIZE_MATRIX.some((s) => s.w === 1280 && s.h === 720) && SIZE_MATRIX.some((s) => s.w === 1080 && s.h === 1080) && SIZE_MATRIX.some((s) => s.w === 1200 && s.h === 628), SIZE_MATRIX.map((s) => `${s.w}x${s.h}`).join("+"));
+  const mk = (brief) => {
+    const d = mkdtempSync(`${tmpdir()}/ds-audit-sizes-`);
+    writeFileSync(join(d, "brief.json"), JSON.stringify(brief), "utf8");
+    writeFileSync(join(d, "tokens.css"), ":root{--paper:#faf7f0;--ink:#1a1a1a;--muted:#57534e;--accent:#c2410c;--on-accent:#ffffff;--line:#e7e0d3;}");
+    writeFileSync(join(d, "page.html"), `<!DOCTYPE html><html dir="ltr"><head><style>body{color:var(--ink);}</style></head><body><h1>${brief.title}</h1></body></html>`);
+    writeFileSync(join(d, "out.png"), readFileSync(coverPng));
+    return join(d, "brief.json");
+  };
+  {
+    const { pass, errors } = auditBrief(mk({ title: "DESIGN THAT SHIPS", size: { w: 1280, h: 720 }, dir: "ltr", tokens: "tokens.css", page: "page.html", image: "out.png", text: [{ label: "t", fg: "#000000", bg: "#ffffff", min: 1 }], title_box: [0.08, 0.3, 0.92, 0.55], title_px: 96 }));
+    t("cover brief re-passes every matrix size", pass, pass ? "1280x720+1080x1080+1200x628 green" : errors.slice(0, 2).join("; "));
+  }
+  {
+    const { errors } = auditBrief(mk({ title: "A VERY LONG TITLE THAT CANNOT FIT ANY NARROW SQUARE BOX AT ALL", size: { w: 1280, h: 720 }, dir: "ltr", tokens: "tokens.css", page: "page.html", image: "out.png", text: [{ label: "t", fg: "#000000", bg: "#ffffff", min: 1 }], title_box: [0.4, 0.3, 0.6, 0.55], title_px: 96 }));
+    t("long-title narrow-box fixture FAILs the per-size reflow gate", errors.some((e) => e.includes("title fits its box")), errors.slice(0, 2).join("; ") || "no errors?");
+  }
+  return finishSizes(results);
+}
+
+function finishSizes(results) {
+  const fails = results.filter((r) => !r.pass);
+  console.log(fails.length ? `AUDIT SIZES FAIL: ${fails.length} failing check(s)` : `AUDIT SIZES PASS: 1280x720+1080x1080+1200x628 each re-pass`);
+  return { pass: fails.length === 0, results };
+}
+
 if (isMain) {
   const args = process.argv.slice(2);
-  if (args.includes("--check")) {
+  if (args.includes("--sizes") && args.includes("--check")) {
+    const { pass } = sizeMatrixSelfCheck();
+    if (!pass) process.exitCode = 1;
+  } else if (args.includes("--rtl") && args.includes("--check")) {
+    const { pass } = rtlSelfCheck();
+    if (!pass) process.exitCode = 1;
+  } else if (args.includes("--check")) {
     const { pass } = rtlSelfCheck();
     if (!pass) process.exitCode = 1;
   } else {
     const brief = args.find((a) => !a.startsWith("-"));
     if (brief == null || args.includes("-h") || args.includes("--help")) {
-      console.log("usage: node tools/audit.mjs <samples/<name>/brief.json> | node tools/audit.mjs --rtl --check");
+      console.log("usage: node tools/audit.mjs <samples/<name>/brief.json> | node tools/audit.mjs --rtl --check | node tools/audit.mjs --sizes --check");
       process.exit(args.length < 1 ? 2 : 0);
     } else {
       const { pass, checks, errors } = auditBrief(brief);

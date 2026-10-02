@@ -13,6 +13,54 @@ import { render, parseSize } from "./render.mjs";
 import { auditBrief } from "./audit.mjs";
 import { thumbSize } from "./thumb.mjs";
 
+// S02 C1 Sites-style publish receipt gate (figma.com Sites idea-only, no code
+// copied): a landing page counts as published when receipt.json holds
+// {url,date,rev}. Opt-in so pre-receipt samples keep passing: skipped unless
+// brief.publish, brief.receipt, or receipt.json exists beside the brief.
+// When gated, url must be http(s), date YYYY-MM-DD, rev a non-empty string.
+export function checkReceipt(dir, brief) {
+  const name = typeof brief.receipt === "string" ? brief.receipt : "receipt.json";
+  const file = join(dir, name);
+  const optedIn = brief.publish != null || brief.receipt != null || existsSync(file);
+  if (!optedIn) return { pass: true, skipped: true, detail: "no receipt declared, skipped" };
+  let r;
+  try {
+    r = JSON.parse(readFileSync(file, "utf8"));
+  } catch (e) {
+    return { pass: false, detail: `${name} unreadable (${e.message}) — next: write {url,date,rev}` };
+  }
+  const urlOk = typeof r.url === "string" && /^https?:\/\/\S+/.test(r.url);
+  const dateOk = typeof r.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(r.date) && !Number.isNaN(Date.parse(r.date));
+  const revOk = typeof r.rev === "string" && r.rev.trim().length >= 1;
+  if (urlOk && dateOk && revOk) return { pass: true, skipped: false, detail: `${r.url} ${r.date} ${String(r.rev).slice(0, 7)}` };
+  const missing = [!urlOk && "url http(s)", !dateOk && "date YYYY-MM-DD", !revOk && "rev"].filter(Boolean).join(", ");
+  return { pass: false, detail: `receipt.json bad (${missing}) — next: publish then re-run` };
+}
+
+// S07 C3 two-variant winner (abi/screenshot-to-code variant fan-out, MIT
+// pattern only): winner by audit first, then 256px thumb bytes (legibility
+// pixels a human can open). Informational only, never fails the suite.
+export function pickWinner(aDir, bDir) {
+  const aB = JSON.parse(readFileSync(join(aDir, "brief.json"), "utf8"));
+  const bB = JSON.parse(readFileSync(join(bDir, "brief.json"), "utf8"));
+  const a = auditBrief(join(aDir, "brief.json"));
+  const b = auditBrief(join(bDir, "brief.json"));
+  const bytes = (d) => {
+    try {
+      return readFileSync(join(d, "thumb-256.png")).length;
+    } catch {
+      return 0;
+    }
+  };
+  const at256 = (br) => ((Number(br.title_px || 0) * 256) / (br.size?.w || 1280)).toFixed(1);
+  const ab = bytes(aDir);
+  const bb = bytes(bDir);
+  let winner = ab >= bb ? basename(aDir) : basename(bDir);
+  if (a.pass && !b.pass) winner = basename(aDir);
+  if (b.pass && !a.pass) winner = basename(bDir);
+  return { winner, a: { pass: a.pass, thumb: ab, at256: at256(aB) }, b: { pass: b.pass, thumb: bb, at256: at256(bB) } };
+}
+
 // Full-page scaled into a 256px-wide PNG: the sample page keeps its brief
 // pixel layout (often fixed-width), so a 256px viewport would crop it.
 // An iframe at full brief size with CSS scale-down screenshots the whole
@@ -35,11 +83,19 @@ function renderThumb(dir, brief) {
 }
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const SAMPLES = ["cover", "ad-square", "story", "hebrew-hero", "jobhunt", "cv"].map((n) => join(ROOT, "samples", n, "brief.json"));
+// Single-sample mode for F2P fixtures: `node tools/check.mjs <brief.json>`
+// checks just that brief (render + thumb + audit + receipt). Default suite
+// stays the 6 samples so P2P RESULT PASS is stable.
+const onlyArg = process.argv.slice(2).find((a) => a.endsWith(".json"));
+const SAMPLES = onlyArg
+  ? [onlyArg]
+  : ["cover", "ad-square", "story", "hebrew-hero", "jobhunt", "cv"].map((n) => join(ROOT, "samples", n, "brief.json"));
 
 let fails = 0;
 
-// 1. The loop's own check.
+// 1. The loop's own check (skipped in single-sample fixture mode so the
+// receipt/reference gate is what fails, not the loop).
+if (!onlyArg) {
 console.log("--- sprint/check.mjs ---");
 const loop = spawnSync(process.execPath, ["sprint/check.mjs"], { cwd: ROOT, stdio: "inherit" });
 if (loop.status !== 0) {
@@ -47,6 +103,7 @@ if (loop.status !== 0) {
   fails += 1;
 } else {
   console.log("[PASS] loop: sprint/check.mjs");
+}
 }
 
 // 2. Render + audit every sample brief.
@@ -81,6 +138,37 @@ for (const SAMPLE of SAMPLES) {
   } else {
     for (const e of errors) console.log(`[FAIL] audit: ${e}`);
     fails += errors.length;
+  }
+  // S02 receipt gate + S07 reference surfacing: audit already carries the
+  // reference.png parity gate; the receipt gate runs here beside it.
+  try {
+    const brief = JSON.parse(readFileSync(SAMPLE, "utf8"));
+    const rc = checkReceipt(dirname(SAMPLE), brief);
+    if (rc.pass) {
+      console.log(`[PASS] receipt: ${rc.detail}`);
+    } else {
+      console.log(`[FAIL] receipt: ${rc.detail}`);
+      fails += 1;
+    }
+  } catch (e) {
+    console.log(`[FAIL] receipt: ${e.message}`);
+    fails += 1;
+  }
+}
+
+// S07 2-variant winner (cover vs cover-b, informational only): winner by
+// audit first, then 256px thumb bytes. Skipped when cover-b is absent.
+if (!onlyArg) {
+  try {
+    const aDir = join(ROOT, "samples", "cover");
+    const bDir = join(ROOT, "samples", "cover-b");
+    if (existsSync(join(aDir, "brief.json")) && existsSync(join(bDir, "brief.json"))) {
+      const w = pickWinner(aDir, bDir);
+      console.log(`[PASS] winner: ${w.winner} by audit + 256px (cover audit=${w.a.pass ? "PASS" : "FAIL"} ${w.a.thumb}B ${w.a.at256}px vs cover-b audit=${w.b.pass ? "PASS" : "FAIL"} ${w.b.thumb}B ${w.b.at256}px)`);
+    }
+  } catch (e) {
+    console.log(`[FAIL] winner: ${e.message}`);
+    fails += 1;
   }
 }
 

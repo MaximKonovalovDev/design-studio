@@ -12,6 +12,10 @@ const KIT = join(ROOT, "kits", "game-ui");
 const MANIFEST = join(KIT, "manifest.json");
 const HEX = /#[0-9a-fA-F]{6}\b/g;
 
+export function gapEqual(a, b, tol = 1) {
+  return Number.isFinite(a) && Number.isFinite(b) && Math.abs(a - b) <= tol;
+}
+
 export function checkGameUi({ serve = false, kitDir = KIT, manifestPath = MANIFEST } = {}) {
   const results = [];
   const ok = (name, pass, detail) => results.push({ name, pass, detail });
@@ -113,6 +117,28 @@ export function checkGameUi({ serve = false, kitDir = KIT, manifestPath = MANIFE
     if (!existsSync(join(kitDir, f))) continue;
     const html = read(f);
     ok(`import: ${f} links tokens.css + buttons.css`, /href="tokens\.css"/.test(html) && /href="buttons\.css"/.test(html), "two <link> imports");
+  }
+
+  // 6. gap S10 C3: equal-gap HUD bars + menu pitch, +/-1px, no renderer.
+  const hudP = join(kitDir, "hud.html");
+  const menuP = join(kitDir, "menu.html");
+  if (existsSync(hudP) && existsSync(menuP)) {
+    const hudCss = readFileSync(hudP, "utf8");
+    const menuCss = readFileSync(menuP, "utf8");
+    const px = (css, re) => { const m = css.match(re); return m ? Number(m[1]) : NaN; };
+    const barsGap = px(hudCss, /\.bars\s*\{[^}]*gap\s*:\s*(\d+)px/);
+    const menuGap = px(menuCss, /\.menu\s*\{[^}]*gap\s*:\s*(\d+)px/);
+    ok("gap: HUD bars gap declared", Number.isFinite(barsGap), Number.isFinite(barsGap) ? `${barsGap}px` : "no .bars gap");
+    ok("gap: menu pitch gap declared", Number.isFinite(menuGap), Number.isFinite(menuGap) ? `${menuGap}px` : "no .menu gap");
+    const barHs = [...hudCss.matchAll(/\.bar[^{]*\{[^}]*height\s*:\s*(\d+)px/g)].map((m) => Number(m[1]));
+    ok("gap: HUD bars equal height +/-1px", barHs.length > 0 && barHs.every((h) => gapEqual(h, barHs[0])), barHs.length ? `${barHs.join(",")}px` : "no .bar height");
+    if (Number.isFinite(barsGap) && Number.isFinite(menuGap)) {
+      ok("gap: menu pitch >= bars gap", menuGap >= barsGap, `menu ${menuGap}px vs bars ${barsGap}px`);
+    }
+    const tagGap = (() => { const m = hudCss.match(/class="bars"[^>]*data-gap="(\d+)"/); return m ? Number(m[1]) : NaN; })();
+    if (Number.isFinite(tagGap) && Number.isFinite(barsGap)) {
+      ok("gap: .bars data-gap matches css +/-1px", gapEqual(tagGap, barsGap), `tag ${tagGap}px vs css ${barsGap}px`);
+    }
   }
 
   // --serve gate (DS-20): manifest engines name forge + engine2040, pieces tagged.

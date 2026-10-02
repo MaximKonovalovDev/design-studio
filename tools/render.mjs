@@ -59,6 +59,23 @@ export function pngDims(buf) {
   return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
 }
 
+// DS-23 S01 one-to-many size matrix from a single brief (idea-only, no deps).
+// Consumer slots measured here: 1280x720 cover, 1080x1080 square, 1200x628
+// social. tools/audit.mjs re-passes title legibility + fits per size.
+export const SIZE_MATRIX = [
+  { w: 1280, h: 720, name: "landscape" },
+  { w: 1080, h: 1080, name: "square" },
+  { w: 1200, h: 628, name: "social" },
+];
+
+// out.png + {w,h} -> out-1280x720.png (keeps ext, same folder).
+export function outForSize(outPath, size) {
+  const i = String(outPath).lastIndexOf(".");
+  const stem = i >= 0 ? String(outPath).slice(0, i) : String(outPath);
+  const ext = i >= 0 ? String(outPath).slice(i) : ".png";
+  return `${stem}-${size.w}x${size.h}${ext}`;
+}
+
 const psq = (s) => `'${String(s).replace(/'/g, "''")}'`;
 
 export function render(htmlPath, outPath, size = { w: 1280, h: 720 }, { minBytes = 4096 } = {}) {
@@ -136,8 +153,23 @@ const isMain = (() => {
 if (isMain) {
   const args = process.argv.slice(2);
   if (args.length < 2 || args.includes("-h") || args.includes("--help")) {
-    console.log("usage: node tools/render.mjs <page.html> <out.png> [--size 1280x720]");
+    console.log("usage: node tools/render.mjs <page.html> <out.png> [--size 1280x720] [--sizes]");
     process.exit(args.length < 2 ? 2 : 0);
+  }
+  // S01 per-size reflow: --sizes renders the full SIZE_MATRIX beside out.png.
+  if (args.includes("--sizes")) {
+    let fails = 0;
+    for (const size of SIZE_MATRIX) {
+      try {
+        const r = render(args[0], outForSize(args[1], size), size);
+        console.log(`RENDER OK ${r.out} ${r.w}x${r.h} ${r.bytes}B (${size.name})`);
+      } catch (e) {
+        console.log(`RENDER FAIL ${args[0]} ${size.w}x${size.h}: ${e.message}`);
+        fails += 1;
+      }
+    }
+    if (fails) process.exit(1);
+    process.exit(0);
   }
   let size = { w: 1280, h: 720 };
   const si = args.indexOf("--size");
