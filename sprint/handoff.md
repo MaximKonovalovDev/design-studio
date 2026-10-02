@@ -1,21 +1,20 @@
-# design-studio handoff - round 10 (token 9f3a)
+# design-studio handoff - round 11 (token 9f3a)
 
-Round: 10
-Written: 2026-10-02T13:15Z by lead (token 9f3a)
-PROPOSAL: sprint/queue/claims.txt | keeper seeds one header line when writing batch.md so seats never read a missing file | 15 read-missing (was 10 at r5, unapplied, all roles).
+Round: 11
+Written: 2026-10-02T13:33Z by lead (token 9f3a)
 
 ## Heading
-- No Scorecard move (Landing honestly 0%, judges green). Round banked six DONEs and three builds.
+- No Scorecard move (Brief held 50% pending these verdicts; re-sweep next). Round banked four DONEs and four builds.
 
 ## Done
-- DS-20/32/23/31/24/29 DONE 901625c (023/024/025 PASS). DS-05/21/30 built DOING 4512bec (AGENT-BLOCK 15/15, RENDER refine plus stream).
-- Merge r10: DS-34/35. Landing sweep 0% with reason plus card. Pilot conversion clean.
-- Hero multi-size 9/10 committed as tool truth (new size gate bites); reflow is follow-up material.
-- Reviews 026/027 queued. Judge PASS rate 15/18 (83%).
+- DS-05/21/30 DONE 4512bec (026/027 PASS, 15/15 plus 7/7 plus 7/7). DS-19 DONE dbeb292 (S27 card).
+- 028 hero 10/10 all 3 sizes plus DS-33 fixpoint plus DS-25/26 hints DOING dbeb292; reviews 029/030 queued.
+- Brief re-swept held 50% (now re-sweepable: 026/027 PASS). Pilot 0 defects, runner refreshed.
+- Board SHA discipline held (K-01 pattern): all DONE rows carry SHAs, check 20/0/0.
 
 ## Blockers and notes
-- My repeat-guard prompt keeps misfiring on fresh seats (runner r9); retired the guard, writing fresh packets instead.
-- Keeper batch stale 8 rounds; substitution continues. Loop ON.
+- Keeper batch stale 9 rounds; substitution continues. Loop ON.
+- Remaining READY: DS-08 figma, DS-22/27/28 judge-side, DS-34/35 fresh merges, DS-33/25/26 DOING.
 
 ## Next
-- Round 11 batch: 026 DS-05 review, 027 render-slice review, hero reflow builder, DS-08/25/26 seats, then pilot.
+- Round 12 batch: 029 028-review, 030 fixpoint-review, Brief re-sweep (50% to move), then builders.
