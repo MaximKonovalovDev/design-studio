@@ -1,0 +1,12 @@
+/* samples/cover/tokens.css: the brief's single token file (DS-01 sample).
+   One palette, one type stack. The page may use only these vars. */
+:root {
+  --paper: #faf7f0;
+  --ink: #1a1a1a;
+  --muted: #57534e;
+  --accent: #c2410c;
+  --on-accent: #ffffff;
+  --line: #e7e0d3;
+  --font-display: "Arial Black", "Segoe UI", Verdana, sans-serif;
+  --font-body: "Segoe UI", Verdana, Arial, sans-serif;
+}
