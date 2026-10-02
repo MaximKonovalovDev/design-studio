@@ -1,6 +1,6 @@
 // tools/registry.mjs (DS-03 registry-01): the shadcn-pattern block registry.
 // templates/registry.json names every block (hero, feature-grid, pricing, cta)
-// and every page template (cover 1280x720, ad 1080x1080, story 1080x1920,
+// and every remix-start page template (cover 1280x720, ad 1080x1080, story 1080x1920,
 // capsule 616x353). This module fails closed: missing files, bad sizes,
 // hardcoded hex colors, or a template without dir/CTA/action all FAIL.
 //   node tools/registry.mjs --check

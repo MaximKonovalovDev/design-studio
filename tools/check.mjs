@@ -1,8 +1,8 @@
 // tools/check.mjs: DS-01 proof + the 6-sample suite (cover, ad-square, story,
 // hebrew-hero, jobhunt, cv). Runs sprint/check.mjs, then renders + audits every sample
 // (brief.json -> page.html -> out.png -> design-audit.json) plus a real
-// 256px thumbnail (thumb-256.png) beside each render, so the audit's
-// "title legible at 256px" gate is backed by pixels a human can open.
+// 256px thumbnail (thumb-256.png) beside each render; S04 snapshot-invariant:
+// preview (out.png+audit) re-renders freely, live (receipt.json) moves only on publish.
 // Exit 1 on any FAIL.
 import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";

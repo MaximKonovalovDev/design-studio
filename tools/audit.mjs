@@ -1,9 +1,9 @@
-// tools/audit.mjs: objective checks on one brief render (node port of the
-// factory engine/design_audit.py contract, no Python needed here).
+// tools/audit.mjs: S03 structured-brief prompt-shape — brief.json IS the prompt
+// (node port of the factory engine/design_audit.py contract, no Python needed here).
 // Reads samples/<name>/brief.json + tokens.css + page.html + out.png and writes
 // design-audit.json beside the image: contrast (WCAG from resolved tokens),
 // PNG size match, title box valid, 256px title legibility, overflow heuristic,
-// RTL gate. Prints FAIL lines, exit 1 on any failure. Taste stays in review.
+// RTL gate. Every FAIL carries a next: hint for the aimed re-prompt. Taste stays in review.
 import { existsSync, mkdirSync, readFileSync, writeFileSync, mkdtempSync, readdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, resolve, join } from "node:path";
@@ -74,14 +74,14 @@ export function auditBrief(briefPath) {
   try {
     brief = JSON.parse(readFileSync(briefFile, "utf8"));
   } catch (e) {
-    check("brief.json parses", false, String(e.message || e));
+    check("brief.json parses", false, `${String(e.message || e)} — next: fix JSON syntax in brief.json`);
     return finish(false, checks, errors, dir);
   }
   check("brief.json parses", true, brief.title ?? "untitled");
 
   const size = brief.size ?? {};
   const sizeOk = Number.isInteger(size.w) && Number.isInteger(size.h) && size.w >= 16 && size.h >= 16;
-  check("brief size sane", sizeOk, sizeOk ? `${size.w}x${size.h}` : "size must be {w,h} ints >= 16");
+  check("brief size sane", sizeOk, sizeOk ? `${size.w}x${size.h}` : 'size must be {w,h} ints >= 16 — next: set size to e.g. {"w":1280,"h":720}');
   if (!sizeOk) return finish(false, checks, errors, dir);
 
   // Tokens.
@@ -89,25 +89,25 @@ export function auditBrief(briefPath) {
   let vars = new Map();
   let tokensRaw = "";
   if (!existsSync(tokensFile)) {
-    check("tokens.css exists", false, brief.tokens ?? "tokens.css");
+    check("tokens.css exists", false, `${brief.tokens ?? "tokens.css"} missing — next: add tokens.css beside brief.json`);
   } else {
     tokensRaw = readFileSync(tokensFile, "utf8");
     vars = parseTokens(tokensRaw);
-    check("tokens.css parses with 2+ colors", vars.size >= 2, `${vars.size} vars`);
+    check("tokens.css parses with 2+ colors", vars.size >= 2, vars.size >= 2 ? `${vars.size} vars` : `${vars.size} vars — next: declare 2+ --name: #rrggbb in :root`);
   }
 
   // Page.
   const pageFile = join(dir, brief.page ?? "page.html");
   let html = null;
   if (!existsSync(pageFile)) {
-    check("page.html exists", false, brief.page ?? "page.html");
+    check("page.html exists", false, `${brief.page ?? "page.html"} missing — next: add page.html beside brief.json`);
   } else {
     html = readFileSync(pageFile, "utf8");
-    check("page.html carries the title", html.includes(brief.title ?? "\0") && (brief.title ?? "") !== "", "title text present");
+    check("page.html carries the title", html.includes(brief.title ?? "\0") && (brief.title ?? "") !== "", html.includes(brief.title ?? "\0") && (brief.title ?? "") !== "" ? "title text present" : "title missing from page.html \u2014 next: carry brief.title verbatim in page.html");
     const hard = html.match(/#[0-9a-fA-F]{6}\b/g) ?? [];
-    check("no hardcoded colors in page.html", hard.length === 0, hard.length ? `hardcoded ${hard.slice(0, 3).join(", ")}` : "all color via var(--*)");
+    check("no hardcoded colors in page.html", hard.length === 0, hard.length ? `hardcoded ${hard.slice(0, 3).join(", ")} — next: replace hex with var(--*) from tokens.css` : "all color via var(--*)");
     const usesVars = /var\(\s*--[\w-]+\s*\)/.test(html);
-    check("page.html uses tokens", usesVars, usesVars ? "var(--*) found" : "no var(--*) reference");
+    check("page.html uses tokens", usesVars, usesVars ? "var(--*) found" : "no var(--*) reference — next: color via var(--*) from tokens.css");
   }
 
   // RTL gate.
@@ -118,9 +118,9 @@ export function auditBrief(briefPath) {
   if (html != null) {
     const m = html.match(/<html[^>]*\bdir\s*=\s*"(ltr|rtl)"/i);
     if (wantDir === "rtl") {
-      check("rtl: html dir=rtl", !!m && m[1].toLowerCase() === "rtl", m ? `dir=${m[1]}` : "no dir on <html>");
+      check("rtl: html dir=rtl", !!m && m[1].toLowerCase() === "rtl", m ? `dir=${m[1]}` : 'no dir on <html> — next: add dir="rtl" to <html>');
       const physical = html.match(/\b(margin-left|margin-right|padding-left|padding-right|left\s*:|right\s*:|float\s*:)/i);
-      check("rtl: logical properties only", !physical, physical ? `physical CSS ${physical[1]}` : "no physical left/right");
+      check("rtl: logical properties only", !physical, physical ? `physical CSS ${physical[1]} — next: use logical margin-inline/padding-inline` : "no physical left/right");
       // Hebrew type pair: tokens declare --font-hebrew (a non-color token, so
       // scan the raw CSS, not the hex-only vars map) and the page uses it.
       const declaresHebrew = /--font-hebrew\s*:/.test(tokensRaw);
@@ -128,41 +128,41 @@ export function auditBrief(briefPath) {
       check(
         "rtl: Hebrew type pair",
         declaresHebrew && usesHebrew,
-        declaresHebrew ? (usesHebrew ? "page uses var(--font-hebrew)" : "page never uses var(--font-hebrew)") : "tokens.css lacks --font-hebrew",
+        declaresHebrew ? (usesHebrew ? "page uses var(--font-hebrew)" : "page never uses var(--font-hebrew) \u2014 next: set font-family: var(--font-hebrew)") : "tokens.css lacks --font-hebrew \u2014 next: declare --font-hebrew in :root",
       );
       // S09 direction-token gate: wantDir=rtl must match <html dir>, and a
       // flex row-reverse/column-reverse without declared intent fails first
       // (warn-first: FAIL with the fix hint, never silent).
-      check("direction token matches html dir", !!m && m[1].toLowerCase() === wantDir, m ? `wantDir=${wantDir} dir=${m[1]}` : `wantDir=${wantDir} no dir`);
+      check("direction token matches html dir", !!m && m[1].toLowerCase() === wantDir, m ? (m[1].toLowerCase() === wantDir ? `wantDir=${wantDir} dir=${m[1]}` : `wantDir=${wantDir} dir=${m[1]} \u2014 next: set <html dir to brief dir`) : `wantDir=${wantDir} no dir \u2014 next: add dir to <html> per brief dir`);
       const rev = html.match(/flex-direction\s*:\s*(row-reverse|column-reverse)/i);
       const intent = /data-dir-intent\s*=\s*["']?reverse/i.test(html) || brief.allowReverse === true;
-      check("no row-reverse without intent", !rev || intent, rev ? (intent ? "reverse intent declared" : `${rev[1]} without intent: add data-dir-intent="reverse" or keep logical order`) : "no reverse flex");
+      check("no row-reverse without intent", !rev || intent, rev ? (intent ? "reverse intent declared" : `${rev[1]} without intent \u2014 next: add data-dir-intent="reverse" or keep logical order`) : "no reverse flex");
     } else if (wantDir === "ltr") {
-      check("ltr: html dir matches brief", !m || m[1].toLowerCase() === "ltr", m ? `dir=${m[1]}` : "no dir, ltr default");
+      check("ltr: html dir matches brief", !m || m[1].toLowerCase() === "ltr", !m ? "no dir, ltr default" : (m[1].toLowerCase() === "ltr" ? `dir=${m[1]}` : `dir=${m[1]} \u2014 next: set <html dir="ltr" or brief dir="rtl"`));
     } else {
-      check("direction token valid", false, `wantDir=${JSON.stringify(brief.dir)} must be "ltr" or "rtl"`);
+      check("direction token valid", false, `wantDir=${JSON.stringify(brief.dir)} must be "ltr" or "rtl" \u2014 next: set brief dir to "ltr" or "rtl"`);
     }
   }
 
   // Image.
   const imageFile = join(dir, brief.image ?? "out.png");
   if (!existsSync(imageFile)) {
-    check("out.png exists", false, brief.image ?? "out.png");
+    check("out.png exists", false, `${brief.image ?? "out.png"} missing \u2014 next: render page.html to out.png at brief size`);
   } else {
     try {
       const buf = readFileSync(imageFile);
       const dims = pngDims(buf);
-      check("out.png size matches brief", dims.w === size.w && dims.h === size.h, `${dims.w}x${dims.h}`);
-      check("out.png non-trivial", buf.length >= 4096, `${buf.length}B`);
+      check("out.png size matches brief", dims.w === size.w && dims.h === size.h, dims.w === size.w && dims.h === size.h ? `${dims.w}x${dims.h}` : `${dims.w}x${dims.h} vs ${size.w}x${size.h} \u2014 next: re-render at brief size`);
+      check("out.png non-trivial", buf.length >= 4096, buf.length >= 4096 ? `${buf.length}B` : `${buf.length}B \u2014 next: re-render, image looks blank`);
     } catch (e) {
-      check("out.png is a PNG", false, String(e.message || e));
+      check("out.png is a PNG", false, `${String(e.message || e)} \u2014 next: replace with a real PNG render`);
     }
   }
 
   // Contrast swatches.
   const swatches = brief.text ?? [];
   if (!Array.isArray(swatches) || swatches.length === 0) {
-    check("brief declares text swatches", false, "text must be a nonempty array");
+    check("brief declares text swatches", false, "text must be a nonempty array \u2014 next: add {label,fg,bg,min} to brief.text");
   } else {
     swatches.forEach((s, i) => {
       const label = s.label ?? `swatch ${i + 1}`;
@@ -175,7 +175,7 @@ export function auditBrief(briefPath) {
         const ok = ratio >= min;
         check(`contrast ${label}`, ok, `${ratio.toFixed(2)}:1 vs ${min}:1 (${fg} on ${bg})${ok ? "" : ` — next: edit ${label} fg/bg toward 7:1`}`);
       } catch (e) {
-        check(`contrast ${label}`, false, String(e.message || e));
+        check(`contrast ${label}`, false, `${String(e.message || e)} \u2014 next: point fg/bg at tokens.css vars or #rrggbb`);
       }
     });
   }
@@ -184,10 +184,10 @@ export function auditBrief(briefPath) {
   const box = brief.title_box;
   const boxOk = Array.isArray(box) && box.length === 4 && box.every((v) => typeof v === "number");
   const inRange = boxOk && box[0] >= 0 && box[0] < box[2] && box[2] <= 1 && box[1] >= 0 && box[1] < box[3] && box[3] <= 1;
-  check("title_box valid fractions", !!inRange, inRange ? box.join(",") : "need [x0,y0,x1,y1] in 0..1");
+  check("title_box valid fractions", !!inRange, inRange ? box.join(",") : "need [x0,y0,x1,y1] in 0..1 \u2014 next: set title_box e.g. [0.08,0.3,0.92,0.55]");
   const titlePx = Number(brief.title_px ?? 0);
   if (!(titlePx > 0)) {
-    check("title_px declared", false, "brief needs title_px (title font size in px)");
+    check("title_px declared", false, "brief needs title_px (title font size in px) \u2014 next: set title_px e.g. 96");
   } else if (inRange) {
     const at256 = (titlePx * 256) / size.w;
     const legOk = at256 >= 12;

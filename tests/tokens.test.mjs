@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, writeFileSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { buildCss, buildDocs, checkTokens, normalizeTokens, HEBREW_STACK } from "../tools/tokens.mjs";
+import { buildCss, buildDocs, checkTokens, normalizeTokens, resolveColorRefs, usesReferences, HEBREW_STACK } from "../tools/tokens.mjs";
 
 const GOOD = {
   colors: {
@@ -137,5 +137,81 @@ describe("Style Dictionary shape + dark + Hebrew", () => {
     const { pass, results } = checkTokens({ json: join(d, "tokens.json"), css: join(d, "tokens.css"), docs: join(d, "tokens.html"), page: join(d, "page.html") });
     assert.equal(pass, false);
     assert.ok(results.some((r) => r.name.startsWith("type") && !r.pass));
+  });
+});
+
+describe("S12 transform/resolve fixpoint (DS-33)", () => {
+  // 3-token chain: brand -> button-base -> button-hover. Hover is declared
+  // BEFORE base on purpose: the fixpoint must resolve hover after base with
+  // no ordering hack.
+  const REF_BASE = {
+    colors: {
+      paper: "#faf7f0",
+      ink: "#1a1a1a",
+      muted: "#57534e",
+      accent: "#c2410c",
+      "on-accent": "#ffffff",
+      line: "#e7e0d3",
+      brand: "#c2410c",
+      "button-hover": "{button-base}",
+      "button-base": "{brand}",
+    },
+    colorsDark: {
+      paper: "#1c1917",
+      ink: "#faf7f0",
+      muted: "#d6d3d1",
+      accent: "#fb923c",
+      "on-accent": "#1c1917",
+      line: "#44403c",
+    },
+    fonts: { display: '"Arial Black", sans-serif', body: '"Segoe UI", sans-serif', hebrew: HEBREW_STACK },
+    spacing: { xs: "8px", sm: "16px", md: "24px" },
+  };
+
+  it("resolves the 3-token chain hover-after-base", () => {
+    const { resolved, deferred } = resolveColorRefs(REF_BASE.colors);
+    assert.deepEqual(deferred, []);
+    assert.equal(resolved["button-base"], "#c2410c");
+    assert.equal(resolved["button-hover"], "#c2410c");
+  });
+
+  it("checkTokens passes the ref-chain kit (refs gates green)", () => {
+    const d = setup(REF_BASE);
+    const { pass, results } = checkTokens({ json: join(d, "tokens.json"), css: join(d, "tokens.css"), docs: join(d, "tokens.html"), page: join(d, "page.html") });
+    assert.equal(pass, true, results.filter((r) => !r.pass).map((r) => r.name).join("; "));
+    assert.ok(results.some((r) => r.name.startsWith("refs:") && r.pass && r.detail.includes("aliases resolved")));
+  });
+
+  it("emits resolved hex for aliases in tokens.css", () => {
+    const css = buildCss(REF_BASE);
+    assert.match(css, /--button-base: #c2410c/);
+    assert.match(css, /--button-hover: #c2410c/);
+    assert.ok(!css.includes("{brand}") && !css.includes("{button-base}"), "no raw {ref} left in emitted css");
+  });
+
+  it("resolves Style Dictionary {value} refs via dotted paths", () => {
+    const sd = {
+      color: {
+        accent: { value: "#c2410c" },
+        "button-base": { value: "{color.accent}" },
+        "button-hover": { value: "{button-base}" },
+      },
+    };
+    const t = normalizeTokens(sd);
+    const { resolved, deferred } = resolveColorRefs(t.colors);
+    assert.deepEqual(deferred, []);
+    assert.equal(resolved["button-hover"], "#c2410c");
+  });
+
+  it("fails closed on a circular pair (stall guard, no hang)", () => {
+    const circ = JSON.parse(JSON.stringify(REF_BASE));
+    circ.colors["button-base"] = "{button-hover}";
+    circ.colors["button-hover"] = "{button-base}";
+    const { deferred } = resolveColorRefs(circ.colors);
+    assert.deepEqual([...deferred].sort(), ["button-base", "button-hover"]);
+    const d = setup(circ);
+    const { pass, results } = checkTokens({ json: join(d, "tokens.json"), css: join(d, "tokens.css"), docs: join(d, "tokens.html"), page: join(d, "page.html") });
+    assert.equal(pass, false);
+    assert.ok(results.some((r) => r.name.startsWith("refs:") && !r.pass));
   });
 });

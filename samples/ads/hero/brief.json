@@ -10,6 +10,6 @@
     { "label": "subtitle", "fg": "var(--muted)", "bg": "var(--paper)", "min": 4.5 },
     { "label": "cta", "fg": "var(--on-accent)", "bg": "var(--accent)", "min": 4.5 }
   ],
-  "title_box": [0.08, 0.3, 0.92, 0.55],
-  "title_px": 88
+  "title_box": [0.05, 0.3, 0.95, 0.55],
+  "title_px": 78
 }
