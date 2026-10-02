@@ -1,23 +1,24 @@
-# design-studio handoff - round 15 (token 9f3a)
+# design-studio handoff - round 16 (token 9f3a)
 
-Round: 15
-Written: 2026-10-02T22:15Z by lead (token 9f3a)
+Round: 16
+Written: 2026-10-02T22:37Z by lead (token 9f3a)
 
 ## Heading
-- Inventory answered. Used 16 tools plus 11 samples. Lacks donor copy plus 4 READY gates. Underused 8 skills.
+- Thumbnail 0% holds (DS-38 DONE, DS-39 built +68, DS-40 DONE). Landing 0% holds (DS-37 DONE, DS-41 built receipt).
 
 ## Done
-- 040 inventory DONE (tools 16/16 PASS, samples 11 renders, donors 0 files, skills 0 imports).
-- 041 github-images DONE 4 cards idea-only 0 lines (open-design eb79c35, screenshot-to-code bee961c, fabric 94cbfeb, dicebear 34df6f49).
-- 042 open-design-underused DONE 3 activations (system-per-family, poster-hero story, image workflow local).
-- Checks green: sprint/check RESULT PASS 20/0/0, tools/check RESULT PASS 6 samples.
+- DS-37 DONE 4dc274b plus judge 037 PASS (REGISTRY PASS 10+4+emit, check PASS 6, SHIP 10/10).
+- DS-38 DONE 4dc274b plus judge 038 PASS (SIZES+AD-SQUARE PASS, audit 22.8px, check PASS, SHIP 10/10).
+- DS-40 DONE 01ad842 plus judge 039 PASS (WORKSHOP PASS 10, tests 7/7, check PASS, JUDGE 10/10).
+- DS-39 DOING built 044 on disk (+68 listing gate, cover-b 28.0px, check PASS). DS-41 DOING built 045 (receipt dbe9de43, check PASS).
+- 043 free-images DONE 5 cards idea-only 0 lines: no :free image lane today (12 image models priced, 16 free models text-only).
+- Pilot 046/047/048 filed (README 6-vs-11, suite skips 5, --help runs suite). Runner 0 FAIL 0 WARN.
 
 ## Blockers and notes
-- research/donors/open-design missing (Test-Path False). Recreate per open-design SKILL.md sparse checkout.
-- OD_BIN 0 calls in tools/*.mjs. Paid-API skills excluded (no key).
-- DS-37/38/40 still DOING uncommitted. DS-39/41/45/46 READY next.
-- Do not commit sprint/halt. Keeper files touched by keeper, not committed here.
+- Uncommitted: tools/audit.mjs DS-39 gate, samples/cover-b/receipt.json, 9 audit.json re-renders, DESIGN-REVIEW.md. Left on disk for judges.
+- Keeper batch.md still lists 002-011 stale; this round sent fix-all batch instead (3 judges plus 2 builders plus researcher plus pilot plus runner).
+- OpenRouter: :free text lane yes (50 req/day, 1000 with $10 credits), image lane no. Key env-only, never in repo.
+- Do not commit sprint/halt, batch.md, checks.md, loop-keeper.json.
 
 ## Next
-- Round 16 batch: 037/038/039 judges, DS-39 315px builder, DS-41 receipt builder, pilot, runner.
-- Activate C1 manifest sidecar plus C2 poster story after Thumbnail closes.
+- Round 17 batch: DS-39 judge, DS-41 judge, 046/047/048 builders, planner rows, research merge, pilot, runner.
