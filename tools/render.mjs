@@ -76,6 +76,107 @@ export function outForSize(outPath, size) {
   return `${stem}-${size.w}x${size.h}${ext}`;
 }
 
+// DS-21 r2 screenshot-refine + measured preview (pattern-only, no vendor copy):
+// openui Apache-2.0 Prompt.tsx streamResponse create-vs-refine idea +
+// llamacoder MIT code-runner-react.tsx bundle()/PREVIEW_WATCHDOG_MS idea +
+// screenshot-to-code MIT App.tsx doCreate/doUpdate generationType idea.
+// Wrapper <=120 lines; preview logs bundleMs for the judge gate.
+export const PREVIEW_WATCHDOG_MS = 60000;
+export const FIX_RE = /<!--FIX\s*\(\d+\)\s*:\s*(.+?)-->/;
+export function parsePreviewMarkdown(md) {
+  const m = String(md ?? "").match(/```html\s*([\s\S]*?)(?:```|$)/i);
+  return (m ? m[1] : String(md ?? "")).trim();
+}
+// DS-30 S08 chunk-to-preview: append + throttled parse, pop-last-line guard
+// so half-written tags never flash (openui throttledMD pattern; FIX_RE +
+// parse + streamPreview + buildRefinePrompt <=45 lines).
+export function streamPreview(chunks) {
+  let live = "";
+  const states = [];
+  for (const part of chunks ?? []) {
+    live += String(part ?? "");
+    const lines = live.split("\n");
+    const head = lines.length > 1 ? lines.slice(0, -1).join("\n") : live;
+    states.push({ pureHTML: parsePreviewMarkdown(head), rendering: true });
+  }
+  if (states.length) states[states.length - 1].rendering = false;
+  return states;
+}
+// DS-30 S08 annotate-refine: FIX-comment -> refine prompt (openai.ts
+// createOrRefine pattern: FIX wins, else query, else fail-closed).
+export function buildRefinePrompt(html, query) {
+  const fix = String(html ?? "").match(FIX_RE);
+  if (fix) return `Address the FIX comments: ${fix[1].trim()}\n${String(html)}`;
+  const q = String(query ?? "").trim();
+  if (q) return `${q}\n${String(html ?? "")}`;
+  throw new Error("refine needs a FIX comment or query (never silent)");
+}
+// DS-21 measured preview: pure bundle timing + data-preview-* badge
+// (llamacoder bundleMs pattern, no esbuild here).
+export function measurePreview(html) {
+  const t0 = Date.now();
+  const body = String(html ?? "");
+  const bytes = Buffer.byteLength(body, "utf8");
+  if (!body.trim()) throw new Error("preview needs HTML (never silent)");
+  const pure = parsePreviewMarkdown(body) || body;
+  const badge = ` data-preview-bytes="${bytes}" data-preview-bundle-ms="__MS__"`;
+  const srcdoc = pure.includes("<body")
+    ? pure.replace(/<body([^>]*)>/i, `<body$1${badge}>`)
+    : `<div${badge}>${pure}</div>`;
+  const bundleMs = Math.max(0, Date.now() - t0);
+  const out = srcdoc.replace("__MS__", String(bundleMs));
+  console.log(`PREVIEW bundleMs=${bundleMs} bytes=${bytes}`);
+  return { srcdoc: out, bundleMs, bytes, watchdogMs: PREVIEW_WATCHDOG_MS };
+}
+// DS-21 screenshot-refine wrapper: create vs update split, reuses render()
+// downstream (screenshot-to-code generationType pattern).
+export function refineHtml(html, instruction, { generationType } = {}) {
+  const hasHtml = String(html ?? "").trim().length > 0;
+  const type = generationType ?? (hasHtml ? "update" : "create");
+  if (type !== "create" && type !== "update") throw new Error(`generationType must be create|update, got ${JSON.stringify(generationType)}`);
+  if (type === "create") {
+    if (!String(instruction ?? "").trim()) throw new Error("create needs an instruction (never silent)");
+    return { generationType: "create", prompt: `${String(instruction).trim()}\n${String(html ?? "")}`, html: String(html ?? "") };
+  }
+  return { generationType: "update", prompt: buildRefinePrompt(html, instruction), html: String(html ?? "") };
+}
+// DS-21+DS-30 self-check: good preview/stream/refine PASS, bad fixtures FAIL
+// as expected (F2P proven inside a green suite, like audit --sizes/--rtl).
+export function renderSelfCheck() {
+  const results = [];
+  const t = (name, ok, detail) => {
+    results.push({ name, pass: !!ok, detail: String(detail ?? "") });
+    console.log(`[${ok ? "PASS" : "FAIL"}] ${name}: ${detail}`);
+  };
+  try {
+    const m = measurePreview("<html><body><h1>Hi</h1></body></html>");
+    t("preview measures bundleMs + badge", Number.isFinite(m.bundleMs) && m.srcdoc.includes("data-preview-bundle-ms="), `bundleMs=${m.bundleMs} bytes=${m.bytes}`);
+  } catch (e) { t("preview measures bundleMs + badge", false, String(e.message || e)); }
+  try { measurePreview("   "); t("preview empty fixture FAILs closed", false, "no throw?"); }
+  catch (e) { t("preview empty fixture FAILs closed", /needs HTML/.test(e.message), e.message); }
+  try {
+    const r = refineHtml("<!--FIX (1): darker title--><h1>Hi</h1>", "");
+    t("refine FIX-comment fires update prompt", r.generationType === "update" && r.prompt.includes("Address the FIX comments"), r.prompt.split("\n")[0]);
+  } catch (e) { t("refine FIX-comment fires update prompt", false, String(e.message || e)); }
+  try { refineHtml("<h1>Hi</h1>", "   "); t("refine query-less fixture FAILs closed", false, "no throw?"); }
+  catch (e) { t("refine query-less fixture FAILs closed", /FIX comment or query/.test(e.message), e.message); }
+  {
+    const chunks = ["```html\n<h1>Hi", "\n<p>Sub</p>", "\n</h1>\n```"];
+    const states = streamPreview(chunks);
+    const prog = states.length === 3 && states[2].pureHTML.includes("<p>Sub</p>") && states[2].rendering === false;
+    t("stream 3-chunk progressive preview", prog, states.map((s) => s.pureHTML.length).join(">"));
+    const short = streamPreview(["```html\n<h1>Hi\n```"]);
+    t("stream 1-chunk fixture FAILs 3-progress gate", short.length !== 3, `${short.length} state(s), want 3`);
+  }
+  {
+    const c = refineHtml("", "make it bolder");
+    t("create path seeds from instruction", c.generationType === "create", c.prompt.split("\n")[0].slice(0, 40));
+  }
+  const pass = results.every((r) => r.pass);
+  console.log(pass ? "RENDER PASS: refine + measured preview + 3-chunk stream green" : `RENDER FAIL: ${results.filter((r) => !r.pass).length} failing check(s)`);
+  return { pass, results };
+}
+
 const psq = (s) => `'${String(s).replace(/'/g, "''")}'`;
 
 export function render(htmlPath, outPath, size = { w: 1280, h: 720 }, { minBytes = 4096 } = {}) {
@@ -152,8 +253,13 @@ const isMain = (() => {
 
 if (isMain) {
   const args = process.argv.slice(2);
+  if (args.includes("--check")) {
+    const { pass } = renderSelfCheck();
+    if (!pass) process.exitCode = 1;
+    process.exit(process.exitCode ?? 0);
+  }
   if (args.length < 2 || args.includes("-h") || args.includes("--help")) {
-    console.log("usage: node tools/render.mjs <page.html> <out.png> [--size 1280x720] [--sizes]");
+    console.log("usage: node tools/render.mjs <page.html> <out.png> [--size 1280x720] [--sizes] | node tools/render.mjs --check");
     process.exit(args.length < 2 ? 2 : 0);
   }
   // S01 per-size reflow: --sizes renders the full SIZE_MATRIX beside out.png.

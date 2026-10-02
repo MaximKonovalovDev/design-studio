@@ -75,6 +75,11 @@
       "name": "title fits its box",
       "pass": true,
       "detail": "need ~816px, box 907px"
+    },
+    {
+      "name": "reference.png parity",
+      "pass": true,
+      "detail": "no reference declared, skipped"
     }
   ],
   "errors": [],
