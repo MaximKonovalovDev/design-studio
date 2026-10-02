@@ -1,21 +1,20 @@
-# design-studio handoff - round 8 (token 9f3a)
+# design-studio handoff - round 9 (token 9f3a)
 
-Round: 8
-Written: 2026-10-02T12:41Z by lead (token 9f3a)
+Round: 9
+Written: 2026-10-02T13:00Z by lead (token 9f3a)
 
 ## Heading
-- No Scorecard move (Thumbnail honestly 0%, Brand-kit sweep next). Round banked three DONEs and two builds.
+- Brand-kit consistency 0% -> 100% (5/5 ds-brand-v1, 3 gates green). Three Scorecard rows at our bar.
 
 ## Done
-- DS-10/18/03 DONE 9300c54 (judge 021 PASS, 10/10 tests). 014/015 closed (019/020 PASS).
-- 018 README-6 plus DS-12 cover-b plus DS-14 ads 5c451ab (5 samples SHIP 10/10, cover-b 22.8px).
-- Merge r8: DS-31..33 with F2P/P2P. Thumbnail sweep kept 0% with dated reason plus card.
-- S13 NOOP (fresh); pilot 0 defects; 022 cover-ads review queued.
+- DS-12/14/20 DONE (022 PASS; serve gate re-verified). K-01 DONE 901625c (vision complete).
+- 5 builds DOING 901625c: DS-32 gap linter, DS-23 sizes, DS-31 dir-token, DS-24 receipt, DS-29 winner (all F2P proven); reviews 023/024/025 queued.
+- S06b addendum filed; merge r9 judged thumbnail card a dupe (no new rows); pilot 0 defects.
 
 ## Blockers and notes
-- Research seats structurally NOOP now (every Steal row read today); builders plus judges plus pilot carry until dates age.
-- Keeper batch stale 6 rounds; substitution continues. Consumed ready/ files await keeper cleanup.
-- .opencode/* plus queue churn uncommitted, not mine. Loop ON.
+- Round-9 check.mjs RESULT FAIL traced to K-01 DONE-without-SHA (planner can't mint SHAs); fixed with 901625c, full PASS re-confirmed. Lesson: planner marks DONE-numbers, lead appends SHA same round.
+- Runner hit my repeat-guard again (my bad prompt); checks.md refresh owed. Round 10 is retro: metrics plus PROPOSAL.
+- Keeper batch stale 7 rounds; substitution continues. Loop ON.
 
 ## Next
-- Round 9 batch: 022 cover-ads review, Brand-kit vision sweep, DS-20/DS-23/DS-31 builders, then pilot.
+- Round 10 batch: 023/024/025 reviews, proper runner sweep, DS-05 agent-block builder, retro metrics, then pilot.

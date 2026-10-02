@@ -5,7 +5,7 @@ names its commit SHA. Each row names the Scorecard row of `VISION.md` it moves.
 
 | ID | Status | Scorecard row | What | Done when | Owner role | Evidence |
 |---|---|---|---|---|---|---|
-| K-01 | DONE | all | Fill the vision: Scorecard (5+ rows, 3+ real competitors), Parts, Open gaps, Steal map (10 competitors, 10 adjacent) | `node C:/Users/me/Desktop/center/vision-check.mjs design-studio` has no FAIL | planner | VERIFIED 2026-10-02 r9: vision-check RESULT PASS 6/0; Scorecard 7 rows x 4 competitors (Canva, Figma AI, v0, Lovable); Parts 7 swept 2026-10-02; gaps G1/G2/G3 answered; steal S01-S10 competitors + S11-S20 adjacent (SHA pending lead commit) |
+| K-01 | DONE | all | Fill the vision: Scorecard (5+ rows, 3+ real competitors), Parts, Open gaps, Steal map (10 competitors, 10 adjacent) | `node C:/Users/me/Desktop/center/vision-check.mjs design-studio` has no FAIL | planner | 901625c: vision-check RESULT PASS 6/0; Scorecard 7 rows x 4 competitors; Parts 7 swept; gaps answered; steal 10+10 |
 | K-02 | DONE | Brief-to-render speed | First measurable slice of the vision | `node tools/check.mjs` passes its first step, pasted in the commit | builder | 9300c54: check RESULT PASS 6 samples (first step green every round since r1) |
 | K-03 | DONE | all | Split the vision into board rows, each with its proof command | 10+ READY rows, each naming its Scorecard row and proof | planner | c37eced: 20 READY compliant, vision-check PASS 6/0 |
 | K-04 | DONE | all | Untrack generated files: .gitignore INDEX*.md plus git rm --cached research/INDEX.md, sources only tracked | `git ls-files` shows 0 tracked generated files (INDEX*.md, *.log, *.jsonl over 1 MB) | builder | f767d76: 1 tracked before, 0 after, INDEX kept on disk |
