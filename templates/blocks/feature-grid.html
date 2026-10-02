@@ -1,0 +1,23 @@
+<!-- templates/blocks/feature-grid.html (DS-03 registry block: feature grid).
+     Three features, direction-agnostic grid (RTL-safe). Colors and type only
+     via var(--*); no hex here. -->
+<section class="ds-features">
+  <div class="ds-feat"><h2 class="ds-feat-t">Brief in</h2><p class="ds-feat-d">One JSON carries copy, size and type.</p></div>
+  <div class="ds-feat"><h2 class="ds-feat-t">Pixels out</h2><p class="ds-feat-d">Edge headless renders the exact size.</p></div>
+  <div class="ds-feat"><h2 class="ds-feat-t">Judged</h2><p class="ds-feat-d">Rubric plus audit before anything ships.</p></div>
+</section>
+<style>
+  .ds-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    text-align: start;
+  }
+  .ds-feat {
+    border: 2px solid var(--line);
+    background: var(--paper);
+    padding: var(--space-md);
+  }
+  .ds-feat-t { font-family: var(--font-display); color: var(--ink); }
+  .ds-feat-d { color: var(--muted); font-family: var(--font-body); }
+</style>

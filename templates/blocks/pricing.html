@@ -1,0 +1,24 @@
+<!-- templates/blocks/pricing.html (DS-03 registry block: pricing). Three tiers,
+     the middle one highlighted. Colors and type only via var(--*); no hex. -->
+<section class="ds-pricing">
+  <div class="ds-tier"><h2 class="ds-tier-t">Sketch</h2><p class="ds-price">Free</p><p class="ds-tier-d">One render, one audit.</p></div>
+  <div class="ds-tier ds-hot"><h2 class="ds-tier-t">Studio</h2><p class="ds-price">Pro</p><p class="ds-tier-d">Every size, every judge.</p></div>
+  <div class="ds-tier"><h2 class="ds-tier-t">Fleet</h2><p class="ds-price">Team</p><p class="ds-tier-d">Loops that never sleep.</p></div>
+</section>
+<style>
+  .ds-pricing {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    text-align: center;
+  }
+  .ds-tier {
+    border: 2px solid var(--line);
+    background: var(--paper);
+    padding: var(--space-md);
+  }
+  .ds-hot { border-color: var(--accent); }
+  .ds-tier-t { font-family: var(--font-display); color: var(--ink); }
+  .ds-price { font-family: var(--font-display); color: var(--accent); }
+  .ds-tier-d { color: var(--muted); font-family: var(--font-body); }
+</style>

@@ -1,0 +1,45 @@
+/* kits/game-ui/buttons.css (DS-11): button kit. All color via var(--gui-*). */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  min-width: 240px;
+  padding: 10px 20px;
+  font-family: var(--font-gui);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gui-ink);
+  background: var(--gui-panel);
+  border: 2px solid var(--gui-line);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn-primary {
+  color: var(--gui-on-accent);
+  background: var(--gui-accent);
+  border-color: var(--gui-accent);
+}
+.btn:hover {
+  filter: brightness(1.12);
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+.btn:active {
+  transform: translateY(1px);
+  filter: brightness(0.94);
+}
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn:focus-visible {
+  outline: 3px solid var(--gui-mana);
+  outline-offset: 2px;
+}

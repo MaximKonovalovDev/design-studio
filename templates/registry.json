@@ -1,0 +1,15 @@
+{
+  "name": "ds-registry-v1",
+  "blocks": [
+    { "id": "hero", "file": "blocks/hero.html", "uses": ["--paper", "--ink", "--muted", "--accent", "--font-display", "--font-body"] },
+    { "id": "feature-grid", "file": "blocks/feature-grid.html", "uses": ["--paper", "--ink", "--muted", "--line", "--font-display", "--font-body"] },
+    { "id": "pricing", "file": "blocks/pricing.html", "uses": ["--paper", "--ink", "--muted", "--accent", "--on-accent", "--line", "--font-display", "--font-body"] },
+    { "id": "cta", "file": "blocks/cta.html", "uses": ["--accent", "--on-accent", "--font-body"] }
+  ],
+  "templates": [
+    { "id": "cover", "file": "pages/cover.html", "size": { "w": 1280, "h": 720 }, "blocks": ["hero", "cta"] },
+    { "id": "ad-square", "file": "pages/ad-square.html", "size": { "w": 1080, "h": 1080 }, "blocks": ["hero", "cta"] },
+    { "id": "story", "file": "pages/story.html", "size": { "w": 1080, "h": 1920 }, "blocks": ["hero", "feature-grid", "cta"] },
+    { "id": "capsule", "file": "pages/capsule.html", "size": { "w": 616, "h": 353 }, "blocks": ["hero", "cta"] }
+  ]
+}

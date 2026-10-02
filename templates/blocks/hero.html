@@ -1,0 +1,28 @@
+<!-- templates/blocks/hero.html (DS-03 registry block: hero). Fragment: paste the
+     section into a page and keep its <style> rules. Colors and type only via
+     var(--*); no hex here. Slots: KICKER, TITLE, SUBTITLE. -->
+<section class="ds-hero">
+  <p class="ds-kicker">KICKER</p>
+  <h1 class="ds-title">TITLE</h1>
+  <p class="ds-sub">SUBTITLE</p>
+</section>
+<style>
+  .ds-hero {
+    text-align: center;
+    border-block-start: 6px solid var(--accent);
+    border-block-end: 2px solid var(--line);
+    padding: var(--space-lg) var(--space-md);
+  }
+  .ds-kicker {
+    font-family: var(--font-body);
+    letter-spacing: 10px;
+    color: var(--accent);
+    margin-block-end: var(--space-md);
+  }
+  .ds-title {
+    font-family: var(--font-display);
+    color: var(--ink);
+    line-height: 1.05;
+  }
+  .ds-sub { color: var(--muted); font-family: var(--font-body); }
+</style>

@@ -1,0 +1,18 @@
+<!-- templates/blocks/cta.html (DS-03 registry block: CTA). One action, always a
+     real link or button. Colors and type only via var(--*); no hex here. -->
+<div class="ds-cta-row">
+  <a class="ds-cta" href="#">ACTION</a>
+</div>
+<style>
+  .ds-cta-row { text-align: center; }
+  .ds-cta {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: bold;
+    color: var(--on-accent);
+    background: var(--accent);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 12px;
+    text-decoration: none;
+  }
+</style>

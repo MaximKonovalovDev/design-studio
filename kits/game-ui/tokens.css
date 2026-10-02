@@ -1,0 +1,14 @@
+/* kits/game-ui/tokens.css (DS-11 game-ui-01): single source of truth for the HUD kit. */
+:root {
+  --gui-bg: #14161f;
+  --gui-panel: #1f2333;
+  --gui-ink: #f4f1e8;
+  --gui-muted: #a8aec2;
+  --gui-accent: #ffb325;
+  --gui-on-accent: #1a1206;
+  --gui-hp: #e5484d;
+  --gui-mana: #3e8ef7;
+  --gui-line: #333a52;
+  --font-gui: "Segoe UI", system-ui, sans-serif;
+  --font-gui-display: "Arial Black", "Segoe UI", sans-serif;
+}

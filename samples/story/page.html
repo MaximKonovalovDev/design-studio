@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- samples/story/page.html: story, 1080x1920. Composed from registry blocks
+     hero + feature-grid + cta (templates/pages/story.html). Color only via tokens.css. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px; height: 1920px;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--font-body);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .story { width: 907px; text-align: center; }
+  .kicker { font-size: 30px; letter-spacing: 8px; color: var(--accent); font-family: var(--font-body); margin-block-end: 30px; }
+  h1 { font-family: var(--font-display); font-size: 100px; line-height: 1.05; color: var(--ink); margin-block-end: 28px; }
+  .sub { font-size: 36px; color: var(--muted); margin-block-end: 56px; }
+  .feats { display: grid; gap: 24px; text-align: start; margin-block-end: 56px; }
+  .feat { border: 2px solid var(--line); padding: 28px; }
+  .feat h2 { font-family: var(--font-display); font-size: 40px; color: var(--ink); margin-block-end: 8px; }
+  .feat p { font-size: 30px; color: var(--muted); }
+  .cta { display: inline-block; font-size: 38px; font-weight: bold; color: var(--on-accent); background: var(--accent); padding: 26px 80px; border-radius: 14px; }
+</style>
+</head>
+<body>
+  <div class="story">
+    <div class="kicker">DESIGN-STUDIO STORY</div>
+    <h1>DESIGN THAT SHIPS</h1>
+    <p class="sub">Brief in, judged pixels out. Swipe for proof.</p>
+    <div class="feats">
+      <div class="feat"><h2>Brief in</h2><p>One JSON carries copy, size and type.</p></div>
+      <div class="feat"><h2>Pixels out</h2><p>Edge headless renders the exact size.</p></div>
+      <div class="feat"><h2>Judged</h2><p>Rubric plus audit before anything ships.</p></div>
+    </div>
+    <span class="cta">Start a brief</span>
+  </div>
+</body>
+</html>

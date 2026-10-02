@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- samples/hebrew-hero/page.html: Hebrew RTL landing hero, 1280x720. Composed
+     from registry blocks hero + cta, Hebrew type via --font-hebrew, logical
+     properties only (no physical left/right). Color only via tokens.css. -->
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1280px; height: 720px;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--font-hebrew);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero {
+    width: 1075px; text-align: center;
+    border-block-start: 6px solid var(--accent);
+    border-block-end: 2px solid var(--line);
+    padding: 48px 24px 56px;
+  }
+  .kicker {
+    font-size: 28px; letter-spacing: 4px; color: var(--accent);
+    font-family: var(--font-hebrew); margin-block-end: 22px;
+  }
+  h1 {
+    font-family: var(--font-hebrew);
+    font-size: 96px; line-height: 1.2; color: var(--ink);
+    margin-block-end: 20px;
+  }
+  .sub { font-size: 34px; color: var(--muted); margin-block-end: 40px; }
+  .cta {
+    display: inline-block; font-size: 32px; font-weight: bold;
+    color: var(--on-accent); background: var(--accent);
+    padding: 20px 64px; border-radius: 12px; text-decoration: none;
+  }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="kicker">סטודיו עיצוב</div>
+    <h1>עיצוב שמנצח</h1>
+    <p class="sub">מבריף קצר לפיקסלים שיפוטיים. בלי אדם באמצע.</p>
+    <a class="cta" href="#">מתחילים עכשיו</a>
+  </div>
+</body>
+</html>

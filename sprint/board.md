@@ -11,15 +11,15 @@ names its commit SHA. Each row names the Scorecard row of `VISION.md` it moves.
 | K-04 | READY | all | Untrack generated files: .gitignore INDEX*.md plus git rm --cached research/INDEX.md, sources only tracked | `git ls-files` shows 0 tracked generated files (INDEX*.md, *.log, *.jsonl over 1 MB) | builder | |
 | DS-01 | DOING | Brief-to-render speed | Minimal loop: tools/render.mjs (Edge headless screenshot) plus tools/audit.mjs (contrast, sizes, 256px title, RTL) plus tools/check.mjs over samples/cover | `node tools/check.mjs` RESULT PASS | builder | |
 | DS-02 | DOING | Brand-kit consistency | tokens-01: tokens.json to tokens.css plus docs page, no hardcoded colors | `node tools/tokens.mjs --check` PASS (built in this row) | builder | built 2026-10-02, TOKENS PASS 12/12, judge review queued round 2 |
-| DS-03 | READY | Landing-page conversion | registry-01: shadcn-pattern block registry, 10 landing blocks | `node tools/registry.mjs --check` PASS (built in this row) | builder | |
-| DS-04 | READY | Judged quality | agent-01: screenshot-to-code loop clone, MIT harness only | `node tools/agent-shot.mjs --check` PASS (built in this row) | builder | |
+| DS-03 | READY | Landing-page conversion | registry-01: shadcn-pattern block registry, 10 landing blocks | `node tools/registry.mjs --check` PASS (built in this row) | builder | infra partial 2026-10-02: REGISTRY PASS with 4 blocks plus 4 templates, 10 blocks still owed |
+| DS-04 | DOING | Judged quality | agent-01: screenshot-to-code loop clone, MIT harness only | `node tools/agent-shot.mjs --check` PASS (built in this row) | builder | built 2026-10-02, AGENT-SHOT PASS 11/11, judge review queued round 3 |
 | DS-05 | READY | Judged quality | agent-02: prompt-to-block loop with judge gate | `node tools/agent-block.mjs --check` PASS (built in this row) | builder | |
 | DS-06 | DOING | Judged quality | rubric judge v1: ds-quality-v1, 10 checks, DESIGN-REVIEW.md writer | `node tools/judge.mjs --check` PASS (built in this row) | builder | built 2026-10-02, JUDGE PASS 10 checks floor 8, judge review queued round 2 |
 | DS-07 | READY | Thumbnail readability | workshop-01: story per block plus 256px visual diff | `node tools/workshop.mjs --check` PASS (built in this row) | builder | |
 | DS-08 | READY | Landing-page conversion | figma-01: code-connect mapping plus Figma MCP read seat | `node tools/figma.mjs --check` PASS (built in this row) | builder | |
 | DS-09 | READY | Thumbnail readability | canvas-01: Konva template editor, 5 templates | `node tools/canvas.mjs --check` PASS (built in this row) | builder | |
 | DS-10 | READY | Brand-kit consistency | brand-01: name to palette, type, voice, lockup plus tokens export | `node tools/brandkit.mjs --check` PASS (built in this row) | builder | |
-| DS-11 | READY | Game UI kits | game-ui-01: HUD, menu, button kit on Kenney CC0 plus Lucide ISC | `node tools/game-ui.mjs --check` PASS (built in this row) | builder | |
+| DS-11 | DOING | Game UI kits | game-ui-01: HUD, menu, button kit on Kenney CC0 plus Lucide ISC | `node tools/game-ui.mjs --check` PASS (built in this row) | builder | built 2026-10-02, GAME-UI PASS 30/30, judge review queued round 3 |
 | DS-12 | READY | Thumbnail readability | serve-factory-01: pilot cover two variants, thumbnail-readable, DESIGN-REVIEW.md | `node tools/check.mjs` PASS plus preview/DESIGN-REVIEW.md | builder | |
 | DS-13 | READY | Hebrew RTL | jobhunt portfolio page, Hebrew plus English, RTL audit PASS | `node tools/audit.mjs` PASS on samples/jobhunt (built in this row) | builder | |
 | DS-14 | READY | Landing-page conversion | marketing-studio ad set: 3 creatives plus 1 landing hero | `node tools/check.mjs` PASS on samples/ads (built in this row) | builder | |

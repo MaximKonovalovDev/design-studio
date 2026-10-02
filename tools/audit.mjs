@@ -24,11 +24,24 @@ export function contrastRatio(fg, bg) {
 }
 
 // :root { --name: #rrggbb; ... } -> Map name -> #rrggbb (lowercased).
+// Only the :root (light theme) block: [data-theme="dark"] overrides must not
+// shadow the rendered default (pages render light unless they opt into dark).
 export function parseTokens(css) {
+  const root = String(css ?? "").match(/:root\s*\{([\s\S]*?)\}/)?.[1] ?? String(css ?? "");
   const vars = new Map();
   const re = /--([\w-]+)\s*:\s*(#[0-9a-fA-F]{6})\b/g;
   let m;
-  while ((m = re.exec(String(css ?? ""))) !== null) vars.set(m[1], m[2].toLowerCase());
+  while ((m = re.exec(root)) !== null) vars.set(m[1], m[2].toLowerCase());
+  return vars;
+}
+
+// The dark overrides in [data-theme="dark"] { ... }, if present.
+export function parseTokensDark(css) {
+  const dark = String(css ?? "").match(/\[data-theme\s*=\s*"dark"\]\s*\{([\s\S]*?)\}/)?.[1] ?? "";
+  const vars = new Map();
+  const re = /--([\w-]+)\s*:\s*(#[0-9a-fA-F]{6})\b/g;
+  let m;
+  while ((m = re.exec(dark)) !== null) vars.set(m[1], m[2].toLowerCase());
   return vars;
 }
 

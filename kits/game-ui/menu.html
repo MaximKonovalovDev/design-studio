@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- kits/game-ui/menu.html (DS-11): engine2040 menu skin. Imports tokens.css + buttons.css. Icons: inline Lucide-style stroke SVGs (ISC), 24x24 stroke=currentColor. -->
+<html lang="en" dir="ltr" data-engine="engine2040">
+<head>
+<meta charset="utf-8">
+<title>Menu skin</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="buttons.css">
+<style>
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--gui-bg); color: var(--gui-ink); font-family: var(--font-gui); }
+  .menu { display: grid; gap: 12px; justify-items: center; padding: 32px; background: var(--gui-panel); border: 2px solid var(--gui-line); border-radius: 16px; }
+  h1 { margin: 0; font-family: var(--font-gui-display); font-size: 40px; color: var(--gui-accent); }
+  .sub { margin: 0 0 8px; color: var(--gui-muted); }
+  .menu .btn svg { width: 24px; height: 24px; }
+</style>
+</head>
+<body>
+  <div class="menu" data-engine="engine2040">
+    <h1>ENGINE 2040</h1>
+    <p class="sub">Press start, hero.</p>
+    <button class="btn btn-primary" type="button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+      Start game
+    </button>
+    <button class="btn" type="button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Options
+    </button>
+    <button class="btn" type="button" disabled>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+      Quit (locked in demo)
+    </button>
+  </div>
+</body>
+</html>

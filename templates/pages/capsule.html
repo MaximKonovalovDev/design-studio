@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- templates/pages/capsule.html (DS-03): store capsule pattern, 616x353.
+     Composes registry blocks hero + cta, thumbnail-first: the title stays
+     legible at 256px. Colors and type only via var(--*); no hex here. -->
+<!-- size: 616x353 -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 616px; height: 353px;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--font-body);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cap { width: 540px; text-align: center; border-block-start: 5px solid var(--accent); padding: 24px 16px 28px; }
+  .kicker { font-size: 15px; letter-spacing: 5px; color: var(--accent); font-family: var(--font-body); margin-block-end: 10px; }
+  h1 { font-family: var(--font-display); font-size: 52px; line-height: 1.05; color: var(--ink); margin-block-end: 12px; }
+  .cta { display: inline-block; font-size: 20px; font-weight: bold; color: var(--on-accent); background: var(--accent); padding: 10px 36px; border-radius: 8px; }
+</style>
+</head>
+<body>
+  <div class="cap">
+    <div class="kicker">DESIGN-STUDIO</div>
+    <h1>CAPSULE TITLE</h1>
+    <span class="cta">Get it</span>
+  </div>
+</body>
+</html>

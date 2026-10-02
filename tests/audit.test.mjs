@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { luminance, contrastRatio, parseTokens, resolveColor, auditBrief } from "../tools/audit.mjs";
+import { luminance, contrastRatio, parseTokens, parseTokensDark, resolveColor, auditBrief } from "../tools/audit.mjs";
 
 const dir = () => mkdtempSync(`${tmpdir()}\\ds-test-`);
 
@@ -27,6 +27,12 @@ describe("audit math", () => {
     assert.equal(resolveColor("var(--ink)", vars), "#1a1a1a");
     assert.equal(resolveColor("#C2410C", vars), "#c2410c");
     assert.throws(() => resolveColor("var(--missing)", vars), /unresolvable/);
+  });
+
+  it("reads light from :root even when a dark block shadows it", () => {
+    const css = ":root{--paper:#FAF7F0;--ink:#1A1A1A;}[data-theme=\"dark\"]{--paper:#1C1917;--ink:#FAF7F0;}";
+    assert.equal(parseTokens(css).get("paper"), "#faf7f0");
+    assert.equal(parseTokensDark(css).get("paper"), "#1c1917");
   });
 });
 

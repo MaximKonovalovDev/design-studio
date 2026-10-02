@@ -1,0 +1,19 @@
+{
+  "name": "ds-game-ui-v1",
+  "tokens": "tokens.css",
+  "pieces": [
+    { "id": "hud", "file": "hud.html", "uses": ["--gui-bg", "--gui-panel", "--gui-ink", "--gui-hp", "--gui-mana", "--gui-line"] },
+    { "id": "menu", "file": "menu.html", "uses": ["--gui-bg", "--gui-ink", "--gui-accent", "--gui-on-accent", "--font-gui"] },
+    { "id": "buttons", "file": "buttons.css", "uses": ["--gui-accent", "--gui-on-accent", "--gui-panel", "--gui-ink"] }
+  ],
+  "icons": {
+    "set": "lucide-inline",
+    "license": "ISC (Lucide, inline stroke SVGs, 24x24, stroke=currentColor)",
+    "art": "Kenney.nl CC0 placeholders (CSS shapes only, no binaries vendored)"
+  },
+  "sizes": { "touchMin": 44, "hudBarH": 16, "menuBtnMinW": 240 },
+  "engines": {
+    "forge": "kits/game-ui/hud.html + menu.html drop into forge HUD slice (link tokens.css + buttons.css)",
+    "engine2040": "kits/game-ui/menu.html skin for engine2040 menu (same two <link> imports)"
+  }
+}

@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, writeFileSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { buildCss, buildDocs, checkTokens } from "../tools/tokens.mjs";
+import { buildCss, buildDocs, checkTokens, normalizeTokens, HEBREW_STACK } from "../tools/tokens.mjs";
 
 const GOOD = {
   colors: {
@@ -72,5 +72,70 @@ describe("checkTokens", () => {
   it("generated tokens.html renders (smoke)", () => {
     const html = readFileSync(join(setup(GOOD), "tokens.html"), "utf8");
     assert.ok(html.includes("tokens.css") && html.includes("var(--accent)"));
+  });
+});
+
+describe("Style Dictionary shape + dark + Hebrew", () => {
+  const SD = {
+    color: {
+      paper: { value: "#faf7f0" },
+      ink: { value: "#1a1a1a" },
+      muted: { value: "#57534e" },
+      accent: { value: "#c2410c" },
+      "on-accent": { value: "#ffffff" },
+      line: { value: "#e7e0d3" },
+    },
+    font: {
+      display: { value: '"Arial Black", sans-serif' },
+      body: { value: '"Segoe UI", sans-serif' },
+      hebrew: { value: HEBREW_STACK },
+    },
+    space: { xs: { value: "8px" }, sm: { value: "16px" }, md: { value: "24px" } },
+    themes: {
+      dark: {
+        paper: { value: "#1c1917" },
+        ink: { value: "#faf7f0" },
+        muted: { value: "#d6d3d1" },
+        accent: { value: "#fb923c" },
+        "on-accent": { value: "#1c1917" },
+        line: { value: "#44403c" },
+      },
+    },
+  };
+
+  it("normalizes value/value nesting to the flat kit", () => {
+    const t = normalizeTokens(SD);
+    assert.equal(t.colors.paper, "#faf7f0");
+    assert.equal(t.colorsDark.accent, "#fb923c");
+    assert.equal(t.fonts.hebrew, HEBREW_STACK);
+    assert.equal(t.spacing.sm, "16px");
+  });
+
+  it("emits light :root plus a dark override block", () => {
+    const css = buildCss(SD);
+    assert.match(css, /:root\s*\{[^}]*--paper: #faf7f0/);
+    assert.match(css, /\[data-theme="dark"\][^}]*--paper: #1c1917/);
+    assert.match(css, /--font-hebrew/);
+  });
+
+  it("fails a kit with no dark theme", () => {
+    const { colors, fonts, spacing } = normalizeTokens(SD);
+    const d = mkdtempSync(`${tmpdir()}\\ds-tokens-`);
+    const flat = { colors, fonts: { display: fonts.display, body: fonts.body, hebrew: fonts.hebrew }, spacing };
+    writeFileSync(join(d, "tokens.json"), JSON.stringify(flat));
+    writeFileSync(join(d, "tokens.css"), buildCss(flat));
+    writeFileSync(join(d, "tokens.html"), buildDocs(flat));
+    writeFileSync(join(d, "page.html"), '<html dir="ltr"><body style="color: var(--ink)">T</body></html>');
+    const { pass, results } = checkTokens({ json: join(d, "tokens.json"), css: join(d, "tokens.css"), docs: join(d, "tokens.html"), page: join(d, "page.html") });
+    assert.equal(pass, false);
+    assert.ok(results.some((r) => r.name.startsWith("dark") && !r.pass));
+  });
+
+  it("fails a kit with no Hebrew stack", () => {
+    const noHeb = JSON.parse(JSON.stringify(GOOD));
+    const d = setup(noHeb);
+    const { pass, results } = checkTokens({ json: join(d, "tokens.json"), css: join(d, "tokens.css"), docs: join(d, "tokens.html"), page: join(d, "page.html") });
+    assert.equal(pass, false);
+    assert.ok(results.some((r) => r.name.startsWith("type") && !r.pass));
   });
 });

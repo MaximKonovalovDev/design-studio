@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- templates/pages/cover.html (DS-03): cover pattern, 1280x720. Composes registry
+     blocks hero + cta. Colors and type only via var(--*); no hex here. -->
+<!-- size: 1280x720 -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1280px; height: 720px;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--font-body);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero { width: 1075px; text-align: center; border-block-start: 6px solid var(--accent); border-block-end: 2px solid var(--line); padding: 48px 24px 56px; }
+  .kicker { font-size: 28px; letter-spacing: 10px; color: var(--accent); font-family: var(--font-body); margin-block-end: 22px; }
+  h1 { font-family: var(--font-display); font-size: 96px; line-height: 1.05; color: var(--ink); margin-block-end: 20px; }
+  .sub { font-size: 34px; color: var(--muted); margin-block-end: 40px; }
+  .cta { display: inline-block; font-size: 32px; font-weight: bold; color: var(--on-accent); background: var(--accent); padding: 20px 64px; border-radius: 12px; }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="kicker">DESIGN-STUDIO SAMPLE</div>
+    <h1>COVER TITLE</h1>
+    <p class="sub">Brief to rendered, audited pixels. No human in the loop.</p>
+    <span class="cta">Render it again</span>
+  </div>
+</body>
+</html>

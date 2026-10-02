@@ -61,7 +61,7 @@ export function pngDims(buf) {
 
 const psq = (s) => `'${String(s).replace(/'/g, "''")}'`;
 
-export function render(htmlPath, outPath, size = { w: 1280, h: 720 }) {
+export function render(htmlPath, outPath, size = { w: 1280, h: 720 }, { minBytes = 4096 } = {}) {
   const browser = findBrowser();
   if (!browser) {
     throw new Error("no Edge, Chrome or Chromium found: set BROWSER_BIN (never fake the output)");
@@ -119,7 +119,7 @@ export function render(htmlPath, outPath, size = { w: 1280, h: 720 }) {
   if (dims.w !== size.w || dims.h !== size.h) {
     throw new Error(`render size ${dims.w}x${dims.h} != requested ${size.w}x${size.h}`);
   }
-  if (buf.length < 4096) {
+  if (buf.length < minBytes) {
     throw new Error(`render suspiciously small (${buf.length}B): the page likely did not render`);
   }
   return { out, w: dims.w, h: dims.h, bytes: buf.length };
