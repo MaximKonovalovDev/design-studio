@@ -8,6 +8,9 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { contrastRatio } from "./audit.mjs";
+import { lintPairMates, darkPairGaps, mergeKits } from "./tokens.mjs";
+
+export { mergeKits };
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DIR = join(ROOT, "brand-kits");
@@ -81,6 +84,32 @@ export function checkBrandkit({ dir = DIR, registryPath = REGISTRY } = {}) {
     const mirror = names.length > 0 && names.every((n) => String(tc[n] ?? "").toLowerCase() === String(pal[n] ?? "").toLowerCase());
     ok(`kit ${k.id} tokens export mirrors palette`, mirror, mirror ? "tokens.colors == palette" : "drift: tokens.colors must equal palette");
     ok(`kit ${k.id} tokens export has type + spacing`, Boolean(tok.fonts?.display) && Object.keys(tok.spacing ?? {}).length >= 3, "tokens.json-compatible");
+    // DS-35 C1: same pair convention + dark-override per kit (palette/paletteDark).
+    const mates = lintPairMates(pal);
+    ok(`kit ${k.id} pairs: bg/fg convention`, mates.length === 0, mates.length ? `missing mate: ${mates.join(", ")}` : "pairs ship together");
+    const gaps = darkPairGaps(pal, kit.paletteDark ?? {});
+    ok(
+      `kit ${k.id} dark: overrides every surface pair`,
+      Object.keys(kit.paletteDark ?? {}).length > 0 && gaps.length === 0,
+      Object.keys(kit.paletteDark ?? {}).length === 0 ? "paletteDark missing" : gaps.length ? `dark missing ${gaps.join(",")}` : "pairs overridden in dark",
+    );
+  }
+
+  // DS-35 C2: registry merge — base + overlays compose to one shippable kit
+  // set, overlay wins per key, collisions counted never silent. Informational
+  // gate: proves the merge ran on the real registry.
+  try {
+    const kits = reg.kits.map((k) => JSON.parse(readFileSync(join(dir, k.file ?? ""), "utf8")));
+    let acc = kits[0] ?? {};
+    let collisions = 0;
+    for (const next of kits.slice(1)) {
+      const r = mergeKits(acc, next);
+      acc = r.merged;
+      collisions += r.collisions;
+    }
+    ok("registry: base+overlay merge (overlay wins)", true, `${kits.length} kit(s), ${collisions} collision(s)`);
+  } catch (e) {
+    ok("registry: base+overlay merge (overlay wins)", false, String(e.message || e));
   }
 
   return { pass: results.every((r) => r.pass), results };

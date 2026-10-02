@@ -115,6 +115,47 @@ export function resolveColorRefs(colors = {}, fallback = {}) {
   return { resolved, deferred: [...deferred] };
 }
 
+// DS-35 C1 pair convention (shadcn-ui/ui themes.ts cssVars light/dark pairs,
+// MIT LICENSE SHA fad4d887, file SHA 80fdfba3, patterns only): every surface
+// token ships as a background/foreground pair and dark redefines the same
+// names ([data-theme="dark"] override). Warn-free lint: bg without its fg mate
+// fails; extras outside the pairs (line, chart) never fail.
+export const PAIR_RULES = [["paper", "ink"], ["accent", "on-accent"]];
+
+export function lintPairMates(colors = {}) {
+  const missing = [];
+  for (const [bg, fg] of PAIR_RULES) {
+    if (bg in (colors ?? {}) && !(fg in (colors ?? {}))) missing.push(`${bg} without ${fg}`);
+    if (fg in (colors ?? {}) && !(bg in (colors ?? {}))) missing.push(`${fg} without ${bg}`);
+  }
+  return missing;
+}
+
+// Dark must redefine every pair member shipped in light (same-name override).
+export function darkPairGaps(colors = {}, darkColors = {}) {
+  const gaps = [];
+  for (const [bg, fg] of PAIR_RULES) {
+    for (const k of [bg, fg]) if (k in (colors ?? {}) && !(k in (darkColors ?? {}))) gaps.push(k);
+  }
+  return gaps;
+}
+
+// DS-35 C2 registry merge (shadcn buildRegistryTheme base+theme -> one item,
+// MIT SHA fad4d887, patterns only): base + overlay compose per section,
+// overlay wins per key, collisions counted never silent.
+export function mergeKits(base = {}, overlay = {}) {
+  const merged = { ...base, ...overlay };
+  let collisions = 0;
+  for (const sec of ["palette", "paletteDark", "type", "spacing", "voice", "lockup", "tokens", "colors", "colorsDark", "fonts"]) {
+    const b = base?.[sec], o = overlay?.[sec];
+    if (b != null && typeof b === "object" && o != null && typeof o === "object" && !Array.isArray(b) && !Array.isArray(o)) {
+      merged[sec] = { ...b, ...o };
+      for (const k of Object.keys(o)) if (k in b && String(b[k]) !== String(o[k])) collisions++;
+    }
+  }
+  return { merged, collisions };
+}
+
 export function readTokens(jsonPath = DEFAULT_JSON) {
   return JSON.parse(readFileSync(jsonPath, "utf8"));
 }
@@ -243,6 +284,14 @@ export function checkTokens({ json = DEFAULT_JSON, css = DEFAULT_CSS, docs = DEF
     }
   }
 
+  // DS-35 C1: pair-name lint (accent needs on-accent, paper needs ink).
+  const pairMissing = lintPairMates(colors);
+  ok(
+    "pairs: bg/fg convention (paper/ink, accent/on-accent)",
+    pairMissing.length === 0,
+    pairMissing.length ? `missing mate: ${pairMissing.join(", ")}` : "pairs ship together",
+  );
+
   // type: display + body + hebrew stacks present.
   const typeOk = Boolean(tokens.fonts?.display) && Boolean(tokens.fonts?.body) && Boolean(tokens.fonts?.hebrew);
   ok("type: display + body + hebrew stacks", typeOk, typeOk ? "three stacks present" : "fonts.display/body/hebrew required");
@@ -294,6 +343,14 @@ export function checkTokens({ json = DEFAULT_JSON, css = DEFAULT_CSS, docs = DEF
       }
     }
   }
+
+  // DS-35 C1: dark must override every pair member shipped in light.
+  const pairGaps = darkPairGaps(colors, darkColors);
+  ok(
+    "dark: overrides every surface pair",
+    Object.keys(darkColors).length > 0 && pairGaps.length === 0,
+    Object.keys(darkColors).length === 0 ? "no dark theme" : pairGaps.length ? `dark missing ${pairGaps.join(",")}` : "pairs overridden in dark",
+  );
 
   // diff: tokens.css on disk equals the generator output.
   const expected = buildCss(raw);

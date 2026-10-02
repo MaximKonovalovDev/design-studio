@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, writeFileSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { buildCss, buildDocs, checkTokens, normalizeTokens, resolveColorRefs, usesReferences, HEBREW_STACK } from "../tools/tokens.mjs";
+import { buildCss, buildDocs, checkTokens, normalizeTokens, resolveColorRefs, usesReferences, HEBREW_STACK, lintPairMates, darkPairGaps, mergeKits } from "../tools/tokens.mjs";
 
 const GOOD = {
   colors: {
@@ -213,5 +213,36 @@ describe("S12 transform/resolve fixpoint (DS-33)", () => {
     const { pass, results } = checkTokens({ json: join(d, "tokens.json"), css: join(d, "tokens.css"), docs: join(d, "tokens.html"), page: join(d, "page.html") });
     assert.equal(pass, false);
     assert.ok(results.some((r) => r.name.startsWith("refs:") && !r.pass));
+  });
+});
+
+describe("DS-35 pair convention + dark override (brandkit-vision-r9 C1)", () => {
+  // F2P: pair fixture FAILs tokens --check today (missing on-accent mate).
+  const NO_MATE = {
+    colors: { paper: "#faf7f0", ink: "#1a1a1a", muted: "#57534e", accent: "#c2410c", line: "#e7e0d3" },
+    colorsDark: { paper: "#1c1917", ink: "#faf7f0", muted: "#d6d3d1", accent: "#fb923c", "on-accent": "#1c1917", line: "#44403c" },
+    fonts: { display: '"Arial Black", sans-serif', body: '"Segoe UI", sans-serif', hebrew: HEBREW_STACK },
+    spacing: { xs: "8px", sm: "16px", md: "24px" },
+  };
+
+  it("lints a background without its foreground mate", () => {
+    assert.deepEqual(lintPairMates(NO_MATE.colors), ["accent without on-accent"]);
+  });
+
+  it("checkTokens FAILs the pair fixture on the convention gate", () => {
+    const d = setup(NO_MATE);
+    const { pass, results } = checkTokens({ json: join(d, "tokens.json"), css: join(d, "tokens.css"), docs: join(d, "tokens.html"), page: join(d, "page.html") });
+    assert.equal(pass, false);
+    assert.ok(results.some((r) => r.name.startsWith("pairs: bg/fg") && !r.pass));
+  });
+
+  it("flags a dark theme missing a surface-pair override", () => {
+    const thin = JSON.parse(JSON.stringify(GOOD));
+    thin.colorsDark = { paper: "#1c1917" };
+    assert.deepEqual(darkPairGaps(thin.colors, thin.colorsDark).sort(), ["accent", "ink", "on-accent"]);
+    const d = setup({ ...GOOD, colorsDark: thin.colorsDark, fonts: { ...GOOD.fonts, hebrew: HEBREW_STACK } });
+    const { pass, results } = checkTokens({ json: join(d, "tokens.json"), css: join(d, "tokens.css"), docs: join(d, "tokens.html"), page: join(d, "page.html") });
+    assert.equal(pass, false);
+    assert.ok(results.some((r) => r.name === "dark: overrides every surface pair" && !r.pass));
   });
 });

@@ -5,6 +5,7 @@
 // preview (out.png+audit) re-renders freely, live (receipt.json) moves only on publish.
 // Exit 1 on any FAIL.
 import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, basename } from "node:path";
@@ -32,7 +33,22 @@ export function checkReceipt(dir, brief) {
   const urlOk = typeof r.url === "string" && /^https?:\/\/\S+/.test(r.url);
   const dateOk = typeof r.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(r.date) && !Number.isNaN(Date.parse(r.date));
   const revOk = typeof r.rev === "string" && r.rev.trim().length >= 1;
-  if (urlOk && dateOk && revOk) return { pass: true, skipped: false, detail: `${r.url} ${r.date} ${String(r.rev).slice(0, 7)}` };
+  if (urlOk && dateOk && revOk) {
+    // DS-36 receipt-required landing sample: rev pins the audited out.png
+    // hash (git-short style: rev must be a >=7-char prefix of the image
+    // sha256). Missing image falls back to format-only so fixtures without
+    // a render still pass the shape gate.
+    const img = join(dir, brief.image ?? "out.png");
+    if (existsSync(img)) {
+      const hash = createHash("sha256").update(readFileSync(img)).digest("hex");
+      const rev = r.rev.trim();
+      if (rev.length < 7 || !hash.startsWith(rev) && rev !== hash) {
+        return { pass: false, detail: `rev mismatch out.png sha256:${hash.slice(0, 12)} — next: publish then re-run` };
+      }
+      return { pass: true, skipped: false, detail: `${r.url} ${r.date} ${hash.slice(0, 12)}` };
+    }
+    return { pass: true, skipped: false, detail: `${r.url} ${r.date} ${String(r.rev).slice(0, 7)}` };
+  }
   const missing = [!urlOk && "url http(s)", !dateOk && "date YYYY-MM-DD", !revOk && "rev"].filter(Boolean).join(", ");
   return { pass: false, detail: `receipt.json bad (${missing}) — next: publish then re-run` };
 }
