@@ -2,15 +2,18 @@
 
 ## Result (completed)
 
-<task id="ses_f03dd5c1bffevxJCQcXUhO9vnn" state="completed">
+<task id="ses_f03bce1c5ffeEA4ijwa13PJ1DN" state="completed">
 <task_result>
-Goal: DS-06 — rubric judge v1 (ds-quality-v1, 10 checks, DESIGN-REVIEW.md writer); moves VISION.md weakest row Judged quality (0%, 0/10, loop OFF) by giving every output a fixed score with ship floor 8/10.
-Scope: tools/judge.mjs, tests/judge.test.mjs (claimed as `DS-06 | builder-rows-r1` in sprint/queue/claims.txt; nothing else touched).
-Proof: `node tools/judge.mjs --check` PASS (built in this row).
-Stop: L 45 min; at budget report what landed and next step.
+Goal/Scope/Proof/Stop — DS-04 (agent-01 screenshot-to-code loop, MIT harness only)
+Goal: screenshot-to-code loop clone that converges through the rubric; moves Scorecard row Judged quality (0% → measured, loop ON).
+Scope: tools/agent-shot.mjs only (new file; wraps existing tools/render.mjs + tools/judge.mjs, no other files touched).
+Proof: `node tools/agent-shot.mjs --check` → AGENT-SHOT PASS.
+Stop: L 45 min; landed the harness + self-check green in ~10 min; next step is lead review/commit + DS-05 prompt-to-block loop on top of this seam. No commit (helpers never commit; lead commits).
 
-Built end to end: `tools/judge.mjs` exports RUBRIC_ID ds-quality-v1 with 10 fixed checks (brief-complete, render-exists, audit-green via fresh auditBrief re-run, contrast-aa, thumbnail-legible, title-fits, tokens-disciplined, type-pair, rtl-gate, composition), scores X/10 with SHIP floor 8, `judgeSample()` + `writeReview()` wiring the real consumer (judges samples/cover 10/10 SHIP), and a `--check` self-test (good/broken fixtures, threshold, real-sample gate) that runs side-effect-free in temp dirs. `tests/judge.test.mjs` covers rubric shape, below-floor rejection, review writing, and self-check. Proof runs: `node tools/judge.mjs --check` → JUDGE PASS exit 0; `node --test tests/judge.test.mjs tests/audit.test.mjs tests/render.test.mjs` → 13 pass 0 fail; `node tools/check.mjs` → RESULT PASS (no regression). Mid-build I caught `--check` rewriting samples/cover/DESIGN-REVIEW.md outside scope and fixed it (temp-dir gate) plus restored the file byte-identical. No commit (helper seat; lead commits). Next step: lead commits tools/judge.mjs + tests/judge.test.mjs, then DS-04/DS-05 agent loops can gate on `judgeSample()`.
+Built `tools/agent-shot.mjs` (ds-agent-shot-v1): seed minimal shell → screenshot → judgeSample → deterministic refine → re-judge until floor 8, writing `iterations.json` receipt + `DESIGN-REVIEW.md` per run. Donor shape only from abi/screenshot-to-code (MIT, no code copied, no network); `refineStep` seam is where a model call plugs in later. Self-check is browser-free via injectable `renderShot`; real CLI path tries Edge headless via tools/render.mjs with a reference fallback.
+Claim: `DS-04 | builder-rows-r1 | <UTC> | tools/agent-shot.mjs` appended to sprint/queue/claims.txt — no file conflict with the other two live claims (tools/game-ui.mjs, research cards).
 
-RESULT: DONE - DS-06 rubric judge v1 built (tools/judge.mjs, tests/judge.test.mjs), samples/cover scores 10/10 SHIP | proof: `node tools/judge.mjs --check` → JUDGE PASS exit 0; `node --test` 13 pass 0 fail; `node tools/check.mjs` RESULT PASS
+RESULT: DONE - DS-04 agent-shot loop built, converges 6→10/10 | proof: `node tools/agent-shot.mjs --check` → AGENT-SHOT PASS: ds-agent-shot-v1 loop converges, donor MIT harness-only (11/11 PASS, plus real-run SHIP best 10/10 in 2 iters)
+
 </task_result>
 </task>

@@ -16,6 +16,10 @@ Sample: C:\Users\me\Desktop\design-studio\samples\ads\hero\brief.json
 - [x] rtl-gate: dir=ltr
 - [x] composition: title + action + 6 tokens
 
+## Next edits (iterate harness: failing gate -> oid + fix-action)
+
+- (none — all gates green)
+
 ## Verdict
 
 SHIP: 10/10 meets the floor. Thumbnail confirmed by eye in thumb-256.png (256x144); taste still human.

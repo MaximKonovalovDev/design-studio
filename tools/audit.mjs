@@ -449,11 +449,68 @@ function finishSizes(results) {
   return { pass: fails.length === 0, results };
 }
 
+// DS-38 THUMB-01 ad-square reflow user of the DS-23 matrix (step 1/3
+// Thumbnail): the on-disk samples/ad-square brief re-passes every matrix
+// size, a cramped ad fixture FAILs the fits gate first (the F2P proof),
+// and the reflowed variant (title_px + box adjusted) re-passes with
+// 0 gate weakens — same 12px floor, same fits math, no threshold moved.
+export function adSquareReflowSelfCheck() {
+  const results = [];
+  const t = (name, ok, detail) => {
+    results.push({ name, pass: !!ok, detail: String(detail ?? "") });
+    console.log(`[${ok ? "PASS" : "FAIL"}] ${name}: ${detail}`);
+  };
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+  const adPng = join(ROOT, "samples", "ad-square", "out.png");
+  if (!existsSync(adPng)) {
+    t("fixture image samples/ad-square/out.png exists", false, "render ad-square first");
+    return finishAdSquare(results);
+  }
+  t("fixture image samples/ad-square/out.png exists", true, "real 1080x1080 render");
+  {
+    const { pass, errors } = auditBrief(join(ROOT, "samples", "ad-square", "brief.json"));
+    t("ad-square brief re-passes every matrix size", pass, pass ? "1080x1080 + matrix green" : errors.slice(0, 2).join("; "));
+  }
+  const mk = (brief) => {
+    const d = mkdtempSync(`${tmpdir()}/ds-audit-ad-`);
+    writeFileSync(join(d, "brief.json"), JSON.stringify(brief), "utf8");
+    writeFileSync(join(d, "tokens.css"), ":root{--paper:#faf7f0;--ink:#1a1a1a;--muted:#57534e;--accent:#c2410c;--on-accent:#ffffff;--line:#e7e0d3;}");
+    writeFileSync(join(d, "page.html"), `<!DOCTYPE html><html dir="ltr"><head><style>body{color:var(--ink);}</style></head><body><h1>${brief.title}</h1></body></html>`);
+    writeFileSync(join(d, "out.png"), readFileSync(adPng));
+    return join(d, "brief.json");
+  };
+  const base = {
+    title: "DESIGN THAT SELLS",
+    size: { w: 1080, h: 1080 },
+    dir: "ltr",
+    tokens: "tokens.css",
+    page: "page.html",
+    image: "out.png",
+    text: [{ label: "t", fg: "#000000", bg: "#ffffff", min: 1 }],
+  };
+  {
+    const { errors } = auditBrief(mk({ ...base, title_box: [0.4, 0.32, 0.6, 0.58], title_px: 96 }));
+    t("cramped ad fixture FAILs the fits gate first", errors.some((e) => e.includes("title fits its box")), errors.slice(0, 2).join("; ") || "no errors?");
+  }
+  {
+    const { pass, errors } = auditBrief(mk({ ...base, title_box: [0.2, 0.32, 0.8, 0.58], title_px: 72 }));
+    t("reflowed ad variant (72px + wider box) re-passes", pass, pass ? "need ~612px in 648px box, 17.1px at 256px" : errors.slice(0, 2).join("; "));
+  }
+  return finishAdSquare(results);
+}
+
+function finishAdSquare(results) {
+  const fails = results.filter((r) => !r.pass);
+  console.log(fails.length ? `AUDIT AD-SQUARE FAIL: ${fails.length} failing check(s)` : `AUDIT AD-SQUARE PASS: ad-square reflows green, cramped fixture fails first`);
+  return { pass: fails.length === 0, results };
+}
+
 if (isMain) {
   const args = process.argv.slice(2);
   if (args.includes("--sizes") && args.includes("--check")) {
-    const { pass } = sizeMatrixSelfCheck();
-    if (!pass) process.exitCode = 1;
+    const a = sizeMatrixSelfCheck();
+    const b = adSquareReflowSelfCheck();
+    if (!a.pass || !b.pass) process.exitCode = 1;
   } else if (args.includes("--rtl") && args.includes("--check")) {
     const { pass } = rtlSelfCheck();
     if (!pass) process.exitCode = 1;

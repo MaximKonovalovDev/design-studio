@@ -13,6 +13,32 @@ const REGISTRY = join(ROOT, "templates", "registry.json");
 
 const HEX = /#[0-9a-fA-F]{6}\b/g;
 
+// DS-37 single-source block emit (Mitosis componentToReact idea-only, 0 lines
+// copied): one block file fans out to every consumer instead of hand-kept
+// copies. emitBlock(id, slots) fills the block's SLOT tokens and returns the
+// sample section plus a consumer snippet; the checked-in
+// templates/blocks/<id>.emit.html must byte-equal emitBlock(id) with default
+// slots, so the block file stays the single source. Consumers pull with:
+//   node tools/registry.mjs --emit hero TITLE="Hello"
+const EMIT_DEFAULTS = {
+  hero: { KICKER: "New drop", TITLE: "Ship the cover", SUBTITLE: "One prompt, one render, one audit." },
+};
+const EMIT_SLOTS = ["KICKER", "TITLE", "SUBTITLE", "ACTION"];
+
+export function emitBlock(id, slots = {}) {
+  const file = join(ROOT, "templates", "blocks", `${id}.html`);
+  if (!existsSync(file)) throw new Error(`unknown block ${id}: no templates/blocks/${id}.html`);
+  const src = readFileSync(file, "utf8");
+  const cut = src.search(/^<style[ >]/m);
+  if (cut < 0) throw new Error(`block ${id} has no <style> seam`);
+  const merged = { ...(EMIT_DEFAULTS[id] ?? {}), ...slots };
+  let out = src.slice(0, cut).replace(/<!--[\s\S]*?-->/g, "").trim();
+  for (const [k, v] of Object.entries(merged)) out = out.replace(new RegExp(`\\b${k}\\b`, "g"), String(v));
+  const leftover = out.match(new RegExp(`\\b(${EMIT_SLOTS.join("|")})\\b`));
+  if (leftover) throw new Error(`block ${id} unfilled slot(s): ${[...new Set(leftover)].join(",")}`);
+  return `<!-- single-source emit of ${id}.html (DS-37): do not hand-edit. Regenerate: node tools/registry.mjs --emit ${id} -- consumer snippet: paste this section into the sample page; tokens via var(--*) come from the block <style>. -->\n${out}\n`;
+}
+
 export function checkRegistry(registryPath = REGISTRY) {
   const results = [];
   const ok = (name, pass, detail) => results.push({ name, pass, detail });
@@ -74,6 +100,36 @@ export function checkRegistry(registryPath = REGISTRY) {
     );
   }
 
+  // DS-37 single-source emit gate: hero.emit.html must byte-equal emitBlock("hero").
+  try {
+    const emitted = emitBlock("hero");
+    const emitFile = join(T, "blocks", "hero.emit.html");
+    const disk = existsSync(emitFile) ? readFileSync(emitFile, "utf8") : null;
+    ok("emit hero matches checked-in hero.emit.html", disk === emitted, disk === null ? "hero.emit.html missing" : disk === emitted ? "single source holds" : "checked-in emit drifted from block");
+  } catch (e) {
+    ok("emit hero matches checked-in hero.emit.html", false, String(e.message || e));
+  }
+  // DS-37 fixtures, all fail closed: unknown block throws, slots fill, 0 hex.
+  try {
+    emitBlock("no-such-block");
+    ok("emit unknown block FAILs closed", false, "no throw?");
+  } catch (e) {
+    ok("emit unknown block FAILs closed", /unknown block/.test(e.message), e.message);
+  }
+  try {
+    emitBlock("cta");
+    ok("emit unfilled slots FAIL closed", false, "no throw?");
+  } catch (e) {
+    ok("emit unfilled slots FAIL closed", /unfilled slot/.test(e.message), e.message);
+  }
+  try {
+    const custom = emitBlock("hero", { TITLE: "Probe title" });
+    ok("emit fills slots", custom.includes("Probe title") && !/\bTITLE\b/.test(custom), "TITLE swapped, no leftovers");
+    ok("emit carries 0 hardcoded colors", (custom.match(HEX) ?? []).length === 0, "all color via var(--*)");
+  } catch (e) {
+    ok("emit fills slots", false, String(e.message || e));
+  }
+
   return { pass: results.every((r) => r.pass), results };
 }
 
@@ -87,13 +143,27 @@ const isMain = (() => {
 
 if (isMain) {
   const args = process.argv.slice(2);
-  if (args.includes("--check") || args.length === 0) {
+  if (args.includes("--emit")) {
+    const id = args[args.indexOf("--emit") + 1];
+    const slots = Object.fromEntries(
+      args.filter((a) => a.includes("=") && !a.startsWith("--")).map((a) => {
+        const i = a.indexOf("=");
+        return [a.slice(0, i), a.slice(i + 1)];
+      }),
+    );
+    try {
+      process.stdout.write(emitBlock(id, slots));
+    } catch (e) {
+      console.error(`EMIT FAIL: ${e.message}`);
+      process.exitCode = 1;
+    }
+  } else if (args.includes("--check") || args.length === 0) {
     const { pass, results } = checkRegistry();
     for (const r of results) console.log(`[${r.pass ? "PASS" : "FAIL"}] ${r.name}: ${r.detail}`);
-    console.log(pass ? "REGISTRY PASS: 10 blocks + 4 templates, 0 hardcoded colors" : `REGISTRY FAIL: ${results.filter((r) => !r.pass).length} failing check(s)`);
+    console.log(pass ? "REGISTRY PASS: 10 blocks + 4 templates + hero single-source emit, 0 hardcoded colors" : `REGISTRY FAIL: ${results.filter((r) => !r.pass).length} failing check(s)`);
     if (!pass) process.exitCode = 1;
   } else {
-    console.log("usage: node tools/registry.mjs [--check]");
+    console.log("usage: node tools/registry.mjs [--check] [--emit <block> [SLOT=value ...]]");
     process.exitCode = 2;
   }
 }
