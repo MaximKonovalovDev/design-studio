@@ -20,6 +20,11 @@
 // process is started once per 15 minutes from the owner's Desktop bat.
 // A full context (overflow, or a 400 on a context over 600k tokens) is
 // compacted once on the loop's model, then the continue goes out.
+// Ralph pattern (2026-10-02): at the continue point, when the lead session's
+// last-turn input tokens pass fresh_ctx_k*1000 (knob `fresh_ctx_k`, default 120),
+// a fresh sprint session replaces this one (the same path as `new`: retire, then
+// /sprint takeover, which resumes from the handoff file) instead of the continue;
+// at most once per 30 min per repo, logged.
 // The continue keeps the loop's agent, model and variant, carries warnings
 // before a stop threshold, and a status line of all three sprints.
 // Helpers run in foreground batches (owner 2026-09-28, C-88: "no background in all repos",
@@ -171,6 +176,8 @@ const HARD_ERRORS = new Set(["MessageAbortedError", "ProviderAuthError", "Contex
 // (engine 2026-09-25 at 1,016,682 tokens), so a 400 on a big context counts too.
 const OVERFLOW_MIN_TOKENS = 600_000;
 const STALE_HANDOFF_MS = 60 * 60_000; // older = the continue asks for a rewrite
+const FRESH_CTX_DEFAULT_K = 120; // knob `fresh_ctx_k`: fresh session past this many k input tokens
+const FRESH_CTX_MIN_MS = 30 * 60_000; // at most one fresh-context session per window per repo
 const TRANSIENT_STATUS = new Set([408, 425, 429, 500, 502, 503, 504, 529]);
 const TRANSIENT_TEXT = /ECONNRESET|ECONNREFUSED|ETIMEDOUT|EAI_AGAIN|socket hang up|fetch failed|network|overloaded|rate.?limit|too many requests/i;
 // The keeper's own call to the OpenCode server dropped: never a stop (engine 2026-09-27: one
@@ -690,6 +697,51 @@ const makeKeeper = async ({ client, worktree, directory }, options) => {
     return { updated: doc.updated, text: `knobs ${what}: re-read ${here.knobs} now and apply it from this ${cfg.next}; write one "Knobs:" line in the handoff.` };
   };
   const knobValue = (name) => { try { return JSON.parse(read(here.knobs) ?? "null")?.knobs?.[name]?.value ?? null; } catch { return null; } };
+  // Ralph pattern: knob `fresh_ctx_k` (thousands of input tokens, default 120, 0 = off).
+  const freshCtxK = () => {
+    const v = knobValue("fresh_ctx_k");
+    if (v == null || v === "") return FRESH_CTX_DEFAULT_K;
+    const n = Number(v);
+    if (!Number.isFinite(n) || n < 0) return FRESH_CTX_DEFAULT_K;
+    return n;
+  };
+  // Last-turn input tokens of the lead session: the last assistant message's
+  // input count, falling back to its total when the input field is missing.
+  const inputTokensOf = (m) => {
+    const t = m?.info?.tokens;
+    if (!t) return 0;
+    if (Number.isFinite(Number(t.input))) return Number(t.input);
+    return tokensOf(m);
+  };
+  const lastInputTokens = (msgs) => {
+    const last = msgs.filter((m) => m?.info?.role === "assistant").at(-1);
+    return last ? inputTokensOf(last) : 0;
+  };
+  // The last fresh-context renewal, in memory (hot-reload handover) and on disk
+  // (the status file survives a restart), so the 30 min window holds either way.
+  let freshCtxAt = ho.freshCtxAt ?? Date.parse(status.freshCtxAt ?? "") ?? 0;
+  if (!Number.isFinite(freshCtxAt)) freshCtxAt = 0;
+  // Pure check: due when the last turn's input passes fresh_ctx_k*1000 and no
+  // fresh session started inside the window. 0 = off.
+  const freshCtxDue = (msgs) => {
+    const k = freshCtxK();
+    if (!k || k <= 0) return { due: false, why: `fresh_ctx_k=${k ?? 0} (off)` };
+    const input = lastInputTokens(msgs);
+    const threshold = k * 1000;
+    if (!(input > threshold)) return { due: false, why: `${input} <= ${threshold}`, input, threshold, k };
+    if (now() - freshCtxAt < FRESH_CTX_MIN_MS)
+      return { due: false, why: `fresh session ${ago(now() - freshCtxAt)} ago (once per 30m)`, input, threshold, k };
+    return { due: true, why: `last-turn input ${input} > ${threshold} (fresh_ctx_k=${k})`, input, threshold, k };
+  };
+  // Fresh-context renewal: the same path as `new` (retire, then /sprint takeover,
+  // which resumes from the handoff file), instead of the continue.
+  const freshCtxRenew = async (id, input, threshold, k) => {
+    const answer = await renew(id);
+    freshCtxAt = now();
+    write({ freshCtxAt: iso() });
+    log(`${id} fresh context: last-turn input ${input} > ${threshold} (fresh_ctx_k=${k}); ${answer}`);
+    return answer;
+  };
   // Two modes (owner 2026-09-29): free only, or hybrid: with the knob paid_mode at 1 a role that has a -paid twin runs on the Go subscription.
   const paidOf = (role) => (!role || /-paid$/.test(role) || Number(knobValue("paid_mode")) !== 1 || !paidRoles.has(String(role).toLowerCase()) || (paidRoles.get?.(String(role).toLowerCase()) && (mtime(paidRoles.get(String(role).toLowerCase())) ?? 0) > loadedAt) ? role : `${role}-paid`);
   // Knob `dispatch`: "foreground" (the default, owner 2026-09-28) or "queue" (see the queue section).
@@ -920,6 +972,16 @@ const makeKeeper = async ({ client, worktree, directory }, options) => {
       if (!now2.retry && !now2.why && foreground()) {
         const p = batchPlan();
         if (p && !p.list.length && p.held.readiness.length) return plan(id, st, now2);
+      }
+      // Ralph pattern: a stale-fat session resumes from the handoff in a fresh
+      // session instead of continuing it. Only a plain continue is replaced: a
+      // stop, retry or compaction keeps its own path.
+      if (!now2.retry && !now2.compact) {
+        try {
+          const msgs = (await client.session.messages({ path: { id } }))?.data ?? [];
+          const fresh = freshCtxDue(msgs);
+          if (fresh.due) return freshCtxRenew(id, fresh.input, fresh.threshold, fresh.k);
+        } catch { /* a failed read continues as usual */ }
       }
       await send(id, st, now2);
     } catch (e) {
@@ -1970,7 +2032,7 @@ Ready work: ${readyItem.id}. Claim only this item; selectors do not authorize sw
       st.timer = null;
       st.rearm = st.pending ? st.dueAt ?? now() : null;
     }
-    return { state, busy, sprint, live, queueRunning, queueDone, standingRest, standingNoops, adhocRest, adhocSeen, standingRuns, standingLast, capStops, fgJobs, adhocRun, batchMeter, readySeen, readyPending, fixes, calls, fixLast, cmdSeen, loadedAt };
+    return { state, busy, sprint, live, queueRunning, queueDone, standingRest, standingNoops, adhocRest, adhocSeen, standingRuns, standingLast, capStops, fgJobs, adhocRun, batchMeter, readySeen, readyPending, fixes, calls, fixLast, cmdSeen, loadedAt, freshCtxAt };
   };
   const quiet = () => inflight === 0 && ![...state.values()].some((st) => st.busy || st.sending);
 

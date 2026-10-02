@@ -9,7 +9,7 @@ Sample: C:\Users\me\Desktop\design-studio\samples\cover\brief.json
 - [x] render-exists: 1280x720 34186B
 - [x] audit-green: fresh auditBrief PASS
 - [x] contrast-aa: title:16.3, subtitle:7.1, cta:5.2
-- [x] thumbnail-legible: 19.2px at 256px (floor 12px), pixels in thumb-256.png 256x144 — human verdict: title reads at listing size
+- [x] thumbnail-legible: 19.2px at 256px (floor 12px)
 - [x] title-fits: need ~816px, box 1075px
 - [x] tokens-disciplined: all color via var(--*)
 - [x] type-pair: 3 font token(s), page uses type
@@ -18,7 +18,7 @@ Sample: C:\Users\me\Desktop\design-studio\samples\cover\brief.json
 
 ## Verdict
 
-SHIP: 10/10 meets the floor. Thumbnail confirmed by eye in thumb-256.png (256x144); taste still human.
+SHIP: 10/10 meets the floor. A human eye still confirms thumbnail and taste.
 
 ## Taste (human, not scored)
 

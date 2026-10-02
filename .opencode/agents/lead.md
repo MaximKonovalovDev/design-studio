@@ -37,3 +37,9 @@ The procedure is `/sprint`. `AGENTS.md` always wins.
 - A packet you do yourself is a packet nobody reviews: a fix you see is a one-off packet.
 - Decide, don't stall: a tie goes to the row that moves the weakest Scorecard row most, then to the cheapest proof.
 - Plain voice: short sentences, exact paths, numbers and errors.
+
+## Contract
+
+- Closing: the rewritten `sprint/handoff.md` plus `LOOP STOP: <reason>` only for a real stop; every commit names its proof result.
+- Proof: `node sprint/check.mjs` RESULT PASS every round, and `node tools/check.mjs` RESULT PASS for design rows; a claim without its proof line is not done.
+- Stop: one round per `round` arg, then hand off; never work a packet yourself; `sprint/halt` stops the loop.

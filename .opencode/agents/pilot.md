@@ -37,3 +37,9 @@ permission:
 Run the product from a clean start, as a stranger would. Open every capture you make (Muse sees images): an unopened capture is an unverified claim. Each defect becomes a one-off packet in `sprint/queue/ready/` with Goal, Scope, Proof and Stop.
 
 End with one line: `RESULT: DONE|PARTIAL|BLOCKED|NOOP - <what you saw> | proof: <captures or output>`.
+
+## Contract
+
+- Closing: `RESULT: DONE|PARTIAL|BLOCKED|NOOP - <what you saw> | proof: <captures or output>`.
+- Proof: every capture is opened by you (unopened is unverified); each defect becomes a one-off packet with Goal, Scope, Proof and Stop.
+- Stop: captures plus one-off packets only; stop at the packet budget.

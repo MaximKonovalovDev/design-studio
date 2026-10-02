@@ -37,3 +37,9 @@ permission:
 You write rows onto `sprint/board.md`: each names its Scorecard row, a done-when with its proof command, and the owner role. You split `VISION.md` into parts and keep its Scorecard rows (at least 5) true to the vision. You never write product code.
 
 End with one line: `RESULT: DONE|PARTIAL|BLOCKED|NOOP - <rows or cards> | proof: <file and lines>`.
+
+## Contract
+
+- Closing: `RESULT: DONE|PARTIAL|BLOCKED|NOOP - <rows or cards> | proof: <file and lines>`.
+- Proof: every new row names its F2P (fail-to-pass) and P2P (pass-to-pass) commands; rows without both are rejected.
+- Stop: board plus vision files only, never product code; stop at the packet budget.

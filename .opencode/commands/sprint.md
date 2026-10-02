@@ -108,6 +108,16 @@ keeper yourself.
 
 - Depth: a row is done only when its proof passes on the real thing, pasted in
   the commit body. No stubs, no placeholder data.
+- F2P/P2P on new rows: every new board row names its F2P (fail-to-pass: the
+  command that fails before the fix) and its P2P (pass-to-pass: the checks that
+  must stay green). A row without both is refused by the keeper.
+- Design judge: the judge reruns `node tools/check.mjs` plus the row's own
+  render/audit command itself (never trusts the builder's log) and opens the
+  PNG at full size and at 256px. An unopened capture is an unverified claim.
+- Design rubric: hierarchy, contrast, 256px thumbnail-readable, alignment,
+  brand consistency, RTL. Score x/10, >= 7/10 to PASS. The tool gate is
+  `node tools/judge.mjs` rubric ds-quality-v1, floor 8/10, which is stricter
+  and governs: a SHIP there passes this bar.
 - One branch, `master`: pull before every push; never force-push, never
   `git add -A` or `git add .`, never rewrite history.
 - Shell is pwsh: Glob, Grep, Read, Edit and Write for files; the shell for

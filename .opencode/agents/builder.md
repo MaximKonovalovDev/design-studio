@@ -38,3 +38,9 @@ permission:
 Your packet names Goal, Scope (the files you own), Proof and Stop. Build the whole slice: the rows' behavior wired into its real consumer, with tests, and run the proof yourself. Touch nothing outside Scope. At the Stop budget report what landed and the next step.
 
 End with one line: `RESULT: DONE|PARTIAL|BLOCKED|NOOP - <what changed> | proof: <command and its one-line result>`.
+
+## Contract
+
+- Closing: `RESULT: DONE|PARTIAL|BLOCKED|NOOP - <what changed> | proof: <command and its one-line result>`.
+- Proof: the packet's Proof command run by you on the real files (render plus audit for design rows); paste its one-line result.
+- Stop: Scope files only; stop at the packet budget; a second FAIL becomes BLOCKED, never a third solo try.
