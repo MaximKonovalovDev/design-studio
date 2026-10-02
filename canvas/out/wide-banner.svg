@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="628" viewBox="0 0 1200 628">
+<rect x="0" y="0" width="1200" height="628" fill="#faf7f0"/>
+<rect x="0" y="600" width="1200" height="28" fill="#e7e0d3"/>
+<text x="80" y="272" font-size="72" fill="#1a1a1a" font-family="Verdana, sans-serif">WIDE BANNER TITLE</text>
+<text x="80" y="334" font-size="34" fill="#57534e" font-family="Verdana, sans-serif">Social preview keeps the title readable.</text>
+<rect x="80" y="380" width="300" height="76" fill="#c2410c"/>
+<text x="115" y="434" font-size="34" fill="#ffffff" font-family="Verdana, sans-serif">See how</text>
+</svg>

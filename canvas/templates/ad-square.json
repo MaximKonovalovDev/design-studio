@@ -1,0 +1,12 @@
+{
+  "id": "ad-square",
+  "size": { "w": 1080, "h": 1080 },
+  "note": "Konva-compatible scene (stage + one layer of rect/text nodes); load via Konva.Node.create in an editor, export via tools/canvas.mjs.",
+  "layer": [
+    { "type": "rect", "x": 0, "y": 0, "w": 1080, "h": 1080, "fill": "var(--paper)" },
+    { "type": "text", "x": 90, "y": 300, "text": "SQUARE AD TITLE", "fontSize": 84, "fill": "var(--ink)" },
+    { "type": "text", "x": 90, "y": 420, "text": "One line of proof, then the button.", "fontSize": 36, "fill": "var(--muted)" },
+    { "type": "rect", "x": 90, "y": 520, "w": 340, "h": 88, "fill": "var(--accent)" },
+    { "type": "text", "x": 130, "y": 545, "text": "Get the kit", "fontSize": 36, "fill": "var(--on-accent)" }
+  ]
+}

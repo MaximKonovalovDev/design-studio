@@ -1,0 +1,12 @@
+{
+  "id": "capsule",
+  "size": { "w": 616, "h": 353 },
+  "note": "Konva-compatible scene (stage + one layer of rect/text nodes); load via Konva.Node.create in an editor, export via tools/canvas.mjs.",
+  "layer": [
+    { "type": "rect", "x": 0, "y": 0, "w": 616, "h": 353, "fill": "var(--paper)" },
+    { "type": "text", "x": 40, "y": 110, "text": "CAPSULE TITLE", "fontSize": 64, "fill": "var(--ink)" },
+    { "type": "text", "x": 40, "y": 200, "text": "Small slot, same voice.", "fontSize": 30, "fill": "var(--muted)" },
+    { "type": "rect", "x": 40, "y": 250, "w": 200, "h": 56, "fill": "var(--accent)" },
+    { "type": "text", "x": 62, "y": 264, "text": "Open", "fontSize": 30, "fill": "var(--on-accent)" }
+  ]
+}

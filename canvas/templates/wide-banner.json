@@ -1,0 +1,13 @@
+{
+  "id": "wide-banner",
+  "size": { "w": 1200, "h": 628 },
+  "note": "Konva-compatible scene (stage + one layer of rect/text nodes); load via Konva.Node.create in an editor, export via tools/canvas.mjs.",
+  "layer": [
+    { "type": "rect", "x": 0, "y": 0, "w": 1200, "h": 628, "fill": "var(--paper)" },
+    { "type": "rect", "x": 0, "y": 600, "w": 1200, "h": 28, "fill": "var(--line)" },
+    { "type": "text", "x": 80, "y": 200, "text": "WIDE BANNER TITLE", "fontSize": 72, "fill": "var(--ink)" },
+    { "type": "text", "x": 80, "y": 300, "text": "Social preview keeps the title readable.", "fontSize": 34, "fill": "var(--muted)" },
+    { "type": "rect", "x": 80, "y": 380, "w": 300, "h": 76, "fill": "var(--accent)" },
+    { "type": "text", "x": 115, "y": 400, "text": "See how", "fontSize": 34, "fill": "var(--on-accent)" }
+  ]
+}

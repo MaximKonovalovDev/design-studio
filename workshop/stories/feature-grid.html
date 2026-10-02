@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- workshop/stories/feature-grid.html (DS-07): story for registry block feature-grid.
+     Source fragment: templates/blocks/feature-grid.html (pasted below, kept in sync by snapshot). -->
+<!-- width: 1280 -->
+<!-- thumb-256: title>=12px (ws-title 64px at 1280w -> 12.8px at 256w) -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../samples/cover/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1280px; background: var(--paper); color: var(--ink); font-family: var(--font-body); }
+  .ws-title { font-family: var(--font-display); font-size: 64px; line-height: 1.05; color: var(--ink); }
+  .ws-grid { display: flex; gap: 24px; }
+  .ws-cell { border: 2px solid var(--line); padding: 24px; font-size: 28px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div data-story="feature-grid">
+  <h1 class="ws-title">Three features in one row</h1>
+  <div class="ws-grid">
+    <div class="ws-cell">Fast brief to render</div>
+    <div class="ws-cell">Judged every time</div>
+    <div class="ws-cell">Thumbnail readable</div>
+  </div>
+</div>
+</body>
+</html>

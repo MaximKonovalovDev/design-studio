@@ -1,0 +1,13 @@
+{
+  "id": "cover-hero",
+  "size": { "w": 1280, "h": 720 },
+  "note": "Konva-compatible scene (stage + one layer of rect/text nodes); load via Konva.Node.create in an editor, export via tools/canvas.mjs.",
+  "layer": [
+    { "type": "rect", "x": 0, "y": 0, "w": 1280, "h": 720, "fill": "var(--paper)" },
+    { "type": "rect", "x": 0, "y": 0, "w": 1280, "h": 12, "fill": "var(--accent)" },
+    { "type": "text", "x": 100, "y": 220, "text": "COVER TITLE", "fontSize": 96, "fill": "var(--ink)" },
+    { "type": "text", "x": 100, "y": 350, "text": "Brief to rendered, audited pixels.", "fontSize": 34, "fill": "var(--muted)" },
+    { "type": "rect", "x": 100, "y": 440, "w": 320, "h": 72, "fill": "var(--accent)" },
+    { "type": "text", "x": 130, "y": 458, "text": "Render it again", "fontSize": 32, "fill": "var(--on-accent)" }
+  ]
+}

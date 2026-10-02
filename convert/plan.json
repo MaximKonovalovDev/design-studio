@@ -1,0 +1,14 @@
+{
+  "name": "ds-convert-v1",
+  "variants": ["a", "b"],
+  "metric": "cta click-through on .cta within a 5-minute review session",
+  "success": "winner beats control by a named margin with the same audit gates green",
+  "steps": [
+    { "page": "a", "selector": "h1", "action": "read", "expect": "headline states the offer in one line" },
+    { "page": "a", "selector": ".sub", "action": "read", "expect": "subcopy carries one proof point" },
+    { "page": "a", "selector": ".cta", "action": "click", "expect": "one primary action, href present" },
+    { "page": "b", "selector": ".proof", "action": "read", "expect": "proof bar states the measured claim" },
+    { "page": "b", "selector": "h1", "action": "read", "expect": "headline differs from variant A" },
+    { "page": "b", "selector": ".cta", "action": "click", "expect": "one primary action, href present" }
+  ]
+}
