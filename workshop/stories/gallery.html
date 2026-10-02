@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- workshop/stories/gallery.html (DS-07): story for registry block gallery.
+     Source fragment: templates/blocks/gallery.html (pasted below, kept in sync by snapshot). -->
+<!-- width: 1280 -->
+<!-- thumb-256: title>=12px (ws-title 64px at 1280w -> 12.8px at 256w) -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../samples/cover/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1280px; background: var(--paper); color: var(--ink); font-family: var(--font-body); }
+  .ws-title { font-family: var(--font-display); font-size: 64px; line-height: 1.05; color: var(--ink); }
+  .ws-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-block-start: 24px; }
+  .ws-tile { border: 2px solid var(--line); background: var(--paper); padding: 16px; text-align: center; }
+  .ws-art { display: block; height: 96px; background: var(--line); border-block-end: 4px solid var(--accent); }
+  .ws-cap { font-size: 28px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div data-story="gallery">
+  <h1 class="ws-title">Three tiles, one system</h1>
+  <div class="ws-grid">
+    <figure class="ws-tile"><span class="ws-art"></span><figcaption class="ws-cap">Tile one</figcaption></figure>
+    <figure class="ws-tile"><span class="ws-art"></span><figcaption class="ws-cap">Tile two</figcaption></figure>
+    <figure class="ws-tile"><span class="ws-art"></span><figcaption class="ws-cap">Tile three</figcaption></figure>
+  </div>
+</div>
+</body>
+</html>

@@ -47,4 +47,24 @@ describe("workshop", () => {
     const { pass } = checkWorkshop({ root: tmp });
     assert.equal(pass, false, "missing story must FAIL");
   });
+
+  it("fails closed when a thumb-256 claim disagrees with the math (DS-40)", () => {
+    const tmp = mkdtempSync(join(tmpdir(), "ds-workshop-lie-"));
+    cpSync(join(ROOT, "templates"), join(tmp, "templates"), { recursive: true });
+    cpSync(join(ROOT, "workshop"), join(tmp, "workshop"), { recursive: true });
+    const story = join(tmp, "workshop", "stories", "hero.html");
+    const lied = readFileSync(story, "utf8").replace("12.8px at 256w", "18.0px at 256w");
+    writeFileSync(story, lied, "utf8");
+    writeFileSync(join(tmp, "workshop", "snapshots", "hero.txt"), normalizeStory(lied), "utf8");
+    const { pass, results } = checkWorkshop({ root: tmp });
+    assert.equal(pass, false, "lying thumb claim must FAIL");
+    assert.ok(results.some((r) => !r.pass && r.name === "story hero thumb claim matches math"), "names the claim mismatch");
+  });
+
+  it("every story thumb-256 claim matches its computed 256px size (DS-40)", () => {
+    const { results } = checkWorkshop();
+    const claims = results.filter((r) => r.name.endsWith("thumb claim matches math"));
+    assert.ok(claims.length >= 10, `expected 10 claim gates, got ${claims.length}`);
+    assert.ok(claims.every((r) => r.pass), "every story claim agrees with the math");
+  });
 });

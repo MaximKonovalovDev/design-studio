@@ -65,6 +65,19 @@ export function checkWorkshop({ root = ROOT } = {}) {
       ok(`story ${id} title legible at 256px`, scaled >= 12, `${size[1]}px at ${w[1]}w -> ${scaled.toFixed(1)}px at 256w (floor 12px)`);
     }
     ok(`story ${id} declares thumb expectation`, /<!--\s*thumb-256:/.test(html), "thumb-256 comment");
+    // DS-40 (THUMB-03 close): the thumb-256 claim must agree with the math. A
+    // story that declares the comment while citing a wrong scaled size would
+    // pass every gate above, so cross-check claim vs computation (±0.15px).
+    const claim = html.match(/thumb-256:[\s\S]*?(\d+(?:\.\d+)?)px\s+at\s+256w/);
+    if (!w || !size) {
+      ok(`story ${id} thumb claim matches math`, false, "needs width + .ws-title size first");
+    } else if (!claim) {
+      ok(`story ${id} thumb claim matches math`, false, "no '<n>px at 256w' figure in thumb-256 comment");
+    } else {
+      const scaled = (Number(size[1]) * 256) / Number(w[1]);
+      const delta = Math.abs(Number(claim[1]) - scaled);
+      ok(`story ${id} thumb claim matches math`, delta <= 0.15, `claimed ${claim[1]}px vs computed ${scaled.toFixed(1)}px at 256w`);
+    }
     const snap = join(snaps, `${id}.txt`);
     if (!existsSync(snap)) {
       ok(`snapshot ${id} pinned`, false, `${id}.txt missing (run --write after review)`);

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- workshop/stories/stats.html (DS-07): story for registry block stats.
+     Source fragment: templates/blocks/stats.html (pasted below, kept in sync by snapshot). -->
+<!-- width: 1280 -->
+<!-- thumb-256: title>=12px (ws-title 64px at 1280w -> 12.8px at 256w) -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../samples/cover/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1280px; background: var(--paper); color: var(--ink); font-family: var(--font-body); text-align: center; }
+  .ws-title { font-family: var(--font-display); font-size: 64px; line-height: 1.05; color: var(--ink); }
+  .ws-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-block-start: 24px; }
+  .ws-stat { border-block-start: 6px solid var(--accent); background: var(--paper); padding: 24px; }
+  .ws-num { font-size: 48px; color: var(--ink); font-weight: bold; }
+  .ws-lab { font-size: 28px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div data-story="stats">
+  <h1 class="ws-title">Numbers that carry the brief</h1>
+  <div class="ws-row">
+    <div class="ws-stat"><p class="ws-num">10 blocks</p><p class="ws-lab">in the registry</p></div>
+    <div class="ws-stat"><p class="ws-num">256 px</p><p class="ws-lab">legibility floor</p></div>
+    <div class="ws-stat"><p class="ws-num">1 pass</p><p class="ws-lab">workshop gate</p></div>
+  </div>
+</div>
+</body>
+</html>
