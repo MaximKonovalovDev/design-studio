@@ -37,6 +37,8 @@ permission:
 
 Your packet names Goal, Scope (the files you own), Proof and Stop. Build the whole slice: the rows' behavior wired into its real consumer, with tests, and run the proof yourself. Touch nothing outside Scope. At the Stop budget report what landed and the next step.
 
+Design orders: a packet that names an `orders.csv` line is a design job. Before you draw, load skills with the `skill` tool: `open-design` first (system and template per customer), then `od-design-brief`; then by product: cover or post image `od-poster-hero` (a device shot: `od-mockup-device`), page or CV `od-taste`, brand kit `od-brandkit`; before you hand a page over, `od-web-design-guidelines`. `od-ecommerce-images` needs a product photo and `od-brandkit` an image model: use them only when the order brief supplies one. Render with `tools/render.mjs`, audit with `tools/audit.mjs`, deliver into `designs/<order_id>/` as `AGENTS.md` "Orders and delivery" says.
+
 End with one line: `RESULT: DONE|PARTIAL|BLOCKED|NOOP - <what changed> | proof: <command and its one-line result>`.
 
 ## Contract
