@@ -7,6 +7,7 @@ temperature: 0.3
 options:
   reasoningEffort: xhigh
 permission:
+  "web-search_*": allow
   task: deny
   question: deny
   doom_loop: allow
