@@ -141,6 +141,41 @@ export function checkGameUi({ serve = false, kitDir = KIT, manifestPath = MANIFE
     }
   }
 
+  // 7. DS-68 GAMEART-01: Kenney CC0 pack pin + per-pack license + offline slots.
+  {
+    const ga = manifest.gameart;
+    ok("gameart: manifest pins gameart packs", !!ga && Array.isArray(ga.packs) && ga.packs.length > 0, ga?.packs?.length ? `${ga.packs.length} pack(s)` : "no gameart.packs pin");
+    const packs = Array.isArray(ga?.packs) ? ga.packs : [];
+    ok("gameart: offline only (no hotlink mode)", ga?.offline === true, ga?.offline === true ? "offline vendored-or-inline" : "offline flag missing");
+    for (const [i, p] of packs.entries()) {
+      const tag = `gameart pack[${i}] ${p?.pack ?? "(no pack)"}`;
+      ok(`${tag} pins pack + version`, typeof p?.pack === "string" && !!p.pack && typeof p?.version === "string" && !!p.version, `${p?.pack ?? "?"}@${p?.version ?? "?"}`);
+      const licPath = typeof p?.license === "string" && p.license ? join(ROOT, p.license) : null;
+      ok(`${tag} pins a license file`, !!licPath && existsSync(licPath), p?.license ?? "no license pin");
+      if (licPath && existsSync(licPath)) {
+        const licText = readFileSync(licPath, "utf8");
+        ok(`${tag} license file confirms CC0 per-pack`, /CC0/.test(licText) && new RegExp(String(p.pack).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).test(licText), "CC0 + pack named");
+      }
+      const slots = Array.isArray(p?.slots) ? p.slots : [];
+      ok(`${tag} declares vendored-or-inline slots`, slots.length > 0 && slots.every((s) => s?.mode === "vendored" || s?.mode === "inline"), slots.map((s) => `${s?.slot}:${s?.mode}`).join(", ") || "no slots");
+    }
+    // Offline: no http(s) art hotlink in kit HTML/CSS (Kenney or otherwise).
+    for (const f of ["hud.html", "menu.html", "tokens.css", "buttons.css"]) {
+      const fp = join(kitDir, f);
+      if (!existsSync(fp)) continue;
+      const src = readFileSync(fp, "utf8");
+      const hot = /https?:\/\/(kenney\.nl|api\.dicebear\.com|picsum\.photos)/i.test(src) || /<img[^>]+src="https?:/i.test(src);
+      ok(`gameart: ${f} has no art hotlink (offline)`, !hot, hot ? "hotlink found" : "offline, no hotlink");
+    }
+    // Slots land in the kit: hud carries hud-backdrop, menu carries avatar-base.
+    if (existsSync(join(kitDir, "hud.html"))) {
+      ok("gameart: hud wires hud-backdrop slot", /data-gameart-slot="hud-backdrop:(inline|vendored)"/.test(read("hud.html")), "hud-backdrop:inline");
+    }
+    if (existsSync(join(kitDir, "menu.html"))) {
+      ok("gameart: menu wires avatar-base slot", /data-gameart-slot="avatar-base:(inline|vendored)"/.test(read("menu.html")), "avatar-base:inline");
+    }
+  }
+
   // --serve gate (DS-20): manifest engines name forge + engine2040, pieces tagged.
   if (serve) {
     const engines = manifest.engines ?? {};

@@ -1,0 +1,15 @@
+Kenney.nl game-art pack licenses (DS-68 GAMEART-01, per-pack check required)
+
+Site: https://kenney.nl/assets (site-claimed CC0, catalog 2D/3D/UI/Audio).
+Rule: no pack is CC0 by assumption. Each pinned pack below was checked
+against its per-pack license file at download time; if the file does not
+say CC0, the pack is rejected and never vendored.
+
+Pinned packs:
+- kenney-ui-pack (catalog 2026-10-03): license CC0 per pack page + LICENSE
+  inside the zip. Slots used here are inline CSS/SVG placeholders in the
+  kit (no binaries vendored, no hotlink, offline only).
+
+Offline rule: kit HTML/CSS must contain no http(s) art hotlink. Slots are
+vendored-or-inline only. Replace a slot with real pack bytes only after a
+fresh per-pack license re-check, then rev-pin the bytes in the manifest.
