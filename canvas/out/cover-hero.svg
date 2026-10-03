@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
-<rect x="0" y="0" width="1280" height="720" fill="#faf7f0"/>
-<rect x="0" y="0" width="1280" height="12" fill="#c2410c"/>
-<text x="100" y="316" font-size="96" fill="#1a1a1a" font-family="Verdana, sans-serif">COVER TITLE</text>
-<text x="100" y="384" font-size="34" fill="#57534e" font-family="Verdana, sans-serif">Brief to rendered, audited pixels.</text>
-<rect x="100" y="440" width="320" height="72" fill="#c2410c"/>
-<text x="130" y="490" font-size="32" fill="#ffffff" font-family="Verdana, sans-serif">Render it again</text>
-</svg>

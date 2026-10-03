@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
-<rect x="0" y="0" width="1080" height="1920" fill="#faf7f0"/>
-<rect x="0" y="0" width="1080" height="16" fill="#c2410c"/>
-<text x="90" y="772" font-size="72" fill="#1a1a1a" font-family="Verdana, sans-serif">STORY TITLE</text>
-<text x="90" y="848" font-size="38" fill="#57534e" font-family="Verdana, sans-serif">Swipe for the three steps.</text>
-<rect x="90" y="920" width="360" height="96" fill="#c2410c"/>
-<text x="140" y="986" font-size="38" fill="#ffffff" font-family="Verdana, sans-serif">Start here</text>
-</svg>
