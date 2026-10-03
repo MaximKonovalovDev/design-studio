@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- packs/vol0/pack.html (DS-47 MONEY-01 Vol 0 free magnet): one sellable pack
+     page composing all 10 registry blocks (hero, feature-grid, pricing, cta,
+     testimonial, faq, stats, gallery, newsletter, footer). Single-source
+     sections mirror templates/blocks/*.html; color/type only via var(--*). -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1280px; background: var(--paper); color: var(--ink); font-family: var(--font-body); }
+  .wrap { width: 1152px; margin: 0 auto; padding: 56px 0 72px; }
+  .kicker { font-size: 28px; letter-spacing: 10px; color: var(--accent); margin-block-end: 22px; text-align: center; }
+  h1 { font-family: var(--font-display); font-size: 78px; line-height: 1.05; text-align: center; margin-block-end: 20px; }
+  .sub { font-size: 34px; color: var(--muted); text-align: center; margin-block-end: 40px; }
+  .cta { display: block; width: fit-content; margin: 0 auto 56px; font-size: 32px; font-weight: bold; color: var(--on-accent); background: var(--accent); padding: 20px 64px; border-radius: 12px; text-decoration: none; }
+  section.block { border-block-start: 2px solid var(--line); padding: 40px 24px; text-align: center; }
+  section.block h2 { font-family: var(--font-display); font-size: 44px; margin-block-end: 12px; }
+  section.block p { font-size: 26px; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-block-start: 24px; }
+  .grid div { border: 2px solid var(--line); border-radius: 12px; padding: 24px; font-size: 24px; color: var(--muted); }
+  .grid strong { display: block; font-size: 34px; color: var(--ink); }
+  footer.block { border-block-start: 6px solid var(--accent); padding: 32px 24px; text-align: center; font-size: 24px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">TEMPLATE PACK VOL 0 — FREE MAGNET</div>
+  <h1>Ship the landing tonight</h1>
+  <p class="sub">10 judged blocks. One pack. Zero hardcoded colors.</p>
+  <a class="cta" href="#get">Get Vol 0 free</a>
+  <section class="block"><h2>Hero</h2><p>Ship the cover — one prompt, one render, one audit.</p></section>
+  <section class="block"><h2>Feature grid</h2><div class="grid"><div><strong>10</strong>blocks</div><div><strong>4</strong>templates</div><div><strong>0</strong>hardcoded hex</div></div></section>
+  <section class="block"><h2>Pricing</h2><p>Vol 0 free. Vol 1–3 paid bundle after 3 checkouts.</p></section>
+  <section class="block"><h2>Testimonial</h2><p>Judged 10/10 before it ships.</p></section>
+  <section class="block"><h2>FAQ</h2><p>Tokens via var(--*). Remix from 4 templates.</p></section>
+  <section class="block"><h2>Stats</h2><div class="grid"><div><strong>256px</strong>thumb legible</div><div><strong>1080</strong>square ready</div><div><strong>1280</strong>hero ready</div></div></section>
+  <section class="block"><h2>Gallery</h2><p>Cover, ad-square, story, capsule.</p></section>
+  <section class="block"><h2>Newsletter</h2><p>Get the next volume first.</p></section>
+  <section class="block"><h2>Call to action</h2><p><a class="cta" href="#get" id="get">Get Vol 0 free</a></p></section>
+  <footer class="block">design-studio pack Vol 0 — free magnet for factory checkout</footer>
+</div>
+</body>
+</html>
