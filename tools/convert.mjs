@@ -91,6 +91,39 @@ export function checkConvert({ root = ROOT } = {}) {
   const covered = new Set(steps.map((s) => s?.page));
   ok("plan covers both variants", covered.has("a") && covered.has("b"), [...covered].join(",") || "none");
 
+  // LAND-03 factory live-page receipt: plan.live = {sample} names the
+  // factory pilot page; its receipt.json must carry url+date+rev with rev
+  // pinning the live out.png sha256 (same pin rule as checkReceipt, so a
+  // stale publish fails closed instead of shipping silently).
+  const live = plan.live;
+  if (live == null) {
+    ok("live page receipt declared", false, "plan.live missing — next: point plan.live.sample at the factory pilot page + receipt.json");
+  } else {
+    const liveDir = join(root, live.sample ?? "");
+    const liveFile = join(liveDir, "receipt.json");
+    let lr = null;
+    try {
+      lr = JSON.parse(readFileSync(liveFile, "utf8"));
+      ok("live page receipt parses", true, live.sample);
+    } catch (e) {
+      ok("live page receipt parses", false, `${live.sample ?? liveDir}/receipt.json unreadable — next: publish the factory pilot page then re-run`);
+    }
+    if (lr) {
+      const urlOk = typeof lr.url === "string" && /^https?:\/\/\S+/.test(lr.url);
+      const dateOk = typeof lr.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(lr.date) && !Number.isNaN(Date.parse(lr.date));
+      ok("live page receipt url+date", urlOk && dateOk, urlOk && dateOk ? `${lr.url} ${lr.date}` : "receipt needs url http(s) + date YYYY-MM-DD — next: publish then re-run");
+      const rev = String(lr.rev ?? "").trim();
+      const img = join(liveDir, "out.png");
+      if (rev.length >= 7 && existsSync(img)) {
+        const hash = createHash("sha256").update(readFileSync(img)).digest("hex");
+        const pinned = hash.startsWith(rev) || rev === hash;
+        ok("live page receipt rev pinned", pinned, pinned ? `${lr.url} ${hash.slice(0, 12)}` : `rev mismatch out.png sha256:${hash.slice(0, 12)} — next: publish then re-run`);
+      } else {
+        ok("live page receipt rev pinned", false, "rev must be a >=7-char out.png sha256 prefix — next: publish then re-run");
+      }
+    }
+  }
+
   return { pass: results.every((r) => r.pass), results };
 }
 
