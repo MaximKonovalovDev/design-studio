@@ -1,22 +1,27 @@
-# design-studio handoff - round 41 (token e5b2)
+# design-studio handoff - round 42 (token e5b2)
 
-Round: 41
-Written: 2026-10-03T14:31Z by lead (token e5b2, took over c7a1 left by closed app)
+Round: 42
+Written: 2026-10-03T21:08Z by lead (token e5b2, refreshed 20:39Z; halt cleared, GO from popper)
 
 ## Heading
-- No Scorecard movement: 6 rows at 100%, Landing HOLD 0% on OWNER DS-70. Batch of 4 all NOOP (fixes verified already green in HEAD). Nothing to commit.
+- D1 NOT moved: finish.mjs 0 of 5 bars (D1 0 matching lines, want 1; D5 0 of 22 listings adopted). O-001 built SHIP 10/10 but unjudged, so no commit and no adoption yet. Why not: judge chain pending, then lead commit + factory adoption.
 
 ## Done
-- 046 NOOP: README already names 11 samples (lines 19-21, core 6 + cover-b + ads/ad-1,2,3,hero). Landed 5ed9c7e, judged 064.
-- 047 NOOP: default suite already 11 samples (tools/check.mjs line 116). RESULT PASS 11 renders + thumbs + audits.
-- 048 NOOP: --help prints one-line usage, exit 0, no render. Siblings match.
-- Planner NOOP: 14 READY rows F2P/P2P OK, DS-54 TOP stays (decompose DS-55..61 done, builder pending).
-- Checks: sprint/check RESULT PASS 20/0/0; vision-check RESULT PASS 6/0; tools/check RESULT PASS 11 samples.
+- Donor scout DONE: 2 D2 steals (heroicons MIT -> kits/game-ui, html5-boilerplate MIT -> templates/pages/cover.html) + S02 Last read 2026-10-03.
+- Steal scout DONE: 2 D1 steals (tabler-icons MIT -> tools/canvas.mjs, sharp Apache-2.0 -> tools/thumb.mjs). steals.md holds 4 open lines, 0 landed.
+- Builder DS-73 PARTIAL: designs/O-001/ 9 files both sizes; lead re-verified AUDIT PASS + SHIP 10/10. Held for judge, not committed.
+- Builder DS-71 DONE: orders.csv O-008..O-011 delivered + 4 HANDOFF INBOX ASK lines; ORDERS PASS 18 (14 open 4 delivered). Held for judge + lead file.
+- Pilot DONE: packets 049 tracked out.* files + 050 cover-b size note (ready queue). Runner DONE: checks.md.
+- No judged PASS in batch: zero commits of helper work. S68 item 3 already has its packet (049).
+
+## Board and inbox
+- DS-73 + DS-71 TOP/READY -> DOING (built, awaiting judge). New READY: DS-74 audit SKIP+pixel (S68-1), DS-75 rival measure (S68-2), DS-76 factory delivery gated on DS-73 judge (S83). Next free ID DS-77.
+- Inbox 5 open -> Done, each ticked (S50/S80/S90 -> DS-72/73; S68 -> DS-74/75 + 049; S83 -> DS-76).
 
 ## Blockers and notes
-- DS-70 OWNER: non-local factory URL receipt (only the owner can approve deploy). Loop otherwise green.
-- sprint/halt present (Loop Boss 2026-10-03T14:24Z: finish round, write handoff, stop). Stopping. Halt NOT removed.
-- Left uncommitted (not mine, not touched): keeper/cmd json, queue checks/batch, 3 research cards, notes dirs, done/ packets.
+- DS-70 OWNER (non-local factory URL) still stands; DS-76 is the delivery path once judged.
+- Standing seats 7: donor seat retired upstream (HEAD = disk = center seeds). Transient staged-index noise from center sync left untouched; my commit carries only my 4 paths.
+- Checks: sprint/check 20/0/0; vision-check PASS; tools/check 11 renders; orders-check ORDERS PASS.
 
 ## Next
-- On resume: builder DS-55 part-score + DS-62 slot-manifest; steal S02; planner merge; commit any judged PASS by path with proof line.
+- Keeper chains judges for O-001 + DS-71, then lead commits by path + O-001 delivered flag + factory inbox item. Builders land D1/D2 steals and DS-74/75/76.
