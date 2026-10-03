@@ -137,6 +137,21 @@ export function auditBrief(briefPath) {
       const rev = html.match(/flex-direction\s*:\s*(row-reverse|column-reverse)/i);
       const intent = /data-dir-intent\s*=\s*["']?reverse/i.test(html) || brief.allowReverse === true;
       check("no row-reverse without intent", !rev || intent, rev ? (intent ? "reverse intent declared" : `${rev[1]} without intent \u2014 next: add data-dir-intent="reverse" or keep logical order`) : "no reverse flex");
+      // RTL-02 mixed-dir mirror check: a page mixing rtl flow with latin/ltr
+      // segments must not leave unmirrored physical remnants the logical
+      // gate cannot see (background-position left/right, clear left/right,
+      // translateX shifts). Warn-first FAIL with the mirror fix, never silent.
+      const bodyText = html
+        .replace(/<!--[\s\S]*?-->/g, " ")
+        .replace(/<style>[\s\S]*?<\/style>/gi, " ")
+        .replace(/<[^>]+>/g, " ");
+      const mixedDir = /[A-Za-z]{3,}/.test(bodyText) || /<[^>]*\bdir\s*=\s*"ltr"/i.test(html);
+      const remnant = html.match(/background-position\s*:[^;]*\b(left|right)\b|clear\s*:\s*(left|right)\b|translateX\s*\(/i);
+      check(
+        "rtl: mixed-dir mirror",
+        !mixedDir || !remnant,
+        mixedDir ? (remnant ? `unmirrored ${remnant[0].trim().slice(0, 44)} — next: mirror it (position right, clear inline-end, drop translateX)` : "mixed-dir content mirrored") : "single-dir page, mirror skipped",
+      );
     } else if (wantDir === "ltr") {
       check("ltr: html dir matches brief", !m || m[1].toLowerCase() === "ltr", !m ? "no dir, ltr default" : (m[1].toLowerCase() === "ltr" ? `dir=${m[1]}` : `dir=${m[1]} \u2014 next: set <html dir="ltr" or brief dir="rtl"`));
     } else {
@@ -385,6 +400,17 @@ export function rtlSelfCheck() {
     const mismatch = rtlPage("<p>שלום</p>", 'lang="he" dir="ltr"');
     const { errors } = auditBrief(mkRtl(mismatch));
     t("rtl token mismatch (brief rtl, html ltr) fails the token gate", errors.some((e) => e.includes("direction token matches html dir")), errors.slice(0, 2).join("; ") || "no errors?");
+  }
+  // RTL-02 mixed-dir mirror: latin/ltr segment + translateX remnant fails
+  // the mirror gate; the mirrored twin passes. 0 weakens by construction.
+  {
+    const bad = rtlPage('<p>שלום</p><p dir="ltr">Starter plan $9/mo</p>').replace(".hero{", ".hero{transform:translateX(-8px);");
+    const { errors } = auditBrief(mkRtl(bad));
+    t("mixed-dir translateX remnant fails the mirror gate", errors.some((e) => e.includes("rtl: mixed-dir mirror")), errors.slice(0, 2).join("; ") || "no errors?");
+  }
+  {
+    const { pass, errors } = auditBrief(mkRtl(rtlPage('<p>שלום</p><p dir="ltr">Starter plan $9/mo</p>')));
+    t("mixed-dir mirrored page passes the mirror gate", pass, pass ? "latin segment, no remnants" : errors.slice(0, 2).join("; "));
   }
 
   // 6. Every Hebrew sample on disk passes the full audit.

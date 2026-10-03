@@ -118,7 +118,7 @@ describe("rtl gate (DS-16: dir + logical + Hebrew type)", () => {
 
   it("good rtl passes all three rtl gates", () => {
     const r = auditBrief(mkRtl());
-    assert.equal(rtlNames(r), "rtl: html dir=rtl=1,rtl: logical properties only=1,rtl: Hebrew type pair=1");
+    assert.equal(rtlNames(r), "rtl: html dir=rtl=1,rtl: logical properties only=1,rtl: Hebrew type pair=1,rtl: mixed-dir mirror=1");
     assert.equal(r.pass, true);
   });
 
@@ -142,5 +142,53 @@ describe("rtl gate (DS-16: dir + logical + Hebrew type)", () => {
   it("--rtl --check self-test passes on disk", () => {
     const { pass, results } = rtlSelfCheck();
     assert.equal(pass, true, results.filter((r) => !r.pass).map((r) => r.name).join("; "));
+  });
+});
+
+describe("mixed-dir mirror gate (RTL-02)", () => {
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+  const KIT =
+    ":root{--paper:#faf7f0;--ink:#1a1a1a;--muted:#57534e;--accent:#c2410c;--on-accent:#ffffff;--line:#e7e0d3;" +
+    '--font-hebrew:"Heebo", "Assistant", Arial, sans-serif;}';
+  const mkMixed = ({ remnant = "" } = {}) => {
+    const d = dir();
+    writeFileSync(
+      join(d, "brief.json"),
+      JSON.stringify({
+        title: "עיצוב שמנצח",
+        size: { w: 1280, h: 720 },
+        dir: "rtl",
+        tokens: "tokens.css",
+        page: "page.html",
+        image: "out.png",
+        text: [{ label: "t", fg: "var(--ink)", bg: "var(--paper)", min: 4.5 }],
+        title_box: [0, 0, 1, 1],
+        title_px: 96,
+      }),
+    );
+    writeFileSync(join(d, "tokens.css"), KIT);
+    writeFileSync(
+      join(d, "page.html"),
+      `<!DOCTYPE html><html lang="he" dir="rtl"><head><link rel="stylesheet" href="tokens.css">` +
+        `<style>body{width:1280px;height:720px;background:var(--paper);color:var(--ink);font-family:var(--font-hebrew);}${remnant}</style></head>` +
+        `<body><h1>עיצוב שמנצח</h1><p dir="ltr">Starter plan $9/mo</p></body></html>`,
+    );
+    copyFileSync(join(ROOT, "samples", "hebrew-hero", "out.png"), join(d, "out.png"));
+    return join(d, "brief.json");
+  };
+
+  it("mixed-dir translateX remnant fails the mirror gate", () => {
+    const r = auditBrief(mkMixed({ remnant: ".x{transform:translateX(-8px);}" }));
+    assert.ok(r.errors.some((e) => e.includes("rtl: mixed-dir mirror")), r.errors.join("; "));
+  });
+
+  it("mixed-dir clear:left remnant fails the mirror gate", () => {
+    const r = auditBrief(mkMixed({ remnant: ".x{clear:left;}" }));
+    assert.ok(r.errors.some((e) => e.includes("rtl: mixed-dir mirror")), r.errors.join("; "));
+  });
+
+  it("mirrored mixed-dir page passes the mirror gate", () => {
+    const r = auditBrief(mkMixed());
+    assert.equal(r.pass, true, r.errors.join("; "));
   });
 });
