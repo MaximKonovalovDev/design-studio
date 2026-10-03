@@ -4,6 +4,7 @@
   "metric": "cta click-through on .cta within a 5-minute review session",
   "success": "winner beats control by a named margin with the same audit gates green",
   "live": { "sample": "samples/cover-b" },
+  "beacon": { "endpoint": "/api/beacon", "payload": ["url", "rev"], "verify": "poll-until-live", "source": "plausible AGPL idea-only (no copy, offline verify, no network in --check)" },
   "steps": [
     { "page": "a", "selector": "h1", "action": "read", "expect": "headline states the offer in one line" },
     { "page": "a", "selector": ".sub", "action": "read", "expect": "subcopy carries one proof point" },

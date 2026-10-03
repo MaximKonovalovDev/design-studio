@@ -124,6 +124,31 @@ export function checkConvert({ root = ROOT } = {}) {
     }
   }
 
+  // LAND-03b beacon verification user of DS-43 (DS-69): beacon snippet POSTs
+  // {url,rev} + verify poll marks live. Reuses the DS-24 rev pin, offline and
+  // fail-closed, no network in --check (plausible AGPL idea-only, no copy).
+  const beacon = plan.beacon;
+  if (beacon == null) {
+    ok("beacon verification declared", false, "plan.beacon missing — next: add endpoint + payload [url, rev] + verify poll-until-live");
+  } else {
+    const ep = String(beacon.endpoint ?? "");
+    ok("beacon: endpoint is a relative path (offline)", ep.startsWith("/") && !/^https?:\/\//i.test(ep), ep || "no endpoint");
+    const payload = Array.isArray(beacon.payload) ? beacon.payload : [];
+    ok("beacon: payload posts {url,rev}", payload.includes("url") && payload.includes("rev"), payload.join(",") || "no payload");
+    ok("beacon: verify poll marks live", String(beacon.verify ?? "") === "poll-until-live", beacon.verify ?? "no verify mode");
+    // Reuse the live rev pin: beacon {url,rev} must match the live receipt.
+    try {
+      const liveDir2 = join(root, plan.live?.sample ?? "");
+      const lr2 = JSON.parse(readFileSync(join(liveDir2, "receipt.json"), "utf8"));
+      const pinOk = typeof lr2.url === "string" && typeof lr2.rev === "string" && lr2.rev.length >= 7;
+      ok("beacon: live receipt carries url+rev to post", pinOk, pinOk ? `${lr2.url} rev ${String(lr2.rev).slice(0, 12)}` : "live receipt unpinned");
+    } catch {
+      ok("beacon: live receipt carries url+rev to post", false, "live receipt unreadable — publish first");
+    }
+    const net = /fetch\s*\(\s*["']https?:/i.test(readFileSync(convertPaths(root).a, "utf8") + readFileSync(convertPaths(root).b, "utf8"));
+    ok("beacon: offline in --check (no network post)", !net, net ? "external post in variant" : "verify is file-pin only, no network");
+  }
+
   return { pass: results.every((r) => r.pass), results };
 }
 
