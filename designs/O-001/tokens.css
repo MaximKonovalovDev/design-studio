@@ -1,0 +1,17 @@
+/* designs/O-001/tokens.css — O-001 BookForge Pro Gumroad cover, publication/editorial pick. Light paper, ink text, publication red accent. All page color via these vars. */
+:root {
+  --paper: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --accent: #c1121f;
+  --on-accent: #ffffff;
+  --line: #e2e8f0;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: "Segoe UI", Verdana, Arial, sans-serif;
+  --font-hebrew: "Heebo", "Assistant", "Noto Sans Hebrew", "Segoe UI", Arial, sans-serif;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 64px;
+}
