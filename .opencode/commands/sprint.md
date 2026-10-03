@@ -20,14 +20,14 @@ the vision is the first work: the planner and the vision researcher fill it.
 
 ## 2. Your crew, in batches you send
 
-Standing seats in `sprint/queue/standing/` (seeds: `center/crews/design-studio/`):
+Standing seats in `sprint/queue/standing/` (seeds: `C:/Users/me/Desktop/center/crews/design-studio/`):
 builders on the board rows (`chain: start`), the planner (rows from the vision
 and its gaps), the research merge (judges every card), the vision researcher
 (Scorecard, Parts, gaps), the steal researcher (the Steal map, oldest first),
 the pilot (uses the product the way its user would, with captures) and the
 runner (the fast check sweep). Each run claims its rows in
-`sprint/queue/claims.txt` and takes a whole slice (up to 5 rows), never a mini
-task.
+`sprint/queue/claims.txt` (append; create it if missing) and takes a whole
+slice (up to 5 rows), never a mini task.
 
 **The batch.** Every keeper continue and GO names the next batch; it is also in
 `sprint/queue/batch.md`: ready one-offs and chain steps first, then the seats
@@ -59,7 +59,7 @@ for a build) and Goal, Scope, Proof and Stop lines, or the keeper refuses it.
    files, not memory, carry the loop. Turn every open inbox item into a board
    row and tick it with the row ID.
 2. `sprint/halt` exists: write `LOOP STOP: halt file` and stop. Never remove it.
-3. Lock `sprint/lock.txt`: one line `lead#<4 hex> since <UTC>`; the same token
+3. Lock `sprint/lock.txt` (a missing file means free: create it): one line `lead#<4 hex> since <UTC>`; the same token
    all session, also in the handoff's first line. Another fresh token: stop,
    unless `takeover`. Times from `Get-Date -AsUTC -Format "yyyy-MM-ddTHH:mmZ"`.
 4. `node sprint/check.mjs`: a FAIL is this round's first packet.
@@ -78,7 +78,7 @@ for a build) and Goal, Scope, Proof and Stop lines, or the keeper refuses it.
    or strike it with a reason (the vision check FAILs after a day).
 3. **Crew.** Keep the seats true to the board: rewrite a seat that returned
    NOOP three runs in a row or whose area ran dry; copy a good rewrite into
-   `center/crews/design-studio/`.
+   `C:/Users/me/Desktop/center/crews/design-studio/`.
 4. **Checks.** A failing check the keeper names is this round's first one-off;
    name in the handoff which packet clears which.
 5. **Handoff.** Rewrite `sprint/handoff.md` (under 60 lines): first line
@@ -87,8 +87,10 @@ for a build) and Goal, Scope, Proof and Stop lines, or the keeper refuses it.
    next. Refresh the lock. `git pull --no-rebase --no-edit origin master`,
    then `git push origin HEAD:master`. Start the next round in the same turn.
 
-**Every 5 rounds, the retro:** `node C:/Users/me/Desktop/center/empire.mjs
-metrics design-studio`; name the worst repeated failure with its number and write one
+**Every 5 rounds, the retro (never in other rounds):** read
+`sprint/queue/checks.md` and the keeper log; run `node C:/Users/me/Desktop/center/empire.mjs
+metrics design-studio` only once, the shell kills it at 2 minutes. Name the worst
+repeated failure with its number and write one
 `PROPOSAL: <file> | <change> | <number now>` handoff line. Center applies at
 most one setup change per repo a day; never change this file, the agents or the
 keeper yourself.

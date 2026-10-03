@@ -8,10 +8,10 @@ description: The factory's design engine. Which Open Design design system, templ
 The owner: "design weak af", "make products like open design and use it".
 Open Design (github.com/nexu-io/open-design, Apache-2.0, 98k stars) is the
 open-source Claude Design: 154 design systems, 115 rendering templates and
-165 skills. The factory uses it as its design engine. Local donor copy,
-read-only and gitignored:
+165 skills. The design engine here. Local donor copy, read-only and gitignored:
 `research/donors/open-design/` (skills, design-systems, design-templates).
-Missing? Recreate it with
+It is NOT cloned by default (the folder `research/donors/` does not exist):
+do not read it before you clone it. To recreate it use
 `git clone --depth 1 --filter=blob:none --sparse https://github.com/nexu-io/open-design.git research/donors/open-design`
 then `git -C research/donors/open-design sparse-checkout set skills design-systems design-templates`.
 
@@ -28,10 +28,10 @@ then `git -C research/donors/open-design sparse-checkout set skills design-syste
    `od-taste` and `od-web-design-guidelines`, a new brand with `od-brandkit`.
    Decks and documents: a template in `research/donors/open-design/design-templates/`.
    Turn the HTML into pixels on this PC with
-   `python engine/render_html.py <page.html> <out.png> --size WxH --thumb`
-   (Edge headless, no install), then open both PNGs with the Read tool.
-4. **Audit:** `python engine/design_audit.py` and the art-director's review
-   before the judge. The judge FAILs Preview under 7.
+   `node tools/render.mjs <page.html> <out.png> --size WxH`
+   (Edge headless, no install), then open the PNG with the Read tool.
+4. **Audit:** `node tools/audit.mjs samples/<name>/brief.json`, then
+   `node tools/judge.mjs`. The judge FAILs Preview under 7.
 
 ## Family picks
 
@@ -56,10 +56,3 @@ then `git -C research/donors/open-design sparse-checkout set skills design-syste
   trademark or look-alike branding.
 - A shipped product credits Open Design only where it ships Open Design code
   or templates (Apache-2.0 NOTICE); styles learned from a DESIGN.md need no credit.
-
-## Products like it
-
-Open Design is itself the kind of product the owner wants: an engine a
-coding agent drives to do skilled work, local-first, with real exports. The
-factory's engine products (BookForge Pro, the video studio, a game-asset studio
-on forge) follow that shape: `sprint.md` **Now**.

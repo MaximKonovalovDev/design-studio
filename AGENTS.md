@@ -17,3 +17,19 @@ Every agent in this repo reads this first. The loop is `/sprint`
    `sprint/halt`.
 6. The owner is never asked mid-loop: a decision only he can make is an OWNER
    row on the board, and the loop goes on.
+
+## Where things are
+
+Tools `tools/*.mjs` (render, audit, judge, check, thumb, registry, tokens,
+brandkit, canvas, convert, game-ui, figma, workshop, agent-shot, agent-block,
+image); the suite is `node tools/check.mjs`. A design is a folder
+`samples/<name>/` (brief.json, page.html, out.png, thumb-256.png,
+design-audit.json, DESIGN-REVIEW.md beside it; there is no `preview/` folder).
+Also `kits/`, `packs/`, `templates/`, `brand-kits/`, `designs/`. Skills are
+`.opencode/skills/*/SKILL.md` (hidden folder: glob may find nothing, read the
+exact path). The donor copy `research/donors/` is not cloned. Queue folders are
+`sprint/queue/{ready,running,done,standing,chain}/`; claims go in
+`sprint/queue/claims.txt` (create if missing); `sprint/lock.txt` exists only
+while a lead holds it. Finish-line orders go in `orders.csv` at the root
+(create it with its header on the first order). Center is
+`C:/Users/me/Desktop/center`.
