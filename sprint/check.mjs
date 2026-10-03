@@ -101,7 +101,9 @@ else if (String(knobs.knobs.dispatch?.value ?? "foreground") !== "foreground") s
 else say("PASS", `knobs: width ${knobs.knobs.width.value}, foreground batches`);
 
 // 7. The vision: center's checkVision on this repo's VISION.md (scorecard, parts, gaps, steal map).
-const vision = read("VISION.md");
+// The research tables may sit in VISION-TABLES.md next to VISION.md (center's readVision joins them the same way).
+const visionTop = read("VISION.md");
+const vision = visionTop == null ? null : `${visionTop}${read("VISION-TABLES.md") == null ? "" : `\n\n${read("VISION-TABLES.md")}`}`;
 if (vision == null) say("FAIL", "VISION.md missing");
 else {
   let checkVision = null;

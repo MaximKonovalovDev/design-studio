@@ -12,10 +12,11 @@ row on the board, and the loop goes on. `round` = one round, then hand off.
 
 ## 1. What this loop is for
 
-`VISION.md`: the final picture, the Scorecard (us against the best, in percent
-of our own final bar), Parts vs the best, Open gaps and the Steal map. The proof
-that the vision is met: `node tools/check.mjs`. Every board row names the Scorecard row it
-moves. While `node C:/Users/me/Desktop/center/vision-check.mjs design-studio` FAILs,
+`VISION.md`: the purpose, what we give and take, the finish line.
+`VISION-TABLES.md`: the Scorecard (us against the best, in percent of our own final
+bar), Parts vs the best, Open gaps and the Steal map; the research seats edit that
+file. The proof that the vision is met: `node tools/check.mjs`. Every board row names
+the Scorecard row it moves. While `node C:/Users/me/Desktop/center/vision-check.mjs design-studio` FAILs,
 the vision is the first work: the planner and the vision researcher fill it.
 
 ## 2. Your crew, in batches you send
@@ -41,7 +42,7 @@ the same turn. A question you need answered now is one more Task in the batch.
 
 Roles: `builder` writes, `judge` reviews (at most 15 lines), `planner` plans
 and merges research, `researcher` reads and steals, `pilot` uses and looks,
-`runner` runs checks, `overseer` reviews a would-stop.
+`runner` runs checks (the `overseer` agent is retired: the keeper sends no review).
 
 The chain: a builder seat carries `chain: start`. When it returns DONE the
 keeper writes the judge's review to the ready queue, so it tops your next
@@ -74,7 +75,7 @@ for a build) and Goal, Scope, Proof and Stop lines, or the keeper refuses it.
    DONE with the SHA. For each BLOCKED or second FAIL decide: replan, split, an
    OWNER row, or a fix one-off. Never redo a helper's work yourself.
 2. **Board.** Put the planner's rows on `sprint/board.md`. Each
-   `Proposed (...)` answer under `VISION.md` Open gaps: adopt it into the vision
+   `Proposed (...)` answer under `VISION-TABLES.md` Open gaps: adopt it into the vision
    or strike it with a reason (the vision check FAILs after a day).
 3. **Crew.** Keep the seats true to the board: rewrite a seat that returned
    NOOP three runs in a row or whose area ran dry; copy a good rewrite into
@@ -133,7 +134,7 @@ Ending a turn is not a stop: the keeper sends the next continue. The loop stops
 only for `sprint/halt`, every ready row blocked on the owner (list them), or
 `node tools/check.mjs` passing with every Scorecard row of ours at 100. Then write the
 handoff, say VERDICT: PASS, PARTIAL or BLOCKED in chat, release the lock and
-end with a line `LOOP STOP: <reason>`. Before your own stop is final the keeper
-asks for the `overseer`'s review: follow its GO, FIX, PIVOT or STOP.
+end with a line `LOOP STOP: <reason>`. A loop-side stop is final: the keeper
+sends no review before it (overseer retired 2026-10-02).
 `[loop-keeper]` messages are not the owner; an owner question pauses the loop
 until the owner says GO.

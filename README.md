@@ -1,8 +1,8 @@
 # design-studio
 
 Autonomous AI design studio: `brief.json` -> page -> rendered PNG -> design
-audit, with no human in the loop. Goal and bars live in `VISION.md`;
-agent loop lives in `AGENTS.md`.
+audit, with no human in the loop. Goal in `VISION.md` (research tables in
+`VISION-TABLES.md`), finish bars in `FINISH-LINE.md`; agent loop lives in `AGENTS.md`.
 
 ## Quickstart (15 minutes, one command)
 

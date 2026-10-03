@@ -1,0 +1,128 @@
+# VISION tables: design-studio
+
+The research tables of `VISION.md` (its purpose, what we give and take, and the finish line are there). The research seats edit this file and the lead adopts what they propose. `node C:/Users/me/Desktop/center/vision-check.mjs design-studio` reads both files as one text and enforces the freshness rules: at least one Parts row swept within 3 days, any estimate older than 7 days replaced by a measurement, the steal map read within 7 days (oldest row first), no part starved past 14 days, and every plan file on disk listed in the Plans map below (`sprint/board.md`). The old intro of `VISION.md` is in `archive/2026-10-03/VISION-intro-2026-10-02.md`.
+
+## Scorecard: design-studio against the best (percent of our final bar)
+
+How to read it: 100 means our own final bar for that row is met. Every other
+column says how much of that same bar the competitor meets today, with a source.
+Our own number rises only by a proof command. Rival cells stay exactly UNKNOWN
+until a sourced percent of our bar is measured for them; the sourced facts we
+hold today are cited in each row's coverage cell and in gap G1, never invented
+into a cell. Ratings need a fixed n/m, a named `rubric: ID`,
+`source: artifact`, version and real date. Unknown criteria stay in the shared
+denominator; a draft or document alone cannot prove a product outcome.
+
+| Row (part of our bar) | design-studio | Canva | Figma AI | v0 | Lovable | How we cover it and beat them |
+|---|---|---|---|---|---|---|
+| Brief-to-render speed | 100% (2/2 rubric: ds-speed-v1 source: samples/cover/design-audit.json 2026-10-02) | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | Bar: brief.json to out.png plus design-audit.json in one `node tools/check.mjs` run, no Python needed. Measured 2026-10-02: cover 1280x720 34186B plus thumb 256x144 5567B plus audit PASS via `node tools/check.mjs` RESULT PASS 6 samples (ad-square 1080x1080 50846B, story 1080x1920 69685B, hebrew-hero 1280x720 28125B, jobhunt 1280x720 35014B, cv 900x1270 98813B) plus `node tools/render.mjs --check` RENDER PASS 7/7 refine plus measured preview plus 3-chunk stream plus `node tools/agent-block.mjs --check` AGENT-BLOCK PASS 15/15 loop converges 2 iters best 10/10 ...(full: git history of VISION.md before 2026-10-03) |
+| Judged quality | 100% (10/10 rubric: ds-quality-v1 source: samples/cover/DESIGN-REVIEW.md 2026-10-02) | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | Bar: every output scored 10 checks by rubric ds-quality-v1 plus a written DESIGN-REVIEW.md; nothing ships below 8. Measured: samples/cover SHIP 10/10 via `node tools/judge.mjs samples/cover/brief.json` 2026-10-02 plus `node tools/judge.mjs --check` JUDGE PASS 2026-10-02 (rubric 10 checks floor 8, broken 5/10, 7/10 no-ship); iterate plus workshop open DS-04/DS-07. Rival read: Figma AI agent generation plus side-by-side compare plus MCP to production on https://www.figma.com/ai/ (read 2026-10-02, proprietary idea-only, no fixed rubric published); Canva Magic Studio on canva.com (read 2026-10-02, proprietary idea-only) ...(full: git history of VISION.md before 2026-10-03) |
+| Thumbnail readability | 100% (4/4 rubric: ds-thumb-v1 source: samples/cover-b/design-audit.json + samples/ad-square/design-audit.json 2026-10-03) | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | Bar: title readable at 256px plus listing width 315px, 4 checks (title size, contrast, box, crop). Measured 2026-10-02: audit thumb gates green on 6/6 samples (cover 19.2px, ad-square 22.8px, floor 12px) plus real thumb-256.png beside each render (cover 256x144 5567B, ad-square 256x256 9164B) via `node tools/check.mjs` RESULT PASS 2026-10-02; canvas 5/5 PASS; workshop 10/10 PASS on disk 2026-10-02 via uncommitted 034 stories fix (claimed 2026-10-02T14:09Z, stories+snapshots untracked, DS-07 still DOING — measure after it lands, else hold) ...(full: git history of VISION.md before 2026-10-03) |
+| Brand-kit consistency | 100% (5/5 rubric: ds-brand-v1 source: samples/cover/tokens.json + brand-kits/studio.json + taste/library.json 2026-10-02) | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | Bar: one tokens file per program, 0 hardcoded colors, 5 checks (vars, pairs, type, spacing, diff). Measured 2026-10-02: `node tools/tokens.mjs --check` TOKENS PASS 16/16 (6 colors, pairs 16.27/7.13/5.18, dark 6 overrides, diff in sync, 0 hex) plus `node tools/brandkit.mjs --check` BRANDKIT PASS 16/16 studio kit mirrors palette plus `node tools/taste.mjs --check` TASTE PASS 20/20 exemplars plus `node tools/check.mjs` RESULT PASS 6 samples each with tokens.json and 0 hex in page.html; DS-33 ref-chain fixpoint stays READY as enhancement ...(full: git history of VISION.md before 2026-10-03) |
+| Hebrew RTL | 100% (3/3 rubric: ds-rtl-v1 source: samples/jobhunt/design-audit.json + samples/cv/design-audit.json + samples/hebrew-hero/design-audit.json 2026-10-02) | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | Bar: dir rtl sample renders, logical properties only, 3 checks (dir attr, no physical flips, Hebrew type pair). Measured: 3 RTL samples 17/17 AUDIT PASS each (jobhunt 1280x720 35014B, cv 900x1270 49813B, hebrew-hero 1280x720 28125B) plus `node tools/audit.mjs --rtl --check` AUDIT RTL PASS 10/10 2026-10-02 (DS-13/DS-15/DS-16 built round 5). Rival read: Figma RTL text-direction controls on help.figma.com (read live 2026-10-02, proprietary idea-only, editor text only, no fixed gate); Canva localized fonts/templates on canva.com/help/language-settings (fetch 2026-10-02 unsupported-client, prior read 2026-10-02, proprietary idea-only, no RTL bar) ...(full: git history of VISION.md before 2026-10-03) |
+| Game UI kits | 100% (5/5 rubric: ds-game-v1 source: kits/game-ui/manifest.json + kits/game-ui/hud.html + kits/game-ui/menu.html 2026-10-02) | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | Bar: HUD plus menu plus button kit that imports in forge and engine2040, 5 checks (tokens, states, icons, sizes, import). Measured 2026-10-02: `node tools/game-ui.mjs --check` 35/35 PASS (tokens 9 vars 0 hex, states hover/active/disabled/focus-visible, icons 3+3 SVGs 24px stroke=currentColor, sizes touchMin 44 bar 16px, import 2 links, gap 6px/12px equal +/-1px) plus `node tools/game-ui.mjs --serve --check` 39/39 PASS (forge + engine2040 named, 2x data-engine) plus `node tools/check.mjs` RESULT PASS 6 samples plus `node tools/judge.mjs --check` JUDGE PASS; DS-11 DONE 360bbd1 plus DS-20 serve plus DS-32 gap 5/5 judge 023 PASS 901625c ...(full: git history of VISION.md before 2026-10-03) |
+| Landing-page conversion | 0% (0/4 rubric: ds-conv-v1 source: convert/plan.json + samples/ads/hero/design-audit.json 2026-10-02) | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | Bar: registry block on a live page with a receipt, 4 checks (block reuse, copy, CTA, measure plan). Measured 2026-10-02: `node tools/registry.mjs --check` REGISTRY PASS 10 blocks + 4 templates 0 hex plus `node tools/convert.mjs --check` CONVERT PASS A/B differ plus 6-step plan plus `node --test tests/convert.test.mjs` pass 3 fail 0 plus `node tools/check.mjs` RESULT PASS 6 samples (cover 1280x720 34186B) ...(full: git history of VISION.md before 2026-10-03) |
+
+## Plans: which plan serves which part of the vision
+
+List the board and every active plan. Serves contains exact Scorecard row names
+separated by semicolons, or `every row: reason` / `none: reason`.
+
+| Plan | Serves (Scorecard rows) | Board prefixes and notes |
+|---|---|---|
+| `sprint/board.md` | every row: the executable work list | each goal needs a next task and proof |
+
+## Research contract
+
+Read the vision, board and prior findings before searching. Each research batch
+compares competitor code, an adjacent implementation and an arXiv paper where
+relevant. Read the implementation and tests, not only the abstract. Record source
+revision, license, baseline, target, existing home, proof command, tradeoff and
+stop rule. Unknown remains unknown. Merge duplicates into one experiment; promote
+only after local measurement and independent review. No useful new evidence means
+resume a pending experiment or record a dated rejection, not another catalog.
+
+## Parts vs the best (research keeps this table true)
+
+One row per part of the product. `Ours` is a measured percent of our bar with
+rubric, source and date, or `UNKNOWN (unmeasured)` with the proof command that
+would measure it, never a guess. Code is copied only under MIT, Apache-2.0, BSD, zlib or CC0, license read live.
+
+| Part | Ours (UNKNOWN = unmeasured) | Best at it (license) | They beat us on | Steal next | Proof that measures us | Swept |
+|---|---|---|---|---|---|---|
+| Brief-to-render speed | 100% (2/2 rubric: ds-speed-v1 source: samples/cover/design-audit.json 2026-10-02, re-measured 2026-10-02 via `node tools/check.mjs` RESULT PASS 6 samples cover 1280x720 34186B thumb 256x144 5567B plus `node tools/render.mjs --check` RENDER PASS 7/7 refine plus measured preview bundleMs=1 plus 3-chunk stream 0>6>23 plus `node tools/agent-block.mjs)` ...(full: git history of VISION.md before 2026-10-03) | v0 (proprietary) | hosted prompt-to-app agent plus one-click Vercel deploy plus auto-fix (https://v0.app/docs.md lastUpdated 2026-10-01 read live 2026-10-02, idea only) plus Lovable Publish-button live URL plus Quick scan (docs.lovable.dev/features/publish read live 2026-10-02, idea only) plus riser Elementor AI prompt-to-section matched to design system 22M sites (elementor.com read live 2026-10-02, idea only) | wandb/openui Apache-2.0 (LICENSE SHA 28a356d re-read live 2026-10-02) hydrate-refine loop (Prompt.tsx SHA c6d97eb + HtmlAnnotator.tsx SHA aa279c9) + abi/screenshot-to-code MIT (LICENSE SHA bee961c) create-update pipeline (App.tsx SHA 1cbab73 + generate_code.py SHA 091874b) + Nutlope/llamacoder MIT (LICENSE SHA 9882e62) measured preview bundle (code-runner-react.tsx SHA cc357bb) landed as DS-21 + ...(full: git history of VISION.md before 2026-10-03) | `node tools/render.mjs --check` RENDER PASS plus one `node tools/check.mjs` run renders samples/cover plus thumb plus audit PASS | 2026-10-02 |
+| Judged quality | 100% (10/10 rubric: ds-quality-v1 source: samples/cover/DESIGN-REVIEW.md 2026-10-02, re-confirmed via `node tools/judge.mjs --check` JUDGE PASS 2026-10-02) | Figma AI (proprietary) | agent generation plus side-by-side compare plus MCP to production inside the editor (https://www.figma.com/ai/ read 2026-10-02, idea only) | abi/screenshot-to-code MIT (LICENSE SHA bee961c read live 2026-10-02) create-update pipeline (generate_code.py SHA 091874b) + onlook-dev/onlook Apache-2.0 (LICENSE.md SHA 295f5e1 read live 2026-10-02) oid click-to-code (gesture.tsx SHA 38eea91) + storybookjs/storybook MIT (LICENSE SHA c471193 read live 2026-10-02) StoryStore (StoryStore.ts SHA 3f5aeeb) into tools/judge.mjs (card) ...(full: git history of VISION.md before 2026-10-03) | rubric ds-quality-v1 10 checks via `node tools/judge.mjs --check` (DS-06 built, JUDGE PASS 2026-10-02) | 2026-10-02 |
+| Thumbnail readability | 100% (4/4 rubric: ds-thumb-v1 source: `node tools/audit.mjs samples/cover-b/brief.json` AUDIT PASS 22.8px at 256px plus 28.0px at 315px listing floor 12px + `node tools/workshop.mjs --check` WORKSHOP PASS 10/10 + `node tools/check.mjs` RESULT PASS 11 samples 2026-10-03; DS-38/DS-39/DS-40/DS-12 DONE) | Canva (proprietary) | template plus resize suite for every social and store size (search live 2026-10-02, idea only) plus Elementor riser 22M sites responsive assets (elementor.com read live 2026-10-02, idea only) | konvajs/konva MIT pixelRatio export (LICENSE SHA a25747c src/Node.ts SHA 38472c4 read live 2026-10-02) plus fabric MIT multiplier export (LICENSE SHA 94cbfeb StaticCanvas SHA 644a47f master read live 2026-10-02) per-size reflow into tools/audit.mjs (DS-07, DS-09, DS-23; card research/cards/2026-10-02-thumbnail-vision-r8.md) | `node tools/check.mjs` RESULT PASS 6 samples plus thumbs plus audits 2026-10-02 plus `node tools/canvas.mjs --check` CANVAS PASS 5/5 plus `node tools/workshop.mjs --check` WORKSHOP PASS 10/10 re-measured 2026-10-03 (all rows DONE) | 2026-10-03 |
+| Brand-kit consistency | 100% (5/5 rubric: ds-brand-v1 source: samples/cover/tokens.json + brand-kits/studio.json + taste/library.json 2026-10-02, re-confirmed via `node tools/tokens.mjs --check` TOKENS PASS 16/16 plus `node tools/brandkit.mjs --check` BRANDKIT PASS 16/16 plus `node tools/taste.mjs --check` TASTE PASS 20/20 2026-10-02) | shadcn-ui/ui (MIT) | semantic light/dark cssVars pairs plus copy-paste registry, neutral theme background/foreground plus primary pairs (LICENSE SHA fad4d887 plus apps/v4/registry/themes.ts SHA 80fdfba3 main SHA 295a1f11 read live 2026-10-02) | style-dictionary Apache-2.0 deferred transform/resolve fixpoint plus DTCG $value into tools/tokens.mjs (DS-33; card research/cards/2026-10-02-s12.md, this card research/cards/2026-10-02-brandkit-vision-r9.md) | `node tools/tokens.mjs --check` TOKENS PASS 16/16 plus `node tools/brandkit.mjs --check` BRANDKIT PASS 16/16 plus `node tools/taste.mjs --check` TASTE PASS 20/20 (DS-02 plus DS-10 plus DS-18 built; DS-33 READY enhancement) | 2026-10-02 |
+| Hebrew RTL | 100% (3/3 rubric: ds-rtl-v1 source: samples/jobhunt/design-audit.json + samples/cv/design-audit.json + samples/hebrew-hero/design-audit.json 2026-10-02, re-confirmed via `node tools/audit.mjs --rtl --check` AUDIT RTL PASS 10/10 2026-10-02) | Figma (proprietary) | text-direction controls per paragraph plus Noto fallback, editor text only, no fixed gate (https://help.figma.com/hc/en-us/articles/4972283635863 read live 2026-10-02, idea only) | penpot/penpot MPL-2.0 (LICENSE SHA a612ad98 read live 2026-10-02) logical-props CSS gen (frontend/src/app/util/code_gen/style_css_values.cljs SHA 4052adba read live 2026-10-02) already shaped our logical-properties gate; next mixed-dir mirror-check into tools/audit.mjs (card research/cards/2026-10-02-hebrew-rtl-vision-r6.md, DS-13/DS-15/DS-16) | `node tools/audit.mjs --rtl --check` over temp fixtures plus every samples/*/brief.json with dir=rtl (DS-16 built, 3 samples 17/17 AUDIT PASS 2026-10-02) | 2026-10-02 |
+| Game UI kits | 100% (5/5 rubric: ds-game-v1 source: kits/game-ui/manifest.json + tools/game-ui.mjs 2026-10-02, re-measured 2026-10-02 via `node tools/game-ui.mjs --check` 35/35 PASS plus `node tools/game-ui.mjs --serve --check` 39/39 PASS gap 5/5 serve 4/4; DS-11 DONE 360bbd1 plus DS-20 serve plus DS-32 gap judge 023 PASS 901625c) | Kenney.nl (CC0 site, not a repo) | free game art no AI tool bundles (factory design/STUDIO.md 2026-09-27) plus v0/Lovable web-UI-only no HUD lane (reads 2026-10-02 idea-only) | lucide ISC inline 24px stroke set (LICENSE SHA 718bb3f cli.ts SHA 2c9fce7 read live 2026-10-02) already landed in kits/game-ui/hud.html + menu.html (3+3 SVGs); next dicebear MIT placeholders (DS-11 follow-up; card research/cards/2026-10-02-gameui-vision-r13.md) | `node tools/game-ui.mjs --check` 35/35 PASS plus `node tools/game-ui.mjs --serve --check` 39/39 PASS plus `node tools/check.mjs` RESULT PASS 2026-10-02 (DS-11 and DS-20 and DS-32 built) | 2026-10-02 |
+| Landing-page conversion | 0% (0/4 rubric: ds-conv-v1 source: `node tools/check.mjs` + `node tools/check.mjs samples/ads/hero/brief.json` 2026-10-02; REGISTRY PASS 10+4 plus CONVERT PASS A/B plus tests 3/0 plus check RESULT PASS, hero receipt rev==out.png sha256 match true, but 035/036 verdicts not both PASS plus default suite receipt-skipped 6/6 plus no live factory page) | Lovable (proprietary) | Publish-button deploy to a live lovable.app URL plus Quick scan plus snapshot republish (https://docs.lovable.dev/features/publish read live 2026-10-02, idea only) | BuilderIO/mitosis MIT single-source emit (LICENSE SHA 695e60cdac6e8f073819bd6b7a2fbc399a9f7216, react/generator.ts SHA c40072307c9c66d1c68976c8849ea0290ea0683a read live 2026-10-02 default branch, idea-only) into tools/registry.mjs (DS-37 READY; card research/cards/2026-10-02-landing-move-vision-r14.md) | `node tools/registry.mjs --check` REGISTRY PASS plus `node tools/convert.mjs --check` CONVERT PASS plus `node tools/check.mjs` RESULT PASS plus `node tools/check.mjs samples/ads/hero/brief.json` receipt pinned 2026-10-02 plus `node tools/convert.mjs --check` CONVERT PASS live=cover-b rev dbe9de43 plus `node tools/figma.mjs --check` FIGMA PASS 6+2 verdicts 2026-10-03 (DS-36/DS-37/DS-41/DS-42/DS-43/DS-44/DS-69 DONE; HOLD: 0 non-local factory URLs, all receipts design-studio.local) | 2026-10-03 |
+
+## Open gaps (research closes these; the lead writes the answer above)
+
+- G1 Competitors: who are the 3-5 best at what this vision promises, and what does each do better today? Evidence: their own pages, releases and numbers. Standing answer (2026-10-02, planner): Canva owns templates and resize; Figma AI owns in-editor generation via Make and Sites; v0 owns prompt-to-React; Lovable owns prompt-to-app publishing. Our edge: the loop is built for AI seats with judges and receipts, and game UI plus Hebrew RTL lanes none of the 4 publish a bar for. | sources: https://www.canva.com/ https://www.figma.com/ https://v0.dev/ https://lovable.dev/ (all read 2026-10-02) plus C:/Users/me/Desktop/center/research/DESIGN-REPO-8TH-2026-10-02.md
+- G2 The bar: what does "done" measure, in numbers, for each part? Standing answer (2026-10-02, planner): Brief-to-render 2 checks (render plus audit in one run); Judged quality 10 rubric checks plus DESIGN-REVIEW.md, ship at 8; Thumbnail 4 checks at 256px and 315px; Brand-kit 5 checks with 0 hardcoded colors; Hebrew RTL 3 checks on a Hebrew sample; Game UI 5 checks ending in an engine import; Conversion 4 checks ending in a live page receipt.
+- G3 The edge: where can we be the best, and why can the others not follow? Standing answer (2026-10-02, planner): four lanes the closed tools do not serve as one loop: judged quality per minute with a fixed rubric, thumbnail-first covers for real stores, Hebrew RTL as a gate not an afterthought, and game UI kits that import into forge and engine2040. They cannot follow without opening their cores to seat-driven judges.
+
+## Steal map (scouts: what we read, oldest first)
+
+At least 10 competitors and 10 adjacent sources, each tied to a part; the steal
+researcher reads the row read longest ago and writes its date back. This map is
+the initial seed: donor licenses and pushes verified live via api.github.com on
+2026-10-02 per C:/Users/me/Desktop/center/research/DESIGN-REPO-8TH-2026-10-02.md;
+commercial rows are their public pages read 2026-10-02, proprietary idea-only.
+
+| ID | Kind | Sources | Part | Question | License (read live) | Last read |
+|---|---|---|---|---|---|---|
+| S01 | competitor | canva.com template and resize suite | Thumbnail readability | Which size matrix covers every store and social slot? | proprietary, idea only (site read 2026-10-02) | 2026-10-03 |
+| S02 | competitor | figma.com Figma AI Make plus Sites | Landing-page conversion | Which publish path keeps code and design in sync? | proprietary, idea only (site read 2026-10-02) | 2026-10-02 |
+| S03 | competitor | v0.dev prompt-to-React | Brief-to-render speed | Which prompt shape yields shippable blocks first try? | proprietary, idea only (site read 2026-10-02) | 2026-10-02 |
+| S04 | competitor | lovable.dev prompt-to-app | Brief-to-render speed | Which one-click publish removes the handoff? | proprietary, idea only (site read 2026-10-02) | 2026-10-02 |
+| S05 | competitor | onlook-dev/onlook visual edit to code | Judged quality | Which click-to-edit maps to a code diff? | Apache-2.0 (LICENSE.md read live 2026-10-02) | 2026-10-02 |
+| S06 | competitor | Nutlope/llamacoder minimal v0 clone | Brief-to-render speed | Which minimal loop shows the whole builder path? | MIT (API read 2026-10-02) | 2026-10-02 |
+| S07 | competitor | abi/screenshot-to-code screenshot loop | Judged quality | Which screenshot diff loop converges fastest? | MIT (API read 2026-10-02) | 2026-10-02 |
+| S08 | competitor | wandb/openui prompt to live render | Brief-to-render speed | Which live-render loop fits a judge gate? | Apache-2.0 (API read 2026-10-02) | 2026-10-02 |
+| S09 | competitor | penpot/penpot SVG and layout engine | Hebrew RTL | Which direction-aware layout survives RTL? | MPL-2.0 idea only (API read 2026-10-02) | 2026-10-02 |
+| S10 | competitor | tldraw/tldraw canvas SDK | Game UI kits | Which shape binding fits HUD editing? | custom, patterns only (API read 2026-10-02) | 2026-10-02 |
+| S11 | adjacent | shadcn-ui/ui component pattern | Brand-kit consistency | Which copy-paste registry fits our blocks? | MIT (API read 2026-10-02) | 2026-10-02 |
+| S12 | adjacent | style-dictionary/style-dictionary token build | Brand-kit consistency | Which token pipeline feeds CSS and Tailwind? | Apache-2.0 (API read 2026-10-02) | 2026-10-02 |
+| S13 | adjacent | konvajs/konva canvas framework | Thumbnail readability | Which scene graph exports store sizes? | MIT (API read 2026-10-02) | 2026-10-02 |
+| S14 | adjacent | lucide-icons/lucide icon set | Game UI kits | Which 24px stroke set covers game UI? | ISC (API read 2026-10-02) | 2026-10-02 |
+| S15 | adjacent | iconify/iconify universal icon API | Game UI kits | Which picker tracks per-set licenses? | MIT framework, per-set licenses tracked (API read 2026-10-02) | 2026-10-02 |
+| S16 | adjacent | excalidraw/excalidraw whiteboard | Judged quality | Which sketch export starts a wireframe? | MIT (API read 2026-10-02) | 2026-10-02 |
+| S17 | adjacent | storybookjs/storybook workshop | Judged quality | Which story plus visual-diff pattern fits blocks? | MIT (API read 2026-10-02) | 2026-10-02 |
+| S18 | adjacent | fabricjs/fabric.js SVG to canvas | Thumbnail readability | Which SVG import wins for templates? | MIT (API read 2026-10-02) | 2026-10-02 |
+| S19 | adjacent | dicebear/dicebear avatar API | Game UI kits | Which style-swappable art fits placeholders? | MIT (API read 2026-10-02) | 2026-10-02 |
+| S20 | adjacent | BuilderIO/mitosis component compiler | Landing-page conversion | Which write-once output serves every consumer? | MIT (API read 2026-10-02) | 2026-10-02 |
+
+Card (every steal): Source (repo@sha `path:line` or URL) and license | What it
+does | Home (an existing file here; no home = reject) | Fixes (the part) | Net
+lines | Proof (no proof = reject) | Effort S/M/L and risk. The research merge
+seat judges every card and keeps the rejects.
+
+## Delivery evidence
+
+Current position (2026-10-02): rung 0 of 4 across the consumers (factory,
+marketing-studio, jobhunt, forge and engine2040): 0 judged designs shipped, 0
+consumer receipts, $0. Prove each rung the same way every time: R1 one judged
+sample per consumer with `node tools/check.mjs` RESULT PASS; R2 every sample
+opened at full size and thumbnail with notes in its DESIGN-REVIEW.md; R3 a
+consumer reuse (a factory cover, a marketing creative, a portfolio page, a HUD
+slice) with a dated receipt; R4 a repeat commission from the same consumer.
+
+The 10x product bar the loop holds before it calls anything shipped: a stranger
+finishes the brief-to-render path in 15 minutes (stranger-15min); the result is
+compared side by side with the named reference (eyes-vs-reference); the maker
+used it for a real consumer job first (dogfood); price and bundle evidence comes
+from sellers' own pages, never a search snippet; every moving thing ships with a
+GIF-first preview; a free Vol 0 magnet proves the checkout before any paid
+claim; a bundle ships only after 3 volumes (bundle after 3); UNKNOWN views =
+FAIL, never a soft pass; PREP-ONLY is not shipped: drafts and renders without a
+live consumer link and a receipt prove nothing about buyers.
+
+Per-item proofs: stranger-15min and eyes-vs-reference by the judge's timed
+side-by-side review in the sprint output; dogfood by the first consumer reuse
+receipt; price and bundle evidence from sellers' own pages with a dated source
+line; GIF-first by the preview file in its commit; Vol 0 by a live download
+receipt; bundle after 3 by three live volume links; UNKNOWN views = FAIL by the
+consumer receipt check; PREP-ONLY by the absence of a live link and a receipt.
