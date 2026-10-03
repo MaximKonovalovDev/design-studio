@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-03T19:14:02Z",
+  "updated": "2026-10-03T20:14:18Z",
   "knobs": {
     "width": {"value":8,"min":1,"max":30,"step":1,"why":"helpers in one batch"},
     "dispatch": {"value":"foreground","why":"owner 2026-09-28: every helper seen live"},
@@ -16,6 +16,10 @@
     {"at":"2026-10-03T17:24:27Z","knob":"width","from":4,"to":8,"by":"Maxim (2026-10-03: dispatch the whole team each time, one worker per seat)"},
     {"at":"2026-10-03T19:09:46Z","knob":"width","from":8,"to":4,"by":"owner (Loop Boss)"},
     {"at":"2026-10-03T19:09:51Z","knob":"paid_mode","from":0,"to":1,"by":"Loop Boss"},
-    {"at":"2026-10-03T19:14:02Z","knob":"width","from":4,"to":8,"by":"policy (Maxim 2026-09-29)"}
+    {"at":"2026-10-03T19:14:02Z","knob":"width","from":4,"to":8,"by":"policy (Maxim 2026-09-29)"},
+    {"at":"2026-10-03T19:56:39Z","knob":"paid_mode","from":1,"to":0,"by":"Maxim"},
+    {"at":"2026-10-03T19:56:45Z","knob":"width","from":8,"to":3,"by":"Maxim"},
+    {"at":"2026-10-03T20:14:06Z","knob":"paid_mode","from":0,"to":1,"by":"Loop Boss"},
+    {"at":"2026-10-03T20:14:18Z","knob":"width","from":3,"to":8,"by":"Maxim (raise widths again)"}
   ]
 }
