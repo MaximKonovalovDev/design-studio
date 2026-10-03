@@ -1,26 +1,25 @@
-# design-studio handoff - round 20 (token 9f3a)
+# design-studio handoff - round 21 (token c7d2)
 
-Round: 20
-Written: 2026-10-03T12:05Z by lead (token 9f3a)
+Round: 21
+Written: 2026-10-03T12:15Z by lead (token c7d2, takeover: closed-app lock 9f3a replaced 12:07Z)
 
 ## Heading
-- No Scorecard movement (017/019/020/021/023 PASS, 018 NOOP, 022 FAIL regresses DS-12).
+- No Scorecard movement (Thumbnail 0%, Landing 0% hold; 4 slice re-PASS, DS-12 repair DONE awaiting re-judge).
 
 ## Done
-- Judge 017 PASS 011 (check 20/20, audit 22.8px, no drift on 4aa0141).
-- Judge 019 PASS 014 (audit 27 PASS, cv 4/4, renders opened). Judge 020 PASS 015 (6/6/6, 2 thumbs opened).
-- Judge 021 PASS brand slice (brandkit, taste 20/20, registry 10/10, tests 14/14).
-- Judge 023 PASS game-ui (gap 5/5, serve 4/4, fail-closed confirmed).
-- Builder 018 NOOP (README 6 samples in HEAD). DS-20 evidence refreshed with 023 re-PASS.
-- Knobs: width 5 holding; batch sent as 5.
+- Judge 024 PASS audit slice (sizes 3/3, rtl 13/13, tests 15/15, check PASS). Confirms 901625c.
+- Judge 025 PASS checksuite slice (F2P 2xFAIL, P2P 2xPASS, thumb 5/5, tests 14/14). Confirms 901625c.
+- Judge 026 PASS DS-05 (agent-block 15/15, tests 7/7, judge green, check PASS). Confirms 4512bec.
+- Judge 027 PASS render slice (render 7/7, tests 3/3, sizes+rtl PASS, check 20/0/0). Confirms 4512bec.
+- Builder 022-repair DONE: cover-b review carries measured two-variant section (10 hits), audits PASS, check PASS, both SHIP 10/10. Prose only, uncommitted pending re-judge.
+- Board DS-12 evidence updated; re-judge one-off 049 queued in sprint/queue/ready/.
 
 ## Blockers and notes
-- DS-12 REGRESSED to DOING: judge 022 FAIL — two-variant review missing plus check FAIL1 cover timeout (flake, green on lead rerun 12:05Z). Repair 022-repair queued, one builder shot per chain.
-- DS-14 stays DONE (all 5 SHIP 10/10, audits PASS; FAIL named only the flaky check line).
-- Judge 022 side-effect rewrites (cover-b/ad-1 reviews, hero audit) left as legit tool output; checkout banned.
-- Left uncommitted: loop-keeper files, batch.md, halt deletion, DS-39/41 in-flight, ad reviews.
-- Inbox open empty. sprint/check PASS 20/0/0. check.mjs PASS on lead rerun.
-- Do not commit sprint/halt, batch.md, checks.md, loop-keeper.json.
+- DS-12 stays DOING: repair needs 049 PASS before commit. Per-sample judge runs banned in 049: builder finding is tools/judge.mjs rewrites DESIGN-REVIEW.md and wipes the comparison; preserve-gate is the follow-up if 049 confirms the wipe.
+- DS-39 315px gate plus DS-41 cover-b receipt.json verified on disk (auto-backup commits only); judged PASS still pending.
+- sprint/check.mjs PASS 20/0/0; tools/check.mjs RESULT PASS; vision-check PASS 6/0.
+- Left uncommitted: loop-keeper files, batch.md, halt deletion (pre-existing), queue ready/done moves, samples tool-output plus repair prose.
+- Inbox open empty. No NOOP seats; crew true to board.
 
 ## Next
-- Round 21 batch: 022-repair builder, 022 re-judge, DS-39 judge, DS-41 judge, pilot.
+- Round 22 batch (keeper names; suggest): 049 re-judge DS-12, DS-39 judge, DS-41 judge, pilot, planner-merge.
