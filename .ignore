@@ -1,0 +1,2 @@
+# ripgrep (the agents' Grep and Glob) skips these folders. Read a file in them by its exact path.
+archive/

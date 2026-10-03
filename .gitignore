@@ -7,3 +7,14 @@ INDEX*.md
 *.log
 *.jsonl
 research/donors/
+
+# Keeper runtime records (2026-10-03, Maxim: slimmer repos): the keeper rewrites these every pass.
+# They stay on disk and out of git; the old queue/done packets live in git history.
+sprint/loop-keeper.json
+sprint/loop-keeper.cmd.json
+sprint/queue/batch.md
+sprint/queue/checks.md
+sprint/queue/claims.txt
+sprint/queue/done/
+sprint/queue/failed/
+sprint/queue/running/

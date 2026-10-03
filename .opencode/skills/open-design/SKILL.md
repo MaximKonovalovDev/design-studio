@@ -1,9 +1,9 @@
 ---
 name: open-design
-description: The factory's design engine. Which Open Design design system, template and od-* skill to use for a cover, store page, landing page, preview, brand kit or product UI, and the license rules. Load before any design, cover, preview or page work.
+description: The design engine of design-studio. Which Open Design design system, template and od-* skill to use for a factory cover, a marketing-studio ad or landing hero, a jobhunt CV or portfolio page, a forge or engine2040 game UI kit, or a brand kit, and the license rules. Load before any design, cover, ad or page work.
 ---
 
-# Open Design in the factory (owner 2026-09-27)
+# Open Design in design-studio (owner 2026-09-27)
 
 The owner: "design weak af", "make products like open design and use it".
 Open Design (github.com/nexu-io/open-design, Apache-2.0, 98k stars) is the
@@ -21,8 +21,8 @@ then `git -C research/donors/open-design sparse-checkout set skills design-syste
    product's folder before any pixel.
 2. **Design system:** pick one from
    `research/donors/open-design/design-systems/<slug>/` and read its
-   `DESIGN.md` and `tokens.css`. The family picks below are the default; a
-   product may pick another and says why in its brief.
+   `DESIGN.md` and `tokens.css`. The customer picks below are the default; an
+   order may pick another and says why in its brief.
 3. **Render:** covers and store images with `od-ecommerce-images` and
    `od-poster-hero`, device and screen shots with `od-mockup-device`, pages with
    `od-taste` and `od-web-design-guidelines`, a new brand with `od-brandkit`.
@@ -33,16 +33,14 @@ then `git -C research/donors/open-design sparse-checkout set skills design-syste
 4. **Audit:** `node tools/audit.mjs samples/<name>/brief.json`, then
    `node tools/judge.mjs`. The judge FAILs Preview under 7.
 
-## Family picks
+## Customer picks (who orders, what we make, the default design systems)
 
-| Family | Design systems |
-|---|---|
-| game-dev-2d, game-dev-bundle, seasonal-3d-props, lottie-mascot-assets | `fantasy`, `retro`, `pacman`, `tetris`, `hud`, `neon`, `dithered` |
-| book-forge-pro, book-maker-live, bookforge-public, print-niche | `editorial`, `warm-editorial`, `kami`, `publication`, `paper`, `vintage` |
-| niche-business-system, seasonal-tax, gated-ads-funnel | `clean`, `professional`, `modern`, `refined`, `simple` |
-| creator-packs, social-media-carousel, clip-repurpose, video-studio | `bold`, `vibrant`, `energetic`, `expressive`, `storytelling` |
-| figma-ui-kit, keyword-steroids, github-remakes, tools and apps | `dashboard`, `mission-control`, `trading-terminal`, `bento`, `sleek`, `futuristic` |
-| forge, engine2040 pages | `futuristic`, `hud`, `cosmic`, `dramatic` |
+| Customer repo | What we make for it | Design systems |
+|---|---|---|
+| factory | listing covers and store images (book, tool and template products) | `editorial`, `warm-editorial`, `kami`, `publication`, `paper`, `vintage`; business tools: `clean`, `professional`, `modern`, `refined`, `simple` |
+| marketing-studio | ad squares, landing heroes, social carousels | `bold`, `vibrant`, `energetic`, `expressive`, `storytelling` |
+| jobhunt | Hebrew RTL CV and portfolio page (logical properties, Hebrew type pair) | `clean`, `professional`, `refined`, `simple`, `editorial` |
+| forge, engine2040 | game UI kits: HUD, menu, buttons | `hud`, `fantasy`, `retro`, `neon`, `futuristic`, `cosmic`, `dramatic` |
 
 ## License rules
 
