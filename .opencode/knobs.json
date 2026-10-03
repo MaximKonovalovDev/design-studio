@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-03T22:53:27Z",
+  "updated": "2026-10-03T23:50:14Z",
   "knobs": {
-    "width": {"value":5,"min":1,"max":30,"step":1,"why":"helpers in one batch"},
+    "width": {"value":3,"min":1,"max":30,"step":1,"why":"helpers in one batch"},
     "dispatch": {"value":"foreground","why":"owner 2026-09-28: every helper seen live"},
     "heavy_max": {"value":3,"min":1,"max":10,"step":1,"why":"CPU-heavy packets in one batch"},
     "helper_max_min": {"value":90,"min":20,"max":240,"step":10,"why":"a helper past this is stopped so its batch ends"},
@@ -22,6 +22,7 @@
     {"at":"2026-10-03T20:14:06Z","knob":"paid_mode","from":0,"to":1,"by":"Loop Boss"},
     {"at":"2026-10-03T20:14:18Z","knob":"width","from":3,"to":8,"by":"Maxim (raise widths again)"},
     {"at":"2026-10-03T20:52:32Z","knob":"width","from":8,"to":5,"by":"Maxim"},
-    {"at":"2026-10-03T22:53:27Z","knob":"paid_mode","from":1,"to":0,"by":"Loop Boss"}
+    {"at":"2026-10-03T22:53:27Z","knob":"paid_mode","from":1,"to":0,"by":"Loop Boss"},
+    {"at":"2026-10-03T23:50:14Z","knob":"width","from":5,"to":3,"by":"Maxim"}
   ]
 }

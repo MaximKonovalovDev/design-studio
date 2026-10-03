@@ -34,11 +34,9 @@ Proof of the whole lane: `node tools/check.mjs` (RESULT PASS = loop check plus
 | 8 | puppeteer (puppeteer/puppeteer) | Apache-2.0 (gh api 2026-10-03) | multi-viewport screenshot matrix | `npm i puppeteer` | viewport-matrix lane (DS-53) |
 | 9 | nexu-io/open-design harness | Apache-2.0 (gh api 2026-10-03, 99k stars) | local-first design agent: prototypes, landing pages, HTML/PDF export | separate app, BYOK | steal patterns for the agent loop (DS-05 lane) |
 | 10 | Penpot (penpot/penpot) | MPL-2.0 (gh api 2026-10-03, 60k stars) | full design platform, SVG + layout engine, API | self-host or penpot.app; use as a TOOL via API/export, never vendor code | direction-aware layout ideas for RTL (steal map S09) |
-| 11 | ComfyUI (comfyanonymous/ComfyUI) | GPL-3.0 (gh api 2026-10-03, 135k stars) | node-based Stable Diffusion/Flux image generation | run as a SEPARATE local tool, never vendored, never linked | raster-art lane (covers backgrounds) when a GPU box is up |
 | 12 | tldraw (tldraw/tldraw) | custom license (gh api 2026-10-03: NOASSERTION, 50k stars) | infinite-canvas SDK | patterns only, do NOT vendor; check their license page before any import | HUD-editing ideas only (steal map S10) |
 | 13 | Figma REST API + plugins | proprietary (idea only) | read/write Figma files, code-connect mapping | token in env, never committed; file-drop JSON fixture lane exists (`tools/figma.mjs`) | import/export lane, no network in checks |
 | 14 | Recraft / Ideogram APIs | proprietary (idea only, keyed) | AI raster art (covers, backgrounds) | HTTPS call from a builder seat, key in env | art-assist lane; every output still judged as PNG |
-| 15 | Stable Diffusion / Flux checkpoints (local) | per-checkpoint license (verify each model card before use) | local raster art, no vendor lock | via ComfyUI (#11) | same lane as #11 |
 
 ## Export matrix (every finished design ships these)
 
@@ -53,6 +51,13 @@ Proof of the whole lane: `node tools/check.mjs` (RESULT PASS = loop check plus
 
 ## What runs where
 
-Windows lead box: lanes 1-10 (CPU only, no GPU, no keys). GPU box (when up):
-lanes 11+15 via ComfyUI as a service. Keyed art (#14) only with owner-provided
-keys in env, never in the repo.
+Windows lead box: lanes 1-10 and 12-13 (CPU only, no GPU). No model runs on this
+PC (Maxim 2026-10-04: no local image models, so no ComfyUI and no Stable
+Diffusion; rows 11 and 15 are gone). Keyed art (#14) and the free OpenRouter image
+lane (`tools/image.mjs`) only with Maxim's own keys, read from env
+`OPENROUTER_API_KEY` or, when that is empty, the files
+`%USERPROFILE%\.empire\secrets\openrouter.txt` and `openrouter2.txt` (the next key
+is tried once on HTTP 429 or a credit error), never in the repo, never printed.
+Free image models: `inclusionai/ming-image-0.1-design` and
+`inclusionai/ming-image-0.1-design-layer` (price 0, 2026-10-04). A paid image
+model runs only behind `DS_IMAGE_BUDGET_USD`, which stays 0 until Maxim sets it.
