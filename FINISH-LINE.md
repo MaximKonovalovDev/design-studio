@@ -4,8 +4,8 @@ What "done" means for the design studio, as bars. Designs other repos really use
 `node C:/Users/me/Desktop/center/finish.mjs design-studio` measures every bar; exit 0 means finished.
 Maxim's GO 2026-10-03 ("others also need a finish line"); drafted by Claude Code.
 
-`orders.csv` is the record of orders, one line per order: `date,from,what,file,adopted_commit`
-(`from` is the customer repo; `adopted_commit` is the customer repo's commit that uses the file, empty until then).
+`orders.csv` is the record of orders, one line per order, header `order_id,from_repo,product,brief,status,delivered_path,adopted,date,adopted_commit`
+(S80, Maxim 2026-10-03; the last column stays last because the bars below read it). `adopted_commit` is the customer repo's commit that uses the file, empty until then. How an order is taken and delivered: `AGENTS.md`, "Orders and delivery".
 
 ## Bars
 
@@ -15,7 +15,7 @@ Maxim's GO 2026-10-03 ("others also need a finish line"); drafted by Claude Code
 | D2 | Five orders adopted | `lines orders.csv 5 ,[0-9a-f]{7,40}$` |
 | D3 | jobhunt uses a design-studio CV | `lines orders.csv 1 ^[^,]*,jobhunt,.*,[0-9a-f]{7,40}$` |
 | D4 | A game UI kit in use in engine2040 or forge | `lines orders.csv 1 ^[^,]*,(engine2040|forge),.*,[0-9a-f]{7,40}$` |
-| D5 | Every live factory listing has a design-studio cover | `todo factory board/scoreboard.json published products against adopted cover rows in orders.csv` |
+| D5 | Every live factory listing has a design-studio cover | `cmd node tools/orders-check.mjs --covers` |
 
 ## Rules
 

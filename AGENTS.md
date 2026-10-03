@@ -30,9 +30,19 @@ Also `kits/`, `packs/`, `templates/`, `brand-kits/`, `designs/`. Skills are
 exact path). The donor copy `research/donors/` is not cloned. Queue folders are
 `sprint/queue/{ready,running,done,standing,chain}/`; claims go in
 `sprint/queue/claims.txt` (create if missing); `sprint/lock.txt` exists only
-while a lead holds it. Finish-line orders go in `orders.csv` at the root
-(create it with its header on the first order). Center is
-`C:/Users/me/Desktop/center`.
+while a lead holds it. Orders are in `orders.csv` at the root (next section).
+Center is `C:/Users/me/Desktop/center`.
 
 Tools of the other repos: node C:/Users/me/Desktop/center/arsenal.mjs --list (this repo's own: arsenal.json).
 Old text: archive/ (searches skip it; Read by path).
+
+## Orders and delivery
+
+S80 (Maxim 2026-10-03): this repo is the only maker of covers, post visuals and CV layouts for the other repos. A design counts when a customer repo uses it.
+
+- Order book: `orders.csv` (kept LF by `.gitattributes`; no comma inside a field). Header `order_id,from_repo,product,brief,status,delivered_path,adopted,date,adopted_commit`. `product` is `cover:<itch|gumroad>/<slug>`, `post-visual:<campaign>`, `cv-layout:<name>` or `game-ui:<name>`. `status` is open, building, delivered, adopted or rejected. New orders come as inbox items `ORDER from <repo>`: the lead adds the row.
+- Order of work: the oldest open order first, before any STEAL or research row. Load the skills named in the builder prompt; a cover without its order row is not a delivery.
+- Deliver into `designs/<order_id>/`: the sample files (brief.json, page.html, tokens.css, out.png in every size the brief asks, thumb-256.png, design-audit.json, DESIGN-REVIEW.md) and `DELIVERY.md` (at most 10 lines: each file, where it lands in the customer repo, the customer's own proof command). A judge PASS comes first.
+- After the PASS the lead commits the folder by path, sets `status` delivered and `delivered_path` `designs/<order_id>`, and sends the customer one inbox item naming that path: `node C:/Users/me/Desktop/center/empire.mjs inbox <repo> add ...` (S50). We never edit a customer repo's files.
+- Adopted: the customer repo commits a file with the same bytes as ours and points its listing, post or tool at it. The lead checks `git -C <customer repo> log -1 --format=%h -- <that file>` and only then sets `adopted` yes, `status` adopted and that hash in `adopted_commit`.
+- Proof: `node tools/orders-check.mjs` (rows), `node tools/orders-check.mjs --covers` (D5), `node C:/Users/me/Desktop/center/finish.mjs design-studio` (D1-D5).
