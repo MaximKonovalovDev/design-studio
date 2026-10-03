@@ -1,5 +1,6 @@
-// tools/check.mjs: DS-01 proof + the 6-sample suite (cover, ad-square, story,
-// hebrew-hero, jobhunt, cv). Runs sprint/check.mjs, then renders + audits every sample
+// tools/check.mjs: DS-01 proof + the 11-sample suite (cover, cover-b,
+// ad-square, story, hebrew-hero, jobhunt, cv, ads/ad-1, ads/ad-2, ads/ad-3,
+// ads/hero). Runs sprint/check.mjs, then renders + audits every sample
 // (brief.json -> page.html -> out.png -> design-audit.json) plus a real
 // 256px thumbnail (thumb-256.png) beside each render; S04 snapshot-invariant:
 // preview (out.png+audit) re-renders freely, live (receipt.json) moves only on publish.
@@ -99,13 +100,19 @@ function renderThumb(dir, brief) {
 }
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+// Usage first: a stranger probing the CLI gets guidance, not a render run
+// (matches tools/render.mjs, tools/audit.mjs, tools/judge.mjs).
+if (process.argv.slice(2).includes("--help") || process.argv.slice(2).includes("-h")) {
+  console.log("usage: node tools/check.mjs | node tools/check.mjs <samples/<name>/brief.json> (receipt.json checked when brief.publish/receipt or receipt.json exists beside the brief)");
+  process.exit(0);
+}
 // Single-sample mode for F2P fixtures: `node tools/check.mjs <brief.json>`
 // checks just that brief (render + thumb + audit + receipt). Default suite
-// stays the 6 samples so P2P RESULT PASS is stable.
+// stays the 11 samples so P2P RESULT PASS is stable.
 const onlyArg = process.argv.slice(2).find((a) => a.endsWith(".json"));
 const SAMPLES = onlyArg
   ? [onlyArg]
-  : ["cover", "ad-square", "story", "hebrew-hero", "jobhunt", "cv"].map((n) => join(ROOT, "samples", n, "brief.json"));
+  : ["cover", "cover-b", "ad-square", "story", "hebrew-hero", "jobhunt", "cv", "ads/ad-1", "ads/ad-2", "ads/ad-3", "ads/hero"].map((n) => join(ROOT, "samples", n, "brief.json"));
 
 let fails = 0;
 
@@ -188,5 +195,5 @@ if (!onlyArg) {
   }
 }
 
-console.log(fails ? `RESULT FAIL: ${fails} failing check(s)` : "RESULT PASS: loop check plus 6 sample renders plus thumbs plus audits");
+console.log(fails ? `RESULT FAIL: ${fails} failing check(s)` : "RESULT PASS: loop check plus 11 sample renders plus thumbs plus audits");
 if (fails) process.exitCode = 1;
