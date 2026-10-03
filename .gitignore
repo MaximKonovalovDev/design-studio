@@ -22,3 +22,5 @@ sprint/queue/running/
 # Generated renders stay untracked — regenerated locally by node tools/check.mjs.
 out.png
 canvas/out/
+# Deliverables stay tracked: designs/<order_id>/ PNGs ship to customer repos.
+!designs/**/out*.png
