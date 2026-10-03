@@ -176,6 +176,33 @@ export function checkGameUi({ serve = false, kitDir = KIT, manifestPath = MANIFE
     }
   }
 
+  // 8. DS-46 AVATAR-01: style-swappable avatar placeholder slot (dicebear MIT
+  // idea-only, original inline SVGs, no network, no api call).
+  {
+    const av = manifest.avatar;
+    ok("avatar: manifest pins 2 styles", !!av && Array.isArray(av.styles) && av.styles.length === 2, av?.styles?.join(",") ?? "no avatar.styles pin");
+    ok("avatar: dicebear MIT idea-only tracked", /dicebear/i.test(av?.source ?? "") && /MIT/.test(av?.license ?? "") && /idea-only/i.test(av?.license ?? ""), av?.license ?? "missing avatar.license");
+    ok("avatar: offline only (no network)", av?.offline === true, av?.offline === true ? "offline inline-SVG" : "offline flag missing");
+    const af = join(kitDir, "avatar.html");
+    if (!existsSync(af)) {
+      ok("avatar: avatar.html exists", false, "avatar.html missing");
+    } else {
+      const html = readFileSync(af, "utf8");
+      ok("avatar: avatar.html exists", true, "avatar.html");
+      ok("avatar: slot player-avatar declared", /data-avatar-slot="player-avatar"/.test(html), "data-avatar-slot present");
+      const styles = [...html.matchAll(/data-avatar-style="([\w-]+)"/g)].map((m) => m[1]);
+      const uniq = [...new Set(styles)];
+      ok("avatar: 2 inline-SVG styles swappable", uniq.length >= 2 && (html.match(/<svg/gi) ?? []).length >= 2, uniq.join(",") || "no styles");
+      const hot = /https?:\/\//i.test(html) || /api\.dicebear\.com/i.test(html);
+      ok("avatar: no network (offline inline-SVG)", !hot, hot ? "network ref found" : "offline, no hotlink");
+      const hard = html.replace(/<code>[\s\S]*?<\/code>/gi, "").match(HEX) ?? [];
+      ok("avatar: 0 hardcoded colors", hard.length === 0, hard.length ? `hardcoded ${hard.slice(0, 2).join(",")}` : "all color via var(--gui-*)");
+      ok("avatar: uses var(--gui-*)", /var\(\s*--gui-[\w-]+\s*\)/.test(html), "var(--gui-*) found");
+      ok("avatar: links tokens.css + buttons.css", /href="tokens\.css"/.test(html) && /href="buttons\.css"/.test(html), "two <link> imports");
+      ok("avatar: 44px min touch target", /44px/.test(html), "44px in avatar slot");
+    }
+  }
+
   // --serve gate (DS-20): manifest engines name forge + engine2040, pieces tagged.
   if (serve) {
     const engines = manifest.engines ?? {};

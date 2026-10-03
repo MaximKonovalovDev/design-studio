@@ -4,6 +4,7 @@
   "pieces": [
     { "id": "hud", "file": "hud.html", "uses": ["--gui-bg", "--gui-panel", "--gui-ink", "--gui-hp", "--gui-mana", "--gui-line"] },
     { "id": "menu", "file": "menu.html", "uses": ["--gui-bg", "--gui-ink", "--gui-accent", "--gui-on-accent", "--font-gui"] },
+    { "id": "avatar", "file": "avatar.html", "uses": ["--gui-bg", "--gui-panel", "--gui-ink", "--gui-line", "--gui-muted"] },
     { "id": "buttons", "file": "buttons.css", "uses": ["--gui-accent", "--gui-on-accent", "--gui-panel", "--gui-ink"] }
   ],
   "icons": {
@@ -12,6 +13,13 @@
     "art": "Kenney.nl CC0 placeholders (CSS shapes only, no binaries vendored)"
   },
   "sizes": { "touchMin": 44, "hudBarH": 16, "menuBtnMinW": 240 },
+  "avatar": {
+    "slot": "player-avatar",
+    "styles": ["adventurer", "notionists"],
+    "source": "dicebear MIT idea-only (original inline SVGs, no vendored bytes, no network)",
+    "license": "MIT (dicebear, idea-only)",
+    "offline": true
+  },
   "gameart": {
     "source": "https://kenney.nl/assets",
     "offline": true,

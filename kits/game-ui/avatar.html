@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- kits/game-ui/avatar.html (DS-46 AVATAR-01): style-swappable avatar placeholder slot. Dicebear MIT idea-only (original shapes, no vendored bytes, no network, no api call). Imports tokens.css + buttons.css. -->
+<html lang="en" dir="ltr" data-engine="forge engine2040">
+<head>
+<meta charset="utf-8">
+<title>Avatar slot</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="buttons.css">
+<style>
+  body { margin: 0; background: var(--gui-bg); color: var(--gui-ink); font-family: var(--font-gui); }
+  .avatar { width: 44px; height: 44px; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; border: 2px solid var(--gui-line); border-radius: 50%; background: var(--gui-panel); }
+  .avatar svg { width: 24px; height: 24px; }
+</style>
+</head>
+<body>
+  <div class="avatar" data-engine="forge" data-avatar-slot="player-avatar" data-avatar-style="adventurer" data-avatar-source="dicebear-mit-idea-only">
+    <!-- avatar style 1/2: adventurer (dicebear MIT idea-only, original inline SVG, no network) -->
+    <svg data-avatar-style="adventurer" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+    <!-- avatar style 2/2: notionists (dicebear MIT idea-only, original inline SVG, no network) -->
+    <svg data-avatar-style="notionists" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="8"/><circle cx="9.5" cy="11" r="1" fill="currentColor"/><circle cx="14.5" cy="11" r="1" fill="currentColor"/><path d="M9 15.5c1 1 2 1 3 1s2 0 3-1"/></svg>
+  </div>
+  <p style="color: var(--gui-muted); font-size: 12px;">Avatar slot: swap data-avatar-style adventurer/notionists. Min touch target 44px.</p>
+</body>
+</html>
