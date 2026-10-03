@@ -17,3 +17,6 @@ bundle only after 3 free checkouts (VISION Delivery evidence).
 ## Proof
 `node tools/registry.mjs --check` stays REGISTRY PASS (pack adds no registry
 row, single source untouched). `node sprint/check.mjs` PASS.
+
+## INBOX ASK (DS-71 backfill O-008 for center to file)
+INBOX ASK: factory / packs/vol0/pack.html / adopt Vol 0 free magnet as factory offer page

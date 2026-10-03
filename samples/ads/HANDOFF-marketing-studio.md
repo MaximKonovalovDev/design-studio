@@ -17,3 +17,6 @@ as the 4-creative set. Receipts at each `receipt.json`.
 ## Proof
 `node tools/check.mjs` RESULT PASS (6-sample suite untouched).
 Single-sample spot check: `node tools/check.mjs samples/ads/ad-1/brief.json`.
+
+## INBOX ASK (DS-71 backfill O-009 for center to file)
+INBOX ASK: marketing-studio / samples/ads/ad-1/page.html / adopt 3 ad squares plus hero as launch creatives
