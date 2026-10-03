@@ -77,8 +77,8 @@ commercial rows are their public pages read 2026-10-02, proprietary idea-only.
 |---|---|---|---|---|---|---|
 | S01 | competitor | canva.com template and resize suite | Thumbnail readability | Which size matrix covers every store and social slot? | proprietary, idea only (site read 2026-10-02) | 2026-10-03 |
 | S02 | competitor | figma.com Figma AI Make plus Sites | Landing-page conversion | Which publish path keeps code and design in sync? | proprietary, idea only (site read 2026-10-03) | 2026-10-03 |
-| S03 | competitor | v0.dev prompt-to-React | Brief-to-render speed | Which prompt shape yields shippable blocks first try? | proprietary, idea only (site read 2026-10-02) | 2026-10-02 |
-| S04 | competitor | lovable.dev prompt-to-app | Brief-to-render speed | Which one-click publish removes the handoff? | proprietary, idea only (site read 2026-10-02) | 2026-10-02 |
+| S03 | competitor | v0.dev prompt-to-React | Brief-to-render speed | Which prompt shape yields shippable blocks first try? | proprietary, idea only (site read 2026-10-03) | 2026-10-03 |
+| S04 | competitor | lovable.dev prompt-to-app | Brief-to-render speed | Which one-click publish removes the handoff? | proprietary, idea only (site read 2026-10-03) | 2026-10-03 |
 | S05 | competitor | onlook-dev/onlook visual edit to code | Judged quality | Which click-to-edit maps to a code diff? | Apache-2.0 (LICENSE.md read live 2026-10-02) | 2026-10-02 |
 | S06 | competitor | Nutlope/llamacoder minimal v0 clone | Brief-to-render speed | Which minimal loop shows the whole builder path? | MIT (API read 2026-10-02) | 2026-10-02 |
 | S07 | competitor | abi/screenshot-to-code screenshot loop | Judged quality | Which screenshot diff loop converges fastest? | MIT (API read 2026-10-02) | 2026-10-02 |
