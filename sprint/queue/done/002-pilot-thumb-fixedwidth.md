@@ -12,3 +12,14 @@ Proof: captures and outputs, all opened 2026-10-02: `node tools/check.mjs` RESUL
 Stop: M 30 min; at the budget report what landed and the next step.
 
 What the user sees differently: today the user runs the documented thumb command and gets a 495B sliver that looks like a rendering bug, while the audit still prints "title legible at 256px: 19.2px" as trusted math; after the fix the same command writes a real 256px miniature where the title and CTA are recognizable, backing the audit gate with pixels.
+
+
+## Result (completed)
+
+<task id="ses_f00b3ee49ffe2LnSwNe8Mt1gtm" state="completed">
+<task_result>
+No edit needed: `tools/thumb.mjs` already carries the iframe-scaled miniature path (scale 256/brief-w, 1024B blank floor) and all proofs pass — thumb is a real miniature, not the 495B sliver. Next step: close 002, no re-file.
+
+RESULT: NOOP - thumb fix already landed in HEAD, verified miniature render | proof: `node tools/thumb.mjs samples/cover/brief.json` THUMB OK 256x144 5567B
+</task_result>
+</task>

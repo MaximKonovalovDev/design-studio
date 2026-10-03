@@ -12,3 +12,16 @@ Proof: captures and outputs, all opened 2026-10-02: `node tools/check.mjs` RESUL
 Stop: M 30 min; at the budget report what landed and the next step.
 
 What the user sees differently: today the user reads a READY row promising `node tools/<x>.mjs --check` PASS and gets `Error: Cannot find module` with a node internals stack; after the fix the same command prints a one-line usage or NOT-BUILT note naming its board row, so the stranger knows what exists today and what is still owed.
+
+
+## Result (completed)
+
+<task id="ses_f00ae4c67ffeVksmokVY3FLBat" state="completed">
+<task_result>
+All 7 board-promised commands return usable PASS lines plus guided usage on bad flags — no MODULE_NOT_FOUND, no stack. The NOT-BUILT stubs this packet ordered have long since grown into full implementations (all DONE on the board with judge PASS SHAs), and board Evidence wording already matches. No file needed a touch, so none was made.
+
+Next step: archive/close `sprint/queue/running/008-pilot-missing-commands.md` (work is DONE on the board; the running slot is stale).
+
+RESULT: NOOP - 7/7 proof commands already PASS with guided usage, no edits needed | proof: node tools/<agent-block|workshop|figma|canvas|brandkit|convert|taste>.mjs --check → AGENT-BLOCK/WORKSHOP/FIGMA/CANVAS/BRANDKIT/CONVERT/TASTE PASS, exit 0, plus check.mjs RESULT PASS
+</task_result>
+</task>

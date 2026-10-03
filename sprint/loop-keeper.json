@@ -1,0 +1,99 @@
+{
+ "repo": "design-studio",
+ "supportedCommands": [
+  "go",
+  "sprint",
+  "stop",
+  "new",
+  "say",
+  "archive"
+ ],
+ "loaded": "2026-10-03T05:52:45.469Z",
+ "code": "2026-10-03T05:52:45.449Z",
+ "reload": "hot",
+ "alive": "2026-10-03T06:06:50.513Z",
+ "busy": false,
+ "queue": {
+  "ready": 34,
+  "running": 0,
+  "waiting": 0,
+  "done": 29,
+  "failed": 0,
+  "standing": {
+   "packets": 8,
+   "running": 0,
+   "resting": 0
+  }
+ },
+ "batch": {
+  "mode": "foreground",
+  "width": 5,
+  "running": 0,
+  "sent": 0,
+  "sentAt": null,
+  "next": 5
+ },
+ "lastCommand": "977373f7-84e1-4897-aa50-ec9c2b4bc75b",
+ "session": "ses_f03dee8afffe3I5zRAG9cQ8yt6",
+ "title": "design-studio /sprint loop",
+ "decision": "stopped",
+ "reason": "halted",
+ "command": "go: sent GO to the sprint session with 3 facts",
+ "commandAt": "2026-10-03T01:05:23.915Z",
+ "at": "2026-10-03T06:00:56.075Z",
+ "continues": 0,
+ "retries": 0,
+ "todo": null,
+ "helpers": null,
+ "shellFixes": {
+  "since": "2026-10-03T00:56:58.702Z",
+  "total": 8,
+  "tail": 2,
+  "head": 10,
+  "last": [
+   {
+    "at": "2026-10-03T01:15:10.538Z",
+    "from": "node --test tests/judge.test.mjs 2>&1 | tail -20; echo \"EXIT:$LASTEXITCODE\"",
+    "to": "node --test tests/judge.test.mjs 2>&1 | Select-Object -Last 20; echo \"EXIT:$LASTEXITCODE\""
+   },
+   {
+    "at": "2026-10-03T01:13:49.430Z",
+    "from": "git log --oneline -3 -- tools/game-ui.mjs kits/game-ui/ 2>&1; echo ---; git status --short -- tools/game-ui.mjs kits/gam...",
+    "to": "git log --oneline -3 -- tools/game-ui.mjs kits/game-ui/ 2>&1; echo ---; git status --short -- tools/game-ui.mjs kits/gam..."
+   },
+   {
+    "at": "2026-10-03T01:12:42.250Z",
+    "from": "git show HEAD:samples/ad-square/page.html | head -n 70; echo \"===\"; git show dcc2d73:samples/ad-square/page.html | head ...",
+    "to": "git show HEAD:samples/ad-square/page.html | Select-Object -First 70; echo \"===\"; git show dcc2d73:samples/ad-square/page..."
+   }
+  ]
+ },
+ "callFixes": {
+  "since": "2026-10-03T00:56:58.702Z",
+  "backgrounded": 0,
+  "todoFilled": 0,
+  "routed": 0,
+  "resultAsked": 0,
+  "packets": 10
+ },
+ "lastActivity": "2026-10-03T05:52:45.464Z",
+ "readinessSeen": [
+  [
+   "legacy|runner|runner (the check sweep)",
+   "{\"body\":\"design-studio crew, runner seat. Run `node sprint/check.mjs` and `node C:/Users/me/Desktop/center/sweep.mjs design-studio` when it knows this loop; copy every FAIL, WARN and RESULT line with the time into `sprint/queue/checks.md`. Never judge a line. A run within 30 minutes of the last one: `RESULT: NOOP - fresh`.\",\"fm\":{\"role\":\"runner\",\"title\":\"runner (the check sweep)\"}}"
+  ],
+  [
+   "legacy|planner|research merge (hard judge of the cards)",
+   "{\"body\":\"design-studio crew, research merge seat. Read the research cards filed since the last `Merge:` line in `research/INDEX.md` (skip with `RESULT: NOOP - no new cards`). Drop duplicates, reject a card with no existing home or no runnable proof, score the rest 1-5 on net lines deleted, fit with its home, the strength of its proof and low effort, and accept the best (no quota): each accepted card becomes a board row with baseline, metric and proof. A rejected card stays with one `REJECTED <date>: <why>` line.\\n\\nWrite one `Merge: <UTC> | cards N | accepted A | rejected R | dupes D` line in `research/INDEX.md`. Your reply is at most 15 lines, ending with the RESULT line.\",\"fm\":{\"role\":\"planner\",\"title\":\"research merge (hard judge of the cards)\"}}"
+  ],
+  [
+   "legacy|planner|planner (rows from the vision)",
+   "{\"body\":\"design-studio crew, planner seat. Keep 10 or more READY rows on `sprint/board.md`, each naming its Scorecard row in `VISION.md`, a done-when with its proof command and its owner role. First the vision itself while `node C:/Users/me/Desktop/center/vision-check.mjs design-studio` FAILs: split the vision into parts, write 5 or more Scorecard rows with 3 or more real competitors each (with sources), 3 or more Open gaps. Then rows for the weakest Scorecard row, the open gaps, and the rows the last results blocked (a deep-dive: root cause, a different approach, the proof).\\n\\nCard: Goal (the rows or vision sections), Scope (`sprint/board.md`, `VISION.md`), Proof (the vision check and the board check output), Stop (M 30 min). End with the RESULT line.\",\"fm\":{\"role\":\"planner\",\"title\":\"planner (rows from the vision)\"}}"
+  ]
+ ],
+ "said": "`4aa0141`. - Knobs: width 10→5 applied, batch sent as 5. Handoff carries the Knobs line. - Handoff rewritten round 18, lock fresh `01:18Z`, pulled clean, pushed. - Left uncommitted: knobs.json, other audit.json re-renders, DS-39/41 in-fligh...",
+ "knobsSeen": "2026-10-03T00:21:17Z",
+ "knobsSeenAt": "2026-10-03T01:11:43.110Z",
+ "commandSeen": "2026-10-02T10:50:59.764Z",
+ "resume": "say GO in the design-studio /sprint session, press GO in the popper, or run /sprint there"
+}
