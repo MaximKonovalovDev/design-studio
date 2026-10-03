@@ -1,0 +1,186 @@
+{
+  "repo": "design-studio",
+  "tools": [
+    {
+      "name": "render",
+      "does": "page.html to PNG with the local Edge or Chrome (headless, local files only); args: page, out PNG path, optional WxH size",
+      "run": [
+        "node",
+        "tools/render.mjs"
+      ],
+      "args": [
+        {
+          "name": "page",
+          "does": "path to the page.html to render",
+          "required": true
+        },
+        {
+          "name": "out",
+          "does": "path of the PNG to write",
+          "required": true
+        },
+        {
+          "name": "size",
+          "does": "WxH in pixels, default 1280x720",
+          "flag": "--size"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/render.mjs",
+        "--check"
+      ],
+      "for": [
+        "factory F6: listing cover PNGs",
+        "marketing-studio: ad squares and heroes",
+        "jobhunt: CV page to PNG"
+      ],
+      "timeout_s": 120
+    },
+    {
+      "name": "thumb",
+      "does": "256px thumbnail PNG of a design from its brief.json (the size a store listing shows), written beside the brief",
+      "run": [
+        "node",
+        "tools/thumb.mjs"
+      ],
+      "args": [
+        {
+          "name": "brief",
+          "does": "path to the design's brief.json",
+          "required": true
+        },
+        {
+          "name": "out",
+          "does": "thumbnail PNG path, default beside the brief"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/thumb.mjs",
+        "--check"
+      ],
+      "for": [
+        "factory F6: cover readable at listing size",
+        "marketing-studio: ad thumbnails"
+      ],
+      "timeout_s": 120
+    },
+    {
+      "name": "audit",
+      "does": "audits a design from its brief.json: contrast, size, title box, 256px legibility, RTL; PASS or FAIL per check, writes design-audit.json",
+      "run": [
+        "node",
+        "tools/audit.mjs"
+      ],
+      "args": [
+        {
+          "name": "brief",
+          "does": "path to the design's brief.json",
+          "required": true
+        }
+      ],
+      "test": [
+        "node",
+        "tools/audit.mjs",
+        "--rtl",
+        "--check"
+      ],
+      "for": [
+        "factory F6: gate before a cover is adopted",
+        "marketing-studio: ad gate",
+        "jobhunt: Hebrew RTL CV gate"
+      ],
+      "timeout_s": 60
+    },
+    {
+      "name": "judge",
+      "does": "scores a design from its brief.json with rubric ds-quality-v1 (10 checks, ship at 8); writes DESIGN-REVIEW.md, prints SHIP or REWORK",
+      "run": [
+        "node",
+        "tools/judge.mjs"
+      ],
+      "args": [
+        {
+          "name": "brief",
+          "does": "path to the design's brief.json (or its folder)",
+          "required": true
+        }
+      ],
+      "test": [
+        "node",
+        "tools/judge.mjs",
+        "--check"
+      ],
+      "for": [
+        "factory F6: ship or rework verdict for a cover",
+        "marketing-studio: ad verdict"
+      ],
+      "timeout_s": 60
+    },
+    {
+      "name": "tokens",
+      "does": "builds tokens.css (light and dark, no hardcoded colors) and a docs page from a brand tokens.json, written beside the json",
+      "run": [
+        "node",
+        "tools/tokens.mjs"
+      ],
+      "args": [
+        {
+          "name": "tokens_json",
+          "does": "path to the brand's tokens.json",
+          "required": true,
+          "flag": "--build"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/tokens.mjs",
+        "--check"
+      ],
+      "for": [
+        "factory: one brand palette for every cover",
+        "marketing-studio: campaign brand tokens"
+      ],
+      "timeout_s": 30
+    },
+    {
+      "name": "block",
+      "does": "emits one landing block (hero works with defaults) as an HTML section on stdout; all colors through var(--*)",
+      "run": [
+        "node",
+        "tools/registry.mjs"
+      ],
+      "args": [
+        {
+          "name": "block",
+          "does": "block id from templates/registry.json, for example hero",
+          "required": true,
+          "flag": "--emit"
+        },
+        {
+          "name": "slot1",
+          "does": "a SLOT=value pair, for example TITLE=Hello"
+        },
+        {
+          "name": "slot2",
+          "does": "a second SLOT=value pair"
+        },
+        {
+          "name": "slot3",
+          "does": "a third SLOT=value pair"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/registry.mjs",
+        "--check"
+      ],
+      "for": [
+        "factory F6: free magnet and listing pages",
+        "marketing-studio: landing hero"
+      ],
+      "timeout_s": 30
+    }
+  ]
+}

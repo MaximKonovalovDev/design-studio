@@ -5,7 +5,7 @@ Every agent in this repo reads this first. The loop is `/sprint`
 
 1. The files carry the loop: `sprint/board.md` (the work), `sprint/handoff.md`
    (where the lead is), `sprint/inbox.md` (asks from center and the owner),
-   `VISION.md` (where we are going).
+   `VISION.md` (where we are going; its research tables are in `VISION-TABLES.md`).
 2. One branch, `master`. Pull before every push
    (`git pull --no-rebase --no-edit origin master`). Commit your own paths
    only (`git add <paths>`), never `git add -A`, never force-push, never rewrite
@@ -33,3 +33,6 @@ exact path). The donor copy `research/donors/` is not cloned. Queue folders are
 while a lead holds it. Finish-line orders go in `orders.csv` at the root
 (create it with its header on the first order). Center is
 `C:/Users/me/Desktop/center`.
+
+Tools of the other repos: node C:/Users/me/Desktop/center/arsenal.mjs --list (this repo's own: arsenal.json).
+Old text: archive/ (searches skip it; Read by path).
