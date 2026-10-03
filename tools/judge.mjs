@@ -305,8 +305,43 @@ export function writeReview(input, result = null) {
     `  the thumbnail read by a human eye go here on the next art-director pass.`,
     ``,
   ];
+  // DS-64 preserve-gate: never silently drop hand-written review sections.
+  // Carry forward any existing `## Two-variant*` / `## Duel*` sections
+  // into the rewritten review; fail-closed when such a section is present
+  // but cannot be carried.
   const out = join(dir, "DESIGN-REVIEW.md");
-  writeFileSync(out, `${lines.join("\n")}\n`, "utf8");
+  let preserved = "";
+  const prev = readText(out);
+  if (prev != null && /two-variant|duel/i.test(prev)) {
+    const prevLines = prev.split("\n");
+    const blocks = [];
+    let cur = null;
+    for (const ln of prevLines) {
+      if (/^##\s+(Two-variant|Duel)/i.test(ln)) {
+        if (cur != null) blocks.push(cur);
+        cur = [ln];
+      } else if (cur != null) {
+        if (/^##\s+/.test(ln)) {
+          blocks.push(cur);
+          cur = null;
+        } else {
+          cur.push(ln);
+        }
+      }
+    }
+    if (cur != null) blocks.push(cur);
+    // Drop a trailing empty block tail (file-end newline split) for byte-stability.
+    const texts = blocks.map((b) => b.join("\n").replace(/\s+$/, ""));
+    if (texts.length === 0) {
+      throw new Error(`review-preserve-gate: hand-written Two-variant/Duel section present in ${out} but unparseable, refusing to overwrite`);
+    }
+    preserved = texts.join("\n\n") + "\n";
+    if (!/##\s+(Two-variant|Duel)/i.test(preserved)) {
+      throw new Error(`review-preserve-gate: carry-forward produced no Two-variant/Duel section for ${out}, refusing to overwrite`);
+    }
+  }
+  const body = `${lines.join("\n")}\n`;
+  writeFileSync(out, preserved ? `${body.replace(/\s+$/, "")}\n\n${preserved}\n` : body, "utf8");
   return out;
 }
 
