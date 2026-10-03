@@ -57,6 +57,11 @@
       "detail": "no reverse flex"
     },
     {
+      "name": "rtl: mixed-dir mirror",
+      "pass": true,
+      "detail": "single-dir page, mirror skipped"
+    },
+    {
       "name": "out.png size matches brief",
       "pass": true,
       "detail": "1280x720"
