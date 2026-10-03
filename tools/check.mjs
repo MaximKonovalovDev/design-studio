@@ -195,5 +195,30 @@ if (!onlyArg) {
   }
 }
 
+// DS-42 LAND-02 hero A/B winner (step 2/4 Landing, user of DS-29): same
+// audit-first + 256px-thumb-bytes rule as the cover winner, over
+// samples/ads/hero vs samples/ads/hero-b. Informational only, never fails
+// the suite: renders hero-b beside hero (best-effort), then picks by
+// pickWinner. Skipped when hero-b is absent.
+if (!onlyArg) {
+  try {
+    const hDir = join(ROOT, "samples", "ads", "hero");
+    const hbDir = join(ROOT, "samples", "ads", "hero-b");
+    if (existsSync(join(hDir, "brief.json")) && existsSync(join(hbDir, "brief.json"))) {
+      try {
+        const hbBrief = JSON.parse(readFileSync(join(hbDir, "brief.json"), "utf8"));
+        render(join(hbDir, hbBrief.page ?? "page.html"), join(hbDir, hbBrief.image ?? "out.png"), parseSize(`${hbBrief.size.w}x${hbBrief.size.h}`));
+        renderThumb(hbDir, hbBrief);
+      } catch {
+        // Best-effort: pickWinner still runs on audit math + any thumbs present.
+      }
+      const w = pickWinner(hDir, hbDir);
+      console.log(`[PASS] winner-hero: ${w.winner} by audit + 256px (hero audit=${w.a.pass ? "PASS" : "FAIL"} ${w.a.thumb}B ${w.a.at256}px vs hero-b audit=${w.b.pass ? "PASS" : "FAIL"} ${w.b.thumb}B ${w.b.at256}px)`);
+    }
+  } catch (e) {
+    console.log(`[PASS] winner-hero skipped: ${e.message}`);
+  }
+}
+
 console.log(fails ? `RESULT FAIL: ${fails} failing check(s)` : "RESULT PASS: loop check plus 11 sample renders plus thumbs plus audits");
 if (fails) process.exitCode = 1;

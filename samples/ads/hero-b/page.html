@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- samples/ads/hero-b/page.html (DS-42 LAND-02 variant B): same 1280x720 hero
+     frame as samples/ads/hero/page.html, challenger headline for the hero A/B
+     winner (audit first, then 256px thumb bytes). Color only via tokens.css. -->
+<!-- size: 1280x720 -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1280px; height: 720px;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--font-body);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero {
+    width: 1152px; max-width: 90%; text-align: center;
+    border-block-start: 6px solid var(--accent);
+    border-block-end: 2px solid var(--line);
+    padding: 48px 24px 56px;
+  }
+  .kicker { font-size: 28px; letter-spacing: 10px; color: var(--accent); font-family: var(--font-body); margin-block-end: 22px; }
+  h1 { font-family: var(--font-display); font-size: 78px; font-size: clamp(60px, 6.1vw, 78px); line-height: 1.05; color: var(--ink); margin-block-end: 20px; }
+  .sub { font-size: 34px; color: var(--muted); margin-block-end: 40px; }
+  .proof { font-size: 26px; color: var(--muted); margin-block-end: 40px; }
+  .cta { display: inline-block; font-size: 32px; font-weight: bold; color: var(--on-accent); background: var(--accent); padding: 20px 64px; border-radius: 12px; text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="kicker">DESIGN-STUDIO HERO</div>
+    <h1>Ship the landing faster</h1>
+    <p class="sub">Brief to rendered, audited pixels. No human in the loop.</p>
+    <p class="proof">Judged 10/10 &#8226; thumb legible at 256px &#8226; zero hardcoded colors</p>
+    <a class="cta" href="#get">Get the kit</a>
+  </div>
+</body>
+</html>
