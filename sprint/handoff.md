@@ -1,22 +1,23 @@
-# design-studio handoff - round 37 (token c7a1)
+# design-studio handoff - round 38 (token c7a1)
 
-Round: 37
+Round: 38
 Written: 2026-10-03T13:29Z by lead (token c7a1, took over f2b7 round 30)
 
 ## Heading
-- Two rows DONE on judged PASS (DS-65, DS-68, both committed). Two fresh builds (DS-43/DS-45) await judges. No Scorecard % movement (Thumbnail 100%, Landing 0%).
+- Two rows DONE on judged PASS (DS-43, DS-45, both committed). DS-44 verdict-gate built (closes Landing 4/4 on judge PASS). No Scorecard % movement yet.
 
 ## Done
-- Judge 065 PASS DS-65 (RENDER 12/12, AGENT-BLOCK 17/17, env-only + draftOnly quotes, no-network). Committed 0a6b01e (render + agent-block).
-- Judge 066 PASS DS-68 (GAME-UI + serve PASS, CC0 record, 0 hotlinks, wiring). Committed 3847475 (game-ui tool + kits 4 files).
-- Builder slice DONE: DS-43 live-receipt gate (+22 lines, plan.live = cover-b, CONVERT PASS pinned, tests 20/20) + DS-45 mirror gate (+16 lines 2 cases, RTL PASS, tests 20/20). Uncommitted; 067/068 judges queued.
-- Donor sweep DONE: 1 card (plausible receipt idea, AGPL take idea-only SHA 0ad25db) filed, awaiting merge.
-- Board: DS-65/68 DONE with SHAs; DS-43/45 READY->DOING. Knobs: width 4 held.
+- Judge 067 PASS DS-43 (CONVERT 30/30, tests 5/5, rev match true, check PASS). Committed ac45099 (convert tool + tests + plan).
+- Judge 068 PASS DS-45 (RTL 15 PASS, tests 15/0, 3 samples PASS, additive-only). Committed 394f5db (audit tool + tests).
+- Builder DS-44 DONE: verdictFor + checkLandingVerdict as figma check section 5, wired into check.mjs (FIGMA PASS 6+2 verdicts, check PASS + 2 lines, fail-closed preserved). Uncommitted; 069 judge queued.
+- Merge DONE: plausible card accepted to DS-69 READY (LAND-03b beacon user of DS-43); 041b + free-images confirmed dupes.
+- Board: DS-43/45 DONE with SHAs; DS-44 READY->DOING; DS-69 READY on board. Knobs: width 4 held.
 
 ## Blockers and notes
-- tests/convert.test.mjs + convert/plan.json + tools/convert.mjs + tools/audit.mjs + tests/audit.test.mjs stay dirty until judges PASS.
-- sprint/check.mjs RESULT PASS 20/0/0 (runner r36; re-run pre-commit). Inbox open empty.
-- Left uncommitted: keeper files, 043 + 041b + plausible cards, 022 snapshot, samples tool-output, 2 judged-pending builds.
+- tools/figma.mjs + tools/check.mjs (verdict hunks) stay dirty until 069 PASSes.
+- Landing 0% closeout waits on 069 PASS + planner/vision measurement (DS-41/42/43 DONE, DS-44 pending).
+- sprint/check.mjs RESULT PASS 20/0/0 (pre-commit). Inbox open empty.
+- Left uncommitted: keeper files, 3 research cards, 022 snapshot, samples tool-output, verdict-gate build.
 
 ## Next
-- Round 38: judges 067 (DS-43), 068 (DS-45), planner merge (donor card), builder DS-44 verdict-gate slice (closes Landing 4/4 on PASS).
+- Round 39: judge 069 (DS-44), then Landing % measurement; builder DS-46 avatar + DS-69 beacon slice; planner rows hygiene.
