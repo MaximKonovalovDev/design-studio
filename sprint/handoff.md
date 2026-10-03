@@ -1,22 +1,22 @@
-# design-studio handoff - round 36 (token c7a1)
+# design-studio handoff - round 37 (token c7a1)
 
-Round: 36
+Round: 37
 Written: 2026-10-03T13:29Z by lead (token c7a1, took over f2b7 round 30)
 
 ## Heading
-- README job closed (064 PASS, committed). Two fresh builds (DS-65/DS-68) await judges. No Scorecard % movement (Thumbnail 100% holds, Landing 0%).
+- Two rows DONE on judged PASS (DS-65, DS-68, both committed). Two fresh builds (DS-43/DS-45) await judges. No Scorecard % movement (Thumbnail 100%, Landing 0%).
 
 ## Done
-- Re-judge 064 PASS: README content correct (11 entries, 11 == 11, hunks docs-only, other dirt attributed). Committed README.md as 5ed9c7e. 046 job DONE.
-- Builder slice DONE: DS-65 FREE-01 (freePrompt + env key + draftOnly + Terms, RENDER 12/12, AGENT-BLOCK green) + DS-68 GAMEART-01 (manifest pin + LICENSE-kenney + slots, 13 gates, serve 4/4). Uncommitted; 065/066 judges queued.
-- Pilot r36: stranger path green, hero-b opened, 0 defects (notes filed). Runner sweep: 6 pass 0 fail (sprint 20, check 11, JUDGE, IMAGE, CANVAS, THUMB).
-- Board: DS-65/68 READY->DOING. Knobs: width 4 held.
+- Judge 065 PASS DS-65 (RENDER 12/12, AGENT-BLOCK 17/17, env-only + draftOnly quotes, no-network). Committed 0a6b01e (render + agent-block).
+- Judge 066 PASS DS-68 (GAME-UI + serve PASS, CC0 record, 0 hotlinks, wiring). Committed 3847475 (game-ui tool + kits 4 files).
+- Builder slice DONE: DS-43 live-receipt gate (+22 lines, plan.live = cover-b, CONVERT PASS pinned, tests 20/20) + DS-45 mirror gate (+16 lines 2 cases, RTL PASS, tests 20/20). Uncommitted; 067/068 judges queued.
+- Donor sweep DONE: 1 card (plausible receipt idea, AGPL take idea-only SHA 0ad25db) filed, awaiting merge.
+- Board: DS-65/68 DONE with SHAs; DS-43/45 READY->DOING. Knobs: width 4 held.
 
 ## Blockers and notes
-- Judge-diff-scope lesson stands: 064's attribution rule worked; standing packet template now carries it (all new judge packets scope dirt to owned files).
-- README committed; tools/render, agent-block, game-ui + kits + LICENSE-kenney stay dirty until judges PASS.
-- sprint/check.mjs RESULT PASS 20/0/0 (runner). Inbox open empty.
-- Left uncommitted: keeper files, 043 + 041b cards, 022 snapshot, samples tool-output, 2 judged-pending builds.
+- tests/convert.test.mjs + convert/plan.json + tools/convert.mjs + tools/audit.mjs + tests/audit.test.mjs stay dirty until judges PASS.
+- sprint/check.mjs RESULT PASS 20/0/0 (runner r36; re-run pre-commit). Inbox open empty.
+- Left uncommitted: keeper files, 043 + 041b + plausible cards, 022 snapshot, samples tool-output, 2 judged-pending builds.
 
 ## Next
-- Round 37: judges 065 (DS-65), 066 (DS-68), builder DS-43 + DS-45 slice, researcher-donors weekly sweep.
+- Round 38: judges 067 (DS-43), 068 (DS-45), planner merge (donor card), builder DS-44 verdict-gate slice (closes Landing 4/4 on PASS).
