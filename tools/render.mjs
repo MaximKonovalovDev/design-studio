@@ -140,6 +140,28 @@ export function refineHtml(html, instruction, { generationType } = {}) {
   }
   return { generationType: "update", prompt: buildRefinePrompt(html, instruction), html: String(html ?? "") };
 }
+// DS-65 FREE-01 :free text lane for brief/copy/layout drafts (idea-only from
+// openrouter :free docs, 0 lines copied: proprietary docs). Text-only: model
+// slug must end in :free, key from OPENROUTER_API_KEY env only (never in repo,
+// never printed), drafts only never final pixels. No image bytes here.
+export const FREE_TERMS_NOTE = "per-model Terms: free-lane output is a draft only, never final pixels; check the serving model Terms before ship";
+export function freeKey() {
+  const k = String(process.env.OPENROUTER_API_KEY ?? "").trim();
+  if (!k) throw new Error("OPENROUTER_API_KEY missing from env (free lane stays off, never commit a key)");
+  return k;
+}
+export function buildFreePrompt({ model, prompt } = {}) {
+  const m = String(model ?? "").trim();
+  if (!/:free$/.test(m)) throw new Error("free prompt needs a model slug with :free suffix (only listed models support it)");
+  const p = String(prompt ?? "").trim();
+  if (!p) throw new Error("free prompt needs prompt text (never silent)");
+  return { url: "https://openrouter.ai/api/v1/chat/completions", headers: { Authorization: "Bearer <env>", "Content-Type": "application/json" }, body: { model: m, messages: [{ role: "user", content: p }] }, terms: FREE_TERMS_NOTE, draftOnly: true };
+}
+export function freeDraftReceipt(base, { model } = {}) {
+  const m = String(model ?? "").trim();
+  if (!/:free$/.test(m)) throw new Error("free receipt needs the serving :free model (pin what served, never silent)");
+  return { ...base, model: m, draftOnly: true, terms: FREE_TERMS_NOTE };
+}
 // DS-21+DS-30 self-check: good preview/stream/refine PASS, bad fixtures FAIL
 // as expected (F2P proven inside a green suite, like audit --sizes/--rtl).
 export function renderSelfCheck() {
@@ -172,6 +194,26 @@ export function renderSelfCheck() {
     const c = refineHtml("", "make it bolder");
     t("create path seeds from instruction", c.generationType === "create", c.prompt.split("\n")[0].slice(0, 40));
   }
+  // DS-65 FREE-01 gates: :free-suffix shape + env-only key + draft receipt.
+  try {
+    const r = buildFreePrompt({ model: "meta-llama/llama-3.2-3b-instruct:free", prompt: "draft hero copy" });
+    t("free prompt builds :free shape (draft-only)", r.body.model.endsWith(":free") && r.draftOnly === true && /per-model Terms/.test(r.terms), r.body.model);
+  } catch (e) { t("free prompt builds :free shape (draft-only)", false, String(e.message || e)); }
+  try { buildFreePrompt({ model: "plain-model", prompt: "x" }); t("free non-:free fixture FAILs closed", false, "no throw?"); }
+  catch (e) { t("free non-:free fixture FAILs closed", /:free suffix/.test(e.message), e.message); }
+  try { buildFreePrompt({ model: "m:free", prompt: "   " }); t("free empty-prompt fixture FAILs closed", false, "no throw?"); }
+  catch (e) { t("free empty-prompt fixture FAILs closed", /needs prompt text/.test(e.message), e.message); }
+  {
+    const saved = process.env.OPENROUTER_API_KEY;
+    delete process.env.OPENROUTER_API_KEY;
+    try { freeKey(); t("free missing-key fixture FAILs closed", false, "no throw?"); }
+    catch (e) { t("free missing-key fixture FAILs closed", /missing from env/.test(e.message), "env-only, never committed"); }
+    if (saved != null) process.env.OPENROUTER_API_KEY = saved;
+  }
+  try {
+    const rc = freeDraftReceipt({ url: "https://x.local/h", date: "2026-10-03", rev: "abc1234" }, { model: "meta-llama/llama-3.2-3b-instruct:free" });
+    t("free receipt pins serving :free model (draft-only)", rc.model.endsWith(":free") && rc.draftOnly === true, `${rc.model} draftOnly`);
+  } catch (e) { t("free receipt pins serving :free model (draft-only)", false, String(e.message || e)); }
   const pass = results.every((r) => r.pass);
   console.log(pass ? "RENDER PASS: refine + measured preview + 3-chunk stream green" : `RENDER FAIL: ${results.filter((r) => !r.pass).length} failing check(s)`);
   return { pass, results };
@@ -261,6 +303,20 @@ if (isMain) {
   if (args.length < 2 || args.includes("-h") || args.includes("--help")) {
     console.log("usage: node tools/render.mjs <page.html> <out.png> [--size 1280x720] [--sizes] | node tools/render.mjs --check");
     process.exit(args.length < 2 ? 2 : 0);
+  }
+  // DS-65 FREE-01 helper: offline draft-shape print (no network, no key read,
+  // drafts only never final pixels). Usage: --free-prompt <model:free> <text>.
+  if (args.includes("--free-prompt")) {
+    const i = args.indexOf("--free-prompt");
+    try {
+      const r = buildFreePrompt({ model: args[i + 1], prompt: args.slice(i + 2).join(" ") });
+      console.log(`FREE-PROMPT DRAFT model=${r.body.model} ${r.terms}`);
+      console.log(r.body.messages[0].content.slice(0, 160));
+    } catch (e) {
+      console.log(`FREE-PROMPT FAIL: ${e.message}`);
+      process.exit(1);
+    }
+    process.exit(0);
   }
   // S01 per-size reflow: --sizes renders the full SIZE_MATRIX beside out.png.
   if (args.includes("--sizes")) {

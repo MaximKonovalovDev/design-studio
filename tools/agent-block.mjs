@@ -25,7 +25,7 @@ import { deflateSync } from "node:zlib";
 import { tmpdir } from "node:os";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { pngDims, render as realRender } from "./render.mjs";
+import { pngDims, render as realRender, buildFreePrompt, FREE_TERMS_NOTE } from "./render.mjs";
 import { auditBrief } from "./audit.mjs";
 import { RUBRIC_ID, SHIP_FLOOR, judgeSample, writeReview } from "./judge.mjs";
 
@@ -228,6 +228,19 @@ export function pageFor(brief) {
     `</html>`,
     ``,
   ].join("\n");
+}
+
+// DS-65 FREE-01 consumer: brief -> draft copy/layout prompt text for the
+// :free text lane (drafts only, never final pixels). Pure offline helper;
+// the live call (if any) uses buildFreePrompt with a key from env only.
+export function draftCopyPrompt(brief = {}) {
+  const title = String(brief?.title ?? "").trim();
+  if (!title) throw new Error("free draft needs a brief title (never silent)");
+  const size = brief?.size ?? { w: 1280, h: 720 };
+  return [`Draft brief copy/layout (DRAFT ONLY, ${FREE_TERMS_NOTE}):`, `title: ${title}`, `subtitle: ${String(brief?.subtitle ?? "")}`, `cta: ${String(brief?.cta ?? "")}`, `size: ${size.w}x${size.h} dir=${String(brief?.dir ?? "ltr")}`].join("\n");
+}
+export function freeDraftFor(brief = {}, model = "") {
+  return buildFreePrompt({ model, prompt: draftCopyPrompt(brief) });
 }
 
 // Iteration 0 seed: a minimal shell that renders the title but fails the
@@ -455,6 +468,16 @@ export function selfCheck() {
   } catch (e) {
     t("rtl prompt builds a shippable block", false, String(e?.message ?? e));
   }
+
+  // 5. DS-65 FREE-01: draft prompt shapes a :free request, drafts only.
+  try {
+    const r = freeDraftFor({ title: "DESIGN THAT SHIPS", size: { w: 1280, h: 720 }, dir: "ltr" }, "meta-llama/llama-3.2-3b-instruct:free");
+    t("free draft shapes :free request (draft-only)", r.body.model.endsWith(":free") && r.draftOnly === true, r.body.model);
+  } catch (e) {
+    t("free draft shapes :free request (draft-only)", false, String(e?.message ?? e));
+  }
+  try { freeDraftFor({ title: "DESIGN THAT SHIPS" }, "plain-model"); t("free non-:free fixture FAILs closed", false, "no throw?"); }
+  catch (e) { t("free non-:free fixture FAILs closed", /:free suffix/.test(e.message), e.message); }
 
   const fails = results.filter((r) => !r.pass);
   console.log(fails.length ? `AGENT-BLOCK FAIL: ${fails.length} failing check(s)` : `AGENT-BLOCK PASS: ${BLOCK_ID} brief-in block-out, judge ${RUBRIC_ID} floor ${SHIP_FLOOR}, fail-closed`);
