@@ -14,6 +14,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { render, parseSize } from "./render.mjs";
 import { auditBrief } from "./audit.mjs";
 import { thumbSize } from "./thumb.mjs";
+import { checkLandingVerdict } from "./figma.mjs";
 
 // S02 C1 Sites-style publish receipt gate (figma.com Sites idea-only, no code
 // copied): a landing page counts as published when receipt.json holds
@@ -218,6 +219,19 @@ if (!onlyArg) {
   } catch (e) {
     console.log(`[PASS] winner-hero skipped: ${e.message}`);
   }
+}
+
+// LAND-04 verdict gate (DS-44, step 4/4 Landing): Landing closes only after
+// the figma verdict gate PASSes — no code without a judge SHIP verdict on the
+// receipted landing pages (samples/ads/hero + samples/cover-b).
+try {
+  for (const v of checkLandingVerdict()) {
+    if (v.pass) console.log(`[PASS] ${v.name}: ${v.detail}`);
+    else { console.log(`[FAIL] ${v.name}: ${v.detail}`); fails += 1; }
+  }
+} catch (e) {
+  console.log(`[FAIL] landing-verdict: ${e.message}`);
+  fails += 1;
 }
 
 console.log(fails ? `RESULT FAIL: ${fails} failing check(s)` : "RESULT PASS: loop check plus 11 sample renders plus thumbs plus audits");

@@ -66,6 +66,26 @@ export function resolveMapping(figmaName, mapping = MAPPING) {
   return mapping.find((m) => m.figma === figmaName) ?? null;
 }
 
+// LAND-04 verdict gate (DS-44, step 4/4 Landing): Landing closes only after
+// the Figma-mapped landing pages carry a judge SHIP verdict. No code without
+// verdict: each sample in LANDING_VERDICT_SAMPLES must hold DESIGN-REVIEW.md
+// with a ## Verdict section containing SHIP (ds-quality-v1 floor 8).
+export const LANDING_VERDICT_SAMPLES = ["samples/ads/hero", "samples/cover-b"];
+
+export function verdictFor(dir, root = ROOT) {
+  const file = join(root, dir, "DESIGN-REVIEW.md");
+  if (!existsSync(file)) return { pass: false, detail: `${dir}/DESIGN-REVIEW.md missing — next: run judge then re-run` };
+  const text = readText(file) ?? "";
+  if (!/##\s*Verdict/i.test(text)) return { pass: false, detail: `${dir} review has no ## Verdict — next: run judge then re-run` };
+  if (!/\bSHIP\b/.test(text)) return { pass: false, detail: `${dir} verdict is not SHIP — next: fix to SHIP then re-run` };
+  const m = text.match(/(\d+)\/10/)?.[1] ?? "SHIP";
+  return { pass: true, detail: `${dir} ${m} SHIP` };
+}
+
+export function checkLandingVerdict({ root = ROOT, samples = LANDING_VERDICT_SAMPLES } = {}) {
+  return samples.map((s) => ({ name: `landing verdict ${s} SHIP`, ...verdictFor(s, root) }));
+}
+
 function readText(f) {
   try { return readFileSync(f, "utf8"); } catch { return null; }
 }
@@ -132,6 +152,11 @@ export function checkFigma({ root = ROOT, mapping = MAPPING, drop = dropFixture(
     }
     const covered = new Set(frames.map((f) => resolveMapping(f?.name, mapping)?.block).filter(Boolean));
     ok("drop covers hero+cta blocks", covered.has("hero") && covered.has("cta"), [...covered].join(",") || "none");
+  }
+
+  // 5. LAND-04 verdict gate: no code without verdict (DS-44 closes Landing).
+  for (const v of checkLandingVerdict({ root })) {
+    ok(v.name, v.pass, v.detail);
   }
 
   return { pass: results.every((r) => r.pass), results };
