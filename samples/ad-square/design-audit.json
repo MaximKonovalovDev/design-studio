@@ -44,7 +44,7 @@
     {
       "name": "out.png non-trivial",
       "pass": true,
-      "detail": "50914B"
+      "detail": "50912B"
     },
     {
       "name": "contrast title",
@@ -120,5 +120,5 @@
   "errors": [],
   "brief": "C:\\Users\\me\\Desktop\\design-studio\\samples\\ad-square\\brief.json",
   "image": "C:\\Users\\me\\Desktop\\design-studio\\samples\\ad-square\\out.png",
-  "at": "2026-10-02"
+  "at": "2026-10-03"
 }
