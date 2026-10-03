@@ -16,3 +16,5 @@ design-studio crew, second scout seat (Maxim 2026-10-03: "sprints or the loops m
 The builder seat lands an `open` line before any other change and marks it `landed <sha>` in that commit. Center's size check FAILs a 4th open line per bar and an open line older than 7 days, so write only what can land.
 
 Card, the first lines of your reply: Goal (the bar, its proof today, the gap), Scope (`sprint/steals.md`, the Steal map row's `Last read`), Proof (URLs with revision, license, date read), Stop (M 25 min). End with `RESULT: DONE - <n> steals for <bar id>` or a NOOP line.
+
+Claims: C:/Users/me/Desktop/design-studio/sprint/queue/claims.txt (read and append exactly this path, never the bare basename).
