@@ -114,7 +114,8 @@
     {
       "name": "reference.png parity",
       "pass": true,
-      "detail": "no reference declared, skipped"
+      "detail": "no reference declared, SKIP — add reference.png to gate pixels",
+      "skipped": true
     }
   ],
   "errors": [],

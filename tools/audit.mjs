@@ -5,6 +5,8 @@
 // PNG size match, title box valid, 256px title legibility, overflow heuristic,
 // RTL gate. Every FAIL carries a next: hint for the aimed re-prompt. Taste stays in review.
 import { existsSync, mkdirSync, readFileSync, writeFileSync, mkdtempSync, readdirSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { inflateSync } from "node:zlib";
 import { tmpdir } from "node:os";
 import { dirname, resolve, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -65,8 +67,10 @@ export function auditBrief(briefPath) {
   const dir = dirname(briefFile);
   const checks = [];
   const errors = [];
-  const check = (name, ok, detail) => {
-    checks.push({ name, pass: ok, detail });
+  const check = (name, ok, detail, opts) => {
+    const entry = { name, pass: ok, detail };
+    if (opts?.skipped) entry.skipped = true;
+    checks.push(entry);
     if (!ok) errors.push(`${name}: ${detail}`);
   };
 
@@ -253,15 +257,124 @@ export function auditBrief(briefPath) {
   return finish(errors.length === 0, checks, errors, dir, { brief: briefFile, image: imageFile });
 }
 
+// DS-74 S68 honest audit: true pixel compare for reference parity (no new
+// dependency, pure node:zlib inflate + PNG unfilter). Returns
+// { equal, diffBytes, totalBytes, pct, shaA, shaB } or { equal, fallback:true }
+// when either PNG uses an encoding this decoder does not cover (interlaced,
+// bit depth != 8, unknown color type) — callers then fall back to hash compare.
+export function pngPixelDiff(aBuf, bBuf) {
+  const shaA = createHash("sha256").update(aBuf).digest("hex");
+  const shaB = createHash("sha256").update(bBuf).digest("hex");
+  if (shaA === shaB) {
+    return { equal: true, diffBytes: 0, totalBytes: aBuf.length, pct: 0, shaA, shaB };
+  }
+  let rawA = null;
+  let rawB = null;
+  try {
+    rawA = decodePngPixels(aBuf);
+    rawB = decodePngPixels(bBuf);
+  } catch {
+    return { equal: false, diffBytes: -1, totalBytes: -1, pct: -1, shaA, shaB, fallback: true };
+  }
+  if (!rawA || !rawB) return { equal: false, diffBytes: -1, totalBytes: -1, pct: -1, shaA, shaB, fallback: true };
+  if (rawA.w !== rawB.w || rawA.h !== rawB.h || rawA.data.length !== rawB.data.length) {
+    return { equal: false, diffBytes: -1, totalBytes: Math.max(rawA.data.length, rawB.data.length), pct: 100, shaA, shaB };
+  }
+  let diff = 0;
+  for (let i = 0; i < rawA.data.length; i++) if (rawA.data[i] !== rawB.data[i]) diff++;
+  const pct = rawA.data.length ? (diff / rawA.data.length) * 100 : 100;
+  return { equal: diff === 0, diffBytes: diff, totalBytes: rawA.data.length, pct, shaA, shaB };
+}
+
+function decodePngPixels(buf) {
+  const magic = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+  if (!Buffer.isBuffer(buf) || buf.length < 24 || !buf.subarray(0, 8).equals(magic)) throw new Error("not a PNG file");
+  let off = 8;
+  let w = 0;
+  let h = 0;
+  let bitDepth = 0;
+  let colorType = 0;
+  let compression = 0;
+  let filter = 0;
+  let interlace = 0;
+  const idat = [];
+  while (off + 8 <= buf.length) {
+    const len = buf.readUInt32BE(off);
+    const type = buf.subarray(off + 4, off + 8).toString("ascii");
+    const data = buf.subarray(off + 8, off + 8 + len);
+    if (type === "IHDR") {
+      w = data.readUInt32BE(0);
+      h = data.readUInt32BE(4);
+      bitDepth = data[8];
+      colorType = data[9];
+      compression = data[10];
+      filter = data[11];
+      interlace = data[12];
+    } else if (type === "IDAT") {
+      idat.push(data);
+    } else if (type === "IEND") {
+      break;
+    }
+    off += 12 + len;
+  }
+  if (!w || !h) throw new Error("PNG missing IHDR");
+  if (compression !== 0 || filter !== 0 || interlace !== 0) throw new Error("unsupported PNG (interlaced or filtered at IHDR)");
+  if (bitDepth !== 8) throw new Error(`unsupported bit depth ${bitDepth}`);
+  const channels = { 0: 1, 2: 3, 3: 1, 4: 2, 6: 4 }[colorType];
+  if (!channels) throw new Error(`unsupported color type ${colorType}`);
+  const bpp = channels;
+  const stride = w * bpp;
+  const raw = inflateSync(Buffer.concat(idat));
+  if (raw.length !== h * (stride + 1)) throw new Error(`unexpected IDAT length ${raw.length} for ${w}x${h}`);
+  const out = Buffer.alloc(h * stride);
+  let prev = Buffer.alloc(stride);
+  for (let y = 0; y < h; y++) {
+    const f = raw[y * (stride + 1)];
+    const cur = raw.subarray(y * (stride + 1) + 1, (y + 1) * (stride + 1));
+    const row = out.subarray(y * stride, (y + 1) * stride);
+    if (f === 0) {
+      cur.copy(row);
+    } else if (f === 1) {
+      for (let i = 0; i < stride; i++) row[i] = (cur[i] + (i >= bpp ? row[i - bpp] : 0)) & 255;
+    } else if (f === 2) {
+      for (let i = 0; i < stride; i++) row[i] = (cur[i] + prev[i]) & 255;
+    } else if (f === 3) {
+      for (let i = 0; i < stride; i++) row[i] = (cur[i] + (((i >= bpp ? row[i - bpp] : 0) + prev[i]) >> 1)) & 255;
+    } else if (f === 4) {
+      for (let i = 0; i < stride; i++) {
+        const a = i >= bpp ? row[i - bpp] : 0;
+        const b = prev[i];
+        const c = i >= bpp ? prev[i - bpp] : 0;
+        const p = a + b - c;
+        const pa = Math.abs(p - a);
+        const pb = Math.abs(p - b);
+        const pc = Math.abs(p - c);
+        const pr = pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
+        row[i] = (cur[i] + pr) & 255;
+      }
+    } else {
+      throw new Error(`unsupported filter ${f}`);
+    }
+    prev = Buffer.from(row);
+  }
+  return { w, h, data: out };
+}
+
 // Exported for tools/check.mjs winner line plus unit tests. Takes the same
 // check() collector auditBrief uses so the gate lands in design-audit.json.
+// DS-74 honest gate: no reference -> SKIP entry (pass:true + skipped:true so
+// old audits stay green, but the CLI prints [SKIP] and PASS-line counters
+// must exclude skipped:true); gated -> dims first, then true pixel bytes.
 export function checkReferenceParity(dir, brief, imageFile, check) {
   const declared = typeof brief.reference === "string" ? brief.reference : null;
   const autoFile = join(dir, "reference.png");
   const refFile = declared ? join(dir, declared) : autoFile;
   const optedIn = declared != null || existsSync(autoFile);
   if (!optedIn) {
-    check("reference.png parity", true, "no reference declared, skipped");
+    // Honest SKIP: counted as green for pass/fail, never as a PASS. The
+    // collector records skipped:true; printers show [SKIP] and PASS totals
+    // exclude skipped entries (see CLI loop below).
+    check("reference.png parity", true, "no reference declared, SKIP — add reference.png to gate pixels", { skipped: true });
     return { pass: true, skipped: true };
   }
   if (!existsSync(refFile)) {
@@ -269,11 +382,24 @@ export function checkReferenceParity(dir, brief, imageFile, check) {
     return { pass: false };
   }
   try {
-    const refDims = pngDims(readFileSync(refFile));
-    const outDims = pngDims(readFileSync(imageFile));
-    const ok = refDims.w === outDims.w && refDims.h === outDims.h;
-    check("reference.png parity", ok, ok ? `${refDims.w}x${refDims.h} matches out.png` : `reference ${refDims.w}x${refDims.h} != out ${outDims.w}x${outDims.h} — next: re-export reference at brief size`);
-    return { pass: ok };
+    const refBuf = readFileSync(refFile);
+    const outBuf = readFileSync(imageFile);
+    const refDims = pngDims(refBuf);
+    const outDims = pngDims(outBuf);
+    if (refDims.w !== outDims.w || refDims.h !== outDims.h) {
+      check("reference.png parity", false, `reference ${refDims.w}x${refDims.h} != out ${outDims.w}x${outDims.h} — next: re-export reference at brief size`);
+      return { pass: false };
+    }
+    const diff = pngPixelDiff(refBuf, outBuf);
+    if (diff.equal) {
+      check("reference.png parity", true, `${refDims.w}x${refDims.h} pixels identical (sha ${diff.shaA.slice(0, 12)})`);
+      return { pass: true };
+    }
+    const detail = diff.fallback
+      ? `pixels differ (sha ${diff.shaA.slice(0, 12)} vs ${diff.shaB.slice(0, 12)}, encoder-fallback hash compare) — next: re-export reference from out.png`
+      : `pixels differ ${diff.diffBytes}/${diff.totalBytes} bytes (${diff.pct.toFixed(2)}%) sha ${diff.shaA.slice(0, 12)} vs ${diff.shaB.slice(0, 12)} — next: re-export reference from out.png`;
+    check("reference.png parity", false, detail);
+    return { pass: false, diff };
   } catch (e) {
     check("reference.png parity", false, `${String(e.message || e)} — next: replace reference.png with a real PNG`);
     return { pass: false };
@@ -616,8 +742,10 @@ if (isMain) {
       process.exit(args.length < 1 ? 2 : 0);
     } else {
       const { pass, checks, errors } = auditBrief(brief);
-      for (const c of checks) console.log(`[${c.pass ? "PASS" : "FAIL"}] ${c.name}: ${c.detail}`);
-      console.log(pass ? "AUDIT PASS: render, sizes, contrast, thumbnail, RTL gates" : `AUDIT FAIL: ${errors.length} failing check(s)`);
+      const tag = (c) => (c.skipped ? "SKIP" : c.pass ? "PASS" : "FAIL");
+      for (const c of checks) console.log(`[${tag(c)}] ${c.name}: ${c.detail}`);
+      const greens = checks.filter((c) => c.pass && !c.skipped).length;
+      console.log(pass ? `AUDIT PASS: ${greens} green + ${checks.length - greens} SKIP, render, sizes, contrast, thumbnail, RTL gates` : `AUDIT FAIL: ${errors.length} failing check(s)`);
       if (!pass) process.exitCode = 1;
     }
   }
