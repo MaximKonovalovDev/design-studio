@@ -8,7 +8,7 @@ Knobs: width 5, paid_mode 1 (hybrid), heavy_max 3 (from .opencode/knobs.json 202
 - D1 NOT moved: finish.mjs still 0 of 5 bars (O-001 unjudged, adoption needs a factory commit). No Scorecard row moved this round.
 
 ## Done
-- Builder 049 DONE (verified): index out.* count 0, staged 18 deletions held; .gitignore covers renders. Held for judge, not committed.
+- Builder 049 DONE (verified): index out.* count 0; CORRECTION: its 18 staged deletions rode along in 36e60c6 (commit sweeps the index) — lead error, effect still needs the judge's review before it counts as PASS.
 - Builder 050 DONE (verified): README cover-b bullet now 1080x1080 square (diff one line). Held for judge.
 - Builder 052 DONE: designs/O-001/ page.html 630px reflow, out-630x500.png re-rendered (26341B) + out.png 66810B intact; audit re-verified AUDIT PASS 20 green + 1 SKIP. Held for judge.
 - Builder DS-74 DONE: tools/audit.mjs SKIP + pixel compare (pngPixelDiff via node:zlib); re-verified live AUDIT PASS 20 green + 1 SKIP; design-audit.json SKIP entries regenerated. Held for judge.
