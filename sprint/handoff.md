@@ -1,27 +1,25 @@
-# design-studio handoff - round 42 (token e5b2)
+# design-studio handoff - round 43 (token e5b2)
 
-Round: 42
-Written: 2026-10-03T21:08Z by lead (token e5b2, refreshed 20:39Z; halt cleared, GO from popper)
+Round: 43
+Written: 2026-10-03T21:45Z by lead (token e5b2, refreshed 21:25Z)
+Knobs: width 5, paid_mode 1 (hybrid), heavy_max 3, helper_max_min 90, bg_width 0 (all from .opencode/knobs.json 2026-10-03T20:52Z, applied this round: batch of 5 sent foreground)
 
 ## Heading
-- D1 NOT moved: finish.mjs 0 of 5 bars (D1 0 matching lines, want 1; D5 0 of 22 listings adopted). O-001 built SHIP 10/10 but unjudged, so no commit and no adoption yet. Why not: judge chain pending, then lead commit + factory adoption.
+- D1 NOT moved: finish.mjs 0 of 5 bars (D1 0 matching lines, want 1). O-001 still unjudged; 049/050 built but unjudged too. Why not: no judge packet in either batch yet, and adoption needs a factory commit.
 
 ## Done
-- Donor scout DONE: 2 D2 steals (heroicons MIT -> kits/game-ui, html5-boilerplate MIT -> templates/pages/cover.html) + S02 Last read 2026-10-03.
-- Steal scout DONE: 2 D1 steals (tabler-icons MIT -> tools/canvas.mjs, sharp Apache-2.0 -> tools/thumb.mjs). steals.md holds 4 open lines, 0 landed.
-- Builder DS-73 PARTIAL: designs/O-001/ 9 files both sizes; lead re-verified AUDIT PASS + SHIP 10/10. Held for judge, not committed.
-- Builder DS-71 DONE: orders.csv O-008..O-011 delivered + 4 HANDOFF INBOX ASK lines; ORDERS PASS 18 (14 open 4 delivered). Held for judge + lead file.
-- Pilot DONE: packets 049 tracked out.* files + 050 cover-b size note (ready queue). Runner DONE: checks.md.
-- No judged PASS in batch: zero commits of helper work. S68 item 3 already has its packet (049).
-
-## Board and inbox
-- DS-73 + DS-71 TOP/READY -> DOING (built, awaiting judge). New READY: DS-74 audit SKIP+pixel (S68-1), DS-75 rival measure (S68-2), DS-76 factory delivery gated on DS-73 judge (S83). Next free ID DS-77.
-- Inbox 5 open -> Done, each ticked (S50/S80/S90 -> DS-72/73; S68 -> DS-74/75 + 049; S83 -> DS-76).
+- Builder 049 DONE: 18 out.* untracked (index count 0, verified), .gitignore covers them. Staged deletions + ignore held for judge, not committed.
+- Builder 050 DONE: README cover-b bullet fixed to 1080x1080 square (diff verified one line). Held for judge.
+- Vision DS-75 DONE: G1 adopted in eb2fab4 (rivals re-read live, UNKNOWN stands); vision-check RESULT PASS 7/0/0.
+- Steal scout DONE: 1 D1 steal (svgo MIT -> tools/render.mjs); D1 at cap 3 open, builders land one first. S03 upkeep skipped (vision claim, 1 day stale, no FAIL).
+- Pilot DONE: packet 052 O-001 630x500 spine-card clip filed (ready queue); 049 confirmed open, 050 confirmed fixed.
+- No judged PASS in batch: zero helper-work commits. Next free ID still DS-77.
 
 ## Blockers and notes
-- DS-70 OWNER (non-local factory URL) still stands; DS-76 is the delivery path once judged.
-- Standing seats 7: donor seat retired upstream (HEAD = disk = center seeds). Transient staged-index noise from center sync left untouched; my commit carries only my 4 paths.
-- Checks: sprint/check 20/0/0; vision-check PASS; tools/check 11 renders; orders-check ORDERS PASS.
+- DS-70 OWNER (non-local factory URL) stands; DS-76 is the delivery path once O-001 is judged.
+- Center compaction rewrote history (round-41 commit gone; donor seat folded a56b020; backup e72c2a2 swept old ready/ packets + halt). Board/inbox/handoff re-verified against new HEAD before commit.
+- Left for judge chain: O-001 folder, orders.csv O-008..11, 4 HANDOFFs, steals 5 open lines, 049 deletions + .gitignore, 050 README line, DS-75 card.
+- Checks: sprint/check 20/0/0 (pre-batch); tools/check 11 renders (builder proofs); orders-check ORDERS PASS 18.
 
 ## Next
-- Keeper chains judges for O-001 + DS-71, then lead commits by path + O-001 delivered flag + factory inbox item. Builders land D1/D2 steals and DS-74/75/76.
+- Keeper chains judges: 049, 050, O-001 (DS-73), DS-71. Lead commits each PASS by path with proof line, then O-001 delivered flag + factory inbox item.
