@@ -8,7 +8,7 @@ options:
   reasoningEffort: xhigh
 permission:
   "web-search_*": allow
-  task: deny
+  task: allow
   question: deny
   doom_loop: allow
   edit: allow
