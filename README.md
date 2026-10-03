@@ -28,7 +28,7 @@ cover-b plus ads/ad-1, ad-2, ad-3, hero). No Python needed; Node only.
 - `samples/hebrew-hero/` — 1280x720 Hebrew RTL hero
 - `samples/jobhunt/` — 1280x720 Hebrew RTL portfolio
 - `samples/cv/` — 900x1270 Hebrew RTL one-page CV
-- `samples/cover-b/` — 1280x720 factory pilot hero (clean hero plus 315px listing strip)
+- `samples/cover-b/` — 1080x1080 square factory pilot cover with the 315px listing strip
 - `samples/ads/ad-1/` — 1080x1080 square creative (DESIGN THAT SELLS)
 - `samples/ads/ad-2/` — 1080x1080 square creative (THUMBNAIL-FIRST ADS)
 - `samples/ads/ad-3/` — 1200x628 wide creative (SHIP IT TONIGHT)
