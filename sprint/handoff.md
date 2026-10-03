@@ -1,25 +1,24 @@
-# design-studio handoff - round 33 (token c7a1)
+# design-studio handoff - round 34 (token c7a1)
 
-Round: 33
+Round: 34
 Written: 2026-10-03T13:29Z by lead (token c7a1, took over f2b7 round 30)
 
 ## Heading
-- Two long-DOING rows closed (DS-12 + DS-41 re-judge PASS), 048 guard judged PASS. No Scorecard % movement: % moves need vision-researcher measurement (queued round 34).
+- Scorecard moves: Thumbnail readability 0% -> 100% (4/4, re-measured live, adopted into VISION.md). Landing holds 0% (receipts local-only, no live page).
 
 ## Done
-- Re-judge 058 PASS: DS-12 duel survives suite (10->10 identical, audits 19.2/22.8px, SHIP 10/10x2, check PASS, rubric 10/10, PNGs opened). DS-12 DOING->DONE.
-- Re-judge 059 PASS: DS-41 receipt PIN-OK (dbe9de43 match true), per-sample + full-suite PASS, review 10->10, hero intact, rubric 10/10. DS-41 DOING->DONE.
-- Judge 056 PASS: 048 --help guard (usage + EXIT 0, -h same, P2P 11 renders PASS, guard-only delta). Guard already landed in 2ee4099; nothing new to commit.
-- Steal NOOP: S01 swept live 2026-10-03 (canva Magic Switch, proprietary idea-only); every idea already built (DS-23/38/39/40), dated rejection, 0 cards.
-- Board: DS-12 + DS-41 DONE with SHAs; 056/058/059 await keeper move to done.
-- Knobs: width 4 held.
+- Vision researcher measured both 0% rows: Thumbnail meets 4/4 (cover-b 22.8/28.0px, ad-square PASS, workshop 10/10, check 11 samples); Landing 0% (cover-b + hero receipts local URLs, DS-42/43 not live).
+- VISION.md adopted: Scorecard Thumbnail cell 100% (ds-thumb-v1, 2026-10-03 source), Parts row + Swept 2026-10-03, stale hold language replaced, S01 Last read 2026-10-03.
+- Builder slice DONE: DS-42 hero-b + winner line, DS-66 tools/image.mjs opt-in, DS-67 placeholders + manifest (proofs: THUMB/IMAGE/CANVAS PASS, check 11 + winner-hero, hero-b AUDIT PASS, RENDER PASS). Uncommitted; 061/062/063 judges queued.
+- 057 repair DONE: README wording 6->11, 11 entries kept, check 11 == README 11. Uncommitted; 060 judge queued.
+- Runner sweep: sprint 20/0/0, check 11 samples, JUDGE PASS — 0 fail.
+- Board: DS-42/66/67 READY->DOING. Knobs: width 4 held.
 
 ## Blockers and notes
-- No code to commit: all three judges read-only. Lead commits board/handoff/lock only.
-- README.md still dirty (057 repair queued round 34, last FAIL follow-up).
-- Thumbnail/Landing Scorecard % still 0%: steps closed, but the % conditions (vision-measured) are for the vision researcher, not judges.
+- Nothing built is committed (chain: 4 builds await 4 judges). tools/check.mjs, tools/canvas.mjs, README.md + new files stay dirty.
+- DS-65 FREE-01 + DS-68 GAMEART-01 still READY (slice took 3 of 5 sharing hero lane).
 - sprint/check.mjs RESULT PASS 20/0/0 (pre-commit). Inbox open empty.
-- Left uncommitted: keeper files, 043 + 041b cards, 022 snapshot, samples tool-output, README.
+- Left uncommitted: keeper files, 043 + 041b cards, 022 snapshot, samples tool-output, 4 judged-pending builds, README.
 
 ## Next
-- Round 34: 057 repair-046 (builder), researcher-vision re-measure Thumbnail + Landing %%, builder-rows weakest-slice, runner-checks sweep.
+- Round 35: judges 060 (057 README), 061 (DS-42), 062 (DS-66), 063 (DS-67). Then commit every PASS by path.
