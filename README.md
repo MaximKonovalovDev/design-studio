@@ -16,8 +16,9 @@ agent loop lives in `AGENTS.md`.
 3. Open `samples/cover/out.png` — the render. Also beside it:
    `thumb-256.png` (256px thumbnail) and `design-audit.json` (audit gates).
 
-`RESULT PASS` means the loop check plus all 6 sample renders plus thumbs
-plus audits are green. No Python needed; Node only.
+`RESULT PASS` means the loop check plus the 11 sample renders plus thumbs
+plus audits are green (the default suite renders 11 samples: core 6 plus
+cover-b plus ads/ad-1, ad-2, ad-3, hero). No Python needed; Node only.
 
 ## Where samples live
 
@@ -27,6 +28,11 @@ plus audits are green. No Python needed; Node only.
 - `samples/hebrew-hero/` — 1280x720 Hebrew RTL hero
 - `samples/jobhunt/` — 1280x720 Hebrew RTL portfolio
 - `samples/cv/` — 900x1270 Hebrew RTL one-page CV
+- `samples/cover-b/` — 1280x720 factory pilot hero (clean hero plus 315px listing strip)
+- `samples/ads/ad-1/` — 1080x1080 square creative (DESIGN THAT SELLS)
+- `samples/ads/ad-2/` — 1080x1080 square creative (THUMBNAIL-FIRST ADS)
+- `samples/ads/ad-3/` — 1200x628 wide creative (SHIP IT TONIGHT)
+- `samples/ads/hero/` — 1280x720 landing hero (Ship the landing tonight, with `receipt.json`)
 
 Each folder is the same shape: `brief.json` -> `page.html` -> `out.png`
 -> `design-audit.json` (+ `thumb-256.png`).
