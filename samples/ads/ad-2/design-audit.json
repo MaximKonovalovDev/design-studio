@@ -75,10 +75,50 @@
       "name": "title fits its box",
       "pass": true,
       "detail": "need ~912px, box 950px"
+    },
+    {
+      "name": "title legible at 315px listing",
+      "pass": true,
+      "detail": "28.0px at 315px listing (floor 12px)"
+    },
+    {
+      "name": "size 1280x720: title legible at 256px",
+      "pass": true,
+      "detail": "19.2px at 256px (floor 12px)"
+    },
+    {
+      "name": "size 1280x720: title fits its box",
+      "pass": true,
+      "detail": "need ~912px, box 1126px"
+    },
+    {
+      "name": "size 1080x1080: title legible at 256px",
+      "pass": true,
+      "detail": "22.8px at 256px (floor 12px)"
+    },
+    {
+      "name": "size 1080x1080: title fits its box",
+      "pass": true,
+      "detail": "need ~912px, box 950px"
+    },
+    {
+      "name": "size 1200x628: title legible at 256px",
+      "pass": true,
+      "detail": "20.5px at 256px (floor 12px)"
+    },
+    {
+      "name": "size 1200x628: title fits its box",
+      "pass": true,
+      "detail": "need ~912px, box 1056px"
+    },
+    {
+      "name": "reference.png parity",
+      "pass": true,
+      "detail": "no reference declared, skipped"
     }
   ],
   "errors": [],
   "brief": "C:\\Users\\me\\Desktop\\design-studio\\samples\\ads\\ad-2\\brief.json",
   "image": "C:\\Users\\me\\Desktop\\design-studio\\samples\\ads\\ad-2\\out.png",
-  "at": "2026-10-02"
+  "at": "2026-10-03"
 }

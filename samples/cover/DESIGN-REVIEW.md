@@ -29,3 +29,12 @@ SHIP: 10/10 meets the floor. Thumbnail confirmed by eye in thumb-256.png (256x14
 - Automated gates say nothing about taste. Distinctiveness, type feel and
   the thumbnail read by a human eye go here on the next art-director pass.
 
+## Two-variant duel (cover vs cover-b)
+
+Duel pointer — full numbers live in samples/cover-b/DESIGN-REVIEW.md.
+variant cover: judge SHIP 10/10, audit AUDIT PASS, 19.2px at 256px,
+thumb-256.png 256x144 5567B, out.png 1280x720 34186B. variant cover-b:
+judge SHIP 10/10, audit AUDIT PASS, 22.8px at 256px, thumb-256.png
+256x256 9753B, out.png 1080x1080 53562B. Winner: cover-b by audit +
+256px (22.8px vs 19.2px).
+

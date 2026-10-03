@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- designs/factory-gumroad-cover/page.html: Gumroad cover 1280x720 for the factory Vol 0 free magnet. Color only via tokens.css. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1280px; height: 720px;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--font-body);
+    display: flex;
+  }
+  .rail {
+    width: 120px; background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rail span {
+    color: var(--on-accent); font-size: 26px; letter-spacing: 8px;
+    writing-mode: vertical-rl; font-weight: bold;
+  }
+  .main { flex: 1; padding: 56px 72px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .kicker {
+    font-size: 28px; letter-spacing: 10px; color: var(--accent);
+    margin-bottom: 18px; font-weight: bold;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-size: 96px; line-height: 1.05; color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .sub { font-size: 33px; color: var(--muted); margin-bottom: 32px; }
+  .row { display: flex; gap: 16px; margin-bottom: 36px; }
+  .chip {
+    border: 2px solid var(--line); border-radius: 10px;
+    padding: 12px 22px; font-size: 24px; color: var(--ink);
+    border-top: 6px solid var(--accent);
+  }
+  .cta {
+    display: inline-block; font-size: 32px; font-weight: bold;
+    color: var(--on-accent); background: var(--accent);
+    padding: 20px 64px; border-radius: 12px; align-self: flex-start;
+  }
+</style>
+</head>
+<body>
+  <div class="rail" data-oid="gumroad.rail"><span>VOL 0 - FREE</span></div>
+  <div class="main" data-oid="gumroad.main">
+    <div class="kicker" data-oid="gumroad.kicker">FACTORY TEMPLATE PACK</div>
+    <h1 data-oid="gumroad.title">10 BLOCKS THAT SELL</h1>
+    <p class="sub" data-oid="gumroad.subtitle">The free Vol 0 magnet: ten landing blocks, judged pixels, no human in the loop.</p>
+    <div class="row" data-oid="gumroad.chips">
+      <span class="chip">hero</span><span class="chip">proof</span><span class="chip">pricing</span><span class="chip">faq</span>
+    </div>
+    <span class="cta" data-oid="gumroad.cta">Download free</span>
+  </div>
+</body>
+</html>
