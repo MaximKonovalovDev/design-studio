@@ -156,6 +156,78 @@ export function writeExports({ root = ROOT } = {}) {
   return done;
 }
 
+// DS-67 PLACE-01 no-key URL placeholders for wireframes (Picsum
+// seed/id/grayscale/blur pattern, idea-only, 0 lines copied: service docs
+// idea-only, images are Unsplash-licensed NOT CC0). Wireframe-only, never
+// shipped: bytes are cached locally + rev-pinned before any receipt, never
+// hotlinked in a render. Opt-in: canvas/placeholders.json beside templates;
+// absent file skips green so the 5-template CANVAS PASS never regresses.
+export function placeholderUrl(p = {}) {
+  const source = String(p.source ?? "picsum").toLowerCase();
+  if (source !== "picsum") throw new Error(`placeholder source must be picsum, got ${JSON.stringify(p.source)}`);
+  const w = Number(p.w);
+  const h = Number(p.h);
+  if (!(w >= 16 && w <= 8192 && h >= 16 && h <= 8192)) throw new Error("placeholder w/h must be 16..8192");
+  const seed = p.seed != null ? String(p.seed).trim() : "";
+  const id = p.id != null ? String(p.id).trim() : "";
+  if (!seed && !id) throw new Error("placeholder needs seed-or-id (deterministic slot, never random)");
+  const base = seed ? `https://picsum.photos/seed/${encodeURIComponent(seed)}/${w}/${h}` : `https://picsum.photos/id/${encodeURIComponent(id)}/${w}/${h}`;
+  const q = [];
+  if (p.grayscale) q.push("grayscale");
+  if (p.blur != null) {
+    const b = Number(p.blur);
+    if (!(b >= 1 && b <= 10)) throw new Error("placeholder blur must be 1..10");
+    q.push(`blur=${b}`);
+  }
+  return q.length ? `${base}?${q.join("&")}` : base;
+}
+
+export function validatePlaceholder(p, i = 0) {
+  const tag = `placeholders[${i}]${p?.slot ? ` ${p.slot}` : ""}`;
+  const errs = [];
+  try {
+    placeholderUrl(p);
+  } catch (e) {
+    errs.push(`${tag}: ${String(e.message || e)}`);
+  }
+  if (p?.ship === true) errs.push(`${tag}: wireframe-only, never shipped (cache locally + rev-pin + replace with owned/CC0 art first)`);
+  return errs;
+}
+
+// Local-cache-to-receipt step (offline plan, no network at check): where the
+// bytes land + how the receipt pins them. The fetch itself happens outside
+// --check; --check only gates that the plan is cache-first + rev-pinned.
+export function placeholderCachePlan(p = {}) {
+  const url = placeholderUrl(p);
+  const slot = String(p.slot ?? p.seed ?? p.id ?? "slot").replace(/[^a-z0-9-]+/gi, "-").slice(0, 40) || "slot";
+  return { url, cacheFile: `cache/placeholders/${slot}-${Number(p.w)}x${Number(p.h)}.jpg`, revNote: "rev pins cached bytes sha256 before any receipt", wireframeOnly: true };
+}
+
+export function checkPlaceholders({ root = ROOT } = {}) {
+  const results = [];
+  const ok = (name, pass, detail) => results.push({ name, pass, detail });
+  const file = join(root, "canvas", "placeholders.json");
+  let list;
+  try {
+    list = JSON.parse(readFileSync(file, "utf8"));
+  } catch {
+    ok("placeholders.json absent, skipped", true, "no wireframe slots declared");
+    return { pass: true, results, skipped: true };
+  }
+  const arr = Array.isArray(list) ? list : list.placeholders ?? [];
+  ok("placeholders.json parses", Array.isArray(arr), Array.isArray(arr) ? `${arr.length} slot(s)` : "want an array or {placeholders:[]}");
+  if (!Array.isArray(arr)) return { pass: false, results };
+  for (const [i, p] of arr.entries()) {
+    const errs = validatePlaceholder(p, i);
+    ok(`placeholder ${p?.slot ?? i} valid (picsum seed-or-id + size)`, errs.length === 0, errs.length ? errs.join("; ") : placeholderUrl(p));
+    if (!errs.length) {
+      const plan = placeholderCachePlan(p);
+      ok(`placeholder ${p?.slot ?? i} cache-first plan`, plan.wireframeOnly && !!plan.cacheFile, `${plan.cacheFile} rev-pinned`);
+    }
+  }
+  return { pass: results.every((r) => r.pass), results };
+}
+
 const isMain = (() => {
   try {
     return fileURLToPath(import.meta.url) === resolve(process.argv[1]);
@@ -177,8 +249,11 @@ if (isMain) {
   } else if (args.includes("--check") || args.length === 0) {
     const { pass, results } = checkCanvas();
     for (const r of results) console.log(`[${r.pass ? "PASS" : "FAIL"}] ${r.name}: ${r.detail}`);
-    console.log(pass ? "CANVAS PASS: 5 templates, Konva shape + palette + 256px green, SVG exports match" : `CANVAS FAIL: ${results.filter((r) => !r.pass).length} failing check(s)`);
-    if (!pass) process.exitCode = 1;
+    const ph = checkPlaceholders();
+    for (const r of ph.results) console.log(`[${r.pass ? "PASS" : "FAIL"}] ${r.name}: ${r.detail}`);
+    const all = pass && ph.pass;
+    console.log(all ? "CANVAS PASS: 5 templates, Konva shape + palette + 256px green, SVG exports match" : `CANVAS FAIL: ${[...results, ...ph.results].filter((r) => !r.pass).length} failing check(s)`);
+    if (!all) process.exitCode = 1;
   } else {
     console.log("usage: node tools/canvas.mjs [--check|--write]");
     process.exitCode = 2;

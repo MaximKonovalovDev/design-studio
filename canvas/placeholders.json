@@ -1,0 +1,7 @@
+{
+  "note": "DS-67 PLACE-01 wireframe-only placeholders (Picsum seed/id, no key). Never shipped: cache bytes locally + rev-pin before any receipt, replace with owned/CC0 art first. Unsplash-licensed, NOT CC0.",
+  "placeholders": [
+    { "slot": "hero-wireframe", "source": "picsum", "seed": "hero-wireframe", "w": 1280, "h": 720 },
+    { "slot": "ad-wireframe", "source": "picsum", "seed": "ad-wireframe", "w": 1080, "h": 1080, "grayscale": true }
+  ]
+}
