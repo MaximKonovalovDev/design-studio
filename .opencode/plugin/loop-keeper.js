@@ -306,7 +306,7 @@ const heavyOn = () => {
   if (!js || !existsSync(js)) return false;
   return !existsSync(join(process.env.EMPIRE_STATE || join(homedir(), ".empire", "state"), "heavy", "off"));
 };
-const SUPPORTED_COMMANDS = ["go", "sprint", "stop", "new", "say", "archive"];
+const SUPPORTED_COMMANDS = ["go", "sprint", "stop", "new", "say", "archive", "chat"];
 const centerDir = () => {
   const c = REPOS.center?.command;
   return c ? String(c).replace(/\\/g, "/").replace(/\/\.opencode\/commands\/sprint\.md$/, "") : null;
@@ -1676,12 +1676,41 @@ Ready work: ${readyItem.id}. Claim only this item; selectors do not authorize sw
     fgJobs.delete(call);
     for (const one of job.group ?? [job]) log(`${job.sid} batch: ${one.id} ${finishJob(one, text, failed)}`);
   };
+  // Before a cap stop (Maxim 2026-10-04 "why agents get interrupted"): the cut helper's files and its last
+  // words go into the packet file, so the next run of the packet goes on from there instead of from zero
+  // (engine 357-ra14-review cut 3 times, 355-bv1 2 h twice, each from scratch). One block, replaced each cut.
+  const SALVAGE_MARK = "<!-- keeper: cut-run salvage -->";
+  const salvage = async (job, childId) => {
+    try {
+      const msgs = (await client.session.messages({ path: { id: childId } }))?.data ?? [];
+      const files = new Set();
+      for (const m of msgs) for (const p of m.parts ?? []) {
+        if (p?.type !== "tool" || !/^(edit|write|patch|apply_patch|multiedit)$/i.test(String(p.tool ?? ""))) continue;
+        const f = p.state?.input?.filePath ?? p.state?.input?.path;
+        if (typeof f === "string" && f) files.add(f.replace(/\\/g, "/"));
+      }
+      const said = msgs.filter((m) => m?.info?.role === "assistant").map(textOf).filter((t) => t.trim()).join("\n").trim().slice(-3000);
+      if (!files.size && !said) return null;
+      const block = `\n\n${SALVAGE_MARK}\n## Earlier run cut at the time cap (${iso()})\n\nAn earlier run of this packet was stopped after ${ago(now() - job.started)}. Its work is on disk: read it, keep what is right and go on from there; do not start over.\n` +
+        (files.size ? `\nFiles it edited: ${[...files].slice(0, 40).map((f) => `\`${f}\``).join(", ")}\n` : "") +
+        (said ? `\nIts last words:\n\n${said.replace(/^/gm, "> ")}\n` : "");
+      for (const one of job.group ?? [job]) {
+        const f = join(qsub("running"), `${one.id}.md`);
+        const cur = read(f);
+        if (cur == null) continue;
+        const at = cur.indexOf(`\n\n${SALVAGE_MARK}`);
+        writeFileSync(f, (at < 0 ? cur.replace(/\s+$/, "") : cur.slice(0, at)) + block);
+      }
+      return { files: [...files], said };
+    } catch { return null; }
+  };
   // Every beat: a helper past helper_max_min is stopped (its Task returns, the batch can end); a
   // packet whose batch ended without its result waits for the next batch.
   const tendForeground = async () => {
     if (!fgJobs.size && !adhocRun.size) return;
-    // A packet may carry its own cap (front matter max_min: 90 for a long proof); the knob is the default for the rest.
-    const capOf = (job) => Math.max(Number(job.fm?.max_min) || Number(knobValue("helper_max_min")) || 90, PROOF_TEXT.test(String(job.text ?? "")) ? PROOF_MIN : 0) * 60_000;
+    // A packet may carry its own cap (front matter max_min: 90 for a long proof); the knob is the floor
+    // (Maxim 2026-10-04: engine packets with max_min 20-40 were cut under a 45 min knob, 33 cuts in 24 h).
+    const capOf = (job) => Math.max(Number(job.fm?.max_min) || 0, Number(knobValue("helper_max_min")) || 90, PROOF_TEXT.test(String(job.text ?? "")) ? PROOF_MIN : 0) * 60_000;
     const kids = new Map();
     for (const [call, job] of fgJobs) {
       if (now() - job.started > 2 * 60_000 && (await turnOf(job.sid)) === "idle") {
@@ -1694,10 +1723,11 @@ Ready work: ${readyItem.id}. Claim only this item; selectors do not authorize sw
       if (!kids.has(job.sid)) kids.set(job.sid, (await client.session.children({ path: { id: job.sid } }))?.data ?? []);
       const child = kids.get(job.sid).filter((k) => k?.title === `${job.desc} (@${job.sub ?? job.role} subagent)`).sort((a, b) => (b.time?.created ?? 0) - (a.time?.created ?? 0))[0];
       if (!child?.id) continue;
+      const kept = job.standing ? null : await salvage(job, child.id);
       try { await client.session.abort({ path: { id: child.id } }); } catch { /* it may be gone */ }
       job.stopped = true;
       if (!job.standing) for (const one of job.group ?? [job]) noteCapStop(one.id);
-      log(`${job.sid} batch: ${job.id} ran ${ago(now() - job.started)}, over helper_max_min: stopped so its batch can end`);
+      log(`${job.sid} batch: ${job.id} ran ${ago(now() - job.started)}, over helper_max_min: stopped so its batch can end${kept ? `; kept its work (${kept.files.length} files, ${kept.said.length} chars) for the next run` : ""}`);
       snapDirty = true; // a helper was stopped at the cap: the next beat censuses
     }
     // The lead's own plain Tasks get the same cap; the closest child by start time is the one.
@@ -2070,6 +2100,21 @@ Ready work: ${readyItem.id}. Claim only this item; selectors do not authorize sw
       return `SENT ${out.length - bad.length} of ${out.length}${bad.length ? `; not: ${clip(bad.map((x) => `${x.one}: ${x.r?.reason ?? "refused"}`).join("; "), 200)}` : ""}`;
     } catch (e) { return `NOT SENT: send failed: ${e?.message ?? e}`; }
   };
+  // Chat: one NEW chat in center with a first prompt (2026-10-04, the Loop Boss "Send problems to Muse" button on the
+  // desktop app: the app's server answers 401 to anything outside, the keeper runs inside it). Only the CENTER keeper
+  // handles it. {cmd:"chat", id, title, text, agent?, model?: { providerID, modelID }}. Never a sprint: a plain chat.
+  const handleChat = async (cmd) => {
+    if (!isCenterKeeper()) return "only center";
+    const text = String(cmd.text ?? "").trim();
+    if (!text) return "NOT SENT: need a text";
+    try {
+      const created = (await client.session.create({ body: { title: clip(String(cmd.title ?? "Loop Boss chat"), 80) } }))?.data;
+      if (!created?.id) return "NOT SENT: the chat was not created";
+      const model = cmd.model?.providerID && cmd.model?.modelID ? { providerID: String(cmd.model.providerID), modelID: String(cmd.model.modelID) } : null;
+      await client.session.promptAsync({ path: { id: created.id }, body: { ...(typeof cmd.agent === "string" && cmd.agent ? { agent: cmd.agent } : {}), ...(model ? { model } : {}), parts: [{ type: "text", text }] } });
+      return `CHAT ${created.id}`;
+    } catch (e) { return `NOT SENT: ${e?.message ?? e}`; }
+  };
   const handleArchive = async (cmd, target) => {
     if (!isCenterKeeper()) return "only center";
     if (!opt.archiveChat) {
@@ -2116,6 +2161,7 @@ Ready work: ${readyItem.id}. Claim only this item; selectors do not authorize sw
     if (!SUPPORTED_COMMANDS.includes(action)) return answer("unknown command");
     if (action === "say") return answer(await handleSay(cmd, target));
     if (action === "archive") return answer(await handleArchive(cmd, target));
+    if (action === "chat") return answer(await handleChat(cmd));
     try {
       const info = id ? (await client.session.get({ path: { id } }))?.data : null;
       if (action === "new") return answer(await renew(info ? id : null));
