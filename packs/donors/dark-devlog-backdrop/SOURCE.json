@@ -1,0 +1,21 @@
+{
+  "source": "openverse",
+  "id": "ca5d5a4e-cf75-4fa4-b08c-be1cb7a02914",
+  "slug": "dark-painted-wall-seamless",
+  "query": "dark abstract background",
+  "kind": "photo",
+  "title": "Free Dark Painted Wall Texture [2048px, tiling, seamless]",
+  "page": "https://www.flickr.com/photos/21051491@N02/7961838026",
+  "file_url": "https://live.staticflickr.com/8320/7961838026_ce99a5e023_b.jpg",
+  "file": "dark-painted-wall-seamless.jpg",
+  "author": "qubodup (flickr)",
+  "licence": "CC0",
+  "licence_source": "Openverse API record id ca5d5a4e license=cc0 + detail endpoint license_url creativecommons.org/publicdomain/zero/1.0, read live 2026-10-04",
+  "date_read": "2026-10-04",
+  "sha256": "d8d6483013909823ef423c5e3d2b84a82d0be7de0687619e915650f7b585b10a",
+  "bytes": 189456,
+  "width": 1024,
+  "height": 1024,
+  "need": "NEED-06 for O-024",
+  "use": "dark bold devlog header 1200x630 backdrop for aeo-visibility-audit-kit; seamless tile covers the crop; mean luminance 36.6/255 so bold light type reads over it"
+}
