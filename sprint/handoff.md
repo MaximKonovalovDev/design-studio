@@ -1,22 +1,22 @@
-# design-studio handoff - round 47 (token 5928)
+# design-studio handoff - round 48 (token 5928)
 
-Round: 47
-Written: 2026-10-04T01:40Z by lead (token 5928).
-Takeover: `takeover` arg given; lock was stale since 2026-10-03T22:06Z. Refreshed same token per keeper GO: `lead#5928 since 2026-10-04T01:16Z`.
-Knobs: width 3, heavy_max 3, paid_mode 0, helper_max_min 90, bg_width 0 (re-read 2026-10-04T01:16Z; unchanged).
+Round: 48
+Written: 2026-10-04T01:47Z by lead (token 5928, lock refreshed).
+Takeover: done round 47 (stale lock since 2026-10-03T22:06Z refreshed same token per keeper GO).
+Knobs: width 3, heavy_max 3, paid_mode 0 (unchanged).
 
 ## Heading
-- D1 NOT moved: 0 adopted. O-001 has a worker self-review VERDICT (PASS, unjudged) and no factory delivery; the mass-delivery flip in orders.csv is unblessed (below).
+- D1 NOT moved: 20 of 22 orders delivered locally, 0 adopted. Adoption (factory commits) is the only gate left; DS-76 delivery + factory inbox item pending.
 
 ## Done
-- Builder tool-01 DONE (PARTIAL of 01+02+03: only 01 landed): fp-research + 10 product kinds, --desk, arsenal orders entry, package.json. Verified: tests 9 pass, ORDERS PASS 22, DESK build 2|judge 16|failed 0|deliver 0|eye 1. Packet 0b flags (--built/--verdict/--deliver/--round) absent; donor.mjs absent (packet 03 not done). Keeper queued 04+05+06 next; 02+03 unaccounted.
-- Scout NEED-01 DONE: packs/donors/icons (heroicons+tabler+feather MIT, SOURCE.json), needs.md closed.
-- Committed ac087a6 by path (tool-01 files, icons, needs.md, G1-adopt packet, handoff, lock) with proof lines.
-- Clearing packet `sprint/queue/ready/000-vision-g1-adopt.md` (in ac087a6) clears sprint/check FAIL `1 proposed gap answer older than a day`; keeper placed it #2 next batch.
+- d94afb8 (center, pushed mid-round, co-built 16 covers O-001..O-005/O-012..O-022 via tools/cover.mjs) VERIFIED by lead re-run: ORDERS PASS 22 (2 open, 20 delivered, 0 adopted); audit+judge tests 24 pass 0 fail; spot-audits O-001/O-014 green. Blessed; board DS-73 evidence updated.
+- ac087a6 (tool-01 + scout icons NEED-01) pushed. Clearing packet 000-vision-g1-adopt goes next batch (#2).
+- sprint/check still FAIL only on the G1 Proposed line; G1-adopt clears it.
 
 ## Blockers and notes
-- UNBLESSED FLIP (not committed): orders.csv marks 16 rows open->delivered (O-001..O-005, O-012..O-018) with local delivered_paths + 4 new Maxim rows O-019..O-022. No chain judge ran (O-001 VERDICT.md is self-review), no customer-repo delivery. Per AGENTS.md delivered = file in customer repo. Chain must judge each folder before the lead commits orders.csv or any designs/ folder.
-- DS-70 OWNER stands. Inbox: 0 open. sprint/check still FAIL until G1-adopt lands.
+- VERDICT.md files are worker self-reviews: chain judge must still rule each folder before DS-76 delivery commits.
+- Tool 0b (--built/--verdict/--deliver/--round) and tool 1 (donor.mjs) never landed: builder batch 1 did only 01. Keeper queued 04+05+06; 02+03 unaccounted.
+- Inbox: 0 open. DS-70 OWNER stands.
 
 ## Next
-- Batch of 3 sent: builder 04+05+06, planner 000-vision-g1-adopt, researcher scout-donors (NEED-02). Then judge chain over the built folders before any delivery commit.
+- Batch of 3 sent: builder 04+05+06, planner 000-vision-g1-adopt, researcher scout-donors (NEED-02 Kenney). Then chain judges the 16 folders, deliverer runs DLV rows, adoption watch via customer git log.
