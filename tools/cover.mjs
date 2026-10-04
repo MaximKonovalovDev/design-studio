@@ -7,7 +7,7 @@
 // from tokens.css, every picture a byte copy of a file from the customer's own product folder (assets.json).
 // No new dependency: Edge headless through tools/render.mjs.
 import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { basename, dirname, join, resolve } from "node:path";
+import { basename, dirname, isAbsolute, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { tmpdir } from "node:os";
 import { render, renderPdf, parseSize, pngDims } from "./render.mjs";
@@ -59,13 +59,15 @@ function sizeList(spec) {
   return [{ w: 1280, h: 720, file: "out.png" }, { w: 630, h: 500, file: "out-630x500.png" }];
 }
 
+// Template lane: <order> is an id under designs/, or an absolute folder path (tools/template.mjs preview/build stamp outside designs/; proven by TEMPLATE PASS, out of compose scope).
 function loadSpec(id) {
-  const dir = join(ROOT, "designs", id);
+  const abs = isAbsolute(id);
+  const dir = abs ? id : join(ROOT, "designs", id);
   const f = join(dir, "cover.json");
-  if (!existsSync(f)) throw new Error(`designs/${id}/cover.json missing`);
+  if (!existsSync(f)) throw new Error(`${abs ? dir : `designs/${id}`}/cover.json missing`);
   const spec = JSON.parse(read(f));
   spec.dir = dir;
-  spec.id = id;
+  spec.id = abs ? basename(dir) : id;
   return spec;
 }
 
