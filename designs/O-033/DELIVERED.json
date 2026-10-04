@@ -1,0 +1,116 @@
+{
+  "order_id": "O-033",
+  "from_repo": "skillworks",
+  "maker": "design-studio",
+  "product": "order:demo-gif-for-fleet-vol-1-a-bad-command-t",
+  "delivered_utc": "2026-10-04T18:12Z",
+  "source": "design-studio designs/O-033",
+  "landing": "packs/fleet-vol-1/from-design-studio/O-033",
+  "customer": "C:/Users/me/Desktop/skillworks",
+  "delivered": [
+    "20 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing packs/fleet-vol-1/from-design-studio/O-033/ in skillworks"
+  ],
+  "files": [
+    {
+      "name": "ADOPT.md",
+      "bytes": 404,
+      "sha256": "989f5bc08a371099e47a9606860d4564a215f1a2140ba06ff35fb531b6ce166f"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1521,
+      "sha256": "ace635eee6123c20cac93bb3ba9db41d101b5ef611a3995bc5fe25ed4648cd52"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1166,
+      "sha256": "81c8c0c3e0cb2aaf88702e042f76eaba53a612a4309f3a888e1b026409246753"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 562,
+      "sha256": "d5e0bf111e0e291c8112ec018f24900578b9a3a9839e14eb29f4d82a7a2bb952"
+    },
+    {
+      "name": "art.css",
+      "bytes": 4107,
+      "sha256": "bd4c6a52f3b92cb798f818b05dd0cd10e51818b29f4fc3729ba3cf3df60cb8a4"
+    },
+    {
+      "name": "art.html",
+      "bytes": 544,
+      "sha256": "fcd55a983d2809e5ddf971784502b0fdba1f7bec17bcddf541070035468ccc87"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 1397,
+      "sha256": "41b8aa8204946d436565d2c4fc89ecc6ddf0a4849e48a162f47a4372b6f02812"
+    },
+    {
+      "name": "assets/screenshot-pairs.png",
+      "bytes": 75954,
+      "sha256": "ab6d679ee5c079ce2ff034004293552f11977321791a0f51274b1b26c900cb7c"
+    },
+    {
+      "name": "assets/shot.png",
+      "bytes": 75954,
+      "sha256": "ab6d679ee5c079ce2ff034004293552f11977321791a0f51274b1b26c900cb7c"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1274,
+      "sha256": "29db576c3bc54be69b7c57fe738194ad47cb8b47316418eb632b6c0ccb45c465"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 132561,
+      "sha256": "ba2c697d87d47b93dc3a8582f2ed59e0366a72ce588766a299b56a4748a38b00"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 1774,
+      "sha256": "27916437210ef5fe872c09cc464d69c1f013be6979df137761e0730b9b043f32"
+    },
+    {
+      "name": "demo.gif",
+      "bytes": 167382,
+      "sha256": "3481002dcef21286ea17b76954ac8cf700f6a60556c02f75ac50f4c3bbd4ecc3"
+    },
+    {
+      "name": "demo.gif.json",
+      "bytes": 941,
+      "sha256": "b20c864c5f964417032dcd195cfbcbeb1ec5ddcdf93cfbc3a5c0e0455d30cd0a"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2961,
+      "sha256": "258dead6026e71a937be21775404f9868d4e78b2a15a0351e09b823858bba50f"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 134298,
+      "sha256": "a8d078114c06d47f8f253fbffd95ec171384276e2468a86aa8278c4bf3ed2fbc"
+    },
+    {
+      "name": "out.png",
+      "bytes": 283421,
+      "sha256": "fbfcfb068baaf218d4c02a7a3cd69177d9b13d56120692e47c8c1be81f767e5e"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8612,
+      "sha256": "e33bf96d06a481cde4a0129ff51ea17ff456098bff2ea12f5f540dad6cd96d93"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 24781,
+      "sha256": "3c2322c24016d30d89e670b018ecc6a091bab2123cf4dd3c5dfad1a2b482c011"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 720,
+      "sha256": "02f6b1ce46790bf335a6a1555f607a7413eee6abf2f74d4cc7eb331c5baedff6"
+    }
+  ]
+}

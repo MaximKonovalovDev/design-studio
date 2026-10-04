@@ -1,0 +1,102 @@
+{
+  "product": "cover:itch/indie-game-suite",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Indie Game Suite",
+  "pick": "pixel",
+  "template": "covers/item-board",
+  "kicker": "One brief, one matching pack",
+  "claim": "One brief in, one matching pixel game pack out: sprites, tiles, sound, UI kit and trailer in one palette",
+  "chips": [
+    "23 sprite sheets",
+    "47-tile autotile",
+    "48 sounds + music loop",
+    {
+      "t": "58 UI pieces, trailer GIF + MP4",
+      "wide": true
+    }
+  ],
+  "badge": "$29 one-time",
+  "tokens": {
+    "bg": "#ff8a1f",
+    "bg-2": "#ff6f0a",
+    "ink": "#1a1030",
+    "muted": "#33204f",
+    "accent": "#3a1d8a",
+    "accent-ink": "#2a1263",
+    "on-accent": "#ffd27a",
+    "chip-bg": "#fff3e0",
+    "chip-ink": "#1a1030",
+    "chip-line": "#1a1030"
+  },
+  "fonts": {
+    "display": "Rubik, Verdana, Tahoma, sans-serif",
+    "body": "Rubik, Verdana, Tahoma, sans-serif",
+    "mono": "'Lucida Console', Consolas, monospace"
+  },
+  "titlePx": 90,
+  "titlePxCard": 58,
+  "titleWeight": 700,
+  "titleTrack": "-0.04em",
+  "titleWrapWide": [
+    "Indie Game",
+    "Suite"
+  ],
+  "titleWrapCard": [
+    "Indie Game Suite"
+  ],
+  "chipR": "0px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "item-size": "96px",
+    "item-size-card": "48px",
+    "item-render": "pixelated"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/preview/cover-1280x720.png",
+  "landing": "products/game-suite/indie-game-suite/covers/from-design-studio/O-035/",
+  "assetsFrom": "the product's own out/ember-hollow-knight/ sprites and tiles",
+  "assets": [
+    {
+      "name": "item-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/hero_walk.png",
+      "what": "the customer's own picture hero_walk.png"
+    },
+    {
+      "name": "item-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/enemy_big_walk.png",
+      "what": "the customer's own picture enemy_big_walk.png"
+    },
+    {
+      "name": "item-3.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/creature_flyer.png",
+      "what": "the customer's own picture creature_flyer.png"
+    },
+    {
+      "name": "item-4.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/item_chest.png",
+      "what": "the customer's own picture item_chest.png"
+    },
+    {
+      "name": "item-5.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/item_coin.png",
+      "what": "the customer's own picture item_coin.png"
+    },
+    {
+      "name": "item-6.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/item_potion.png",
+      "what": "the customer's own picture item_potion.png"
+    },
+    {
+      "name": "item-7.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/fx_explosion.png",
+      "what": "the customer's own picture fx_explosion.png"
+    },
+    {
+      "name": "item-8.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/tiles/props/prop_01_torch.png",
+      "what": "the customer's own picture prop_01_torch.png"
+    }
+  ]
+}

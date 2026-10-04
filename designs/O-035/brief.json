@@ -1,0 +1,84 @@
+{
+  "title": "Indie Game Suite",
+  "size": {
+    "w": 1280,
+    "h": 720
+  },
+  "sizes": [
+    {
+      "w": 1280,
+      "h": 720,
+      "name": "landscape"
+    },
+    {
+      "w": 630,
+      "h": 500,
+      "name": "store-card",
+      "title_px": 58,
+      "title_box": [
+        0.04,
+        0.04,
+        0.96,
+        0.3
+      ],
+      "title_longest": 16
+    }
+  ],
+  "dir": "ltr",
+  "tokens": "tokens.css",
+  "page": "page.html",
+  "image": "out.png",
+  "text": [
+    {
+      "label": "title",
+      "fg": "var(--ink)",
+      "bg": "var(--bg)",
+      "min": 4.5
+    },
+    {
+      "label": "subtitle",
+      "fg": "var(--muted)",
+      "bg": "var(--bg)",
+      "min": 4.5
+    },
+    {
+      "label": "cta",
+      "fg": "var(--on-accent)",
+      "bg": "var(--accent)",
+      "min": 4.5
+    },
+    {
+      "label": "chip",
+      "fg": "var(--chip-ink)",
+      "bg": "var(--chip-bg)",
+      "min": 4.5
+    },
+    {
+      "label": "kicker",
+      "fg": "var(--accent-ink)",
+      "bg": "var(--bg)",
+      "min": 3
+    }
+  ],
+  "title_box": [
+    0.056,
+    0.2,
+    0.52,
+    0.5
+  ],
+  "title_px": 90,
+  "title_longest": 10,
+  "order": "O-035",
+  "product": "cover:itch/indie-game-suite",
+  "system": "retro (hand-picked game-arcade system; tools/donor.mjs has not landed, see sprint/needs.md)",
+  "assets": [
+    "assets/item-1.png",
+    "assets/item-2.png",
+    "assets/item-3.png",
+    "assets/item-4.png",
+    "assets/item-5.png",
+    "assets/item-6.png",
+    "assets/item-7.png",
+    "assets/item-8.png"
+  ]
+}
