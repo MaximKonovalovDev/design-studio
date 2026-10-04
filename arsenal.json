@@ -145,44 +145,6 @@
       "timeout_s": 30
     },
     {
-      "name": "block",
-      "does": "emits one landing block (hero works with defaults) as an HTML section on stdout; all colors through var(--*)",
-      "run": [
-        "node",
-        "tools/registry.mjs"
-      ],
-      "args": [
-        {
-          "name": "block",
-          "does": "block id from templates/registry.json, for example hero",
-          "required": true,
-          "flag": "--emit"
-        },
-        {
-          "name": "slot1",
-          "does": "a SLOT=value pair, for example TITLE=Hello"
-        },
-        {
-          "name": "slot2",
-          "does": "a second SLOT=value pair"
-        },
-        {
-          "name": "slot3",
-          "does": "a third SLOT=value pair"
-        }
-      ],
-      "test": [
-        "node",
-        "tools/registry.mjs",
-        "--check"
-      ],
-      "for": [
-        "factory F6: free magnet and listing pages",
-        "marketing-studio: landing hero"
-      ],
-      "timeout_s": 30
-    },
-    {
       "name": "assets",
       "does": "lists a product preview/ folder's pictures (size, bytes, sha256, used or not, largest first) and copies them into designs/<order>/assets/ + assets.json; fetches CC0 stock (polyhaven, ambientcg, openverse license=cc0) into packs/donors/<source>-<slug>/ with SOURCE.json",
       "run": [
