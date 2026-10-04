@@ -219,7 +219,7 @@
       "first_job": "listed O-001 (19) and O-004 (35) preview pictures, copied 2 each, fetched polyhaven paper texture for O-005"
     },
     {
-      "name": "free-image",
+      "name": "free_image",
       "does": "lists the live free image models (every price field 0, today the 2 ming-image design models) and, only with a key plus explicit --prompt/--out, renders one 1280x720 background (aborts unless usage.cost is 0); paid models stay refused at budget 0",
       "run": [
         "node",
@@ -275,7 +275,6 @@
       ],
       "test": [
         "node",
-        "--test",
         "tests/orders-check.test.mjs"
       ],
       "for": [
@@ -331,7 +330,7 @@
           "required": true
         },
         {
-          "name": "expect-pages",
+          "name": "expect_pages",
           "does": "required page count, e.g. 1 for a one-page CV",
           "flag": "--expect-pages"
         },

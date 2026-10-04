@@ -6,6 +6,7 @@ The lead turns each open item into a board row and ticks it with the row ID.
 ## Open
 
 (none 2026-10-03T21:05Z: all 5 items have board rows, tracked there)
+- [ ] EB-2026-10-04-S41 from center -> DS-77 READY (item 2 CRLF repair) + DS-70 OWNER stands (item 1 cf token) (Maxim (center chat 2026-10-04), 2026-10-04) | Close these 2 'waits for Maxim' items yourself, no human is needed: 1) DS-70 says it needs an owner-approved factory deploy: The real stop is the Cloudflare token (Maxim's page item factory-cf-token-pages); after it, the lister deploys and DS-70 closes with the live URL. [design sprint/board.md:30; factory engine/deploy_cf_pages.py:16 (approved 2026-09-24)] 2) D1/D3 proofs can read 0 because orders.csv has CRLF line ends: Set 'orders.csv text eol=lf' in .gitattributes and renormalize (AGENTS.md:23 says LF), then verify the adopted hashes with git -C. [design orders.csv 27 CR bytes; FINISH-LINE.md:14 proof regex ends with $] | why: 2026-10-04 sweep of all 9 repos (Maxim: 'no human anywhere'): each line claims to wait for Maxim but the AI can do it now; center blockers.json records them as kind STALE | done when each numbered line is fixed or closed with its evidence, and the old owner text is gone
 
 ## Done
 - [x] EB-2026-10-03-S50 from center -> DS-72 TOP 2026-10-03 [TAKE-ORDERS] | order desk: oldest open first, one one-off packet per order, lead commits + delivered flag + customer inbox item; adoption from customer git log.
