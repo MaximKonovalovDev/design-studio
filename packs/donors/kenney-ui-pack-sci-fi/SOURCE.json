@@ -1,0 +1,31 @@
+{
+  "source": "kenney.nl",
+  "page": "https://kenney.nl/assets/ui-pack-sci-fi",
+  "pack": "kenney-ui-pack-sci-fi",
+  "version": "2.0 (19-08-2024)",
+  "pack_files": "130",
+  "file_url": "https://kenney.nl/media/pages/assets/ui-pack-sci-fi/b67c2acd31-1724181109/kenney_ui-pack-space-expansion.zip",
+  "file": "kenney_ui-pack-space-expansion.zip",
+  "subset": [
+    "hud/bar_round_gloss_large.png",
+    "hud/bar_round_gloss_small.png",
+    "hud/bar_square_gloss_large.png",
+    "Preview.png",
+    "Sample.png"
+  ],
+  "licence": "CC0",
+  "licence_source": "pack page 'License: Creative Commons CC0' read live 2026-10-04 + License.txt inside the zip (CC0)",
+  "date_read": "2026-10-04",
+  "hashes_sha256": {
+    "kenney_ui-pack-space-expansion.zip": "4ae5a4949b71ba6c08bfb4d4708b3880915782f7deae7bc5872e1d56f0a668af",
+    "License.txt": "80e091ef18f6b88becb3b7c2306c159d16217ca620bfa21b7177582c72924221",
+    "hud/bar_round_gloss_large.png": "3c5ba6a36ec990665df901c42e1148fc4f5128858fc86514e667a69a03f34103",
+    "hud/bar_round_gloss_small.png": "63a3c8127a0734418d8c3059ba77b83e6617a42fc7a3b592590b3f83f989df20",
+    "hud/bar_square_gloss_large.png": "0aeb87fff5849bbc981d34b609e3bf466a7ba7d3a8467e51b3a2302aa47a9163",
+    "Preview.png": "6465c063b6fbcbdc0b4be7ca9c5c145c3f318da1f543d6f352bfe5e025243773",
+    "Sample.png": "0479f3a1a94497e9bf7f765339a730e5c87f2287b9e806c5e616be3e9c16f14d"
+  },
+  "bytes_zip": 768505,
+  "need": "NEED-02 for O-004,O-012,O-015,O-016; game-ui slots hud-backdrop/avatar-base (kits/game-ui/LICENSE-kenney.txt)",
+  "use": "CC0: may be used without attribution; credit Kenney appreciated, not mandatory"
+}

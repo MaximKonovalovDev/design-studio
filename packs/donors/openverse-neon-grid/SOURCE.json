@@ -1,0 +1,18 @@
+{
+  "source": "openverse",
+  "id": "ea3b5d56-10c6-4f7a-9670-c49b0d77a8b1",
+  "slug": "neon-edge-metal-grid-with-alpha",
+  "query": "neon grid",
+  "kind": "photo",
+  "page": "https://www.flickr.com/photos/126296198@N03/18753897900",
+  "file_url": "https://live.staticflickr.com/445/18753897900_aa8f161265.jpg",
+  "file": "neon-edge-metal-grid-with-alpha.jpg",
+  "author": "meta_maria_hb (flickr)",
+  "licence": "CC0",
+  "licence_source": "Openverse API record license=cc0 + detail endpoint license_url creativecommons.org/publicdomain/zero/1.0, read live 2026-10-04",
+  "date_read": "2026-10-04",
+  "sha256": "968fc47ef8cfe1e30eb3e0efac6ea34a09f6ec909fb8c0c56393337b74543f47",
+  "bytes": 154169,
+  "need": "NEED-02 for O-004,O-012,O-015,O-016",
+  "use": "neon-grid backdrop for O-004,O-012 (Tiks neon covers); 500x500 with alpha look"
+}

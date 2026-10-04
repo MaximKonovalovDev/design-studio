@@ -1,0 +1,33 @@
+{
+  "source": "kenney.nl",
+  "page": "https://kenney.nl/assets/ui-pack",
+  "pack": "kenney-ui-pack",
+  "version": "2.0 (12-06-2024)",
+  "pack_files": "430 (1343 zip entries incl. colors/formats)",
+  "file_url": "https://kenney.nl/media/pages/assets/ui-pack/f651646eab-1718203990/kenney_ui-pack.zip",
+  "file": "kenney_ui-pack.zip",
+  "subset": [
+    "hud/button_rectangle_gloss.png",
+    "hud/button_rectangle_depth_gloss.png",
+    "hud/button_rectangle_flat.png",
+    "hud/arrow_basic_e.png",
+    "Preview.png",
+    "Sample.png"
+  ],
+  "licence": "CC0",
+  "licence_source": "pack page 'License: Creative Commons CC0' read live 2026-10-04 + License.txt inside the zip (CC0)",
+  "date_read": "2026-10-04",
+  "hashes_sha256": {
+    "kenney_ui-pack.zip": "a8a14a234911eb648c062622915c93e79e94e97cb7f9f375a70f6617f1174318",
+    "License.txt": "69f7eaa5e05913b4d09cf5848f75390b5c3c9a409ef8555777803d9ca0c171fb",
+    "hud/button_rectangle_gloss.png": "7f3d3ae693d79471a03691d679a9fc18e151ae9a922ca73e69fb75c902190cd3",
+    "hud/button_rectangle_depth_gloss.png": "a17548efecebe7cb8bb7bc6e71510b4a9a7dbbc31accfe0a2e3e565bf58b5839",
+    "hud/button_rectangle_flat.png": "83084c953e57d7506f90600df77f36a8c6156abea0b8ea0e4b3885a596cee2c8",
+    "hud/arrow_basic_e.png": "5517436e154ef58b64ae46ebac37ab1b8a8df8ef3e9220b4154e78acde0221da",
+    "Preview.png": "41bcfd350a94201ab741d219ae794fd3cfc917f4f4decbea1fbf188b6367f561",
+    "Sample.png": "653c84028dd03c368ec35451689585756b6a1f2d9a5e37b4986eeca2637d4fb0"
+  },
+  "bytes_zip": 1229750,
+  "need": "NEED-02 for O-004,O-012,O-015,O-016; game-ui slots hud-backdrop/avatar-base (kits/game-ui/LICENSE-kenney.txt)",
+  "use": "CC0: may be used without attribution; credit Kenney appreciated, not mandatory"
+}

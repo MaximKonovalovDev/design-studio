@@ -1,0 +1,2 @@
+# donor packs over 2 MB stay out of git (SOURCE.json stays, the bytes re-fetch)
+

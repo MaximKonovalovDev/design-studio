@@ -1,0 +1,19 @@
+{
+  "source": "openverse",
+  "id": "ef4dd66f-eede-41cb-b8bd-d58bccb2565a",
+  "slug": "old-paper-texture-background-simple",
+  "query": "old paper",
+  "kind": "photo",
+  "page": "https://www.rawpixel.com/image/6152524/old-paper-texture-background-simple-design",
+  "file_url": "https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcHg2NTA4NDctaW1hZ2Utam9iNjMwLWMtbDBnMDlsMTUuanBn.jpg",
+  "file": "old-paper-texture-background-simple.webp",
+  "file_note": "CDN serves RIFF/WEBP bytes under a .jpg URL; stored with the honest .webp extension, sha256 unchanged",
+  "author": "Teddy (rawpixel)",
+  "licence": "CC0",
+  "licence_source": "Openverse API record license=cc0 + detail endpoint license_url creativecommons.org/publicdomain/zero/1.0, read live 2026-10-04",
+  "date_read": "2026-10-04",
+  "sha256": "93581fd75791324564a13c8a2d5e84ea14c89fe1beb308bd168e7738b4cae662",
+  "bytes": 361234,
+  "need": "NEED-02 for O-004,O-012,O-015,O-016",
+  "use": "paper backdrop for O-005 (Artist Launch Pack, paper pick) + O-015/O-016 painterly/pixel covers"
+}
