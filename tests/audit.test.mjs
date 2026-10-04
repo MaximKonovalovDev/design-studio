@@ -84,6 +84,51 @@ describe("auditBrief", () => {
   });
 });
 
+describe("per-size title fit (cover tool: wrapped titles and a card with its own title size)", () => {
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+  const mk = (patch) => {
+    const d = dir();
+    writeFileSync(
+      join(d, "brief.json"),
+      JSON.stringify({
+        title: "Sprite Sheet Factory",
+        size: { w: 1280, h: 720 },
+        sizes: [{ w: 1280, h: 720 }, { w: 630, h: 500 }],
+        dir: "ltr",
+        tokens: "tokens.css",
+        page: "page.html",
+        image: "out.png",
+        text: [{ label: "t", fg: "var(--ink)", bg: "var(--paper)", min: 4.5 }],
+        title_box: [0.05, 0.2, 0.55, 0.5],
+        title_px: 100,
+        ...patch,
+      }),
+    );
+    writeFileSync(join(d, "tokens.css"), ":root{--paper:#ffffff;--ink:#111111;}");
+    writeFileSync(join(d, "page.html"), '<html dir="ltr"><body style="color:var(--ink)">Sprite Sheet Factory</body></html>');
+    copyFileSync(join(ROOT, "samples", "cover", "out.png"), join(d, "out.png"));
+    return auditBrief(join(d, "brief.json"));
+  };
+  const fitErrors = (r) => r.errors.filter((e) => e.includes("title fits"));
+
+  it("a long one-line title fails the fit estimate", () => {
+    assert.ok(fitErrors(mk({})).length > 0);
+  });
+
+  it("title_longest measures a wrapped title by its longest line", () => {
+    const r = mk({ title_longest: 7, sizes: [{ w: 1280, h: 720 }], size: { w: 1280, h: 720 } });
+    assert.equal(fitErrors(r).length, 0, r.errors.join("; "));
+  });
+
+  it("a size entry carries its own title_px and title_box for a re-laid-out card", () => {
+    const wide = { w: 1280, h: 720, title_longest: 7 };
+    const withCard = mk({ title_longest: 7, sizes: [wide, { w: 630, h: 500, title_px: 40, title_box: [0.04, 0.04, 0.96, 0.3], title_longest: 20 }] });
+    assert.equal(fitErrors(withCard).length, 0, withCard.errors.join("; "));
+    const blind = mk({ title_longest: 7, sizes: [wide, { w: 630, h: 500 }] });
+    assert.ok(fitErrors(blind).length > 0, "without the card's own size the hero title cannot fit 630px");
+  });
+});
+
 describe("rtl gate (DS-16: dir + logical + Hebrew type)", () => {
   const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
   const KIT =

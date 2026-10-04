@@ -1,0 +1,19 @@
+  .stage { background: linear-gradient(135deg, var(--bg) 0%, var(--bg) 45%, var(--bg-2) 100%); }
+  .art .band { position: absolute; inset-inline: 0; top: 0; height: 100%; background: var(--accent); opacity: 0.08; clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%); }
+  .art .card { position: absolute; width: 590px; background: var(--paper); border: 2px solid var(--rule); border-radius: 10px; padding: 8px; box-shadow: 0 22px 44px rgba(15, 42, 28, 0.28); }
+  .art .card img { display: block; width: 100%; }
+  .art .card.h { inset-inline-start: 6px; top: 36px; transform: rotate(-1.2deg); }
+  .art .card.l { inset-inline-start: 24px; top: 366px; transform: rotate(1.2deg); }
+  .art .pill { position: absolute; font-family: var(--font-display); font-weight: 900; font-size: 46px; line-height: 1; padding: 12px 26px; border-radius: 999px; box-shadow: 0 10px 22px rgba(15, 42, 28, 0.3); letter-spacing: 0.02em; }
+  .art .ph { background: var(--high); color: var(--on-accent); inset-inline-end: 34px; top: 172px; transform: rotate(5deg); }
+  .art .pm { background: var(--med); color: var(--ink); inset-inline-start: 50px; top: 632px; transform: rotate(-3deg); }
+  .art .pl { background: var(--low); color: var(--on-accent); inset-inline-end: 34px; top: 500px; transform: rotate(4deg); }
+  @media (max-width: 800px) {
+    .art .card { width: 292px; padding: 5px; border-width: 1.5px; }
+    .art .card.h { inset-inline-start: 14px; top: 10px; }
+    .art .card.l { inset-inline-start: 324px; top: 22px; }
+    .art .pill { font-size: 26px; padding: 7px 16px; }
+    .art .ph { inset-inline-start: 30px; inset-inline-end: auto; top: 190px; }
+    .art .pm { inset-inline-start: 190px; inset-inline-end: auto; top: 218px; }
+    .art .pl { inset-inline-start: 372px; inset-inline-end: auto; top: 186px; }
+  }

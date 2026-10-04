@@ -1,0 +1,111 @@
+{
+  "product": "cover:itch/medieval-warriors-vol4",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Medieval Warriors Vol 4",
+  "pick": "epic",
+  "kicker": "Pixel sprite pack",
+  "claim": "True 8-direction sprite sheets, plain PNG",
+  "chips": [
+    "3 warriors",
+    "5 actions x 8 directions",
+    "432 frames",
+    "Playable browser demo"
+  ],
+  "badge": "$29 one-time",
+  "tokens": {
+    "bg": "#1d1026",
+    "bg-2": "#7a2231",
+    "ink": "#fff4dc",
+    "muted": "#f3dcb8",
+    "accent": "#f2c14e",
+    "accent-ink": "#f2c14e",
+    "on-accent": "#1d1026",
+    "chip-bg": "#2b1736",
+    "chip-ink": "#fff4dc",
+    "chip-line": "#f2c14e",
+    "ground": "#0f0814",
+    "moon": "#ffe3a3"
+  },
+  "fonts": {
+    "display": "'Palatino Linotype', Palatino, Georgia, serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif"
+  },
+  "titlePx": 92,
+  "titlePxCard": 52,
+  "titleWeight": 800,
+  "titleTrack": "0.01em",
+  "titleWrapWide": [
+    "Medieval",
+    "Warriors",
+    "Vol 4"
+  ],
+  "titleWrapCard": [
+    "Medieval Warriors",
+    "Vol 4"
+  ],
+  "copyW": "50%",
+  "claimW": "540px",
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/preview/cover.png",
+  "landing": "products/character-animation-studio/medieval-warriors-vol4/covers/from-design-studio/O-015/",
+  "assetsFrom": "the product's own assets/frames/ sprite frames (64x64, transparent)",
+  "assets": [
+    {
+      "name": "knight.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/idle/s_0.png",
+      "what": "knight idle, facing S, 64x64 frame from the zip"
+    },
+    {
+      "name": "footman.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/footman/idle/s_0.png",
+      "what": "footman idle, facing S, 64x64 frame from the zip"
+    },
+    {
+      "name": "archer.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/archer/idle/s_0.png",
+      "what": "archer idle, facing S, 64x64 frame from the zip"
+    },
+    {
+      "name": "walk-s.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/s_0.png",
+      "what": "knight walk facing S, frame 0 of 4"
+    },
+    {
+      "name": "walk-se.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/se_0.png",
+      "what": "knight walk facing SE, frame 0 of 4"
+    },
+    {
+      "name": "walk-e.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/e_0.png",
+      "what": "knight walk facing E, frame 0 of 4"
+    },
+    {
+      "name": "walk-ne.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/ne_0.png",
+      "what": "knight walk facing NE, frame 0 of 4"
+    },
+    {
+      "name": "walk-n.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/n_0.png",
+      "what": "knight walk facing N, frame 0 of 4"
+    },
+    {
+      "name": "walk-nw.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/nw_0.png",
+      "what": "knight walk facing NW, frame 0 of 4"
+    },
+    {
+      "name": "walk-w.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/w_0.png",
+      "what": "knight walk facing W, frame 0 of 4"
+    },
+    {
+      "name": "walk-sw.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/sw_0.png",
+      "what": "knight walk facing SW, frame 0 of 4"
+    }
+  ],
+  "theirsPx256": 5
+}

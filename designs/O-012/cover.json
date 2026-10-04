@@ -1,0 +1,67 @@
+{
+  "product": "cover:gumroad/tiks-neon",
+  "from_repo": "factory",
+  "storeName": "Gumroad",
+  "title": "Tiks Neon",
+  "pick": "neon",
+  "kicker": "Retro arcade sound effects",
+  "claim": "330 arcade SFX plus a browser synth",
+  "chips": [
+    "240 base + 90 themed",
+    "WAV + MP3 + OGG",
+    "5 minutes to working audio",
+    "Free offline synth"
+  ],
+  "badge": "$7.49 one-time",
+  "tokens": {
+    "bg": "#14072b",
+    "bg-2": "#37104f",
+    "ink": "#ffffff",
+    "muted": "#e6d8ff",
+    "accent": "#ff3ea5",
+    "accent-ink": "#ff7cc4",
+    "on-accent": "#14072b",
+    "chip-bg": "#241046",
+    "chip-ink": "#ffffff",
+    "chip-line": "#8f5bff",
+    "cyan": "#2ff3e0",
+    "gold": "#ffd23f",
+    "win-bg": "#0b0b22",
+    "win-bar": "#241046"
+  },
+  "fonts": {
+    "display": "'Segoe UI Black', 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif"
+  },
+  "titlePx": 150,
+  "titlePxCard": 78,
+  "titleWeight": 900,
+  "titleTrack": "-0.035em",
+  "titleWrapWide": [
+    "Tiks",
+    "Neon"
+  ],
+  "vars": {
+    "claim-px": "36px",
+    "claim-px-card": "22px"
+  },
+  "copyW": "50%",
+  "claimW": "560px",
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-neon/listing/gumroad.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-neon/preview/cover-1280x720.png",
+  "landing": "products/game-dev-2d/tiks-neon/covers/from-design-studio/O-012/",
+  "assetsFrom": "the product's own preview/ captures of its synth and themed sets",
+  "assets": [
+    {
+      "name": "synth.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-neon/preview/synth-screenshot.png",
+      "what": "real capture of the offline browser synth that ships in the zip"
+    },
+    {
+      "name": "sets.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-neon/preview/sets-showcase.png",
+      "what": "real capture of the 3 themed sets (sci-fi weapons, fantasy magic, haunted dungeon)"
+    }
+  ],
+  "theirsPx256": 19
+}

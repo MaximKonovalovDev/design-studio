@@ -1,0 +1,65 @@
+{
+  "product": "cover:gumroad/book-forge-pro",
+  "from_repo": "factory",
+  "storeName": "Gumroad",
+  "title": "BookForge Pro",
+  "pick": "editorial",
+  "kicker": "KDP interior template",
+  "claim": "Print-ready KDP spec with spine math in 5 minutes",
+  "chips": [
+    "5x8 · 6x9 · 8x10 · 8.5x11",
+    "72 languages + RTL preview",
+    "Offline · no account"
+  ],
+  "badge": "$39 one-time",
+  "tokens": {
+    "bg": "#f4ecdc",
+    "bg-2": "#e8dcc2",
+    "ink": "#1c1b33",
+    "muted": "#47465f",
+    "accent": "#5a3fd6",
+    "accent-ink": "#5a3fd6",
+    "on-accent": "#ffffff",
+    "chip-bg": "#fffaf0",
+    "chip-ink": "#1c1b33",
+    "chip-line": "#d6c8a8",
+    "gold": "#f2b632",
+    "navy": "#10143a"
+  },
+  "fonts": {
+    "display": "Georgia, 'Times New Roman', serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif"
+  },
+  "titlePx": 104,
+  "titlePxCard": 62,
+  "titleWeight": 800,
+  "titleTrack": "-0.02em",
+  "copyW": "54%",
+  "claimW": "620px",
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/book-forge-pro/book-forge-pro/listing/gumroad.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/book-forge-pro/book-forge-pro/preview/cover-od-1600x900.png",
+  "landing": "products/book-forge-pro/book-forge-pro/covers/from-design-studio/O-001/",
+  "assetsFrom": "the product's own assets/ and preview/ files",
+  "assets": [
+    {
+      "name": "front-day.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/book-forge-pro/book-forge-pro/assets/cover-6x9-front.png",
+      "what": "day front-cover template shipped in the zip (1200x1800)"
+    },
+    {
+      "name": "front-midnight.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/book-forge-pro/book-forge-pro/assets/cover-6x9-front-midnight.png",
+      "what": "midnight front-cover template shipped in the zip (1200x1800)"
+    },
+    {
+      "name": "spread.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/book-forge-pro/book-forge-pro/assets/cover-6x9-full-spread-200pp-cream.png",
+      "what": "back + spine + front spread for 200pp cream 6x9 shipped in the zip (1912x1387)"
+    }
+  ],
+  "titleWrapWide": [
+    "BookForge",
+    "Pro"
+  ],
+  "theirsPx256": 12
+}

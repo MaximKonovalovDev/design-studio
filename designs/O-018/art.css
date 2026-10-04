@@ -1,0 +1,16 @@
+  .stage { background: linear-gradient(140deg, var(--bg) 0%, var(--bg-2) 100%); }
+  .art .dia { position: absolute; background: var(--accent); transform: rotate(45deg); opacity: 0.16; }
+  .art .d1 { width: 330px; height: 330px; inset-inline-end: -120px; top: -90px; }
+  .art .d2 { width: 250px; height: 250px; inset-inline-start: 30px; bottom: -110px; background: var(--gold); opacity: 0.5; }
+  .art .big { position: absolute; inset-inline-end: 26px; top: 6px; font-family: var(--font-display); font-weight: 900; font-size: 190px; line-height: 1; letter-spacing: -0.05em; color: var(--accent); }
+  .art .board { position: absolute; inset-inline-start: 6px; top: 226px; width: 610px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 12px; background: var(--ink); border-radius: 16px; box-shadow: 0 22px 44px rgba(27, 17, 64, 0.35); transform: rotate(-2deg); }
+  .art .c { background: var(--cell); border: 2px solid var(--cell-line); border-radius: 10px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+  .art .c img { width: 88%; image-rendering: pixelated; display: block; }
+  .art .tag { position: absolute; inset-inline-start: 40px; top: 190px; background: var(--gold); color: var(--ink); font-weight: 800; font-size: 20px; padding: 9px 16px; border-radius: 999px; transform: rotate(-4deg); z-index: 3; }
+  @media (max-width: 800px) {
+    .art .d1 { width: 220px; height: 220px; top: -60px; }
+    .art .big { font-size: 96px; top: -4px; inset-inline-end: 16px; }
+    .art .board { inset-inline-start: 14px; top: 56px; width: 330px; padding: 8px; gap: 6px; border-radius: 12px; }
+    .art .c { border-width: 1.5px; border-radius: 7px; }
+    .art .tag { font-size: 13px; padding: 6px 12px; inset-inline-start: 380px; top: 130px; }
+  }

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="140" viewBox="0 0 400 140">
+<rect width="400" height="140" fill="#FFFFFF"/>
+<text x="16" y="14" font-family="Arial" font-size="10" fill="#8A93A6">Acme Starter · cards-001</text>
+<rect x="30" y="10" width="340" height="112" rx="10" fill="white" stroke="#E2E6EE" stroke-width="1"/><rect x="30" y="10" width="340" height="34" rx="10" fill="#4F6BFF" opacity="0.92"/><text x="46" y="32" font-family="Arial" font-size="14" font-weight="bold" fill="white">Pricing card 1 — Pro plan</text><text x="46" y="64" font-family="Arial" font-size="12" fill="#14171F">Everything you need to ship pages fast.</text><text x="46" y="82" font-family="Arial" font-size="13" font-weight="bold" fill="#14171F">$39  / one-time</text><rect x="250" y="68" width="104" height="30" rx="8" fill="#4F6BFF"/><text x="302" y="88" font-family="Arial" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Choose</text>
+</svg>

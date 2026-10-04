@@ -1,0 +1,24 @@
+/* designs/O-020/tokens.css: O-020 AI Search Visibility Audit Kit (editorial). All page color comes from these vars. */
+:root {
+  --bg: #0d1330;
+  --bg-2: #1b2a66;
+  --ink: #f7f2e6;
+  --muted: #d3d9f2;
+  --accent: #38d0f0;
+  --accent-ink: #38d0f0;
+  --on-accent: #0d1330;
+  --chip-bg: #16204f;
+  --chip-ink: #f7f2e6;
+  --chip-line: #38d0f0;
+  --paper: #ffffff;
+  --gold: #ffd166;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 90px;
+  --title-px-card: 46px;
+  --title-weight: 800;
+  --title-track: -0.02em;
+  --copy-w: 50%;
+  --claim-w: 540px;
+  --chip-r: 8px;
+}

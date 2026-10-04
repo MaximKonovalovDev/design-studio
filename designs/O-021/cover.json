@@ -1,0 +1,71 @@
+{
+  "product": "cover:itch/aeo-visibility-mini-check",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "AEO Visibility Mini-Check",
+  "pick": "friendly",
+  "kicker": "Free sampler of the audit kit",
+  "claim": "Free 20-probe sampler plus 5 fixes",
+  "chips": [
+    "dentist, plumber, agency, SaaS x 5",
+    "5 highest-leverage fixes",
+    "Honest method box: search proxy"
+  ],
+  "badge": "Free: $0 or donate",
+  "tokens": {
+    "bg": "#e8fbf2",
+    "bg-2": "#c6f2dc",
+    "ink": "#0b3324",
+    "muted": "#2f5a48",
+    "accent": "#0b3324",
+    "accent-ink": "#0a7a4f",
+    "on-accent": "#baf5d8",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#0b3324",
+    "chip-line": "#8fd8b6",
+    "paper": "#ffffff",
+    "sun": "#ffd24a",
+    "rule": "#bfe3d1"
+  },
+  "fonts": {
+    "display": "'Segoe UI Black', 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif"
+  },
+  "titlePx": 98,
+  "titlePxCard": 52,
+  "titleWeight": 900,
+  "titleTrack": "-0.03em",
+  "titleWrapWide": [
+    "AEO",
+    "Visibility",
+    "Mini-Check"
+  ],
+  "titleWrapCard": [
+    "AEO Visibility",
+    "Mini-Check"
+  ],
+  "copyW": "52%",
+  "claimW": "560px",
+  "chipR": "999px",
+  "extraText": [
+    {
+      "label": "free-sticker",
+      "fg": "var(--ink)",
+      "bg": "var(--sun)",
+      "min": 4.5
+    }
+  ],
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/listing/free-magnet/itch-free.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/cover-630x500.png",
+  "landing": "products/marketing-studio/aeo-visibility-audit-kit/covers/from-design-studio/O-021/",
+  "assetsFrom": "the kit's own preview/ render of its probe banks (a 5-probe excerpt per category)",
+  "assets": [
+    {
+      "name": "banks.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-banks-1280x800.png",
+      "fit": 900,
+      "what": "probe banks excerpt: 5 shown per category (real kit file)"
+    }
+  ],
+  "theirsPx256": 8
+}

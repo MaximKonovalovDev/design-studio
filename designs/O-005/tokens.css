@@ -1,0 +1,24 @@
+/* designs/O-005/tokens.css: O-005 Artist Launch Pack (warm-editorial). All page color comes from these vars. */
+:root {
+  --bg: #f4e9d8;
+  --bg-2: #ead8bd;
+  --ink: #123d2f;
+  --muted: #3d5a4e;
+  --accent: #123d2f;
+  --accent-ink: #b83a17;
+  --on-accent: #fdf6e9;
+  --chip-bg: #fdf6e9;
+  --chip-ink: #123d2f;
+  --chip-line: #cdb892;
+  --coral: #e4572e;
+  --navy: #1d3557;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 100px;
+  --title-px-card: 56px;
+  --title-weight: 800;
+  --title-track: -0.02em;
+  --copy-w: 50%;
+  --claim-w: 560px;
+  --chip-r: 8px;
+}

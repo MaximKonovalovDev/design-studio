@@ -1,0 +1,68 @@
+{
+  "product": "cover:gumroad/tiks-sfx-factory",
+  "from_repo": "factory",
+  "storeName": "Gumroad",
+  "title": "Tiks SFX Factory",
+  "pick": "neon",
+  "kicker": "Game sound effects bundle",
+  "claim": "632 game sound effects",
+  "chips": [
+    "Vol 1: 8 genres x 64",
+    "WAV + MP3",
+    "5 minutes to working audio",
+    "No attribution required"
+  ],
+  "badge": "$39 one-time",
+  "tokens": {
+    "bg": "#0a0b1e",
+    "bg-2": "#1a0f3a",
+    "ink": "#ffffff",
+    "muted": "#cdd2f5",
+    "accent": "#ffe94a",
+    "accent-ink": "#ffe94a",
+    "on-accent": "#0a0b1e",
+    "chip-bg": "#14163a",
+    "chip-ink": "#ffffff",
+    "chip-line": "#18f0c8",
+    "pink": "#ff3ea5",
+    "teal": "#18f0c8",
+    "win-bg": "#0f1030",
+    "win-bar": "#14163a"
+  },
+  "fonts": {
+    "display": "'Segoe UI Black', 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif"
+  },
+  "titlePx": 108,
+  "titlePxCard": 56,
+  "titleWeight": 900,
+  "titleTrack": "-0.03em",
+  "titleWrapWide": [
+    "Tiks SFX",
+    "Factory"
+  ],
+  "vars": {
+    "claim-px": "40px",
+    "claim-px-card": "24px"
+  },
+  "copyW": "50%",
+  "claimW": "560px",
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/listing/gumroad.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/cover-1280x720.png",
+  "landing": "products/game-dev-2d/tiks-sfx-factory/covers/from-design-studio/O-004/",
+  "assetsFrom": "the product's own preview/ renders of its real waveforms",
+  "assets": [
+    {
+      "name": "waveforms.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/waveform-grid.png",
+      "what": "real waveforms of the 8 Vol 1 genres, rendered from the pack's own WAV files"
+    },
+    {
+      "name": "vol2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/vol2-waveforms.png",
+      "what": "real waveforms of Vol 2 sci-fi and magic sounds, rendered from the pack's own WAV files"
+    }
+  ],
+  "theirsPx256": 17,
+  "beatNote": "the 632 numeral adds another 50px of headline"
+}

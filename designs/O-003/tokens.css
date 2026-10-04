@@ -1,0 +1,23 @@
+/* designs/O-003/tokens.css: O-003 Episode Clips Kit (modern). All page color comes from these vars. */
+:root {
+  --bg: #3b24d6;
+  --bg-2: #26119a;
+  --ink: #ffffff;
+  --muted: #e0dbff;
+  --accent: #ffe14d;
+  --accent-ink: #ffe14d;
+  --on-accent: #1a1245;
+  --chip-bg: #2a15a8;
+  --chip-ink: #ffffff;
+  --chip-line: #8b78ff;
+  --edge: #ffffff;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 104px;
+  --title-px-card: 54px;
+  --title-weight: 900;
+  --title-track: -0.03em;
+  --copy-w: 50%;
+  --claim-w: 560px;
+  --chip-r: 8px;
+}

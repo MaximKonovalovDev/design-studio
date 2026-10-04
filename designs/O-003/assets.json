@@ -1,0 +1,35 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/cover1-minimal.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover01-minimal.png",
+      "what": "cover template 1 (minimal) shipped in the zip, 1080x1920",
+      "bytes": 39472
+    },
+    {
+      "file": "assets/cover2-neon.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover02-neon.png",
+      "what": "cover template 2 (neon) shipped in the zip, 1080x1920",
+      "bytes": 31776
+    },
+    {
+      "file": "assets/cover3-retro.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover03-retro.png",
+      "what": "cover template 3 (retro) shipped in the zip, 1080x1920",
+      "bytes": 33019
+    },
+    {
+      "file": "assets/cover4-fitness.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover04-fitness.png",
+      "what": "cover template 4 (fitness) shipped in the zip, 1080x1920",
+      "bytes": 50447
+    },
+    {
+      "file": "assets/cover5-educator.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover05-educator.png",
+      "what": "cover template 5 (educator) shipped in the zip, 1080x1920",
+      "bytes": 36619
+    }
+  ]
+}

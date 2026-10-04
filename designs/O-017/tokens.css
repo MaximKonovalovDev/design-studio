@@ -1,0 +1,27 @@
+/* designs/O-017/tokens.css: O-017 PDF Tables to Excel (clean-professional). All page color comes from these vars. */
+:root {
+  --bg: #f6faf7;
+  --bg-2: #d9eee0;
+  --ink: #0f2a1c;
+  --muted: #35503f;
+  --accent: #1d6f42;
+  --accent-ink: #1d6f42;
+  --on-accent: #ffffff;
+  --chip-bg: #ffffff;
+  --chip-ink: #0f2a1c;
+  --chip-line: #b9d8c5;
+  --high: #1b7f45;
+  --med: #f2b01e;
+  --low: #c62a2a;
+  --paper: #ffffff;
+  --rule: #c8d8cf;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 104px;
+  --title-px-card: 54px;
+  --title-weight: 900;
+  --title-track: -0.03em;
+  --copy-w: 52%;
+  --claim-w: 560px;
+  --chip-r: 8px;
+}

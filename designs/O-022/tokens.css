@@ -1,0 +1,26 @@
+/* designs/O-022/tokens.css: O-022 UI Component Kit Generator (clean-modern). All page color comes from these vars. */
+:root {
+  --bg: #0f1226;
+  --bg-2: #1b1f4a;
+  --ink: #ffffff;
+  --muted: #d5d9f5;
+  --accent: #3f5bf0;
+  --accent-ink: #9fb0ff;
+  --on-accent: #ffffff;
+  --chip-bg: #1a1e45;
+  --chip-ink: #ffffff;
+  --chip-line: #4f6bff;
+  --paper: #ffffff;
+  --teal: #00c2a8;
+  --amber: #ffb020;
+  --tile-line: #2a2f6b;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 80px;
+  --title-px-card: 46px;
+  --title-weight: 900;
+  --title-track: -0.03em;
+  --copy-w: 48%;
+  --claim-w: 520px;
+  --chip-r: 10px;
+}

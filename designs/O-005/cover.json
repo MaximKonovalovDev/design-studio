@@ -1,0 +1,83 @@
+{
+  "product": "cover:gumroad/artist-launch-pack",
+  "from_repo": "factory",
+  "storeName": "Gumroad",
+  "title": "Artist Launch Pack",
+  "pick": "warm-editorial",
+  "kicker": "Brand kit for visual artists",
+  "claim": "74 finished files. No Canva needed.",
+  "chips": [
+    "Profile kit",
+    "30 days of posts",
+    "12-page artbook",
+    "One-page site"
+  ],
+  "badge": "$35 one-time",
+  "fine": "Placeholder art: swap in your own.",
+  "tokens": {
+    "bg": "#f4e9d8",
+    "bg-2": "#ead8bd",
+    "ink": "#123d2f",
+    "muted": "#3d5a4e",
+    "accent": "#123d2f",
+    "accent-ink": "#b83a17",
+    "on-accent": "#fdf6e9",
+    "chip-bg": "#fdf6e9",
+    "chip-ink": "#123d2f",
+    "chip-line": "#cdb892",
+    "coral": "#e4572e",
+    "navy": "#1d3557"
+  },
+  "fonts": {
+    "display": "Georgia, 'Times New Roman', serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif"
+  },
+  "titlePx": 100,
+  "titlePxCard": 56,
+  "titleWeight": 800,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Artist",
+    "Launch",
+    "Pack"
+  ],
+  "copyW": "50%",
+  "claimW": "560px",
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/creator-packs/artist-launch-pack/listing/gumroad.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/creator-packs/artist-launch-pack/preview/cover-1820x1213.png",
+  "landing": "products/creator-packs/artist-launch-pack/covers/from-design-studio/O-005/",
+  "assetsFrom": "the product's own assets/ files (post tiles downscaled)",
+  "assets": [
+    {
+      "name": "post-11.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/creator-packs/artist-launch-pack/assets/posts/post-11-1080x1080.png",
+      "fit": 420,
+      "what": "Instagram square 11 of 30 from the zip"
+    },
+    {
+      "name": "post-15.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/creator-packs/artist-launch-pack/assets/posts/post-15-1080x1080.png",
+      "fit": 420,
+      "what": "Instagram square 15 of 30 from the zip"
+    },
+    {
+      "name": "post-22.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/creator-packs/artist-launch-pack/assets/posts/post-22-1080x1080.png",
+      "fit": 420,
+      "what": "Instagram square 22 of 30 from the zip"
+    },
+    {
+      "name": "story-03.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/creator-packs/artist-launch-pack/assets/posts/story-03-1080x1920.png",
+      "fit": 300,
+      "what": "Story 1080x1920 number 3 of 30 from the zip"
+    },
+    {
+      "name": "avatar.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/creator-packs/artist-launch-pack/assets/profile-kit/avatar-800x800.png",
+      "fit": 300,
+      "what": "profile-kit avatar 800x800 from the zip"
+    }
+  ],
+  "theirsPx256": 9
+}

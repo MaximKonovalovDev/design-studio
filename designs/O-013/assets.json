@@ -1,0 +1,11 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/app.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/keyword-steroids/keyword-steroids-70/preview/screenshot-real-browser-1280x800.png",
+      "what": "real browser capture of the offline keyword app (cropped on the page above the keyword table so no keyword names a game engine)",
+      "bytes": 153195
+    }
+  ]
+}

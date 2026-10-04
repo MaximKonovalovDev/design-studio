@@ -1,0 +1,26 @@
+  .stage { background: var(--bg); }
+  .art .win { border: 4px solid var(--ink); border-radius: 4px; box-shadow: 10px 10px 0 var(--ink); background: var(--paper); }
+  .art .win::before { height: 18px; border-bottom: 0; }
+  .art .win.r { width: 380px; inset-inline-end: -6px; top: 36px; transform: rotate(3deg); }
+  .art .win.r .vp { height: 270px; }
+  .art .win.r .vp img { width: 560px; top: -20px; inset-inline-start: -30px; }
+  .art .win.c { width: 420px; inset-inline-start: 36px; top: 250px; transform: rotate(-2.5deg); }
+  .art .win.c .vp { height: 250px; }
+  .art .win.c .vp img { width: 560px; top: -26px; inset-inline-start: -20px; }
+  .art .win.b { width: 450px; inset-inline-end: 6px; top: 402px; transform: rotate(1.5deg); }
+  .art .win.b .vp { height: 230px; }
+  .art .win.b .vp img { width: 580px; top: -34px; inset-inline-start: -20px; }
+  .art .num { position: absolute; inset-inline-start: 34px; top: 50px; font-family: var(--font-display); font-weight: 900; font-size: 150px; line-height: 0.9; letter-spacing: -0.05em; color: var(--ink); }
+  @media (max-width: 800px) {
+    .art .win { border-width: 3px; box-shadow: 6px 6px 0 var(--ink); }
+    .art .win.r { width: 250px; inset-inline-end: 14px; top: 8px; }
+    .art .win.r .vp { height: 150px; }
+    .art .win.r .vp img { width: 330px; top: -12px; inset-inline-start: -16px; }
+    .art .win.c { width: 250px; inset-inline-start: 14px; top: 110px; }
+    .art .win.c .vp { height: 150px; }
+    .art .win.c .vp img { width: 330px; top: -16px; inset-inline-start: -12px; }
+    .art .win.b { width: 260px; inset-inline-end: 12px; top: 170px; }
+    .art .win.b .vp { height: 130px; }
+    .art .win.b .vp img { width: 340px; top: -20px; inset-inline-start: -12px; }
+    .art .num { font-size: 96px; inset-inline-start: 18px; top: 4px; }
+  }

@@ -1,0 +1,67 @@
+{
+  "product": "cover:gumroad/ebook-funnel-builder",
+  "from_repo": "factory",
+  "storeName": "Gumroad",
+  "title": "E-book Funnel Builder",
+  "pick": "clean-professional",
+  "kicker": "Self-liquidating funnels",
+  "claim": "12 offline funnel templates with ad math",
+  "chips": [
+    "4 niches x 3 platforms",
+    "5 priced offers each",
+    {
+      "t": "Export in 5 minutes",
+      "wide": true
+    },
+    "No account · no API key"
+  ],
+  "badge": "$39 one-time",
+  "tokens": {
+    "bg": "#f3f6fc",
+    "bg-2": "#dfe7f6",
+    "ink": "#0d1b3d",
+    "muted": "#3d4b6b",
+    "accent": "#ff6a13",
+    "accent-ink": "#c2410c",
+    "on-accent": "#0d1b3d",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#0d1b3d",
+    "chip-line": "#c7d3ea",
+    "green": "#10a05a",
+    "navy": "#0d1b3d",
+    "win-bg": "#141f3d",
+    "win-bar": "#0d1b3d"
+  },
+  "fonts": {
+    "display": "'Segoe UI Black', 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif"
+  },
+  "titlePx": 100,
+  "titlePxCard": 52,
+  "titleWeight": 900,
+  "titleTrack": "-0.025em",
+  "titleWrapWide": [
+    "E-book",
+    "Funnel",
+    "Builder"
+  ],
+  "copyW": "50%",
+  "claimW": "560px",
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/gated-ads-funnel/ebook-funnel-builder/listing/gumroad.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/gated-ads-funnel/ebook-funnel-builder/preview/cover-1270x760.png",
+  "landing": "products/gated-ads-funnel/ebook-funnel-builder/covers/from-design-studio/O-002/",
+  "assetsFrom": "the product's own preview/ browser captures",
+  "assets": [
+    {
+      "name": "offers.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/gated-ads-funnel/ebook-funnel-builder/preview/screenshot-offers-1280x800.png",
+      "what": "real browser capture: 5 offers, one funnel (coach-gumroad sample)"
+    },
+    {
+      "name": "results.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/gated-ads-funnel/ebook-funnel-builder/preview/screenshot-results-1280x800.png",
+      "what": "real browser capture: worked ad-math table for all templates"
+    }
+  ],
+  "theirsPx256": 11
+}

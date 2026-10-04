@@ -1,0 +1,24 @@
+/* designs/O-015/tokens.css: O-015 Medieval Warriors Vol 4 (epic). All page color comes from these vars. */
+:root {
+  --bg: #1d1026;
+  --bg-2: #7a2231;
+  --ink: #fff4dc;
+  --muted: #f3dcb8;
+  --accent: #f2c14e;
+  --accent-ink: #f2c14e;
+  --on-accent: #1d1026;
+  --chip-bg: #2b1736;
+  --chip-ink: #fff4dc;
+  --chip-line: #f2c14e;
+  --ground: #0f0814;
+  --moon: #ffe3a3;
+  --font-display: 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 92px;
+  --title-px-card: 52px;
+  --title-weight: 800;
+  --title-track: 0.01em;
+  --copy-w: 50%;
+  --claim-w: 540px;
+  --chip-r: 8px;
+}

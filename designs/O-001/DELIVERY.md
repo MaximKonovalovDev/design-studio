@@ -1,10 +1,8 @@
-# DELIVERY O-001 → factory book-forge-pro (preview/ sidecars; proof: Test-Path each PNG)
-1. out.png → products/book-forge-pro/book-forge-pro/preview/cover-o001-1280x720.png (hero)
-2. out-630x500.png → products/book-forge-pro/book-forge-pro/preview/cover-o001-630x500.png (store card)
-3. page.html → products/book-forge-pro/book-forge-pro/preview/cover-o001.html (source)
-4. tokens.css → products/book-forge-pro/book-forge-pro/preview/cover-o001-tokens.css (source)
-5. brief.json → products/book-forge-pro/book-forge-pro/preview/cover-o001-brief.json (provenance)
-6. design-audit.json → products/book-forge-pro/book-forge-pro/preview/design-audit-o001.json (gates)
-7. DESIGN-REVIEW.md → products/book-forge-pro/book-forge-pro/preview/DESIGN-REVIEW-o001.md (10/10 SHIP)
-8. thumb-256.png → products/book-forge-pro/book-forge-pro/preview/cover-o001-256.png (readability proof)
-9. factory proof: Test-Path preview/cover-o001-1280x720.png -and (node tools/orders-check.mjs ORDERS PASS here)
+# DELIVERY O-001: cover:gumroad/book-forge-pro for factory
+1. Landing in factory: `products/book-forge-pro/book-forge-pro/covers/from-design-studio/O-001/` (copy this whole folder; never edit a file outside from-design-studio/).
+2. `out.png` 1280x720 = Gumroad cover; `out-630x500.png` = store card crop; `thumb-256.png` = readability proof at 256 px.
+3. Source: `page.html` + `tokens.css` + `assets/` (copies of the product's own assets/ and preview/ files); `assets.json` lists each picture.
+4. Gates: `brief.json`, `design-audit.json` (audit PASS), `DESIGN-REVIEW.md` (SHIP), `VERDICT.md` (five checks), `compare.png` (ours vs the cover to beat).
+5. Cover to beat: `C:/Users/me/Desktop/autonomous-factory/products/book-forge-pro/book-forge-pro/preview/cover-od-1600x900.png`; facts only from `C:/Users/me/Desktop/autonomous-factory/products/book-forge-pro/book-forge-pro/listing/gumroad.md`.
+6. Adopt: commit these bytes in factory, then point the Gumroad listing at `out.png` (card: `out-630x500.png`).
+7. Proof in factory: `git log -1 --format=%h -- products/book-forge-pro/book-forge-pro/covers/from-design-studio/O-001/out.png`; here: `node tools/orders-check.mjs` and `node tools/audit.mjs designs/O-001/brief.json`.

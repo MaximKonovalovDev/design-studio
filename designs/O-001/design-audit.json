@@ -14,7 +14,7 @@
     {
       "name": "tokens.css parses with 2+ colors",
       "pass": true,
-      "detail": "6 vars"
+      "detail": "12 vars"
     },
     {
       "name": "page.html carries the title",
@@ -44,62 +44,72 @@
     {
       "name": "out.png non-trivial",
       "pass": true,
-      "detail": "66810B"
+      "detail": "216728B"
     },
     {
       "name": "contrast title",
       "pass": true,
-      "detail": "17.85:1 vs 4.5:1 (#0f172a on #ffffff)"
+      "detail": "14.26:1 vs 4.5:1 (#1c1b33 on #f4ecdc)"
     },
     {
       "name": "contrast subtitle",
       "pass": true,
-      "detail": "7.58:1 vs 4.5:1 (#475569 on #ffffff)"
+      "detail": "7.74:1 vs 4.5:1 (#47465f on #f4ecdc)"
     },
     {
       "name": "contrast cta",
       "pass": true,
-      "detail": "6.22:1 vs 4.5:1 (#ffffff on #c1121f)"
+      "detail": "6.74:1 vs 4.5:1 (#ffffff on #5a3fd6)"
+    },
+    {
+      "name": "contrast chip",
+      "pass": true,
+      "detail": "16.10:1 vs 4.5:1 (#1c1b33 on #fffaf0)"
+    },
+    {
+      "name": "contrast kicker",
+      "pass": true,
+      "detail": "5.74:1 vs 3:1 (#5a3fd6 on #f4ecdc)"
     },
     {
       "name": "title_box valid fractions",
       "pass": true,
-      "detail": "0.06,0.22,0.94,0.52"
+      "detail": "0.056,0.2,0.54,0.5"
     },
     {
       "name": "title legible at 256px",
       "pass": true,
-      "detail": "14.4px at 256px wide (floor 12px)"
+      "detail": "20.8px at 256px wide (floor 12px)"
     },
     {
       "name": "title fits its box",
       "pass": true,
-      "detail": "need ~468px, box 1126px"
+      "detail": "need ~468px, box 620px"
     },
     {
       "name": "title legible at 315px listing",
       "pass": true,
-      "detail": "17.7px at 315px listing (floor 12px)"
+      "detail": "25.6px at 315px listing (floor 12px)"
     },
     {
       "name": "size 1280x720: title legible at 256px",
       "pass": true,
-      "detail": "14.4px at 256px (floor 12px)"
+      "detail": "20.8px at 256px (floor 12px)"
     },
     {
       "name": "size 1280x720: title fits its box",
       "pass": true,
-      "detail": "need ~468px, box 1126px"
+      "detail": "need ~468px, box 620px"
     },
     {
       "name": "size 630x500: title legible at 256px",
       "pass": true,
-      "detail": "29.3px at 256px (floor 12px)"
+      "detail": "25.2px at 256px (floor 12px)"
     },
     {
       "name": "size 630x500: title fits its box",
       "pass": true,
-      "detail": "need ~468px, box 554px"
+      "detail": "need ~403px, box 580px"
     },
     {
       "name": "reference.png parity",
@@ -111,5 +121,5 @@
   "errors": [],
   "brief": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-001\\brief.json",
   "image": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-001\\out.png",
-  "at": "2026-10-03"
+  "at": "2026-10-04"
 }

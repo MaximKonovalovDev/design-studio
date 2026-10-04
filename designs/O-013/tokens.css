@@ -1,0 +1,25 @@
+/* designs/O-013/tokens.css: O-013 Keyword Steroids 70 (clean-professional). All page color comes from these vars. */
+:root {
+  --bg: #f6f7fb;
+  --bg-2: #e4e8f4;
+  --ink: #12131f;
+  --muted: #444a63;
+  --accent: #087a4a;
+  --accent-ink: #066a3f;
+  --on-accent: #ffffff;
+  --chip-bg: #ffffff;
+  --chip-ink: #12131f;
+  --chip-line: #c9cfe3;
+  --violet: #5b34e6;
+  --win-bg: #141527;
+  --win-bar: #12131f;
+  --font-display: Bahnschrift, 'Segoe UI Black', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 106px;
+  --title-px-card: 58px;
+  --title-weight: 700;
+  --title-track: -0.02em;
+  --copy-w: 52%;
+  --claim-w: 580px;
+  --chip-r: 8px;
+}

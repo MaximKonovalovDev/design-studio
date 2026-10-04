@@ -1,0 +1,11 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/banks.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-banks-1280x800.png",
+      "what": "probe banks excerpt: 5 shown per category (real kit file) (downscaled copy, 900px wide, same picture)",
+      "bytes": 126131
+    }
+  ]
+}

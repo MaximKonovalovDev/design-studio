@@ -1,0 +1,26 @@
+/* designs/O-016/tokens.css: O-016 Sprite Sheet Factory (pixel-playful). All page color comes from these vars. */
+:root {
+  --bg: #ff8a1f;
+  --bg-2: #ff6a00;
+  --ink: #1a1030;
+  --muted: #33204f;
+  --accent: #1a1030;
+  --accent-ink: #7a1f00;
+  --on-accent: #ffc15e;
+  --chip-bg: #fff3e0;
+  --chip-ink: #1a1030;
+  --chip-line: #1a1030;
+  --panel: #171a3a;
+  --cell: #232860;
+  --cell-line: #3a4096;
+  --star: #ffe14d;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 110px;
+  --title-px-card: 50px;
+  --title-weight: 900;
+  --title-track: -0.03em;
+  --copy-w: 58%;
+  --claim-w: 580px;
+  --chip-r: 6px;
+}

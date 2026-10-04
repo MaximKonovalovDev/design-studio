@@ -1,0 +1,23 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/banks.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-banks-1280x800.png",
+      "what": "the 200 probe questions: 4 categories x 50 (excerpt of the real kit file)",
+      "bytes": 75378
+    },
+    {
+      "file": "assets/checklist.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-checklist-1280x800.png",
+      "what": "the 20-point fix checklist (real kit file)",
+      "bytes": 58681
+    },
+    {
+      "file": "assets/report.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-report-1280x800.png",
+      "what": "the worked audit report (real kit file)",
+      "bytes": 36969
+    }
+  ]
+}

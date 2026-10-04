@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- designs/O-012/page.html: O-012 Gumroad cover for Tiks Neon (neon). Facts only from tiks-neon/gumroad.md. Color only via tokens.css. 1280x720 hero above 800px wide, 630x500 store card at 800px and below. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  .stage { position: relative; display: flex; width: 100%; height: 100%; overflow: hidden; background: var(--stage-bg, var(--bg)); }
+  .copy { position: relative; z-index: 3; flex: 0 0 var(--copy-w, 52%); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-inline-start: var(--pad, 72px); padding-block: 48px; }
+  .art { position: relative; z-index: 1; flex: 1; }
+  .kicker { font-weight: 800; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 16px; }
+  h1 { text-wrap: balance; font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: var(--title-px, 104px); line-height: 0.96; letter-spacing: var(--title-track, -0.01em); color: var(--ink); margin-bottom: 22px; }
+  .claim { text-wrap: balance; font-size: var(--claim-px, 32px); line-height: 1.2; color: var(--muted); font-weight: 600; margin-bottom: 26px; max-width: var(--claim-w, 560px); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-bottom: 28px; max-width: var(--claim-w, 560px); }
+  .chips li { font-size: 21px; font-weight: 700; line-height: 1.1; padding: 9px 14px; border-radius: var(--chip-r, 8px); background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); }
+  .cta { font-size: 30px; font-weight: 800; line-height: 1; padding: 15px 30px; border-radius: var(--chip-r, 8px); background: var(--accent); color: var(--on-accent); }
+  .fine { margin-top: 16px; font-size: 19px; color: var(--muted); max-width: var(--claim-w, 560px); }
+  .win { position: absolute; border-radius: 10px; overflow: hidden; background: var(--win-bg, var(--ink)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.22); }
+  .win::before { content: ""; display: block; height: 22px; background: var(--win-bar, var(--ink)); border-bottom: 3px solid var(--accent); }
+  .win img { display: block; width: 100%; }
+  .win .vp { position: relative; overflow: hidden; }
+  .win .vp img { position: absolute; max-width: none; }
+  @media (max-width: 800px) {
+    .stage { flex-direction: column; }
+    .copy { flex: 0 0 auto; padding-inline: var(--pad-card, 26px); padding-block: var(--pad-top-card, 22px) 0; }
+    .kicker { font-size: 14px; margin-bottom: 8px; }
+    h1 { font-size: var(--title-px-card, 60px); margin-bottom: 8px; }
+    .claim { font-size: var(--claim-px-card, 21px); margin-bottom: 12px; max-width: none; }
+    .chips { gap: 6px; margin-bottom: 0; max-width: none; }
+    .chips li { font-size: 14px; padding: 5px 9px; border-width: 1.5px; }
+    .chips li.wide-only { display: none; }
+    .cta { font-size: 19px; padding: 9px 18px; }
+    .fine { display: none; }
+    .art { flex: 1; min-height: 0; }
+  }
+  .stage { background: linear-gradient(160deg, var(--bg) 0%, var(--bg-2) 100%); }
+  .art .sun { position: absolute; inset-inline-end: -60px; top: 90px; width: 440px; height: 440px; border-radius: 50%; background: linear-gradient(180deg, var(--gold) 0%, var(--accent) 100%); opacity: 0.9; }
+  .art .win { outline: 3px solid var(--cyan); }
+  .art .win::before { border-bottom-color: var(--cyan); }
+  .art .win.a { width: 590px; inset-inline-start: 20px; top: 96px; transform: rotate(-2deg); }
+  .art .win.b { width: 440px; inset-inline-end: 24px; top: 408px; transform: rotate(2.5deg); outline-color: var(--accent); }
+  .art .win.b::before { border-bottom-color: var(--accent); }
+  .art .win.b .vp { height: 202px; }
+  .art .win.b .vp img { width: 440px; top: -45px; inset-inline-start: 0; }
+  .art .sticker { position: absolute; inset-inline-end: 34px; top: 28px; font-family: var(--font-display); font-weight: 900; font-size: 92px; line-height: 0.9; color: var(--on-accent); background: var(--cyan); padding: 10px 20px 8px; border-radius: 12px; transform: rotate(4deg); box-shadow: 6px 6px 0 var(--accent); }
+  .art .sticker small { display: block; font-size: 30px; letter-spacing: 0.3em; }
+  @media (max-width: 800px) {
+    .art .sun { width: 240px; height: 240px; top: 40px; inset-inline-end: -40px; }
+    .art .win.a { width: 340px; inset-inline-start: 14px; top: 28px; }
+    .art .win.b { width: 250px; inset-inline-end: 12px; top: 150px; }
+    .art .win.b .vp { height: 115px; }
+    .art .win.b .vp img { width: 250px; top: -25px; }
+    .art .sticker { font-size: 52px; top: 8px; inset-inline-end: 18px; padding: 6px 12px 4px; box-shadow: 4px 4px 0 var(--accent); }
+    .art .sticker small { font-size: 16px; }
+  }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="copy">
+    <div class="kicker">Retro arcade sound effects</div>
+    <h1 data-oid="cover.title">Tiks Neon</h1>
+    <p class="claim" data-oid="cover.subtitle">330 arcade SFX plus a browser synth</p>
+    <ul class="chips"><li>240 base + 90 themed</li><li>WAV + MP3 + OGG</li><li>5 minutes to working audio</li><li>Free offline synth</li></ul>
+    <span class="cta" data-oid="cover.cta">$7.49 one-time</span>
+  </div>
+  <div class="art">
+    <div class="sun"></div>
+    <div class="win a"><img src="assets/synth.png" alt="The offline browser synth"></div>
+    <div class="win b"><div class="vp"><img src="assets/sets.png" alt="Three themed sets"></div></div>
+    <div class="sticker">330<small>SFX</small></div>
+
+  </div>
+</div>
+</body>
+</html>

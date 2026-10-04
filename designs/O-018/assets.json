@@ -1,0 +1,53 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/coin-001-f40338fed939.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/coin-001-f40338fed939.png",
+      "what": "sprite coin (256x256 RGBA PNG) shipped in the zip",
+      "bytes": 914
+    },
+    {
+      "file": "assets/gem-065-024d0598b573.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/gem-065-024d0598b573.png",
+      "what": "sprite gem (256x256 RGBA PNG) shipped in the zip",
+      "bytes": 766
+    },
+    {
+      "file": "assets/potion-129-9f62528eb8f8.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/potion-129-9f62528eb8f8.png",
+      "what": "sprite potion (256x256 RGBA PNG) shipped in the zip",
+      "bytes": 1000
+    },
+    {
+      "file": "assets/sword-193-d899f4949367.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/sword-193-d899f4949367.png",
+      "what": "sprite sword (256x256 RGBA PNG) shipped in the zip",
+      "bytes": 806
+    },
+    {
+      "file": "assets/shield-257-d46065e8b657.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/shield-257-d46065e8b657.png",
+      "what": "sprite shield (256x256 RGBA PNG) shipped in the zip",
+      "bytes": 908
+    },
+    {
+      "file": "assets/slime-321-8d1812bfb968.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/slime-321-8d1812bfb968.png",
+      "what": "sprite slime (256x256 RGBA PNG) shipped in the zip",
+      "bytes": 876
+    },
+    {
+      "file": "assets/tile-385-28556e18f93d.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/tile-385-28556e18f93d.png",
+      "what": "sprite tile (256x256 RGBA PNG) shipped in the zip",
+      "bytes": 804
+    },
+    {
+      "file": "assets/rune-449-a8cec2f102ce.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/rune-449-a8cec2f102ce.png",
+      "what": "sprite rune (256x256 RGBA PNG) shipped in the zip",
+      "bytes": 956
+    }
+  ]
+}

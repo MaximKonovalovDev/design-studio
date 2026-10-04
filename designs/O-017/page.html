@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- designs/O-017/page.html: O-017 Gumroad cover for PDF Tables to Excel (clean-professional). Facts only from products/STORE_LISTING.md. Color only via tokens.css. 1280x720 hero above 800px wide, 630x500 store card at 800px and below. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  .stage { position: relative; display: flex; width: 100%; height: 100%; overflow: hidden; background: var(--stage-bg, var(--bg)); }
+  .copy { position: relative; z-index: 3; flex: 0 0 var(--copy-w, 52%); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-inline-start: var(--pad, 72px); padding-block: 48px; }
+  .art { position: relative; z-index: 1; flex: 1; }
+  .kicker { font-weight: 800; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 16px; }
+  h1 { text-wrap: balance; font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: var(--title-px, 104px); line-height: 0.96; letter-spacing: var(--title-track, -0.01em); color: var(--ink); margin-bottom: 22px; }
+  .claim { text-wrap: balance; font-size: var(--claim-px, 32px); line-height: 1.2; color: var(--muted); font-weight: 600; margin-bottom: 26px; max-width: var(--claim-w, 560px); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-bottom: 28px; max-width: var(--claim-w, 560px); }
+  .chips li { font-size: 21px; font-weight: 700; line-height: 1.1; padding: 9px 14px; border-radius: var(--chip-r, 8px); background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); }
+  .cta { font-size: 30px; font-weight: 800; line-height: 1; padding: 15px 30px; border-radius: var(--chip-r, 8px); background: var(--accent); color: var(--on-accent); }
+  .fine { margin-top: 16px; font-size: 19px; color: var(--muted); max-width: var(--claim-w, 560px); }
+  .win { position: absolute; border-radius: 10px; overflow: hidden; background: var(--win-bg, var(--ink)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.22); }
+  .win::before { content: ""; display: block; height: 22px; background: var(--win-bar, var(--ink)); border-bottom: 3px solid var(--accent); }
+  .win img { display: block; width: 100%; }
+  .win .vp { position: relative; overflow: hidden; }
+  .win .vp img { position: absolute; max-width: none; }
+  @media (max-width: 800px) {
+    .stage { flex-direction: column; }
+    .copy { flex: 0 0 auto; padding-inline: var(--pad-card, 26px); padding-block: var(--pad-top-card, 22px) 0; }
+    .kicker { font-size: 14px; margin-bottom: 8px; }
+    h1 { font-size: var(--title-px-card, 60px); margin-bottom: 8px; }
+    .claim { font-size: var(--claim-px-card, 21px); margin-bottom: 12px; max-width: none; }
+    .chips { gap: 6px; margin-bottom: 0; max-width: none; }
+    .chips li { font-size: 14px; padding: 5px 9px; border-width: 1.5px; }
+    .chips li.wide-only { display: none; }
+    .cta { font-size: 19px; padding: 9px 18px; }
+    .fine { display: none; }
+    .art { flex: 1; min-height: 0; }
+  }
+  .stage { background: linear-gradient(135deg, var(--bg) 0%, var(--bg) 45%, var(--bg-2) 100%); }
+  .art .band { position: absolute; inset-inline: 0; top: 0; height: 100%; background: var(--accent); opacity: 0.08; clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%); }
+  .art .card { position: absolute; width: 590px; background: var(--paper); border: 2px solid var(--rule); border-radius: 10px; padding: 8px; box-shadow: 0 22px 44px rgba(15, 42, 28, 0.28); }
+  .art .card img { display: block; width: 100%; }
+  .art .card.h { inset-inline-start: 6px; top: 36px; transform: rotate(-1.2deg); }
+  .art .card.l { inset-inline-start: 24px; top: 366px; transform: rotate(1.2deg); }
+  .art .pill { position: absolute; font-family: var(--font-display); font-weight: 900; font-size: 46px; line-height: 1; padding: 12px 26px; border-radius: 999px; box-shadow: 0 10px 22px rgba(15, 42, 28, 0.3); letter-spacing: 0.02em; }
+  .art .ph { background: var(--high); color: var(--on-accent); inset-inline-end: 34px; top: 172px; transform: rotate(5deg); }
+  .art .pm { background: var(--med); color: var(--ink); inset-inline-start: 50px; top: 632px; transform: rotate(-3deg); }
+  .art .pl { background: var(--low); color: var(--on-accent); inset-inline-end: 34px; top: 500px; transform: rotate(4deg); }
+  @media (max-width: 800px) {
+    .art .card { width: 292px; padding: 5px; border-width: 1.5px; }
+    .art .card.h { inset-inline-start: 14px; top: 10px; }
+    .art .card.l { inset-inline-start: 324px; top: 22px; }
+    .art .pill { font-size: 26px; padding: 7px 16px; }
+    .art .ph { inset-inline-start: 30px; inset-inline-end: auto; top: 190px; }
+    .art .pm { inset-inline-start: 190px; inset-inline-end: auto; top: 218px; }
+    .art .pl { inset-inline-start: 372px; inset-inline-end: auto; top: 186px; }
+  }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="copy">
+    <div class="kicker">Desktop converter, fully offline</div>
+    <h1 data-oid="cover.title">PDF Tables to Excel</h1>
+    <p class="claim" data-oid="cover.subtitle">Tables locked inside PDFs into clean spreadsheets</p>
+    <ul class="chips"><li>Every table graded</li><li>Preview before you trust</li><li>No upload, no cloud, no account</li><li class="wide-only">One file or a whole folder</li></ul>
+    <span class="cta" data-oid="cover.cta">$29 launch price</span>
+  </div>
+  <div class="art">
+    <div class="band"></div>
+    <div class="card h"><img src="assets/preview-high.png" alt="Preview page, table graded HIGH"></div>
+    <div class="card l"><img src="assets/preview-low.png" alt="Preview page, scanned table graded LOW"></div>
+    <span class="pill ph">HIGH</span><span class="pill pm">MEDIUM</span><span class="pill pl">LOW</span>
+
+  </div>
+</div>
+</body>
+</html>

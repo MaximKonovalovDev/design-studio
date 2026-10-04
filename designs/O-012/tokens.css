@@ -1,0 +1,28 @@
+/* designs/O-012/tokens.css: O-012 Tiks Neon (neon). All page color comes from these vars. */
+:root {
+  --bg: #14072b;
+  --bg-2: #37104f;
+  --ink: #ffffff;
+  --muted: #e6d8ff;
+  --accent: #ff3ea5;
+  --accent-ink: #ff7cc4;
+  --on-accent: #14072b;
+  --chip-bg: #241046;
+  --chip-ink: #ffffff;
+  --chip-line: #8f5bff;
+  --cyan: #2ff3e0;
+  --gold: #ffd23f;
+  --win-bg: #0b0b22;
+  --win-bar: #241046;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 150px;
+  --title-px-card: 78px;
+  --title-weight: 900;
+  --title-track: -0.035em;
+  --copy-w: 50%;
+  --claim-w: 560px;
+  --chip-r: 8px;
+  --claim-px: 36px;
+  --claim-px-card: 22px;
+}

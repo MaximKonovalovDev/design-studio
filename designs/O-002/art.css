@@ -1,0 +1,20 @@
+  .stage { background: radial-gradient(circle at 78% 40%, var(--bg) 0%, var(--bg-2) 100%); }
+  .art .back { width: 600px; inset-inline-start: 24px; top: 74px; transform: rotate(-2deg); }
+  .art .back .vp { height: 340px; }
+  .art .back .vp img { width: 690px; inset-inline-start: -4px; top: 0; }
+  .art .front { width: 520px; inset-inline-start: 82px; top: 346px; transform: rotate(1.5deg); }
+  .art .front .vp { height: 232px; }
+  .art .front .vp img { width: 700px; inset-inline-start: -20px; top: -8px; }
+  .art .yes { position: absolute; inset-inline-end: 22px; top: 292px; background: var(--green); color: var(--navy); font-size: 21px; font-weight: 700; line-height: 1.25; padding: 12px 18px; border-radius: 10px; box-shadow: 0 10px 24px rgba(13, 27, 61, 0.3); transform: rotate(-3deg); }
+  .art .yes b { display: block; font-family: var(--font-display); font-size: 30px; letter-spacing: 0.02em; }
+  @media (max-width: 800px) {
+    .stage { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
+    .art .back { width: 330px; inset-inline-start: 18px; top: 12px; }
+    .art .back .vp { height: 190px; }
+    .art .back .vp img { width: 372px; }
+    .art .front { width: 300px; inset-inline-start: 190px; top: 86px; }
+    .art .front .vp { height: 150px; }
+    .art .front .vp img { width: 400px; inset-inline-start: -10px; top: -4px; }
+    .art .yes { font-size: 13px; padding: 6px 10px; inset-inline-end: auto; inset-inline-start: 20px; top: 190px; }
+    .art .yes b { font-size: 18px; }
+  }

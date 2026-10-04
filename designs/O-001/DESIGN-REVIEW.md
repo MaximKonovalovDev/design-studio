@@ -6,15 +6,15 @@ Sample: C:\Users\me\Desktop\design-studio\designs\O-001\brief.json
 ## Score
 
 - [x] brief-complete: BookForge Pro 1280x720
-- [x] render-exists: 1280x720 66810B
+- [x] render-exists: 1280x720 216728B
 - [x] audit-green: fresh auditBrief PASS
-- [x] contrast-aa: title:17.9, subtitle:7.6, cta:6.2
-- [x] thumbnail-legible: 14.4px at 256px (floor 12px), pixels in thumb-256.png 256x144 — human verdict: title reads at listing size
-- [x] title-fits: need ~468px, box 1126px
+- [x] contrast-aa: title:14.3, subtitle:7.7, cta:6.7, chip:16.1, kicker:5.7
+- [x] thumbnail-legible: 20.8px at 256px (floor 12px), pixels in thumb-256.png 256x144 — human verdict: title reads at listing size
+- [x] title-fits: need ~468px, box 620px
 - [x] tokens-disciplined: all color via var(--*)
-- [x] type-pair: 3 font token(s), page uses type
+- [x] type-pair: 2 font token(s), page uses type
 - [x] rtl-gate: dir=ltr
-- [x] composition: title + action + 6 tokens
+- [x] composition: title + action + 12 tokens
 
 ## Next edits (iterate harness: failing gate -> oid + fix-action)
 

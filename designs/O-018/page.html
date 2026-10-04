@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- designs/O-018/page.html: O-018 Gumroad cover for Vtracer Polish (clean-geometric). Facts only from vtracer-polish/itch.md. Color only via tokens.css. 1280x720 hero above 800px wide, 630x500 store card at 800px and below. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  .stage { position: relative; display: flex; width: 100%; height: 100%; overflow: hidden; background: var(--stage-bg, var(--bg)); }
+  .copy { position: relative; z-index: 3; flex: 0 0 var(--copy-w, 52%); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-inline-start: var(--pad, 72px); padding-block: 48px; }
+  .art { position: relative; z-index: 1; flex: 1; }
+  .kicker { font-weight: 800; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 16px; }
+  h1 { text-wrap: balance; font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: var(--title-px, 104px); line-height: 0.96; letter-spacing: var(--title-track, -0.01em); color: var(--ink); margin-bottom: 22px; }
+  .claim { text-wrap: balance; font-size: var(--claim-px, 32px); line-height: 1.2; color: var(--muted); font-weight: 600; margin-bottom: 26px; max-width: var(--claim-w, 560px); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-bottom: 28px; max-width: var(--claim-w, 560px); }
+  .chips li { font-size: 21px; font-weight: 700; line-height: 1.1; padding: 9px 14px; border-radius: var(--chip-r, 8px); background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); }
+  .cta { font-size: 30px; font-weight: 800; line-height: 1; padding: 15px 30px; border-radius: var(--chip-r, 8px); background: var(--accent); color: var(--on-accent); }
+  .fine { margin-top: 16px; font-size: 19px; color: var(--muted); max-width: var(--claim-w, 560px); }
+  .win { position: absolute; border-radius: 10px; overflow: hidden; background: var(--win-bg, var(--ink)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.22); }
+  .win::before { content: ""; display: block; height: 22px; background: var(--win-bar, var(--ink)); border-bottom: 3px solid var(--accent); }
+  .win img { display: block; width: 100%; }
+  .win .vp { position: relative; overflow: hidden; }
+  .win .vp img { position: absolute; max-width: none; }
+  @media (max-width: 800px) {
+    .stage { flex-direction: column; }
+    .copy { flex: 0 0 auto; padding-inline: var(--pad-card, 26px); padding-block: var(--pad-top-card, 22px) 0; }
+    .kicker { font-size: 14px; margin-bottom: 8px; }
+    h1 { font-size: var(--title-px-card, 60px); margin-bottom: 8px; }
+    .claim { font-size: var(--claim-px-card, 21px); margin-bottom: 12px; max-width: none; }
+    .chips { gap: 6px; margin-bottom: 0; max-width: none; }
+    .chips li { font-size: 14px; padding: 5px 9px; border-width: 1.5px; }
+    .chips li.wide-only { display: none; }
+    .cta { font-size: 19px; padding: 9px 18px; }
+    .fine { display: none; }
+    .art { flex: 1; min-height: 0; }
+  }
+  .stage { background: linear-gradient(140deg, var(--bg) 0%, var(--bg-2) 100%); }
+  .art .dia { position: absolute; background: var(--accent); transform: rotate(45deg); opacity: 0.16; }
+  .art .d1 { width: 330px; height: 330px; inset-inline-end: -120px; top: -90px; }
+  .art .d2 { width: 250px; height: 250px; inset-inline-start: 30px; bottom: -110px; background: var(--gold); opacity: 0.5; }
+  .art .big { position: absolute; inset-inline-end: 26px; top: 6px; font-family: var(--font-display); font-weight: 900; font-size: 190px; line-height: 1; letter-spacing: -0.05em; color: var(--accent); }
+  .art .board { position: absolute; inset-inline-start: 6px; top: 226px; width: 610px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 12px; background: var(--ink); border-radius: 16px; box-shadow: 0 22px 44px rgba(27, 17, 64, 0.35); transform: rotate(-2deg); }
+  .art .c { background: var(--cell); border: 2px solid var(--cell-line); border-radius: 10px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+  .art .c img { width: 88%; image-rendering: pixelated; display: block; }
+  .art .tag { position: absolute; inset-inline-start: 40px; top: 190px; background: var(--gold); color: var(--ink); font-weight: 800; font-size: 20px; padding: 9px 16px; border-radius: 999px; transform: rotate(-4deg); z-index: 3; }
+  @media (max-width: 800px) {
+    .art .d1 { width: 220px; height: 220px; top: -60px; }
+    .art .big { font-size: 96px; top: -4px; inset-inline-end: 16px; }
+    .art .board { inset-inline-start: 14px; top: 56px; width: 330px; padding: 8px; gap: 6px; border-radius: 12px; }
+    .art .c { border-width: 1.5px; border-radius: 7px; }
+    .art .tag { font-size: 13px; padding: 6px 12px; inset-inline-start: 380px; top: 130px; }
+  }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="copy">
+    <div class="kicker">Game sprite library</div>
+    <h1 data-oid="cover.title">Vtracer Polish</h1>
+    <p class="claim" data-oid="cover.subtitle">512 artifact-free sprites on a clean 16x16 grid</p>
+    <ul class="chips"><li>SVG + PNG</li><li>8 families x 4 silhouettes</li><li>512-row manifest</li><li class="wide-only">Under 5 minutes to drop in</li></ul>
+    <span class="cta" data-oid="cover.cta">$29 one-time</span>
+  </div>
+  <div class="art">
+    <div class="dia d1"></div><div class="dia d2"></div>
+    <div class="big">512</div>
+    <div class="board">
+      <div class="c"><img src="assets/coin-001-f40338fed939.png" alt="coin sprite"></div>
+      <div class="c"><img src="assets/gem-065-024d0598b573.png" alt="gem sprite"></div>
+      <div class="c"><img src="assets/potion-129-9f62528eb8f8.png" alt="potion sprite"></div>
+      <div class="c"><img src="assets/sword-193-d899f4949367.png" alt="sword sprite"></div>
+      <div class="c"><img src="assets/shield-257-d46065e8b657.png" alt="shield sprite"></div>
+      <div class="c"><img src="assets/slime-321-8d1812bfb968.png" alt="slime sprite"></div>
+      <div class="c"><img src="assets/tile-385-28556e18f93d.png" alt="tile sprite"></div>
+      <div class="c"><img src="assets/rune-449-a8cec2f102ce.png" alt="rune sprite"></div>
+    </div>
+    <div class="tag">1 SVG + 1 PNG per sprite</div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+  .stage { background: linear-gradient(145deg, var(--bg) 0%, var(--bg-2) 100%); }
+  .art .glow { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: var(--accent); opacity: 0.25; inset-inline-end: -140px; top: 120px; }
+  .art .t { position: absolute; width: 316px; height: auto; background: var(--paper); border-radius: 10px; box-shadow: 0 16px 34px rgba(0, 0, 0, 0.45); }
+  .art .t1 { inset-inline-start: 24px; top: 120px; transform: rotate(-3deg); }
+  .art .t2 { inset-inline-start: 316px; top: 98px; transform: rotate(2deg); }
+  .art .t3 { inset-inline-start: 10px; top: 236px; transform: rotate(2deg); }
+  .art .t4 { inset-inline-start: 306px; top: 218px; transform: rotate(-2deg); }
+  .art .t5 { inset-inline-start: 28px; top: 350px; transform: rotate(-2deg); }
+  .art .t6 { inset-inline-start: 312px; top: 340px; transform: rotate(3deg); }
+  .art .t7 { inset-inline-start: 14px; top: 466px; transform: rotate(3deg); }
+  .art .t8 { inset-inline-start: 308px; top: 460px; transform: rotate(-2deg); }
+  .art .big { position: absolute; inset-inline-end: 24px; top: -24px; font-family: var(--font-display); font-weight: 900; font-size: 130px; line-height: 1; letter-spacing: -0.05em; color: var(--accent-ink); }
+  @media (max-width: 800px) {
+    .art .glow { width: 300px; height: 300px; }
+    .art .t { width: 190px; border-radius: 7px; }
+    .art .t1 { inset-inline-start: 14px; top: 14px; } .art .t2 { inset-inline-start: 214px; top: 6px; } .art .t3 { inset-inline-start: 414px; top: 18px; }
+    .art .t4 { inset-inline-start: 18px; top: 108px; } .art .t5 { inset-inline-start: 218px; top: 100px; } .art .t6 { inset-inline-start: 418px; top: 112px; }
+    .art .t7, .art .t8 { display: none; }
+    .art .big { display: none; }
+  }

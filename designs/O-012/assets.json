@@ -1,0 +1,17 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/synth.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-neon/preview/synth-screenshot.png",
+      "what": "real capture of the offline browser synth that ships in the zip",
+      "bytes": 57051
+    },
+    {
+      "file": "assets/sets.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-neon/preview/sets-showcase.png",
+      "what": "real capture of the 3 themed sets (sci-fi weapons, fantasy magic, haunted dungeon)",
+      "bytes": 58065
+    }
+  ]
+}

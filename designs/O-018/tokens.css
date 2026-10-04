@@ -1,0 +1,25 @@
+/* designs/O-018/tokens.css: O-018 Vtracer Polish (clean-geometric). All page color comes from these vars. */
+:root {
+  --bg: #f3f0ff;
+  --bg-2: #ded5ff;
+  --ink: #1b1140;
+  --muted: #483d78;
+  --accent: #6a3df2;
+  --accent-ink: #5429d9;
+  --on-accent: #ffffff;
+  --chip-bg: #ffffff;
+  --chip-ink: #1b1140;
+  --chip-line: #c9bdf5;
+  --cell: #1d1550;
+  --cell-line: #43369f;
+  --gold: #ffc83d;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 120px;
+  --title-px-card: 60px;
+  --title-weight: 900;
+  --title-track: -0.035em;
+  --copy-w: 50%;
+  --claim-w: 540px;
+  --chip-r: 999px;
+}

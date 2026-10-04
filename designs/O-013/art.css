@@ -1,0 +1,21 @@
+  .stage { background: linear-gradient(135deg, var(--bg) 0%, var(--bg) 40%, var(--bg-2) 100%); }
+  .art .grid { position: absolute; inset: 0; background-image: linear-gradient(var(--bg-2) 1px, transparent 1px), linear-gradient(90deg, var(--bg-2) 1px, transparent 1px); background-size: 48px 48px; opacity: 0.8; }
+  .art .win.a { width: 600px; inset-inline-start: 6px; top: 96px; transform: rotate(-1.5deg); border: 3px solid var(--ink); }
+  .art .win.a .vp { height: 330px; }
+  .art .win.a .vp img { width: 720px; top: 0; inset-inline-start: 0; }
+  .art .stat { position: absolute; background: var(--accent); color: var(--on-accent); font-size: 20px; font-weight: 700; padding: 10px 16px; border-radius: 8px; box-shadow: 0 10px 24px rgba(18, 19, 31, 0.28); line-height: 1.1; }
+  .art .stat b { display: block; font-family: var(--font-display); font-size: 62px; line-height: 0.95; }
+  .art .s1 { inset-inline-start: 40px; top: 470px; transform: rotate(-3deg); }
+  .art .s2 { inset-inline-start: 250px; top: 500px; transform: rotate(2deg); background: var(--violet); }
+  .art .s3 { inset-inline-start: 420px; top: 456px; transform: rotate(-2deg); background: var(--ink); }
+  @media (max-width: 800px) {
+    .art .grid { background-size: 32px 32px; }
+    .art .win.a { width: 360px; inset-inline-start: 14px; top: 22px; border-width: 2px; }
+    .art .win.a .vp { height: 170px; }
+    .art .win.a .vp img { width: 432px; }
+    .art .stat { font-size: 13px; padding: 6px 10px; }
+    .art .stat b { font-size: 32px; }
+    .art .s1 { inset-inline-start: 390px; top: 20px; }
+    .art .s2 { inset-inline-start: 400px; top: 108px; }
+    .art .s3 { inset-inline-start: 300px; top: 190px; }
+  }

@@ -1,0 +1,28 @@
+/* designs/O-004/tokens.css: O-004 Tiks SFX Factory (neon). All page color comes from these vars. */
+:root {
+  --bg: #0a0b1e;
+  --bg-2: #1a0f3a;
+  --ink: #ffffff;
+  --muted: #cdd2f5;
+  --accent: #ffe94a;
+  --accent-ink: #ffe94a;
+  --on-accent: #0a0b1e;
+  --chip-bg: #14163a;
+  --chip-ink: #ffffff;
+  --chip-line: #18f0c8;
+  --pink: #ff3ea5;
+  --teal: #18f0c8;
+  --win-bg: #0f1030;
+  --win-bar: #14163a;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 108px;
+  --title-px-card: 56px;
+  --title-weight: 900;
+  --title-track: -0.03em;
+  --copy-w: 50%;
+  --claim-w: 560px;
+  --chip-r: 8px;
+  --claim-px: 40px;
+  --claim-px-card: 24px;
+}

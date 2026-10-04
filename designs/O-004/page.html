@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- designs/O-004/page.html: O-004 Gumroad cover for Tiks SFX Factory (neon). Facts only from tiks-sfx-factory/gumroad.md. Color only via tokens.css. 1280x720 hero above 800px wide, 630x500 store card at 800px and below. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  .stage { position: relative; display: flex; width: 100%; height: 100%; overflow: hidden; background: var(--stage-bg, var(--bg)); }
+  .copy { position: relative; z-index: 3; flex: 0 0 var(--copy-w, 52%); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-inline-start: var(--pad, 72px); padding-block: 48px; }
+  .art { position: relative; z-index: 1; flex: 1; }
+  .kicker { font-weight: 800; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 16px; }
+  h1 { text-wrap: balance; font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: var(--title-px, 104px); line-height: 0.96; letter-spacing: var(--title-track, -0.01em); color: var(--ink); margin-bottom: 22px; }
+  .claim { text-wrap: balance; font-size: var(--claim-px, 32px); line-height: 1.2; color: var(--muted); font-weight: 600; margin-bottom: 26px; max-width: var(--claim-w, 560px); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-bottom: 28px; max-width: var(--claim-w, 560px); }
+  .chips li { font-size: 21px; font-weight: 700; line-height: 1.1; padding: 9px 14px; border-radius: var(--chip-r, 8px); background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); }
+  .cta { font-size: 30px; font-weight: 800; line-height: 1; padding: 15px 30px; border-radius: var(--chip-r, 8px); background: var(--accent); color: var(--on-accent); }
+  .fine { margin-top: 16px; font-size: 19px; color: var(--muted); max-width: var(--claim-w, 560px); }
+  .win { position: absolute; border-radius: 10px; overflow: hidden; background: var(--win-bg, var(--ink)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.22); }
+  .win::before { content: ""; display: block; height: 22px; background: var(--win-bar, var(--ink)); border-bottom: 3px solid var(--accent); }
+  .win img { display: block; width: 100%; }
+  .win .vp { position: relative; overflow: hidden; }
+  .win .vp img { position: absolute; max-width: none; }
+  @media (max-width: 800px) {
+    .stage { flex-direction: column; }
+    .copy { flex: 0 0 auto; padding-inline: var(--pad-card, 26px); padding-block: var(--pad-top-card, 22px) 0; }
+    .kicker { font-size: 14px; margin-bottom: 8px; }
+    h1 { font-size: var(--title-px-card, 60px); margin-bottom: 8px; }
+    .claim { font-size: var(--claim-px-card, 21px); margin-bottom: 12px; max-width: none; }
+    .chips { gap: 6px; margin-bottom: 0; max-width: none; }
+    .chips li { font-size: 14px; padding: 5px 9px; border-width: 1.5px; }
+    .chips li.wide-only { display: none; }
+    .cta { font-size: 19px; padding: 9px 18px; }
+    .fine { display: none; }
+    .art { flex: 1; min-height: 0; }
+  }
+  .stage { background: radial-gradient(circle at 75% 30%, var(--bg-2) 0%, var(--bg) 70%); }
+  .art .big { position: absolute; inset-inline-end: 20px; top: -14px; font-family: var(--font-display); font-weight: 900; font-size: 250px; line-height: 1; letter-spacing: -0.04em; color: var(--pink); text-shadow: 6px 6px 0 var(--teal); }
+  .art .win { outline: 3px solid var(--teal); outline-offset: 0; }
+  .art .win.a { width: 560px; inset-inline-start: 30px; top: 262px; transform: rotate(-2.5deg); }
+  .art .win.b { width: 330px; inset-inline-end: 8px; top: 456px; transform: rotate(3deg); outline-color: var(--pink); }
+  .art .win.b .vp { height: 170px; }
+  .art .win.b .vp img { position: absolute; width: 440px; top: -10px; inset-inline-start: -10px; }
+  .art .win.a::before, .art .win.b::before { border-bottom-color: var(--teal); }
+  @media (max-width: 800px) {
+    .art .big { font-size: 130px; inset-inline-end: 14px; top: -6px; text-shadow: 3px 3px 0 var(--teal); }
+    .art .win.a { width: 330px; inset-inline-start: 18px; top: 74px; }
+    .art .win.b { width: 190px; inset-inline-end: 14px; top: 162px; }
+    .art .win.b .vp { height: 100px; }
+    .art .win.b .vp img { width: 260px; }
+  }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="copy">
+    <div class="kicker">Game sound effects bundle</div>
+    <h1 data-oid="cover.title">Tiks SFX Factory</h1>
+    <p class="claim" data-oid="cover.subtitle">632 game sound effects</p>
+    <ul class="chips"><li>Vol 1: 8 genres x 64</li><li>WAV + MP3</li><li>5 minutes to working audio</li><li>No attribution required</li></ul>
+    <span class="cta" data-oid="cover.cta">$39 one-time</span>
+  </div>
+  <div class="art">
+    <div class="big">632</div>
+    <div class="win a"><img src="assets/waveforms.png" alt="Real waveforms of the 8 genres"></div>
+    <div class="win b"><div class="vp"><img src="assets/vol2.png" alt="Real waveforms of Vol 2"></div></div>
+
+  </div>
+</div>
+</body>
+</html>

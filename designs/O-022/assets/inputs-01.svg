@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="140" viewBox="0 0 400 140">
+<rect width="400" height="140" fill="#FFFFFF"/>
+<text x="16" y="14" font-family="Arial" font-size="10" fill="#8A93A6">Acme Starter · inputs-001</text>
+<text x="30" y="30" font-family="Arial" font-size="12" font-weight="bold" fill="#14171F">Email address</text><rect x="30" y="38" width="340" height="44" rx="10" fill="white" stroke="#4F6BFF" stroke-width="2"/><text x="46" y="66" font-family="Arial" font-size="15" fill="#14171F">you@company.com</text><circle cx="348" cy="60" r="8" fill="#4F6BFF"/><text x="30" y="104" font-family="Arial" font-size="11" fill="#8A93A6">Helper text — field 1, focus ring + error state in set</text>
+</svg>

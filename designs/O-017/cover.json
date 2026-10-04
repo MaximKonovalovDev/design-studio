@@ -1,0 +1,104 @@
+{
+  "product": "cover:gumroad/pdf-tables-excel",
+  "from_repo": "factory",
+  "storeName": "Gumroad",
+  "title": "PDF Tables to Excel",
+  "pick": "clean-professional",
+  "kicker": "Desktop converter, fully offline",
+  "claim": "Tables locked inside PDFs into clean spreadsheets",
+  "chips": [
+    "Every table graded",
+    "Preview before you trust",
+    "No upload, no cloud, no account",
+    {
+      "t": "One file or a whole folder",
+      "wide": true
+    }
+  ],
+  "badge": "$29 launch price",
+  "tokens": {
+    "bg": "#f6faf7",
+    "bg-2": "#d9eee0",
+    "ink": "#0f2a1c",
+    "muted": "#35503f",
+    "accent": "#1d6f42",
+    "accent-ink": "#1d6f42",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#0f2a1c",
+    "chip-line": "#b9d8c5",
+    "high": "#1b7f45",
+    "med": "#f2b01e",
+    "low": "#c62a2a",
+    "paper": "#ffffff",
+    "rule": "#c8d8cf"
+  },
+  "fonts": {
+    "display": "'Segoe UI Black', 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif"
+  },
+  "titlePx": 104,
+  "titlePxCard": 54,
+  "titleWeight": 900,
+  "titleTrack": "-0.03em",
+  "titleWrapWide": [
+    "PDF Tables",
+    "to Excel"
+  ],
+  "titleWrapCard": [
+    "PDF Tables to Excel"
+  ],
+  "copyW": "52%",
+  "claimW": "560px",
+  "extraText": [
+    {
+      "label": "pill-high",
+      "fg": "var(--on-accent)",
+      "bg": "var(--high)",
+      "min": 4.5
+    },
+    {
+      "label": "pill-med",
+      "fg": "var(--ink)",
+      "bg": "var(--med)",
+      "min": 4.5
+    },
+    {
+      "label": "pill-low",
+      "fg": "var(--on-accent)",
+      "bg": "var(--low)",
+      "min": 4.5
+    }
+  ],
+  "listing": "C:/Users/me/Desktop/autonomous-factory/packs/products/pdf-tables-excel/STORE_LISTING.md",
+  "toBeat": null,
+  "landing": "packs/products/pdf-tables-excel/covers/from-design-studio/O-017/",
+  "assetsFrom": "the tool's own demo/ preview pages",
+  "assets": [
+    {
+      "name": "preview-high.png",
+      "html": "C:/Users/me/Desktop/autonomous-factory/packs/products/pdf-tables-excel/demo/sample-HIGH-lined.preview.html",
+      "crop": {
+        "x": 18,
+        "y": 186,
+        "w": 360,
+        "h": 158
+      },
+      "scale": 3,
+      "what": "preview page of demo/sample-HIGH-lined.pdf (table graded HIGH)"
+    },
+    {
+      "name": "preview-low.png",
+      "html": "C:/Users/me/Desktop/autonomous-factory/packs/products/pdf-tables-excel/demo/sample-LOW-scan.preview.html",
+      "crop": {
+        "x": 18,
+        "y": 186,
+        "w": 360,
+        "h": 158
+      },
+      "scale": 3,
+      "what": "preview page of demo/sample-LOW-scan.pdf (scanned page, table graded LOW)"
+    }
+  ],
+  "beatNote": "the factory has no cover image for this product yet"
+}

@@ -1,0 +1,77 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/forest_hero_walk_01_64x64.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/forest_hero_walk_01_64x64.png",
+      "what": "hero walk, forest sheet shipped in the zip",
+      "bytes": 720
+    },
+    {
+      "file": "assets/ice_hero_walk_01_64x64.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/ice_hero_walk_01_64x64.png",
+      "what": "hero walk, ice sheet shipped in the zip",
+      "bytes": 698
+    },
+    {
+      "file": "assets/desert_hero_idle_64x64.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/desert_hero_idle_64x64.png",
+      "what": "hero idle, desert sheet shipped in the zip",
+      "bytes": 629
+    },
+    {
+      "file": "assets/volcano_enemy_walk_01_64x64.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/volcano_enemy_walk_01_64x64.png",
+      "what": "enemy walk, volcano sheet shipped in the zip",
+      "bytes": 585
+    },
+    {
+      "file": "assets/space_hero_attack_128x128.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/space_hero_attack_128x128.png",
+      "what": "hero attack, space sheet shipped in the zip",
+      "bytes": 1040
+    },
+    {
+      "file": "assets/dungeon_creature_boss_128x128.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/dungeon_creature_boss_128x128.png",
+      "what": "boss creature, dungeon sheet shipped in the zip",
+      "bytes": 1182
+    },
+    {
+      "file": "assets/meadow_tile_ground_64x64.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/meadow_tile_ground_64x64.png",
+      "what": "ground tile, meadow sheet shipped in the zip",
+      "bytes": 1047
+    },
+    {
+      "file": "assets/ocean_prop_tree_128x128.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/ocean_prop_tree_128x128.png",
+      "what": "prop tree, ocean sheet shipped in the zip",
+      "bytes": 663
+    },
+    {
+      "file": "assets/forest_item_potion_48x48.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/forest_item_potion_48x48.png",
+      "what": "item potion, forest sheet shipped in the zip",
+      "bytes": 357
+    },
+    {
+      "file": "assets/desert_item_chest_64x64.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/desert_item_chest_64x64.png",
+      "what": "item chest, desert sheet shipped in the zip",
+      "bytes": 336
+    },
+    {
+      "file": "assets/ruins_fx_explosion_64x64.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/ruins_fx_explosion_64x64.png",
+      "what": "explosion FX, ruins sheet shipped in the zip",
+      "bytes": 1027
+    },
+    {
+      "file": "assets/storm_creature_flyer_64x32.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/storm_creature_flyer_64x32.png",
+      "what": "creature flyer, storm sheet shipped in the zip",
+      "bytes": 493
+    }
+  ]
+}

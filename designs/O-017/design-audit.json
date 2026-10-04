@@ -1,0 +1,140 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "name": "brief.json parses",
+      "pass": true,
+      "detail": "PDF Tables to Excel"
+    },
+    {
+      "name": "brief size sane",
+      "pass": true,
+      "detail": "1280x720"
+    },
+    {
+      "name": "tokens.css parses with 2+ colors",
+      "pass": true,
+      "detail": "15 vars"
+    },
+    {
+      "name": "page.html carries the title",
+      "pass": true,
+      "detail": "title text present"
+    },
+    {
+      "name": "no hardcoded colors in page.html",
+      "pass": true,
+      "detail": "all color via var(--*)"
+    },
+    {
+      "name": "page.html uses tokens",
+      "pass": true,
+      "detail": "var(--*) found"
+    },
+    {
+      "name": "ltr: html dir matches brief",
+      "pass": true,
+      "detail": "dir=ltr"
+    },
+    {
+      "name": "out.png size matches brief",
+      "pass": true,
+      "detail": "1280x720"
+    },
+    {
+      "name": "out.png non-trivial",
+      "pass": true,
+      "detail": "254550B"
+    },
+    {
+      "name": "contrast title",
+      "pass": true,
+      "detail": "14.57:1 vs 4.5:1 (#0f2a1c on #f6faf7)"
+    },
+    {
+      "name": "contrast subtitle",
+      "pass": true,
+      "detail": "8.41:1 vs 4.5:1 (#35503f on #f6faf7)"
+    },
+    {
+      "name": "contrast cta",
+      "pass": true,
+      "detail": "6.17:1 vs 4.5:1 (#ffffff on #1d6f42)"
+    },
+    {
+      "name": "contrast chip",
+      "pass": true,
+      "detail": "15.35:1 vs 4.5:1 (#0f2a1c on #ffffff)"
+    },
+    {
+      "name": "contrast kicker",
+      "pass": true,
+      "detail": "5.86:1 vs 3:1 (#1d6f42 on #f6faf7)"
+    },
+    {
+      "name": "contrast pill-high",
+      "pass": true,
+      "detail": "5.04:1 vs 4.5:1 (#ffffff on #1b7f45)"
+    },
+    {
+      "name": "contrast pill-med",
+      "pass": true,
+      "detail": "8.04:1 vs 4.5:1 (#0f2a1c on #f2b01e)"
+    },
+    {
+      "name": "contrast pill-low",
+      "pass": true,
+      "detail": "5.58:1 vs 4.5:1 (#ffffff on #c62a2a)"
+    },
+    {
+      "name": "title_box valid fractions",
+      "pass": true,
+      "detail": "0.056,0.2,0.52,0.5"
+    },
+    {
+      "name": "title legible at 256px",
+      "pass": true,
+      "detail": "20.8px at 256px wide (floor 12px)"
+    },
+    {
+      "name": "title fits its box",
+      "pass": true,
+      "detail": "need ~520px, box 594px"
+    },
+    {
+      "name": "title legible at 315px listing",
+      "pass": true,
+      "detail": "25.6px at 315px listing (floor 12px)"
+    },
+    {
+      "name": "size 1280x720: title legible at 256px",
+      "pass": true,
+      "detail": "20.8px at 256px (floor 12px)"
+    },
+    {
+      "name": "size 1280x720: title fits its box",
+      "pass": true,
+      "detail": "need ~520px, box 594px"
+    },
+    {
+      "name": "size 630x500: title legible at 256px",
+      "pass": true,
+      "detail": "21.9px at 256px (floor 12px)"
+    },
+    {
+      "name": "size 630x500: title fits its box",
+      "pass": true,
+      "detail": "need ~513px, box 580px"
+    },
+    {
+      "name": "reference.png parity",
+      "pass": true,
+      "detail": "no reference declared, SKIP — add reference.png to gate pixels",
+      "skipped": true
+    }
+  ],
+  "errors": [],
+  "brief": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-017\\brief.json",
+  "image": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-017\\out.png",
+  "at": "2026-10-04"
+}

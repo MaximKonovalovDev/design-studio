@@ -1,0 +1,20 @@
+  .stage { background: linear-gradient(180deg, var(--bg) 0%, var(--bg) 38%, var(--bg-2) 100%); }
+  h1 { text-transform: uppercase; }
+  .art .moon { position: absolute; width: 420px; height: 420px; border-radius: 50%; background: var(--moon); opacity: 0.16; inset-inline-start: 110px; top: 70px; }
+  .art .ground { position: absolute; inset-inline: 0; bottom: 0; height: 150px; background: var(--ground); border-top: 4px solid var(--accent); }
+  .art .spr { position: absolute; image-rendering: pixelated; width: 512px; height: 512px; bottom: 120px; }
+  .art .kni { inset-inline-start: 62px; z-index: 3; }
+  .art .foot { inset-inline-start: -118px; width: 448px; height: 448px; bottom: 132px; z-index: 2; filter: brightness(0.85); }
+  .art .arch { inset-inline-start: 262px; width: 448px; height: 448px; bottom: 132px; z-index: 2; filter: brightness(0.85); }
+  .art .dirs { position: absolute; inset-inline: 0; bottom: 14px; display: flex; justify-content: center; z-index: 4; }
+  .art .dirs img { width: 88px; height: 88px; image-rendering: pixelated; margin-inline: -6px; }
+  @media (max-width: 800px) {
+    .art .moon { width: 240px; height: 240px; inset-inline-start: 190px; top: 10px; }
+    .art .ground { height: 84px; border-top-width: 3px; }
+    .art .spr { width: 216px; height: 216px; bottom: 60px; }
+    .art .kni { inset-inline-start: 207px; }
+    .art .foot { inset-inline-start: 40px; width: 200px; height: 200px; bottom: 68px; }
+    .art .arch { inset-inline-start: 390px; width: 200px; height: 200px; bottom: 68px; }
+    .art .dirs { bottom: 4px; }
+    .art .dirs img { width: 60px; height: 60px; margin-inline: -4px; }
+  }

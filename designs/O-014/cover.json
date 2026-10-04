@@ -1,0 +1,76 @@
+{
+  "product": "cover:gumroad/aeo-visibility-audit-kit",
+  "from_repo": "factory",
+  "storeName": "Gumroad",
+  "title": "AI Search Visibility Audit Kit",
+  "pick": "bold",
+  "kicker": "AEO / GEO audit in one evening",
+  "claim": "Audit your AI search visibility tonight. Re-run monthly at $0.",
+  "chips": [
+    "200 GEO probe questions",
+    "20-point fix checklist",
+    "Report template",
+    {
+      "t": "Honest method box: search proxy",
+      "wide": true
+    }
+  ],
+  "badge": "$29 one-time",
+  "tokens": {
+    "bg": "#ffd400",
+    "bg-2": "#ffc400",
+    "ink": "#0b0b0f",
+    "muted": "#2a2a30",
+    "accent": "#0b0b0f",
+    "accent-ink": "#0b0b0f",
+    "on-accent": "#ffd400",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#0b0b0f",
+    "chip-line": "#0b0b0f",
+    "paper": "#ffffff",
+    "win-bg": "#ffffff",
+    "win-bar": "#0b0b0f"
+  },
+  "fonts": {
+    "display": "'Segoe UI Black', 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif"
+  },
+  "titlePx": 92,
+  "titlePxCard": 46,
+  "titleWeight": 900,
+  "titleTrack": "-0.035em",
+  "titleWrapWide": [
+    "AI Search",
+    "Visibility",
+    "Audit Kit"
+  ],
+  "copyW": "50%",
+  "claimW": "560px",
+  "chipR": "4px",
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/listing/gumroad.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/cover-1280x720.png",
+  "landing": "products/marketing-studio/aeo-visibility-audit-kit/covers/from-design-studio/O-014/",
+  "assetsFrom": "the product's own preview/ renders of its kit files",
+  "assets": [
+    {
+      "name": "banks.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-banks-1280x800.png",
+      "what": "the 200 probe questions: 4 categories x 50 (excerpt of the real kit file)"
+    },
+    {
+      "name": "checklist.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-checklist-1280x800.png",
+      "what": "the 20-point fix checklist (real kit file)"
+    },
+    {
+      "name": "report.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-report-1280x800.png",
+      "what": "the worked audit report (real kit file)"
+    }
+  ],
+  "titleWrapCard": [
+    "AI Search Visibility",
+    "Audit Kit"
+  ],
+  "theirsPx256": 8
+}

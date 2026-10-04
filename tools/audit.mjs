@@ -12,6 +12,15 @@ import { dirname, resolve, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { pngDims, SIZE_MATRIX } from "./render.mjs";
 
+// Characters the fit estimate counts: the title length, or (when the page wraps
+// the title onto several lines) the declared title_longest = chars on the longest
+// line, so a two-line "BookForge" / "Pro" title is measured by "BookForge". A size
+// entry may carry its own title_longest; a missing one falls back to the brief's.
+export function titleChars(entry, brief) {
+  const n = Number(entry?.title_longest) > 0 ? Number(entry.title_longest) : Number(brief?.title_longest) > 0 ? Number(brief.title_longest) : String(brief?.title ?? "").length;
+  return n;
+}
+
 export function luminance(hex) {
   const m = String(hex ?? "").match(/^#([0-9a-fA-F]{6})$/);
   if (!m) throw new Error(`expected #rrggbb, got ${JSON.stringify(hex)}`);
@@ -212,7 +221,7 @@ export function auditBrief(briefPath) {
     const legOk = at256 >= 12;
     check("title legible at 256px", legOk, `${at256.toFixed(1)}px at 256px wide (floor 12px)${legOk ? "" : " — next: raise title_px or widen title_box"}`);
     const boxW = (box[2] - box[0]) * size.w;
-    const need = String(brief.title ?? "").length * titlePx * 0.5;
+    const need = titleChars(brief, brief) * titlePx * 0.5;
     const fitOk = need <= boxW;
     check("title fits its box", fitOk, `need ~${Math.round(need)}px, box ${Math.round(boxW)}px${fitOk ? "" : " — next: shorten title or widen title_box"}`);
   }
@@ -237,11 +246,17 @@ export function auditBrief(briefPath) {
     for (const s of matrix) {
       const sw = Number(s?.w);
       if (!(sw >= 16)) continue;
-      const at = (titlePx * 256) / sw;
+      // Per-size reflow (optional): a size entry may carry its own title_px and
+      // title_box when the page re-lays itself out for that size (a 630x500
+      // store card sets its title smaller than the 1280x720 hero). Without
+      // them the brief-level title_px and title_box apply, as before.
+      const sPx = Number(s?.title_px) > 0 ? Number(s.title_px) : titlePx;
+      const sBox = Array.isArray(s?.title_box) && s.title_box.length === 4 && s.title_box.every((v) => typeof v === "number") ? s.title_box : box;
+      const at = (sPx * 256) / sw;
       const okL = at >= 12;
       check(`size ${sw}x${Number(s?.h)}: title legible at 256px`, okL, `${at.toFixed(1)}px at 256px (floor 12px)${okL ? "" : " — next: raise title_px for this width"}`);
-      const bW = (box[2] - box[0]) * sw;
-      const needPx = String(brief.title ?? "").length * titlePx * 0.5;
+      const bW = (sBox[2] - sBox[0]) * sw;
+      const needPx = titleChars(s, brief) * sPx * 0.5;
       const okF = needPx <= bW;
       check(`size ${sw}x${Number(s?.h)}: title fits its box`, okF, `need ~${Math.round(needPx)}px, box ${Math.round(bW)}px${okF ? "" : " — next: reflow title_px/box for this size"}`);
     }

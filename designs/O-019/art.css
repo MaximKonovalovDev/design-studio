@@ -1,0 +1,17 @@
+  .stage { background: linear-gradient(140deg, var(--bg) 0%, var(--bg-2) 100%); }
+  .art .glow { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: var(--accent); opacity: 0.16; inset-inline-end: -80px; top: 40px; }
+  .art .sh { position: absolute; width: 330px; background: var(--paper); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5); }
+  .art .a { inset-inline-start: 4px; top: 90px; transform: rotate(-8deg); }
+  .art .b { inset-inline-start: 150px; top: 56px; transform: rotate(0.5deg); z-index: 2; }
+  .art .c { inset-inline-start: 298px; top: 110px; transform: rotate(8deg); z-index: 1; }
+  .art .stamp { position: absolute; z-index: 3; inset-inline-end: 24px; top: 520px; background: var(--accent); color: var(--on-accent); font-weight: 800; font-size: 24px; line-height: 1; padding: 10px 18px 12px; border-radius: 10px; text-align: center; transform: rotate(-5deg); box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4); }
+  .art .stamp b { display: block; font-family: var(--font-display); font-size: 72px; line-height: 0.95; }
+  @media (max-width: 800px) {
+    .art .glow { width: 300px; height: 300px; top: -20px; }
+    .art .sh { width: 184px; }
+    .art .a { inset-inline-start: 120px; top: 12px; }
+    .art .b { inset-inline-start: 222px; top: -6px; }
+    .art .c { inset-inline-start: 326px; top: 16px; }
+    .art .stamp { inset-inline-start: 22px; inset-inline-end: auto; top: 30px; font-size: 16px; padding: 6px 12px 8px; }
+    .art .stamp b { font-size: 44px; }
+  }

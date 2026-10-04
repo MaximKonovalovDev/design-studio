@@ -195,7 +195,7 @@ export function judgeSample(input) {
   if (brief && Array.isArray(brief.title_box) && brief.title_box.length === 4 && Number(brief.title_px) > 0) {
     const [x0, , x1] = brief.title_box;
     const boxW = (x1 - x0) * size.w;
-    const need = String(brief.title ?? "").length * Number(brief.title_px) * 0.5;
+    const need = (Number(brief.title_longest) > 0 ? Number(brief.title_longest) : String(brief.title ?? "").length) * Number(brief.title_px) * 0.5;
     check("title-fits", need <= boxW, `need ~${Math.round(need)}px, box ${Math.round(boxW)}px`);
   } else if (brief) {
     check("title-fits", false, "title_box/title_px missing");

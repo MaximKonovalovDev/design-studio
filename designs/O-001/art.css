@@ -1,0 +1,17 @@
+  .stage { background: linear-gradient(105deg, var(--bg) 0%, var(--bg) 54%, var(--bg-2) 100%); }
+  .art img { position: absolute; display: block; box-shadow: 0 22px 44px rgba(16, 20, 58, 0.34), 0 3px 8px rgba(16, 20, 58, 0.25); }
+  .art .blob { position: absolute; inset-inline-end: -140px; top: -110px; width: 560px; height: 560px; border-radius: 50%; background: var(--accent); opacity: 0.1; }
+  .art .spread { width: 500px; inset-inline-end: -60px; bottom: 44px; transform: rotate(3deg); }
+  .art .day { width: 252px; inset-inline-start: 44px; top: 70px; transform: rotate(-6deg); }
+  .art .night { width: 252px; inset-inline-start: 224px; top: 130px; transform: rotate(4deg); }
+  .art .tag { position: absolute; inset-inline-end: 26px; top: 40px; background: var(--navy); color: var(--on-accent); font-size: 19px; line-height: 1.35; padding: 12px 18px; border-radius: 6px; border-inline-start: 6px solid var(--gold); transform: rotate(2deg); }
+  .art .tag b { display: block; color: var(--gold); font-size: 15px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 2px; }
+  @media (max-width: 800px) {
+    .stage { background: linear-gradient(180deg, var(--bg) 0%, var(--bg) 55%, var(--bg-2) 100%); }
+    .art .blob { width: 360px; height: 360px; inset-inline-end: -80px; top: auto; bottom: -140px; }
+    .art .spread { width: 300px; inset-inline-end: -26px; bottom: -30px; }
+    .art .day { width: 150px; inset-inline-start: 24px; top: 14px; }
+    .art .night { width: 150px; inset-inline-start: 150px; top: 36px; }
+    .art .tag { font-size: 14px; padding: 7px 11px; inset-inline-end: 22px; top: auto; bottom: 30px; border-inline-start-width: 4px; }
+    .art .tag b { font-size: 11px; }
+  }

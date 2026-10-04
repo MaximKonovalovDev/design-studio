@@ -1,0 +1,26 @@
+/* designs/O-002/tokens.css: O-002 E-book Funnel Builder (clean-professional). All page color comes from these vars. */
+:root {
+  --bg: #f3f6fc;
+  --bg-2: #dfe7f6;
+  --ink: #0d1b3d;
+  --muted: #3d4b6b;
+  --accent: #ff6a13;
+  --accent-ink: #c2410c;
+  --on-accent: #0d1b3d;
+  --chip-bg: #ffffff;
+  --chip-ink: #0d1b3d;
+  --chip-line: #c7d3ea;
+  --green: #10a05a;
+  --navy: #0d1b3d;
+  --win-bg: #141f3d;
+  --win-bar: #0d1b3d;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 100px;
+  --title-px-card: 52px;
+  --title-weight: 900;
+  --title-track: -0.025em;
+  --copy-w: 50%;
+  --claim-w: 560px;
+  --chip-r: 8px;
+}

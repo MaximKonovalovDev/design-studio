@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- designs/O-014/page.html: O-014 Gumroad cover for AI Search Visibility Audit Kit (bold). Facts only from aeo-visibility-audit-kit/gumroad.md. Color only via tokens.css. 1280x720 hero above 800px wide, 630x500 store card at 800px and below. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  .stage { position: relative; display: flex; width: 100%; height: 100%; overflow: hidden; background: var(--stage-bg, var(--bg)); }
+  .copy { position: relative; z-index: 3; flex: 0 0 var(--copy-w, 52%); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-inline-start: var(--pad, 72px); padding-block: 48px; }
+  .art { position: relative; z-index: 1; flex: 1; }
+  .kicker { font-weight: 800; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 16px; }
+  h1 { text-wrap: balance; font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: var(--title-px, 104px); line-height: 0.96; letter-spacing: var(--title-track, -0.01em); color: var(--ink); margin-bottom: 22px; }
+  .claim { text-wrap: balance; font-size: var(--claim-px, 32px); line-height: 1.2; color: var(--muted); font-weight: 600; margin-bottom: 26px; max-width: var(--claim-w, 560px); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-bottom: 28px; max-width: var(--claim-w, 560px); }
+  .chips li { font-size: 21px; font-weight: 700; line-height: 1.1; padding: 9px 14px; border-radius: var(--chip-r, 8px); background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); }
+  .cta { font-size: 30px; font-weight: 800; line-height: 1; padding: 15px 30px; border-radius: var(--chip-r, 8px); background: var(--accent); color: var(--on-accent); }
+  .fine { margin-top: 16px; font-size: 19px; color: var(--muted); max-width: var(--claim-w, 560px); }
+  .win { position: absolute; border-radius: 10px; overflow: hidden; background: var(--win-bg, var(--ink)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.22); }
+  .win::before { content: ""; display: block; height: 22px; background: var(--win-bar, var(--ink)); border-bottom: 3px solid var(--accent); }
+  .win img { display: block; width: 100%; }
+  .win .vp { position: relative; overflow: hidden; }
+  .win .vp img { position: absolute; max-width: none; }
+  @media (max-width: 800px) {
+    .stage { flex-direction: column; }
+    .copy { flex: 0 0 auto; padding-inline: var(--pad-card, 26px); padding-block: var(--pad-top-card, 22px) 0; }
+    .kicker { font-size: 14px; margin-bottom: 8px; }
+    h1 { font-size: var(--title-px-card, 60px); margin-bottom: 8px; }
+    .claim { font-size: var(--claim-px-card, 21px); margin-bottom: 12px; max-width: none; }
+    .chips { gap: 6px; margin-bottom: 0; max-width: none; }
+    .chips li { font-size: 14px; padding: 5px 9px; border-width: 1.5px; }
+    .chips li.wide-only { display: none; }
+    .cta { font-size: 19px; padding: 9px 18px; }
+    .fine { display: none; }
+    .art { flex: 1; min-height: 0; }
+  }
+  .stage { background: var(--bg); }
+  .art .win { border: 4px solid var(--ink); border-radius: 4px; box-shadow: 10px 10px 0 var(--ink); background: var(--paper); }
+  .art .win::before { height: 18px; border-bottom: 0; }
+  .art .win.r { width: 380px; inset-inline-end: -6px; top: 36px; transform: rotate(3deg); }
+  .art .win.r .vp { height: 270px; }
+  .art .win.r .vp img { width: 560px; top: -20px; inset-inline-start: -30px; }
+  .art .win.c { width: 420px; inset-inline-start: 36px; top: 250px; transform: rotate(-2.5deg); }
+  .art .win.c .vp { height: 250px; }
+  .art .win.c .vp img { width: 560px; top: -26px; inset-inline-start: -20px; }
+  .art .win.b { width: 450px; inset-inline-end: 6px; top: 402px; transform: rotate(1.5deg); }
+  .art .win.b .vp { height: 230px; }
+  .art .win.b .vp img { width: 580px; top: -34px; inset-inline-start: -20px; }
+  .art .num { position: absolute; inset-inline-start: 34px; top: 50px; font-family: var(--font-display); font-weight: 900; font-size: 150px; line-height: 0.9; letter-spacing: -0.05em; color: var(--ink); }
+  @media (max-width: 800px) {
+    .art .win { border-width: 3px; box-shadow: 6px 6px 0 var(--ink); }
+    .art .win.r { width: 250px; inset-inline-end: 14px; top: 8px; }
+    .art .win.r .vp { height: 150px; }
+    .art .win.r .vp img { width: 330px; top: -12px; inset-inline-start: -16px; }
+    .art .win.c { width: 250px; inset-inline-start: 14px; top: 110px; }
+    .art .win.c .vp { height: 150px; }
+    .art .win.c .vp img { width: 330px; top: -16px; inset-inline-start: -12px; }
+    .art .win.b { width: 260px; inset-inline-end: 12px; top: 170px; }
+    .art .win.b .vp { height: 130px; }
+    .art .win.b .vp img { width: 340px; top: -20px; inset-inline-start: -12px; }
+    .art .num { font-size: 96px; inset-inline-start: 18px; top: 4px; }
+  }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="copy">
+    <div class="kicker">AEO / GEO audit in one evening</div>
+    <h1 data-oid="cover.title">AI Search Visibility Audit Kit</h1>
+    <p class="claim" data-oid="cover.subtitle">Audit your AI search visibility tonight. Re-run monthly at $0.</p>
+    <ul class="chips"><li>200 GEO probe questions</li><li>20-point fix checklist</li><li>Report template</li><li class="wide-only">Honest method box: search proxy</li></ul>
+    <span class="cta" data-oid="cover.cta">$29 one-time</span>
+  </div>
+  <div class="art">
+    <div class="win r"><div class="vp"><img src="assets/report.png" alt="Worked audit report"></div></div>
+    <div class="win c"><div class="vp"><img src="assets/checklist.png" alt="20-point fix checklist"></div></div>
+    <div class="win b"><div class="vp"><img src="assets/banks.png" alt="200 probe questions"></div></div>
+    <div class="num">200</div>
+
+  </div>
+</div>
+</body>
+</html>

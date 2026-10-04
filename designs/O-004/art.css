@@ -1,0 +1,15 @@
+  .stage { background: radial-gradient(circle at 75% 30%, var(--bg-2) 0%, var(--bg) 70%); }
+  .art .big { position: absolute; inset-inline-end: 20px; top: -14px; font-family: var(--font-display); font-weight: 900; font-size: 250px; line-height: 1; letter-spacing: -0.04em; color: var(--pink); text-shadow: 6px 6px 0 var(--teal); }
+  .art .win { outline: 3px solid var(--teal); outline-offset: 0; }
+  .art .win.a { width: 560px; inset-inline-start: 30px; top: 262px; transform: rotate(-2.5deg); }
+  .art .win.b { width: 330px; inset-inline-end: 8px; top: 456px; transform: rotate(3deg); outline-color: var(--pink); }
+  .art .win.b .vp { height: 170px; }
+  .art .win.b .vp img { position: absolute; width: 440px; top: -10px; inset-inline-start: -10px; }
+  .art .win.a::before, .art .win.b::before { border-bottom-color: var(--teal); }
+  @media (max-width: 800px) {
+    .art .big { font-size: 130px; inset-inline-end: 14px; top: -6px; text-shadow: 3px 3px 0 var(--teal); }
+    .art .win.a { width: 330px; inset-inline-start: 18px; top: 74px; }
+    .art .win.b { width: 190px; inset-inline-end: 14px; top: 162px; }
+    .art .win.b .vp { height: 100px; }
+    .art .win.b .vp img { width: 260px; }
+  }

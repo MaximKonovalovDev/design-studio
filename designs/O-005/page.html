@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- designs/O-005/page.html: O-005 Gumroad cover for Artist Launch Pack (warm-editorial). Facts only from artist-launch-pack/gumroad.md. Color only via tokens.css. 1280x720 hero above 800px wide, 630x500 store card at 800px and below. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  .stage { position: relative; display: flex; width: 100%; height: 100%; overflow: hidden; background: var(--stage-bg, var(--bg)); }
+  .copy { position: relative; z-index: 3; flex: 0 0 var(--copy-w, 52%); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-inline-start: var(--pad, 72px); padding-block: 48px; }
+  .art { position: relative; z-index: 1; flex: 1; }
+  .kicker { font-weight: 800; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 16px; }
+  h1 { text-wrap: balance; font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: var(--title-px, 104px); line-height: 0.96; letter-spacing: var(--title-track, -0.01em); color: var(--ink); margin-bottom: 22px; }
+  .claim { text-wrap: balance; font-size: var(--claim-px, 32px); line-height: 1.2; color: var(--muted); font-weight: 600; margin-bottom: 26px; max-width: var(--claim-w, 560px); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-bottom: 28px; max-width: var(--claim-w, 560px); }
+  .chips li { font-size: 21px; font-weight: 700; line-height: 1.1; padding: 9px 14px; border-radius: var(--chip-r, 8px); background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); }
+  .cta { font-size: 30px; font-weight: 800; line-height: 1; padding: 15px 30px; border-radius: var(--chip-r, 8px); background: var(--accent); color: var(--on-accent); }
+  .fine { margin-top: 16px; font-size: 19px; color: var(--muted); max-width: var(--claim-w, 560px); }
+  .win { position: absolute; border-radius: 10px; overflow: hidden; background: var(--win-bg, var(--ink)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.22); }
+  .win::before { content: ""; display: block; height: 22px; background: var(--win-bar, var(--ink)); border-bottom: 3px solid var(--accent); }
+  .win img { display: block; width: 100%; }
+  .win .vp { position: relative; overflow: hidden; }
+  .win .vp img { position: absolute; max-width: none; }
+  @media (max-width: 800px) {
+    .stage { flex-direction: column; }
+    .copy { flex: 0 0 auto; padding-inline: var(--pad-card, 26px); padding-block: var(--pad-top-card, 22px) 0; }
+    .kicker { font-size: 14px; margin-bottom: 8px; }
+    h1 { font-size: var(--title-px-card, 60px); margin-bottom: 8px; }
+    .claim { font-size: var(--claim-px-card, 21px); margin-bottom: 12px; max-width: none; }
+    .chips { gap: 6px; margin-bottom: 0; max-width: none; }
+    .chips li { font-size: 14px; padding: 5px 9px; border-width: 1.5px; }
+    .chips li.wide-only { display: none; }
+    .cta { font-size: 19px; padding: 9px 18px; }
+    .fine { display: none; }
+    .art { flex: 1; min-height: 0; }
+  }
+  .stage { background: linear-gradient(120deg, var(--bg) 0%, var(--bg) 50%, var(--bg-2) 100%); }
+  .art .sun { position: absolute; width: 470px; height: 470px; border-radius: 50%; background: var(--coral); inset-inline-end: -60px; top: 120px; opacity: 0.92; }
+  .art .p, .art .story, .art .avatar { position: absolute; display: block; border: 8px solid var(--chip-bg); box-shadow: 0 18px 36px rgba(18, 61, 47, 0.32); }
+  .art .p { width: 300px; height: 300px; }
+  .art .p1 { inset-inline-start: 20px; top: 70px; transform: rotate(-6deg); z-index: 2; }
+  .art .p2 { inset-inline-start: 250px; top: 36px; transform: rotate(5deg); z-index: 3; }
+  .art .p3 { inset-inline-start: 120px; top: 360px; transform: rotate(-2deg); z-index: 4; width: 330px; height: 330px; }
+  .art .story { width: 190px; height: 338px; inset-inline-end: 24px; top: 300px; transform: rotate(7deg); z-index: 5; }
+  .art .avatar { width: 150px; height: 150px; border-radius: 50%; inset-inline-end: 54px; top: 120px; z-index: 6; }
+  .art .tag { position: absolute; z-index: 7; inset-inline-start: 24px; top: 392px; background: var(--ink); color: var(--on-accent); font-weight: 800; font-size: 20px; padding: 10px 16px; border-radius: 6px; transform: rotate(-3deg); }
+  @media (max-width: 800px) {
+    .art .sun { width: 250px; height: 250px; top: 10px; inset-inline-end: -30px; }
+    .art .p, .art .story, .art .avatar { border-width: 5px; }
+    .art .p { width: 150px; height: 150px; }
+    .art .p1 { inset-inline-start: 24px; top: 24px; }
+    .art .p2 { inset-inline-start: 160px; top: 10px; }
+    .art .p3 { inset-inline-start: 86px; top: 150px; width: 170px; height: 170px; }
+    .art .story { width: 110px; height: 196px; inset-inline-end: 24px; top: 100px; }
+    .art .avatar { width: 84px; height: 84px; inset-inline-end: 190px; top: 160px; }
+    .art .tag { font-size: 13px; padding: 6px 10px; inset-inline-start: 16px; top: 232px; }
+  }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="copy">
+    <div class="kicker">Brand kit for visual artists</div>
+    <h1 data-oid="cover.title">Artist Launch Pack</h1>
+    <p class="claim" data-oid="cover.subtitle">74 finished files. No Canva needed.</p>
+    <ul class="chips"><li>Profile kit</li><li>30 days of posts</li><li>12-page artbook</li><li>One-page site</li></ul>
+    <span class="cta" data-oid="cover.cta">$35 one-time</span>
+    <p class="fine">Placeholder art: swap in your own.</p>
+  </div>
+  <div class="art">
+    <div class="sun"></div>
+    <img class="p p1" src="assets/post-11.png" alt="Post 11 of 30">
+    <img class="p p2" src="assets/post-22.png" alt="Post 22 of 30">
+    <img class="p p3" src="assets/post-15.png" alt="Post 15 of 30">
+    <img class="story" src="assets/story-03.png" alt="Story 3 of 30">
+    <img class="avatar" src="assets/avatar.png" alt="Profile-kit avatar">
+    <div class="tag">30 posts + 30 stories</div>
+
+  </div>
+</div>
+</body>
+</html>

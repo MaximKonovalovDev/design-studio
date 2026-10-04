@@ -1,107 +1,78 @@
 <!DOCTYPE html>
-<!-- designs/O-001/page.html: O-001 Gumroad cover for BookForge Pro (publication/editorial). Facts only from the listing gumroad.md. Color only via tokens.css. -->
+<!-- designs/O-001/page.html: O-001 Gumroad cover for BookForge Pro (editorial). Facts only from book-forge-pro/gumroad.md. Color only via tokens.css. 1280x720 hero above 800px wide, 630x500 store card at 800px and below. -->
 <html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="tokens.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 100%; height: 100%; }
-  body {
-    width: 100vw; height: 100vh; overflow: hidden;
-    background: var(--paper); color: var(--ink);
-    font-family: var(--font-body);
-    display: flex; flex-direction: column;
-  }
-  .rule { height: 14px; background: var(--accent); }
-  .wrap {
-    flex: 1; display: flex; align-items: stretch;
-    gap: 48px; padding: 44px 64px 40px;
-  }
-  .main { flex: 1.55; display: flex; flex-direction: column; justify-content: center; }
-  .kicker {
-    font-size: 22px; letter-spacing: 6px; font-weight: bold;
-    color: var(--accent); margin-bottom: 14px;
-  }
-  h1 {
-    font-family: var(--font-display);
-    font-size: 72px; line-height: 1.02; font-weight: 800;
-    color: var(--ink); margin-bottom: 12px;
-  }
-  .sub {
-    font-size: 27px; line-height: 1.35; color: var(--muted);
-    margin-bottom: 20px; max-width: 640px;
-  }
-  .row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
-  .chip {
-    border: 2px solid var(--line); border-top: 6px solid var(--accent);
-    border-radius: 8px; padding: 8px 14px;
-    font-size: 19px; font-weight: 600; color: var(--ink);
-    background: var(--paper);
-  }
-  .cta {
-    display: inline-block; align-self: flex-start;
-    font-size: 25px; font-weight: bold;
-    color: var(--on-accent); background: var(--accent);
-    padding: 14px 42px; border-radius: 10px;
-  }
-  .honest { margin-top: 14px; font-size: 18px; color: var(--muted); }
-  .side { flex: 1; display: flex; align-items: center; justify-content: center; }
-  .spec {
-    border: 4px solid var(--ink); border-radius: 4px;
-    outline: 3px solid var(--accent); outline-offset: 10px;
-    padding: 40px 46px; text-align: center; background: var(--paper);
-    max-width: 340px;
-  }
-  .spec .lbl { font-size: 20px; letter-spacing: 5px; font-weight: bold; color: var(--accent); }
-  .spec .big { font-family: var(--font-display); font-size: 64px; font-weight: 800; color: var(--ink); line-height: 1.1; margin: 8px 0 4px; }
-  .spec .cap { font-size: 19px; color: var(--muted); line-height: 1.45; }
-  .spec .div { height: 2px; background: var(--line); margin: 16px 0; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  .stage { position: relative; display: flex; width: 100%; height: 100%; overflow: hidden; background: var(--stage-bg, var(--bg)); }
+  .copy { position: relative; z-index: 3; flex: 0 0 var(--copy-w, 52%); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-inline-start: var(--pad, 72px); padding-block: 48px; }
+  .art { position: relative; z-index: 1; flex: 1; }
+  .kicker { font-weight: 800; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 16px; }
+  h1 { text-wrap: balance; font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: var(--title-px, 104px); line-height: 0.96; letter-spacing: var(--title-track, -0.01em); color: var(--ink); margin-bottom: 22px; }
+  .claim { text-wrap: balance; font-size: var(--claim-px, 32px); line-height: 1.2; color: var(--muted); font-weight: 600; margin-bottom: 26px; max-width: var(--claim-w, 560px); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-bottom: 28px; max-width: var(--claim-w, 560px); }
+  .chips li { font-size: 21px; font-weight: 700; line-height: 1.1; padding: 9px 14px; border-radius: var(--chip-r, 8px); background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); }
+  .cta { font-size: 30px; font-weight: 800; line-height: 1; padding: 15px 30px; border-radius: var(--chip-r, 8px); background: var(--accent); color: var(--on-accent); }
+  .fine { margin-top: 16px; font-size: 19px; color: var(--muted); max-width: var(--claim-w, 560px); }
+  .win { position: absolute; border-radius: 10px; overflow: hidden; background: var(--win-bg, var(--ink)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.22); }
+  .win::before { content: ""; display: block; height: 22px; background: var(--win-bar, var(--ink)); border-bottom: 3px solid var(--accent); }
+  .win img { display: block; width: 100%; }
+  .win .vp { position: relative; overflow: hidden; }
+  .win .vp img { position: absolute; max-width: none; }
   @media (max-width: 800px) {
-    .rule { height: 8px; }
-    .wrap { flex-direction: column; gap: 8px; padding: 14px 20px 10px; justify-content: flex-start; overflow: hidden; }
-    .main { flex: none; justify-content: flex-start; }
-    .kicker { font-size: 13px; letter-spacing: 2.5px; white-space: nowrap; margin-bottom: 6px; }
-    h1 { font-size: 42px; margin-bottom: 4px; }
-    .sub { font-size: 17px; line-height: 1.3; max-width: none; margin-bottom: 8px; }
-    .row { gap: 6px; margin-bottom: 8px; }
-    .chip { font-size: 13px; padding: 5px 8px; border-top-width: 4px; }
-    .cta { font-size: 18px; padding: 8px 24px; }
-    .honest { display: none; }
-    .side { flex: none; justify-content: flex-start; }
-    .spec { padding: 10px 14px; max-width: none; width: 100%; outline-offset: 3px; }
-    .spec .lbl { font-size: 12px; letter-spacing: 3px; }
-    .spec .big { font-size: 28px; margin: 2px 0; }
-    .spec .cap { font-size: 13px; line-height: 1.3; }
-    .spec .div { margin: 6px 0; }
-    .spec .cap:last-child { display: none; }
+    .stage { flex-direction: column; }
+    .copy { flex: 0 0 auto; padding-inline: var(--pad-card, 26px); padding-block: var(--pad-top-card, 22px) 0; }
+    .kicker { font-size: 14px; margin-bottom: 8px; }
+    h1 { font-size: var(--title-px-card, 60px); margin-bottom: 8px; }
+    .claim { font-size: var(--claim-px-card, 21px); margin-bottom: 12px; max-width: none; }
+    .chips { gap: 6px; margin-bottom: 0; max-width: none; }
+    .chips li { font-size: 14px; padding: 5px 9px; border-width: 1.5px; }
+    .chips li.wide-only { display: none; }
+    .cta { font-size: 19px; padding: 9px 18px; }
+    .fine { display: none; }
+    .art { flex: 1; min-height: 0; }
+  }
+  .stage { background: linear-gradient(105deg, var(--bg) 0%, var(--bg) 54%, var(--bg-2) 100%); }
+  .art img { position: absolute; display: block; box-shadow: 0 22px 44px rgba(16, 20, 58, 0.34), 0 3px 8px rgba(16, 20, 58, 0.25); }
+  .art .blob { position: absolute; inset-inline-end: -140px; top: -110px; width: 560px; height: 560px; border-radius: 50%; background: var(--accent); opacity: 0.1; }
+  .art .spread { width: 500px; inset-inline-end: -60px; bottom: 44px; transform: rotate(3deg); }
+  .art .day { width: 252px; inset-inline-start: 44px; top: 70px; transform: rotate(-6deg); }
+  .art .night { width: 252px; inset-inline-start: 224px; top: 130px; transform: rotate(4deg); }
+  .art .tag { position: absolute; inset-inline-end: 26px; top: 40px; background: var(--navy); color: var(--on-accent); font-size: 19px; line-height: 1.35; padding: 12px 18px; border-radius: 6px; border-inline-start: 6px solid var(--gold); transform: rotate(2deg); }
+  .art .tag b { display: block; color: var(--gold); font-size: 15px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 2px; }
+  @media (max-width: 800px) {
+    .stage { background: linear-gradient(180deg, var(--bg) 0%, var(--bg) 55%, var(--bg-2) 100%); }
+    .art .blob { width: 360px; height: 360px; inset-inline-end: -80px; top: auto; bottom: -140px; }
+    .art .spread { width: 300px; inset-inline-end: -26px; bottom: -30px; }
+    .art .day { width: 150px; inset-inline-start: 24px; top: 14px; }
+    .art .night { width: 150px; inset-inline-start: 150px; top: 36px; }
+    .art .tag { font-size: 14px; padding: 7px 11px; inset-inline-end: 22px; top: auto; bottom: 30px; border-inline-start-width: 4px; }
+    .art .tag b { font-size: 11px; }
   }
 </style>
 </head>
 <body data-oid="cover.hero">
-  <div class="rule"></div>
-  <div class="wrap">
-    <div class="main">
-      <div class="kicker">KDP INTERIOR TEMPLATE • OFFLINE STUDIO</div>
-      <h1 data-oid="cover.title">BookForge Pro</h1>
-      <p class="sub" data-oid="cover.subtitle">Print-ready KDP spec with spine math in 5 minutes. Cover spread included.</p>
-      <div class="row">
-        <span class="chip">5x8 • 6x9 • 8x10 • 8.5x11</span>
-        <span class="chip">72 languages + RTL preview</span>
-        <span class="chip">Offline single file • No account</span>
-      </div>
-      <span class="cta" data-oid="cover.cta">$39 one-time — Offline studio</span>
-      <p class="honest">Your words only • No AI-written content • Bleed 0.125 in • 12-row spine chart</p>
-    </div>
-    <div class="side">
-      <div class="spec">
-        <div class="lbl">SPINE MATH</div>
-        <div class="big">6 x 9</div>
-        <p class="cap">trim + bleed<br>pages x 0.0025 cream<br>cover spread + interiors</p>
-        <div class="div"></div>
-        <p class="cap">200pp cream 0.5 in • white 0.4504 in</p>
-      </div>
-    </div>
+<div class="stage">
+  <div class="copy">
+    <div class="kicker">KDP interior template</div>
+    <h1 data-oid="cover.title">BookForge Pro</h1>
+    <p class="claim" data-oid="cover.subtitle">Print-ready KDP spec with spine math in 5 minutes</p>
+    <ul class="chips"><li>5x8 · 6x9 · 8x10 · 8.5x11</li><li>72 languages + RTL preview</li><li>Offline · no account</li></ul>
+    <span class="cta" data-oid="cover.cta">$39 one-time</span>
   </div>
+  <div class="art">
+    <div class="blob"></div>
+    <img class="spread" src="assets/spread.png" alt="Full cover spread, 200 page cream 6x9">
+    <img class="day" src="assets/front-day.png" alt="Day front-cover template">
+    <img class="night" src="assets/front-midnight.png" alt="Midnight front-cover template">
+    <div class="tag"><b>Spine math</b>pages x 0.0025 in<br>200pp cream = 0.5 in</div>
+
+  </div>
+</div>
 </body>
 </html>

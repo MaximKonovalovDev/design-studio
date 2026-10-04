@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- designs/O-016/page.html: O-016 Gumroad cover for Sprite Sheet Factory (pixel-playful). Facts only from sprite-sheet-factory/gumroad.md. Color only via tokens.css. 1280x720 hero above 800px wide, 630x500 store card at 800px and below. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  .stage { position: relative; display: flex; width: 100%; height: 100%; overflow: hidden; background: var(--stage-bg, var(--bg)); }
+  .copy { position: relative; z-index: 3; flex: 0 0 var(--copy-w, 52%); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-inline-start: var(--pad, 72px); padding-block: 48px; }
+  .art { position: relative; z-index: 1; flex: 1; }
+  .kicker { font-weight: 800; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 16px; }
+  h1 { text-wrap: balance; font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: var(--title-px, 104px); line-height: 0.96; letter-spacing: var(--title-track, -0.01em); color: var(--ink); margin-bottom: 22px; }
+  .claim { text-wrap: balance; font-size: var(--claim-px, 32px); line-height: 1.2; color: var(--muted); font-weight: 600; margin-bottom: 26px; max-width: var(--claim-w, 560px); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-bottom: 28px; max-width: var(--claim-w, 560px); }
+  .chips li { font-size: 21px; font-weight: 700; line-height: 1.1; padding: 9px 14px; border-radius: var(--chip-r, 8px); background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); }
+  .cta { font-size: 30px; font-weight: 800; line-height: 1; padding: 15px 30px; border-radius: var(--chip-r, 8px); background: var(--accent); color: var(--on-accent); }
+  .fine { margin-top: 16px; font-size: 19px; color: var(--muted); max-width: var(--claim-w, 560px); }
+  .win { position: absolute; border-radius: 10px; overflow: hidden; background: var(--win-bg, var(--ink)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.22); }
+  .win::before { content: ""; display: block; height: 22px; background: var(--win-bar, var(--ink)); border-bottom: 3px solid var(--accent); }
+  .win img { display: block; width: 100%; }
+  .win .vp { position: relative; overflow: hidden; }
+  .win .vp img { position: absolute; max-width: none; }
+  @media (max-width: 800px) {
+    .stage { flex-direction: column; }
+    .copy { flex: 0 0 auto; padding-inline: var(--pad-card, 26px); padding-block: var(--pad-top-card, 22px) 0; }
+    .kicker { font-size: 14px; margin-bottom: 8px; }
+    h1 { font-size: var(--title-px-card, 60px); margin-bottom: 8px; }
+    .claim { font-size: var(--claim-px-card, 21px); margin-bottom: 12px; max-width: none; }
+    .chips { gap: 6px; margin-bottom: 0; max-width: none; }
+    .chips li { font-size: 14px; padding: 5px 9px; border-width: 1.5px; }
+    .chips li.wide-only { display: none; }
+    .cta { font-size: 19px; padding: 9px 18px; }
+    .fine { display: none; }
+    .art { flex: 1; min-height: 0; }
+  }
+  .stage { background: linear-gradient(135deg, var(--bg) 0%, var(--bg-2) 100%); }
+  .art .board { position: absolute; inset-inline-start: 2px; top: 150px; width: 526px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 14px; background: var(--panel); border: 4px solid var(--ink); border-radius: 14px; box-shadow: 10px 10px 0 var(--ink); transform: rotate(-1.5deg); }
+  .art .c { background: var(--cell); border: 2px solid var(--cell-line); border-radius: 6px; height: 116px; display: flex; align-items: center; justify-content: center; }
+  .art .c img { image-rendering: pixelated; display: block; }
+  .art .s64, .art .s128 { width: 108px; height: auto; }
+  .art .s48 { width: 80px; height: auto; }
+  .art .stamp { position: absolute; inset-inline-end: 14px; top: 28px; z-index: 3; background: var(--star); color: var(--ink); font-weight: 800; font-size: 26px; line-height: 1; padding: 12px 22px 14px; border: 4px solid var(--ink); border-radius: 12px; box-shadow: 6px 6px 0 var(--ink); transform: rotate(4deg); text-align: center; }
+  .art .stamp b { display: block; font-family: var(--font-display); font-size: 96px; line-height: 0.9; letter-spacing: -0.04em; }
+  @media (max-width: 800px) {
+    .art .board { inset-inline: 14px; width: auto; top: 24px; grid-template-columns: repeat(6, 1fr); gap: 5px; padding: 9px; border-width: 3px; box-shadow: 6px 6px 0 var(--ink); }
+    .art .c { height: 92px; border-width: 1.5px; }
+    .art .s64, .art .s128 { width: 72px; }
+    .art .s48 { width: 54px; }
+    .art .stamp { top: -62px; inset-inline-end: 16px; font-size: 14px; padding: 4px 12px 6px; border-width: 3px; box-shadow: 4px 4px 0 var(--ink); }
+    .art .stamp b { font-size: 42px; }
+  }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="copy">
+    <div class="kicker">2D animated pixel-art sheets</div>
+    <h1 data-oid="cover.title">Sprite Sheet Factory</h1>
+    <p class="claim" data-oid="cover.subtitle">290 animated sheets across 10 themes</p>
+    <ul class="chips"><li>10 themes</li><li>740 frames</li><li>Walk, idle, attack, tiles, items, FX</li><li class="wide-only">Manifest with per-file layout</li></ul>
+    <span class="cta" data-oid="cover.cta">$29 one-time</span>
+  </div>
+  <div class="art">
+    <div class="stamp"><b>290</b>sheets</div>
+    <div class="board">
+      <div class="c"><img class="s64" src="assets/forest_hero_walk_01_64x64.png" alt="hero walk, forest"></div>
+      <div class="c"><img class="s64" src="assets/ice_hero_walk_01_64x64.png" alt="hero walk, ice"></div>
+      <div class="c"><img class="s64" src="assets/desert_hero_idle_64x64.png" alt="hero idle, desert"></div>
+      <div class="c"><img class="s64" src="assets/volcano_enemy_walk_01_64x64.png" alt="enemy walk, volcano"></div>
+      <div class="c"><img class="s128" src="assets/space_hero_attack_128x128.png" alt="hero attack, space"></div>
+      <div class="c"><img class="s128" src="assets/dungeon_creature_boss_128x128.png" alt="boss creature, dungeon"></div>
+      <div class="c"><img class="s64" src="assets/meadow_tile_ground_64x64.png" alt="ground tile, meadow"></div>
+      <div class="c"><img class="s128" src="assets/ocean_prop_tree_128x128.png" alt="prop tree, ocean"></div>
+      <div class="c"><img class="s48" src="assets/forest_item_potion_48x48.png" alt="item potion, forest"></div>
+      <div class="c"><img class="s64" src="assets/desert_item_chest_64x64.png" alt="item chest, desert"></div>
+      <div class="c"><img class="s64" src="assets/ruins_fx_explosion_64x64.png" alt="explosion FX, ruins"></div>
+      <div class="c"><img class="s64" src="assets/storm_creature_flyer_64x32.png" alt="creature flyer, storm"></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

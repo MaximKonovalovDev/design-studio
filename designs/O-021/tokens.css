@@ -1,0 +1,25 @@
+/* designs/O-021/tokens.css: O-021 AEO Visibility Mini-Check (friendly). All page color comes from these vars. */
+:root {
+  --bg: #e8fbf2;
+  --bg-2: #c6f2dc;
+  --ink: #0b3324;
+  --muted: #2f5a48;
+  --accent: #0b3324;
+  --accent-ink: #0a7a4f;
+  --on-accent: #baf5d8;
+  --chip-bg: #ffffff;
+  --chip-ink: #0b3324;
+  --chip-line: #8fd8b6;
+  --paper: #ffffff;
+  --sun: #ffd24a;
+  --rule: #bfe3d1;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 98px;
+  --title-px-card: 52px;
+  --title-weight: 900;
+  --title-track: -0.03em;
+  --copy-w: 52%;
+  --claim-w: 560px;
+  --chip-r: 999px;
+}

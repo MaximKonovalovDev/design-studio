@@ -1,0 +1,78 @@
+{
+  "product": "cover:gumroad/episode-clips-vol1",
+  "from_repo": "factory",
+  "storeName": "Gumroad",
+  "title": "Episode Clips Kit",
+  "pick": "modern",
+  "kicker": "Podcast vertical audiograms",
+  "claim": "1 podcast episode into 5 vertical clips",
+  "chips": [
+    "10 caption presets",
+    "5 cover templates 1080x1920",
+    {
+      "t": "make_clips .bat + .sh",
+      "wide": true
+    },
+    "No cloud upload"
+  ],
+  "badge": "$39 one-time",
+  "tokens": {
+    "bg": "#3b24d6",
+    "bg-2": "#26119a",
+    "ink": "#ffffff",
+    "muted": "#e0dbff",
+    "accent": "#ffe14d",
+    "accent-ink": "#ffe14d",
+    "on-accent": "#1a1245",
+    "chip-bg": "#2a15a8",
+    "chip-ink": "#ffffff",
+    "chip-line": "#8b78ff",
+    "edge": "#ffffff"
+  },
+  "fonts": {
+    "display": "'Segoe UI Black', 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif"
+  },
+  "titlePx": 104,
+  "titlePxCard": 54,
+  "titleWeight": 900,
+  "titleTrack": "-0.03em",
+  "titleWrapWide": [
+    "Episode",
+    "Clips Kit"
+  ],
+  "copyW": "50%",
+  "claimW": "560px",
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/listing/gumroad.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/preview/cover-b-1280x720.png",
+  "landing": "products/clip-repurpose/episode-clips-vol1/covers/from-design-studio/O-003/",
+  "assetsFrom": "the product's own assets/covers/ templates",
+  "assets": [
+    {
+      "name": "cover1-minimal.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover01-minimal.png",
+      "what": "cover template 1 (minimal) shipped in the zip, 1080x1920"
+    },
+    {
+      "name": "cover2-neon.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover02-neon.png",
+      "what": "cover template 2 (neon) shipped in the zip, 1080x1920"
+    },
+    {
+      "name": "cover3-retro.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover03-retro.png",
+      "what": "cover template 3 (retro) shipped in the zip, 1080x1920"
+    },
+    {
+      "name": "cover4-fitness.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover04-fitness.png",
+      "what": "cover template 4 (fitness) shipped in the zip, 1080x1920"
+    },
+    {
+      "name": "cover5-educator.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover05-educator.png",
+      "what": "cover template 5 (educator) shipped in the zip, 1080x1920"
+    }
+  ],
+  "theirsPx256": 11
+}

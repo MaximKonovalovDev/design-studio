@@ -1,0 +1,25 @@
+/* designs/O-014/tokens.css: O-014 AI Search Visibility Audit Kit (bold). All page color comes from these vars. */
+:root {
+  --bg: #ffd400;
+  --bg-2: #ffc400;
+  --ink: #0b0b0f;
+  --muted: #2a2a30;
+  --accent: #0b0b0f;
+  --accent-ink: #0b0b0f;
+  --on-accent: #ffd400;
+  --chip-bg: #ffffff;
+  --chip-ink: #0b0b0f;
+  --chip-line: #0b0b0f;
+  --paper: #ffffff;
+  --win-bg: #ffffff;
+  --win-bar: #0b0b0f;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 92px;
+  --title-px-card: 46px;
+  --title-weight: 900;
+  --title-track: -0.035em;
+  --copy-w: 50%;
+  --claim-w: 560px;
+  --chip-r: 4px;
+}

@@ -1,0 +1,121 @@
+{
+  "product": "cover:gumroad/sprite-sheet-factory",
+  "from_repo": "factory",
+  "storeName": "Gumroad",
+  "title": "Sprite Sheet Factory",
+  "pick": "pixel-playful",
+  "kicker": "2D animated pixel-art sheets",
+  "claim": "290 animated sheets across 10 themes",
+  "chips": [
+    "10 themes",
+    "740 frames",
+    "Walk, idle, attack, tiles, items, FX",
+    {
+      "t": "Manifest with per-file layout",
+      "wide": true
+    }
+  ],
+  "badge": "$29 one-time",
+  "tokens": {
+    "bg": "#ff8a1f",
+    "bg-2": "#ff6a00",
+    "ink": "#1a1030",
+    "muted": "#33204f",
+    "accent": "#1a1030",
+    "accent-ink": "#7a1f00",
+    "on-accent": "#ffc15e",
+    "chip-bg": "#fff3e0",
+    "chip-ink": "#1a1030",
+    "chip-line": "#1a1030",
+    "panel": "#171a3a",
+    "cell": "#232860",
+    "cell-line": "#3a4096",
+    "star": "#ffe14d"
+  },
+  "fonts": {
+    "display": "'Segoe UI Black', 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif"
+  },
+  "titlePx": 110,
+  "titlePxCard": 50,
+  "titleWeight": 900,
+  "titleTrack": "-0.03em",
+  "titleWrapWide": [
+    "Sprite Sheet",
+    "Factory"
+  ],
+  "titleWrapCard": [
+    "Sprite Sheet Factory"
+  ],
+  "copyW": "58%",
+  "claimW": "580px",
+  "chipR": "6px",
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/listing/gumroad.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/preview/cover-fs18.png",
+  "landing": "products/game-dev-2d/sprite-sheet-factory/covers/from-design-studio/O-016/",
+  "assetsFrom": "the product's own assets/ sprite sheets",
+  "assets": [
+    {
+      "name": "forest_hero_walk_01_64x64.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/forest_hero_walk_01_64x64.png",
+      "what": "hero walk, forest sheet shipped in the zip"
+    },
+    {
+      "name": "ice_hero_walk_01_64x64.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/ice_hero_walk_01_64x64.png",
+      "what": "hero walk, ice sheet shipped in the zip"
+    },
+    {
+      "name": "desert_hero_idle_64x64.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/desert_hero_idle_64x64.png",
+      "what": "hero idle, desert sheet shipped in the zip"
+    },
+    {
+      "name": "volcano_enemy_walk_01_64x64.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/volcano_enemy_walk_01_64x64.png",
+      "what": "enemy walk, volcano sheet shipped in the zip"
+    },
+    {
+      "name": "space_hero_attack_128x128.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/space_hero_attack_128x128.png",
+      "what": "hero attack, space sheet shipped in the zip"
+    },
+    {
+      "name": "dungeon_creature_boss_128x128.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/dungeon_creature_boss_128x128.png",
+      "what": "boss creature, dungeon sheet shipped in the zip"
+    },
+    {
+      "name": "meadow_tile_ground_64x64.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/meadow_tile_ground_64x64.png",
+      "what": "ground tile, meadow sheet shipped in the zip"
+    },
+    {
+      "name": "ocean_prop_tree_128x128.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/ocean_prop_tree_128x128.png",
+      "what": "prop tree, ocean sheet shipped in the zip"
+    },
+    {
+      "name": "forest_item_potion_48x48.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/forest_item_potion_48x48.png",
+      "what": "item potion, forest sheet shipped in the zip"
+    },
+    {
+      "name": "desert_item_chest_64x64.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/desert_item_chest_64x64.png",
+      "what": "item chest, desert sheet shipped in the zip"
+    },
+    {
+      "name": "ruins_fx_explosion_64x64.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/ruins_fx_explosion_64x64.png",
+      "what": "explosion FX, ruins sheet shipped in the zip"
+    },
+    {
+      "name": "storm_creature_flyer_64x32.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/sprite-sheet-factory/assets/storm_creature_flyer_64x32.png",
+      "what": "creature flyer, storm sheet shipped in the zip"
+    }
+  ],
+  "theirsPx256": 19,
+  "beatNote": "theirs is a bold two-line caps title, ours is larger and darker on orange"
+}

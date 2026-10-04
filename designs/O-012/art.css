@@ -1,0 +1,20 @@
+  .stage { background: linear-gradient(160deg, var(--bg) 0%, var(--bg-2) 100%); }
+  .art .sun { position: absolute; inset-inline-end: -60px; top: 90px; width: 440px; height: 440px; border-radius: 50%; background: linear-gradient(180deg, var(--gold) 0%, var(--accent) 100%); opacity: 0.9; }
+  .art .win { outline: 3px solid var(--cyan); }
+  .art .win::before { border-bottom-color: var(--cyan); }
+  .art .win.a { width: 590px; inset-inline-start: 20px; top: 96px; transform: rotate(-2deg); }
+  .art .win.b { width: 440px; inset-inline-end: 24px; top: 408px; transform: rotate(2.5deg); outline-color: var(--accent); }
+  .art .win.b::before { border-bottom-color: var(--accent); }
+  .art .win.b .vp { height: 202px; }
+  .art .win.b .vp img { width: 440px; top: -45px; inset-inline-start: 0; }
+  .art .sticker { position: absolute; inset-inline-end: 34px; top: 28px; font-family: var(--font-display); font-weight: 900; font-size: 92px; line-height: 0.9; color: var(--on-accent); background: var(--cyan); padding: 10px 20px 8px; border-radius: 12px; transform: rotate(4deg); box-shadow: 6px 6px 0 var(--accent); }
+  .art .sticker small { display: block; font-size: 30px; letter-spacing: 0.3em; }
+  @media (max-width: 800px) {
+    .art .sun { width: 240px; height: 240px; top: 40px; inset-inline-end: -40px; }
+    .art .win.a { width: 340px; inset-inline-start: 14px; top: 28px; }
+    .art .win.b { width: 250px; inset-inline-end: 12px; top: 150px; }
+    .art .win.b .vp { height: 115px; }
+    .art .win.b .vp img { width: 250px; top: -25px; }
+    .art .sticker { font-size: 52px; top: 8px; inset-inline-end: 18px; padding: 6px 12px 4px; box-shadow: 4px 4px 0 var(--accent); }
+    .art .sticker small { font-size: 16px; }
+  }

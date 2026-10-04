@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- designs/O-020/page.html: O-020 itch.io cover for AI Search Visibility Audit Kit (editorial). Facts only from aeo-visibility-audit-kit/itch.md. Color only via tokens.css. 1280x720 hero above 800px wide, 630x500 store card at 800px and below. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  .stage { position: relative; display: flex; width: 100%; height: 100%; overflow: hidden; background: var(--stage-bg, var(--bg)); }
+  .copy { position: relative; z-index: 3; flex: 0 0 var(--copy-w, 52%); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-inline-start: var(--pad, 72px); padding-block: 48px; }
+  .art { position: relative; z-index: 1; flex: 1; }
+  .kicker { font-weight: 800; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 16px; }
+  h1 { text-wrap: balance; font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: var(--title-px, 104px); line-height: 0.96; letter-spacing: var(--title-track, -0.01em); color: var(--ink); margin-bottom: 22px; }
+  .claim { text-wrap: balance; font-size: var(--claim-px, 32px); line-height: 1.2; color: var(--muted); font-weight: 600; margin-bottom: 26px; max-width: var(--claim-w, 560px); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-bottom: 28px; max-width: var(--claim-w, 560px); }
+  .chips li { font-size: 21px; font-weight: 700; line-height: 1.1; padding: 9px 14px; border-radius: var(--chip-r, 8px); background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); }
+  .cta { font-size: 30px; font-weight: 800; line-height: 1; padding: 15px 30px; border-radius: var(--chip-r, 8px); background: var(--accent); color: var(--on-accent); }
+  .fine { margin-top: 16px; font-size: 19px; color: var(--muted); max-width: var(--claim-w, 560px); }
+  .win { position: absolute; border-radius: 10px; overflow: hidden; background: var(--win-bg, var(--ink)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.22); }
+  .win::before { content: ""; display: block; height: 22px; background: var(--win-bar, var(--ink)); border-bottom: 3px solid var(--accent); }
+  .win img { display: block; width: 100%; }
+  .win .vp { position: relative; overflow: hidden; }
+  .win .vp img { position: absolute; max-width: none; }
+  @media (max-width: 800px) {
+    .stage { flex-direction: column; }
+    .copy { flex: 0 0 auto; padding-inline: var(--pad-card, 26px); padding-block: var(--pad-top-card, 22px) 0; }
+    .kicker { font-size: 14px; margin-bottom: 8px; }
+    h1 { font-size: var(--title-px-card, 60px); margin-bottom: 8px; }
+    .claim { font-size: var(--claim-px-card, 21px); margin-bottom: 12px; max-width: none; }
+    .chips { gap: 6px; margin-bottom: 0; max-width: none; }
+    .chips li { font-size: 14px; padding: 5px 9px; border-width: 1.5px; }
+    .chips li.wide-only { display: none; }
+    .cta { font-size: 19px; padding: 9px 18px; }
+    .fine { display: none; }
+    .art { flex: 1; min-height: 0; }
+  }
+  .stage { background: linear-gradient(150deg, var(--bg) 0%, var(--bg-2) 100%); }
+  .art .ring { position: absolute; width: 480px; height: 480px; border-radius: 50%; border: 3px solid var(--accent); opacity: 0.35; inset-inline-end: -120px; top: -80px; }
+  .art .pg { position: absolute; width: 510px; background: var(--paper); border-radius: 6px; box-shadow: 0 22px 44px rgba(0, 0, 0, 0.5); }
+  .art .r { inset-inline-start: 40px; top: 36px; transform: rotate(-4deg); }
+  .art .c { inset-inline-start: 96px; top: 228px; transform: rotate(2deg); }
+  .art .b { inset-inline-start: 56px; top: 392px; transform: rotate(-1.5deg); }
+  .art .st { position: absolute; z-index: 3; background: var(--accent); color: var(--on-accent); font-weight: 800; font-size: 20px; line-height: 1; padding: 9px 16px 11px; border-radius: 8px; text-align: center; box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4); }
+  .art .st b { display: block; font-family: var(--font-display); font-size: 58px; line-height: 0.95; }
+  .art .s1 { inset-inline-end: 18px; top: 150px; transform: rotate(4deg); }
+  .art .s2 { inset-inline-end: 54px; top: 330px; transform: rotate(-3deg); background: var(--gold); }
+  @media (max-width: 800px) {
+    .art .ring { width: 300px; height: 300px; top: -40px; }
+    .art .pg { width: 262px; }
+    .art .r { inset-inline-start: 14px; top: 20px; }
+    .art .c { inset-inline-start: 190px; top: 54px; }
+    .art .b { inset-inline-start: 354px; top: 18px; }
+    .art .st { font-size: 13px; padding: 5px 11px 7px; }
+    .art .st b { font-size: 34px; }
+    .art .s1 { inset-inline-end: auto; inset-inline-start: 18px; top: 150px; }
+    .art .s2 { inset-inline-end: auto; inset-inline-start: 120px; top: 164px; }
+  }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="copy">
+    <div class="kicker">AEO audit in one evening</div>
+    <h1 data-oid="cover.title">AI Search Visibility Audit Kit</h1>
+    <p class="claim" data-oid="cover.subtitle">Find out what AI search says about your business, then fix it</p>
+    <ul class="chips"><li>200 probe questions</li><li>20-point fix checklist</li><li>Report template</li><li class="wide-only">Honest method box: search proxy</li></ul>
+    <span class="cta" data-oid="cover.cta">$29 one-time</span>
+  </div>
+  <div class="art">
+    <div class="ring"></div>
+    <img class="pg r" src="assets/report.png" alt="Worked audit report">
+    <img class="pg c" src="assets/checklist.png" alt="20-point fix checklist">
+    <img class="pg b" src="assets/banks.png" alt="200 probe questions">
+    <div class="st s1"><b>200</b>probes</div><div class="st s2"><b>20</b>fixes</div>
+
+  </div>
+</div>
+</body>
+</html>

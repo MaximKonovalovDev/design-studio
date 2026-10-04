@@ -1,0 +1,24 @@
+/* designs/O-019/tokens.css: O-019 Workshop Machine Owner's Kit (clean-professional). All page color comes from these vars. */
+:root {
+  --bg: #141a24;
+  --bg-2: #232c3d;
+  --ink: #ffffff;
+  --muted: #d4dbe8;
+  --accent: #ffb02e;
+  --accent-ink: #ffb02e;
+  --on-accent: #141a24;
+  --chip-bg: #1d2635;
+  --chip-ink: #ffffff;
+  --chip-line: #ffb02e;
+  --paper: #ffffff;
+  --amber: #8f4210;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --title-px: 88px;
+  --title-px-card: 42px;
+  --title-weight: 900;
+  --title-track: -0.03em;
+  --copy-w: 52%;
+  --claim-w: 560px;
+  --chip-r: 6px;
+}
