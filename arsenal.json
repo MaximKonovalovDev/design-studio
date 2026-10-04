@@ -281,6 +281,16 @@
           "name": "verdict",
           "does": "packet 0b verdict writer: writes designs/<id>/VERDICT.md from --line BEATS/PICTURE/FACTS/FIT/LANE; refuses PASS unless --built passes",
           "flag": "--verdict"
+        },
+        {
+          "name": "deliver",
+          "does": "packet 0b remainder (NEED-09): copy a PASS folder into the customer from-design-studio/<id>/, write designs/<id>/DELIVERED.json, set orders.csv delivered; --check verifies the customer bytes",
+          "flag": "--deliver"
+        },
+        {
+          "name": "round",
+          "does": "packet 0b remainder (NEED-09): print the ROUND real yes/no line (built/judged/delivered/adopted/tools/unjudged-oldest/in-flight); --save also writes sprint/queue/round.md; exit 1 when real no",
+          "flag": "--round"
         }
       ],
       "test": [
@@ -417,6 +427,58 @@
       ],
       "timeout_s": 60,
       "first_job": "O-011: hud + menu + avatar 640x360 screens packed to kits/game-ui/atlas.png 1926x362 + atlas.json"
+    },
+    {
+      "name": "compose",
+      "does": "side-by-side compare.png of ours vs the cover to beat at listing widths (256,315) plus svg2png raster of our own SVG shapes, both through the local browser",
+      "run": [
+        "node",
+        "tools/compose.mjs"
+      ],
+      "args": [
+        {
+          "name": "cmd",
+          "does": "compare or svg2png",
+          "required": true
+        },
+        {
+          "name": "ours",
+          "does": "our PNG for compare, e.g. designs/O-026/out.png",
+          "required": true
+        },
+        {
+          "name": "theirs",
+          "does": "customer cover to beat for compare",
+          "required": true
+        },
+        {
+          "name": "widths",
+          "does": "comma listing widths, default 256,315",
+          "flag": "--widths"
+        },
+        {
+          "name": "out",
+          "does": "output PNG path, e.g. --out designs/O-026/compare.png",
+          "flag": "--out"
+        },
+        {
+          "name": "svg",
+          "does": "input SVG for svg2png",
+          "required": false
+        }
+      ],
+      "test": [
+        "node",
+        "tools/compose.mjs",
+        "--check"
+      ],
+      "for": [
+        "store lane: side-by-side against the cover to beat",
+        "review chain: BEATS gate from compare.png at 256 and 315 px",
+        "game lane: svg2png raster of our own SVG shapes"
+      ],
+      "timeout_s": 120,
+      "first_job": "O-026: designs/O-026/compare.png 780x706 via compare ours vs factory fleet-pack cover at 256,315px"
     }
   ]
 }

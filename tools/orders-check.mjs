@@ -8,7 +8,15 @@
 //                                          packet 0b: folder completeness gate (exit 0 BUILT PASS, 1 BUILT FAIL)
 //   node tools/orders-check.mjs --verdict <id> PASS|FAIL --line "BEATS ...; PICTURE ...; FACTS ...; FIT ...; LANE ..."
 //                                          packet 0b: write designs/<id>/VERDICT.md (refuses PASS unless --built passes)
-import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+//   node tools/orders-check.mjs --deliver <id> [--check]
+//                                          packet 0b remainder (NEED-09): copy a PASS folder into the customer
+//                                          from-design-studio/<id>/, write designs/<id>/DELIVERED.json, set
+//                                          orders.csv delivered; --check verifies the customer bytes
+//   node tools/orders-check.mjs --round [--save]
+//                                          packet 0b remainder (NEED-09): print the ROUND real yes/no line
+//                                          (--save also writes sprint/queue/round.md; exit 1 when real no)
+import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -295,6 +303,196 @@ export function writeVerdict(id, verdict, line, { designsDir = join(ROOT, "desig
   return { ok: true, path, message: `VERDICT ${v}: ${id} -> designs/${id}/VERDICT.md` };
 }
 
+// ---- packet 0b remainder: --deliver and --round ---------------------------
+// --deliver <id>: copies a PASS folder into the customer repo under
+// from-design-studio/<id>/ (factory: <product folder>/covers/
+// from-design-studio/<id>/, Maxim S84), writes designs/<id>/DELIVERED.json
+// (customer path + sha256 of each file) and sets the orders.csv row to
+// delivered with delivered_path. Refuses unless VERDICT is PASS and --built
+// passes; refuses to overwrite a customer file that differs. Never touches
+// a customer file outside from-design-studio/.
+// --deliver <id> --check: verifies every file in the customer folder has
+// the bytes+sha256 in designs/<id>/DELIVERED.json.
+// --round [--save]: prints ROUND: real yes|no | built | judged | delivered
+// | adopted | tools | unjudged-oldest | in-flight. real no (exit 1) means
+// no uncommitted real file (designs/, tools/, tests/, packs/, kits/,
+// samples/, fonts/, templates/) this round: no handoff commit. --save also
+// writes sprint/queue/round.md.
+export function customerDirFor(repo, empireJson = EMPIRE_JSON) {
+  try {
+    const emp = JSON.parse(readFileSync(empireJson, "utf8"));
+    const d = emp?.repos?.[repo]?.dir;
+    return d ? String(d) : null;
+  } catch {
+    return null;
+  }
+}
+
+export function resolveLanding(id, row, designsDir = join(ROOT, "designs")) {
+  const dir = join(designsDir, id);
+  try {
+    const spec = JSON.parse(readFileSync(join(dir, "cover.json"), "utf8"));
+    if (spec?.landing && String(spec.landing).includes("from-design-studio")) {
+      return String(spec.landing).replace(/\/+$/, "");
+    }
+  } catch { /* no cover.json landing */ }
+  try {
+    const md = String(readFileSync(join(dir, "DELIVERY.md"), "utf8"));
+    const m = md.match(/`([^`]*from-design-studio\/[^`]*)`/);
+    if (m) return m[1].replace(/\/+$/, "");
+  } catch { /* no DELIVERY.md landing */ }
+  if (row?.from_repo === "factory") return null;
+  return `from-design-studio/${id}`;
+}
+
+function walkFiles(abs) {
+  const out = [];
+  const walk = (d) => {
+    for (const e of readdirSync(d, { withFileTypes: true })) {
+      const p = join(d, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (e.isFile()) out.push(p);
+    }
+  };
+  walk(abs);
+  return out;
+}
+
+export function collectDesignFiles(id, designsDir = join(ROOT, "designs")) {
+  const dir = join(designsDir, id);
+  return walkFiles(dir)
+    .filter((p) => !p.replace(/\\/g, "/").endsWith("/DELIVERED.json"))
+    .map((abs) => {
+      const rel = abs.slice(dir.length + 1).replace(/\\/g, "/");
+      const buf = readFileSync(abs);
+      return { rel, abs, bytes: buf.length, sha256: createHash("sha256").update(buf).digest("hex") };
+    })
+    .sort((a, b) => (a.rel < b.rel ? -1 : 1));
+}
+
+export function runDeliver(id, { designsDir = join(ROOT, "designs"), ordersPath = join(ROOT, "orders.csv"), empireJson = EMPIRE_JSON, now = null } = {}) {
+  const raw = readFileSync(ordersPath, "utf8");
+  const book = parseOrders(raw);
+  const row = book.rows.find((r) => r.order_id === id);
+  if (!row) return { ok: false, message: `DELIVER FAIL: ${id} has no orders.csv row` };
+  if (!REPOS.includes(row.from_repo)) return { ok: false, message: `DELIVER FAIL: ${id} from_repo ${row.from_repo} unknown` };
+  const verdict = readVerdict(id, designsDir);
+  if (verdict !== "PASS") return { ok: false, message: `DELIVER REFUSED: ${id} needs VERDICT PASS (has ${verdict ?? "none"})` };
+  const built = checkBuilt(id, { designsDir });
+  if (!built.pass) return { ok: false, message: `DELIVER REFUSED: ${id} BUILT FAIL: ${built.fail}` };
+  const landing = resolveLanding(id, row, designsDir);
+  if (!landing) return { ok: false, message: `DELIVER REFUSED: ${id} factory order needs its landing in cover.json or DELIVERY.md (covers/from-design-studio/${id}/)` };
+  if (!landing.includes("from-design-studio/")) return { ok: false, message: `DELIVER REFUSED: ${id} landing ${landing} is outside from-design-studio/` };
+  const customerRoot = customerDirFor(row.from_repo, empireJson);
+  if (!customerRoot) return { ok: false, message: `DELIVER FAIL: ${id} no customer dir for ${row.from_repo} in empire.json` };
+  const dest = join(customerRoot, landing.replace(/\//g, process.platform === "win32" ? "\\" : "/"));
+  const files = collectDesignFiles(id, designsDir);
+  if (!files.length) return { ok: false, message: `DELIVER FAIL: ${id} designs/${id} holds no files` };
+  mkdirSync(dest, { recursive: true });
+  let copied = 0;
+  let identical = 0;
+  for (const f of files) {
+    const target = join(dest, f.rel.replace(/\//g, process.platform === "win32" ? "\\" : "/"));
+    mkdirSync(dirname(target), { recursive: true });
+    if (existsSync(target)) {
+      const cur = readFileSync(target);
+      const h = createHash("sha256").update(cur).digest("hex");
+      if (h !== f.sha256) return { ok: false, message: `DELIVER REFUSED: ${id} ${f.rel} differs in ${row.from_repo} (refuses to overwrite a file that differs)` };
+      identical += 1;
+      continue;
+    }
+    copyFileSync(f.abs, target);
+    copied += 1;
+  }
+  const utc = now ?? `${new Date().toISOString().slice(0, 16)}Z`;
+  const delivered = {
+    order_id: id,
+    from_repo: row.from_repo,
+    maker: "design-studio",
+    product: row.product,
+    delivered_utc: utc,
+    source: `design-studio designs/${id}`,
+    landing: landing.replace(/\/+$/, ""),
+    customer: customerRoot.replace(/\\/g, "/"),
+    delivered: [`${files.length} files copied verbatim (refuse-overwrite-if-differs)`, `landing ${landing.replace(/\/+$/, "")}/ in ${row.from_repo}`],
+    files: files.map((f) => ({ name: f.rel, bytes: f.bytes, sha256: f.sha256 })),
+  };
+  writeFileSync(join(designsDir, id, "DELIVERED.json"), `${JSON.stringify(delivered, null, 2)}\n`);
+  const endsNl = raw.endsWith("\n");
+  const lines = String(raw).replace(/\r\n/g, "\n").split("\n");
+  if (lines.length && lines[lines.length - 1] === "") lines.pop();
+  const idx = lines.findIndex((l) => l.split(",")[0] === id);
+  if (idx !== -1) {
+    const f = lines[idx].split(",");
+    f[4] = "delivered";
+    f[5] = landing.replace(/\/+$/, "");
+    lines[idx] = f.join(",");
+    writeFileSync(ordersPath, `${lines.join("\n")}${endsNl ? "\n" : ""}`);
+  }
+  return { ok: true, dest, copied, identical, files: files.length, landing: landing.replace(/\/+$/, ""), message: `DELIVER PASS: ${id} -> ${row.from_repo}/${landing.replace(/\/+$/, "")}/ (${files.length} files, ${copied} copied ${identical} identical)` };
+}
+
+export function checkDeliver(id, { designsDir = join(ROOT, "designs"), empireJson = EMPIRE_JSON } = {}) {
+  const dir = join(designsDir, id);
+  let rec = null;
+  try {
+    rec = JSON.parse(readFileSync(join(dir, "DELIVERED.json"), "utf8"));
+  } catch (e) {
+    return { ok: false, message: `DELIVER CHECK FAIL: ${id} designs/${id}/DELIVERED.json unreadable (${e.message})` };
+  }
+  const customerRoot = customerDirFor(rec.from_repo, empireJson);
+  if (!customerRoot) return { ok: false, message: `DELIVER CHECK FAIL: ${id} no customer dir for ${rec.from_repo}` };
+  const dest = join(customerRoot, String(rec.landing ?? "").replace(/\//g, process.platform === "win32" ? "\\" : "/"));
+  if (!existsSync(dest)) return { ok: false, message: `DELIVER CHECK FAIL: ${id} customer folder ${rec.from_repo}/${rec.landing}/ is missing` };
+  const want = new Map((rec.files ?? []).map((f) => [String(f.name), f]));
+  const actual = walkFiles(dest).map((abs) => abs.slice(dest.length + 1).replace(/\\/g, "/")).sort();
+  for (const rel of actual) {
+    const w = want.get(rel);
+    if (!w) return { ok: false, message: `DELIVER CHECK FAIL: ${id} ${rel} in customer folder but not in DELIVERED.json` };
+    const buf = readFileSync(join(dest, rel.replace(/\//g, process.platform === "win32" ? "\\" : "/")));
+    if (buf.length !== Number(w.bytes)) return { ok: false, message: `DELIVER CHECK FAIL: ${id} ${rel} is ${buf.length}B, DELIVERED.json says ${w.bytes}B` };
+    const h = createHash("sha256").update(buf).digest("hex");
+    if (h !== String(w.sha256).toLowerCase()) return { ok: false, message: `DELIVER CHECK FAIL: ${id} ${rel} sha256 mismatch` };
+  }
+  for (const rel of [...want.keys()].sort()) {
+    if (!actual.includes(rel)) return { ok: false, message: `DELIVER CHECK FAIL: ${id} ${rel} in DELIVERED.json but missing in customer folder` };
+  }
+  return { ok: true, message: `DELIVER CHECK PASS: ${id} (${actual.length}/${want.size} files)` };
+}
+
+const REAL_PREFIXES = ["designs/", "tools/", "tests/", "packs/", "kits/", "samples/", "fonts/", "templates/"];
+
+export function roundState({ rows, designsDir = join(ROOT, "designs"), arsenalPath = join(ROOT, "arsenal.json"), porcelain = null } = {}) {
+  let built = 0;
+  let judged = 0;
+  for (const r of rows) {
+    try {
+      if (checkBuilt(r.order_id, { designsDir }).pass) built += 1;
+    } catch { /* a broken folder counts as not built */ }
+    if (readVerdict(r.order_id, designsDir) === "PASS") judged += 1;
+  }
+  const delivered = rows.filter((r) => r.status === "delivered").length;
+  const adopted = rows.filter((r) => r.status === "adopted").length;
+  let tools = 0;
+  try {
+    tools = (JSON.parse(readFileSync(arsenalPath, "utf8")).tools ?? []).length;
+  } catch { tools = 0; }
+  const unjudged = rows.find((r) => (r.status === "open" || r.status === "building") && readVerdict(r.order_id, designsDir) == null);
+  const inFlight = rows.filter((r) => r.status === "open" || r.status === "building").length;
+  let real = false;
+  try {
+    const p = porcelain ?? String(execSync("git status --porcelain", { cwd: ROOT, encoding: "utf8" }));
+    real = p.split("\n").some((l) => {
+      const f = l.slice(3).trim().replace(/\\/g, "/").replace(/^"|"$/g, "");
+      return REAL_PREFIXES.some((pre) => f.startsWith(pre));
+    });
+  } catch {
+    real = built > 0 && judged > 0;
+  }
+  const line = `ROUND: real ${real ? "yes" : "no"} | built ${built} | judged ${judged} | delivered ${delivered} | adopted ${adopted} | tools ${tools} | unjudged-oldest ${unjudged ? unjudged.order_id : "none"} | in-flight ${inFlight}`;
+  return { built, judged, delivered, adopted, tools, unjudged: unjudged ? unjudged.order_id : "none", inFlight, real, line };
+}
+
 function previewPics(id, designsDir) {
   let entries = null;
   try {
@@ -411,6 +609,35 @@ if (isMain) {
     const r = writeVerdict(id, verdict, line);
     console.log(r.ok ? r.message : r.message);
     process.exit(r.ok ? 0 : 1);
+  }
+  if (process.argv.includes("--deliver")) {
+    const di = process.argv.indexOf("--deliver");
+    const id = process.argv[di + 1];
+    if (!id || id.startsWith("--")) { console.log("DELIVER FAIL: (no id) usage: node tools/orders-check.mjs --deliver <order-id> [--check]"); process.exit(1); }
+    try {
+      if (process.argv.includes("--check")) {
+        const r = checkDeliver(id);
+        console.log(r.message);
+        process.exit(r.ok ? 0 : 1);
+      }
+      const r = runDeliver(id);
+      console.log(r.message);
+      process.exit(r.ok ? 0 : 1);
+    } catch (e) {
+      console.log(`DELIVER FAIL: ${id} ${e.message}`);
+      process.exit(1);
+    }
+  }
+  if (process.argv.includes("--round")) {
+    const book = parseOrders(readFileSync(file, "utf8"));
+    const r = roundState({ rows: book.rows });
+    if (process.argv.includes("--save")) {
+      mkdirSync(join(ROOT, "sprint/queue"), { recursive: true });
+      const date = new Date().toISOString().slice(0, 10);
+      writeFileSync(join(ROOT, "sprint/queue/round.md"), `# round ${date}\n${r.line}\n`);
+    }
+    console.log(r.line);
+    process.exit(r.real ? 0 : 1);
   }
   const book = parseOrders(readFileSync(file, "utf8"));
   const bad = checkOrders(book);

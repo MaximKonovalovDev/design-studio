@@ -5,7 +5,7 @@ import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { HEADER, beatAsset, buildDesk, checkBuilt, checkOrders, coverStatus, laneFor, parseOrders, pathOnDisk, readVerdict, writeVerdict, DESK_HEADER } from "../tools/orders-check.mjs";
+import { HEADER, beatAsset, buildDesk, checkBuilt, checkDeliver, checkOrders, collectDesignFiles, coverStatus, customerDirFor, laneFor, parseOrders, pathOnDisk, readVerdict, resolveLanding, roundState, runDeliver, writeVerdict, DESK_HEADER } from "../tools/orders-check.mjs";
 
 const row = (o) => ({ order_id: "O-9", from_repo: "factory", product: "cover:gumroad/x", brief: "b", status: "open", delivered_path: "", adopted: "no", date: "2026-10-03", adopted_commit: "", ...o });
 const csv = (...rows) => [HEADER, ...rows.map((r) => Object.values(row(r)).join(","))].join("\n");
@@ -222,5 +222,89 @@ describe("verdict writer (tool sprint packet 0b)", () => {
     mkdirSync(join(dz, "O-9"), { recursive: true });
     writeFileSync(join(dz, "O-9", "VERDICT.md"), "# VERDICT O-9: PASS (worker self-review)\n");
     assert.equal(readVerdict("O-9", dz), null);
+  });
+});
+
+describe("deliver (tool sprint packet 0b remainder, NEED-09)", () => {
+  const png = (w, h) => Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 13]), Buffer.from("IHDR"), Buffer.from([0, 0, (w >> 8) & 255, w & 255, 0, 0, (h >> 8) & 255, h & 255])]);
+  const sandbox = () => {
+    const base = mkdtempSync(join(tmpdir(), "deliver-"));
+    const dz = join(base, "designs");
+    const cust = join(base, "customer");
+    const dir = join(dz, "O-9");
+    mkdirSync(join(dir, "assets"), { recursive: true });
+    mkdirSync(cust, { recursive: true });
+    writeFileSync(join(dir, "brief.json"), JSON.stringify({ title: "T", size: { w: 1280, h: 720 } }));
+    writeFileSync(join(dir, "page.html"), "<h1>T</h1>");
+    writeFileSync(join(dir, "tokens.css"), ":root{--bg:#fff}");
+    writeFileSync(join(dir, "out.png"), png(1280, 720));
+    writeFileSync(join(dir, "thumb-256.png"), png(256, 144));
+    writeFileSync(join(dir, "design-audit.json"), JSON.stringify({ pass: true, checks: [] }));
+    writeFileSync(join(dir, "DESIGN-REVIEW.md"), "SHIP: 10/10 meets the floor.");
+    writeFileSync(join(dir, "DELIVERY.md"), "# DELIVERY O-9\n1. Landing in lab: `from-design-studio/O-9/` (copy this whole folder).\n");
+    writeFileSync(join(dir, "assets.json"), JSON.stringify({ assets: [] }));
+    writeFileSync(join(dir, "VERDICT.md"), "VERDICT: PASS O-9\nBEATS: b\nPICTURE: p\nFACTS: f\nFIT: t\nLANE: l\n");
+    const ordersPath = join(base, "orders.csv");
+    writeFileSync(ordersPath, [HEADER, "O-9,fp-research,order:probe-kit,b,open,,no,2026-10-03,"].join("\n") + "\n");
+    const empireJson = join(base, "empire.json");
+    writeFileSync(empireJson, JSON.stringify({ repos: { "fp-research": { dir: cust } } }));
+    return { base, dz, cust, ordersPath, empireJson };
+  };
+  it("landing comes from DELIVERY.md, refused outside from-design-studio", () => {
+    const s = sandbox();
+    const rows = parseOrders(readFileSync(s.ordersPath, "utf8")).rows;
+    assert.equal(resolveLanding("O-9", rows[0], s.dz), "from-design-studio/O-9");
+    assert.equal(customerDirFor("fp-research", s.empireJson), s.cust);
+    assert.equal(customerDirFor("nope", s.empireJson), null);
+  });
+  it("refuses without VERDICT PASS and refuses to overwrite a differing file", () => {
+    const s = sandbox();
+    writeFileSync(join(s.dz, "O-9", "VERDICT.md"), "VERDICT: FAIL O-9\nnope\n");
+    const r1 = runDeliver("O-9", { designsDir: s.dz, ordersPath: s.ordersPath, empireJson: s.empireJson });
+    assert.equal(r1.ok, false);
+    assert.match(r1.message, /VERDICT PASS/);
+    writeFileSync(join(s.dz, "O-9", "VERDICT.md"), "VERDICT: PASS O-9\nBEATS: b\nPICTURE: p\nFACTS: f\nFIT: t\nLANE: l\n");
+    const r2 = runDeliver("O-9", { designsDir: s.dz, ordersPath: s.ordersPath, empireJson: s.empireJson, now: "2026-10-04T13:00Z" });
+    assert.equal(r2.ok, true, r2.message);
+    assert.match(r2.message, /DELIVER PASS: O-9/);
+    writeFileSync(join(s.cust, "from-design-studio", "O-9", "page.html"), "changed bytes");
+    const r3 = runDeliver("O-9", { designsDir: s.dz, ordersPath: s.ordersPath, empireJson: s.empireJson });
+    assert.equal(r3.ok, false);
+    assert.match(r3.message, /differs/);
+  });
+  it("copies the folder, writes DELIVERED.json, sets delivered, --check verifies", () => {
+    const s = sandbox();
+    const r = runDeliver("O-9", { designsDir: s.dz, ordersPath: s.ordersPath, empireJson: s.empireJson, now: "2026-10-04T13:00Z" });
+    assert.equal(r.ok, true, r.message);
+    const rec = JSON.parse(readFileSync(join(s.dz, "O-9", "DELIVERED.json"), "utf8"));
+    assert.equal(rec.order_id, "O-9");
+    assert.equal(rec.landing, "from-design-studio/O-9");
+    assert.ok(rec.files.length >= 8);
+    const listed = new Map(rec.files.map((f) => [f.name, f]));
+    assert.ok(listed.has("page.html"));
+    assert.equal(listed.has("DELIVERED.json"), false);
+    const rows = parseOrders(readFileSync(s.ordersPath, "utf8")).rows;
+    assert.equal(rows[0].status, "delivered");
+    assert.equal(rows[0].delivered_path, "from-design-studio/O-9");
+    assert.deepEqual(checkOrders(parseOrders(readFileSync(s.ordersPath, "utf8")), (p) => p === "from-design-studio/O-9" || pathOnDisk(p)), []);
+    const c = checkDeliver("O-9", { designsDir: s.dz, empireJson: s.empireJson });
+    assert.equal(c.ok, true, c.message);
+    assert.match(c.message, /DELIVER CHECK PASS: O-9/);
+    assert.equal(collectDesignFiles("O-9", s.dz).some((f) => f.rel === "DELIVERED.json"), false);
+  });
+});
+
+describe("round (tool sprint packet 0b remainder, NEED-09)", () => {
+  it("prints the real yes/no line with all seven fields", () => {
+    const rows = parseOrders([HEADER, "O-9,fp-research,order:probe-kit,b,open,,no,2026-10-03,"].join("\n")).rows;
+    const dz = join(mkdtempSync(join(tmpdir(), "round-")), "designs");
+    const rNo = roundState({ rows, designsDir: dz, arsenalPath: join(dz, "missing.json"), porcelain: "" });
+    assert.equal(rNo.real, false);
+    assert.match(rNo.line, /^ROUND: real no \| built 0 \| judged 0 \| delivered 0 \| adopted 0 \| tools 0 \| unjudged-oldest O-9 \| in-flight 1$/);
+    const rYes = roundState({ rows, designsDir: dz, arsenalPath: join(dz, "missing.json"), porcelain: " M designs/O-9/page.html\n" });
+    assert.equal(rYes.real, true);
+    assert.match(rYes.line, /^ROUND: real yes /);
+    const rClean = roundState({ rows, designsDir: dz, arsenalPath: join(dz, "missing.json"), porcelain: " M sprint/handoff.md\n" });
+    assert.equal(rClean.real, false);
   });
 });

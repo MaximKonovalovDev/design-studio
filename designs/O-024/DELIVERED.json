@@ -1,0 +1,71 @@
+{
+  "order_id": "O-024",
+  "from_repo": "marketing-studio",
+  "maker": "design-studio",
+  "product": "post-visual:aeo-visibility-audit-kit",
+  "delivered_utc": "2026-10-04T13:07Z",
+  "source": "design-studio designs/O-024",
+  "landing": "from-design-studio/O-024",
+  "customer": "C:/Users/me/Desktop/marketing-studio",
+  "delivered": [
+    "11 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing from-design-studio/O-024/ in marketing-studio"
+  ],
+  "files": [
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1997,
+      "sha256": "551aa2f02c6c12a8d5eede7669ee6bb9fef114f9c01846da5dbb1b45f2ed78e5"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1188,
+      "sha256": "129c3cc88d3e9ce091bfa1808e6adeba0527a76de736206a09b05417f3bb21c6"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 1257,
+      "sha256": "860766a533cbd1be07e17d82acfaa503115f46561c85618e55b5cff02beaa157"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 187,
+      "sha256": "6f02087fe13f0488aff87e2cc963ad68762ee40de829b433e9503c5f3c33cb72"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 846,
+      "sha256": "3829512295b451ec8fcd5fab3973a091a4d954d5ba4682829c6a73a0292c7011"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2989,
+      "sha256": "9fac9071d4f55a467668572ed829e334bd5827f97aa958186cba8a84a14df150"
+    },
+    {
+      "name": "out-1080x1080.png",
+      "bytes": 219782,
+      "sha256": "f1f25b7730496ab09289838ac2e7bf1050b1d6f9944e995ca3dc3fe6718eeaf3"
+    },
+    {
+      "name": "out.png",
+      "bytes": 161387,
+      "sha256": "529fb0d9f5b547bb9a63e92788116dd8fdabaa8aeda804c3ed1f4075e7b69f44"
+    },
+    {
+      "name": "page.html",
+      "bytes": 4703,
+      "sha256": "6fab3e63e74197cc658aacae64fe41df0a063360eb7d29296c6a38ebf8e8040e"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 14616,
+      "sha256": "2d63a2bc9d0b6867240b9f31bf125697f9c7d49190e512c1f9cdfa3c5a92da17"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 688,
+      "sha256": "82de17984733fc25b80b83508a8f1da05d994d05547283d6d8c27e22c5b63070"
+    }
+  ]
+}
