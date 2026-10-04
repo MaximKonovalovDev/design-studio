@@ -1,20 +1,22 @@
-# design-studio handoff - round 66 (token 7e4a)
+# design-studio handoff - round 74 (token c82e)
 
-Round: 66
-Written: 2026-10-04T11:49Z by lead (token 7e4a, lock held all session).
+Round: 74
+Written: 2026-10-04T13:09Z by lead (token c82e, held all session).
 Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground.
+Batch: keeper named 2, sent 2 (both builder, foreground).
 
 ## Heading
-- D2 Five orders adopted moved 4/5 -> 5/5 MET (finish 3 of 5: D1+D2+D3). Scorecard unchanged (6 at 100%, Landing 0% BLOCKED via DS-70).
+- No Scorecard row moved (6 at 100%, Landing 0% BLOCKED via DS-70). Finish 3 of 5: D1+D2+D3 met, D4+D5 open. ROUND: real yes | built 22 | judged 3 | delivered 21 | adopted 5.
+- D4 not moved by this batch: it needs forge/engine2040 to load the O-023/O-011 kits (customer-side adoption). No game-lane packet was in the batch; eye already swept today. Path: next eye sweep checks O-023 use; DLV flow is now tooled.
 
-## Done
-- O-025 adopted by skillworks, committed 642f94e (orders.csv one row). Verified by lead: listing.md:105 points at store-art/O-025/out.png, skillworks 3b7f7e9 holds identical bytes (out.png B2A4 match). Proofs: ORDERS PASS 26, finish D2 met 5 lines, sprint PASS 21/21.
-- Eye DONE: O-025 USED yes 3b7f7e9; O-022/O-023 not used (0d, no nudge yet); 0 new orders. Order board 1 open / 25 delivered / 17 used.
-- Toolsmith DONE (unjudged): compose compare+svg2png landed (tools/compose.mjs COMPOSE PASS 8/8, tests 10/10, arsenal entry, first use designs/O-026/compare.png); NEED-08 marked DONE with donor-system + mockup still open. Commit waits on chain review.
+## Done (built, awaiting chain review; nothing committed)
+- 008-compose-clean-land DONE: compose scope verified clean (arsenal diff compose entry only, cover.mjs untouched, compare.png SHA256-identical, no regen). Proofs: COMPOSE PASS 8/8, tests 10/10, TEMPLATE PASS, ORDERS PASS, sprint RESULT PASS 21/0/0.
+- toolsmith-r2 DONE: `orders-check --deliver/--round` landed (tests 21/21, arsenal deliver/round) and used on O-024: DELIVER CHECK PASS 11/11, ORDERS PASS 26 (0 open, 21 delivered, 5 adopted). NEED-09 DONE in needs.md. O-024 files sit in marketing-studio from-design-studio/O-024/ (11 files); inbox has room (23/75) for the delivery notice after judge PASS.
+- Keeper queued both reviews (ready/008-compose-clean-land-review.md, ready/toolsmith-r2-review.md); they top the next batch. Commit follows PASS verdicts.
 
 ## Blockers and notes
-- `--deliver`/`--round` still missing; DLV-O-024 waits (deliverer by hand + `git add -f` PNGs per r65 factory lesson).
-- Left dirty, not mine: knobs/plugin files, template lanes + tools/template.mjs, gifcap set, consumed ready deletions, EYE.md notes, compose tool files (pending review).
+- No work commits: builder DONE still needs judge PASS (chain). Left dirty, not mine: knobs/plugin, halt deletion, template lane + sibling arsenal entry, consumed ready deletions, EYE.md notes.
+- O-024 delivery notice to marketing-studio goes out after the reviews PASS.
 
 ## Next
-- Keeper: judge toolsmith compose review, deliverer DLV-O-024. Lead commits judged PASS only.
+- Keeper: the 2 judge reviews, then (on PASS) lead commits compose + --deliver + O-024 rows and sends the marketing-studio inbox item.
