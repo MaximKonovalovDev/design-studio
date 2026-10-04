@@ -1,0 +1,38 @@
+{
+  "tool": "pdfcheck",
+  "pdfjs": "6.4.299",
+  "date": "2026-10-04",
+  "expectPages": 1,
+  "expectWords": [
+    "תקציר",
+    "סטאק",
+    "הוכחות",
+    "התאמה לתפקיד",
+    "למידה הבאה"
+  ],
+  "files": [
+    {
+      "file": "cv-he.pdf",
+      "pages": 1,
+      "sizes": [
+        {
+          "w": 594.96,
+          "h": 841.92
+        }
+      ],
+      "items": 239,
+      "chars": 1495,
+      "hebrew": 875,
+      "latin": 67,
+      "images": 0,
+      "fonts": [
+        "g_d0_f1",
+        "g_d0_f2",
+        "g_d0_f3",
+        "g_d0_f4"
+      ],
+      "lines": 33,
+      "sample": "[ תפקיד יעד ] · [ עיר ]"
+    }
+  ]
+}

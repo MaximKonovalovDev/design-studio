@@ -316,6 +316,98 @@
       ],
       "timeout_s": 60,
       "first_job": "embedded heebo + frank-ruhl-libre (hebrew,latin 400,700) and inter + rubik (latin 400,700), 160.9KB woff2 + 4 OFL.txt"
+    },
+    {
+      "name": "pdfcheck",
+      "does": "reads a PDF text layer with pdfjs-dist 6.4.299 (Apache-2.0, legacy Node build, in-repo): page count, A4 size, real-text chars, Hebrew vs Latin letters, raster-image ops, ordered words (Hebrew section order); --json receipt",
+      "run": [
+        "node",
+        "tools/pdfcheck.mjs"
+      ],
+      "args": [
+        {
+          "name": "pdf",
+          "does": "path of the PDF to check (repeatable)",
+          "required": true
+        },
+        {
+          "name": "expect-pages",
+          "does": "required page count, e.g. 1 for a one-page CV",
+          "flag": "--expect-pages"
+        },
+        {
+          "name": "expect",
+          "does": "comma words that must occur in order, e.g. section headings",
+          "flag": "--expect"
+        },
+        {
+          "name": "json",
+          "does": "receipt JSON path for the checked files",
+          "flag": "--json"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/pdfcheck.mjs",
+        "--check"
+      ],
+      "for": [
+        "jobhunt O-007: Hebrew RTL CV PDF gate (real text, one A4 page, no images)",
+        "every CV layout: EN LTR twin text-layer gate"
+      ],
+      "timeout_s": 60,
+      "first_job": "O-007: cv-he.pdf (875 Hebrew letters) + cv-en.pdf (941 Latin) PASS, wrote designs/O-007/pdfcheck.json"
+    },
+    {
+      "name": "atlas",
+      "does": "packs PNG sprites into one atlas PNG + JSON index (maxrects BSSF, pure node, no deps): one PNG + JSON the forge HUD slice and engine2040 menu skin load",
+      "run": [
+        "node",
+        "tools/atlas.mjs"
+      ],
+      "args": [
+        {
+          "name": "src",
+          "does": "folder of PNG sprites to pack, e.g. --src kits/game-ui/shots",
+          "flag": "--src"
+        },
+        {
+          "name": "out",
+          "does": "atlas PNG path, e.g. --out kits/game-ui/atlas.png",
+          "flag": "--out"
+        },
+        {
+          "name": "json",
+          "does": "index JSON path, default beside the PNG",
+          "flag": "--json"
+        },
+        {
+          "name": "pad",
+          "does": "gutter pixels around each sprite, default 1",
+          "flag": "--pad"
+        },
+        {
+          "name": "max",
+          "does": "max atlas edge in pixels, default 2048",
+          "flag": "--max"
+        },
+        {
+          "name": "pot",
+          "does": "round the atlas to powers of two",
+          "flag": "--pot"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/atlas.mjs",
+        "--check"
+      ],
+      "for": [
+        "forge HUD slice: one engine-loadable atlas PNG + JSON instead of loose files",
+        "engine2040 menu skin: packed sprite index with verified no-overlap layout"
+      ],
+      "timeout_s": 60,
+      "first_job": "O-011: hud + menu + avatar 640x360 screens packed to kits/game-ui/atlas.png 1926x362 + atlas.json"
     }
   ]
 }
