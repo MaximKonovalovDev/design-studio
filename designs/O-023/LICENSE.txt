@@ -1,0 +1,10 @@
+CC0 1.0 Universal (Public Domain Dedication)
+
+The Pixel Arena UI pack in this folder (ui-atlas.png, ui-atlas.json, font-5x7.png, font-5x7.json,
+font-glyphs.json, ds-pixel-5x7.ttf, tokens.json, layout.json and the preview images) was authored for
+design-studio by tools/ui-pack.mjs and tools/pixel-font-ttf.py. It contains no third-party font data,
+no traced art and no downloaded files.
+
+To the extent possible under law, the author has waived all copyright and related or neighboring rights
+to this work. You can copy, change, use and ship it in a game, commercially, without asking and
+without credit. Text of the dedication: https://creativecommons.org/publicdomain/zero/1.0/legalcode

@@ -1,0 +1,6 @@
+# VERDICT O-023: PASS (worker self-review, 2026-10-04; the keeper's judge chain has not run on this folder)
+BEATS: no current asset to beat (the current kit (kits/game-ui, order O-011) is HTML and CSS only: no PNG, no font file and no layout data an engine can load; this pack adds all three); ours is 12.8px at 256 wide (title_px 64).
+PICTURE: the pictures are composed by tools/ui-pack.mjs from ui-atlas.png, font-5x7.png and layout.json (preview-hud.png, preview-menu.png): they show the pack files working together, nothing is drawn outside them.
+FACTS: no store claim on this sheet; the counts in ADOPT.md (27 pieces, 95 glyphs, 640x360 reference) are read from ui-atlas.json, font-5x7.json and layout.json, and `node tools/ui-pack.mjs --check` prints UIPACK PASS; forbidden words absent from page text and alt text.
+FIT: out.png 1280x720, it opened by eye, nothing cut at an edge; audit PASS (21 gates), judge 10/10 SHIP; title 12.8px at 256 wide; the kit sheet is a viewer of the pack, the pack files are the delivery.
+LANE: game = the files an engine loads exist, not only HTML: ui-atlas.png + ui-atlas.json (27 pieces with 9-slice data), font-5x7.png + font-5x7.json + ds-pixel-5x7.ttf (95 glyphs, CC0), layout.json (HUD and menu, 640x360 reference), tokens.json; node tools/ui-pack.mjs --check prints UIPACK PASS.

@@ -1,0 +1,372 @@
+{
+  "name": "ds-pixel-ui-layout-v1",
+  "reference": {
+    "w": 640,
+    "h": 360
+  },
+  "note": "x and y are offsets from the anchor edge, in reference pixels. kind nine = 9-slice piece stretched to w x h; bar = frame piece + fill piece inside the frame inset, value 0..1, from start or end; icon = piece at native size; text = font-5x7 at an integer scale, colored by a token.",
+  "screens": {
+    "hud": [
+      {
+        "id": "p1-name",
+        "kind": "text",
+        "anchor": "top-left",
+        "x": 16,
+        "y": 8,
+        "text": "PLAYER 1",
+        "scale": 1,
+        "color": "ink"
+      },
+      {
+        "id": "p1-hp",
+        "kind": "bar",
+        "anchor": "top-left",
+        "x": 16,
+        "y": 18,
+        "w": 240,
+        "h": 12,
+        "frame": "bar-frame",
+        "fill": "bar-fill-hp",
+        "value": 0.72,
+        "from": "start"
+      },
+      {
+        "id": "p1-stamina",
+        "kind": "bar",
+        "anchor": "top-left",
+        "x": 16,
+        "y": 32,
+        "w": 160,
+        "h": 8,
+        "frame": "bar-frame",
+        "fill": "bar-fill-stamina",
+        "value": 0.48,
+        "from": "start"
+      },
+      {
+        "id": "p1-round-1",
+        "kind": "icon",
+        "anchor": "top-left",
+        "x": 16,
+        "y": 44,
+        "piece": "icon-star",
+        "tint": "accent"
+      },
+      {
+        "id": "p1-round-2",
+        "kind": "icon",
+        "anchor": "top-left",
+        "x": 34,
+        "y": 44,
+        "piece": "icon-star",
+        "tint": "line"
+      },
+      {
+        "id": "p2-name",
+        "kind": "text",
+        "anchor": "top-right",
+        "x": 16,
+        "y": 8,
+        "text": "PLAYER 2",
+        "scale": 1,
+        "color": "ink",
+        "align": "end"
+      },
+      {
+        "id": "p2-hp",
+        "kind": "bar",
+        "anchor": "top-right",
+        "x": 16,
+        "y": 18,
+        "w": 240,
+        "h": 12,
+        "frame": "bar-frame",
+        "fill": "bar-fill-hp",
+        "value": 0.55,
+        "from": "end"
+      },
+      {
+        "id": "p2-stamina",
+        "kind": "bar",
+        "anchor": "top-right",
+        "x": 16,
+        "y": 32,
+        "w": 160,
+        "h": 8,
+        "frame": "bar-frame",
+        "fill": "bar-fill-stamina",
+        "value": 0.8,
+        "from": "end"
+      },
+      {
+        "id": "p2-round-1",
+        "kind": "icon",
+        "anchor": "top-right",
+        "x": 16,
+        "y": 44,
+        "piece": "icon-star",
+        "tint": "accent"
+      },
+      {
+        "id": "p2-round-2",
+        "kind": "icon",
+        "anchor": "top-right",
+        "x": 34,
+        "y": 44,
+        "piece": "icon-star",
+        "tint": "accent"
+      },
+      {
+        "id": "timer-panel",
+        "kind": "nine",
+        "anchor": "top-center",
+        "x": 0,
+        "y": 6,
+        "w": 64,
+        "h": 40,
+        "piece": "panel"
+      },
+      {
+        "id": "timer-label",
+        "kind": "text",
+        "anchor": "top-center",
+        "x": 0,
+        "y": 13,
+        "text": "TIME",
+        "scale": 1,
+        "color": "muted",
+        "align": "center"
+      },
+      {
+        "id": "timer-value",
+        "kind": "text",
+        "anchor": "top-center",
+        "x": 0,
+        "y": 24,
+        "text": "58",
+        "scale": 2,
+        "color": "accent",
+        "align": "center"
+      },
+      {
+        "id": "slot-1",
+        "kind": "nine",
+        "anchor": "bottom-center",
+        "x": -39,
+        "y": 12,
+        "w": 22,
+        "h": 22,
+        "piece": "slot-selected"
+      },
+      {
+        "id": "slot-2",
+        "kind": "nine",
+        "anchor": "bottom-center",
+        "x": -13,
+        "y": 12,
+        "w": 22,
+        "h": 22,
+        "piece": "slot"
+      },
+      {
+        "id": "slot-3",
+        "kind": "nine",
+        "anchor": "bottom-center",
+        "x": 13,
+        "y": 12,
+        "w": 22,
+        "h": 22,
+        "piece": "slot"
+      },
+      {
+        "id": "slot-4",
+        "kind": "nine",
+        "anchor": "bottom-center",
+        "x": 39,
+        "y": 12,
+        "w": 22,
+        "h": 22,
+        "piece": "slot"
+      },
+      {
+        "id": "slot-1-icon",
+        "kind": "icon",
+        "anchor": "bottom-center",
+        "x": -39,
+        "y": 15,
+        "piece": "icon-sword",
+        "tint": "ink"
+      },
+      {
+        "id": "slot-2-icon",
+        "kind": "icon",
+        "anchor": "bottom-center",
+        "x": -13,
+        "y": 15,
+        "piece": "icon-shield",
+        "tint": "ink"
+      },
+      {
+        "id": "slot-3-icon",
+        "kind": "icon",
+        "anchor": "bottom-center",
+        "x": 13,
+        "y": 15,
+        "piece": "icon-heart",
+        "tint": "hp"
+      },
+      {
+        "id": "slot-4-icon",
+        "kind": "icon",
+        "anchor": "bottom-center",
+        "x": 39,
+        "y": 15,
+        "piece": "icon-coin",
+        "tint": "accent"
+      },
+      {
+        "id": "key-1",
+        "kind": "text",
+        "anchor": "bottom-center",
+        "x": -39,
+        "y": 2,
+        "text": "1",
+        "scale": 1,
+        "color": "muted",
+        "align": "center"
+      },
+      {
+        "id": "key-2",
+        "kind": "text",
+        "anchor": "bottom-center",
+        "x": -13,
+        "y": 2,
+        "text": "2",
+        "scale": 1,
+        "color": "muted",
+        "align": "center"
+      },
+      {
+        "id": "key-3",
+        "kind": "text",
+        "anchor": "bottom-center",
+        "x": 13,
+        "y": 2,
+        "text": "3",
+        "scale": 1,
+        "color": "muted",
+        "align": "center"
+      },
+      {
+        "id": "key-4",
+        "kind": "text",
+        "anchor": "bottom-center",
+        "x": 39,
+        "y": 2,
+        "text": "4",
+        "scale": 1,
+        "color": "muted",
+        "align": "center"
+      }
+    ],
+    "menu": [
+      {
+        "id": "menu-panel",
+        "kind": "nine",
+        "anchor": "center",
+        "x": 0,
+        "y": 0,
+        "w": 210,
+        "h": 226,
+        "piece": "panel"
+      },
+      {
+        "id": "title",
+        "kind": "text",
+        "anchor": "center",
+        "x": 0,
+        "y": -80,
+        "text": "ARENA",
+        "scale": 4,
+        "color": "accent",
+        "align": "center"
+      },
+      {
+        "id": "subtitle",
+        "kind": "text",
+        "anchor": "center",
+        "x": 0,
+        "y": -50,
+        "text": "MAIN MENU",
+        "scale": 1,
+        "color": "muted",
+        "align": "center"
+      },
+      {
+        "id": "btn-continue",
+        "kind": "button",
+        "anchor": "center",
+        "x": 0,
+        "y": -22,
+        "w": 160,
+        "h": 24,
+        "group": "button",
+        "state": "disabled",
+        "text": "CONTINUE",
+        "scale": 1,
+        "color": "muted"
+      },
+      {
+        "id": "btn-start",
+        "kind": "button",
+        "anchor": "center",
+        "x": 0,
+        "y": 10,
+        "w": 160,
+        "h": 24,
+        "group": "button-primary",
+        "state": "hover",
+        "text": "START",
+        "scale": 2,
+        "color": "onAccent"
+      },
+      {
+        "id": "btn-options",
+        "kind": "button",
+        "anchor": "center",
+        "x": 0,
+        "y": 42,
+        "w": 160,
+        "h": 24,
+        "group": "button",
+        "state": "normal",
+        "text": "OPTIONS",
+        "scale": 1,
+        "color": "ink"
+      },
+      {
+        "id": "btn-quit",
+        "kind": "button",
+        "anchor": "center",
+        "x": 0,
+        "y": 74,
+        "w": 160,
+        "h": 24,
+        "group": "button",
+        "state": "normal",
+        "text": "QUIT",
+        "scale": 1,
+        "color": "ink"
+      },
+      {
+        "id": "close",
+        "kind": "icon",
+        "anchor": "top-right",
+        "x": 10,
+        "y": 10,
+        "piece": "icon-close",
+        "tint": "muted"
+      }
+    ]
+  }
+}

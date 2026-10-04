@@ -1,0 +1,95 @@
+{
+  "product": "game-ui:rome-ui-pack",
+  "from_repo": "forge",
+  "storeName": "kit sheet",
+  "custom": true,
+  "ownTokens": true,
+  "noFacts": true,
+  "noPictures": true,
+  "title": "Pixel Arena UI Kit",
+  "pick": "neon-pixel",
+  "kicker": "unused",
+  "claim": "unused",
+  "badge": "unused",
+  "tokens": {
+    "bg": "#14161f",
+    "panel": "#1f2333",
+    "ink": "#f4f1e8",
+    "muted": "#a8aec2",
+    "accent": "#ffb325",
+    "on-accent": "#1a1206",
+    "line": "#333a52"
+  },
+  "fonts": {
+    "display": "\"DS Pixel 5x7\"",
+    "body": "\"Segoe UI\""
+  },
+  "titlePx": 64,
+  "titlePxCard": 64,
+  "text": [
+    {
+      "label": "title",
+      "fg": "var(--accent)",
+      "bg": "var(--bg)",
+      "min": 4.5
+    },
+    {
+      "label": "subtitle",
+      "fg": "var(--muted)",
+      "bg": "var(--bg)",
+      "min": 4.5
+    },
+    {
+      "label": "body",
+      "fg": "var(--ink)",
+      "bg": "var(--bg)",
+      "min": 4.5
+    },
+    {
+      "label": "cta",
+      "fg": "var(--on-accent)",
+      "bg": "var(--accent)",
+      "min": 4.5
+    },
+    {
+      "label": "chip",
+      "fg": "var(--ink)",
+      "bg": "var(--panel)",
+      "min": 4.5
+    }
+  ],
+  "sizes": [
+    {
+      "w": 1280,
+      "h": 720,
+      "name": "kit-sheet",
+      "titlePx": 64,
+      "titleBox": [
+        0.03,
+        0.04,
+        0.6,
+        0.2
+      ],
+      "titleLongest": 18
+    }
+  ],
+  "listing": "C:/Users/me/Desktop/design-studio/kits/game-ui/tokens.css",
+  "toBeat": null,
+  "beatNote": "the current kit (kits/game-ui, order O-011) is HTML and CSS only: no PNG, no font file and no layout data an engine can load; this pack adds all three",
+  "landing": "from-design-studio/O-023/",
+  "assetsFrom": "none copied: every pixel of the atlas, the font and the icons is authored here (CC0)",
+  "assets": [],
+  "pictureNote": "the pictures are composed by tools/ui-pack.mjs from ui-atlas.png, font-5x7.png and layout.json (preview-hud.png, preview-menu.png): they show the pack files working together, nothing is drawn outside them.",
+  "laneNote": "game = the files an engine loads exist, not only HTML: ui-atlas.png + ui-atlas.json (27 pieces with 9-slice data), font-5x7.png + font-5x7.json + ds-pixel-5x7.ttf (95 glyphs, CC0), layout.json (HUD and menu, 640x360 reference), tokens.json; node tools/ui-pack.mjs --check prints UIPACK PASS.",
+  "fitNote": "the kit sheet is a viewer of the pack, the pack files are the delivery",
+  "deliveryLines": [
+    "Landing in forge: `from-design-studio/O-023/` (copy the whole folder; never edit a file outside from-design-studio/). engine2040 copies the same folder.",
+    "Load these: `ui-atlas.png` + `ui-atlas.json` (27 pieces, 9-slice `slice` data, nearest filter, integer scale), `font-5x7.png` + `font-5x7.json` (95 ASCII glyphs, 6x8 cells) and `ds-pixel-5x7.ttf` (same glyphs as outlines), `tokens.json`, `layout.json` (HUD and menu in a 640x360 reference).",
+    "Look at: `preview-hud.png`, `preview-menu.png`, `preview-atlas.png` (made from the files above by `node tools/ui-pack.mjs`), `page.html` + `out.png` (kit sheet), `thumb-256.png`.",
+    "How to adopt in 10 minutes: `ADOPT.md` (forge Rome step 7, engine2040 `engine-ui` text atlas). Licence: CC0 (`LICENSE.txt`), no third-party font or art data.",
+    "Gates: `brief.json`, `design-audit.json` (audit PASS), `DESIGN-REVIEW.md` (SHIP), `VERDICT.md`; here `node tools/ui-pack.mjs --check` -> UIPACK PASS.",
+    "Adopt: copy the folder, load the atlas and font from the JSON, build the HUD and menu from `layout.json`; forge cites `design-studio/kits/game-ui` and O-011 in its Rome file for `rome-score` step 7 and may add O-023.",
+    "Proof in forge or engine2040: `git log -1 --format=%h -- from-design-studio/O-023/ui-atlas.png`; here: `node tools/orders-check.mjs` and `node tools/audit.mjs designs/O-023/brief.json`."
+  ],
+  "factsNote": "no store claim on this sheet; the counts in ADOPT.md (27 pieces, 95 glyphs, 640x360 reference) are read from ui-atlas.json, font-5x7.json and layout.json, and `node tools/ui-pack.mjs --check` prints UIPACK PASS"
+}
