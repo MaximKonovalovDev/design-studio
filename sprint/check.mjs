@@ -113,6 +113,66 @@ else {
   else for (const s of ["Scorecard", "Parts vs the best", "Open gaps", "Steal map"]) if (!new RegExp(`^## .*${s}`, "m").test(vision)) say("FAIL", `vision: no "${s}" section`);
 }
 
+// 8. Privacy guard: no real CV content, no PII, when repo may be public.
+const forbidList = new Map();
+try { const f = JSON.parse(read(".opencode/forbid.json") ?? "{}"); forbidList.set("forbid", f.forbid ?? []); } catch {}
+
+const privacyFiles = new Map();
+let privacyFail = false;
+const gitFiles = (cmd) => {
+  try {
+    const { execSync } = require("node:child_process");
+    return String(execSync(`git ls-files`, { cwd: ROOT, encoding: "utf8" })).split("\n").filter(f => f.trim());
+  } catch { return []; }
+};
+for (const file of gitFiles()) {
+  if (file.includes("/") && (file.endsWith(".md") || file.endsWith(".mjs") || file.endsWith(".js") || file.endsWith(".json") || file.endsWith(".html"))) {
+    const content = read(file);
+    if (!content) continue;
+    // Check for gmail addresses
+    if (/\bgmail\.com\b/i.test(content)) {
+      privacyFiles.set(file, privacyFiles.get(file) ?? []);
+      privacyFiles.get(file).push("gmail.com address");
+      privacyFail = true;
+    }
+    // Check for Israeli mobile (05X XXXXXXX), excluding placeholders (all same digit, 123, 555 patterns)
+    const mobMatch = content.match(/\b05\d{7}\b/g);
+    if (mobMatch) {
+      for (const mob of mobMatch) {
+        const digits = mob.slice(2);
+        const allSame = /^(.)\1{6}$/.test(digits);
+        const isPattern = /^(123|555)/.test(digits);
+        if (!allSame && !isPattern) {
+          privacyFiles.set(file, privacyFiles.get(file) ?? []);
+          privacyFiles.get(file).push(`Israeli mobile ${mob}`);
+          privacyFail = true;
+        }
+      }
+    }
+    // Check for konovalov or diklaaltman outside forbid list
+    for (const word of ["konovalov", "diklaaltman"]) {
+      const forbid = forbidList.get("forbid") ?? [];
+      const lines = content.split("\n");
+      for (let i = 0; i < lines.length; i++) {
+        if (new RegExp(`\\b${word}\\b`, "i").test(lines[i])) {
+          if (!forbid.some(f => lines[i].includes(f))) {
+            privacyFiles.set(file, privacyFiles.get(file) ?? []);
+            privacyFiles.get(file).push(`${word} at line ${i + 1}`);
+            privacyFail = true;
+          }
+        }
+      }
+    }
+  }
+}
+if (privacyFail) {
+  for (const [file, issues] of privacyFiles) {
+    say("FAIL", `privacy: ${file} contains ${issues.join(", ")}`);
+  }
+} else {
+  say("PASS", "privacy: no PII or real CV content found");
+}
+
 for (const [l, w] of out) console.log(`[${l}] ${w}`);
 const n = (l) => out.filter(([x]) => x === l).length;
 const worst = n("FAIL") ? "FAIL" : n("WARN") ? "WARN" : "PASS";
