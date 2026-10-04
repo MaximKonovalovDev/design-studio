@@ -1,25 +1,25 @@
-# design-studio handoff - round 96 (token e4a1)
+# design-studio handoff - round 97 (token 7f2c)
 
-Round: 96
-Written: 2026-10-04T19:44Z by lead (token e4a1, held since 19:36Z).
+Round: 97
+Written: 2026-10-04T21:24Z by lead (token 7f2c, takeover: replaced stale lock e4a1 from closed app, said here).
 Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground.
-Batch (keeper-named): judge 053-toolsmith-r3-review NEED-08 (VERDICT PASS).
+Batch: none sent (keeper batch.md named 0 calls; halt file present so no dispatch).
 
 ## Heading
-- D4 did not move this batch, by design: the batch was the chain judge on NEED-08 tools, not an adoption check. D4 (game UI kit in use, 3 of 5) moves via the eye seat; O-032 was delivered 0 days ago, too new to count as used. Next eye sweep checks it.
+- No Scorecard row moved: this round took over, verified state, and stops on the halt file.
 - Book: built 31, judged 12, delivered 30, adopted 5. Unjudged-oldest none, in-flight 0.
 
-## Done (committed 6c031fa)
-- NEED-08 tools judged PASS and committed (10 files: donor.mjs, mockup.mjs, 2 tests, arsenal 2 entries, needs.md, O-026 system.json + mockup.png + compare.png). Proof (judge re-ran): DONOR PASS 8/8, MOCKUP PASS 7/7, tests 16/16, BUILT PASS O-026 16/16.
-- NEED-12 flipped LATER -> READY by lead (its wait condition, NEED-08 remainder, is now judged PASS).
-- Review packet filed to queue/done (gitignored, local record). Judge deleted its ready packet after reading; restored from git and moved.
-- Checks: sprint/check RESULT PASS 21/0/0.
+## Done (no commit for work; handoff + lock + halt restore to commit)
+- Takeover: lock e4a1 -> 7f2c.
+- Restored sprint/halt (was dirty-deleted in working tree; content matches HEAD: Maxim pause 09:19Z).
+- Checks: sprint/check RESULT PASS 21/0/0. Desk: build 0 | judge 0 | failed 0 | deliver 0 | eye 1.
 - ROUND: real yes | built 31 | judged 12 | delivered 30 | adopted 5 | tools 15.
+- Orders: ORDERS FAIL only on O-033 (skillworks deleted delivered files, uncommitted; eye ASK pending from r96).
 
 ## Blockers and notes
-- ORDERS still FAILs on O-033 (skillworks deleted its delivered files, uncommitted). Eye ASK pending.
-- Left dirty, not mine: repomap, O-025 files, lane notes, palettes.png, deleted ready files, designs/O-026/EYE.md.
+- HALT: sprint/halt exists (Maxim 2026-10-04T09:19Z via Loop Boss). Loop stops after this handoff.
+- O-033 still FAILs (same as r96). Left dirty, not mine: repomap, O-025 files, lane notes, palettes.png, designs/O-026/EYE.md, O-027/EYE.md, kits/game-ui/FORMATS.md, knowledge/lane-game.md, deleted ready packets.
 - Inbox 0 open. No OWNER rows. No board change.
 
 ## Next
-- Keeper: toolsmith NEED-12 (READY) + eye sweep (O-032 use check at 1 day, O-033 deletion ASK).
+- None for this loop until the owner removes sprint/halt. On resume: eye sweep (O-032 use check, O-033 deletion ASK).
