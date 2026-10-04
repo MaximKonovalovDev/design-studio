@@ -1,0 +1,34 @@
+{
+  "tool": "atlas",
+  "packer": "soimy/maxrects-packer v2.7.3 (848b260, src/maxrects-bin.ts), MIT",
+  "date": "2026-10-04",
+  "size": {
+    "w": 1926,
+    "h": 362
+  },
+  "pad": 1,
+  "pot": false,
+  "sprites": [
+    {
+      "id": "avatar",
+      "x": 1,
+      "y": 1,
+      "w": 640,
+      "h": 360
+    },
+    {
+      "id": "hud",
+      "x": 643,
+      "y": 1,
+      "w": 640,
+      "h": 360
+    },
+    {
+      "id": "menu",
+      "x": 1285,
+      "y": 1,
+      "w": 640,
+      "h": 360
+    }
+  ]
+}
