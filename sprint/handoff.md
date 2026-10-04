@@ -1,21 +1,20 @@
-# design-studio handoff - round 65 (token 7e4a)
+# design-studio handoff - round 66 (token 7e4a)
 
-Round: 65
-Written: 2026-10-04T11:42Z by lead (token 7e4a, lock held all session).
+Round: 66
+Written: 2026-10-04T11:49Z by lead (token 7e4a, lock held all session).
 Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground.
 
 ## Heading
-- No Scorecard row moved (6 at 100%, Landing 0% BLOCKED via DS-70). D2 still 4/5 adopted: O-026 delivered, not adopted (why: adoption needs factory to upload out.png + commit the pointer; inbox EB-2026-10-04-S51 sent with the exact line).
+- D2 Five orders adopted moved 4/5 -> 5/5 MET (finish 3 of 5: D1+D2+D3). Scorecard unchanged (6 at 100%, Landing 0% BLOCKED via DS-70).
 
 ## Done
-- O-026 judged PASS, committed 9af8503 (designs/O-026 VERDICT+DELIVERED.json, orders.csv -> delivered). Proofs: BUILT PASS 16/16, ORDERS PASS 26 (1 open, 21 delivered), sprint PASS 21/21. Judge: 28.0px vs ~26px, 2 real pictures, SHIP 10/10.
-- O-026 delivered to factory f58b5e3b (12 files) + bc4033af (6 PNGs force-added: .gitignore:51 ignores products/**/*.png, so plain `git add` silently dropped the cover art; exception documented in body). 18 files on disk, sha256 match. ADOPT.md 4 lines.
-- maker-store-r2-review PASS (chain complete, no repair run needed).
+- O-025 adopted by skillworks, committed 642f94e (orders.csv one row). Verified by lead: listing.md:105 points at store-art/O-025/out.png, skillworks 3b7f7e9 holds identical bytes (out.png B2A4 match). Proofs: ORDERS PASS 26, finish D2 met 5 lines, sprint PASS 21/21.
+- Eye DONE: O-025 USED yes 3b7f7e9; O-022/O-023 not used (0d, no nudge yet); 0 new orders. Order board 1 open / 25 delivered / 17 used.
+- Toolsmith DONE (unjudged): compose compare+svg2png landed (tools/compose.mjs COMPOSE PASS 8/8, tests 10/10, arsenal entry, first use designs/O-026/compare.png); NEED-08 marked DONE with donor-system + mockup still open. Commit waits on chain review.
 
 ## Blockers and notes
-- Factory .gitignore blocks delivery art by default: every future factory DLV needs `git add -f` on PNGs. Propose a NEED/tool note or a standing deliverer recipe line.
-- `--deliver`/`--round` tools still missing; O-026 went by hand per AGENTS.md. DLV-O-024 is next.
-- Left dirty, not mine: knobs/plugin files, template lanes + tools/template.mjs, gifcap set, consumed ready deletions, EYE.md notes.
+- `--deliver`/`--round` still missing; DLV-O-024 waits (deliverer by hand + `git add -f` PNGs per r65 factory lesson).
+- Left dirty, not mine: knobs/plugin files, template lanes + tools/template.mjs, gifcap set, consumed ready deletions, EYE.md notes, compose tool files (pending review).
 
 ## Next
-- Keeper: deliverer DLV-O-024, toolsmith NEED-08. Lead commits judged PASS only.
+- Keeper: judge toolsmith compose review, deliverer DLV-O-024. Lead commits judged PASS only.
