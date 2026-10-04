@@ -1,21 +1,24 @@
-# design-studio handoff - round 77 (token c82e)
+# design-studio handoff - round 78 (token e741)
 
-Round: 77
-Written: 2026-10-04T14:35Z by lead (token c82e, held all session).
+Round: 78
+Written: 2026-10-04T14:50Z by lead (token e741).
+Takeover: lock lead#c82e left by a closed app replaced 2026-10-04T14:42Z; old session closed, loop continues.
 Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground.
-Batch: keeper named 1 judge, sent 1: maker-lab-r1-review VERDICT PASS O-028.
+Batch: batch.md named consumed maker-lab-r1-review (r77 done ade68b4), so lead re-cut from live desk, width 2: judge 007-jdg-o031-review + pilot 008-eye-customer-r4. Keeper filed both results, wrote repair packet, renamed next batch.
 
 ## Heading
-- No Scorecard row moved (6 at 100%, Landing 0% BLOCKED via DS-70). Finish 3 of 5: D1+D2+D3 met, D4+D5 open.
-- D4 not moved: this batch held one lab-deck review only. Adoption stays customer-side (forge S14/S27 = delivered O-011/O-023, not loaded; engine2040 repo absent). New DS-78 (S55 item b: `templates/game/*` from kits/game-ui + O-023) is the D4-adjacent template path.
+- No Scorecard row moved (6 at 100%, Landing 0% BLOCKED via DS-70). O-031 judged FAIL on the built gate.
+- Eye: O-012/O-013/O-014 not used (1 day old each, no 2-day line yet), 0 new orders. ORDERS: open 1 | delivered 30 | used 16.
 
-## Done (judged PASS, committed)
-- O-028 VERDICT PASS (BUILT 15/15, audit PASS, SHIP 10/10, 27.2px at 256px, scoreboard-only facts). Committed ade68b4 (`designs/O-028`); orders.csv O-028 row + fp-research folder ride with the deliverer packet.
-- Inbox EB-2026-10-04-S55 -> board DS-78 READY (TEMPLATES-V1, Game UI kits row). Inbox now 0 open.
+## Done (nothing judged PASS, nothing committed by this round)
+- O-031 VERDICT FAIL (built gate: missing DELIVERY.md; `--verdict` wrote VERDICT.md, no design file touched). Repair queued: `sprint/queue/ready/o031-external-build-repair.md` (builder, attempt 2).
+- Foreign commits on master (not this loop's judged work, not verified by its judge): a35f4e6 templates game family = DS-78(b) (lead re-verified TEMPLATE PASS 14 incl game 2; board noted, (a)(c)(d) open); 5f0a31c O-027/O-029/O-030 built+delivered per message (claims audit PASS judge 10/10, 0 hand-typed lines).
+- Flag: O-030 VERDICT.md is a worker self-review ("keeper judge chain has not run"); desk counts O-030 judged, unjudged-oldest now none.
 
 ## Blockers and notes
-- Left dirty, not mine: knobs/plugin, halt deletion, template lane, consumed ready deletions, older EYE.md notes, new unjudged orders.csv rows (O-027..O-031).
-- O-030/O-031 have CHAIN judges pending (JDG rows); their csv rows commit with those packets.
+- Left dirty, not mine: knobs/plugin, halt deletion, standing seats, consumed ready deletions, EYE.md notes, orders.csv (O-028 row rides with a deliverer packet that never ran; desk deliver 0).
+- Next free board ID: DS-79.
 
 ## Next
-- Keeper: JDG-O-030/O-031 reviews, deliverer DLV-O-028, toolsmith NEED-08 remainder + DS-78 template work; daily eye sweep.
+- Keeper batch: builder o031-external-build-repair + pilot eye-customer; then re-review O-031 (second FAIL comes to lead).
+- Then: toolsmith NEED-08 remainder (donor-system + mockup) + DS-78 (a)(c)(d).
