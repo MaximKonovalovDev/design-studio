@@ -1,25 +1,21 @@
-# design-studio handoff - round 55 (token 98df)
+# design-studio handoff - round 56 (token 98df)
 
-Round: 55
-Written: 2026-10-04T07:43Z by lead (token 98df, TAKEOVER: replaced stale lock lead#d824 from closed app; lock refreshed).
+Round: 56
+Written: 2026-10-04T08:05Z by lead (token 98df, lock refreshed).
 Knobs: width 3, heavy_max 3, paid_mode 0 (unchanged).
 
 ## Heading
-- D2 NOT moved: book clean and O-025 built, but no new adoption. Orders 25 (2 open O-024/O-025, 21 delivered, 2 adopted). Finish 2/5.
+- D1 NOT moved (keeper charge answered): this batch builds+judges only; D1 needs customer adoption. Path: O-025 PASS committed -> desk DLV row -> deliverer -> skillworks commit. Orders 26 (3 open, 21 delivered, 2 adopted).
 
 ## Done
-- f148d21 orders-book fix DONE: O-015 delivered->adopted (matches 2c6122b0), REPOS+LANES add skillworks->store. ORDERS PASS 25, sprint/check 20/20.
-- 903d8db eye sweep DONE: used 17 of 23 delivered, 0 new orders (O-001/02/03 still old covers, 1 day old, no inbox line yet).
-- O-025 PARTIAL (uncommitted): designs/O-025/ audit PASS + judge 10/10 SHIP, desk JDG-O-025; NEED-05 READY (GIF command).
+- 57ae8a6 O-025 judge PASS on merits (5/5, PNGs opened): AUDIT PASS 22+SKIP, SHIP 10/10. Caveat: `--verdict` not in tools/orders-check.mjs (0b never landed); judge cmd fell through to ORDERS check, VERDICT.md still worker self-review.
+- 74856ce O-026 row (factory fleet-pack cover, MK-01 placeholder, cites live permalink + O-025 reuse note): ORDERS PASS 26.
+- O-024 DONE x2 (one-off + seat merged one block): 1200x630 + 1080x1080, AUDIT PASS 22+SKIP, SHIP 10/10. Unjudged, uncommitted; keeper queued both reviews.
 
 ## Blockers and notes
-- O-024 unbuilt 2 rounds: `packet: BLD-O-024` typo-BLOCKED, `packet: maker-social` keeper hold. Fixed as ready 003-o024-social-build.md (name-resolvable packet).
-- Inbox: 0 open. DS-70 OWNER stands. `--round --save` not in tools/orders-check.mjs (no --round flag); ROUND real yes (O-025 built).
-- Left dirty, not mine: repomap.md, consumed ready-file deletions, designs/O-025, knowledge/lane-store.md (ride the verdict commit).
-
-## Retro (round 55)
-- Worst repeat: hand-filed orders.csv rows break the gate (O-024 kind r54, O-015 status + O-025 repo r55 = 3 FAILs/2 rounds); seats held while READY rows wait (3 keeper holds/24h per metrics).
-- PROPOSAL: tools/orders-check.mjs | print the exact one-line fix per FAIL (status/REPOS/kind) | 3 gate FAILs in rounds 54-55; revert if FAILs persist 3 rounds.
+- Inbox: 0 open. DS-70 OWNER stands. NEED-06 READY researcher (dark devlog backdrop) filed by social maker.
+- Tool gap (repeats): packet 0b `--built`/`--verdict` still missing; judges hand-verify. Sits with toolsmith/NEED queue.
+- Left dirty, not mine: repomap.md, consumed ready deletions, needs.md (NEED-06), designs/O-024, lane-social.md, keeper review files.
 
 ## Next
-- Keeper: judge 004-o025-review, builder 003-o024-social-build, toolsmith NEED-05. Lead commits judged PASS only.
+- Keeper: 2x O-024 reviews, then DLV-O-025 deliverer + maker-store BLD-O-026. Lead commits judged PASS only.
