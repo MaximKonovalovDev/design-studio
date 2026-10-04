@@ -1,21 +1,20 @@
-# design-studio handoff - round 62 (token 38fa)
+# design-studio handoff - round 64 (token 7e4a)
 
-Round: 62
-Written: 2026-10-04T11:22Z by lead (token 38fa, lock held).
-Resume: halt file already gone on GO from popper; lock retaken (no valid lock). Width knob now 2 (owner 09:56Z).
-Knobs: width 2, heavy_max 3, paid_mode 0.
+Round: 64
+Written: 2026-10-04T11:37Z by lead (token 7e4a, lock held all session).
+Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground (re-read this round; mcp:arsenal notes are center-side).
 
 ## Heading
-- D2 NOT moved (4/5 adopted: O-006, O-007, O-010, O-015): the 5th adoption is customer-side and no batch here can make it. Lever: DLV-O-024 READY (deliverer) + O-026 now judged PASS. Finish 2/5 (D1, D3 met).
+- No Scorecard row moved (6 at 100%, Landing 0% BLOCKED via DS-70). D2 still 4/5 adopted: this batch could not move it (why: adoption is customer-side; O-025 repair only fixes our delivered record; eye found 0 new orders and no unused item past 2 days to nudge).
 
 ## Done
-- 006 builder NOOP (verify-only): orders.csv already LF (CR 0, committed during halt); all 4 adopted hashes verify; ORDERS PASS; finish D1 4 lines, D3 2 lines; sprint 21/21. Nothing to commit.
-- O-026 judge PASS through 0b (BEATS 28.0 vs ~26px, PICTURE yes, FACTS yes, FIT yes, LANE yes); lead-reran BUILT PASS 16/16. Commit: designs/O-026/VERDICT.md below.
-- Halt-pause accounting: 03d5978 closed S41 (DS-77 DONE, DS-70 now BLOCKED on the Cloudflare token), delivered O-025, recorded O-006/O-007 adoptions; inbox 0 open. Keeper's "1 open" is stale.
+- 007 repair judged PASS, committed 73a6704 (designs/O-025/VERDICT.md, designs/O-025/DELIVERED.json, orders.csv one field). Proofs in body: ORDERS PASS 26, BUILT PASS O-025 16/16, sprint PASS 21/21. Judge re-ran all three + sha256 identical both folders.
+- 006 builder NOOP (verify-only): orders.csv already LF (i/lf w/lf); D1 met 4 lines, D3 met 2 lines; hashes ec65e25 + 2c6122b0 verify. Nothing to commit.
 
 ## Blockers and notes
-- O-024/O-025 verdicts predate 0b (worker self-PASS only); DLV-O-024 formed off the command-written VERDICT. Re-judge via --verdict on resume if the keeper wants it airtight.
-- Left dirty, not mine: repomap.md, knobs/plugin loop files, template lanes + tools/template.mjs, gifcap set, EYE outputs, consumed ready deletions, keeper review files.
+- `node tools/orders-check.mjs --deliver` and `--round --save` still missing (0b landed --built/--verdict only). DLV-O-024 + DLV-O-026 wait: deliverer BLOCKs without the tool, or a manual-delivery one-off.
+- Left dirty, not mine: knobs/plugin files, template lanes + tools/template.mjs, gifcap set, consumed ready deletions, EYE.md notes (r63/r64 runs).
 
 ## Next
-- Keeper: deliverer DLV-O-024, toolsmith NEED-08, eye sweep, BLD next oldest open (O-024/O-025 at judge). Lead commits judged PASS only.
+- Keeper: deliverer DLV-O-024, toolsmith NEED-08 (eye ran today). Lead commits judged PASS only.
+- Failing check (ORDERS FAIL O-025) cleared by 007; 006 cleared nothing (already clean).
