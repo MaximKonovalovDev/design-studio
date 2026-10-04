@@ -1,21 +1,20 @@
-# design-studio handoff - round 50 (token d824)
+# design-studio handoff - round 51 (token d824)
 
-Round: 50
-Written: 2026-10-04T03:20Z by lead (token d824, lock held since 02:48Z).
-Takeover: done round 49 (replaced stale lead#5928; committed ea7f95c).
-Knobs: width 3, heavy_max 3, paid_mode 0 (re-read this round; file updated 2026-10-03T23:50:14Z, values already match).
+Round: 51
+Written: 2026-10-04T03:30Z by lead (token d824, lock refreshed).
+Knobs: width 3, heavy_max 3, paid_mode 0 (unchanged).
 
 ## Heading
-- D2 NOT moved by this batch: fonts tool ships infra, not adoptions. Adoption moves only via deliverer/eye seats (both held by keeper: deliver 0, eye held 2 rounds). Finish 2/5 (D1, D3 met; D2 1/5, D4 0, D5 0/22 factory covers adopted).
+- D2 NOT moved: toolsmith ships infra, not adoptions; plus a new invalid open order blocks the gate. Orders 24 (1 open O-024, 22 delivered, 1 adopted). Finish still 2/5.
 
 ## Done
-- 8449265 tools assets+image-free (04) + fonts (07), judged PASS by lead re-run (no chain:start on tool packets, keeper told lead to judge): ASSETS PASS, FREE-IMAGE-CHECK PASS (2 models), assets tests 16/0, FONTS PASS 6 gates, fonts tests 7/0, sprint/check PASS 20/20. 37 files: tools/assets.mjs + image free lane, tools/fonts.mjs, fonts/ 4 OFL families 160.9KB, FONTS.md, O-001/O-004 assets.json + 4 product PNGs, polyhaven wallpaper CC0 + SOURCE, arsenal entries, package.json + lock (2415B), needs NEED-03/04 READY.
-- Note: @fontsource/assistant installed but unused (only 4 families embedded); harmless dep, flag for toolsmith cleanup.
+- No judged PASS, no work commits. sprint/check RESULT PASS 20/20.
+- Toolsmith DONE (NEED-03 pdfcheck for O-007): tools/pdfcheck.mjs (pdfjs-dist 6.4.299 Apache-2.0, in-repo), tests 11/0, arsenal entry first_job O-007, first use designs/O-007/pdfcheck.json (875 Hebrew chars, 1 A4 page, section order PASS). Lead re-verified: PDFCHECK PASS + 11 pass 0 fail. Chain review queued (ready/toolsmith-r1-review.md) → judge next batch, commit after PASS. NEED-03 DONE in needs.md (uncommitted).
 
 ## Blockers and notes
-- Tool 05 compose + 06 mockup never ran (keeper BLOCKED the +packet round 49, never reissued). Judge chain for the 16 factory folders still pending; DS-76 factory delivery gated on it.
-- Left dirty, not mine: VISION-TABLES.md G1 adopt, samples audits date churn, loop-keeper.js (center-owned), 2 consumed ready files.
-- Inbox: 0 open. DS-70 OWNER stands. NEED-02 READY researcher + NEED-03/04 READY builder await seats.
+- ORDERS FAIL (first one-off next batch): O-024 (eye seat via empire order) has product `visual:aeo-visibility-audit-kit`, gate wants post-visual/cv-layout/etc. Fix: correct kind (likely post-visual) in orders.csv, then desk rebuilds. Nothing lands over this FAIL.
+- Inbox: 0 open. DS-70 OWNER stands. NEED-02 researcher + NEED-04 builder READY await seats. Tools 05/06 never ran.
+- Left dirty, not mine: VISION-TABLES G1 adopt, sample audit date churn, loop-keeper.js, consumed ready files.
 
 ## Next
-- Keeper: batch tool 05 + 06 single packets, then eye-customer/scout/toolsmith seats. Lead commits judged PASS only.
+- Keeper: judge packet toolsmith-r1-review + O-024 fix one-off first (failing check), then seats. Lead commits pdfcheck set after judge PASS.
