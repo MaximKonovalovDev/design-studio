@@ -1,0 +1,6 @@
+pdf-check.txt (O-007): PyMuPDF read of the two printed PDFs, 2026-10-04
+cv-he.pdf: pages=1 size=595x842pt chars=1392 hebrew_letters=875 latin_letters=67 images=0 fonts=AAAAAA+SegoeUI-Bold,BAAAAA+SegoeUI-Semibold,CAAAAA+SegoeUI,DAAAAA+SegoeUIBlack
+cv-he.pdf: section names extracted in logical order: True; reversed copy present: False
+cv-he.pdf: sample line: ][כותרת מקצועית אחת: מה אני עושה ובמה
+cv-en.pdf: pages=1 size=595x842pt chars=1357 hebrew_letters=0 latin_letters=941 images=0 fonts=AAAAAA+SegoeUI-Bold,BAAAAA+SegoeUIBlack,CAAAAA+SegoeUI-Semibold,DAAAAA+SegoeUI
+RESULT: PASS one A4 page each, real text layer (no images), Hebrew in logical order

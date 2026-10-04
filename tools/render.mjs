@@ -285,6 +285,37 @@ export function render(htmlPath, outPath, size = { w: 1280, h: 720 }, { minBytes
   return { out, w: dims.w, h: dims.h, bytes: buf.length };
 }
 
+// PDF through the same Edge launch: real text layer (Edge prints text as text), page size and margins from the page's own @page.
+export function renderPdf(htmlPath, outPath) {
+  const browser = findBrowser();
+  if (!browser) throw new Error("no Edge, Chrome or Chromium found: set BROWSER_BIN (never fake the output)");
+  if (!existsSync(POWERSHELL)) throw new Error("powershell.exe missing: cannot launch the browser on this PC");
+  const html = resolve(htmlPath);
+  if (!existsSync(html)) throw new Error(`page missing: ${htmlPath}`);
+  const out = resolve(outPath);
+  mkdirSync(dirname(out), { recursive: true });
+  try { rmSync(out); } catch { /* no old file */ }
+  const profile = mkdtempSync(`${tmpdir()}${sep}ds-pdf-`);
+  const args = ["--headless", "--disable-gpu", "--no-first-run", "--no-default-browser-check", "--disable-extensions", `--user-data-dir=${profile}`, "--no-pdf-header-footer", "--virtual-time-budget=5000", `--print-to-pdf=${out}`, pathToFileURL(html).href];
+  const script = `$exe = ${psq(browser)}
+$args = @(${args.map(psq).join(", ")})
+$proc = Start-Process -FilePath $exe -ArgumentList $args -NoNewWindow -Wait -PassThru
+exit $proc.ExitCode
+`;
+  const ps1 = `${profile}${sep}launch.ps1`;
+  writeFileSync(ps1, script, "utf8");
+  try {
+    const done = spawnSync(POWERSHELL, ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps1], { timeout: 120000, encoding: "utf8" });
+    if (done.error) throw new Error(`browser launch failed: ${done.error.message}`);
+  } finally {
+    try { rmSync(ps1); } catch { /* best effort */ }
+  }
+  if (!existsSync(out)) throw new Error(`the browser wrote no PDF: ${browser} ${html}`);
+  const buf = readFileSync(out);
+  if (buf.length < 1500 || buf.subarray(0, 5).toString("latin1") !== "%PDF-") throw new Error(`not a PDF or suspiciously small (${buf.length}B)`);
+  return { out, bytes: buf.length };
+}
+
 const isMain = (() => {
   try {
     return fileURLToPath(import.meta.url) === resolve(process.argv[1]);
@@ -300,8 +331,13 @@ if (isMain) {
     if (!pass) process.exitCode = 1;
     process.exit(process.exitCode ?? 0);
   }
+  if (args.includes("--pdf") && args.length >= 3) {
+    const [src, dst] = args.filter((x) => x !== "--pdf");
+    try { const r = renderPdf(src, dst); console.log(`PDF OK ${r.out} ${r.bytes}B`); } catch (e) { console.log(`PDF FAIL ${src}: ${e.message}`); process.exit(1); }
+    process.exit(0);
+  }
   if (args.length < 2 || args.includes("-h") || args.includes("--help")) {
-    console.log("usage: node tools/render.mjs <page.html> <out.png> [--size 1280x720] [--sizes] | node tools/render.mjs --check");
+    console.log("usage: node tools/render.mjs <page.html> <out.png> [--size 1280x720] [--sizes] | node tools/render.mjs --pdf <page.html> <out.pdf> | node tools/render.mjs --check");
     process.exit(args.length < 2 ? 2 : 0);
   }
   // DS-65 FREE-01 helper: offline draft-shape print (no network, no key read,

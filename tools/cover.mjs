@@ -6,11 +6,11 @@
 // The page is real HTML/CSS (one stage, two layouts: wide above 800 px, card at 800 px and below), colour only
 // from tokens.css, every picture a byte copy of a file from the customer's own product folder (assets.json).
 // No new dependency: Edge headless through tools/render.mjs.
-import { copyFileSync, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { tmpdir } from "node:os";
-import { render, parseSize, pngDims } from "./render.mjs";
+import { render, renderPdf, parseSize, pngDims } from "./render.mjs";
 import { thumbBrief } from "./thumb.mjs";
 import { auditBrief } from "./audit.mjs";
 import { judgeSample, writeReview } from "./judge.mjs";
@@ -52,6 +52,12 @@ const BASE_CSS = `
     .art { flex: 1; min-height: 0; }
   }
 `;
+
+// The sizes one order ships: a store cover is 1280x720 + 630x500; a spec may name its own (post visuals).
+function sizeList(spec) {
+  if (spec.sizes) return spec.sizes.map((z, i) => ({ w: z.w, h: z.h, file: i === 0 ? "out.png" : `out-${z.w}x${z.h}.png` }));
+  return [{ w: 1280, h: 720, file: "out.png" }, { w: 630, h: 500, file: "out-630x500.png" }];
+}
 
 function loadSpec(id) {
   const dir = join(ROOT, "designs", id);
@@ -127,7 +133,7 @@ ${art}
 const longest = (lines, title) => (Array.isArray(lines) && lines.length ? Math.max(...lines.map((l) => l.length)) : String(title).length);
 
 function briefJson(spec) {
-  const text = [
+  const text = spec.text ?? [
     { label: "title", fg: "var(--ink)", bg: "var(--bg)", min: 4.5 },
     { label: "subtitle", fg: "var(--muted)", bg: "var(--bg)", min: 4.5 },
     { label: "cta", fg: "var(--on-accent)", bg: "var(--accent)", min: 4.5 },
@@ -135,6 +141,17 @@ function briefJson(spec) {
     { label: "kicker", fg: "var(--accent-ink)", bg: "var(--bg)", min: 3 },
     ...(spec.extraText ?? []),
   ];
+  if (spec.sizes) {
+    const first = spec.sizes[0];
+    return {
+      title: spec.title,
+      size: { w: first.w, h: first.h },
+      sizes: spec.sizes.map((z) => ({ w: z.w, h: z.h, name: z.name, title_px: z.titlePx, title_box: z.titleBox, title_longest: z.titleLongest })),
+      dir: spec.textDir ?? "ltr", tokens: "tokens.css", page: "page.html", image: "out.png", text,
+      title_box: first.titleBox, title_px: first.titlePx, title_longest: first.titleLongest,
+      order: spec.id, product: spec.product,
+    };
+  }
   const copyFrac = Number.parseFloat(spec.copyW ?? "52") / 100;
   return {
     title: spec.title,
@@ -165,6 +182,7 @@ function assetsJson(spec) {
 
 function deliveryMd(spec) {
   const land = `${spec.landing}`;
+  if (spec.deliveryLines) return `# DELIVERY ${spec.id}: ${spec.product} for ${spec.from_repo}\n${spec.deliveryLines.map((l, i) => `${i + 1}. ${l}`).join("\n")}\n`;
   const lines = [
     `# DELIVERY ${spec.id}: ${spec.product} for ${spec.from_repo}`,
     `1. Landing in ${spec.from_repo}: \`${land}\` (copy this whole folder; never edit a file outside from-design-studio/).`,
@@ -212,8 +230,8 @@ export function gen(id) {
     if (a.fit) { if (!existsSync(dst)) fitImage(a.src, dst, a.fit); }
     else if (!existsSync(dst) || statSync(dst).size !== statSync(a.src).size) copyFileSync(a.src, dst);
   }
-  writeFileSync(join(spec.dir, "tokens.css"), tokensCss(spec), "utf8");
-  writeFileSync(join(spec.dir, "page.html"), pageHtml(spec), "utf8");
+  if (!spec.ownTokens) writeFileSync(join(spec.dir, "tokens.css"), tokensCss(spec), "utf8");
+  if (!spec.custom) writeFileSync(join(spec.dir, "page.html"), pageHtml(spec), "utf8");
   writeFileSync(join(spec.dir, "brief.json"), `${JSON.stringify(briefJson(spec), null, 2)}\n`, "utf8");
   writeFileSync(join(spec.dir, "assets.json"), `${JSON.stringify(assetsJson(spec), null, 2)}\n`, "utf8");
   writeFileSync(join(spec.dir, "DELIVERY.md"), deliveryMd(spec), "utf8");
@@ -224,13 +242,31 @@ export function gen(id) {
 export function build(id) {
   const spec = loadSpec(id);
   const page = join(spec.dir, "page.html");
-  const wide = render(page, join(spec.dir, "out.png"), parseSize("1280x720"));
-  const card = render(page, join(spec.dir, "out-630x500.png"), parseSize("630x500"));
+  const list = sizeList(spec);
+  const made = list.map((z, i) => render(page, join(spec.dir, z.file), parseSize(`${z.w}x${z.h}`)));
+  const wide = made[0];
+  const card = made[1] ?? made[0];
+  for (const x of spec.extraRenders ?? []) render(join(spec.dir, x.page), join(spec.dir, x.out), parseSize(`${x.w}x${x.h}`));
+  for (const x of spec.pdfs ?? []) { const r = renderPdf(join(spec.dir, x.page), join(spec.dir, x.out)); console.log(`PDF ${id}: ${x.out} ${r.bytes}B`); }
   const th = thumbBrief(join(spec.dir, "brief.json"));
   const a = auditBrief(join(spec.dir, "brief.json"));
   const j = judgeSample(join(spec.dir, "brief.json"));
   writeReview(join(spec.dir, "brief.json"), j);
-  console.log(`BUILD ${id}: out.png ${wide.bytes}B, out-630x500.png ${card.bytes}B, thumb ${th.w}x${th.h}, audit ${a.pass ? "PASS" : "FAIL"}${a.pass ? "" : " " + a.errors.slice(0, 3).join("; ")}, judge ${j.score}/${j.max} ${j.pass ? "SHIP" : "REWORK"}`);
+  const brief = JSON.parse(read(join(spec.dir, "brief.json")));
+  if (spec.twin) {
+    // the twin page (EN LTR) gets its own audit run in a scratch folder; its report lands beside the main one.
+    const t = spec.twin;
+    const tmp = mkdtempSync(join(tmpdir(), "ds-twin-"));
+    copyFileSync(join(spec.dir, t.page), join(tmp, "page.html"));
+    copyFileSync(join(spec.dir, "tokens.css"), join(tmp, "tokens.css"));
+    copyFileSync(join(spec.dir, t.image), join(tmp, "out.png"));
+    writeFileSync(join(tmp, "brief.json"), JSON.stringify({ ...brief, title: t.title, dir: t.dir }, null, 2), "utf8");
+    const ta = auditBrief(join(tmp, "brief.json"));
+    copyFileSync(join(tmp, "design-audit.json"), join(spec.dir, t.report));
+    console.log(`TWIN ${id}: ${t.page} audit ${ta.pass ? "PASS" : "FAIL " + ta.errors.slice(0, 3).join("; ")}`);
+    if (!ta.pass) a.pass = false;
+  }
+  console.log(`BUILD ${id}: ${list.map((z, i) => `${z.file} ${made[i].bytes}B`).join(", ")}, thumb ${th.w}x${th.h}, audit ${a.pass ? "PASS" : "FAIL"}${a.pass ? "" : " " + a.errors.slice(0, 3).join("; ")}, judge ${j.score}/${j.max} ${j.pass ? "SHIP" : "REWORK"}`);
   return { pass: a.pass && j.pass };
 }
 
@@ -275,9 +311,9 @@ export function factsCheck(id) {
   source += `\n${row ?? ""}`;
   const norm = (x) => x.replace(/\u00d7/g, "x").toLowerCase();
   const hay = norm(source);
-  const tokens = [...new Set((text.match(/\$?\d[\d,.]*(?:x\d+(?:\.\d+)?)?%?/g) ?? []).map((t) => t.replace(/[.,]+$/, "")))];
+  const tokens = spec.noFacts ? [] : [...new Set((text.match(/\$?\d[\d,.]*(?:x\d+(?:\.\d+)?)?%?/g) ?? []).map((t) => t.replace(/[.,]+$/, "")))];
   const missing = tokens.filter((t) => !hay.includes(norm(t)));
-  const forbidden = FORBIDDEN.filter((w) => `${text} ${alts}`.toLowerCase().includes(w));
+  const forbidden = [...FORBIDDEN, ...(spec.forbid ?? [])].filter((w) => `${text} ${alts}`.toLowerCase().includes(w));
   return { tokens, missing, forbidden, listing: spec.listing };
 }
 
@@ -287,19 +323,22 @@ export function verdict(id) {
   const audit = JSON.parse(read(join(spec.dir, "design-audit.json")));
   const j = judgeSample(join(spec.dir, "brief.json"));
   const f = factsCheck(id);
-  const d1 = pngDims(readFileSync(join(spec.dir, "out.png")));
-  const d2 = pngDims(readFileSync(join(spec.dir, "out-630x500.png")));
+  const list = sizeList(spec);
+  const dims = list.map((z) => ({ ...z, got: pngDims(readFileSync(join(spec.dir, z.file))) }));
+  const d1 = dims[0].got;
+  const d2 = (dims[1] ?? dims[0]).got;
+  const exact = dims.every((z) => z.got.w === z.w && z.got.h === z.h);
   const assets = JSON.parse(read(join(spec.dir, "assets.json"))).assets;
-  const ours = ((brief.title_px * 256) / 1280).toFixed(1);
-  const pass = audit.pass && j.pass && f.missing.length === 0 && f.forbidden.length === 0 && d1.w === 1280 && d1.h === 720 && d2.w === 630 && d2.h === 500 && assets.length > 0 && (spec.toBeat == null || spec.theirsPx256 == null || Number(ours) > Number(spec.theirsPx256));
+  const ours = ((brief.title_px * 256) / brief.size.w).toFixed(1);
+  const pass = audit.pass && j.pass && f.missing.length === 0 && f.forbidden.length === 0 && exact && (assets.length > 0 || spec.noPictures)  && (spec.toBeat == null || spec.theirsPx256 == null || Number(ours) > Number(spec.theirsPx256));
   const beats = spec.toBeat == null ? `no current asset to beat (${spec.beatNote ?? "the product has no cover image"}); ours is ${ours}px at 256 wide (title_px ${brief.title_px})` : `ours ${ours}px at 256 wide (title_px ${brief.title_px} in design-audit.json) vs theirs about ${spec.theirsPx256}px from compare.png (${basename(spec.toBeat)})${spec.beatNote ? "; " + spec.beatNote : ""}`;
   const lines = [
     `# VERDICT ${id}: ${pass ? "PASS" : "FAIL"} (worker self-review, 2026-10-04; the keeper's judge chain has not run on this folder)`,
     `BEATS: ${beats}.`,
-    `PICTURE: real product pictures from the customer's own files, ${assets.length} listed in assets.json (${assets.slice(0, 4).map((a) => a.file.replace("assets/", "")).join(", ")}${assets.length > 4 ? ", ..." : ""}).`,
-    `FACTS: ${f.tokens.length} numbers on the cover (${f.tokens.join(" ")}), ${f.missing.length ? "NOT in the listing: " + f.missing.join(" ") : "all found in " + basename(f.listing ?? "the order brief")}; forbidden words (game engines) ${f.forbidden.length ? "FOUND: " + f.forbidden.join(",") : "absent from page text and alt text"}.`,
-    `FIT: out.png ${d1.w}x${d1.h}, out-630x500.png ${d2.w}x${d2.h}, both opened by eye, nothing cut at an edge except pictures that bleed on purpose; audit ${audit.pass ? "PASS" : "FAIL"} (${audit.checks.length} gates), judge ${j.score}/${j.max} ${j.pass ? "SHIP" : "REWORK"}; smallest design text at 256 wide is the chips (about 5px, secondary), the title is ${ours}px.`,
-    `LANE: store = DELIVERY.md names the cover to beat (${spec.toBeat ? basename(spec.toBeat) : "none"}) and the landing ${spec.landing}.`,
+    spec.pictureNote ? `PICTURE: ${spec.pictureNote}` : `PICTURE: real product pictures from the customer's own files, ${assets.length} listed in assets.json (${assets.slice(0, 4).map((a) => a.file.replace("assets/", "")).join(", ")}${assets.length > 4 ? ", ..." : ""}).`,
+    spec.noFacts ? `FACTS: placeholders only, no claim to check; forbidden words (${[...FORBIDDEN, ...(spec.forbid ?? [])].slice(-6).join(", ")}) ${f.forbidden.length ? "FOUND: " + f.forbidden.join(",") : "absent from page text and alt text (no personal data in the folder)"}.` : `FACTS: ${f.tokens.length} numbers on the cover (${f.tokens.join(" ")}), ${f.missing.length ? "NOT in the listing: " + f.missing.join(" ") : "all found in " + basename(f.listing ?? "the order brief")}; forbidden words (game engines) ${f.forbidden.length ? "FOUND: " + f.forbidden.join(",") : "absent from page text and alt text"}.`,
+    `FIT: ${dims.map((z) => `${z.file} ${z.got.w}x${z.got.h}`).join(", ")}, ${dims.length > 1 ? "both" : "it"} opened by eye, nothing cut at an edge${spec.custom ? "" : " except pictures that bleed on purpose"}; audit ${audit.pass ? "PASS" : "FAIL"} (${audit.checks.length} gates), judge ${j.score}/${j.max} ${j.pass ? "SHIP" : "REWORK"}; ${spec.custom ? `title ${ours}px at 256 wide` : `smallest design text at 256 wide is the chips (about 5px, secondary), the title is ${ours}px`}${spec.fitNote ? "; " + spec.fitNote : ""}.`,
+    spec.laneNote ? `LANE: ${spec.laneNote}` : `LANE: store = DELIVERY.md names the cover to beat (${spec.toBeat ? basename(spec.toBeat) : "none"}) and the landing ${spec.landing}.`,
   ];
   writeFileSync(join(spec.dir, "VERDICT.md"), `${lines.join("\n")}\n`, "utf8");
   console.log(`VERDICT ${id}: ${pass ? "PASS" : "FAIL"} (${f.missing.length ? "missing facts " + f.missing.join(" ") : "facts ok"}${f.forbidden.length ? ", forbidden " + f.forbidden.join(",") : ""})`);

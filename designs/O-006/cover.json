@@ -1,0 +1,76 @@
+{
+  "product": "post-visual:aeo-checker",
+  "from_repo": "marketing-studio",
+  "storeName": "post",
+  "custom": true,
+  "noPictures": true,
+  "title": "Is your site answer-ready? Free 60-second checker.",
+  "pick": "bold",
+  "kicker": "unused",
+  "claim": "unused",
+  "badge": "unused",
+  "tokens": {
+    "bg": "#0b0c10",
+    "bg-2": "#171a24",
+    "ink": "#ffffff",
+    "muted": "#cfd3e0",
+    "accent": "#c6ff3d",
+    "accent-ink": "#c6ff3d",
+    "on-accent": "#0b0c10",
+    "chip-bg": "#171a24",
+    "chip-ink": "#e9ecf7",
+    "chip-line": "#3b4157"
+  },
+  "fonts": {
+    "display": "'Segoe UI Black', 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Cascadia Mono', 'Courier New', monospace"
+  },
+  "titlePx": 72,
+  "titlePxCard": 72,
+  "sizes": [
+    {
+      "w": 1200,
+      "h": 630,
+      "name": "link-card",
+      "titlePx": 72,
+      "titleBox": [
+        0.05,
+        0.08,
+        0.95,
+        0.45
+      ],
+      "titleLongest": 26
+    },
+    {
+      "w": 1080,
+      "h": 1080,
+      "name": "square",
+      "titlePx": 74,
+      "titleBox": [
+        0.052,
+        0.06,
+        0.948,
+        0.3
+      ],
+      "titleLongest": 26
+    }
+  ],
+  "listing": "C:/Users/me/Desktop/marketing-studio/campaigns/aeo-checker/checker.md",
+  "toBeat": null,
+  "beatNote": "the campaign has no visual yet (checker.md and READY.md are text packs)",
+  "landing": "from-design-studio/O-006/",
+  "assetsFrom": "none: the 20 signal names on the visual are the product's own PAGE_PARAMS list from checker.md",
+  "pictureNote": "the checker is a draft page that is not live, so there is no screenshot of it; the picture is the product's own list of 20 on-page signals (checker.md), set as signal tags.",
+  "laneNote": "social = the headline from the brief appears word for word in page.html (one h1, same text as brief.json title); nothing is posted by us.",
+  "assets": [],
+  "deliveryLines": [
+    "Landing in marketing-studio: `from-design-studio/O-006/` (copy this whole folder; never edit a file outside from-design-studio/). Nothing is posted by design-studio.",
+    "`out.png` 1200x630 = link card for the post or the page; `out-1080x1080.png` = square for the feed; `thumb-256.png` = readability proof at 256 px.",
+    "Source: `page.html` + `tokens.css` (no images: the 20 signals are text from checker.md); `assets.json` is empty on purpose.",
+    "Gates: `brief.json`, `design-audit.json` (audit PASS), `DESIGN-REVIEW.md` (SHIP), `VERDICT.md` (five checks).",
+    "Headline verbatim from the order: Is your site answer-ready? Free 60-second checker. Facts only from `campaigns/aeo-checker/checker.md`: 20 on-page signals, free result on screen, 3 steps. No scores or audit numbers.",
+    "Adopt: commit these bytes in marketing-studio and point the post step of `campaigns/aeo-checker` at `out.png` and `out-1080x1080.png`; the loop posts through its own gate.",
+    "Proof in marketing-studio: `git log -1 --format=%h -- from-design-studio/O-006/out.png`; here: `node tools/orders-check.mjs` and `node tools/audit.mjs designs/O-006/brief.json`."
+  ]
+}

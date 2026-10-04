@@ -1,0 +1,140 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "name": "brief.json parses",
+      "pass": true,
+      "detail": "קורות חיים"
+    },
+    {
+      "name": "brief size sane",
+      "pass": true,
+      "detail": "794x1123"
+    },
+    {
+      "name": "tokens.css parses with 2+ colors",
+      "pass": true,
+      "detail": "7 vars"
+    },
+    {
+      "name": "page.html carries the title",
+      "pass": true,
+      "detail": "title text present"
+    },
+    {
+      "name": "no hardcoded colors in page.html",
+      "pass": true,
+      "detail": "all color via var(--*)"
+    },
+    {
+      "name": "page.html uses tokens",
+      "pass": true,
+      "detail": "var(--*) found"
+    },
+    {
+      "name": "rtl: html dir=rtl",
+      "pass": true,
+      "detail": "dir=rtl"
+    },
+    {
+      "name": "rtl: logical properties only",
+      "pass": true,
+      "detail": "no physical left/right"
+    },
+    {
+      "name": "rtl: Hebrew type pair",
+      "pass": true,
+      "detail": "page uses var(--font-hebrew)"
+    },
+    {
+      "name": "direction token matches html dir",
+      "pass": true,
+      "detail": "wantDir=rtl dir=rtl"
+    },
+    {
+      "name": "no row-reverse without intent",
+      "pass": true,
+      "detail": "no reverse flex"
+    },
+    {
+      "name": "rtl: mixed-dir mirror",
+      "pass": true,
+      "detail": "mixed-dir content mirrored"
+    },
+    {
+      "name": "out.png size matches brief",
+      "pass": true,
+      "detail": "794x1123"
+    },
+    {
+      "name": "out.png non-trivial",
+      "pass": true,
+      "detail": "58294B"
+    },
+    {
+      "name": "contrast title",
+      "pass": true,
+      "detail": "17.76:1 vs 4.5:1 (#16181d on #ffffff)"
+    },
+    {
+      "name": "contrast headline",
+      "pass": true,
+      "detail": "8.10:1 vs 4.5:1 (#4a505c on #ffffff)"
+    },
+    {
+      "name": "contrast heading",
+      "pass": true,
+      "detail": "5.76:1 vs 4.5:1 (#b83a0a on #ffffff)"
+    },
+    {
+      "name": "contrast body",
+      "pass": true,
+      "detail": "8.10:1 vs 4.5:1 (#4a505c on #ffffff)"
+    },
+    {
+      "name": "contrast pill",
+      "pass": true,
+      "detail": "15.73:1 vs 4.5:1 (#16181d on #f3f1ec)"
+    },
+    {
+      "name": "title_box valid fractions",
+      "pass": true,
+      "detail": "0.08,0.03,0.92,0.12"
+    },
+    {
+      "name": "title legible at 256px",
+      "pass": true,
+      "detail": "14.8px at 256px wide (floor 12px)"
+    },
+    {
+      "name": "title fits its box",
+      "pass": true,
+      "detail": "need ~230px, box 667px"
+    },
+    {
+      "name": "title legible at 315px listing",
+      "pass": true,
+      "detail": "18.2px at 315px listing (floor 12px)"
+    },
+    {
+      "name": "size 794x1123: title legible at 256px",
+      "pass": true,
+      "detail": "14.8px at 256px (floor 12px)"
+    },
+    {
+      "name": "size 794x1123: title fits its box",
+      "pass": true,
+      "detail": "need ~230px, box 667px"
+    },
+    {
+      "name": "reference.png parity",
+      "pass": true,
+      "detail": "no reference declared, SKIP — add reference.png to gate pixels",
+      "skipped": true
+    }
+  ],
+  "errors": [],
+  "brief": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-007\\brief.json",
+  "image": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-007\\out.png",
+  "at": "2026-10-04"
+}

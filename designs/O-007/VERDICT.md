@@ -1,0 +1,6 @@
+# VERDICT O-007: PASS (worker self-review, 2026-10-04; the keeper's judge chain has not run on this folder)
+BEATS: no current asset to beat (compared by structure with jobhunt's current CV layout (the O-010 copy in from-design-studio/cv): that one has no A4 print CSS in the layout itself, no EN twin and no named slots, this one has all three); ours is 14.8px at 256 wide (title_px 46).
+PICTURE: a layout with named placeholder slots and no pictures (ATS rule: no text in images); the proof is the PDF text layer, see pdf-check.txt.
+FACTS: placeholders only, no claim to check; forbidden words (pygame, maxim, konovalov, gmail, laos media, haifa) absent from page text and alt text (no personal data in the folder).
+FIT: out.png 794x1123, it opened by eye, nothing cut at an edge; audit PASS (26 gates), judge 10/10 SHIP; title 14.8px at 256 wide; cv-he.pdf and cv-en.pdf are one A4 page each with a real text layer (pdf-check.txt); the body type is 13.6 to 14.6px so it prints at 10 to 11pt.
+LANE: cv = real text in the PDF text layer (pdf-check.txt) and Hebrew reads right to left (dir=rtl, logical CSS only, LRI/PDI isolates on Latin runs); one A4 page; EN LTR twin audited separately (design-audit-en.json).

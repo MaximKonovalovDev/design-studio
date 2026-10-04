@@ -1,0 +1,68 @@
+{
+  "title": "קורות חיים",
+  "size": {
+    "w": 794,
+    "h": 1123
+  },
+  "sizes": [
+    {
+      "w": 794,
+      "h": 1123,
+      "name": "a4-he",
+      "title_px": 46,
+      "title_box": [
+        0.08,
+        0.03,
+        0.92,
+        0.12
+      ],
+      "title_longest": 10
+    }
+  ],
+  "dir": "rtl",
+  "tokens": "tokens.css",
+  "page": "page.html",
+  "image": "out.png",
+  "text": [
+    {
+      "label": "title",
+      "fg": "var(--ink)",
+      "bg": "var(--paper)",
+      "min": 4.5
+    },
+    {
+      "label": "headline",
+      "fg": "var(--muted)",
+      "bg": "var(--paper)",
+      "min": 4.5
+    },
+    {
+      "label": "heading",
+      "fg": "var(--accent)",
+      "bg": "var(--paper)",
+      "min": 4.5
+    },
+    {
+      "label": "body",
+      "fg": "var(--muted)",
+      "bg": "var(--paper)",
+      "min": 4.5
+    },
+    {
+      "label": "pill",
+      "fg": "var(--ink)",
+      "bg": "var(--soft)",
+      "min": 4.5
+    }
+  ],
+  "title_box": [
+    0.08,
+    0.03,
+    0.92,
+    0.12
+  ],
+  "title_px": 46,
+  "title_longest": 10,
+  "order": "O-007",
+  "product": "cv-layout:he-a4"
+}

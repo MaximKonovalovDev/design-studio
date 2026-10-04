@@ -1,0 +1,23 @@
+/* designs/O-006/tokens.css: O-006 Is your site answer-ready? Free 60-second checker. (bold). All page color comes from these vars. */
+:root {
+  --bg: #0b0c10;
+  --bg-2: #171a24;
+  --ink: #ffffff;
+  --muted: #cfd3e0;
+  --accent: #c6ff3d;
+  --accent-ink: #c6ff3d;
+  --on-accent: #0b0c10;
+  --chip-bg: #171a24;
+  --chip-ink: #e9ecf7;
+  --chip-line: #3b4157;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --font-mono: Consolas, 'Cascadia Mono', 'Courier New', monospace;
+  --title-px: 72px;
+  --title-px-card: 72px;
+  --title-weight: 800;
+  --title-track: -0.01em;
+  --copy-w: 52%;
+  --claim-w: 560px;
+  --chip-r: 8px;
+}
