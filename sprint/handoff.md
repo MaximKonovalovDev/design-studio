@@ -1,23 +1,23 @@
-# design-studio handoff - round 60 (token be4c)
+# design-studio handoff - round 61 (token be4c)
 
-Round: 60
-Written: 2026-10-04T09:13Z by lead (token be4c, lock refreshed).
+Round: 61
+Written: 2026-10-04T09:21Z by lead (token be4c, lock released).
 Knobs: width 3, heavy_max 3, paid_mode 0 (unchanged).
 
 ## Heading
-- D1 NOT moved: no new adoption (eye: 17/23 used, 0 new). D1/D3 flip comes next round via DS-77 packet 006 (orders.csv 27 CR bytes break the `$`-anchored FINISH regexes; both adopted hashes verified live). Orders 27 (3 open, 21 delivered, 2 adopted).
+- D1 MOVED 0/5 -> 2/5 bars (D1 met 2 lines, D3 met 1 line): orders.csv 27 CR bytes stripped to 0, `$`-anchored FINISH regexes read again. Both adopted hashes real (ec65e25 jobhunt, 2c6122b0 factory, verified live). Lock-in commit waits on 006 chain review.
 
 ## Done
-- Center FAIL -> clearing packet: 3 arsenal FAILs (free-image, orders --test, expect-pages) cleared by 005-arsenal-names-fix, judge PASS, committing names-only below.
-- 005 judge PASS (reran: arsenal 12/13->12/12 after lead split the unjudged gifcap hunk out; tools/check PASS; sprint 21/21). Commit: arsenal.json names-only.
-- O-026 built (maker-store DONE: Fleet Vol 1 cover, 2 real pictures, 28.0px vs factory 26.4px at 256, AUDIT 22+SKIP, SHIP 10/10). Uncommitted, keeper queued maker-store-r2-review.
-- Eye DONE: O-019/20/21 USED no (0 days, nothing past 2 days so no inbox lines); 0 new orders. EYE.md x3 + lane line + NEED-08 left dirty for their verdict/delivery commits.
-- Inbox S41 -> DS-77 READY (item 2 CRLF repair) + packet 006 queued; item 1 stays DS-70 OWNER (real stop is Maxim's factory-cf-token-pages token + lister deploy).
+- Center FAIL -> clearing packet: 3 arsenal FAILs were already cleared by 005 in 654d882 (arsenal 12/12 re-verified this round); center's 30m-ago run predates that push. Nothing new to write.
+- 006 builder DONE (DS-77 DOING): CR 0, ORDERS PASS 26, finish D1+D3 met, sprint 21/21. Uncommitted, awaits chain review.
+- Toolsmith DONE (NEED-07 DONE in needs.md): 0b `--built`/`--verdict` landed in tools/orders-check.mjs + tests (17/17); lead-reran BUILT PASS O-024 16/16, ORDERS PASS, sprint PASS. Uncommitted, awaits chain review; DLV rows can now form.
+- O-026 review BLOCKED by same-batch race (0b landed in this batch, after the judge ran): folder kept, re-review next loop through `--built`/`--verdict`.
+- No commits of crew work this round: nothing holds a judge PASS yet (006, 0b, O-026 all pending chain review).
 
 ## Blockers and notes
-- Inbox: 1 open (S41, partially rowed). DS-70 OWNER stands. NEED-07 (0b) still READY; JDG-O-024/O-025 BLOCKEDs stand; EYE row consumed.
-- gifcap arsenal entry removed from this commit (unjudged); NEED-05 verdict commit re-adds it with tool files + demo.gif.
-- Left dirty, not mine: repomap.md, consumed ready deletions, keeper review files, O-026 folder, EYE/lane/needs seat outputs, gifcap set.
+- HALT: `sprint/halt` (Maxim via Loop Boss 09:19Z): finish round, handoff, stop. Lock released. Resume removes the file.
+- Inbox: 1 open (S41: item 2 DS-77 DOING, item 1 DS-70 OWNER stands). JDG-O-024/O-025 BLOCKEDs stand (re-judge via 0b on resume).
+- Left dirty: orders.csv LF bytes, 0b files + O-024 VERDICT.md, O-026 folder, EYE/lane/needs outputs, gifcap set, repomap.md, keeper queue files.
 
-## Next
-- Keeper: 006 renormalize (D1/D3 flip) first, then O-026 review, toolsmith NEED-07, BLD next oldest open. Lead commits judged PASS only.
+## Next (on resume)
+- Keeper: 006 review (commit orders.csv, close DS-77 + S41 item 2), 0b review (commit tool, re-review O-024/O-025/O-026 through it), then DLV rows for judged folders. Lead commits judged PASS only.
