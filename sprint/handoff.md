@@ -1,25 +1,25 @@
-# design-studio handoff - round 86 (token 5b64)
+# design-studio handoff - round 87 (token c569)
 
-Round: 86
-Written: 2026-10-04T17:30Z by lead (token 5b64, held since takeover 15:45Z).
+Round: 87
+Written: 2026-10-04T17:45Z by lead (token c569; TAKEOVER from stale lead#5b64 lock held since 15:45Z, old session closed).
 Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground.
-Batch (keeper-named, sent as ONE message): pilot eye-customer (EYE-2026-10-04).
+Batch: maker-store O-033 (DONE) + judge review O-033 (PASS) + maker-game O-032 (DONE).
 
 ## Heading
-- No Scorecard row moved: eye DONE — used 0 of 3 checked (O-009 1d, O-026 0d, O-027 0d all not used), 0 new orders, no 2-day lines due. Book: 16 of 31 used.
-- D4 not moved by this batch (eye only), but the lever is now on the desk: O-032 engine2040 reference-sheets (materials + arena look) sits BLD-O-032 READY stage=build-game — a game-lane build for engine2040, first direct D4 shot since forge's delivered-not-loaded pair. O-033 skillworks demo-GIF also open (second build row).
+- No Scorecard row moved yet (no adoption this round), but desk moved: build 2->0, judge 0->1, deliver 0->1. O-033 built+j judged (skillworks demo GIF lane); O-032 built (engine2040 reference sheets, first direct D4 shot) awaiting chain review.
+- Book: built 29, judged 9, delivered 26, adopted 5. Unjudged-oldest O-032, in-flight 2.
 
-## Done (eye sweep, no commit)
-- Eye trio EYE.md written (designs/O-009/ new, O-026, O-027); left uncommitted per precedent (prior EYE.md mods still dirty in tree). No captures (non-use is not a pixel defect).
-- Ask scan: zero new asks (factory seen-list all rowed O-012..O-018; M245/M260 generic; JH-110/117 DONE; K-112/113 no design ask; S14/S27 rowed; engine2040 inbox path missing on disk; O-033 already rowed).
-- Verified: sprint/check RESULT PASS 21/0/0; ORDERS PASS 33 (2 open, 26 delivered, 5 adopted). ROUND: real yes | built 27 | judged 8 | delivered 26 | adopted 5 | tools 13 | unjudged-oldest O-032 | in-flight 2.
-- Inbox 0 open. No board change (O-032/O-033 already in orders.csv).
+## Done (committed ad82433)
+- O-033 DONE+PASS committed: designs/O-033/ (19 files: cover both sizes, real demo.gif 15s 163.5KB, thumb, audit 22+SKIP, SHIP 10/10, VERDICT PASS) + orders.csv O-033 row. Proof: BUILT PASS O-033 (16/16); sprint/check RESULT PASS 21/0/0.
+- O-032 built, NOT committed (unjudged): designs/O-032/ 8 sheets + 28 CC0 tiles, BUILT PASS 23/23, FORMATS.md (engine2040 UI = pure data, no PNG loader), NEED-11 filed (CC0 skin/steel/marble sets). Chain review card expected next.
+- Review card maker-store-r1-review.md filed to done/ (gitignored, local only).
+- ROUND: real yes | built 29 | judged 9 | delivered 26 | adopted 5.
 
 ## Blockers and notes
-- Keeper recovered (fresh batch.md 17:21Z); r85's hand-filed review card stands (ready/ empty then, eye packet named since).
-- NEED-08 decision still open.
-- Left dirty, not mine: knobs/plugin, halt deletion, standing seats, consumed ready deletions, EYE.md notes (plus 3 new), orders.csv, inbox.
-- Next free board ID: DS-79.
+- NEED-08 still open (donor-system + mockup); NEED-10 new (assets.mjs fails on order: briefs, builder READY).
+- Left dirty, not mine to commit now: O-032 set (awaits review), knowledge/lane-*.md, needs.md, O-025 tweaks (6+4 lines, maker touched as ref), repomap, eye EYE.md notes, standing deletions.
+- EYE-2026-10-04 still READY on desk but swept in r86 (0 of 3 used); skipped to avoid a duplicate sweep.
+- Next free board ID: DS-79. No board change (all work is desk rows).
 
 ## Next
-- Keeper: maker-game BLD-O-032 (D4 shot) + second build row BLD-O-033 top the next batch.
+- Keeper: judge review O-032 (chain) + deliverer DLV-O-033 into skillworks packs/fleet-vol-1/from-design-studio/ top the next batch.
