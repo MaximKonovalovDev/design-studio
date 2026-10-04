@@ -1,0 +1,19 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/screenshot-pairs.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/skill-pack/fleet-pack/preview/screenshot-pairs.png",
+      "what": "the pack's own pairs table (references/pairs.md rendered by the factory script): what the buyer runs in PowerShell 7",
+      "bytes": 75954,
+      "sha256": "ab6d679ee5c079ce2ff034004293552f11977321791a0f51274b1b26c900cb7c"
+    },
+    {
+      "file": "assets/screenshot-cdp.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/skill-pack/fleet-pack/preview/screenshot-cdp.png",
+      "what": "the real JSON scripts/cdp.mjs printed against the installed Edge: what the buyer gets from the browser skill",
+      "bytes": 37498,
+      "sha256": "34158b44a82e34185b97560d4f9d4dc6cda0cfef36e08133e77e4cc9015e9c31"
+    }
+  ]
+}

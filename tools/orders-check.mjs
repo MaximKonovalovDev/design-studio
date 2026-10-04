@@ -4,8 +4,12 @@
 //   node tools/orders-check.mjs --desk [--date YYYY-MM-DD]
 //                                          write sprint/queue/desk.md: one row per lane seat, derived only
 //                                          from orders.csv and designs/<id>/ (tool sprint packet 0a)
-// Plain CSV: 9 fields, no comma inside a field. Rules live in AGENTS.md "Orders and delivery".
+//   node tools/orders-check.mjs --built <id>
+//                                          packet 0b: folder completeness gate (exit 0 BUILT PASS, 1 BUILT FAIL)
+//   node tools/orders-check.mjs --verdict <id> PASS|FAIL --line "BEATS ...; PICTURE ...; FACTS ...; FIT ...; LANE ..."
+//                                          packet 0b: write designs/<id>/VERDICT.md (refuses PASS unless --built passes)
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -135,6 +139,162 @@ export function readVerdict(id, designsDir = join(ROOT, "designs")) {
   return m ? m[1] : null;
 }
 
+// ---- packet 0b: the build gate and the verdict writer -----------------------
+// --built <id>: the folder is complete (every file AGENTS.md "Orders and
+// delivery" lists, every brief size at exact pixels, audit PASS, SHIP at 8
+// or more, every real image it uses listed in assets.json). checkBuilt
+// returns every check plus the first failing line; the CLI prints one
+// BUILT line (exit 0 PASS, 1 FAIL).
+// --verdict <id> PASS|FAIL --line "...": writes designs/<id>/VERDICT.md in
+// the form readVerdict parses. Refuses PASS unless --built passes and the
+// line carries all five sections; FAIL writes with any non-empty line (a
+// built failure travels as its first failing line).
+export const BUILT_FILES = ["brief.json", "page.html", "tokens.css", "thumb-256.png", "design-audit.json", "DESIGN-REVIEW.md", "DELIVERY.md"];
+export const VERDICT_LABELS = ["BEATS", "PICTURE", "FACTS", "FIT", "LANE"];
+
+function pngDims(buf) {
+  const magic = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+  if (!Buffer.isBuffer(buf) || buf.length < 24 || !buf.subarray(0, 8).equals(magic)) throw new Error("not a PNG file");
+  return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
+}
+
+function expectedPngs(brief) {
+  const main = brief?.size;
+  const sizes = Array.isArray(brief?.sizes) && brief.sizes.length ? brief.sizes : (main ? [main] : []);
+  return sizes.map((s) => ({ w: s?.w, h: s?.h, file: (main && s?.w === main.w && s?.h === main.h) ? "out.png" : `out-${s?.w}x${s?.h}.png` }));
+}
+
+const countLines = (text) => {
+  const lines = String(text).split(/\r?\n/);
+  if (lines.length && lines[lines.length - 1] === "") lines.pop();
+  return lines.length;
+};
+
+export function checkBuilt(id, { designsDir = join(ROOT, "designs") } = {}) {
+  const dir = join(designsDir, id);
+  const checks = [];
+  const t = (name, pass, detail) => { checks.push({ name, pass: !!pass, detail }); return !!pass; };
+  const done = () => {
+    const f0 = checks.find((c) => !c.pass);
+    return { id, pass: !f0, checks, fail: f0 ? `${f0.name}: ${f0.detail}` : null };
+  };
+  if (!existsSync(dir)) {
+    t("folder", false, `no folder designs/${id}`);
+    return done();
+  }
+  t("folder", true, `designs/${id} exists`);
+  for (const f of BUILT_FILES) t(`file ${f}`, existsSync(join(dir, f)), existsSync(join(dir, f)) ? `${f} on disk` : `missing designs/${id}/${f}`);
+  let brief = null;
+  if (existsSync(join(dir, "brief.json"))) {
+    try {
+      brief = JSON.parse(readFileSync(join(dir, "brief.json"), "utf8"));
+      t("brief parses", true, String(brief.title ?? id));
+    } catch (e) { t("brief parses", false, `brief.json does not parse: ${e.message}`); }
+  }
+  if (brief) {
+    const want = expectedPngs(brief);
+    if (!want.length) t("sizes", false, "brief.json has no size");
+    for (const s of want) {
+      const p = join(dir, s.file);
+      if (!existsSync(p)) { t(`size ${s.w}x${s.h}`, false, `missing designs/${id}/${s.file}, want ${s.w}x${s.h}`); continue; }
+      let d = null;
+      try { d = pngDims(readFileSync(p)); } catch { t(`size ${s.w}x${s.h}`, false, `${s.file} is not a PNG`); continue; }
+      t(`size ${s.w}x${s.h}`, d.w === s.w && d.h === s.h, d.w === s.w && d.h === s.h ? `${s.file} ${d.w}x${d.h}` : `${s.file} is ${d.w}x${d.h}, want ${s.w}x${s.h}`);
+    }
+  }
+  if (existsSync(join(dir, "thumb-256.png"))) {
+    try {
+      const d = pngDims(readFileSync(join(dir, "thumb-256.png")));
+      t("thumb", d.w === 256, d.w === 256 ? `thumb-256.png ${d.w}x${d.h}` : `thumb-256.png is ${d.w}x${d.h}, want width 256`);
+    } catch { t("thumb", false, "thumb-256.png is not a PNG"); }
+  }
+  if (existsSync(join(dir, "design-audit.json"))) {
+    try {
+      const a = JSON.parse(readFileSync(join(dir, "design-audit.json"), "utf8"));
+      if (a.pass === true) t("audit", true, "design-audit.json PASS");
+      else {
+        const f0 = (a.checks ?? []).find((c) => !c.pass);
+        t("audit", false, `design-audit.json is not PASS${f0 ? ` (first: ${f0.name})` : ""}`);
+      }
+    } catch (e) { t("audit", false, `design-audit.json does not parse: ${e.message}`); }
+  }
+  if (existsSync(join(dir, "DESIGN-REVIEW.md"))) {
+    const text = String(readFileSync(join(dir, "DESIGN-REVIEW.md"), "utf8"));
+    const m = text.match(/(\d+)\s*\/\s*10/);
+    const score = m ? Number(m[1]) : null;
+    const ship = /\bSHIP\b/.test(text);
+    const ok = ship && score !== null && score >= 8;
+    t("review", ok, ok ? `DESIGN-REVIEW.md SHIP ${score}/10` : `DESIGN-REVIEW.md is ${ship ? `SHIP ${score ?? "?"}/10` : "not SHIP"}, want SHIP >=8/10`);
+  }
+  if (existsSync(join(dir, "DELIVERY.md"))) {
+    const n = countLines(readFileSync(join(dir, "DELIVERY.md"), "utf8"));
+    t("delivery", n >= 1 && n <= 10, n >= 1 && n <= 10 ? `DELIVERY.md ${n} lines` : `DELIVERY.md has ${n} lines, want 1-10`);
+  }
+  if (existsSync(join(dir, "assets.json"))) {
+    let aj = null;
+    try { aj = JSON.parse(readFileSync(join(dir, "assets.json"), "utf8")); } catch (e) { t("assets", false, `assets.json does not parse: ${e.message}`); }
+    if (aj) {
+      if (!Array.isArray(aj.assets)) t("assets", false, "assets.json has no assets array");
+      else {
+        const listed = new Map(aj.assets.map((a) => [String(a?.file), a]));
+        const refs = new Set();
+        if (existsSync(join(dir, "page.html"))) {
+          for (const m of String(readFileSync(join(dir, "page.html"), "utf8")).matchAll(/assets\/[A-Za-z0-9._-]+/g)) refs.add(m[0]);
+        }
+        if (Array.isArray(brief?.assets)) for (const a of brief.assets) { const s = String(a); if (s.startsWith("assets/")) refs.add(s); }
+        let ok = true;
+        for (const r of [...refs].sort()) {
+          if (!listed.has(r)) { t("assets", false, `${r} used but not listed in assets.json`); ok = false; }
+        }
+        if (ok) {
+          for (const [f, e] of [...listed.entries()].sort()) {
+            const fp = join(dir, f);
+            if (!existsSync(fp)) { t("assets", false, `${f} listed in assets.json but missing on disk`); ok = false; break; }
+            const size = statSync(fp).size;
+            if (e && e.bytes != null && size !== Number(e.bytes)) { t("assets", false, `${f} is ${size}B on disk, assets.json says ${e.bytes}B`); ok = false; break; }
+            if (e && e.sha256) {
+              const h = createHash("sha256").update(readFileSync(fp)).digest("hex");
+              if (h !== String(e.sha256).toLowerCase()) { t("assets", false, `${f} sha256 mismatch`); ok = false; break; }
+            }
+          }
+        }
+        if (ok) t("assets", true, listed.size ? `${listed.size} asset(s) listed and on disk` : "no real pictures used (typographic build)");
+      }
+    }
+  }
+  return done();
+}
+
+// Split only before a known label so a section may carry ";" inside (O-024 BEATS does).
+export function parseVerdictLine(line) {
+  const parts = String(line ?? "").split(/;\s*(?=(?:BEATS|PICTURE|FACTS|FIT|LANE)\s*:?)/g).map((s) => s.trim()).filter(Boolean);
+  const map = new Map();
+  for (const p of parts) {
+    const m = p.match(/^([A-Z]+)\s*:?\s*([\s\S]*)$/);
+    if (m && VERDICT_LABELS.includes(m[1]) && !map.has(m[1])) map.set(m[1], `${m[1]}: ${m[2].trim()}`);
+  }
+  return { parts, map };
+}
+
+export function writeVerdict(id, verdict, line, { designsDir = join(ROOT, "designs") } = {}) {
+  const v = String(verdict ?? "").toUpperCase();
+  if (v !== "PASS" && v !== "FAIL") return { ok: false, message: `VERDICT REFUSED: ${id} wants ${verdict ?? "(no verdict)"}, want PASS or FAIL` };
+  const { parts, map } = parseVerdictLine(line);
+  if (!parts.length) return { ok: false, message: `VERDICT REFUSED: ${id} ${v} refused (empty --line)` };
+  if (v === "PASS") {
+    const built = checkBuilt(id, { designsDir });
+    if (!built.pass) return { ok: false, message: `VERDICT REFUSED: ${id} PASS refused (BUILT FAIL: ${built.fail})` };
+    const missing = VERDICT_LABELS.filter((l) => !map.has(l));
+    if (missing.length) return { ok: false, message: `VERDICT REFUSED: ${id} PASS refused (missing ${missing.join(", ")})` };
+  }
+  const dir = join(designsDir, id);
+  if (!existsSync(dir)) return { ok: false, message: `VERDICT REFUSED: ${id} refused (no folder designs/${id})` };
+  const body = v === "PASS" ? VERDICT_LABELS.map((l) => map.get(l)) : parts;
+  const path = join(dir, "VERDICT.md");
+  writeFileSync(path, [`VERDICT: ${v} ${id}`, ...body].join("\n") + "\n");
+  return { ok: true, path, message: `VERDICT ${v}: ${id} -> designs/${id}/VERDICT.md` };
+}
+
 function previewPics(id, designsDir) {
   let entries = null;
   try {
@@ -229,6 +389,28 @@ if (isMain) {
     writeFileSync(join(ROOT, "sprint/queue/desk.md"), `${d.lines.join("\n")}\n`);
     console.log(d.deskLine);
     process.exit(0);
+  }
+  if (process.argv.includes("--built")) {
+    const id = process.argv[process.argv.indexOf("--built") + 1];
+    if (!id || id.startsWith("--")) { console.log("BUILT FAIL: (no id) usage: node tools/orders-check.mjs --built <order-id>"); process.exit(1); }
+    const r = checkBuilt(id);
+    const n = r.checks.filter((c) => c.pass).length;
+    console.log(r.pass ? `BUILT PASS: ${id} (${n}/${r.checks.length} checks)` : `BUILT FAIL: ${id} ${r.fail}`);
+    process.exit(r.pass ? 0 : 1);
+  }
+  if (process.argv.includes("--verdict")) {
+    const vi = process.argv.indexOf("--verdict");
+    const id = process.argv[vi + 1];
+    const verdict = process.argv[vi + 2];
+    const li = process.argv.indexOf("--line");
+    const line = li !== -1 ? process.argv[li + 1] : undefined;
+    if (!id || id.startsWith("--") || !verdict || verdict.startsWith("--") || !line) {
+      console.log(`VERDICT REFUSED: usage: node tools/orders-check.mjs --verdict <id> PASS|FAIL --line "BEATS ...; PICTURE ...; FACTS ...; FIT ...; LANE ..."`);
+      process.exit(1);
+    }
+    const r = writeVerdict(id, verdict, line);
+    console.log(r.ok ? r.message : r.message);
+    process.exit(r.ok ? 0 : 1);
   }
   const book = parseOrders(readFileSync(file, "utf8"));
   const bad = checkOrders(book);

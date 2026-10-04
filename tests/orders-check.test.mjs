@@ -1,10 +1,11 @@
 // tests/orders-check.test.mjs: the order book rules (S80) without touching the real orders.csv.
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { HEADER, beatAsset, buildDesk, checkOrders, coverStatus, laneFor, parseOrders, pathOnDisk, DESK_HEADER } from "../tools/orders-check.mjs";
+import { HEADER, beatAsset, buildDesk, checkBuilt, checkOrders, coverStatus, laneFor, parseOrders, pathOnDisk, readVerdict, writeVerdict, DESK_HEADER } from "../tools/orders-check.mjs";
 
 const row = (o) => ({ order_id: "O-9", from_repo: "factory", product: "cover:gumroad/x", brief: "b", status: "open", delivered_path: "", adopted: "no", date: "2026-10-03", adopted_commit: "", ...o });
 const csv = (...rows) => [HEADER, ...rows.map((r) => Object.values(row(r)).join(","))].join("\n");
@@ -112,5 +113,114 @@ describe("desk (tool sprint packet 0a)", () => {
       const what = l.split("|")[6];
       assert.doesNotMatch(what, /stage=/, l);
     }
+  });
+});
+
+describe("built gate (tool sprint packet 0b)", () => {
+  const png = (w, h) => Buffer.concat([
+    Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 13]),
+    Buffer.from("IHDR"),
+    Buffer.from([(w >>> 24) & 255, (w >>> 16) & 255, (w >>> 8) & 255, w & 255, (h >>> 24) & 255, (h >>> 16) & 255, (h >>> 8) & 255, h & 255]),
+  ]);
+  const brief = (id) => ({ title: "T", order: id, size: { w: 1280, h: 720 }, sizes: [{ w: 1280, h: 720, name: "landscape" }, { w: 630, h: 500, name: "store-card" }], dir: "ltr", page: "page.html", image: "out.png", tokens: "tokens.css" });
+  const mk = (id, mutate) => {
+    const dz = join(mkdtempSync(join(tmpdir(), "built-")), "designs");
+    const dir = join(dz, id);
+    mkdirSync(dir, { recursive: true });
+    const files = {
+      "brief.json": JSON.stringify(brief(id)),
+      "page.html": "<html><body><h1>T</h1></body></html>",
+      "tokens.css": ":root{--bg:#fff}",
+      "design-audit.json": JSON.stringify({ pass: true, checks: [] }),
+      "DESIGN-REVIEW.md": "# DESIGN-REVIEW.md: rubric ds-quality-v1 v1 — 10/10 SHIP\n\nSHIP: 10/10 meets the floor.",
+      "DELIVERY.md": ["# DELIVERY", "1.", "2.", "3.", "4.", "5.", "6.", "7."].join("\n") + "\n",
+      "assets.json": JSON.stringify({ assets: [], note: "t" }),
+    };
+    const bins = { "out.png": png(1280, 720), "out-630x500.png": png(630, 500), "thumb-256.png": png(256, 144) };
+    if (mutate) mutate(files, bins);
+    for (const [n, c] of Object.entries(files)) if (c !== null) writeFileSync(join(dir, n), c);
+    for (const [n, b] of Object.entries(bins)) if (b !== null) writeFileSync(join(dir, n), b);
+    return dz;
+  };
+  it("a complete folder passes every check", () => {
+    const r = checkBuilt("O-9", { designsDir: mk("O-9") });
+    assert.equal(r.pass, true, r.fail ?? "unexpected fail");
+    assert.ok(r.checks.every((c) => c.pass));
+  });
+  it("a missing folder, file, size or thumb fails with that line first", () => {
+    assert.match(checkBuilt("O-9", { designsDir: join(tmpdir(), "built-nope") }).fail, /no folder/);
+    assert.match(checkBuilt("O-9", { designsDir: mk("O-9", (f) => { f["design-audit.json"] = null; }) }).fail, /missing designs\/O-9\/design-audit\.json/);
+    assert.match(checkBuilt("O-9", { designsDir: mk("O-9", (f, b) => { b["out-630x500.png"] = null; }) }).fail, /missing designs\/O-9\/out-630x500\.png/);
+    assert.match(checkBuilt("O-9", { designsDir: mk("O-9", (f, b) => { b["out.png"] = png(800, 600); }) }).fail, /out\.png is 800x600, want 1280x720/);
+    assert.match(checkBuilt("O-9", { designsDir: mk("O-9", (f, b) => { b["thumb-256.png"] = png(128, 72); }) }).fail, /want width 256/);
+  });
+  it("a red audit, a REWORK review or a long DELIVERY fails", () => {
+    assert.match(checkBuilt("O-9", { designsDir: mk("O-9", (f) => { f["design-audit.json"] = JSON.stringify({ pass: false, checks: [{ name: "contrast title", pass: false }] }); }) }).fail, /not PASS \(first: contrast title\)/);
+    assert.match(checkBuilt("O-9", { designsDir: mk("O-9", (f) => { f["DESIGN-REVIEW.md"] = "REWORK: 5/10 below floor."; }) }).fail, /want SHIP >=8\/10/);
+    assert.match(checkBuilt("O-9", { designsDir: mk("O-9", (f) => { f["DELIVERY.md"] = Array.from({ length: 11 }, (_, i) => `${i + 1}.`).join("\n") + "\n"; }) }).fail, /has 11 lines, want 1-10/);
+  });
+  it("every used picture must be listed, every listed one on disk with matching bytes", () => {
+    const pic = Buffer.from("real picture bytes");
+    const hex = createHash("sha256").update(pic).digest("hex");
+    const dzGood = mk("O-9");
+    {
+      const dir = join(dzGood, "O-9");
+      mkdirSync(join(dir, "assets"), { recursive: true });
+      writeFileSync(join(dir, "assets", "shot.png"), pic);
+      writeFileSync(join(dir, "page.html"), '<img src="assets/shot.png">');
+      writeFileSync(join(dir, "assets.json"), JSON.stringify({ assets: [{ file: "assets/shot.png", bytes: pic.length, sha256: hex }] }));
+    }
+    assert.equal(checkBuilt("O-9", { designsDir: dzGood }).pass, true);
+    assert.match(checkBuilt("O-9", { designsDir: mk("O-9", (f) => { f["page.html"] = '<img src="assets/ghost.png">'; }) }).fail, /ghost\.png used but not listed/);
+    assert.match(checkBuilt("O-9", { designsDir: mk("O-9", (f) => { f["assets.json"] = JSON.stringify({ assets: [{ file: "assets/gone.png" }] }); }) }).fail, /gone\.png listed .* missing on disk/);
+  });
+});
+
+describe("verdict writer (tool sprint packet 0b)", () => {
+  const FIVE = "LANE: l; FACTS: f; FIT: t; PICTURE: p; BEATS: beats; inner; text";
+  it("FAIL writes even when built fails, and the first line parses", () => {
+    const dz = join(mkdtempSync(join(tmpdir(), "verdict-")), "designs");
+    mkdirSync(join(dz, "O-9"), { recursive: true });
+    const r = writeVerdict("O-9", "FAIL", "missing designs/O-9/design-audit.json", { designsDir: dz });
+    assert.equal(r.ok, true);
+    assert.equal(readVerdict("O-9", dz), "FAIL");
+  });
+  it("PASS refuses when built fails, when a section is missing, or with no line", () => {
+    const dz = join(mkdtempSync(join(tmpdir(), "verdict-")), "designs");
+    mkdirSync(join(dz, "O-9"), { recursive: true });
+    const r1 = writeVerdict("O-9", "PASS", FIVE, { designsDir: dz });
+    assert.equal(r1.ok, false);
+    assert.match(r1.message, /BUILT FAIL/);
+    assert.equal(r1.message.includes("VERDICT.md"), false);
+  });
+  it("PASS writes the five sections in canonical order and reads back PASS", () => {
+    const dz = join(mkdtempSync(join(tmpdir(), "verdict-")), "designs");
+    const dir = join(dz, "O-9");
+    mkdirSync(dir, { recursive: true });
+    const png = (w, h) => Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 13]), Buffer.from("IHDR"), Buffer.from([0, 0, (w >> 8) & 255, w & 255, 0, 0, (h >> 8) & 255, h & 255])]);
+    writeFileSync(join(dir, "brief.json"), JSON.stringify({ title: "T", size: { w: 1280, h: 720 } }));
+    writeFileSync(join(dir, "page.html"), "<h1>T</h1>");
+    writeFileSync(join(dir, "tokens.css"), ":root{--bg:#fff}");
+    writeFileSync(join(dir, "out.png"), png(1280, 720));
+    writeFileSync(join(dir, "thumb-256.png"), png(256, 144));
+    writeFileSync(join(dir, "design-audit.json"), JSON.stringify({ pass: true, checks: [] }));
+    writeFileSync(join(dir, "DESIGN-REVIEW.md"), "SHIP: 10/10 meets the floor.");
+    writeFileSync(join(dir, "DELIVERY.md"), "a\nb\n");
+    writeFileSync(join(dir, "assets.json"), JSON.stringify({ assets: [] }));
+    const rMissing = writeVerdict("O-9", "PASS", "BEATS: b; PICTURE: p; FACTS: f; FIT: t", { designsDir: dz });
+    assert.equal(rMissing.ok, false);
+    assert.match(rMissing.message, /missing LANE/);
+    const r = writeVerdict("O-9", "PASS", FIVE, { designsDir: dz });
+    assert.equal(r.ok, true, r.message);
+    assert.equal(readVerdict("O-9", dz), "PASS");
+    const lines = String(readFileSync(join(dir, "VERDICT.md"), "utf8")).split("\n");
+    assert.deepEqual(lines.slice(0, 6).map((l) => l.split(":")[0]), ["VERDICT", "BEATS", "PICTURE", "FACTS", "FIT", "LANE"]);
+    assert.match(lines[1], /beats; inner; text/);
+  });
+  it("the old hand header never counted for the desk", () => {
+    const dz = join(mkdtempSync(join(tmpdir(), "verdict-")), "designs");
+    mkdirSync(join(dz, "O-9"), { recursive: true });
+    writeFileSync(join(dz, "O-9", "VERDICT.md"), "# VERDICT O-9: PASS (worker self-review)\n");
+    assert.equal(readVerdict("O-9", dz), null);
   });
 });

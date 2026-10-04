@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- designs/O-026/page.html: O-026 Gumroad cover for Fleet Vol 1 (clean-developer). Facts only from fleet-pack/gumroad.md. Color only via tokens.css. 1280x720 hero above 800px wide, 630x500 store card at 800px and below. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  .stage { position: relative; display: flex; width: 100%; height: 100%; overflow: hidden; background: var(--stage-bg, var(--bg)); }
+  .copy { position: relative; z-index: 3; flex: 0 0 var(--copy-w, 52%); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-inline-start: var(--pad, 72px); padding-block: 48px; }
+  .art { position: relative; z-index: 1; flex: 1; }
+  .kicker { font-weight: 800; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 16px; }
+  h1 { text-wrap: balance; font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: var(--title-px, 104px); line-height: 0.96; letter-spacing: var(--title-track, -0.01em); color: var(--ink); margin-bottom: 22px; }
+  .claim { text-wrap: balance; font-size: var(--claim-px, 32px); line-height: 1.2; color: var(--muted); font-weight: 600; margin-bottom: 26px; max-width: var(--claim-w, 560px); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-bottom: 28px; max-width: var(--claim-w, 560px); }
+  .chips li { font-size: 21px; font-weight: 700; line-height: 1.1; padding: 9px 14px; border-radius: var(--chip-r, 8px); background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); }
+  .cta { font-size: 30px; font-weight: 800; line-height: 1; padding: 15px 30px; border-radius: var(--chip-r, 8px); background: var(--accent); color: var(--on-accent); }
+  .fine { margin-top: 16px; font-size: 19px; color: var(--muted); max-width: var(--claim-w, 560px); }
+  .win { position: absolute; border-radius: 10px; overflow: hidden; background: var(--win-bg, var(--ink)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.22); }
+  .win::before { content: ""; display: block; height: 22px; background: var(--win-bar, var(--ink)); border-bottom: 3px solid var(--accent); }
+  .win img { display: block; width: 100%; }
+  .win .vp { position: relative; overflow: hidden; }
+  .win .vp img { position: absolute; max-width: none; }
+  @media (max-width: 800px) {
+    .stage { flex-direction: column; }
+    .copy { flex: 0 0 auto; padding-inline: var(--pad-card, 26px); padding-block: var(--pad-top-card, 22px) 0; }
+    .kicker { font-size: 14px; margin-bottom: 8px; }
+    h1 { font-size: var(--title-px-card, 60px); margin-bottom: 8px; }
+    .claim { font-size: var(--claim-px-card, 21px); margin-bottom: 12px; max-width: none; }
+    .chips { gap: 6px; margin-bottom: 0; max-width: none; }
+    .chips li { font-size: 14px; padding: 5px 9px; border-width: 1.5px; }
+    .chips li.wide-only { display: none; }
+    .cta { font-size: 19px; padding: 9px 18px; }
+    .fine { display: none; }
+    .art { flex: 1; min-height: 0; }
+  }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("../../fonts/inter/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap; src: url("../../fonts/inter/inter-latin-700-normal.woff2") format("woff2"); }
+  .stage { background: linear-gradient(145deg, var(--bg) 0%, var(--bg-2) 100%); }
+  h1 { max-width: 560px; }
+  .art .glow { position: absolute; width: 480px; height: 480px; border-radius: 50%; background: var(--accent); opacity: 0.22; inset-inline-end: -120px; top: 110px; }
+  .art .win { position: absolute; width: 560px; background: var(--term); border: 1px solid var(--term-line); border-radius: 12px; box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45); overflow: hidden; }
+  .art .w1 { inset-inline-end: 48px; top: 64px; transform: rotate(1.5deg); }
+  .art .w2 { inset-inline-end: 72px; top: 398px; transform: rotate(-1deg); }
+  .art .bar { display: flex; align-items: center; gap: 7px; padding: 9px 12px; border-bottom: 1px solid var(--term-line); font-family: var(--font-mono); }
+  .art .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--dim); }
+  .art .ok-dot { background: var(--ok); }
+  .art .tname { margin-inline-start: 6px; font-size: 14px; color: var(--dim); }
+  .art .vp { position: relative; overflow: hidden; }
+  .art .vp img { position: absolute; left: 0; width: 560px; max-width: none; }
+  .art .vp1 { height: 232px; }
+  .art .vp1 img { top: -72px; }
+  .art .vp2 { height: 190px; }
+  .art .vp2 img { top: -96px; }
+  .art .strip { position: absolute; inset-inline-end: 48px; bottom: 22px; display: flex; gap: 8px; }
+  .art .strip span { font-family: var(--font-mono); font-size: 15px; color: var(--accent-ink); border: 1px solid var(--chip-line); border-radius: 20px; padding: 5px 12px; background: var(--chip-bg); white-space: nowrap; }
+  @media (max-width: 800px) {
+    h1 { max-width: none; }
+    .art .glow { width: 280px; height: 280px; inset-inline-end: -80px; top: 0; }
+    .art .win { width: 280px; border-radius: 8px; }
+    .art .w1 { inset-inline-start: 12px; inset-inline-end: auto; top: 10px; transform: none; }
+    .art .w2 { inset-inline-start: 300px; inset-inline-end: auto; top: 10px; transform: none; }
+    .art .bar { padding: 6px 8px; gap: 5px; }
+    .art .dot { width: 7px; height: 7px; }
+    .art .tname { font-size: 9px; margin-inline-start: 2px; }
+    .art .vp img { width: 280px; }
+    .art .vp1 { height: 150px; }
+    .art .vp1 img { top: -36px; }
+    .art .vp2 { height: 150px; }
+    .art .vp2 img { top: -48px; }
+    .art .strip { display: none; }
+  }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="copy">
+    <div class="kicker">Tested on real programs</div>
+    <h1 data-oid="cover.title">Fleet Vol 1</h1>
+    <p class="claim" data-oid="cover.subtitle">three tested skills run against real programs</p>
+    <ul class="chips"><li>PowerShell 7</li><li>real browser</li><li>Bevy 0.19</li></ul>
+    <span class="cta" data-oid="cover.cta">$19 once</span>
+    <p class="fine">Free Vol 0 sample skill included</p>
+  </div>
+  <div class="art">
+<div class="glow"></div>
+<div class="win w1"><div class="bar"><span class="dot"></span><span class="dot ok-dot"></span><span class="tname">pwsh-for-bash-writers</span></div><div class="vp vp1"><img src="assets/screenshot-pairs.png" alt="pairs table from the pack, rendered by the factory script"></div></div>
+<div class="win w2"><div class="bar"><span class="dot"></span><span class="dot ok-dot"></span><span class="tname">real-browser-automation</span></div><div class="vp vp2"><img src="assets/screenshot-cdp.png" alt="JSON printed by scripts/cdp.mjs against the installed browser"></div></div>
+<div class="strip"><span>pwsh-for-bash-writers</span><span>real-browser-automation</span><span>bevy-rust-ecs</span></div>
+
+  </div>
+</div>
+</body>
+</html>

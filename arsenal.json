@@ -271,6 +271,16 @@
           "name": "covers",
           "does": "D5: live factory listings against adopted cover rows",
           "flag": "--covers"
+        },
+        {
+          "name": "built",
+          "does": "packet 0b folder gate for designs/<id>: files, exact brief sizes, audit PASS, SHIP 8+, assets listed; prints BUILT PASS or the first FAIL line",
+          "flag": "--built"
+        },
+        {
+          "name": "verdict",
+          "does": "packet 0b verdict writer: writes designs/<id>/VERDICT.md from --line BEATS/PICTURE/FACTS/FIT/LANE; refuses PASS unless --built passes",
+          "flag": "--verdict"
         }
       ],
       "test": [

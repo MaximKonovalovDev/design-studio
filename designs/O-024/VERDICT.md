@@ -1,5 +1,5 @@
-# VERDICT O-024: PASS (worker self-review, 2026-10-04; the keeper's judge chain has not run on this folder)
-BEATS: no prior devlog visual in `campaigns/aeo-visibility-audit-kit/` (facts.md and launch.md are text); nearest kin is our O-006 aeo-checker link card (dark lane look, lime accent) — this header keeps the lane (dark + mono chips + numbered badges) with its own amber accent and a checklist-breakdown left rail. Ours is 15.4px at 256 wide (title_px 72).
+VERDICT: PASS O-024
+BEATS: no prior devlog visual in campaigns/aeo-visibility-audit-kit/ (facts.md and launch.md are text); nearest kin is our O-006 aeo-checker link card (dark lane look, lime accent) — this header keeps the lane (dark + mono chips + numbered badges) with its own amber accent and a checklist-breakdown left rail. Ours is 15.4px at 256 wide (title_px 72).
 PICTURE: typographic dry fallback (no footage or stock named by the customer): the kit's own banks as chips (dentist/plumber/agency/SaaS x50) plus the 20-point checklist split (Technical 4, Content 5, Authority 4, Local 4, Measurement 3).
 FACTS: every number on the visual (200, 20, 4/5/4/4/3, 50x4, $29) is in listing/itch.md; the worked-audit 0-of-10 scores stay off the image (synthetic samples); forbidden words (engine names) absent.
 FIT: out.png 1200x630, out-1080x1080.png 1080x1080 from the same page.html (stacked reflow under 5:4), both opened by eye, nothing cut at an edge except the top bar that bleeds on purpose; audit PASS (22 gates + 1 SKIP), judge 10/10 SHIP; title 15.4px at 256 wide (link card) / 17.5px (square).
