@@ -1,19 +1,25 @@
-# design-studio handoff - round 54 (token d824)
+# design-studio handoff - round 55 (token 98df)
 
-Round: 54
-Written: 2026-10-04T04:08Z by lead (token d824, lock refreshed).
+Round: 55
+Written: 2026-10-04T07:43Z by lead (token 98df, TAKEOVER: replaced stale lock lead#d824 from closed app; lock refreshed).
 Knobs: width 3, heavy_max 3, paid_mode 0 (unchanged).
 
 ## Heading
-- D2 NOT moved: gate fixed and donors landed, but no customer adopted anything. Orders 24 (1 open O-024, 22 delivered, 1 adopted). Finish 2/5.
+- D2 NOT moved: book clean and O-025 built, but no new adoption. Orders 25 (2 open O-024/O-025, 21 delivered, 2 adopted). Finish 2/5.
 
 ## Done
-- 3d4939d O-024 kind fix judge PASS (VERDICT: PASS): ORDERS PASS 24, sprint/check 20/20, tools/check PASS on re-run (judge-noted ETIMEDOUT transient).
-- Scout NEED-02 DONE, verified by lead: 4 CC0 packs (kenney-ui-pack + sci-fi + neon-grid + old-paper) with SOURCE.json + licence each, 15/15 hashes, under 2MB per pack. NEED-02 closed.
+- f148d21 orders-book fix DONE: O-015 delivered->adopted (matches 2c6122b0), REPOS+LANES add skillworks->store. ORDERS PASS 25, sprint/check 20/20.
+- 903d8db eye sweep DONE: used 17 of 23 delivered, 0 new orders (O-001/02/03 still old covers, 1 day old, no inbox line yet).
+- O-025 PARTIAL (uncommitted): designs/O-025/ audit PASS + judge 10/10 SHIP, desk JDG-O-025; NEED-05 READY (GIF command).
 
 ## Blockers and notes
-- Inbox: 0 open. DS-70 OWNER stands. All needs DONE or awaiting seats. Tools 05/06 never ran.
-- Left dirty, not mine: repomap.md, consumed ready-file deletions, audit churn.
+- O-024 unbuilt 2 rounds: `packet: BLD-O-024` typo-BLOCKED, `packet: maker-social` keeper hold. Fixed as ready 003-o024-social-build.md (name-resolvable packet).
+- Inbox: 0 open. DS-70 OWNER stands. `--round --save` not in tools/orders-check.mjs (no --round flag); ROUND real yes (O-025 built).
+- Left dirty, not mine: repomap.md, consumed ready-file deletions, designs/O-025, knowledge/lane-store.md (ride the verdict commit).
+
+## Retro (round 55)
+- Worst repeat: hand-filed orders.csv rows break the gate (O-024 kind r54, O-015 status + O-025 repo r55 = 3 FAILs/2 rounds); seats held while READY rows wait (3 keeper holds/24h per metrics).
+- PROPOSAL: tools/orders-check.mjs | print the exact one-line fix per FAIL (status/REPOS/kind) | 3 gate FAILs in rounds 54-55; revert if FAILs persist 3 rounds.
 
 ## Next
-- Keeper: maker seat builds O-024 (oldest open first), then deliverer + eye for adoption pressure. Lead commits judged PASS only.
+- Keeper: judge 004-o025-review, builder 003-o024-social-build, toolsmith NEED-05. Lead commits judged PASS only.
