@@ -1,0 +1,135 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "name": "brief.json parses",
+      "pass": true,
+      "detail": "Bot detection"
+    },
+    {
+      "name": "brief size sane",
+      "pass": true,
+      "detail": "1280x720"
+    },
+    {
+      "name": "tokens.css parses with 2+ colors",
+      "pass": true,
+      "detail": "10 vars"
+    },
+    {
+      "name": "page.html carries the title",
+      "pass": true,
+      "detail": "title text present"
+    },
+    {
+      "name": "no hardcoded colors in page.html",
+      "pass": true,
+      "detail": "all color via var(--*)"
+    },
+    {
+      "name": "page.html uses tokens",
+      "pass": true,
+      "detail": "var(--*) found"
+    },
+    {
+      "name": "ltr: html dir matches brief",
+      "pass": true,
+      "detail": "dir=ltr"
+    },
+    {
+      "name": "out.png size matches brief",
+      "pass": true,
+      "detail": "1280x720"
+    },
+    {
+      "name": "out.png non-trivial",
+      "pass": true,
+      "detail": "41096B"
+    },
+    {
+      "name": "contrast title",
+      "pass": true,
+      "detail": "17.17:1 vs 4.5:1 (#f4f6ff on #0f1320)"
+    },
+    {
+      "name": "contrast body",
+      "pass": true,
+      "detail": "11.49:1 vs 4.5:1 (#c3cbe8 on #0f1320)"
+    },
+    {
+      "name": "contrast number",
+      "pass": true,
+      "detail": "8.93:1 vs 3:1 (#9fb0ff on #0f1320)"
+    },
+    {
+      "name": "contrast panel",
+      "pass": true,
+      "detail": "14.58:1 vs 4.5:1 (#f4f6ff on #1a2140)"
+    },
+    {
+      "name": "contrast panel-body",
+      "pass": true,
+      "detail": "9.76:1 vs 4.5:1 (#c3cbe8 on #1a2140)"
+    },
+    {
+      "name": "contrast cta",
+      "pass": true,
+      "detail": "5.29:1 vs 4.5:1 (#ffffff on #3f5bf0)"
+    },
+    {
+      "name": "contrast chip",
+      "pass": true,
+      "detail": "15.46:1 vs 4.5:1 (#f4f6ff on #171c38)"
+    },
+    {
+      "name": "title_box valid fractions",
+      "pass": true,
+      "detail": "0.069,0.22,0.931,0.46"
+    },
+    {
+      "name": "title legible at 256px",
+      "pass": true,
+      "detail": "27.2px at 256px wide (floor 12px)"
+    },
+    {
+      "name": "title fits its box",
+      "pass": true,
+      "detail": "need ~884px, box 1103px"
+    },
+    {
+      "name": "title legible at 315px listing",
+      "pass": true,
+      "detail": "33.5px at 315px listing (floor 12px)"
+    },
+    {
+      "name": "size 1280x720: title legible at 256px",
+      "pass": true,
+      "detail": "27.2px at 256px (floor 12px)"
+    },
+    {
+      "name": "size 1280x720: title fits its box",
+      "pass": true,
+      "detail": "need ~884px, box 1103px"
+    },
+    {
+      "name": "size 1280x5760: title legible at 256px",
+      "pass": true,
+      "detail": "27.2px at 256px (floor 12px)"
+    },
+    {
+      "name": "size 1280x5760: title fits its box",
+      "pass": true,
+      "detail": "need ~884px, box 1103px"
+    },
+    {
+      "name": "reference.png parity",
+      "pass": true,
+      "detail": "no reference declared, SKIP — add reference.png to gate pixels",
+      "skipped": true
+    }
+  ],
+  "errors": [],
+  "brief": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-028\\brief.json",
+  "image": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-028\\out.png",
+  "at": "2026-10-04"
+}

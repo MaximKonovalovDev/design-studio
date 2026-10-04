@@ -1,0 +1,81 @@
+{
+  "order_id": "O-028",
+  "from_repo": "fp-research",
+  "maker": "design-studio",
+  "product": "page:fp-detect-deck",
+  "delivered_utc": "2026-10-04T14:33Z",
+  "source": "design-studio designs/O-028",
+  "landing": "from-design-studio/O-028",
+  "customer": "C:/Users/me/Desktop/fp-research",
+  "delivered": [
+    "13 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing from-design-studio/O-028/ in fp-research"
+  ],
+  "files": [
+    {
+      "name": "ADOPT.md",
+      "bytes": 782,
+      "sha256": "6ffb1c70566c0e04d6a6588fa5b86cab317730df62a13dd4dc04772d2b95a07c"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 955,
+      "sha256": "f49a592fafd90fa8091d9cb531474ad8c0f2baf3ab78ff90f628e5c112a949ba"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1192,
+      "sha256": "d6e5c9f872188a54ddb616830c161f4b64fa050673bf4afb46f40c818ff205a7"
+    },
+    {
+      "name": "FACTS.md",
+      "bytes": 2723,
+      "sha256": "3e59ecd400ec66b366785318f91d25fca16927fb4ef87e0c7a1eab10845dc96f"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 343,
+      "sha256": "5f02c3a1f8477f8df1a323851c7d3f9a3d03daac59683bbe3c6c00bc8293e5ce"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1398,
+      "sha256": "8ef5b05e14b6085d399998482040298e843ec1e1be00d5ffadf1966c2ebc699c"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 3214,
+      "sha256": "78f899d67b921beafe3144dc6da88c385bfc6be3141449b332e3234eb31ff876"
+    },
+    {
+      "name": "out-1280x5760.png",
+      "bytes": 392214,
+      "sha256": "2bedaa21a178d5d44be2629592605595f544083d2a52960fab5d390b14bb74d9"
+    },
+    {
+      "name": "out.pdf",
+      "bytes": 86123,
+      "sha256": "c8b908ed32d0263c63c91a413de3bbcc71be59a7b450cdb3eea656c5fd85a3e0"
+    },
+    {
+      "name": "out.png",
+      "bytes": 41096,
+      "sha256": "2fcdaeef06bbb12773e11af42240bdf6fe2459db8e5d35da1ad533ff59dc36ba"
+    },
+    {
+      "name": "page.html",
+      "bytes": 16824,
+      "sha256": "397a46c5db562765e0bc262b45adcdb9f9e0385e91c4fca48fedfe1d35cffde1"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 6297,
+      "sha256": "e3e1a33ca0d19e2dfa3c7e8710ce5cdad9e961153d212571224977d39798e949"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 675,
+      "sha256": "36e8152899768227bbb219e2cfaec721d5ce67535c8783b7ad7091f72aee2382"
+    }
+  ]
+}
