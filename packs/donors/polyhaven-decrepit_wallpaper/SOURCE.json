@@ -1,0 +1,18 @@
+{
+  "source": "polyhaven",
+  "query": "paper",
+  "kind": "texture",
+  "slug": "decrepit_wallpaper",
+  "id": "decrepit_wallpaper",
+  "name": "Decrepit Wallpaper",
+  "page": "https://polyhaven.com/a/decrepit_wallpaper",
+  "file_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/decrepit_wallpaper/decrepit_wallpaper_diff_1k.jpg",
+  "file": "decrepit_wallpaper.jpg",
+  "author": {
+    "Rob Tuytel": "All"
+  },
+  "licence": "CC0",
+  "date_read": "2026-10-04",
+  "sha256": "895823967eba5296c0928694d1299964aa1884184215c510515fb246f5bbe4ec",
+  "bytes": 814172
+}

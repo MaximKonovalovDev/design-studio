@@ -136,6 +136,65 @@ export function imageReceipt(base, { model, cost = null, mediaType = "image/png"
   return { ...base, model: m, usage: { cost }, media_type: String(mediaType) };
 }
 
+// The free image lane (tool 2): the live model list decides what is free, never
+// the snapshot. A model is free when its pricing block exists and every price
+// field is 0. No agent calls a key: --free without one only lists and waits;
+// the first real call waits for Maxim's word.
+export const MODELS_URL = "https://openrouter.ai/api/v1/models";
+export function filterFreeModels(data) {
+  const list = Array.isArray(data) ? data : data?.data ?? [];
+  return list.filter((m) => {
+    const p = m?.pricing;
+    if (!p || typeof p !== "object") return false;
+    const vals = Object.values(p);
+    return vals.length > 0 && vals.every((v) => Number(v) === 0);
+  }).map((m) => String(m.id));
+}
+export async function fetchFreeModels({ fetchImpl = fetch } = {}) {
+  const ctrl = new AbortController();
+  const to = setTimeout(() => ctrl.abort(), 20000);
+  try {
+    const r = await fetchImpl(`${MODELS_URL}?output_modalities=image`, { signal: ctrl.signal });
+    if (!r.ok) throw new Error(`model list ${r.status}`);
+    return filterFreeModels(await r.json());
+  } finally { clearTimeout(to); }
+}
+
+// One 1280x720 background call on the first free model (a generated picture is a
+// background only, never a product picture, terms per model). Aborts when
+// usage.cost is not 0. Call requestImage only, never another key read.
+export async function freeBackground(prompt, outPng, { keys = null, fetchImpl = fetch, freeModels = null } = {}) {
+  const models = freeModels ?? await fetchFreeModels({ fetchImpl });
+  if (!models.length) throw new Error("no free image model on the live list (nothing runs at budget 0)");
+  const req = buildImageRequest({ model: models[0], prompt, w: 1280, h: 720 });
+  const out = await requestImage(req, { keys, fetchImpl, freeModels: models, budget: 0 });
+  if (Number(out.cost) !== 0) throw new Error(`free lane abort: usage.cost=${out.cost} (expected 0)`);
+  const { writeFileSync: w } = await import("node:fs");
+  const { createHash: h } = await import("node:crypto");
+  w(outPng, Buffer.from(out.b64, "base64"));
+  const rev = h("sha256").update(Buffer.from(out.b64, "base64")).digest("hex").slice(0, 12);
+  const receipt = imageReceipt({ url: `openrouter:${out.model}`, date: new Date().toISOString().slice(0, 10), rev }, { model: out.model, cost: out.cost, mediaType: out.mediaType });
+  w(`${outPng}.receipt.json`, `${JSON.stringify(receipt, null, 2)}\n`);
+  return { out: outPng, receipt: `${outPng}.receipt.json`, model: out.model };
+}
+
+// Offline fixture for --free --check: the live shape with the two known free ids
+// plus two paid ones; the filter must keep exactly the known two. No network, no key.
+export function freeFixtureCheck() {
+  const data = [
+    { id: KNOWN_FREE_IMAGE_MODELS[0], pricing: { prompt: "0", completion: "0", image: "0", request: "0" } },
+    { id: KNOWN_FREE_IMAGE_MODELS[1], pricing: { prompt: "0", completion: "0", image: "0", request: "0" } },
+    { id: "bytedance-seed/seedream-4.5", pricing: { prompt: "0.001", completion: "0.001", image: "0.02", request: "0" } },
+    { id: "google/gemini-2.5-flash-image", pricing: { prompt: "0.0003", completion: "0.0025", image: "0.0001", request: "0" } },
+    { id: "mystery/no-pricing", pricing: {} },
+  ];
+  const kept = filterFreeModels(data);
+  const ok = kept.length === 2 && KNOWN_FREE_IMAGE_MODELS.every((m) => kept.includes(m));
+  for (const m of kept) console.log(`FREE-MODEL: ${m}`);
+  console.log(ok ? `FREE-IMAGE-CHECK PASS: live-shape fixture keeps exactly the 2 free models (${kept.join(", ")})` : `FREE-IMAGE-CHECK FAIL: kept ${kept.join(",")}`);
+  return ok;
+}
+
 // A fake fetch for the offline checks: answers each call from a list of statuses.
 function fakeFetch(statuses, seen) {
   let i = 0;
@@ -226,10 +285,29 @@ const isMain = (() => {
 
 if (isMain) {
   const args = process.argv.slice(2);
-  if (args.includes("--check")) {
+  if (args.includes("--free")) {
+    if (args.includes("--check")) {
+      if (!freeFixtureCheck()) process.exitCode = 1;
+    } else {
+      const models = await fetchFreeModels();
+      console.log(`FREE-IMAGE MODELS ${models.length}: ${models.join(", ")}`);
+      let keys = null;
+      try { keys = imageKeys(); } catch { keys = null; }
+      const pi = args.indexOf("--prompt");
+      const oi = args.indexOf("--out");
+      if (!keys) {
+        console.log(`FREE-IMAGE: waiting for key (${models.length} models listed, no call made)`);
+      } else if (pi < 0 || oi < 0 || !args[pi + 1] || !args[oi + 1]) {
+        console.log(`FREE-IMAGE: key present (${models.length} models listed, no call made: pass --prompt "..." --out <png>)`);
+      } else {
+        const r = await freeBackground(args[pi + 1], resolve(args[oi + 1]), { keys, freeModels: models });
+        console.log(`FREE-IMAGE: ${r.model} 1280x720 cost=0 -> ${r.out} + receipt`);
+      }
+    }
+  } else if (args.includes("--check")) {
     if (!(await selfCheck()).pass) process.exitCode = 1;
   } else {
-    console.log("usage: node tools/image.mjs --check (opt-in lane; key from env OPENROUTER_API_KEY, else the first line of %USERPROFILE%\\.empire\\secrets\\openrouter.txt then openrouter2.txt; a paid model needs DS_IMAGE_BUDGET_USD above 0)");
+    console.log("usage: node tools/image.mjs --check | node tools/image.mjs --free [--check] [--prompt \"...\" --out <png>] (opt-in lane; key from env OPENROUTER_API_KEY, else the first line of %USERPROFILE%\\.empire\\secrets\\openrouter.txt then openrouter2.txt; a paid model needs DS_IMAGE_BUDGET_USD above 0)");
     process.exit(2);
   }
 }

@@ -1,0 +1,74 @@
+{
+  "families": {
+    "heebo": {
+      "pkg": "@fontsource/heebo",
+      "cssFamily": "Heebo",
+      "weights": [
+        400,
+        700
+      ],
+      "subsets": [
+        "hebrew",
+        "latin"
+      ],
+      "files": [
+        "heebo-hebrew-400-normal.woff2",
+        "heebo-hebrew-700-normal.woff2",
+        "heebo-latin-400-normal.woff2",
+        "heebo-latin-700-normal.woff2"
+      ],
+      "license": "OFL-1.1"
+    },
+    "frank-ruhl-libre": {
+      "pkg": "@fontsource/frank-ruhl-libre",
+      "cssFamily": "Frank Ruhl Libre",
+      "weights": [
+        400,
+        700
+      ],
+      "subsets": [
+        "hebrew",
+        "latin"
+      ],
+      "files": [
+        "frank-ruhl-libre-hebrew-400-normal.woff2",
+        "frank-ruhl-libre-hebrew-700-normal.woff2",
+        "frank-ruhl-libre-latin-400-normal.woff2",
+        "frank-ruhl-libre-latin-700-normal.woff2"
+      ],
+      "license": "OFL-1.1"
+    },
+    "inter": {
+      "pkg": "@fontsource/inter",
+      "cssFamily": "Inter",
+      "weights": [
+        400,
+        700
+      ],
+      "subsets": [
+        "latin"
+      ],
+      "files": [
+        "inter-latin-400-normal.woff2",
+        "inter-latin-700-normal.woff2"
+      ],
+      "license": "OFL-1.1"
+    },
+    "rubik": {
+      "pkg": "@fontsource/rubik",
+      "cssFamily": "Rubik",
+      "weights": [
+        400,
+        700
+      ],
+      "subsets": [
+        "latin"
+      ],
+      "files": [
+        "rubik-latin-400-normal.woff2",
+        "rubik-latin-700-normal.woff2"
+      ],
+      "license": "OFL-1.1"
+    }
+  }
+}

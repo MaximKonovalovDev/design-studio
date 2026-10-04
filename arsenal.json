@@ -183,6 +183,78 @@
       "timeout_s": 30
     },
     {
+      "name": "assets",
+      "does": "lists a product preview/ folder's pictures (size, bytes, sha256, used or not, largest first) and copies them into designs/<order>/assets/ + assets.json; fetches CC0 stock (polyhaven, ambientcg, openverse license=cc0) into packs/donors/<source>-<slug>/ with SOURCE.json",
+      "run": [
+        "node",
+        "tools/assets.mjs"
+      ],
+      "args": [
+        {
+          "name": "product",
+          "does": "order id whose preview/ pictures to list, e.g. product O-001",
+          "required": true
+        },
+        {
+          "name": "copy",
+          "does": "comma file names to copy, e.g. --copy a.png,b.png",
+          "flag": "--copy"
+        },
+        {
+          "name": "stock",
+          "does": "CC0 stock fetch, e.g. stock polyhaven \"paper\" --kind texture",
+          "flag": "stock"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/assets.mjs",
+        "--check"
+      ],
+      "for": [
+        "factory F6: real product pictures and CC0 backdrops with receipts",
+        "every cover: assets.json with sha256 + size"
+      ],
+      "timeout_s": 120,
+      "first_job": "listed O-001 (19) and O-004 (35) preview pictures, copied 2 each, fetched polyhaven paper texture for O-005"
+    },
+    {
+      "name": "free-image",
+      "does": "lists the live free image models (every price field 0, today the 2 ming-image design models) and, only with a key plus explicit --prompt/--out, renders one 1280x720 background (aborts unless usage.cost is 0); paid models stay refused at budget 0",
+      "run": [
+        "node",
+        "tools/image.mjs"
+      ],
+      "args": [
+        {
+          "name": "free",
+          "does": "live free-model list, then wait or render",
+          "flag": "--free"
+        },
+        {
+          "name": "prompt",
+          "does": "background prompt for the one render (with --out)",
+          "flag": "--prompt"
+        },
+        {
+          "name": "out",
+          "does": "PNG path for the one render plus .receipt.json",
+          "flag": "--out"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/image.mjs",
+        "--free",
+        "--check"
+      ],
+      "for": [
+        "covers and post visuals: generated backgrounds only, never product pictures"
+      ],
+      "timeout_s": 120,
+      "first_job": "live list shows the 2 free models; no call without explicit --prompt plus --out"
+    },
+    {
       "name": "orders",
       "does": "checks the order book (every customer, every kind) and writes the lane desk: one row per seat",
       "run": [
@@ -212,6 +284,38 @@
       ],
       "timeout_s": 60,
       "first_job": "wrote sprint/queue/desk.md from today's orders.csv with node tools/orders-check.mjs --desk"
+    },
+    {
+      "name": "fonts",
+      "does": "copies used OFL-1.1 woff2 files from node_modules/@fontsource into fonts/<family>/ + fonts.css (relative @font-face, font-display swap) + per-family OFL.txt; pairs and proof",
+      "run": [
+        "node",
+        "tools/fonts.mjs"
+      ],
+      "args": [
+        {
+          "name": "add",
+          "does": "families to embed, e.g. add heebo frank-ruhl-libre --subsets hebrew,latin --weights 400,700",
+          "flag": "add"
+        },
+        {
+          "name": "pair",
+          "does": "pair he (Hebrew body+headings) or pair display (two bold Latin families, OFL-1.1 verified)",
+          "flag": "pair"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/fonts.mjs",
+        "--check"
+      ],
+      "for": [
+        "every design: same pixels in the customer repo, real Hebrew text in CV PDFs",
+        "jobhunt O-007: Heebo body + Frank Ruhl Libre headings (hebrew,latin 400,700)",
+        "factory O-002: Inter + Rubik latin display"
+      ],
+      "timeout_s": 60,
+      "first_job": "embedded heebo + frank-ruhl-libre (hebrew,latin 400,700) and inter + rubik (latin 400,700), 160.9KB woff2 + 4 OFL.txt"
     }
   ]
 }
