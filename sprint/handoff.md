@@ -1,24 +1,25 @@
-# design-studio handoff - round 82 (token 5b64)
+# design-studio handoff - round 83 (token 5b64)
 
-Round: 82
-Written: 2026-10-04T16:05Z by lead (token 5b64, held since takeover 15:45Z).
+Round: 83
+Written: 2026-10-04T16:10Z by lead (token 5b64, held since takeover 15:45Z).
 Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground.
-Batch (keeper-named, sent as ONE message): judge 010-ds78c-archive-old-starters-review.
+Batch (keeper-named): judge 010-ds78c-archive-old-starters-review — NOT re-sent (see below).
 
 ## Heading
-- DS-78(c) closed and committed (cda1370): 36 legacy files archived, 4 tools ported/retired, 3 tests rewritten, arsenal block entry out. Game UI kits row served (templates/game family + legacy cleanup both ship in DS-78).
-- D4 not moved by this batch, by design: D4 is adoption (kit loaded in forge/engine2040), customer-side; this batch was repo hygiene. Next lever: eye's paste-ready lines at 2-day not-used.
+- No new movement: the named review already ran in r82 (VERDICT: PASS) and its work is committed (cda1370). `batch.md` (15:53Z) predates the verdict; re-dispatching would re-judge committed work for zero movement. Lead dedupes per keeper's own skip rule.
+- D4 not moved, by design: D4 is adoption (kit loaded in forge/engine2040), customer-side; no BLD/DLV row exists (0 open orders) and the only remaining lever is the eye's 2-day lines.
 
-## Done (judged PASS, committed by path)
-- Judge VERDICT: PASS (path B, ≤15 lines, proofs rerun not trusted): tools/check RESULT PASS, template TEMPLATE PASS 14/8, orders ORDERS PASS 31, sprint/check RESULT PASS 21/0/0, retired checks exit 0, 3 rewritten tests 11 pass 0 fail.
-- cda1370 (45 files, +132/-522) with all four proof lines in the body. Board DS-78 evidence carries the SHA.
+## Done (dedupe round, no helper batch)
+- Verified, not trusted: `node sprint/check.mjs` RESULT PASS 21/0/0; 010 paths show zero uncommitted residue (fully in cda1370); DESK build 0 | judge 0 | failed 0 | deliver 0 | eye 1.
 - ROUND: real yes | built 27 | judged 8 | delivered 26 | adopted 5 | tools 13 | in-flight 0.
+- Inbox 0 open; board unchanged (DS-78 evidence already carries cda1370).
 
 ## Blockers and notes
+- Keeper note arrived from a stale batch.md (15:53Z vs r82 verdict ~16:0xZ): suggest keeper re-reads batch.md after each verdict before naming the next batch.
 - NEED-08 decision still open (stale per toolsmith rule vs donor-system + mockup remainder).
 - Left dirty, not mine: knobs/plugin, halt deletion, standing seats, consumed ready deletions, EYE.md notes, orders.csv, inbox.
-- Inbox 0 open. Next free board ID: DS-79.
+- Next free board ID: DS-79.
 
 ## Next
-- Keeper: DS-78(d) palette-pick counts (new one-off or toolsmith-adjacent); then (a) standing rule only.
-- Eye daily sweep (D4/D5 adoption pressure); deliverer has no DLV rows (0 open orders).
+- Keeper: name the next real batch (DS-78d palette-pick counts candidate, or daily eye when a fresh EYE row is claimable).
+- Eye daily sweep (D4/D5 adoption pressure) when keeper releases it.
