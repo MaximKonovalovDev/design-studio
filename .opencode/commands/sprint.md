@@ -69,8 +69,6 @@ customer folder by path.
 One-offs, for work no seat takes: write `sprint/queue/ready/<nnn>-<id>.md` with
 front matter `role:` and `title:` (`chain: start` for a builder, `cpu: heavy`
 for a build) and Goal, Scope, Proof and Stop lines, or the keeper refuses it.
-`sprint/queue/ready/000-tool-sprint.md` (7 packets, serial `ds-tools`: the desk,
-then 5 design tools, each used at once on a real order) runs first.
 
 ## 3. Start (also after every compaction)
 
@@ -83,10 +81,9 @@ then 5 design tools, each used at once on a real order) runs first.
    all session, also in the handoff's first line. Another fresh token: stop,
    unless `takeover`. Times from `Get-Date -AsUTC -Format "yyyy-MM-ddTHH:mmZ"`.
 4. `node sprint/check.mjs`: a FAIL is this round's first packet.
-5. `node tools/orders-check.mjs --desk`: writes the desk the seats wake on and
-   prints `DESK: build n | judge n | failed n | deliver n | eye 1`. The command
-   exists once the tool sprint's packet 0a has landed; until then the sprint file
-   is the work and the seats rest. A `failed` count above 0 is yours to decide.
+5. `node tools/orders-check.mjs --desk`: refreshes the desk the seats wake on right
+   before the batch, so a new open order never waits on a stale file, and
+   prints `DESK: build n | judge n | failed n | deliver n | eye 1`. A `failed` count above 0 is yours to decide.
 6. `.opencode/knobs.json`: a knob's value wins over any number here. Never edit
    it; propose with a `KNOB PROPOSAL: <knob> <value> because <numbers>` line.
 
