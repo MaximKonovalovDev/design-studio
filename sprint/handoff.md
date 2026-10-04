@@ -16,7 +16,7 @@ Knobs: width 3, heavy_max 3, paid_mode 0 (unchanged).
 
 ## Blockers and notes
 - HALT: `sprint/halt` (Maxim via Loop Boss 09:19Z): finish round, handoff, stop. Lock released. Resume removes the file.
-- Inbox: 1 open (S41: item 2 DS-77 DOING, item 1 DS-70 OWNER stands). JDG-O-024/O-025 BLOCKEDs stand (re-judge via 0b on resume).
+- Inbox: 0 open (S41 closed 2026-10-04: DS-77 DONE, DS-70 BLOCKED on the Cloudflare token, not an owner row). JDG-O-024/O-025 BLOCKEDs stand (re-judge via 0b on resume). O-025 was copied to skillworks by hand 2026-10-04 (audit PASS, judge SHIP 10/10, --built PASS, eye check; the keeper chain has not run on it).
 - Left dirty: orders.csv LF bytes, 0b files + O-024 VERDICT.md, O-026 folder, EYE/lane/needs outputs, gifcap set, repomap.md, keeper queue files.
 
 ## Next (on resume)
