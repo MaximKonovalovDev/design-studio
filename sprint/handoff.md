@@ -1,23 +1,21 @@
-# design-studio handoff - round 49 (token d824)
+# design-studio handoff - round 50 (token d824)
 
-Round: 49
-Written: 2026-10-04T02:48Z by lead (token d824, lock refreshed).
-Takeover: replaced stale lock lead#5928 (since 2026-10-04T01:47Z, prior app closed). Same-session token d824 from here.
-Knobs: width 3, heavy_max 3, paid_mode 0 (unchanged).
+Round: 50
+Written: 2026-10-04T03:20Z by lead (token d824, lock held since 02:48Z).
+Takeover: done round 49 (replaced stale lead#5928; committed ea7f95c).
+Knobs: width 3, heavy_max 3, paid_mode 0 (re-read this round; file updated 2026-10-03T23:50:14Z, values already match).
 
 ## Heading
-- D1/D2 NOT moved this round: orders 23 (0 open, 22 delivered local, 1 adopted O-010 jobhunt). Factory adoption still 0; finish 2 of 5 bars (D1, D3 met; D2, D4, D5 open).
+- D2 NOT moved by this batch: fonts tool ships infra, not adoptions. Adoption moves only via deliverer/eye seats (both held by keeper: deliver 0, eye held 2 rounds). Finish 2/5 (D1, D3 met; D2 1/5, D4 0, D5 0/22 factory covers adopted).
 
 ## Done
-- No judged PASS, no commits. sprint/check RESULT PASS 20/20, tools/check RESULT PASS, vision-check RESULT PASS 7/0/0, ORDERS PASS 23.
-- Tool 2 (000-tool-sprint-04) built in working copy, UNJUDGED: tools/assets.mjs, tests/assets.test.mjs, tools/image.mjs free lane, designs/O-001 + O-004 assets.json + asset PNGs, packs/donors/polyhaven-decrepit_wallpaper/. Lead re-verified: ASSETS PASS, FREE-IMAGE-CHECK PASS (2 models), tests 16 pass 0 fail. Awaits chain/judge review before commit.
+- 8449265 tools assets+image-free (04) + fonts (07), judged PASS by lead re-run (no chain:start on tool packets, keeper told lead to judge): ASSETS PASS, FREE-IMAGE-CHECK PASS (2 models), assets tests 16/0, FONTS PASS 6 gates, fonts tests 7/0, sprint/check PASS 20/20. 37 files: tools/assets.mjs + image free lane, tools/fonts.mjs, fonts/ 4 OFL families 160.9KB, FONTS.md, O-001/O-004 assets.json + 4 product PNGs, polyhaven wallpaper CC0 + SOURCE, arsenal entries, package.json + lock (2415B), needs NEED-03/04 READY.
+- Note: @fontsource/assistant installed but unused (only 4 families embedded); harmless dep, flag for toolsmith cleanup.
 
 ## Blockers and notes
-- Keeper held the whole batch.md batch: combined builder packet returned BLOCKED (no packet 000-tool-sprint-04/05/06 in ready|standing per keeper; files exist on disk untracked, likely consumed/unregistered), pilot eye-customer held twice (no unclaimed ready work). Keeper batch.md dated 2026-10-04T02:06Z, stale vs takeover. Next keeper must reissue single packet names or register 04-07.
-- First Task used a pasted 3-packet prompt (not exact `packet: <name>`); only tool 2 ran. Second exact-prompt attempt BLOCKED as above. Lesson kept: prompts exact, one packet per call unless batch.md joins with +.
-- Uncommitted, not mine to commit now: VISION-TABLES.md G1 rival-measure adopt (planner packet, needs review), samples/*/design-audit.json date 2026-10-03->2026-10-04 (check re-run side effect), .opencode/plugin/loop-keeper.js chain block (center-owned).
-- Inbox: 0 open. DS-70 OWNER stands. NEED-02 READY researcher unscanned (scout held by keeper).
+- Tool 05 compose + 06 mockup never ran (keeper BLOCKED the +packet round 49, never reissued). Judge chain for the 16 factory folders still pending; DS-76 factory delivery gated on it.
+- Left dirty, not mine: VISION-TABLES.md G1 adopt, samples audits date churn, loop-keeper.js (center-owned), 2 consumed ready files.
+- Inbox: 0 open. DS-70 OWNER stands. NEED-02 READY researcher + NEED-03/04 READY builder await seats.
 
 ## Next
-- Keeper: reissue batch (tool 05 compose, tool 06 mockup, tool 07 fonts as single packets; eye-customer or scout NEED-02). Judge tool 2 via chain/review.md, then lead commits tools/assets.mjs + tests + assets.json by path.
-- Lead: commit judged PASS only; DS-76 factory delivery still gated on chain judge of the 16 folders.
+- Keeper: batch tool 05 + 06 single packets, then eye-customer/scout/toolsmith seats. Lead commits judged PASS only.
