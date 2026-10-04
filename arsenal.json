@@ -146,7 +146,7 @@
     },
     {
       "name": "assets",
-      "does": "lists a product preview/ folder's pictures (size, bytes, sha256, used or not, largest first) and copies them into designs/<order>/assets/ + assets.json; resolves order: briefs to the customer pack dir (skillworks packs/<slug>) plus the same-content factory twin preview/ flagged twin:true with resolved_from; fetches CC0 stock (polyhaven, ambientcg, openverse license=cc0) into packs/donors/<source>-<slug>/ with SOURCE.json",
+      "does": "lists a product preview/ folder's pictures (size, bytes, sha256, used or not, largest first) and copies them into designs/<order>/assets/ + assets.json; resolves order: briefs to the customer pack dir (skillworks packs/<slug>) plus the same-content factory twin preview/ flagged twin:true with resolved_from; resolves cover: briefs' lowercase relative facts-only-from products|packs|campaigns listing .md against the customer repoRoot (O-035); fetches CC0 stock (polyhaven, ambientcg, openverse license=cc0) into packs/donors/<source>-<slug>/ with SOURCE.json",
       "run": [
         "node",
         "tools/assets.mjs"
@@ -178,7 +178,7 @@
         "every cover: assets.json with sha256 + size"
       ],
       "timeout_s": 120,
-      "first_job": "listed O-001 (19) and O-004 (35) preview pictures, copied 2 each, fetched polyhaven paper texture for O-005; O-033 via order: pack+twin (fleet-vol-1 papers-only, twin screenshot-pairs.png 75954B sha256 ab6d679e)"
+      "first_job": "listed O-001 (19) and O-004 (35) preview pictures, copied 2 each, fetched polyhaven paper texture for O-005; O-033 via order: pack+twin (fleet-vol-1 papers-only, twin screenshot-pairs.png 75954B sha256 ab6d679e); O-035 cover: relative facts-only-from products/game-suite/indie-game-suite/listing/itch.md resolves to the factory preview/ (11 pictures)"
     },
     {
       "name": "free_image",

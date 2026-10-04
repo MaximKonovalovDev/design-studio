@@ -52,6 +52,38 @@ describe("Facts: paths out of the orders.csv brief", () => {
   });
 });
 
+describe("cover: briefs resolve repo-relative facts paths (NEED-13, O-035)", () => {
+  const brief = "itch cover for indie-game-suite ($29; facts only from products/game-suite/indie-game-suite/listing/itch.md; sizes 1280x720 PNG plus 630x500 crop; factory-made cover to beat: products/game-suite/indie-game-suite/preview/cover-1280x720.png)";
+  it("extracts the relative listing .md without a Facts: marker or absolute path", () => {
+    assert.deepEqual(factsPaths(brief), ["products/game-suite/indie-game-suite/listing/itch.md"]);
+  });
+  it("ignores the cover-to-beat .png (only .md is a facts path)", () => {
+    const p = factsPaths(brief);
+    assert.ok(p.every((x) => x.endsWith(".md")));
+    assert.ok(!p.some((x) => x.endsWith(".png")));
+  });
+  it("a lowercase facts: marker still splits like Facts:", () => {
+    const p = factsPaths("cover. facts: C:/A/products/x/listing/itch.md. done.");
+    assert.deepEqual(p, ["C:/A/products/x/listing/itch.md"]);
+  });
+  it("the relative path absolutized against a customer root finds preview/", () => {
+    const root = mkdtempSync(join(tmpdir(), "ds-assets-cover-"));
+    try {
+      mkdirSync(join(root, "products", "game-suite", "indie-game-suite", "listing"), { recursive: true });
+      mkdirSync(join(root, "products", "game-suite", "indie-game-suite", "preview"), { recursive: true });
+      writeFileSync(join(root, "products", "game-suite", "indie-game-suite", "listing", "itch.md"), "# facts\n");
+      const rel = factsPaths(brief)[0];
+      const abs = join(root, ...rel.split("/"));
+      assert.equal(abs, join(root, "products", "game-suite", "indie-game-suite", "listing", "itch.md"));
+      assert.equal(findPreviewDir(abs), join(root, "products", "game-suite", "indie-game-suite", "preview"));
+    } finally { rmSync(root, { recursive: true, force: true }); }
+  });
+  it("absolute Facts: paths still win and still resolve", () => {
+    const p = factsPaths("Gumroad cover. Facts: C:/A/products/x/listing/gumroad.md. Factory cover to beat.");
+    assert.deepEqual(p, ["C:/A/products/x/listing/gumroad.md"]);
+  });
+});
+
 describe("preview dir above the listing", () => {
   it("finds the preview/ sibling of listing/", () => {
     const root = mkdtempSync(join(tmpdir(), "ds-assets-test-"));

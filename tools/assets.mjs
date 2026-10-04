@@ -15,6 +15,12 @@
 //     preview/ (products/skill-pack/fleet-pack/preview/) flagged twin:true.
 //     --copy takes names from either lane; twin copies carry twin:true plus
 //     the pack they stand in for, and assets.json carries resolved_from.
+//     NEED-13: a product cell `cover:<store>/<slug>` uses a lowercase relative
+//     `facts only from products/.../listing/<store>.md` (no `Facts:` marker,
+//     no absolute path). factsPaths also extracts those relative
+//     `products|packs|campaigns/.../*.md` paths; productInfo resolves a
+//     relative path against the customer repoRoot(from_repo) before
+//     findPreviewDir, so `product O-035` lists the factory preview/.
 //   node tools/assets.mjs stock <polyhaven|ambientcg|openverse> "<query>"
 //     [--kind texture|hdri|model|photo] [--max 5]
 //     CC0 only, no key: Poly Haven and ambientCG are CC0 sites by licence,
@@ -75,18 +81,39 @@ export const sha256 = (buf) => createHash("sha256").update(buf).digest("hex");
 // --- orders.csv brief -> Facts: listing paths ---
 // The brief cell holds "... Facts: C:/abs/listing/gumroad.md. Factory-made ..."
 // or two paths joined by " and " (the second may be bare, relative to the first).
+// NEED-13: cover: briefs hold lowercase relative `facts only from
+// products/game-suite/indie-game-suite/listing/itch.md` (no `Facts:` marker,
+// no absolute path). Those relative products|packs|campaigns .md paths are
+// returned as-is (forward slashes); productInfo absolutizes them against the
+// customer repoRoot(from_repo).
 export function factsPaths(briefCell) {
   const text = String(briefCell ?? "");
-  const after = text.includes("Facts:") ? text.slice(text.indexOf("Facts:") + 6) : text;
+  const marker = text.match(/facts:/i);
+  const after = marker ? text.slice(marker.index + marker[0].length) : text;
   const parts = after.split(/\s+and\s+/);
-  const first = (parts[0].match(/[A-Za-z]:\/[^\s"']+?\.md/i) ?? [])[0] ?? null;
+  const clean = (s) => String(s).replace(/[.,;:)\]]+$/, "");
+  const relOf = (p) => {
+    const m = p.match(/\b((?:products|packs|campaigns)\/[^\s"'`,;|]+\.md)/i);
+    return m ? clean(m[1]) : null;
+  };
   const out = [];
-  if (first) out.push(first.replace(/[.,;:)\]]+$/, ""));
+  const firstAbs = (parts[0].match(/[A-Za-z]:\/[^\s"']+?\.md/i) ?? [])[0] ?? null;
+  const firstRel = firstAbs ? null : relOf(parts[0]);
+  if (firstAbs) out.push(clean(firstAbs));
+  else if (firstRel) out.push(firstRel);
   for (const p of parts.slice(1)) {
     const abs = (p.match(/[A-Za-z]:\/[^\s"']+?\.md/i) ?? [])[0];
-    if (abs) { out.push(abs.replace(/[.,;:)\]]+$/, "")); continue; }
+    if (abs) { out.push(clean(abs)); continue; }
+    const rel = relOf(p);
+    if (rel) { out.push(rel); continue; }
     const bare = (p.match(/([\w][\w\-.]*\.md)/i) ?? [])[0];
-    if (bare && first) out.push(join(dirname(first), bare.replace(/[.,;:)\]]+$/, "")));
+    if (bare && out[0] && /^[A-Za-z]:\//.test(out[0])) out.push(join(dirname(out[0]), clean(bare)));
+  }
+  // No " and " split but a relative path later in the cell (cover briefs list
+  // the facts path mid-sentence): fall back to the first relative .md.
+  if (!out.length) {
+    const rel = relOf(after);
+    if (rel) out.push(rel);
   }
   return out;
 }
@@ -150,13 +177,17 @@ export function mergeAssetsJson(existing, added) {
 
 export function productInfo(order) {
   const row = orderRow(order);
-  const facts = factsPaths(row);
+  const cells = String(row).split(",");
+  const fromRepo = String(cells[1] ?? "").trim();
+  const raw = factsPaths(row);
+  // NEED-13: cover: briefs yield repo-relative products/... paths; resolve
+  // them against the customer checkout. Absolute Facts: paths pass through.
+  const facts = raw.map((f) => (/^[A-Za-z]:\//.test(f) ? f : join(repoRoot(fromRepo), ...String(f).split("/"))));
   const dir = join(ROOT, "designs", order);
   if (facts.length) {
     const preview = findPreviewDir(facts[0]);
     return { order, row, facts, preview, dir, assetsDir: join(dir, "assets") };
   }
-  const cells = String(row).split(",");
   const product = String(cells[2] ?? "");
   if (/^order:/i.test(product.trim())) return productInfoOrder(order, row, product.trim(), dir);
   throw new Error(`${order}: no Facts: listing path in orders.csv`);
@@ -443,6 +474,9 @@ async function selfCheck() {
     const row2 = `O-006,studio,post,Visual. Facts: C:/A/camp/checker.md and READY.md. Open.,delivered,designs/O-006,no,2026-10-03,`;
     const p2 = factsPaths(row2);
     t("second bare facts path resolves beside the first", p2.length === 2 && p2[1].endsWith("READY.md"), p2.join("|"));
+    const row3 = `O-035,factory,cover:itch/indie-game-suite,itch cover. facts only from products/game-suite/indie-game-suite/listing/itch.md; cover to beat: products/game-suite/indie-game-suite/preview/cover-1280x720.png,delivered,products/game-suite/indie-game-suite/covers/from-design-studio/O-035,no,2026-10-04,`;
+    const p3 = factsPaths(row3);
+    t("NEED-13 cover brief relative facts path (no Facts: marker)", p3.length === 1 && p3[0] === "products/game-suite/indie-game-suite/listing/itch.md", p3.join("|"));
   } catch (e) { t("facts paths", false, String(e.message || e)); }
   try {
     const files = { Diffuse: { "1k": { jpg: { size: 200, url: "https://x.local/a_diff_1k.jpg" } }, "8k": { exr: { size: 900, url: "https://x.local/a_diff_8k.exr" } } } };
@@ -481,6 +515,20 @@ async function selfCheck() {
       t("missing customer root fails closed", missing, "missing on disk");
     } finally { rm(base, { recursive: true, force: true }); }
   } catch (e) { t("order: pack+twin fixtures", false, String(e.message || e)); }
+  try { // NEED-13: a repo-relative cover facts path resolves against the customer root and finds preview/
+    const { mkdtempSync: mk2, rmSync: rm2 } = await import("node:fs");
+    const { tmpdir: td2 } = await import("node:os");
+    const base2 = mk2(join(td2(), "ds-assets-cover-"));
+    try {
+      mkdirSync(join(base2, "products", "game-suite", "indie-game-suite", "listing"), { recursive: true });
+      writeFileSync(join(base2, "products", "game-suite", "indie-game-suite", "listing", "itch.md"), "# facts\n");
+      mkdirSync(join(base2, "products", "game-suite", "indie-game-suite", "preview"), { recursive: true });
+      const rel = factsPaths("itch cover. facts only from products/game-suite/indie-game-suite/listing/itch.md; sizes 1280x720")[0];
+      const abs = join(base2, ...String(rel).split("/"));
+      t("NEED-13 relative facts path absolutizes to the listing file", abs === join(base2, "products", "game-suite", "indie-game-suite", "listing", "itch.md"), rel);
+      t("NEED-13 resolved listing finds its preview/ sibling", findPreviewDir(abs) === join(base2, "products", "game-suite", "indie-game-suite", "preview"), "preview sibling");
+    } finally { rm2(base2, { recursive: true, force: true }); }
+  } catch (e) { t("NEED-13 cover facts fixtures", false, String(e.message || e)); }
   try {
     const j = await (await fetch("https://api.polyhaven.com/assets?t=textures")).json();
     const n = Object.keys(j).length;
