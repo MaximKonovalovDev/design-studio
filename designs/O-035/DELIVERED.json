@@ -1,0 +1,136 @@
+{
+  "order_id": "O-035",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/indie-game-suite",
+  "delivered_utc": "2026-10-04T18:19Z",
+  "source": "design-studio designs/O-035",
+  "landing": "products/game-suite/indie-game-suite/covers/from-design-studio/O-035",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "24 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/game-suite/indie-game-suite/covers/from-design-studio/O-035/ in factory"
+  ],
+  "files": [
+    {
+      "name": "ADOPT.md",
+      "bytes": 435,
+      "sha256": "3cbeeed08cc2dbce86c989337a550413941c2939c22c5f95c19571efdb6f0462"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1302,
+      "sha256": "078f990ccc023ee6650e24792f2a156fb8ee34097e225d34b7a311a089957810"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1169,
+      "sha256": "3db623ba4fcd8744ba65e05a06c35ad1ffc1ea7301b70edd671919de9b2b19a1"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 385,
+      "sha256": "6cdc173846c6884d30d810d1c1d853e8a43beda162e6e26f2baeb48f4a775643"
+    },
+    {
+      "name": "art.css",
+      "bytes": 3061,
+      "sha256": "1039c91bc08e9438297d7433a6bcbfbd9676832b7d8c43621e1ae67b7a52e75c"
+    },
+    {
+      "name": "art.html",
+      "bytes": 913,
+      "sha256": "f99822309992ba7f35a5cd06e6e8fcab3ef73cbd244c0f9031bbb4fdbd60bf40"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 2957,
+      "sha256": "d4241b9a3ead506a91b7734e1b9f20063a89878b74151c5a30a81b012ac35e51"
+    },
+    {
+      "name": "assets/item-1.png",
+      "bytes": 971,
+      "sha256": "d775bd9f360634bf34bcc189fc6ef1f9dbb71c47b702cf9af6c79189f4c0ef7b"
+    },
+    {
+      "name": "assets/item-2.png",
+      "bytes": 755,
+      "sha256": "1c0bc8f9b2f29f08ffd08ba148629e7ba06b430e2ca9500f1f88438c2ca22fa9"
+    },
+    {
+      "name": "assets/item-3.png",
+      "bytes": 506,
+      "sha256": "ec2d66a14c09b7bd91435db2ecb7b11994f15b3213865ef53d960f926d6ca837"
+    },
+    {
+      "name": "assets/item-4.png",
+      "bytes": 254,
+      "sha256": "8bba47cb6b5350cee716183a53b30eb0fc54c84ea9e360536a0844506e43e081"
+    },
+    {
+      "name": "assets/item-5.png",
+      "bytes": 313,
+      "sha256": "12784169be03205590a5855f18921a79eb24d276bf185cfde06da3d597d1d996"
+    },
+    {
+      "name": "assets/item-6.png",
+      "bytes": 281,
+      "sha256": "0d8bc0b0c7a383cb04b81c47ff45609cde58a505625db553c14ab358b9f9f2ff"
+    },
+    {
+      "name": "assets/item-7.png",
+      "bytes": 977,
+      "sha256": "a616701c77f37122108ba599f76cccca5895b8408413bab78991953d4f9cad5b"
+    },
+    {
+      "name": "assets/item-8.png",
+      "bytes": 248,
+      "sha256": "dbeb4439e2bb0b64c1e41a7d879d99c1a35dcd548a653830c98fbff0f64d7e38"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1519,
+      "sha256": "ec965526247af46e41172c8c0c66c261eb4716839c523039f2434f5fe37ed03c"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 168734,
+      "sha256": "feb01c906f9e8f3619731668cba03f6b7c9e8c382ade35dc91a8f6ca6b6c7fff"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 3685,
+      "sha256": "c9a76c53572ae17f2508f5dc3c2d240a91b194fafd06d315b40880d8605a77f9"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2964,
+      "sha256": "5ea5a7d0d64c9da24b384b6dd731df37e88b5972f13638e27899c21bd9b2a545"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 122978,
+      "sha256": "acc3764920e96a88cc9434b240e27eb21b7b0a4028469b1091ee6b2a05e97f34"
+    },
+    {
+      "name": "out.png",
+      "bytes": 252961,
+      "sha256": "9a02a24d387716dc1090b0f6f834b16252642db63c7488776fcb87bafec13206"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8373,
+      "sha256": "c29d309b72b6c1e8a8fe85f881d98e038f25f846e577b286d2aeb6fa84acf02f"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 25715,
+      "sha256": "a36773278a21963dbf0631068f4002fe1d9aa81cce52261c259e683c2f88a0cb"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 707,
+      "sha256": "803c605b8a76bf8ce34e0d1e08f7f827bb9bd37463746b35b926d1675eb9191b"
+    }
+  ]
+}
