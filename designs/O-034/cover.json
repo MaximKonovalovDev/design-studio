@@ -1,0 +1,63 @@
+{
+  "product": "cover:itch/gameplay-data-kit",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Gameplay Data Kit",
+  "pick": "clean-professional",
+  "template": "covers/app-window",
+  "kicker": "Verifiable tape format · stub-v1",
+  "claim": "10 stub samples plus replay hashes plus stdlib verifier",
+  "chips": [
+    "10 stub samples",
+    "Replay hash sha256",
+    "Python 3 only"
+  ],
+  "badge": "Free",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "'Inter','Segoe UI',Arial,sans-serif",
+    "body": "'Inter',Verdana,Arial,sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 104,
+  "titlePxCard": 58,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Gameplay",
+    "Data Kit"
+  ],
+  "titleWrapCard": [
+    "Gameplay Data Kit"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "shot-zoom": "1",
+    "shot-x": "0%",
+    "shot-y": "0%"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/engine-data/gameplay-data-kit/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/engine-data/gameplay-data-kit/preview/cover-1280x720.png",
+  "landing": "from-design-studio/O-034/",
+  "assetsFrom": "the product's own preview/ pictures",
+  "assets": [
+    {
+      "name": "shot.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/engine-data/gameplay-data-kit/preview/screenshot-verify-1280x800.png",
+      "what": "the customer's own picture screenshot-verify-1280x800.png"
+    }
+  ]
+}
