@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- templates/game/menu/page.html: game main menu, one page, two sizes. Every length is rem and 1rem = 10 reference pixels: 640x360 is the reference (type that reads there), 1280x720 draws the same layout at 2x. Slots and defaults: template.json. Colour only via tokens.css: buttons and the settings row are the chip trio (chip-bg, chip-ink, chip-line), the focused button is --accent with --on-accent; focus is also shown by a chevron and a glow, never colour alone. FOCUS picks the focused button, 1 to 5. The key art is drawn placeholder shapes, shaded with filter: brightness() so it works in light and dark palettes; a PICTURE (key art of the customer's own game) covers it. In rtl the art and the scrim mirror. -->
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 10px; }
+  @media (min-width: 900px) { html { font-size: 20px; } }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 1.3rem; line-height: 1.2; }
+  html[dir="rtl"] body { font-family: var(--font-hebrew), var(--font-body); }
+  html[dir="rtl"] h1, html[dir="rtl"] .btn, html[dir="rtl"] .num { font-family: var(--font-hebrew), var(--font-display); }
+  html[dir="rtl"] .num { direction: ltr; unicode-bidi: isolate; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  svg { display: block; }
+
+  /* The key art: a sky, a sunset, hills, a beacon tower and a hero. A picture covers it. */
+  .stage { position: relative; width: 100%; height: 100%; overflow: hidden; }
+  .scene { position: absolute; inset: 0; background: linear-gradient(180deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 40%, var(--bg-2)) 50%, var(--bg-2) 100%); }
+  html[dir="rtl"] .scene, html[dir="rtl"] .scrim { transform: scaleX(-1); }
+  .scene::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 30% 28% at 71% 64%, color-mix(in srgb, var(--accent) 38%, transparent), transparent 100%); }
+  .scene::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 55%, transparent 52%, rgba(0, 0, 0, 0.34) 100%); }
+  .scene svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .photo { position: absolute; inset: 0; z-index: 1; background-size: cover; background-position: center; background-repeat: no-repeat; }
+  .scrim { position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, var(--bg) 0%, var(--bg) 28%, color-mix(in srgb, var(--bg) 72%, transparent) 50%, transparent 76%); }
+  .star { fill: var(--ink); opacity: 0.5; }
+  .sun { fill: var(--accent); opacity: 0.92; }
+  .far { fill: color-mix(in srgb, var(--accent-ink) 18%, var(--bg-2)); filter: brightness(0.85); }
+  .mid { fill: color-mix(in srgb, var(--accent-ink) 10%, var(--bg-2)); filter: brightness(0.6); }
+  .near { fill: var(--bg-2); filter: brightness(0.4); }
+  .tower { fill: var(--bg-2); filter: brightness(0.25); }
+  .shade { fill: var(--bg-2); filter: brightness(0); }
+  .flame { fill: var(--accent-ink); }
+  .lit { fill: var(--accent-ink); opacity: 0.9; }
+  .rim { fill: none; stroke: var(--accent-ink); stroke-width: 0.9; stroke-linejoin: round; opacity: 0.85; }
+  .pool { fill: var(--accent-ink); opacity: 0.2; }
+
+  /* Start side: title, tagline, five buttons. */
+  .col { position: absolute; inset-block: 4.6rem 4.4rem; inset-inline-start: 4rem; inline-size: 29rem; display: flex; flex-direction: column; justify-content: center; z-index: 3; }
+  .kicker { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; line-height: 1; letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent-ink); }
+  h1 { margin-block-start: 0.7rem; font-family: var(--font-display); font-size: 4.2rem; font-weight: 700; line-height: 0.95; letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink); text-wrap: balance; overflow-wrap: anywhere; text-shadow: 0 0.3rem 0 var(--accent); }
+  .tag { margin-block: 0.9rem 1.4rem; font-size: 1.3rem; line-height: 1.3; color: var(--muted); }
+  .kicker:empty, .tag:empty { display: none; }
+  .btns { display: grid; gap: 0.45rem; justify-items: start; }
+  .btn { inline-size: 22rem; block-size: 2.3rem; display: flex; align-items: center; gap: 0.8rem; padding-inline: 1rem; border-radius: 0.7rem; border: 0.2rem solid var(--chip-line); background: var(--chip-bg); color: var(--chip-ink); font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; line-height: 1; letter-spacing: 0.1em; text-transform: uppercase; text-align: start; box-shadow: 0 0.3rem 0.9rem rgba(0, 0, 0, 0.3); }
+  .btn::before { content: ""; flex: none; inline-size: 0.8rem; block-size: 1rem; background: currentColor; clip-path: polygon(0 0, 100% 50%, 0 100%); visibility: hidden; }
+  html[dir="rtl"] .btn::before { transform: scaleX(-1); }
+  .btns[data-focus="1"] .btn:nth-child(1), .btns[data-focus="2"] .btn:nth-child(2), .btns[data-focus="3"] .btn:nth-child(3), .btns[data-focus="4"] .btn:nth-child(4), .btns[data-focus="5"] .btn:nth-child(5) { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: 0 0 0 0.2rem var(--chip-bg), 0 0 0 0.4rem var(--accent), 0 0 1.8rem color-mix(in srgb, var(--accent) 60%, transparent); }
+  .btns[data-focus="1"] .btn:nth-child(1)::before, .btns[data-focus="2"] .btn:nth-child(2)::before, .btns[data-focus="3"] .btn:nth-child(3)::before, .btns[data-focus="4"] .btn:nth-child(4)::before, .btns[data-focus="5"] .btn:nth-child(5)::before { visibility: visible; }
+
+  /* Top end: the settings row. Bottom start: the version line. */
+  .panel { background: var(--chip-bg); color: var(--chip-ink); border: 0.2rem solid var(--chip-line); border-radius: 0.8rem; box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.35); }
+  .lbl { font-size: 1.1rem; font-weight: 700; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .num { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; line-height: 1; color: var(--accent-ink); }
+  .settings { position: absolute; inset-block-start: 1.8rem; inset-inline-end: 1.8rem; display: flex; gap: 0.8rem; z-index: 3; }
+  .pill { display: flex; align-items: center; gap: 0.7rem; padding: 0.7rem 1rem; border-radius: 1.4rem; }
+  .slider { position: relative; inline-size: 6rem; block-size: 0.6rem; border-radius: 0.3rem; background: color-mix(in srgb, var(--chip-ink) 16%, transparent); border: 0.1rem solid var(--chip-line); }
+  .slider i { position: relative; display: block; block-size: 100%; border-radius: inherit; background: var(--accent); }
+  .slider i::after { content: ""; position: absolute; inset-block-start: -0.5rem; inset-inline-end: -0.6rem; inline-size: 1.2rem; block-size: 1.2rem; border-radius: 50%; background: var(--chip-ink); border: 0.2rem solid var(--accent); }
+  .pill:has(.lbl:empty) { display: none; }
+  .ver { position: absolute; inset-block-end: 1.8rem; inset-inline-start: 4rem; z-index: 3; font-family: var(--font-mono); font-size: 1.1rem; line-height: 1; letter-spacing: 0.04em; color: var(--muted); }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="scene" aria-hidden="true">
+    <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMax slice">
+      <defs><radialGradient id="lamp"><stop offset="0" style="stop-color: var(--accent-ink); stop-opacity: 0.5"/><stop offset="1" style="stop-color: var(--accent-ink); stop-opacity: 0"/></radialGradient></defs>
+      <g class="star"><circle cx="300" cy="34" r="1.3"/><circle cx="372" cy="60" r="1.1"/><circle cx="440" cy="28" r="1.4"/><circle cx="494" cy="70" r="1.1"/><circle cx="332" cy="104" r="1.2"/><circle cx="612" cy="40" r="1"/><circle cx="410" cy="120" r="1.1"/><circle cx="520" cy="22" r="1.2"/></g>
+      <circle class="sun" cx="452" cy="232" r="64"/>
+      <path class="far" d="M0 226 C90 208 170 226 250 240 S360 254 452 254 S560 232 640 216 V360 H0 Z"/>
+      <path class="mid" d="M0 280 C100 262 200 274 300 284 S470 286 560 272 S620 266 640 270 V360 H0 Z"/>
+      <circle fill="url(#lamp)" cx="572" cy="124" r="58"/>
+      <path class="tower" d="M559 276 V176 H545 V162 H599 V176 H585 V276 Z"/>
+      <path class="flame" d="M572 162 C560 148 568 136 572 118 C578 136 586 148 572 162 Z"/>
+      <rect class="lit" x="568" y="192" width="8" height="14" rx="1"/><rect class="lit" x="568" y="220" width="8" height="14" rx="1"/><rect class="lit" x="568" y="248" width="8" height="14" rx="1"/>
+      <path class="near" d="M0 312 C110 298 220 306 330 310 S540 300 640 308 V360 H0 Z"/>
+      <ellipse class="pool" cx="462" cy="296" rx="46" ry="5.5"/>
+      <circle fill="url(#lamp)" cx="472" cy="276" r="15"/>
+      <g class="shade" transform="translate(132 10)"><circle cx="320" cy="226" r="7"/><path d="M320 234 C311 238 307 254 303 286 L337 286 C333 254 329 238 320 234 Z"/><path d="M299 218 L303 286 L306 286 L302 218 Z"/></g>
+      <path class="rim" transform="translate(132 10)" d="M313.2 226 C313.2 220 326.8 220 326.8 226"/>
+      <path class="rim" transform="translate(132 10)" d="M327 250 C331 256 335 260 339 264"/>
+      <circle class="flame" cx="472" cy="277" r="3.4"/>
+    </svg>
+    <div class="photo" style="background-image: url('{{PICTURE}}')"></div>
+  </div>
+  <div class="scrim"></div>
+
+  <main class="col">
+    <p class="kicker" data-oid="cover.subtitle">{{KICKER}}</p>
+    <h1 data-oid="cover.title">{{TITLE}}</h1>
+    <p class="tag">{{TAGLINE}}</p>
+    <nav class="btns" data-focus="{{FOCUS}}">
+      <button class="btn" type="button" data-oid="cover.cta">{{BTN_1}}</button>
+      <button class="btn" type="button">{{BTN_2}}</button>
+      <button class="btn" type="button">{{BTN_3}}</button>
+      <button class="btn" type="button">{{BTN_4}}</button>
+      <button class="btn" type="button">{{BTN_5}}</button>
+    </nav>
+  </main>
+
+  <p class="ver">{{VERSION}}</p>
+  <div class="settings">
+    <p class="pill panel"><span class="lbl">{{MUSIC_LABEL}}</span><span class="slider"><i style="inline-size: {{MUSIC_PCT}}%"></i></span><span class="num">{{MUSIC_VALUE}}</span></p>
+    <p class="pill panel"><span class="lbl">{{LANGUAGE_LABEL}}</span><span class="num">{{LANGUAGE_VALUE}}</span></p>
+    <p class="pill panel"><span class="lbl">{{SUBTITLES_LABEL}}</span><span class="num">{{SUBTITLES_VALUE}}</span></p>
+  </div>
+</div>
+</body>
+</html>

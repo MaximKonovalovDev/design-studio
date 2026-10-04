@@ -482,7 +482,7 @@
     },
     {
       "name": "template",
-      "does": "the template shelf: list shows 12 templates (3 store covers, social card, landing, site kit, press kit, email, one-pager, deck, report, portfolio card) and 8 palettes; new stamps designs/<order>/ from one template and one palette with SLOT=value text; build renders every size, PDFs, thumb, audit, judge",
+      "does": "the template shelf: list shows 14 templates (3 store covers, social card, landing, site kit, press kit, email, one-pager, deck, report, portfolio card, game HUD, game menu) and 8 palettes; new stamps designs/<order>/ from one template and one palette with SLOT=value text; build renders every size, PDFs, thumb, audit, judge",
       "run": [
         "node",
         "tools/template.mjs"

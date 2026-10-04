@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!-- templates/game/hud/page.html: game HUD, one page, two sizes. Every length is rem and 1rem = 10 reference pixels: 640x360 is the reference (type that reads there), 1280x720 draws the same layout at 2x. Slots and defaults: template.json. Colour only via tokens.css: panels are the chip trio (chip-bg, chip-ink, chip-line); health is --accent, the resource is --accent-ink with segment ticks (never colour alone); the scene is drawn placeholder shapes, shaded with filter: brightness() so it works in light and dark palettes, and a PICTURE (a screenshot of the customer's own game) covers it. Icons: inline stroke SVGs (own shapes, plus the heart, star and pause of kits/game-ui, Lucide ISC). An empty CD, COUNT or TOAST_TITLE collapses its element. ACTIVE_SLOT picks the lit ability, 1 to 5. -->
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 10px; }
+  @media (min-width: 900px) { html { font-size: 20px; } }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 1.3rem; line-height: 1.2; }
+  html[dir="rtl"] body { font-family: var(--font-hebrew), var(--font-body); }
+  html[dir="rtl"] h1, html[dir="rtl"] .name, html[dir="rtl"] .num { font-family: var(--font-hebrew), var(--font-display); }
+  html[dir="rtl"] .num { direction: ltr; unicode-bidi: isolate; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  svg { display: block; }
+
+  /* The scene: a sky, a sunset, three hills, two beacon towers and a hero. A picture covers it. */
+  .stage { position: relative; width: 100%; height: 100%; overflow: hidden; }
+  .scene { position: absolute; inset: 0; background: linear-gradient(180deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 40%, var(--bg-2)) 50%, var(--bg-2) 100%); }
+  .scene::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 34% 26% at 50% 64%, color-mix(in srgb, var(--accent) 38%, transparent), transparent 100%); }
+  .scene::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 55%, transparent 52%, rgba(0, 0, 0, 0.34) 100%); }
+  .scene svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .photo { position: absolute; inset: 0; z-index: 1; background-size: cover; background-position: center; background-repeat: no-repeat; }
+  .star { fill: var(--ink); opacity: 0.5; }
+  .sun { fill: var(--accent); opacity: 0.92; }
+  .far { fill: color-mix(in srgb, var(--accent-ink) 18%, var(--bg-2)); filter: brightness(0.85); }
+  .mid { fill: color-mix(in srgb, var(--accent-ink) 10%, var(--bg-2)); filter: brightness(0.6); }
+  .near { fill: var(--bg-2); filter: brightness(0.4); }
+  .tower { fill: var(--bg-2); filter: brightness(0.25); }
+  .shade { fill: var(--bg-2); filter: brightness(0); }
+  .flame { fill: var(--accent-ink); }
+  .rim { fill: none; stroke: var(--accent-ink); stroke-width: 0.9; stroke-linejoin: round; opacity: 0.85; }
+  .pool { fill: var(--accent-ink); opacity: 0.2; }
+
+  /* Panels: the chip trio, so text on them is always readable. */
+  .panel { background: var(--chip-bg); color: var(--chip-ink); border: 0.2rem solid var(--chip-line); border-radius: 0.8rem; box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.35); }
+  .lbl { font-size: 1.1rem; font-weight: 700; line-height: 1; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .num { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; line-height: 1; color: var(--chip-ink); }
+  .row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.4rem 0.6rem; }
+  .track { block-size: 0.8rem; border-radius: 0.4rem; border: 0.1rem solid var(--chip-line); background: color-mix(in srgb, var(--chip-ink) 16%, transparent); overflow: hidden; }
+  .track i { display: block; block-size: 100%; border-radius: inherit; }
+
+  /* Top start: the player. */
+  .player { position: absolute; inset-block-start: 1.6rem; inset-inline-start: 1.8rem; display: flex; gap: 0.9rem; padding-block: 0.7rem; padding-inline: 0.7rem 0.9rem; }
+  .portrait { position: relative; flex: none; inline-size: 4.6rem; block-size: 4.6rem; border-radius: 0.6rem; border: 0.15rem solid var(--chip-line); background: var(--bg-2); }
+  .portrait svg { position: absolute; inset: 0.4rem; inline-size: calc(100% - 0.8rem); block-size: calc(100% - 0.8rem); fill: var(--chip-ink); }
+  .level { position: absolute; inset-block-end: -0.8rem; inset-inline-end: -0.8rem; min-inline-size: 2rem; block-size: 2rem; padding-inline: 0.4rem; display: grid; place-items: center; border-radius: 1rem; border: 0.15rem solid var(--chip-bg); background: var(--accent); color: var(--on-accent); font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; line-height: 1; }
+  .vitals { inline-size: 13.2rem; display: grid; align-content: space-between; gap: 0.4rem; }
+  .name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; line-height: 1; letter-spacing: 0.02em; }
+  .meter .row { margin-block-end: 0.3rem; }
+  .hp i { background: var(--accent); }
+  .mp i { background: repeating-linear-gradient(90deg, var(--accent-ink) 0 0.6rem, transparent 0.6rem 0.8rem); }
+
+  /* Top centre: the zone banner (the page title). */
+  .zone { position: absolute; inset-block-start: 9.2rem; inset-inline: 0; margin-inline: auto; inline-size: max-content; max-inline-size: 48%; text-align: center; }
+  .kicker { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; line-height: 1; letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent-ink); text-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5); margin-block-end: 0.6rem; }
+  h1 { font-family: var(--font-display); font-size: 3.2rem; font-weight: 700; line-height: 1.02; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); text-wrap: balance; text-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.45); }
+  .rule { display: block; block-size: 0.2rem; margin-block-start: 0.9rem; margin-inline: auto; inline-size: 70%; background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent); }
+  .kicker:empty { display: none; }
+
+  /* Top end: pause, minimap, objective. */
+  .pause { position: absolute; inset-block-start: 1.6rem; inset-inline-end: 11rem; inline-size: 2.8rem; block-size: 2.8rem; display: grid; place-items: center; padding: 0; border-radius: 0.7rem; }
+  .pause svg { inline-size: 1.6rem; block-size: 1.6rem; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .map { position: absolute; inset-block-start: 1.6rem; inset-inline-end: 1.8rem; inline-size: 14.4rem; display: grid; grid-template-columns: minmax(0, 1fr); justify-items: end; gap: 0.6rem; }
+  .dial { position: relative; inline-size: 8.2rem; block-size: 8.2rem; border-radius: 50%; overflow: hidden; border: 0.3rem solid var(--chip-line); background: var(--bg-2); box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.35), inset 0 0 1.2rem rgba(0, 0, 0, 0.35); }
+  .dial svg { inline-size: 100%; block-size: 100%; }
+  .water { fill: color-mix(in srgb, var(--accent-ink) 22%, var(--bg-2)); }
+  .block { fill: color-mix(in srgb, var(--chip-ink) 20%, var(--bg-2)); }
+  .road { fill: none; stroke: var(--chip-line); stroke-width: 2.4; stroke-linecap: round; opacity: 0.85; }
+  .me { fill: var(--accent); stroke: var(--chip-bg); stroke-width: 1; stroke-linejoin: round; }
+  .goal { fill: var(--accent-ink); stroke: var(--chip-ink); stroke-width: 1; stroke-linejoin: round; }
+  .ping { fill: none; stroke: var(--accent-ink); stroke-width: 1.2; opacity: 0.6; }
+  .north { position: absolute; inset-block-start: 0.2rem; inset-inline: 0; margin-inline: auto; inline-size: 1rem; block-size: 0.8rem; background: var(--accent); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+  .where { inline-size: fit-content; max-inline-size: 100%; display: grid; gap: 0.4rem; padding: 0.5rem 0.8rem; border-width: 0.15rem; border-radius: 0.6rem; box-shadow: none; }
+  .where .num { font-weight: 400; color: var(--muted); }
+  .where .lbl { color: var(--chip-ink); }
+  .where :empty { display: none; }
+  .quest { position: absolute; inset-block-start: 15rem; inset-inline-end: 1.8rem; inline-size: 14.4rem; padding: 0.8rem 0.9rem 0.9rem; border-inline-start: 0.5rem solid var(--accent); }
+  .quest .num { color: var(--accent-ink); }
+  .quest-title { font-size: 1.3rem; font-weight: 700; line-height: 1.2; margin-block: 0.5rem 0.6rem; }
+  .quest .track { block-size: 0.6rem; }
+  .quest .track i { background: var(--accent-ink); }
+
+  /* Bottom centre: ability and item bar, XP strip. */
+  .dock { position: absolute; inset-block-end: 1.6rem; inset-inline: 0; margin-inline: auto; inline-size: 19.4rem; }
+  .slots { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6rem; }
+  .slot { position: relative; inline-size: 100%; aspect-ratio: 1; display: grid; place-items: center; padding: 0; border-radius: 0.7rem; }
+  .slot svg { inline-size: 56%; block-size: 56%; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .key { z-index: 2; position: absolute; inset-block-start: -0.6rem; inset-inline-start: -0.5rem; min-inline-size: 1.6rem; block-size: 1.6rem; padding-inline: 0.3rem; display: grid; place-items: center; border-radius: 0.4rem; background: var(--chip-ink); color: var(--chip-bg); font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; line-height: 1; }
+  .cd { position: absolute; inset: 0; display: grid; place-items: center; border-radius: 0.5rem; background: color-mix(in srgb, var(--bg) 84%, transparent); color: var(--chip-ink); font-family: var(--font-mono); font-size: 1.8rem; font-weight: 700; line-height: 1; }
+  .count { z-index: 2; position: absolute; inset-block-end: -0.6rem; inset-inline-end: -0.5rem; min-inline-size: 1.6rem; block-size: 1.6rem; padding-inline: 0.3rem; display: grid; place-items: center; border-radius: 0.8rem; background: var(--accent); color: var(--on-accent); font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; line-height: 1; }
+  .cd:empty, .count:empty, .key:empty { display: none; }
+  .slot:has(.cd:not(:empty)) svg { opacity: 0.3; }
+  .slots[data-active="1"] li:nth-child(1) .slot, .slots[data-active="2"] li:nth-child(2) .slot, .slots[data-active="3"] li:nth-child(3) .slot, .slots[data-active="4"] li:nth-child(4) .slot, .slots[data-active="5"] li:nth-child(5) .slot { border-color: var(--accent); box-shadow: 0 0 0 0.2rem var(--accent), 0 0 1.4rem color-mix(in srgb, var(--accent) 60%, transparent); }
+  .slots[data-active="1"] li:nth-child(1) .key, .slots[data-active="2"] li:nth-child(2) .key, .slots[data-active="3"] li:nth-child(3) .key, .slots[data-active="4"] li:nth-child(4) .key, .slots[data-active="5"] li:nth-child(5) .key { background: var(--accent); color: var(--on-accent); }
+  .xp { block-size: 0.5rem; margin-block-start: 0.9rem; border-radius: 0.3rem; border: 0.1rem solid var(--chip-line); background: color-mix(in srgb, var(--chip-bg) 85%, transparent); overflow: hidden; }
+  .xp i { display: block; block-size: 100%; background: var(--accent-ink); }
+
+  /* Bottom end: a toast. Bottom start: the purse. */
+  .toast { position: absolute; inset-block-end: 7.4rem; inset-inline-end: 1.8rem; inline-size: 22.4rem; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.8rem; padding: 0.7rem 0.9rem; border-inline-start: 0.5rem solid var(--accent); }
+  .toast .icon { inline-size: 2.6rem; block-size: 2.6rem; display: grid; place-items: center; border-radius: 50%; background: var(--accent); color: var(--on-accent); }
+  .toast .icon svg { inline-size: 1.5rem; block-size: 1.5rem; fill: currentColor; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; }
+  .toast b { display: block; font-size: 1.3rem; font-weight: 700; line-height: 1.1; }
+  .toast div span { display: block; margin-block-start: 0.3rem; font-size: 1.1rem; line-height: 1.1; color: var(--muted); }
+  .toast > .num { font-size: 1.3rem; color: var(--accent-ink); }
+  .toast:has(b:empty) { display: none; }
+  .purse { position: absolute; inset-block-end: 1.6rem; inset-inline-start: 1.8rem; display: flex; align-items: center; gap: 0.7rem; padding-block: 0.6rem; padding-inline: 0.7rem 1.1rem; border-radius: 2rem; }
+  .coin { inline-size: 2rem; block-size: 2rem; border-radius: 50%; border: 0.2rem solid var(--chip-ink); background: var(--accent); }
+  .purse .num { font-size: 1.4rem; }
+  .purse:has(.num:empty) { display: none; }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="scene" aria-hidden="true">
+    <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMax slice">
+      <defs><radialGradient id="lamp"><stop offset="0" style="stop-color: var(--accent-ink); stop-opacity: 0.5"/><stop offset="1" style="stop-color: var(--accent-ink); stop-opacity: 0"/></radialGradient></defs>
+      <g class="star"><circle cx="236" cy="30" r="1.3"/><circle cx="302" cy="52" r="1.1"/><circle cx="388" cy="26" r="1.4"/><circle cx="440" cy="64" r="1.1"/><circle cx="172" cy="84" r="1.2"/><circle cx="476" cy="40" r="1"/><circle cx="108" cy="120" r="1.1"/><circle cx="548" cy="150" r="1.2"/></g>
+      <circle class="sun" cx="320" cy="236" r="62"/>
+      <path class="far" d="M0 214 C80 194 150 214 220 240 S290 258 320 258 S420 246 500 222 S600 198 640 206 V360 H0 Z"/>
+      <path class="mid" d="M0 270 C80 250 150 260 230 274 S330 282 400 274 S560 254 640 268 V360 H0 Z"/>
+      <circle fill="url(#lamp)" cx="118" cy="186" r="34"/>
+      <path class="tower" d="M106 254 V208 H99 V199 H137 V208 H130 V254 Z"/>
+      <path class="flame" d="M118 199 C111 191 115 184 118 176 C122 184 126 191 118 199 Z"/>
+      <path class="tower" d="M206 272 V246 H202 V240 H226 V246 H222 V272 Z"/>
+      <path class="near" d="M0 304 C100 286 210 296 320 302 S520 290 640 300 V360 H0 Z"/>
+      <ellipse class="pool" cx="330" cy="286" rx="48" ry="6"/>
+      <circle fill="url(#lamp)" cx="340" cy="266" r="16"/>
+      <g class="shade"><circle cx="320" cy="226" r="7"/><path d="M320 234 C311 238 307 254 303 286 L337 286 C333 254 329 238 320 234 Z"/><path d="M299 218 L303 286 L306 286 L302 218 Z"/></g>
+      <path class="rim" d="M313.2 226 C313.2 220 326.8 220 326.8 226"/>
+      <path class="rim" d="M327 250 C331 256 335 260 339 264"/>
+      <circle class="flame" cx="340" cy="267" r="3.4"/>
+    </svg>
+    <div class="photo" style="background-image: url('{{PICTURE}}')"></div>
+  </div>
+
+  <section class="player panel">
+    <div class="portrait">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="4.2"/><path d="M3.5 22 C3.5 15.5 7.5 13.5 12 13.5 S20.5 15.5 20.5 22 Z"/></svg>
+      <span class="level">{{LEVEL}}</span>
+    </div>
+    <div class="vitals">
+      <p class="name">{{PLAYER_NAME}}</p>
+      <div class="meter hp">
+        <p class="row"><span class="lbl">{{HEALTH_LABEL}}</span><span class="num">{{HEALTH_VALUE}}</span></p>
+        <div class="track"><i style="inline-size: {{HEALTH_PCT}}%"></i></div>
+      </div>
+      <div class="meter mp">
+        <p class="row"><span class="lbl">{{RESOURCE_LABEL}}</span><span class="num">{{RESOURCE_VALUE}}</span></p>
+        <div class="track"><i style="inline-size: {{RESOURCE_PCT}}%"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <header class="zone">
+    <p class="kicker" data-oid="cover.subtitle">{{KICKER}}</p>
+    <h1 data-oid="cover.title">{{TITLE}}</h1>
+    <i class="rule"></i>
+  </header>
+
+  <button class="pause panel" type="button" aria-label="{{PAUSE_LABEL}}" title="{{PAUSE_LABEL}}" data-oid="cover.cta">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/></svg>
+  </button>
+  <aside class="map">
+    <div class="dial">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <rect class="water" width="100" height="100"/>
+        <path class="block" d="M28 0 H100 V100 H46 C50 82 36 74 30 60 C24 46 34 36 28 20 Z"/>
+        <rect class="block" x="56" y="10" width="14" height="10" rx="2"/><rect class="block" x="76" y="42" width="14" height="12" rx="2"/><rect class="block" x="58" y="70" width="12" height="14" rx="2"/>
+        <path class="road" d="M40 100 C44 78 50 66 52 50 S66 30 72 0"/><path class="road" d="M34 44 L100 52"/><path class="road" d="M52 50 L96 78"/>
+        <circle class="ping" cx="74" cy="26" r="8"/>
+        <path class="goal" d="M74 20 L80 26 L74 32 L68 26 Z"/>
+        <path class="me" d="M52 40 L58 56 L52 52.5 L46 56 Z"/>
+      </svg>
+      <i class="north"></i>
+    </div>
+    <p class="where panel"><span class="lbl">{{MAP_LABEL}}</span><span class="num">{{MAP_COORDS}}</span></p>
+  </aside>
+  <section class="quest panel">
+    <p class="row"><span class="lbl">{{QUEST_LABEL}}</span><span class="num">{{QUEST_PROGRESS}}</span></p>
+    <p class="quest-title">{{QUEST_TITLE}}</p>
+    <div class="track"><i style="inline-size: {{QUEST_PCT}}%"></i></div>
+  </section>
+
+  <nav class="dock">
+    <ul class="slots" data-active="{{ACTIVE_SLOT}}">
+      <li><button class="slot panel" type="button" aria-label="{{NAME_1}}"><svg viewBox="0 0 24 24"><path d="M20 4 L9 15"/><path d="M20 4 V8.5 M20 4 H15.5"/><path d="M12.5 18 L6 11.5"/><path d="M8 16 L4 20"/></svg><span class="key">{{KEY_1}}</span><span class="cd">{{CD_1}}</span></button></li>
+      <li><button class="slot panel" type="button" aria-label="{{NAME_2}}"><svg viewBox="0 0 24 24"><path d="M12 3 L20 6 V12 C20 17 16.5 20 12 21.5 C7.5 20 4 17 4 12 V6 Z"/><path d="M12 7 V17"/></svg><span class="key">{{KEY_2}}</span><span class="cd">{{CD_2}}</span></button></li>
+      <li><button class="slot panel" type="button" aria-label="{{NAME_3}}"><svg viewBox="0 0 24 24"><path d="M13 2 L4 14 H11 L10 22 L19 10 H12 Z"/></svg><span class="key">{{KEY_3}}</span><span class="cd">{{CD_3}}</span></button></li>
+      <li><button class="slot panel" type="button" aria-label="{{NAME_4}}"><svg viewBox="0 0 24 24"><path d="M9 3 H15"/><path d="M10 3 V9 L5 18 A2 2 0 0 0 6.8 21 H17.2 A2 2 0 0 0 19 18 L14 9 V3"/><path d="M7.5 15 H16.5"/></svg><span class="key">{{KEY_4}}</span><span class="cd">{{CD_4}}</span><span class="count">{{COUNT_4}}</span></button></li>
+      <li><button class="slot panel" type="button" aria-label="{{NAME_5}}"><svg viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg><span class="key">{{KEY_5}}</span><span class="cd">{{CD_5}}</span><span class="count">{{COUNT_5}}</span></button></li>
+    </ul>
+    <div class="xp"><i style="inline-size: {{XP_PCT}}%"></i></div>
+  </nav>
+
+  <aside class="toast panel">
+    <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+    <div><b>{{TOAST_TITLE}}</b><span>{{TOAST_TEXT}}</span></div>
+    <span class="num">{{TOAST_VALUE}}</span>
+  </aside>
+  <div class="purse panel"><i class="coin"></i><span class="num">{{PURSE_VALUE}}</span><span class="lbl">{{PURSE_LABEL}}</span></div>
+</div>
+</body>
+</html>
