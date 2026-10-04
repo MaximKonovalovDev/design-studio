@@ -5,10 +5,11 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, basename } from "node:path";
 import {
-  ambientDownloadUrl, factsPaths, findPreviewDir, imageDims, mergeAssetsJson,
-  parseGifDims, parseJpegDims, parsePngDims, pickPolyhavenFile, sha256, slugify,
+  ambientDownloadUrl, dirTokens, factsPaths, findPreviewDir, imageDims, mergeAssetsJson,
+  packCandidates, parseGifDims, parseJpegDims, parsePngDims, pickPolyhavenFile, repoRoot,
+  resolveOrderPackIn, scoreDirName, sha256, slugTokens, slugify,
 } from "../tools/assets.mjs";
 
 describe("header dim readers (no dependency)", () => {
@@ -87,6 +88,69 @@ describe("assets.json merge (page.html keeps pointing at old files)", () => {
     );
     assert.equal(next.assets.length, 1);
     assert.equal(next.assets[0].bytes, 9);
+  });
+});
+
+describe("order: slugs resolve the customer pack plus the factory twin (NEED-10, offline fixtures)", () => {
+  const png24 = (w, h) => Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 13]), Buffer.from("IHDR"), Buffer.from([0, 0, w >> 8, w & 255, 0, 0, h >> 8, h & 255])]);
+  const fixture = () => {
+    const root = mkdtempSync(join(tmpdir(), "ds-assets-order-"));
+    mkdirSync(join(root, "skillworks", "packs", "fleet-vol-1"), { recursive: true });
+    writeFileSync(join(root, "skillworks", "packs", "fleet-vol-1", "listing.md"), "# facts\n");
+    mkdirSync(join(root, "skillworks", "packs", "other-pack"), { recursive: true });
+    mkdirSync(join(root, "autonomous-factory", "products", "skill-pack", "fleet-pack", "preview"), { recursive: true });
+    writeFileSync(join(root, "autonomous-factory", "products", "skill-pack", "fleet-pack", "preview", "screenshot-pairs.png"), png24(64, 48));
+    return root;
+  };
+  const slug = "order:demo-gif-for-fleet-vol-1-a-bad-command-t";
+  it("slug tokens keep the pack identity (vol-1 digit survives, glue words go)", () => {
+    const t = slugTokens(slug);
+    assert.ok(t.includes("fleet") && t.includes("vol") && t.includes("1"));
+    assert.ok(!t.includes("for") && !t.includes("a") && !t.includes("t"));
+  });
+  it("dir tokens keep single digits so fleet-vol-1 beats fleet-pack 3 to 1", () => {
+    assert.deepEqual(dirTokens("fleet-vol-1").sort(), ["1", "fleet", "vol"]);
+    const toks = slugTokens(slug);
+    assert.equal(scoreDirName(toks, "fleet-vol-1").shared, 3);
+    assert.equal(scoreDirName(toks, "fleet-pack").shared, 1);
+  });
+  it("resolves the customer pack dir and its listing.md", () => {
+    const root = fixture();
+    try {
+      const r = resolveOrderPackIn(slug, "skillworks", join(root, "skillworks"), join(root, "autonomous-factory"));
+      assert.equal(basename(r.packDir), "fleet-vol-1");
+      assert.ok(r.listingFile.endsWith("listing.md"));
+    } finally { rmSync(root, { recursive: true, force: true }); }
+  });
+  it("a papers-only pack falls back to the same-content factory twin", () => {
+    const root = fixture();
+    try {
+      const r = resolveOrderPackIn(slug, "skillworks", join(root, "skillworks"), join(root, "autonomous-factory"));
+      assert.equal(r.twins.length, 1);
+      assert.equal(r.twins[0].product, "fleet-pack");
+      assert.equal(r.twins[0].pics.length, 1);
+      assert.equal(r.twins[0].pics[0].name, "screenshot-pairs.png");
+    } finally { rmSync(root, { recursive: true, force: true }); }
+  });
+  it("fails closed on an unknown slug and on a missing customer root", () => {
+    const root = fixture();
+    try {
+      assert.throws(() => resolveOrderPackIn("order:zzz-qqq-nothing", "skillworks", join(root, "skillworks"), join(root, "autonomous-factory")), /2\+ tokens/);
+      assert.throws(() => resolveOrderPackIn(slug, "skillworks", join(root, "no-such-root"), join(root, "autonomous-factory")), /missing on disk/);
+    } finally { rmSync(root, { recursive: true, force: true }); }
+  });
+  it("packCandidates stays shallow and skips missing roots", () => {
+    const root = fixture();
+    try {
+      const found = packCandidates(join(root, "skillworks"), ["packs/*"]);
+      assert.deepEqual(found.map((p) => basename(p)).sort(), ["fleet-vol-1", "other-pack"]);
+      assert.deepEqual(packCandidates(join(root, "no-such-root"), ["packs/*"]), []);
+    } finally { rmSync(root, { recursive: true, force: true }); }
+  });
+  it("repoRoot maps every orders.csv from_repo and rejects unknown ones", () => {
+    assert.ok(repoRoot("skillworks").endsWith("skillworks"));
+    assert.ok(repoRoot("factory").endsWith("autonomous-factory"));
+    assert.throws(() => repoRoot("nope"), /unknown from_repo/);
   });
 });
 
