@@ -1,0 +1,109 @@
+{
+  "order_id": "O-026",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:gumroad/fleet-pack",
+  "delivered_utc": "2026-10-04T11:40Z",
+  "source": "design-studio designs/O-026",
+  "landing": "products/skill-pack/fleet-pack/covers/from-design-studio/O-026",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "out.png 1280x720 (Gumroad cover)",
+    "out-630x500.png (store card)",
+    "thumb-256.png (readability proof)",
+    "page.html + tokens.css + art.css (source)"
+  ],
+  "note": "Written by hand: orders-check --deliver has not landed. Files copied verbatim (refuse-overwrite-if-differs); ADOPT.md included and hashed.",
+  "files": [
+    {
+      "name": "ADOPT.md",
+      "bytes": 390,
+      "sha256": "4382b4201989417f8bb5f6c8083132176ce1670d07de7e2114979e3a38ab32f3"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1481,
+      "sha256": "2f64b3433df2364dfb7005d84b8355528db158ce298eae9d4d3f495ad8a45535"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1166,
+      "sha256": "5f2adc8997a22e706bc75b4d429553b4894d2345a0fc0bfc9fb358558343a731"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 350,
+      "sha256": "922ff92dda51fdb099b4bc260b7886ef8b23fc9bc9188fe8cacc2a270800c4cf"
+    },
+    {
+      "name": "art.css",
+      "bytes": 2652,
+      "sha256": "89d9dece09aeac362421a129d522c050f296179068b260eae5ede46496ef9ef4"
+    },
+    {
+      "name": "art.html",
+      "bytes": 719,
+      "sha256": "3162dcc28f7bee7e4969451114ef18b59edca2ed6397dfbdad6f45c66e5bc600"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 943,
+      "sha256": "a7896675021bfcf3cd9788fb791c272f7c76bd7f961c79a4b1801cb56fb234dd"
+    },
+    {
+      "name": "assets/screenshot-cdp.png",
+      "bytes": 37498,
+      "sha256": "34158b44a82e34185b97560d4f9d4dc6cda0cfef36e08133e77e4cc9015e9c31"
+    },
+    {
+      "name": "assets/screenshot-pairs.png",
+      "bytes": 75954,
+      "sha256": "ab6d679ee5c079ce2ff034004293552f11977321791a0f51274b1b26c900cb7c"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1281,
+      "sha256": "c73f7be88c4752b874fc1a24b44031ac23769b86757b2fb57a3fb079c5431872"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 107367,
+      "sha256": "de7c357d39e2dd0388385b04006bccd1fc12c97a5cd44b0c14e90b8df8a1c138"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 2457,
+      "sha256": "298488c8949a8e593fac1ec7f23ce72ee9009a03cb7d98b3886501e8e71c7b18"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2961,
+      "sha256": "3fc5f8e1f15c68804ffbc5dcaee2eae6c7afc4682d8d9cdd6eee0f8e304c0889"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 131287,
+      "sha256": "987ecaaafdf118f66a23a998cd1a802da562ad32125f63e89b46e9d963d9ab4b"
+    },
+    {
+      "name": "out.png",
+      "bytes": 334107,
+      "sha256": "46986e617e425dae4de0e437aedc96579880b951db9c3107e4b17eda103cc347"
+    },
+    {
+      "name": "page.html",
+      "bytes": 7331,
+      "sha256": "35e507efe5c1d5fa74a28cde1f85f312444c86c854c5cbb77a16ae46a0ad96f7"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 28716,
+      "sha256": "237322c993ffef5704cd58f2edee27564e2968290cba9d1a7343fafc968ba5f6"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 784,
+      "sha256": "5882ec09cdd5013440e3df93fd56ebb6aecf23ebea6bd10734c72e5e86d65c1d"
+    }
+  ]
+}
