@@ -443,6 +443,96 @@
       "first_job": "O-026: designs/O-026/compare.png 780x706 via compare ours vs factory fleet-pack cover at 256,315px"
     },
     {
+      "name": "donor",
+      "does": "resolves one Open Design system slug to its studio palette + mood + font stacks (templates/palettes.json) with the donor DESIGN.md path when the sparse checkout is on disk; unknown slugs FAIL with the nearest ones; open-design makes the sparse clone",
+      "run": [
+        "node",
+        "tools/donor.mjs"
+      ],
+      "args": [
+        {
+          "name": "cmd",
+          "does": "system or open-design",
+          "required": true
+        },
+        {
+          "name": "slug",
+          "does": "design system slug for system, e.g. clean",
+          "required": true
+        },
+        {
+          "name": "json",
+          "does": "receipt JSON path for system, e.g. --json designs/O-026/system.json",
+          "flag": "--json"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/donor.mjs",
+        "--check"
+      ],
+      "for": [
+        "store lane: the design system the brief names, no hand pick",
+        "social lane: bold/vibrant/energetic/expressive/storytelling picks",
+        "game lane: hud/fantasy/retro/neon/futuristic/cosmic/dramatic picks"
+      ],
+      "timeout_s": 60,
+      "first_job": "O-026: system clean -> clean-professional, receipt designs/O-026/system.json"
+    },
+    {
+      "name": "mockup",
+      "does": "stages one of the product's own pictures inside a pure-CSS device frame (browser, macbook, iphone, ipad) and renders the hero PNG through the local browser; no external mockup image URLs",
+      "run": [
+        "node",
+        "tools/mockup.mjs"
+      ],
+      "args": [
+        {
+          "name": "shot",
+          "does": "the product's own picture for the screen, e.g. designs/O-026/assets/screenshot-pairs.png",
+          "flag": "--shot",
+          "required": true
+        },
+        {
+          "name": "frame",
+          "does": "browser, macbook, iphone or ipad",
+          "flag": "--frame"
+        },
+        {
+          "name": "out",
+          "does": "output PNG path, e.g. --out designs/O-026/mockup.png",
+          "flag": "--out",
+          "required": true
+        },
+        {
+          "name": "size",
+          "does": "WxH in pixels, default 1280x720",
+          "flag": "--size"
+        },
+        {
+          "name": "bg",
+          "does": "charcoal, pearl, midnight or mocha backdrop, default charcoal",
+          "flag": "--bg"
+        },
+        {
+          "name": "caption",
+          "does": "one small caption line over the hero",
+          "flag": "--caption"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/mockup.mjs",
+        "--check"
+      ],
+      "for": [
+        "store lane: device or scene hero from the product's own pictures",
+        "review chain: PICTURE gate shows real captures in a frame, never text boxes"
+      ],
+      "timeout_s": 120,
+      "first_job": "O-026: designs/O-026/mockup.png 1280x720 browser frame of the real buyer-table screenshot"
+    },
+    {
       "name": "template",
       "does": "the template shelf: list shows 14 templates (3 store covers, social card, landing, site kit, press kit, email, one-pager, deck, report, portfolio card, game HUD, game menu) and 8 palettes; new stamps designs/<order>/ from one template and one palette with SLOT=value text; build renders every size, PDFs, thumb, audit, judge",
       "run": [
