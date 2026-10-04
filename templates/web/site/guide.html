@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- templates/web/site/guide.html: one guide article. Breadcrumbs, page head, intro, 4 numbered steps, callout, table (3 columns, 3 rows), code block, next-step box. Header, nav and footer are the same markup and slots as page.html; all layout lives in site.css. Slots and defaults: template.json. A step or table row with an empty first slot collapses. -->
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{GUIDE_TITLE}} | {{SITE_NAME}}</title>
+<meta name="description" content="{{GUIDE_LEAD}}">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* First paint before site.css arrives: page colours and type straight from the tokens. */
+  html { background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  html[dir="rtl"] { font-family: var(--font-hebrew), var(--font-body); }
+</style>
+</head>
+<body data-page="guide">
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="site-brand" href="{{HOME_URL}}"><span class="site-mark"></span>{{SITE_NAME}}</a>
+    <nav class="site-nav"><a data-nav="1" href="{{NAV_1_URL}}">{{NAV_1_LABEL}}</a><a data-nav="2" href="{{NAV_2_URL}}">{{NAV_2_LABEL}}</a><a data-nav="3" href="{{NAV_3_URL}}">{{NAV_3_LABEL}}</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap narrow">
+    <nav class="crumbs"><a href="{{NAV_2_URL}}">{{NAV_2_LABEL}}</a><span>{{GUIDE_TITLE}}</span></nav>
+    <header class="page-head">
+      <p class="kicker">{{GUIDE_KICKER}}</p>
+      <h1>{{GUIDE_TITLE}}</h1>
+      <p class="lead">{{GUIDE_LEAD}}</p>
+      <p class="meta">{{GUIDE_META}}</p>
+    </header>
+
+    <article class="prose">
+      <p>{{GUIDE_INTRO}}</p>
+
+      <h2>{{STEPS_TITLE}}</h2>
+      <ol class="steps">
+        <li><h3>{{STEP_1_TITLE}}</h3><p>{{STEP_1_TEXT}}</p></li>
+        <li><h3>{{STEP_2_TITLE}}</h3><p>{{STEP_2_TEXT}}</p></li>
+        <li><h3>{{STEP_3_TITLE}}</h3><p>{{STEP_3_TEXT}}</p></li>
+        <li><h3>{{STEP_4_TITLE}}</h3><p>{{STEP_4_TEXT}}</p></li>
+      </ol>
+
+      <div class="callout"><h3>{{CALLOUT_TITLE}}</h3><p>{{CALLOUT_TEXT}}</p></div>
+
+      <h2>{{TABLE_TITLE}}</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>{{TABLE_H1}}</th><th>{{TABLE_H2}}</th><th>{{TABLE_H3}}</th></tr></thead>
+          <tbody>
+            <tr><td>{{TABLE_R1_C1}}</td><td>{{TABLE_R1_C2}}</td><td>{{TABLE_R1_C3}}</td></tr>
+            <tr><td>{{TABLE_R2_C1}}</td><td>{{TABLE_R2_C2}}</td><td>{{TABLE_R2_C3}}</td></tr>
+            <tr><td>{{TABLE_R3_C1}}</td><td>{{TABLE_R3_C2}}</td><td>{{TABLE_R3_C3}}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">{{TABLE_NOTE}}</p>
+
+      <h2>{{CODE_TITLE}}</h2>
+      <p>{{CODE_TEXT}}</p>
+      <pre><code>{{CODE}}</code></pre>
+    </article>
+
+    <aside class="next">
+      <div><h2>{{NEXT_TITLE}}</h2><p>{{NEXT_TEXT}}</p></div>
+      <a class="btn" href="{{NEXT_URL}}">{{NEXT_LABEL}}</a>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div><a class="site-brand" href="{{HOME_URL}}"><span class="site-mark"></span>{{SITE_NAME}}</a><p class="foot-note">{{FOOT_NOTE}}</p></div>
+    <nav class="foot-nav"><a href="{{NAV_1_URL}}">{{NAV_1_LABEL}}</a><a href="{{NAV_2_URL}}">{{NAV_2_LABEL}}</a><a href="{{NAV_3_URL}}">{{NAV_3_LABEL}}</a></nav>
+    <p class="foot-fine">{{FOOT_FINE}}</p>
+  </div>
+</footer>
+
+</body>
+</html>

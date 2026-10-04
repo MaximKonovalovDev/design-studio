@@ -1,0 +1,23 @@
+{
+  "product": "{{PRODUCT}}",
+  "from_repo": "{{FROM_REPO}}",
+  "storeName": "{{STORE}}",
+  "title": "{{TITLE}}",
+  "kicker": "{{KICKER}}",
+  "claim": "{{CLAIM}}",
+  "chips": ["{{CHIP_1}}", "{{CHIP_2}}", "{{CHIP_3}}", { "t": "{{CHIP_4}}", "wide": true }],
+  "badge": "{{BADGE}}",
+  "fine": "{{FINE}}",
+  "titlePx": 104,
+  "titlePxCard": 58,
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": { "shot-zoom": "1", "shot-x": "0%", "shot-y": "0%" },
+  "listing": "{{LISTING}}",
+  "toBeat": "{{TO_BEAT}}",
+  "landing": "{{LANDING}}",
+  "assetsFrom": "{{ASSETS_FROM}}",
+  "assets": [
+    { "name": "shot.png", "src": "{{TEMPLATE_DIR}}/placeholder/shot.png", "what": "PLACEHOLDER screenshot shipped with the template: replace it with the product's own capture (--asset shot=<path>)" }
+  ]
+}

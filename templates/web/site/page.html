@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- templates/web/site/page.html: hub index of a free-tool and guide site. Hero, one featured box, two rows of three cards. Header, nav and footer are the same markup and slots as guide.html, tool.html and privacy.html; all layout lives in site.css. Slots and defaults: template.json. A card with an empty title collapses. -->
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}} | {{SITE_NAME}}</title>
+<meta name="description" content="{{LEAD}}">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* First paint before site.css arrives: page colours and type straight from the tokens. */
+  html { background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  html[dir="rtl"] { font-family: var(--font-hebrew), var(--font-body); }
+</style>
+</head>
+<body data-page="hub" data-oid="cover.hero">
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="site-brand" href="{{HOME_URL}}"><span class="site-mark"></span>{{SITE_NAME}}</a>
+    <nav class="site-nav"><a data-nav="1" href="{{NAV_1_URL}}">{{NAV_1_LABEL}}</a><a data-nav="2" href="{{NAV_2_URL}}">{{NAV_2_LABEL}}</a><a data-nav="3" href="{{NAV_3_URL}}">{{NAV_3_LABEL}}</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hub-hero">
+    <div>
+      <p class="kicker" data-oid="cover.subtitle">{{KICKER}}</p>
+      <h1 data-oid="cover.title">{{TITLE}}</h1>
+      <p class="lead">{{LEAD}}</p>
+      <ul class="chips"><li class="chip">{{CHIP_1}}</li><li class="chip">{{CHIP_2}}</li><li class="chip">{{CHIP_3}}</li></ul>
+    </div>
+    <aside class="featured">
+      <p class="kicker">{{FEATURED_KICKER}}</p>
+      <h2>{{FEATURED_TITLE}}</h2>
+      <p>{{FEATURED_TEXT}}</p>
+      <a class="btn cta" data-oid="cover.cta" href="{{FEATURED_URL}}">{{FEATURED_LABEL}}</a>
+    </aside>
+  </div>
+
+  <div class="wrap">
+    <div class="section-head"><h2>{{SECTION_1_TITLE}}</h2></div>
+    <div class="cards">
+      <a class="card" href="{{CARD_1_URL}}"><span class="chip">{{CARD_1_TAG}}</span><h3>{{CARD_1_TITLE}}</h3><p>{{CARD_1_TEXT}}</p><span class="go">{{CARD_1_GO}}</span></a>
+      <a class="card" href="{{CARD_2_URL}}"><span class="chip">{{CARD_2_TAG}}</span><h3>{{CARD_2_TITLE}}</h3><p>{{CARD_2_TEXT}}</p><span class="go">{{CARD_2_GO}}</span></a>
+      <a class="card" href="{{CARD_3_URL}}"><span class="chip">{{CARD_3_TAG}}</span><h3>{{CARD_3_TITLE}}</h3><p>{{CARD_3_TEXT}}</p><span class="go">{{CARD_3_GO}}</span></a>
+    </div>
+    <div class="section-head"><h2>{{SECTION_2_TITLE}}</h2></div>
+    <div class="cards">
+      <a class="card" href="{{CARD_4_URL}}"><span class="chip">{{CARD_4_TAG}}</span><h3>{{CARD_4_TITLE}}</h3><p>{{CARD_4_TEXT}}</p><span class="go">{{CARD_4_GO}}</span></a>
+      <a class="card" href="{{CARD_5_URL}}"><span class="chip">{{CARD_5_TAG}}</span><h3>{{CARD_5_TITLE}}</h3><p>{{CARD_5_TEXT}}</p><span class="go">{{CARD_5_GO}}</span></a>
+      <a class="card" href="{{CARD_6_URL}}"><span class="chip">{{CARD_6_TAG}}</span><h3>{{CARD_6_TITLE}}</h3><p>{{CARD_6_TEXT}}</p><span class="go">{{CARD_6_GO}}</span></a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div><a class="site-brand" href="{{HOME_URL}}"><span class="site-mark"></span>{{SITE_NAME}}</a><p class="foot-note">{{FOOT_NOTE}}</p></div>
+    <nav class="foot-nav"><a href="{{NAV_1_URL}}">{{NAV_1_LABEL}}</a><a href="{{NAV_2_URL}}">{{NAV_2_LABEL}}</a><a href="{{NAV_3_URL}}">{{NAV_3_LABEL}}</a></nav>
+    <p class="foot-fine">{{FOOT_FINE}}</p>
+  </div>
+</footer>
+
+</body>
+</html>

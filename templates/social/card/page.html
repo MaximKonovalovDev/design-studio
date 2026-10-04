@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- templates/social/card/page.html: social card, one page, three sizes. Link card 1200x630 above 5:4, square 1080x1080 down to 3:4, story 1080x1920 below that. Slots and defaults: template.json. Colour only via tokens.css. Empty FACT, NOTE, KICKER, CLAIM collapse; an empty PICTURE shows the drawn placeholder. -->
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  html[dir="rtl"] body, html[dir="rtl"] h1, html[dir="rtl"] .cta { font-family: var(--font-hebrew), var(--font-body); }
+
+  /* Link card: copy column + picture column, badge pinned to the bottom. */
+  .stage { position: relative; width: 100%; height: 100%; overflow: hidden; display: grid; padding: 62px 60px 50px; column-gap: 60px; grid-template-columns: minmax(0, 1fr) 392px; grid-template-rows: auto auto auto auto minmax(0, 1fr) auto; grid-template-areas: "kicker pic" "title pic" "claim pic" "chips pic" ". pic" "foot pic"; background: linear-gradient(160deg, var(--bg) 0%, var(--bg) 58%, var(--bg-2) 100%); }
+  .bar { position: absolute; inset-block-start: 0; inset-inline: 0; height: 10px; background: var(--accent); }
+  .kicker { grid-area: kicker; font-family: var(--font-mono); font-size: 22px; font-weight: 700; line-height: 1.2; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-ink); margin-block-end: 14px; }
+  h1 { grid-area: title; font-family: var(--font-display); font-weight: 700; font-size: 80px; line-height: 1; letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; margin-block-end: 20px; }
+  .claim { grid-area: claim; font-size: 28px; line-height: 1.28; font-weight: 600; color: var(--muted); text-wrap: balance; margin-block-end: 24px; }
+  .chips { grid-area: chips; list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-block-end: 20px; }
+  .chips li { font-size: 20px; font-weight: 700; line-height: 1.1; padding: 9px 14px; border-radius: 8px; background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); }
+  .foot { grid-area: foot; display: flex; align-items: center; gap: 20px; }
+  .cta { flex: none; font-family: var(--font-display); font-size: 30px; font-weight: 700; line-height: 1; padding: 15px 28px 13px; border-radius: 10px; background: var(--accent); color: var(--on-accent); }
+  .note { font-size: 20px; line-height: 1.25; font-weight: 600; color: var(--muted); }
+  .kicker:empty, .claim:empty, .chips li:empty, .cta:empty, .note:empty { display: none; }
+
+  /* Picture slot: a framed panel on an accent slab. The drawn shapes are the empty state; a picture covers them. */
+  .pic { grid-area: pic; position: relative; min-height: 0; margin-block: 2px 14px; margin-inline-end: 14px; }
+  .pic::before { content: ""; position: absolute; inset-block: 14px -14px; inset-inline: 14px -14px; border-radius: 26px; background: var(--accent); }
+  .frame { position: absolute; inset: 0; overflow: hidden; border-radius: 24px; background: var(--bg-2); border: 2px solid var(--chip-line); }
+  .frame i { position: absolute; display: block; }
+  .dots { inset: 0; background: radial-gradient(circle, var(--chip-line) 1.6px, rgba(0, 0, 0, 0) 2.4px) 0 0 / 26px 26px; }
+  .disc { width: 270px; height: 270px; border-radius: 50%; background: var(--accent); inset-block-start: -62px; inset-inline-end: -70px; }
+  .ring { width: 230px; height: 230px; border-radius: 50%; border: 20px solid var(--ink); inset-block-end: -74px; inset-inline-start: -66px; }
+  .sheet { width: 252px; inset-inline: 0; inset-block-start: calc(50% - 92px); margin-inline: auto; padding: 24px 24px 22px; border-radius: 16px; background: var(--chip-bg); border: 2px solid var(--chip-line); box-shadow: 0 22px 44px rgba(0, 0, 0, 0.2), 0 3px 8px rgba(0, 0, 0, 0.12); transform: rotate(-5deg); }
+  .sheet b { display: block; height: 12px; border-radius: 6px; background: var(--chip-line); margin-block-end: 12px; }
+  .sheet b:nth-child(1) { width: 62%; height: 22px; border-radius: 7px; background: var(--chip-ink); margin-block-end: 20px; }
+  .sheet b:nth-child(3) { width: 78%; }
+  .sheet b:nth-child(4) { width: 96px; height: 30px; border-radius: 8px; background: var(--accent); margin-block: 22px 0; }
+  .img { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; }
+
+  /* Square 1080x1080: one column, picture band between claim and chips. */
+  @media (max-aspect-ratio: 5/4) {
+    .stage { padding: 86px 72px 72px; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto minmax(0, 1fr) auto auto; grid-template-areas: "kicker" "title" "claim" "pic" "chips" "foot"; }
+    .kicker { font-size: 26px; margin-block-end: 18px; }
+    h1 { font-size: 96px; margin-block-end: 24px; }
+    .claim { font-size: 36px; margin-block-end: 38px; }
+    .pic { margin-block: 0 50px; margin-inline-end: 16px; }
+    .pic::before { inset-block: 16px -16px; inset-inline: 16px -16px; }
+    .disc { width: 330px; height: 330px; inset-block-start: -120px; inset-inline-end: 60px; }
+    .ring { width: 250px; height: 250px; border-width: 22px; inset-block-end: -120px; inset-inline-start: 70px; }
+    .sheet { width: 300px; inset-block-start: calc(50% - 100px); }
+    .chips { gap: 12px; margin-block-end: 38px; }
+    .chips li { font-size: 28px; padding: 12px 18px; border-radius: 10px; }
+    .cta { font-size: 38px; padding: 20px 36px 18px; border-radius: 12px; }
+    .note { font-size: 27px; }
+  }
+
+  /* Story 1080x1920: same order, bigger type, safe space above and below, full-width badge. */
+  @media (max-aspect-ratio: 3/4) {
+    .stage { padding: 210px 72px 200px; }
+    .bar { height: 14px; }
+    .kicker { font-size: 34px; margin-block-end: 26px; }
+    h1 { font-size: 128px; margin-block-end: 36px; }
+    .claim { font-size: 48px; margin-block-end: 60px; }
+    .pic { margin-block: 0 76px; margin-inline-end: 20px; }
+    .pic::before { inset-block: 20px -20px; inset-inline: 20px -20px; border-radius: 40px; }
+    .frame { border-radius: 38px; border-width: 3px; }
+    .dots { background-size: 36px 36px; }
+    .disc { width: 520px; height: 520px; inset-block-start: -130px; inset-inline-end: -120px; }
+    .ring { width: 420px; height: 420px; border-width: 34px; inset-block-end: -130px; inset-inline-start: -110px; }
+    .sheet { width: 440px; inset-block-start: calc(50% - 150px); padding: 40px 40px 36px; border-radius: 26px; border-width: 3px; }
+    .sheet b { height: 20px; border-radius: 10px; margin-block-end: 20px; }
+    .sheet b:nth-child(1) { height: 36px; border-radius: 12px; margin-block-end: 32px; }
+    .sheet b:nth-child(4) { width: 168px; height: 52px; border-radius: 14px; margin-block: 36px 0; }
+    .chips { gap: 16px; margin-block-end: 56px; }
+    .chips li { font-size: 36px; padding: 16px 24px; border-radius: 12px; border-width: 3px; }
+    .foot { flex-direction: column; align-items: stretch; gap: 24px; }
+    .cta { font-size: 52px; padding: 32px 40px 28px; border-radius: 18px; text-align: center; }
+    .note { font-size: 32px; text-align: center; }
+  }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="bar"></div>
+  <div class="kicker" data-oid="cover.subtitle">{{KICKER}}</div>
+  <h1 data-oid="cover.title">{{TITLE}}</h1>
+  <p class="claim">{{CLAIM}}</p>
+  <ul class="chips"><li>{{FACT_1}}</li><li>{{FACT_2}}</li><li>{{FACT_3}}</li></ul>
+  <div class="pic">
+    <div class="frame">
+      <i class="dots"></i><i class="disc"></i><i class="ring"></i><i class="sheet"><b></b><b></b><b></b><b></b></i>
+      <div class="img" style="background-image: url('{{PICTURE}}')"></div>
+    </div>
+  </div>
+  <div class="foot"><span class="cta" data-oid="cover.cta">{{BADGE}}</span><span class="note">{{NOTE}}</span></div>
+</div>
+</body>
+</html>

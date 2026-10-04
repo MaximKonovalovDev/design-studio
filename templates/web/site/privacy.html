@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- templates/web/site/privacy.html: privacy page. Page head, 3 short points, 4 sections, contact box. Header, nav and footer are the same markup and slots as page.html; all layout lives in site.css. Slots and defaults: template.json. An empty point or section collapses. -->
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{PRIVACY_TITLE}} | {{SITE_NAME}}</title>
+<meta name="description" content="{{PRIVACY_INTRO}}">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* First paint before site.css arrives: page colours and type straight from the tokens. */
+  html { background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  html[dir="rtl"] { font-family: var(--font-hebrew), var(--font-body); }
+</style>
+</head>
+<body data-page="privacy">
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="site-brand" href="{{HOME_URL}}"><span class="site-mark"></span>{{SITE_NAME}}</a>
+    <nav class="site-nav"><a data-nav="1" href="{{NAV_1_URL}}">{{NAV_1_LABEL}}</a><a data-nav="2" href="{{NAV_2_URL}}">{{NAV_2_LABEL}}</a><a data-nav="3" href="{{NAV_3_URL}}">{{NAV_3_LABEL}}</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap narrow">
+    <header class="page-head">
+      <p class="kicker">{{PRIVACY_KICKER}}</p>
+      <h1>{{PRIVACY_TITLE}}</h1>
+      <p class="lead">{{PRIVACY_INTRO}}</p>
+      <p class="meta">{{PRIVACY_UPDATED}}</p>
+    </header>
+
+    <ul class="points"><li>{{POINT_1}}</li><li>{{POINT_2}}</li><li>{{POINT_3}}</li></ul>
+
+    <article class="prose">
+      <h2>{{PRIVACY_1_TITLE}}</h2>
+      <p>{{PRIVACY_1_TEXT}}</p>
+      <h2>{{PRIVACY_2_TITLE}}</h2>
+      <p>{{PRIVACY_2_TEXT}}</p>
+      <h2>{{PRIVACY_3_TITLE}}</h2>
+      <p>{{PRIVACY_3_TEXT}}</p>
+      <h2>{{PRIVACY_4_TITLE}}</h2>
+      <p>{{PRIVACY_4_TEXT}}</p>
+      <div class="callout"><h3>{{PRIVACY_CONTACT_TITLE}}</h3><p>{{PRIVACY_CONTACT_TEXT}}</p></div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div><a class="site-brand" href="{{HOME_URL}}"><span class="site-mark"></span>{{SITE_NAME}}</a><p class="foot-note">{{FOOT_NOTE}}</p></div>
+    <nav class="foot-nav"><a href="{{NAV_1_URL}}">{{NAV_1_LABEL}}</a><a href="{{NAV_2_URL}}">{{NAV_2_LABEL}}</a><a href="{{NAV_3_URL}}">{{NAV_3_LABEL}}</a></nav>
+    <p class="foot-fine">{{FOOT_FINE}}</p>
+  </div>
+</footer>
+
+</body>
+</html>

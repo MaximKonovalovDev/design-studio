@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!-- templates/print/deck/page.html: a 16:9 pitch deck, 8 slides of 1280x720 in one file (title, problem, solution, how it works, proof in numbers, offer, about, ask and contact). Slots are double-brace UPPER_SNAKE names (defaults in template.json). Colour and type only from tokens.css. Logical CSS only, so DIR=rtl mirrors every slide. Print: Edge headless to PDF gives 8 landscape pages with real text; a 1280x720 screenshot shows slide 1. -->
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { background: var(--bg); font-family: var(--font-body); }
+  body {
+    --rule: color-mix(in srgb, var(--ink) 16%, var(--bg));
+    --rule-2: color-mix(in srgb, var(--ink) 22%, var(--bg-2));
+    --rule-a: color-mix(in srgb, var(--on-accent) 45%, var(--accent));
+    --pad: 88px;
+    width: 1280px; background: var(--bg); color: var(--ink);
+    counter-reset: slide;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  html[dir="rtl"] body { font-family: var(--font-hebrew), var(--font-body); }
+  bdi { unicode-bidi: isolate; }
+
+  /* one slide = one page */
+  .slide { position: relative; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; width: 1280px; height: 720px; overflow: hidden; padding-inline: var(--pad); padding-block-start: 58px; background: var(--bg); color: var(--ink); counter-increment: slide; break-after: page; break-inside: avoid; }
+  .slide:last-child { break-after: auto; }
+  .on-2 { background: var(--bg-2); }
+  .on-accent { background: var(--accent); color: var(--on-accent); }
+
+  .label { display: flex; align-items: center; gap: 14px; font-family: var(--font-mono); font-size: 19px; line-height: 1.2; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .label::before { content: ""; flex: none; width: 14px; height: 14px; background: var(--accent); }
+  .on-accent .label::before { background: var(--on-accent); }
+
+  .foot { display: flex; justify-content: space-between; align-items: center; height: 78px; font-family: var(--font-mono); font-size: 15px; line-height: 1.2; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .on-accent .foot { color: var(--on-accent); }
+  .pg { direction: ltr; unicode-bidi: isolate; }
+  .pg::after { content: counter(slide, decimal-leading-zero) " / 08"; }
+
+  h1, h2 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.015em; text-wrap: balance; }
+  .big { font-size: 78px; line-height: 1.03; max-width: 13.6em; }
+  .mid { font-size: 56px; line-height: 1.06; max-width: 17em; }
+  .sub { margin-block-start: 26px; max-width: 30em; font-size: 30px; line-height: 1.36; color: var(--muted); text-wrap: pretty; }
+  .on-accent .sub { color: var(--on-accent); }
+  .body { align-self: center; padding-block-end: 12px; }
+
+  /* 1 title */
+  .s-title { grid-template-rows: auto minmax(0, 1fr) auto; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+  .when { font-family: var(--font-mono); font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  h1 { font-size: 136px; line-height: 0.94; color: var(--ink); }
+  .claim { margin-block-start: 22px; max-width: 21em; font-size: 38px; line-height: 1.22; font-weight: 600; color: var(--ink); text-wrap: balance; }
+  .band { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 44px; margin-inline: calc(-1 * var(--pad)); padding-inline: var(--pad); padding-block: 28px 32px; background: var(--accent); color: var(--on-accent); }
+  .band div + div { padding-inline-start: 28px; border-inline-start: 1px solid var(--rule-a); }
+  .band dt { font-family: var(--font-mono); font-size: 14px; line-height: 1.2; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .band dd { margin-block-start: 8px; font-size: 24px; line-height: 1.25; font-weight: 700; }
+
+  /* 2 problem */
+  .statement { padding-inline-start: 40px; border-inline-start: 12px solid var(--accent); }
+
+  /* 3 solution: words and a picture */
+  .split { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); column-gap: 76px; align-items: center; }
+  .split .mid { font-size: 58px; }
+  .shot-wrap { position: relative; z-index: 0; margin-inline-end: 16px; }
+  .shot-wrap::before { content: ""; position: absolute; z-index: -1; inset-block: 16px -16px; inset-inline: 16px -16px; background: var(--accent); }
+  .shot { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg); border: 3px solid var(--ink); }
+  .shot img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+  .shot img[src=""] { display: none; }
+  /* the empty picture: a small app window drawn from the tokens */
+  .ph { position: absolute; inset: 0; display: grid; grid-template-rows: 38px minmax(0, 1fr); --soft: color-mix(in srgb, var(--ink) 13%, var(--bg)); }
+  .ph-bar { display: flex; align-items: center; gap: 8px; padding-inline: 16px; border-block-end: 3px solid var(--ink); }
+  .ph-bar i { width: 11px; height: 11px; background: var(--soft); }
+  .ph-bar i:first-child { background: var(--accent); }
+  .ph-main { display: grid; grid-template-columns: 27% minmax(0, 1fr); }
+  .ph-side { display: grid; align-content: start; row-gap: 14px; padding: 22px 18px; border-inline-end: 1px solid var(--soft); }
+  .ph-side i { height: 9px; background: var(--soft); }
+  .ph-side i:nth-child(1) { width: 62%; background: var(--ink); }
+  .ph-side i:nth-child(3) { width: 78%; }
+  .ph-side i:nth-child(4) { width: 55%; }
+  .ph-side i:nth-child(5) { width: 70%; }
+  .ph-view { display: grid; grid-template-rows: auto auto minmax(0, 1fr); row-gap: 18px; padding: 22px 24px 0; }
+  .ph-head { width: 58%; height: 15px; background: var(--ink); }
+  .ph-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 12px; }
+  .ph-tiles i { height: 50px; background: var(--bg-2); border-block-start: 4px solid var(--soft); }
+  .ph-tiles i:first-child { border-block-start-color: var(--accent); }
+  .ph-chart { display: flex; align-items: flex-end; gap: 10px; padding-block-start: 6px; border-block-start: 1px solid var(--soft); }
+  .ph-chart i { flex: 1; background: var(--soft); }
+  .ph-chart i:nth-child(1) { height: 34%; } .ph-chart i:nth-child(2) { height: 52%; } .ph-chart i:nth-child(3) { height: 44%; } .ph-chart i:nth-child(4) { height: 68%; }
+  .ph-chart i:nth-child(5) { height: 58%; } .ph-chart i:nth-child(6) { height: 88%; background: var(--accent); } .ph-chart i:nth-child(7) { height: 74%; }
+
+  /* 4 how it works */
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 44px; margin-block-start: 50px; list-style: none; counter-reset: step; }
+  .step { position: relative; padding-block-start: 86px; counter-increment: step; }
+  .step::before { content: counter(step); position: absolute; inset-block-start: 0; inset-inline-start: 0; display: grid; place-items: center; width: 60px; height: 60px; background: var(--accent); color: var(--on-accent); font-family: var(--font-display); font-size: 32px; font-weight: 700; line-height: 1; }
+  .step::after { content: ""; position: absolute; inset-block-start: 28px; inset-inline: 78px -26px; height: 4px; background: var(--rule); }
+  .step:last-child::after { inset-inline-end: 0; }
+  .step h3 { font-size: 32px; line-height: 1.2; font-weight: 700; }
+  .step p { margin-block-start: 12px; font-size: 23px; line-height: 1.42; color: var(--muted); }
+
+  /* 5 proof in numbers */
+  .nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-block-start: 38px; border-block-start: 5px solid var(--ink); border-block-end: 1px solid var(--rule); }
+  .numc { padding-block: 28px 24px; padding-inline: 34px; border-inline-start: 1px solid var(--rule); }
+  .numc:first-child { padding-inline-start: 0; border-inline-start: 0; }
+  .n { font-family: var(--font-display); font-size: 116px; line-height: 0.96; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--accent-ink); white-space: nowrap; }
+  .l { margin-block-start: 14px; max-width: 13em; font-size: 24px; line-height: 1.32; color: var(--muted); }
+  .source { margin-block-start: 22px; font-family: var(--font-mono); font-size: 16px; line-height: 1.4; letter-spacing: 0.02em; color: var(--muted); }
+
+  /* 6 offer */
+  .panel { padding-block: 34px 36px; padding-inline: 40px; background: var(--bg-2); border-block-start: 10px solid var(--accent); }
+  .panel-k { font-family: var(--font-mono); font-size: 16px; line-height: 1.2; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .ticks { margin-block-start: 22px; list-style: none; }
+  .ticks li { position: relative; padding-block: 13px; padding-inline-start: 46px; font-size: 26px; line-height: 1.25; font-weight: 600; color: var(--ink); border-block-start: 1px solid var(--rule-2); }
+  .ticks li::before { content: ""; position: absolute; inset-block-start: 15px; inset-inline-start: 0; width: 28px; height: 28px; background: var(--accent); }
+  .ticks li::after { content: ""; position: absolute; inset-block-start: 20px; inset-inline-start: 10px; width: 8px; height: 14px; border: solid var(--on-accent); border-width: 0 3.5px 3.5px 0; transform: rotate(45deg); }
+  .terms { display: inline-block; margin-block-start: 24px; padding-block: 10px; padding-inline: 18px; font-size: 20px; line-height: 1.2; font-weight: 700; background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); border-radius: 6px; }
+  .terms:has(bdi:empty) { display: none; }
+
+  /* 7 about */
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 44px; margin-block-start: 40px; padding-block-start: 30px; border-block-start: 1px solid var(--rule-2); }
+  .fv { font-family: var(--font-display); font-size: 68px; line-height: 1; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); white-space: nowrap; }
+  .fl { margin-block-start: 10px; max-width: 14em; font-size: 22px; line-height: 1.32; color: var(--muted); }
+
+  /* 8 ask and contact */
+  .cta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 40px; margin-block-start: 44px; padding-block-start: 30px; border-block-start: 2px solid var(--on-accent); }
+  .c1 { font-family: var(--font-display); font-size: 46px; line-height: 1.1; font-weight: 700; }
+  .c2 { font-size: 28px; line-height: 1.2; font-weight: 600; }
+  .c2:has(bdi:empty) { display: none; }
+
+  /* Hebrew and other rtl scripts: body face for headings and labels, no caps tracking; numerals keep the display face */
+  html[dir="rtl"] :is(h1, h2, .label, .when, .foot, .band dt, .panel-k, .source) { font-family: inherit; letter-spacing: 0; }
+  html[dir="rtl"] :is(h1, h2) { line-height: 1.12; }
+
+  @media print { html, body { background: var(--bg); } }
+</style>
+</head>
+<body data-oid="deck.page">
+
+<section class="slide s-title">
+  <div class="top">
+    <p class="label"><bdi>{{KICKER}}</bdi></p>
+    <p class="when"><bdi>{{S1_META}}</bdi></p>
+  </div>
+  <div class="body">
+    <h1 data-oid="deck.title"><bdi>{{TITLE}}</bdi></h1>
+    <p class="claim" data-oid="deck.claim"><bdi>{{S1_CLAIM}}</bdi></p>
+  </div>
+  <dl class="band">
+    <div><dt><bdi>{{S1_FACT_1_LABEL}}</bdi></dt><dd><bdi>{{S1_FACT_1_VALUE}}</bdi></dd></div>
+    <div><dt><bdi>{{S1_FACT_2_LABEL}}</bdi></dt><dd><bdi>{{S1_FACT_2_VALUE}}</bdi></dd></div>
+    <div><dt><bdi>{{S1_FACT_3_LABEL}}</bdi></dt><dd><bdi>{{S1_FACT_3_VALUE}}</bdi></dd></div>
+  </dl>
+</section>
+
+<section class="slide">
+  <p class="label"><bdi>{{S2_LABEL}}</bdi></p>
+  <div class="body statement">
+    <h2 class="big"><bdi>{{S2_HEAD}}</bdi></h2>
+    <p class="sub"><bdi>{{S2_TEXT}}</bdi></p>
+  </div>
+  <div class="foot"><span><bdi>{{TITLE}}</bdi></span><span class="pg"></span></div>
+</section>
+
+<section class="slide on-2">
+  <p class="label"><bdi>{{S3_LABEL}}</bdi></p>
+  <div class="body split">
+    <div>
+      <h2 class="mid"><bdi>{{S3_HEAD}}</bdi></h2>
+      <p class="sub"><bdi>{{S3_TEXT}}</bdi></p>
+    </div>
+    <div class="shot-wrap">
+      <div class="shot">
+        <div class="ph" aria-hidden="true">
+          <div class="ph-bar"><i></i><i></i><i></i></div>
+          <div class="ph-main">
+            <div class="ph-side"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="ph-view">
+              <i class="ph-head"></i>
+              <div class="ph-tiles"><i></i><i></i><i></i></div>
+              <div class="ph-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+        </div>
+        <img src="{{S3_IMAGE}}" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span><bdi>{{TITLE}}</bdi></span><span class="pg"></span></div>
+</section>
+
+<section class="slide">
+  <p class="label"><bdi>{{S4_LABEL}}</bdi></p>
+  <div class="body">
+    <h2 class="mid"><bdi>{{S4_HEAD}}</bdi></h2>
+    <ol class="steps">
+      <li class="step"><h3><bdi>{{S4_STEP_1_TITLE}}</bdi></h3><p><bdi>{{S4_STEP_1_TEXT}}</bdi></p></li>
+      <li class="step"><h3><bdi>{{S4_STEP_2_TITLE}}</bdi></h3><p><bdi>{{S4_STEP_2_TEXT}}</bdi></p></li>
+      <li class="step"><h3><bdi>{{S4_STEP_3_TITLE}}</bdi></h3><p><bdi>{{S4_STEP_3_TEXT}}</bdi></p></li>
+    </ol>
+  </div>
+  <div class="foot"><span><bdi>{{TITLE}}</bdi></span><span class="pg"></span></div>
+</section>
+
+<section class="slide">
+  <p class="label"><bdi>{{S5_LABEL}}</bdi></p>
+  <div class="body">
+    <h2 class="mid"><bdi>{{S5_HEAD}}</bdi></h2>
+    <div class="nums">
+      <div class="numc"><p class="n"><bdi>{{S5_NUM_1_VALUE}}</bdi></p><p class="l"><bdi>{{S5_NUM_1_LABEL}}</bdi></p></div>
+      <div class="numc"><p class="n"><bdi>{{S5_NUM_2_VALUE}}</bdi></p><p class="l"><bdi>{{S5_NUM_2_LABEL}}</bdi></p></div>
+      <div class="numc"><p class="n"><bdi>{{S5_NUM_3_VALUE}}</bdi></p><p class="l"><bdi>{{S5_NUM_3_LABEL}}</bdi></p></div>
+    </div>
+    <p class="source"><bdi>{{S5_SOURCE}}</bdi></p>
+  </div>
+  <div class="foot"><span><bdi>{{TITLE}}</bdi></span><span class="pg"></span></div>
+</section>
+
+<section class="slide">
+  <p class="label"><bdi>{{S6_LABEL}}</bdi></p>
+  <div class="body split">
+    <div>
+      <h2 class="mid"><bdi>{{S6_HEAD}}</bdi></h2>
+      <p class="sub"><bdi>{{S6_TEXT}}</bdi></p>
+    </div>
+    <div class="panel">
+      <p class="panel-k"><bdi>{{S6_LIST_LABEL}}</bdi></p>
+      <ul class="ticks">
+        <li><bdi>{{S6_ITEM_1}}</bdi></li>
+        <li><bdi>{{S6_ITEM_2}}</bdi></li>
+        <li><bdi>{{S6_ITEM_3}}</bdi></li>
+      </ul>
+      <p class="terms"><bdi>{{S6_TERMS}}</bdi></p>
+    </div>
+  </div>
+  <div class="foot"><span><bdi>{{TITLE}}</bdi></span><span class="pg"></span></div>
+</section>
+
+<section class="slide on-2">
+  <p class="label"><bdi>{{S7_LABEL}}</bdi></p>
+  <div class="body">
+    <h2 class="mid"><bdi>{{S7_HEAD}}</bdi></h2>
+    <p class="sub"><bdi>{{S7_TEXT}}</bdi></p>
+    <div class="facts">
+      <div><p class="fv"><bdi>{{S7_FACT_1_VALUE}}</bdi></p><p class="fl"><bdi>{{S7_FACT_1_LABEL}}</bdi></p></div>
+      <div><p class="fv"><bdi>{{S7_FACT_2_VALUE}}</bdi></p><p class="fl"><bdi>{{S7_FACT_2_LABEL}}</bdi></p></div>
+      <div><p class="fv"><bdi>{{S7_FACT_3_VALUE}}</bdi></p><p class="fl"><bdi>{{S7_FACT_3_LABEL}}</bdi></p></div>
+    </div>
+  </div>
+  <div class="foot"><span><bdi>{{TITLE}}</bdi></span><span class="pg"></span></div>
+</section>
+
+<section class="slide on-accent">
+  <p class="label"><bdi>{{S8_LABEL}}</bdi></p>
+  <div class="body">
+    <h2 class="big"><bdi>{{S8_HEAD}}</bdi></h2>
+    <p class="sub"><bdi>{{S8_TEXT}}</bdi></p>
+    <div class="cta" data-oid="deck.cta">
+      <p class="c1"><bdi>{{CONTACT_1}}</bdi></p>
+      <p class="c2"><bdi>{{CONTACT_2}}</bdi></p>
+    </div>
+  </div>
+  <div class="foot"><span><bdi>{{TITLE}}</bdi></span><span class="pg"></span></div>
+</section>
+
+</body>
+</html>

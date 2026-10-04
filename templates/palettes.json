@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "note": "The 8 studio palettes. tools/template.mjs writes tokens (as --bg, --ink, ...) and fonts (as --font-display, --font-body, --font-mono) into tokens.css; cover holds the title weight, tracking, chip radius and average glyph advance (em) that tools/template.mjs copies into cover.json. Every palette passes WCAG 4.5 on ink/bg, ink/bg-2, muted/bg, muted/bg-2, accent-ink/bg, on-accent/accent, chip-ink/chip-bg (node tools/template.mjs --check). Font stacks are system fonts with single quotes only.",
+  "palettes": {
+    "clean-professional": {
+      "name": "Clean professional",
+      "mood": "cool paper white, navy ink, one calm green: tools and apps people trust with their work",
+      "dark": false,
+      "tokens": { "bg": "#f6f7fb", "bg-2": "#e4e8f4", "ink": "#12131f", "muted": "#444a63", "accent": "#087a4a", "accent-ink": "#066a3f", "on-accent": "#ffffff", "chip-bg": "#ffffff", "chip-ink": "#12131f", "chip-line": "#c9cfe3" },
+      "fonts": { "display": "Bahnschrift, 'Segoe UI', Arial, sans-serif", "body": "'Segoe UI', Verdana, Arial, sans-serif", "mono": "Consolas, 'Courier New', monospace" },
+      "cover": { "titleWeight": 700, "titleTrack": "-0.02em", "chipR": "8px", "advance": 0.5 }
+    },
+    "editorial": {
+      "name": "Editorial",
+      "mood": "cream page, midnight ink, violet marker, serif headline: books, guides and long reads",
+      "dark": false,
+      "tokens": { "bg": "#f4ecdc", "bg-2": "#e8dcc2", "ink": "#1c1b33", "muted": "#47465f", "accent": "#5a3fd6", "accent-ink": "#4f35c8", "on-accent": "#ffffff", "chip-bg": "#fffaf0", "chip-ink": "#1c1b33", "chip-line": "#cdbd98" },
+      "fonts": { "display": "Georgia, 'Times New Roman', serif", "body": "'Segoe UI', Verdana, Arial, sans-serif", "mono": "Consolas, 'Courier New', monospace" },
+      "cover": { "titleWeight": 700, "titleTrack": "-0.02em", "chipR": "4px", "advance": 0.57 }
+    },
+    "modern": {
+      "name": "Modern",
+      "mood": "electric indigo field, white type, yellow button: loud creator kits and media packs",
+      "dark": true,
+      "tokens": { "bg": "#3b24d6", "bg-2": "#26119a", "ink": "#ffffff", "muted": "#e0dbff", "accent": "#ffe14d", "accent-ink": "#ffe14d", "on-accent": "#1a1245", "chip-bg": "#2a15a8", "chip-ink": "#ffffff", "chip-line": "#8b78ff" },
+      "fonts": { "display": "'Segoe UI Black', 'Segoe UI', Arial, sans-serif", "body": "'Segoe UI', Verdana, Arial, sans-serif", "mono": "Consolas, 'Courier New', monospace" },
+      "cover": { "titleWeight": 900, "titleTrack": "-0.03em", "chipR": "999px", "advance": 0.54 }
+    },
+    "neon": {
+      "name": "Neon",
+      "mood": "arcade night: violet black, hot pink button, mint signs: games, sound and synth packs",
+      "dark": true,
+      "tokens": { "bg": "#0d0a1f", "bg-2": "#1f1147", "ink": "#ffffff", "muted": "#cfd0f2", "accent": "#ff3ea5", "accent-ink": "#19f0c8", "on-accent": "#12061f", "chip-bg": "#17123a", "chip-ink": "#ffffff", "chip-line": "#19f0c8" },
+      "fonts": { "display": "Tahoma, 'Segoe UI', Arial, sans-serif", "body": "Tahoma, 'Segoe UI', Arial, sans-serif", "mono": "Consolas, 'Courier New', monospace" },
+      "cover": { "titleWeight": 700, "titleTrack": "-0.02em", "chipR": "8px", "advance": 0.55 }
+    },
+    "bold": {
+      "name": "Bold",
+      "mood": "warning-sign yellow, black slabs, square corners: a claim nobody scrolls past",
+      "dark": false,
+      "tokens": { "bg": "#ffd400", "bg-2": "#ffbf00", "ink": "#0b0b0f", "muted": "#2a2a30", "accent": "#0b0b0f", "accent-ink": "#0b0b0f", "on-accent": "#ffd400", "chip-bg": "#ffffff", "chip-ink": "#0b0b0f", "chip-line": "#0b0b0f" },
+      "fonts": { "display": "'Arial Black', 'Segoe UI Black', Arial, sans-serif", "body": "Arial, 'Segoe UI', sans-serif", "mono": "Consolas, 'Courier New', monospace" },
+      "cover": { "titleWeight": 900, "titleTrack": "-0.035em", "chipR": "3px", "advance": 0.6 }
+    },
+    "pixel": {
+      "name": "Pixel",
+      "mood": "cartridge orange, royal purple, chunky screen type: sprites, tiles and retro game kits",
+      "dark": false,
+      "tokens": { "bg": "#ff8a1f", "bg-2": "#ff6f0a", "ink": "#1a1030", "muted": "#33204f", "accent": "#3a1d8a", "accent-ink": "#2a1263", "on-accent": "#ffd27a", "chip-bg": "#fff3e0", "chip-ink": "#1a1030", "chip-line": "#1a1030" },
+      "fonts": { "display": "Verdana, Tahoma, 'Segoe UI', sans-serif", "body": "Verdana, Tahoma, 'Segoe UI', sans-serif", "mono": "'Lucida Console', Consolas, monospace" },
+      "cover": { "titleWeight": 700, "titleTrack": "-0.04em", "chipR": "0px", "advance": 0.62 }
+    },
+    "developer": {
+      "name": "Developer",
+      "mood": "terminal navy, monospace headline, signal blue: CLIs, skills and code tools",
+      "dark": true,
+      "tokens": { "bg": "#0f1320", "bg-2": "#1a2140", "ink": "#f4f6ff", "muted": "#c3cbe8", "accent": "#3f5bf0", "accent-ink": "#9fb0ff", "on-accent": "#ffffff", "chip-bg": "#171c38", "chip-ink": "#f4f6ff", "chip-line": "#4f6bff" },
+      "fonts": { "display": "Consolas, 'Lucida Console', 'Courier New', monospace", "body": "'Segoe UI', Verdana, Arial, sans-serif", "mono": "Consolas, 'Lucida Console', 'Courier New', monospace" },
+      "cover": { "titleWeight": 700, "titleTrack": "-0.04em", "chipR": "10px", "advance": 0.55 }
+    },
+    "kraft": {
+      "name": "Kraft print",
+      "mood": "kraft paper, espresso ink, red stamp, book serif: printables, planners and handmade goods",
+      "dark": false,
+      "tokens": { "bg": "#ead7b7", "bg-2": "#dcc194", "ink": "#2a1a10", "muted": "#573f2f", "accent": "#b3261e", "accent-ink": "#96190f", "on-accent": "#fff4e0", "chip-bg": "#f8ecd6", "chip-ink": "#2a1a10", "chip-line": "#96190f" },
+      "fonts": { "display": "'Palatino Linotype', 'Book Antiqua', Georgia, serif", "body": "'Trebuchet MS', 'Segoe UI', Arial, sans-serif", "mono": "'Courier New', Consolas, monospace" },
+      "cover": { "titleWeight": 700, "titleTrack": "-0.015em", "chipR": "2px", "advance": 0.51 }
+    }
+  }
+}

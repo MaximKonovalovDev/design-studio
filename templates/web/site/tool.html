@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- templates/web/site/tool.html: one tool page. Breadcrumbs, page head, input panel (3 fields and a button), result panel (one big value and 3 rows), how it works (3 steps), 3 questions. Header, nav and footer are the same markup and slots as page.html; all layout lives in site.css. Slots and defaults: template.json. The tool's own script goes into the empty script tag at the end; it reads #tool-form, #in-1 to #in-3 and writes #out-main, #out-1 to #out-3. A field, row, step or question with an empty first slot collapses. -->
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TOOL_TITLE}} | {{SITE_NAME}}</title>
+<meta name="description" content="{{TOOL_LEAD}}">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* First paint before site.css arrives: page colours and type straight from the tokens. */
+  html { background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  html[dir="rtl"] { font-family: var(--font-hebrew), var(--font-body); }
+</style>
+</head>
+<body data-page="tool">
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="site-brand" href="{{HOME_URL}}"><span class="site-mark"></span>{{SITE_NAME}}</a>
+    <nav class="site-nav"><a data-nav="1" href="{{NAV_1_URL}}">{{NAV_1_LABEL}}</a><a data-nav="2" href="{{NAV_2_URL}}">{{NAV_2_LABEL}}</a><a data-nav="3" href="{{NAV_3_URL}}">{{NAV_3_LABEL}}</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <nav class="crumbs"><a href="{{NAV_1_URL}}">{{NAV_1_LABEL}}</a><span>{{TOOL_TITLE}}</span></nav>
+    <header class="page-head">
+      <p class="kicker">{{TOOL_KICKER}}</p>
+      <h1>{{TOOL_TITLE}}</h1>
+      <p class="lead">{{TOOL_LEAD}}</p>
+    </header>
+
+    <div class="tool">
+      <form class="panel" id="tool-form" autocomplete="off">
+        <h2>{{INPUT_TITLE}}</h2>
+        <div class="field"><label for="in-1">{{FIELD_1_LABEL}}</label><input id="in-1" name="in-1" type="text" inputmode="decimal" value="{{FIELD_1_VALUE}}"><small>{{FIELD_1_HINT}}</small></div>
+        <div class="field"><label for="in-2">{{FIELD_2_LABEL}}</label><input id="in-2" name="in-2" type="text" inputmode="decimal" value="{{FIELD_2_VALUE}}"><small>{{FIELD_2_HINT}}</small></div>
+        <div class="field"><label for="in-3">{{FIELD_3_LABEL}}</label><input id="in-3" name="in-3" type="text" inputmode="decimal" value="{{FIELD_3_VALUE}}"><small>{{FIELD_3_HINT}}</small></div>
+        <button class="btn" type="submit">{{BUTTON_LABEL}}</button>
+      </form>
+
+      <section class="panel result" aria-live="polite">
+        <p class="kicker">{{RESULT_LABEL}}</p>
+        <output class="main" id="out-main" for="in-1 in-2 in-3">{{RESULT_VALUE}}</output>
+        <p class="note">{{RESULT_NOTE}}</p>
+        <dl>
+          <div><dt>{{ROW_1_LABEL}}</dt><dd id="out-1">{{ROW_1_VALUE}}</dd></div>
+          <div><dt>{{ROW_2_LABEL}}</dt><dd id="out-2">{{ROW_2_VALUE}}</dd></div>
+          <div><dt>{{ROW_3_LABEL}}</dt><dd id="out-3">{{ROW_3_VALUE}}</dd></div>
+        </dl>
+      </section>
+    </div>
+
+    <section class="block">
+      <h2>{{HOW_TITLE}}</h2>
+      <ol class="steps row">
+        <li><h3>{{HOW_1_TITLE}}</h3><p>{{HOW_1_TEXT}}</p></li>
+        <li><h3>{{HOW_2_TITLE}}</h3><p>{{HOW_2_TEXT}}</p></li>
+        <li><h3>{{HOW_3_TITLE}}</h3><p>{{HOW_3_TEXT}}</p></li>
+      </ol>
+    </section>
+
+    <section class="block">
+      <h2>{{TOOL_FAQ_TITLE}}</h2>
+      <div class="faq">
+        <div class="qa"><h3>{{TOOL_FAQ_1_Q}}</h3><p>{{TOOL_FAQ_1_A}}</p></div>
+        <div class="qa"><h3>{{TOOL_FAQ_2_Q}}</h3><p>{{TOOL_FAQ_2_A}}</p></div>
+        <div class="qa"><h3>{{TOOL_FAQ_3_Q}}</h3><p>{{TOOL_FAQ_3_A}}</p></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div><a class="site-brand" href="{{HOME_URL}}"><span class="site-mark"></span>{{SITE_NAME}}</a><p class="foot-note">{{FOOT_NOTE}}</p></div>
+    <nav class="foot-nav"><a href="{{NAV_1_URL}}">{{NAV_1_LABEL}}</a><a href="{{NAV_2_URL}}">{{NAV_2_LABEL}}</a><a href="{{NAV_3_URL}}">{{NAV_3_LABEL}}</a></nav>
+    <p class="foot-fine">{{FOOT_FINE}}</p>
+  </div>
+</footer>
+
+<!-- Tool script mount: the tool's own script goes inside this tag. -->
+<script id="tool-script"></script>
+</body>
+</html>

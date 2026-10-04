@@ -1,0 +1,47 @@
+{
+  "id": "item-board",
+  "family": "covers",
+  "kind": "cover",
+  "title": "Item board + big number",
+  "what": "store cover: a board of eight of the product's own items (sprites, icons, tiles), the pack size as one big number, one label",
+  "for": ["factory", "forge", "engine2040"],
+  "donor": "designs/O-018",
+  "palette": "pixel",
+  "sizes": [
+    { "w": 1280, "h": 720, "name": "landscape" },
+    { "w": 630, "h": 500, "name": "store-card" }
+  ],
+  "files": ["cover.json", "art.html", "art.css"],
+  "pictures": [
+    { "name": "item-1 ... item-8", "file": "placeholder/item-1.png ... item-8.png", "what": "eight square pictures with a see-through ground; pixel art stays crisp (cover.json vars: item-size, item-size-card, item-render pixelated or auto)" }
+  ],
+  "slots": {
+    "PRODUCT": "cover:itch/sample-pack",
+    "FROM_REPO": "factory",
+    "STORE": "itch.io",
+    "TITLE": "Pocket Loot",
+    "KICKER": "Pixel item pack",
+    "CLAIM": "128 crisp item sprites on a 16x16 grid",
+    "CHIP_1": "PNG + SVG",
+    "CHIP_2": "8 families",
+    "CHIP_3": "Tile-ready",
+    "CHIP_4": "",
+    "BADGE": "$9 one-time",
+    "FINE": "",
+    "LISTING": "",
+    "TO_BEAT": "",
+    "LANDING": "from-design-studio/{{ORDER}}/",
+    "ASSETS_FROM": "the product's own assets/ pictures",
+    "COUNT_NUM": "128",
+    "COUNT_LABEL": "sprites",
+    "TAG": "16x16 grid",
+    "ITEM_1_ALT": "coin sprite",
+    "ITEM_2_ALT": "gem sprite",
+    "ITEM_3_ALT": "potion sprite",
+    "ITEM_4_ALT": "sword sprite",
+    "ITEM_5_ALT": "shield sprite",
+    "ITEM_6_ALT": "heart sprite",
+    "ITEM_7_ALT": "slime sprite",
+    "ITEM_8_ALT": "star sprite"
+  }
+}

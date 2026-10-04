@@ -1,0 +1,44 @@
+{
+  "id": "app-window",
+  "family": "covers",
+  "kind": "cover",
+  "title": "App window + number stickers",
+  "what": "store cover: one big app window showing the product's own screenshot, up to three number stickers on its lower edge",
+  "for": ["factory", "skillworks", "marketing-studio"],
+  "donor": "designs/O-013",
+  "palette": "clean-professional",
+  "sizes": [
+    { "w": 1280, "h": 720, "name": "landscape" },
+    { "w": 630, "h": 500, "name": "store-card" }
+  ],
+  "files": ["cover.json", "art.html", "art.css"],
+  "pictures": [
+    { "name": "shot", "file": "placeholder/shot.png", "what": "one screenshot of the app, any size; it fills the window from its top corner (cover.json vars: shot-zoom, shot-x, shot-y)" }
+  ],
+  "slots": {
+    "PRODUCT": "cover:gumroad/sample-app",
+    "FROM_REPO": "factory",
+    "STORE": "Gumroad",
+    "TITLE": "Budget Pilot",
+    "KICKER": "Offline budgeting app",
+    "CLAIM": "A full year of spending on one screen",
+    "CHIP_1": "CSV import",
+    "CHIP_2": "No account",
+    "CHIP_3": "Works offline",
+    "CHIP_4": "",
+    "BADGE": "$19 one-time",
+    "FINE": "",
+    "LISTING": "",
+    "TO_BEAT": "",
+    "LANDING": "from-design-studio/{{ORDER}}/",
+    "ASSETS_FROM": "the product's own preview/ pictures",
+    "WINDOW_TITLE": "budget-pilot.app",
+    "SHOT_ALT": "The app running in a browser",
+    "STAT_1_NUM": "12",
+    "STAT_1_LABEL": "months",
+    "STAT_2_NUM": "40",
+    "STAT_2_LABEL": "charts",
+    "STAT_3_NUM": "0",
+    "STAT_3_LABEL": "logins"
+  }
+}

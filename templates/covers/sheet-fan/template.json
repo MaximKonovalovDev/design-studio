@@ -1,0 +1,44 @@
+{
+  "id": "sheet-fan",
+  "family": "covers",
+  "kind": "cover",
+  "title": "Sheet fan + stamp",
+  "what": "store cover: three of the product's own pages fanned out, a round number stamp and one label",
+  "for": ["factory", "skillworks", "marketing-studio"],
+  "donor": "designs/O-020",
+  "palette": "editorial",
+  "sizes": [
+    { "w": 1280, "h": 720, "name": "landscape" },
+    { "w": 630, "h": 500, "name": "store-card" }
+  ],
+  "files": ["cover.json", "art.html", "art.css"],
+  "pictures": [
+    { "name": "sheet-1", "file": "placeholder/sheet-1.png", "what": "the front page (the best one); any size, cropped from its top corner to the sheet shape (cover.json vars: sheet-ar 0.72 for a page or 1.5 for a wide screenshot, sheet-w, sheet-w-card)" },
+    { "name": "sheet-2", "file": "placeholder/sheet-2.png", "what": "the page behind on the reading-end side" },
+    { "name": "sheet-3", "file": "placeholder/sheet-3.png", "what": "the page behind on the reading-start side" }
+  ],
+  "slots": {
+    "PRODUCT": "cover:gumroad/sample-kit",
+    "FROM_REPO": "factory",
+    "STORE": "Gumroad",
+    "TITLE": "Launch Planner",
+    "KICKER": "Printable planning kit",
+    "CLAIM": "Plan a product launch in one evening",
+    "CHIP_1": "24 printable pages",
+    "CHIP_2": "A4 + US Letter",
+    "CHIP_3": "Editable PDF",
+    "CHIP_4": "",
+    "BADGE": "$12 one-time",
+    "FINE": "",
+    "LISTING": "",
+    "TO_BEAT": "",
+    "LANDING": "from-design-studio/{{ORDER}}/",
+    "ASSETS_FROM": "the product's own preview/ pictures",
+    "SHEET_1_ALT": "Front page of the kit",
+    "SHEET_2_ALT": "Second page of the kit",
+    "SHEET_3_ALT": "Third page of the kit",
+    "STAMP_NUM": "24",
+    "STAMP_LABEL": "pages",
+    "TAG": "Print at home"
+  }
+}

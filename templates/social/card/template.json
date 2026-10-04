@@ -1,0 +1,52 @@
+{
+  "id": "card",
+  "family": "social",
+  "kind": "page",
+  "title": "Social card: link card, square, story",
+  "what": "One page that reflows to a 1200x630 link card, a 1080x1080 square and a 1080x1920 story: kicker, title, one claim, up to 3 fact chips, a badge and one picture slot.",
+  "for": ["marketing-studio", "autonomous-factory", "skillworks", "jobhunt", "fp-research", "forge", "engine2040"],
+  "donor": "designs/O-024/page.html",
+  "palette": "clean-professional",
+  "sizes": [
+    { "w": 1200, "h": 630, "name": "link-card" },
+    { "w": 1080, "h": 1080, "name": "square" },
+    { "w": 1080, "h": 1920, "name": "story" }
+  ],
+  "files": ["page.html"],
+  "slots": {
+    "LANG": "en",
+    "DIR": "ltr",
+    "TITLE": "Slatewise Proposal Kit",
+    "KICKER": "New for solo studios",
+    "CLAIM": "Send a proposal your client can sign the same day.",
+    "FACT_1": "18 layouts",
+    "FACT_2": "6 pricing tables",
+    "FACT_3": "PDF export",
+    "BADGE": "$39 one-time",
+    "NOTE": "Instant download, yours to keep",
+    "PICTURE": ""
+  },
+  "brief": {
+    "size": { "w": 1200, "h": 630 },
+    "sizes": [
+      { "w": 1200, "h": 630, "name": "link-card", "title_px": 80, "title_box": [0.05, 0.15, 0.57, 0.5], "title_longest": 12 },
+      { "w": 1080, "h": 1080, "name": "square", "title_px": 96, "title_box": [0.067, 0.12, 0.933, 0.34], "title_longest": 12 },
+      { "w": 1080, "h": 1920, "name": "story", "title_px": 128, "title_box": [0.067, 0.14, 0.933, 0.3], "title_longest": 12 }
+    ],
+    "dir": "ltr",
+    "tokens": "tokens.css",
+    "page": "page.html",
+    "image": "out.png",
+    "text": [
+      { "label": "title", "fg": "var(--ink)", "bg": "var(--bg)", "min": 4.5 },
+      { "label": "claim", "fg": "var(--muted)", "bg": "var(--bg)", "min": 4.5 },
+      { "label": "note on the gradient end", "fg": "var(--muted)", "bg": "var(--bg-2)", "min": 4.5 },
+      { "label": "badge", "fg": "var(--on-accent)", "bg": "var(--accent)", "min": 4.5 },
+      { "label": "chip", "fg": "var(--chip-ink)", "bg": "var(--chip-bg)", "min": 4.5 },
+      { "label": "kicker", "fg": "var(--accent-ink)", "bg": "var(--bg)", "min": 3 }
+    ],
+    "title_box": [0.05, 0.15, 0.57, 0.5],
+    "title_px": 80,
+    "title_longest": 12
+  }
+}

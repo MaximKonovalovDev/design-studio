@@ -1,0 +1,63 @@
+{
+  "id": "announce",
+  "family": "email",
+  "kind": "page",
+  "title": "Announcement email, 600px",
+  "what": "One 600px launch or update email in table layout: preheader, header, picture band, kicker and title, 3 short points, button, footer with the unsubscribe line.",
+  "for": ["autonomous-factory", "marketing-studio", "skillworks", "jobhunt", "forge", "engine2040"],
+  "donor": "new",
+  "palette": "clean-professional",
+  "inlineTokens": true,
+  "sizes": [
+    { "w": 600, "h": 1080, "name": "email" },
+    { "w": 390, "h": 1120, "name": "phone" }
+  ],
+  "files": ["page.html"],
+  "slots": {
+    "LANG": "en",
+    "DIR": "ltr",
+    "TITLE": "New pricing tables and a faster export",
+    "PREHEADER": "Six new pricing tables, a one-step PDF export and a cover page you can restyle in a minute.",
+    "BRAND": "Slatewise",
+    "LABEL": "Product update",
+    "HERO_IMAGE": "",
+    "KICKER": "Version 1.1 is out",
+    "INTRO": "The first update to the proposal kit is ready. It is free for everyone who has the kit, and one download brings it in.",
+    "POINT_1_TITLE": "Six new pricing tables",
+    "POINT_1_TEXT": "Retainers, day rates and phased projects, each with a total that adds up on its own.",
+    "POINT_2_TITLE": "Export in one step",
+    "POINT_2_TEXT": "The PDF preset now keeps your fonts and page breaks without a second pass.",
+    "POINT_3_TITLE": "A cover you can restyle",
+    "POINT_3_TEXT": "Change the logo, two colours and the typeface in one place.",
+    "CTA_LABEL": "Download version 1.1",
+    "CTA_URL": "#",
+    "CTA_NOTE": "The button opens your download page. You do not need to buy anything again.",
+    "FOOT_REASON": "You get this email because you bought the Slatewise Proposal Kit.",
+    "FOOT_SENDER": "Slatewise, 12 Harbour Row, Example City",
+    "UNSUB_TEXT": "No more updates?",
+    "UNSUB_LABEL": "Unsubscribe",
+    "UNSUB_URL": "#"
+  },
+  "brief": {
+    "size": { "w": 600, "h": 1080 },
+    "sizes": [
+      { "w": 600, "h": 1080, "name": "email", "title_px": 34, "title_box": [0.06, 0.34, 0.94, 0.44], "title_longest": 22 },
+      { "w": 390, "h": 1120, "name": "phone", "title_px": 28, "title_box": [0.056, 0.27, 0.944, 0.35], "title_longest": 22 }
+    ],
+    "dir": "ltr",
+    "tokens": "tokens.css",
+    "page": "page.html",
+    "image": "out.png",
+    "text": [
+      { "label": "title", "fg": "var(--ink)", "bg": "var(--bg)", "min": 4.5 },
+      { "label": "body text", "fg": "var(--muted)", "bg": "var(--bg)", "min": 4.5 },
+      { "label": "footer", "fg": "var(--muted)", "bg": "var(--bg-2)", "min": 4.5 },
+      { "label": "unsubscribe link", "fg": "var(--ink)", "bg": "var(--bg-2)", "min": 4.5 },
+      { "label": "button and numbers", "fg": "var(--on-accent)", "bg": "var(--accent)", "min": 4.5 },
+      { "label": "kicker", "fg": "var(--accent-ink)", "bg": "var(--bg)", "min": 4.5 }
+    ],
+    "title_box": [0.06, 0.34, 0.94, 0.44],
+    "title_px": 34,
+    "title_longest": 22
+  }
+}

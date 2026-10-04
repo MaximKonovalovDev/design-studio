@@ -1,0 +1,25 @@
+{
+  "product": "{{PRODUCT}}",
+  "from_repo": "{{FROM_REPO}}",
+  "storeName": "{{STORE}}",
+  "title": "{{TITLE}}",
+  "kicker": "{{KICKER}}",
+  "claim": "{{CLAIM}}",
+  "chips": ["{{CHIP_1}}", "{{CHIP_2}}", "{{CHIP_3}}", { "t": "{{CHIP_4}}", "wide": true }],
+  "badge": "{{BADGE}}",
+  "fine": "{{FINE}}",
+  "titlePx": 104,
+  "titlePxCard": 58,
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": { "sheet-ar": "0.72", "sheet-w": "322px", "sheet-w-card": "188px" },
+  "listing": "{{LISTING}}",
+  "toBeat": "{{TO_BEAT}}",
+  "landing": "{{LANDING}}",
+  "assetsFrom": "{{ASSETS_FROM}}",
+  "assets": [
+    { "name": "sheet-1.png", "src": "{{TEMPLATE_DIR}}/placeholder/sheet-1.png", "what": "PLACEHOLDER page shipped with the template: replace it with the product's own page (--asset sheet-1=<path>)" },
+    { "name": "sheet-2.png", "src": "{{TEMPLATE_DIR}}/placeholder/sheet-2.png", "what": "PLACEHOLDER page shipped with the template: replace it with the product's own page (--asset sheet-2=<path>)" },
+    { "name": "sheet-3.png", "src": "{{TEMPLATE_DIR}}/placeholder/sheet-3.png", "what": "PLACEHOLDER page shipped with the template: replace it with the product's own page (--asset sheet-3=<path>)" }
+  ]
+}

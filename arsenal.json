@@ -479,6 +479,69 @@
       ],
       "timeout_s": 120,
       "first_job": "O-026: designs/O-026/compare.png 780x706 via compare ours vs factory fleet-pack cover at 256,315px"
+    },
+    {
+      "name": "template",
+      "does": "the template shelf: list shows 12 templates (3 store covers, social card, landing, site kit, press kit, email, one-pager, deck, report, portfolio card) and 8 palettes; new stamps designs/<order>/ from one template and one palette with SLOT=value text; build renders every size, PDFs, thumb, audit, judge",
+      "run": [
+        "node",
+        "tools/template.mjs"
+      ],
+      "args": [
+        {
+          "name": "cmd",
+          "does": "list, new, build or preview",
+          "required": true
+        },
+        {
+          "name": "order",
+          "does": "order id for new and build (for preview: <family>/<id>)"
+        },
+        {
+          "name": "template",
+          "does": "<family>/<id> from list, e.g. covers/app-window or social/card",
+          "flag": "--template"
+        },
+        {
+          "name": "palette",
+          "does": "palette id from list, e.g. clean-professional, neon, kraft",
+          "flag": "--palette"
+        },
+        {
+          "name": "slot1",
+          "does": "a SLOT=value pair, e.g. TITLE=Launch Planner"
+        },
+        {
+          "name": "slot2",
+          "does": "a second SLOT=value pair"
+        },
+        {
+          "name": "slot3",
+          "does": "a third SLOT=value pair"
+        },
+        {
+          "name": "slot4",
+          "does": "a fourth SLOT=value pair"
+        },
+        {
+          "name": "asset",
+          "does": "a picture slot as name=path with the customer's own picture, e.g. shot=C:/.../preview/app.png",
+          "flag": "--asset"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/template.mjs",
+        "--check"
+      ],
+      "for": [
+        "every maker lane: start an order from a template and a palette, not from an empty page",
+        "factory: store covers, landing and free-tool site pages, launch email",
+        "marketing-studio: social cards, press kit, announce email",
+        "jobhunt: portfolio card; fp-research and skillworks: one-pager, deck, report"
+      ],
+      "timeout_s": 300,
+      "first_job": "2026-10-04: 27 trial builds of all 12 templates (default palette, neon, Hebrew rtl) in a temp folder"
     }
   ]
 }
