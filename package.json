@@ -1,0 +1,23 @@
+{
+  "name": "design-studio",
+  "version": "1.0.0",
+  "description": "Autonomous AI design studio: `brief.json` -> page -> rendered PNG -> design audit, with no human in the loop. Goal in `VISION.md` (research tables in `VISION-TABLES.md`), finish bars in `FINISH-LINE.md`; agent loop lives in `AGENTS.md`.",
+  "main": "index.js",
+  "private": true,
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaximKonovalovDev/design-studio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MaximKonovalovDev/design-studio/issues"
+  },
+  "homepage": "https://github.com/MaximKonovalovDev/design-studio#readme"
+}

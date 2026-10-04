@@ -1,19 +1,24 @@
-# design-studio handoff - round 46 (token 5928)
+# design-studio handoff - round 47 (token 5928)
 
-Round: 46
-Written: 2026-10-03T22:06Z by lead (token 5928, lock held since round 44 takeover).
-Knobs: width 5, paid_mode 1 (hybrid), heavy_max 3, helper_max_min 90, bg_width 0 (re-read .opencode/knobs.json 2026-10-03T20:52Z this round; unchanged; batch of 1 sent foreground).
+Round: 47
+Written: 2026-10-04T01:16Z by lead (token 5928).
+Takeover: `takeover` arg given; lock was stale since 2026-10-03T22:06Z (3h). Refreshed same token per keeper GO: `lead#5928 since 2026-10-04T01:16Z`.
+Knobs: width 3, heavy_max 3, paid_mode 0, helper_max_min 90, bg_width 0 (re-read .opencode/knobs.json 2026-10-04T01:16Z; unchanged).
 
 ## Heading
-- D1 NOT moved: 0 of 5 bars (O-001 built, judge PASS + factory commit still pending). Why not: this batch held only the pilot seat, so nothing could clear the DS-73/DS-76 gate.
+- D1 NOT moved: 0 of 5 bars (O-001 built, judge PASS + factory delivery still pending). Why not: this batch holds only the tool sprint (0a+0b+1) and the scout, so no maker/deliverer row can clear the D1 gate this round.
 
 ## Done
-- Pilot DONE: stranger path all PASS, 15/15 captures opened legible, 0 new defects (sprint/notes/pilot-view-2026-10-03-r45.md + tools/check RESULT PASS).
-- Still awaiting judge: 049 deletions (in 36e60c6, needs review), 050, 052/O-001, DS-74, DS-71. No helper-work commits. Next free ID DS-77.
+- Lock refreshed (same token, fresh time).
+- Clearing packet written: `sprint/queue/ready/000-vision-g1-adopt.md` (planner one-off) clears `sprint/check.mjs` FAIL `1 proposed gap answer(s) older than a day` (VISION-TABLES.md G1 Proposed 2026-10-03). It tops the next batch.
+- Batch of 2 sent foreground (width 3): builder `000-tool-sprint-01+000-tool-sprint-02+000-tool-sprint-03`, researcher `scout-donors`.
+- No helper-work commits this round. Next free ID DS-77.
 
 ## Blockers and notes
 - DS-70 OWNER (non-local factory URL) stands; DS-76 delivery gated on O-001 judge PASS.
-- Inbox: 0 open (all 5 items have board rows).
+- Inbox: 0 open (all items have board rows; re-checked 2026-10-04T01:16Z).
+- Dirty tree stands (designs/O-001/ edits, new designs/O-002..O-005 folders): committed only after judged PASS by path.
 
 ## Next
-- Keeper chains judges for 049/050/052/DS-74/DS-71; lead commits each PASS by path with proof line, then O-001 delivered flag + factory inbox item.
+- Collect the 2 results; PASS verdicts get committed by path with proof lines.
+- Keeper chains the G1-adopt packet first next batch, then judges for O-001/DS-74/DS-71 follow-ups.

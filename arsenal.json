@@ -181,6 +181,37 @@
         "marketing-studio: landing hero"
       ],
       "timeout_s": 30
+    },
+    {
+      "name": "orders",
+      "does": "checks the order book (every customer, every kind) and writes the lane desk: one row per seat",
+      "run": [
+        "node",
+        "tools/orders-check.mjs"
+      ],
+      "args": [
+        {
+          "name": "desk",
+          "does": "write sprint/queue/desk.md from orders.csv and designs/<id>/ folders, print the DESK line",
+          "flag": "--desk"
+        },
+        {
+          "name": "covers",
+          "does": "D5: live factory listings against adopted cover rows",
+          "flag": "--covers"
+        }
+      ],
+      "test": [
+        "node",
+        "--test",
+        "tests/orders-check.test.mjs"
+      ],
+      "for": [
+        "every lane seat: wake on your BLD/DLV/EYE row, oldest order first",
+        "lead: one DESK line per round, no clock inside a row"
+      ],
+      "timeout_s": 60,
+      "first_job": "wrote sprint/queue/desk.md from today's orders.csv with node tools/orders-check.mjs --desk"
     }
   ]
 }
