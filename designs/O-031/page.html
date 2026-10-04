@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- templates/web/site/page.html: hub index of a free-tool and guide site. Hero, one featured box, two rows of three cards. Header, nav and footer are the same markup and slots as guide.html, tool.html and privacy.html; all layout lives in site.css. Slots and defaults: template.json. A card with an empty title collapses. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free game-dev browser tools | tools-gamedev</title>
+<meta name="description" content="Small utilities and recipes for game developers. Every tool runs in your browser: no upload, no signup, no install.">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* First paint before site.css arrives: page colours and type straight from the tokens. */
+  html { background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  html[dir="rtl"] { font-family: var(--font-hebrew), var(--font-body); }
+</style>
+</head>
+<body data-page="hub" data-oid="cover.hero">
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="site-brand" href="/"><span class="site-mark"></span>tools-gamedev</a>
+    <nav class="site-nav" aria-label="Primary"><a data-nav="1" href="/">Tools</a><a data-nav="2" href="/#guides">Guides</a><a data-nav="3" href="/privacy/">Privacy</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hub-hero">
+    <div>
+      <p class="kicker" data-oid="cover.subtitle">Free tools and guides</p>
+      <h1 data-oid="cover.title">Free game-dev browser tools</h1>
+      <p class="lead">Small utilities and recipes for game developers. Every tool runs in your browser: no upload, no signup, no install.</p>
+      <ul class="chips"><li class="chip">No upload</li><li class="chip">No signup</li><li class="chip">No install</li></ul>
+    </div>
+    <aside class="featured">
+      <p class="kicker">Start here</p>
+      <h2>Sprite Sheet Slicer and Packer</h2>
+      <p>Slice a sprite sheet into frames or pack frames into an atlas. Your image never leaves your device.</p>
+      <a class="btn cta" data-oid="cover.cta" href="/sprite-sheet-slicer/">Open the slicer</a>
+    </aside>
+  </div>
+
+  <div class="wrap">
+    <div class="section-head"><h2>Tools</h2></div>
+    <div class="cards">
+      <a class="card" href="/sprite-frame-counter/"><span class="chip">Tool</span><h3>Sprite Frame Counter</h3><p>Count frames from sheet and frame size, estimate memory, get Godot, Unity and RPG Maker setup values.</p><span class="go">Open tool</span></a>
+      <a class="card" href="/palette-extractor/"><span class="chip">Tool</span><h3>Palette Extractor</h3><p>Pull the colors out of a sprite or image. Copy hex codes or download GIMP, CSS or TXT.</p><span class="go">Open tool</span></a>
+      <a class="card" href="/tileset-splitter/"><span class="chip">Tool</span><h3>Tileset Splitter and Converter</h3><p>Split a tileset into tiles and export TMX, TSX, JSON and CSV manifests.</p><span class="go">Open tool</span></a>
+    </div>
+    <div class="section-head"><h2>Guides</h2></div>
+    <div class="cards">
+      <a class="card" href="/guides/import-sprite-sheet-godot/"><span class="chip">Guide</span><h3>Import a sprite sheet into Godot 4</h3><p>The 5-minute recipe: grid, Nearest filter, SpriteFrames.</p><span class="go">Read guide</span></a>
+      <a class="card" href="/guides/tileset-tiled-godot/"><span class="chip">Guide</span><h3>Tileset to Tiled and Godot 4</h3><p>An 8-minute recipe from tile grid to Nearest import, with a free tile-grid calculator.</p><span class="go">Read guide</span></a>
+      <a class="card" href="/guides/match-sprites-sfx/"><span class="chip">Guide</span><h3>Match sound effects to sprites</h3><p>A 10-minute recipe: pair theme and genre, pick WAV or MP3, wire the sounds.</p><span class="go">Read guide</span></a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div><a class="site-brand" href="/"><span class="site-mark"></span>tools-gamedev</a><p class="foot-note">Free browser tools and guides for game developers. Everything runs on your device.</p></div>
+    <nav class="foot-nav" aria-label="Footer"><a href="/">Tools</a><a href="/#guides">Guides</a><a href="/privacy/">Privacy</a></nav>
+    <p class="foot-fine">tools-gamedev hub (free-tools lane). No analytics on this page. No ranking or performance promises. No testimonials.</p>
+  </div>
+</footer>
+
+</body>
+</html>

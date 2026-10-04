@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- templates/web/site/tool.html: one tool page. Breadcrumbs, page head, input panel (3 fields and a button), result panel (one big value and 3 rows), how it works (3 steps), 3 questions. Header, nav and footer are the same markup and slots as page.html; all layout lives in site.css. Slots and defaults: template.json. The tool's own script goes into the empty script tag at the end; it reads #tool-form, #in-1 to #in-3 and writes #out-main, #out-1 to #out-3. A field, row, step or question with an empty first slot collapses. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sprite Frame Counter | tools-gamedev</title>
+<meta name="description" content="Enter the sheet size and the frame size. The result card shows the grid, the frame count and the memory.">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* First paint before site.css arrives: page colours and type straight from the tokens. */
+  html { background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  html[dir="rtl"] { font-family: var(--font-hebrew), var(--font-body); }
+</style>
+</head>
+<body data-page="tool">
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="site-brand" href="/"><span class="site-mark"></span>tools-gamedev</a>
+    <nav class="site-nav" aria-label="Primary"><a data-nav="1" href="/">Tools</a><a data-nav="2" href="/#guides">Guides</a><a data-nav="3" href="/privacy/">Privacy</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <nav class="crumbs"><a href="/">Tools</a><span>Sprite Frame Counter</span></nav>
+    <header class="page-head">
+      <p class="kicker">Free tool</p>
+      <h1>Sprite Frame Counter</h1>
+      <p class="lead">Enter the sheet size and the frame size. The result card shows the grid, the frame count and the memory.</p>
+    </header>
+
+    <div class="tool">
+      <form class="panel" id="tool-form" autocomplete="off">
+        <h2>Your sheet</h2>
+        <div class="field"><label for="in-1">Sheet width (px)</label><input id="in-1" name="in-1" type="text" inputmode="decimal" value="256"><small>The whole PNG, in pixels.</small></div>
+        <div class="field"><label for="in-2">Frame width (px)</label><input id="in-2" name="in-2" type="text" inputmode="decimal" value="64"><small>One frame, in pixels.</small></div>
+        <div class="field"><label for="in-3">Animation speed (fps)</label><input id="in-3" name="in-3" type="text" inputmode="decimal" value="7"><small>Walk loops start at 6 to 8.</small></div>
+        <button class="btn" type="submit">Count frames</button>
+      </form>
+
+      <section class="panel result" aria-live="polite">
+        <p class="kicker">Frames</p>
+        <output class="main" id="out-main" for="in-1 in-2 in-3">16</output>
+        <p class="note">frames in a 4 by 4 grid</p>
+        <dl>
+          <div><dt>Columns</dt><dd id="out-1">4</dd></div>
+          <div><dt>Rows</dt><dd id="out-2">4</dd></div>
+          <div><dt>RGBA memory</dt><dd id="out-3">256 KB</dd></div>
+        </dl>
+      </section>
+    </div>
+
+    <section class="block">
+      <h2>How it works</h2>
+      <ol class="steps row">
+        <li><h3>Grid</h3><p>Columns are the sheet width divided by the frame width, rounded down. Rows work the same way.</p></li>
+        <li><h3>Memory</h3><p>Width times height times 4 bytes for every pixel, per frame and for the whole sheet.</p></li>
+        <li><h3>Engine values</h3><p>Godot H and V frames, Unity slice size and RPG Maker cell math come from the same grid.</p></li>
+      </ol>
+    </section>
+
+    <section class="block">
+      <h2>Common questions</h2>
+      <div class="faq">
+        <div class="qa"><h3>Does this upload my sprite sheet?</h3><p>No. The count runs in your browser and nothing leaves this page.</p></div>
+        <div class="qa"><h3>What do I get out?</h3><p>Columns, rows, total frames, memory per frame and per sheet, and setup values for Godot 4, Unity and RPG Maker.</p></div>
+        <div class="qa"><h3>Who owns my art?</h3><p>You do. This page keeps no copy and claims no rights.</p></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div><a class="site-brand" href="/"><span class="site-mark"></span>tools-gamedev</a><p class="foot-note">Free browser tools and guides for game developers. Everything runs on your device.</p></div>
+    <nav class="foot-nav" aria-label="Footer"><a href="/">Tools</a><a href="/#guides">Guides</a><a href="/privacy/">Privacy</a></nav>
+    <p class="foot-fine">tools-gamedev hub (free-tools lane). No analytics on this page. No ranking or performance promises. No testimonials.</p>
+  </div>
+</footer>
+
+<!-- Tool script mount: the tool's own script goes inside this tag. -->
+<script id="tool-script"></script>
+</body>
+</html>

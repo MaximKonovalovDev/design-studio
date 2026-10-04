@@ -1,0 +1,86 @@
+{
+  "order_id": "O-031",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "site-look:tools-gamedev",
+  "delivered_utc": "2026-10-04T15:00Z",
+  "source": "design-studio designs/O-031",
+  "landing": "design/from-design-studio/O-031",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "14 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing design/from-design-studio/O-031/ in factory"
+  ],
+  "files": [
+    {
+      "name": "DELIVERY.md",
+      "bytes": 3106,
+      "sha256": "cb15dcad04d1f950ce5e3cfafa35745d877b23cb68d9ec080301ea6d0d3531c4"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1314,
+      "sha256": "3385217b5418faf05b809024e24646897ebdee5e7e8deef642d0afe496d5bbc8"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 830,
+      "sha256": "702906efb94a05449d1c2cde5907c2ab5322fc5a2bcb08488ca14d90954cb8dd"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1710,
+      "sha256": "349e898cb38a012425df086d466228e0fd2f44b656eeb477b7492de47b1b8732"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 3334,
+      "sha256": "94ddb5e05ee5faf0347de6545cb8f407312882f75f6933031a2b9d8e47df4a26"
+    },
+    {
+      "name": "guide.html",
+      "bytes": 4395,
+      "sha256": "daa2e557472162750a5f4a558b2aa48751784ed10ad89f04f0ef03e43fa86525"
+    },
+    {
+      "name": "out-390x844.png",
+      "bytes": 38525,
+      "sha256": "afeaea8550d7eb76629f8e22864e05482717fcb61cfb215cdd1447f835054821"
+    },
+    {
+      "name": "out.png",
+      "bytes": 121601,
+      "sha256": "10d2e80236165f49a91cb628d4b55efb3a5a8048a0e2ef617b0cfc993d817a98"
+    },
+    {
+      "name": "page.html",
+      "bytes": 4470,
+      "sha256": "41f89b5071b04d530ad2db0157340011cb1887f9d9a4e123de2b0b0a458a6070"
+    },
+    {
+      "name": "privacy.html",
+      "bytes": 2974,
+      "sha256": "2a37bfb0aab3f6f8d93a7d210afca75b01c9c78614d30c5ec4fe09ead81d694c"
+    },
+    {
+      "name": "site.css",
+      "bytes": 14482,
+      "sha256": "bc7b631f7824d0515353f16717eaacd063212da4f81647d3c1bbd64053478faa"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 21305,
+      "sha256": "e58b7b0432095161a5910097440f1b405b01db2a7cefd6d7b9c695198ac23c4d"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 673,
+      "sha256": "122a142a027a58a749226e1b39fcb2b2fb784981397e8a738667a82789807af7"
+    },
+    {
+      "name": "tool.html",
+      "bytes": 4899,
+      "sha256": "43d70db429083a07419d5f2510f23f9286fbc62c73ddf71dc32f4825a5e4c744"
+    }
+  ]
+}

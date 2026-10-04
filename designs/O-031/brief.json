@@ -1,0 +1,95 @@
+{
+  "size": {
+    "w": 1280,
+    "h": 1400
+  },
+  "sizes": [
+    {
+      "w": 1280,
+      "h": 1400,
+      "name": "hub",
+      "title_px": 64,
+      "title_box": [
+        0.072,
+        0.105,
+        0.56,
+        0.21
+      ],
+      "title_longest": 18
+    },
+    {
+      "w": 390,
+      "h": 844,
+      "name": "phone",
+      "title_px": 40,
+      "title_box": [
+        0.051,
+        0.2,
+        0.949,
+        0.36
+      ],
+      "title_longest": 17
+    }
+  ],
+  "tokens": "tokens.css",
+  "image": "out.png",
+  "dir": "ltr",
+  "page": "page.html",
+  "text": [
+    {
+      "label": "title",
+      "fg": "var(--ink)",
+      "bg": "var(--bg)",
+      "min": 4.5
+    },
+    {
+      "label": "body text",
+      "fg": "var(--muted)",
+      "bg": "var(--bg)",
+      "min": 4.5
+    },
+    {
+      "label": "footer, callout and table head",
+      "fg": "var(--muted)",
+      "bg": "var(--bg-2)",
+      "min": 4.5
+    },
+    {
+      "label": "active nav and footer links",
+      "fg": "var(--ink)",
+      "bg": "var(--bg-2)",
+      "min": 4.5
+    },
+    {
+      "label": "featured box, result panel, buttons",
+      "fg": "var(--on-accent)",
+      "bg": "var(--accent)",
+      "min": 4.5
+    },
+    {
+      "label": "chips and form fields",
+      "fg": "var(--chip-ink)",
+      "bg": "var(--chip-bg)",
+      "min": 4.5
+    },
+    {
+      "label": "kicker and links",
+      "fg": "var(--accent-ink)",
+      "bg": "var(--bg)",
+      "min": 4.5
+    }
+  ],
+  "title_box": [
+    0.072,
+    0.105,
+    0.56,
+    0.21
+  ],
+  "title_px": 64,
+  "title_longest": 18,
+  "title": "Free game-dev browser tools",
+  "order": "O-031",
+  "product": "site-look:tools-gamedev",
+  "template": "web/site",
+  "palette": "developer"
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- templates/web/site/privacy.html: privacy page. Page head, 3 short points, 4 sections, contact box. Header, nav and footer are the same markup and slots as page.html; all layout lives in site.css. Slots and defaults: template.json. An empty point or section collapses. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy and disclosure | tools-gamedev</title>
+<meta name="description" content="This static site collects nothing, and its tools process your files on your own device.">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* First paint before site.css arrives: page colours and type straight from the tokens. */
+  html { background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  html[dir="rtl"] { font-family: var(--font-hebrew), var(--font-body); }
+</style>
+</head>
+<body data-page="privacy">
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="site-brand" href="/"><span class="site-mark"></span>tools-gamedev</a>
+    <nav class="site-nav" aria-label="Primary"><a data-nav="1" href="/">Tools</a><a data-nav="2" href="/#guides">Guides</a><a data-nav="3" href="/privacy/">Privacy</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap narrow">
+    <header class="page-head">
+      <p class="kicker">The short version first</p>
+      <h1>Privacy and disclosure</h1>
+      <p class="lead">This static site collects nothing, and its tools process your files on your own device.</p>
+      <p class="meta"></p>
+    </header>
+
+    <ul class="points"><li>No analytics</li><li>No cookies</li><li>Files stay on your device</li></ul>
+
+    <article class="prose">
+      <h2>Analytics</h2>
+      <p>None today. No beacons and no cookies; the Cloudflare Web Analytics token is an open blocker, so nothing is measured.</p>
+      <h2>Your files</h2>
+      <p>Every tool runs in your browser. Files and text you enter never leave your device.</p>
+      <h2>Third parties</h2>
+      <p>No links to sponsors or trackers. Documentation links go to engine and store pages only.</p>
+      <h2>Disclosure</h2>
+      <p>No sponsors, paid placements or affiliate links. The ad slots on the hub are empty placeholders. Drafted with AI assistance.</p>
+      <div class="callout"><h3></h3><p></p></div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div><a class="site-brand" href="/"><span class="site-mark"></span>tools-gamedev</a><p class="foot-note">Free browser tools and guides for game developers. Everything runs on your device.</p></div>
+    <nav class="foot-nav" aria-label="Footer"><a href="/">Tools</a><a href="/#guides">Guides</a><a href="/privacy/">Privacy</a></nav>
+    <p class="foot-fine">tools-gamedev hub (free-tools lane). No analytics on this page. No ranking or performance promises. No testimonials.</p>
+  </div>
+</footer>
+
+</body>
+</html>

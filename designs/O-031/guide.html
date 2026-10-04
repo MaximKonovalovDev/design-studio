@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- templates/web/site/guide.html: one guide article. Breadcrumbs, page head, intro, 4 numbered steps, callout, table (3 columns, 3 rows), code block, next-step box. Header, nav and footer are the same markup and slots as page.html; all layout lives in site.css. Slots and defaults: template.json. A step or table row with an empty first slot collapses. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Import a sprite sheet into Godot 4 | tools-gamedev</title>
+<meta name="description" content="Learn your sheet's grid, import with Nearest filtering, then wire AnimatedSprite2D and SpriteFrames. About 5 minutes.">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* First paint before site.css arrives: page colours and type straight from the tokens. */
+  html { background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  html[dir="rtl"] { font-family: var(--font-hebrew), var(--font-body); }
+</style>
+</head>
+<body data-page="guide">
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="site-brand" href="/"><span class="site-mark"></span>tools-gamedev</a>
+    <nav class="site-nav" aria-label="Primary"><a data-nav="1" href="/">Tools</a><a data-nav="2" href="/#guides">Guides</a><a data-nav="3" href="/privacy/">Privacy</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap narrow">
+    <nav class="crumbs"><a href="/#guides">Guides</a><span>Import a sprite sheet into Godot 4</span></nav>
+    <header class="page-head">
+      <p class="kicker">Guide</p>
+      <h1>Import a sprite sheet into Godot 4</h1>
+      <p class="lead">Learn your sheet's grid, import with Nearest filtering, then wire AnimatedSprite2D and SpriteFrames. About 5 minutes.</p>
+      <p class="meta">5-minute recipe. Godot 4.x.</p>
+    </header>
+
+    <article class="prose">
+      <p>A blurry sprite in Godot is almost always a filter setting, and a wrong animation is almost always a wrong grid. Fix both in that order and the rest is wiring.</p>
+
+      <h2>The recipe</h2>
+      <ol class="steps">
+        <li><h3>Learn your sheet's grid</h3><p>A 4-frame walk cycle is usually a 2 by 2 grid. Try columns and rows until each frame looks right.</p></li>
+        <li><h3>Import with Nearest filtering</h3><p>Select the PNG, open the Import tab, set Filter to Nearest and reimport.</p></li>
+        <li><h3>Build the SpriteFrames animation</h3><p>Add an AnimatedSprite2D, create a SpriteFrames resource, add the frames in row order and set the speed.</p></li>
+        <li><h3></h3><p></p></li>
+      </ol>
+
+      <div class="callout"><h3>Test at 1x first</h3><p>Scale by whole numbers only (2x, 3x) so pixels stay square.</p></div>
+
+      <h2>Starting fps per animation</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Animation</th><th>Loop?</th><th>Start fps</th></tr></thead>
+          <tbody>
+            <tr><td>Walk loop</td><td>Yes</td><td>6 to 8</td></tr>
+            <tr><td>Idle loop</td><td>Yes</td><td>4</td></tr>
+            <tr><td>Attack or effect</td><td>No, one shot</td><td>10 to 12</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Starting points. Tune to feel after.</p>
+
+      <h2>A first script</h2>
+      <p>Play the walk animation when the node is ready.</p>
+      <pre><code>@onready var hero: AnimatedSprite2D = $AnimatedSprite2D
+func _ready() -&gt; void:
+	hero.play(&quot;walk&quot;)</code></pre>
+    </article>
+
+    <aside class="next">
+      <div><h2>Count your frames</h2><p>Type the sheet and frame size and get the grid, the memory and the engine setup values.</p></div>
+      <a class="btn" href="/sprite-frame-counter/">Open the frame counter</a>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div><a class="site-brand" href="/"><span class="site-mark"></span>tools-gamedev</a><p class="foot-note">Free browser tools and guides for game developers. Everything runs on your device.</p></div>
+    <nav class="foot-nav" aria-label="Footer"><a href="/">Tools</a><a href="/#guides">Guides</a><a href="/privacy/">Privacy</a></nav>
+    <p class="foot-fine">tools-gamedev hub (free-tools lane). No analytics on this page. No ranking or performance promises. No testimonials.</p>
+  </div>
+</footer>
+
+</body>
+</html>
