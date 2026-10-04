@@ -1,0 +1,23 @@
+/* designs/O-024/tokens.css: O-024 devlog header for aeo-visibility-audit-kit (bold). All page color comes from these vars. */
+:root {
+  --bg: #0e1120;
+  --bg-2: #1b2140;
+  --ink: #ffffff;
+  --muted: #c9cfe6;
+  --accent: #ffc53d;
+  --accent-ink: #ffc53d;
+  --on-accent: #241500;
+  --chip-bg: #1b2140;
+  --chip-ink: #edeffa;
+  --chip-line: #3d4570;
+  --font-display: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Segoe UI', Verdana, Arial, sans-serif;
+  --font-mono: Consolas, 'Cascadia Mono', 'Courier New', monospace;
+  --title-px: 72px;
+  --title-px-card: 72px;
+  --title-weight: 800;
+  --title-track: -0.01em;
+  --copy-w: 52%;
+  --claim-w: 560px;
+  --chip-r: 8px;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- designs/O-024/page.html: O-024 devlog header (1200x630) for marketing-studio post-visual:aeo-visibility-audit-kit (bold). Title is the product name; every other line is a fact from listing/itch.md only. No scores, no audit numbers: the worked audits are synthetic samples. Color only via tokens.css. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  .stage { position: relative; width: 100%; height: 100%; padding: 44px 56px 40px; display: flex; flex-direction: column; background: linear-gradient(160deg, var(--bg) 0%, var(--bg) 55%, var(--bg-2) 100%); overflow: hidden; }
+  .bar { position: absolute; inset-inline-start: 0; top: 0; width: 100%; height: 10px; background: var(--accent); }
+  .kicker { font-family: var(--font-mono); font-size: 22px; font-weight: 700; letter-spacing: 0.14em; color: var(--accent-ink); margin-bottom: 10px; }
+  h1 { font-family: var(--font-display); font-weight: 900; font-size: 72px; line-height: 1.02; letter-spacing: -0.03em; color: var(--ink); text-wrap: balance; max-width: 1040px; }
+  .mid { flex: 1; display: flex; align-items: center; gap: 36px; min-height: 0; }
+  .checks { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 0 0 350px; }
+  .checks li { display: flex; align-items: center; gap: 14px; font-size: 24px; font-weight: 700; color: var(--ink); }
+  .checks b { flex: 0 0 46px; height: 46px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font-family: var(--font-display); font-size: 25px; display: flex; align-items: center; justify-content: center; }
+  .checks .cap { font-size: 19px; color: var(--muted); font-weight: 600; margin-bottom: 2px; }
+  .cloud { flex: 1; display: flex; flex-wrap: wrap; gap: 8px; align-content: center; justify-content: flex-start; }
+  .cloud .cap { flex: 0 0 100%; font-size: 19px; color: var(--muted); font-weight: 600; margin-bottom: 2px; }
+  .cloud span { font-family: var(--font-mono); font-size: 18px; font-weight: 700; color: var(--chip-ink); background: var(--chip-bg); border: 2px solid var(--chip-line); border-radius: 6px; padding: 6px 10px; }
+  .cloud span.hot { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .foot { display: flex; align-items: center; gap: 20px; }
+  .cta { font-size: 28px; font-weight: 800; line-height: 1; padding: 14px 26px; border-radius: 8px; background: var(--accent); color: var(--on-accent); }
+  .note { font-size: 21px; color: var(--muted); font-weight: 600; }
+  @media (max-aspect-ratio: 5/4) {
+    .stage { padding: 72px 56px 64px; }
+    .kicker { font-size: 26px; }
+    h1 { font-size: 74px; max-width: none; }
+    .mid { flex-direction: column; align-items: stretch; justify-content: space-evenly; gap: 24px; }
+    .checks { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+    .checks .cap { grid-column: 1 / -1; font-size: 24px; }
+    .checks li { font-size: 34px; }
+    .checks b { flex-basis: 58px; height: 58px; font-size: 32px; }
+    .cloud { flex: none; }
+    .cloud .cap { font-size: 24px; }
+    .cloud span { font-size: 23px; padding: 8px 13px; }
+    .cta { font-size: 34px; padding: 18px 32px; }
+    .note { font-size: 26px; }
+  }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="bar"></div>
+  <div class="kicker" data-oid="cover.subtitle">200 PROBES &middot; 20 FIXES &middot; 1 REPORT</div>
+  <h1 data-oid="cover.title">AI Search Visibility Audit Kit</h1>
+  <div class="mid">
+    <ol class="checks">
+      <li class="cap">20-point fix checklist</li>
+      <li><b>4</b>Technical</li>
+      <li><b>5</b>Content</li>
+      <li><b>4</b>Authority</li>
+      <li><b>4</b>Local</li>
+      <li><b>3</b>Measurement</li>
+    </ol>
+    <div class="cloud" aria-label="The 200 GEO probe questions">
+      <div class="cap">200 GEO probe questions, CSV + JSON + Markdown</div>
+      <span class="hot">dentist &times;50</span><span class="hot">plumber &times;50</span><span class="hot">agency &times;50</span><span class="hot">SaaS &times;50</span><span>CSV</span><span>JSON</span><span>Markdown</span><span>report template</span>
+    </div>
+  </div>
+  <div class="foot">
+    <span class="cta" data-oid="cover.cta">$29 one-time</span>
+    <span class="note">Search-proxy method &middot; every score collected by hand</span>
+  </div>
+</div>
+</body>
+</html>
