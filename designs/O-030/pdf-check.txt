@@ -1,0 +1,6 @@
+pdf-check.txt (O-030): pdfcheck (pdf.js) and PyMuPDF read of the two printed PDFs, 2026-10-04
+out.pdf (he, rtl): pages=1 size=595x842pt chars=1063 hebrew_letters=680 latin_letters=147 images=0 fonts=SegoeUI-Bold,SegoeUI-Semibold,SegoeUI
+out-en.pdf (en, ltr): pages=1 size=595x842pt chars=1232 hebrew_letters=0 latin_letters=952 images=0 fonts=Consolas,Consolas-Bold,SegoeUI-Semibold,SegoeUI,SegoeUI-Bold
+out.pdf: the name reads in logical order in the text layer (PyMuPDF: first lines are the kicker, the status pill, the name, the role line); pdfcheck --expect "name, work heading, Ledger, skills heading" in logical order PASS.
+Tried and dropped: an embedded Heebo web font (fonts/ of this repo) makes Edge write the Hebrew words of each line in visual order into the PDF (name read as "רבנל נועה"); the system stack of tokens.css (Segoe UI) keeps logical order, so the card uses it.
+RESULT: PASS one A4 page each, real text layer (no images), Hebrew in logical order

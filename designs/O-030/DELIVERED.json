@@ -1,0 +1,111 @@
+{
+  "order_id": "O-030",
+  "from_repo": "jobhunt",
+  "maker": "design-studio",
+  "product": "portfolio:card-a4",
+  "delivered_utc": "2026-10-04T14:30Z",
+  "source": "design-studio designs/O-030",
+  "landing": "from-design-studio/O-030",
+  "customer": "C:/Users/me/Desktop/jobhunt",
+  "delivered": [
+    "19 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing from-design-studio/O-030/ in jobhunt"
+  ],
+  "files": [
+    {
+      "name": "ADOPT.md",
+      "bytes": 605,
+      "sha256": "d8bed8b8e5c17a4f735f967b628df9fb9c0f528158168989cedd4b822af85897"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1049,
+      "sha256": "6185207434b48a2829ba1247e9cf37a89f051e56ab97f8cc8582053f6cf66bb5"
+    },
+    {
+      "name": "DESIGN-REVIEW-en.md",
+      "bytes": 1087,
+      "sha256": "5a516cdf7e730454a76f7dc959b66ad13d97e303e2de2c5668787d60b65b99ca"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1206,
+      "sha256": "88dffeaf2a80747e2c366aaccc755a8d8fc7b725925c3aa23f3accb719ee1700"
+    },
+    {
+      "name": "FACTS.md",
+      "bytes": 1079,
+      "sha256": "1737ca3ebf788c6af42df0057b84bc7f31fae897c05a4482eba9f36bc68031d1"
+    },
+    {
+      "name": "SLOTS.md",
+      "bytes": 10139,
+      "sha256": "221fe6830c1bcbc611006cc324bca4285fec80c91f4236263782cf3d96e0cca5"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 987,
+      "sha256": "914d713af46bf012b94363389f21d621a8795edaf37562d12f2bc931d73383ad"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1339,
+      "sha256": "88b053277ec49f151f008547f7ee52431731aa2b2864d7678e111fb6dbb8dd0d"
+    },
+    {
+      "name": "design-audit-en.json",
+      "bytes": 2965,
+      "sha256": "1bd8bd4f4981724c3342638d5a3d0bd225aa29dd9d9d533439bfa227a1ee1bc4"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 3533,
+      "sha256": "75eca501a6198ebbfcf647276ce7e5ad4a4b493b2cdbd83c7c53c4d63c3e7966"
+    },
+    {
+      "name": "out-en.pdf",
+      "bytes": 101179,
+      "sha256": "e880ff392453fb3704f1e6fef6175f8b2b197f8b5cdb6e0b216cfbc5a4e1d487"
+    },
+    {
+      "name": "out-en.png",
+      "bytes": 82364,
+      "sha256": "e4383cdd8297bb43be2362bf046f9bcd0efba244270872247dcb90ce3b9fa0b4"
+    },
+    {
+      "name": "out.pdf",
+      "bytes": 77490,
+      "sha256": "57151614aca8a0b5f616fbdf9cc5802031b4cb65748dc366f9f8fa50abee9342"
+    },
+    {
+      "name": "out.png",
+      "bytes": 72719,
+      "sha256": "4aaddb95b4d7bdc6bdac4217ce2e32aa4ecd29f61fcc4398cc3d60052687794f"
+    },
+    {
+      "name": "page-en.html",
+      "bytes": 12111,
+      "sha256": "f3d13c481a42be3a8305bfc1066d2867aae46fbb6082957f98a54427d99ac0fa"
+    },
+    {
+      "name": "page.html",
+      "bytes": 12640,
+      "sha256": "50562d3618dc596bb94bf1d4337737452bee7ee1d8f5be296357aecbfac0cea3"
+    },
+    {
+      "name": "pdf-check.txt",
+      "bytes": 979,
+      "sha256": "8538597a377f98ed34db51f1f45732b6615f39bf8985292b5fa4c0c4f67f9829"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 25786,
+      "sha256": "ae7f5873af5eedad5fec0a76828cadf420bd3786cf1a380089b3e7613d8cb578"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 675,
+      "sha256": "74aea21a7aaf03e361852768dd45d254b1e6fe261e667ef915284c8f5c1ac71f"
+    }
+  ]
+}

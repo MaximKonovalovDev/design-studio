@@ -1,0 +1,76 @@
+{
+  "order_id": "O-029",
+  "from_repo": "skillworks",
+  "maker": "design-studio",
+  "product": "page:fleet-vol-1-sheet",
+  "delivered_utc": "2026-10-04T14:19Z",
+  "source": "design-studio designs/O-029",
+  "landing": "from-design-studio/O-029",
+  "customer": "C:/Users/me/Desktop/skillworks",
+  "delivered": [
+    "12 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing from-design-studio/O-029/ in skillworks"
+  ],
+  "files": [
+    {
+      "name": "ADOPT.md",
+      "bytes": 579,
+      "sha256": "b71a8db1dbe4250e1dc8339353142b300901acc0e5b6f54565ae2b2c0a2a4ea0"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 754,
+      "sha256": "e39be4a0f22ac772e5ab25f4afd5bcabd055ba8254472639507320b91e7eca37"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1179,
+      "sha256": "1a7603fc17a262f713785d8838b61102ba65a9e0045acf6345f426d1bc6b2739"
+    },
+    {
+      "name": "FACTS.md",
+      "bytes": 1820,
+      "sha256": "ee9d3164aa4b635123fc2cc5dab0884aa61867f8823d386dd29d3a9ce6ea94d5"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 855,
+      "sha256": "dbb4165c1146a9ec1f4114f1acb5d2038eb8c9a85993e2c6d9f4c674d510c102"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1213,
+      "sha256": "150764f96fc73d6664ae291f86201654748d57dcf5f5584affe70f238be132c0"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2830,
+      "sha256": "ca628ac47df791a8d75332e9686c5ce55a68924ac7143cf05bc08bcd23e9865c"
+    },
+    {
+      "name": "out.pdf",
+      "bytes": 76077,
+      "sha256": "f23873795123fbd65c64c6f0ad12b1d4a29688241abb2200067a3b3285d27e0e"
+    },
+    {
+      "name": "out.png",
+      "bytes": 95990,
+      "sha256": "a5eb6d58b78fd4833999a2147a015f96a88827c6d3c9a0aeab15034b0f43493c"
+    },
+    {
+      "name": "page.html",
+      "bytes": 11775,
+      "sha256": "72686c63aaec85e3d7e92d39ad84ba4a6b6799b7c527eca082b7fd840ae1540b"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 27230,
+      "sha256": "f9c8f2036bd95e933eba801922c63b0a9facdf9c1b6822fcaa463e43d605f901"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 680,
+      "sha256": "767ba6594ec8897696946ac331ebb1246badd0eaaad6ba027bc57b618ea6e07c"
+    }
+  ]
+}

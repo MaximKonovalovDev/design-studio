@@ -1,0 +1,80 @@
+{
+  "size": {
+    "w": 794,
+    "h": 1123
+  },
+  "sizes": [
+    {
+      "w": 794,
+      "h": 1123,
+      "name": "a4"
+    }
+  ],
+  "tokens": "tokens.css",
+  "image": "out.png",
+  "dir": "rtl",
+  "page": "page.html",
+  "text": [
+    {
+      "label": "title",
+      "fg": "var(--ink)",
+      "bg": "var(--bg)",
+      "min": 4.5
+    },
+    {
+      "label": "body",
+      "fg": "var(--muted)",
+      "bg": "var(--bg)",
+      "min": 4.5
+    },
+    {
+      "label": "number",
+      "fg": "var(--accent-ink)",
+      "bg": "var(--bg)",
+      "min": 4.5
+    },
+    {
+      "label": "card",
+      "fg": "var(--ink)",
+      "bg": "var(--bg-2)",
+      "min": 4.5
+    },
+    {
+      "label": "card-body",
+      "fg": "var(--muted)",
+      "bg": "var(--bg-2)",
+      "min": 4.5
+    },
+    {
+      "label": "chip",
+      "fg": "var(--chip-ink)",
+      "bg": "var(--chip-bg)",
+      "min": 4.5
+    },
+    {
+      "label": "cta",
+      "fg": "var(--on-accent)",
+      "bg": "var(--accent)",
+      "min": 4.5
+    }
+  ],
+  "title_box": [
+    0.065,
+    0.07,
+    0.935,
+    0.13
+  ],
+  "title_px": 62,
+  "title": "נועה רבנל",
+  "order": "O-030",
+  "product": "portfolio:card-a4",
+  "template": "print/portfolio-card",
+  "palette": "clean-professional",
+  "pdf": [
+    {
+      "page": "page.html",
+      "out": "out.pdf",
+      "pages": 1
+    }
+  ]
+}

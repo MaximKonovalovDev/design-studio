@@ -1,0 +1,76 @@
+{
+  "order_id": "O-027",
+  "from_repo": "fp-research",
+  "maker": "design-studio",
+  "product": "page:fp-detect-datasheet",
+  "delivered_utc": "2026-10-04T14:16Z",
+  "source": "design-studio designs/O-027",
+  "landing": "from-design-studio/O-027",
+  "customer": "C:/Users/me/Desktop/fp-research",
+  "delivered": [
+    "12 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing from-design-studio/O-027/ in fp-research"
+  ],
+  "files": [
+    {
+      "name": "ADOPT.md",
+      "bytes": 656,
+      "sha256": "4cab7112edb0b2633c3fdba93b96435d78879eea7821d48ddd1962e46605618f"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 879,
+      "sha256": "bc9b277a78742c57e195d35a20e26e8f2e02e47842db2a9e5458fc941551a2af"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1181,
+      "sha256": "14e4998bf79812dadb9ebb893f3a0861c6fa4a69841de5979f1eca9be26989a9"
+    },
+    {
+      "name": "FACTS.md",
+      "bytes": 2469,
+      "sha256": "a62a054110605c82c8201155198152b445d30e4ffa5fce4d0ef8f24609c3635c"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 866,
+      "sha256": "e86639239e562036b2149fd78f8b59d9192bb9f80bad7bd0d0ea9a3235840359"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1217,
+      "sha256": "87dddf7c0f5f2f3b621f843e828c1066770a288334dbb3acc7e9339cca3be3ac"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2832,
+      "sha256": "6109037d8810b1781642115bfb36b5d66545e1cb37533643c72c9a4f1b760a95"
+    },
+    {
+      "name": "out.pdf",
+      "bytes": 72377,
+      "sha256": "7e23981ae64d985f037e956307488065136782dc8dddad068749f3a8f5bae484"
+    },
+    {
+      "name": "out.png",
+      "bytes": 95088,
+      "sha256": "a089c2b3a985bee356d765644ced44ecd3b8a31f1f1a6eabd6d0dc9114d71377"
+    },
+    {
+      "name": "page.html",
+      "bytes": 11699,
+      "sha256": "7eccd787e86c5e17390ff245b941fa7f308761070378597aaa66592d6aaca91d"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 26371,
+      "sha256": "41f3381077d0ad37e4299e6a863b7581d3806bd4a6f91f9a9e032d33eb20a069"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 680,
+      "sha256": "66d8f88e017e2a98064cc8df1ff40ab87e298d12cae7d1621c3c083b6ee30ae6"
+    }
+  ]
+}

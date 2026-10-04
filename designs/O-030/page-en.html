@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- templates/print/portfolio-card/page.html: one A4 page (794x1123 px at 96 dpi) for a job hunter: name and role line, 4 project cards (title, what it is, one proof number, stack chips), a skills strip and a contact line. The same file serves English ltr and Hebrew rtl: set LANG and DIR. Slots are double-brace UPPER_SNAKE names (defaults in template.json). Colour and type only from tokens.css. Logical CSS only. Print: Edge headless to PDF, one page, real text, no pictures. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noa Ravenel</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { background: var(--bg); font-family: var(--font-body); }
+  body {
+    --rule: color-mix(in srgb, var(--ink) 15%, var(--bg));
+    --rule-a: color-mix(in srgb, var(--on-accent) 45%, var(--accent));
+    --pad: 52px;
+    width: 210mm; height: 297mm; overflow: hidden;
+    background: var(--bg); color: var(--ink);
+    font-size: 13px; line-height: 1.5;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  html[dir="rtl"] body { font-family: var(--font-hebrew), var(--font-body); }
+  bdi { unicode-bidi: isolate; }
+  .page { display: flex; flex-direction: column; width: 210mm; height: 297mm; overflow: hidden; border-block-start: 6px solid var(--accent); }
+  .mono { font-family: var(--font-mono); font-size: 10.5px; line-height: 1.3; letter-spacing: 0.13em; text-transform: uppercase; }
+  .chip { padding-block: 3px; padding-inline: 9px; font-size: 11.5px; line-height: 1.35; font-weight: 600; background: var(--chip-bg); color: var(--chip-ink); border: 1px solid var(--chip-line); border-radius: 4px; }
+  li.chip:has(bdi:empty) { display: none; }
+
+  /* who */
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 24px; min-height: 26px; margin-inline: var(--pad); margin-block-start: 24px; }
+  .kicker { display: flex; align-items: center; gap: 9px; color: var(--accent-ink); font-weight: 700; }
+  .kicker::before { content: ""; flex: none; width: 9px; height: 9px; background: var(--accent); }
+  .status { display: flex; align-items: center; gap: 8px; padding-block: 4px; padding-inline: 11px; font-size: 12px; }
+  .status::before { content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .status:has(bdi:empty) { display: none; }
+  h1 { margin-inline: var(--pad); margin-block-start: 14px; font-family: var(--font-display); font-size: 62px; line-height: 0.98; font-weight: 700; letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
+  .role { max-width: 27em; margin-inline: var(--pad); margin-block-start: 12px; font-size: 21px; line-height: 1.3; font-weight: 600; color: var(--ink); text-wrap: balance; }
+  .intro { max-width: 43em; margin-inline: var(--pad); margin-block-start: 10px; font-size: 13.5px; line-height: 1.55; color: var(--muted); }
+  .intro:has(bdi:empty) { display: none; }
+
+  /* the work: four cards */
+  .work-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-inline: var(--pad); margin-block: 20px 12px; padding-block-start: 11px; border-block-start: 3px solid var(--ink); }
+  .work-head h2 { font-weight: 700; color: var(--ink); }
+  .work-head p { color: var(--muted); }
+  .cards { flex: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 16px; min-height: 0; margin-inline: var(--pad); counter-reset: card; }
+  .card { display: flex; flex-direction: column; min-height: 0; padding-block: 18px; padding-inline: 22px; background: var(--bg-2); counter-increment: card; break-inside: avoid; }
+  .card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .card-top::before { content: counter(card, decimal-leading-zero); flex: none; display: grid; place-items: center; width: 30px; height: 26px; background: var(--accent); color: var(--on-accent); font-family: var(--font-display); font-size: 14px; font-weight: 700; line-height: 1; }
+  .kind { color: var(--muted); text-align: end; }
+  .card h3 { margin-block-start: 12px; font-family: var(--font-display); font-size: 24px; line-height: 1.12; font-weight: 700; letter-spacing: -0.005em; color: var(--ink); text-wrap: balance; }
+  .what { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; margin-block: 6px 10px; font-size: 12.8px; line-height: 1.48; color: var(--muted); }
+  .proof { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 14px; align-items: center; margin-block-start: auto; padding-block: 10px; padding-inline: 14px; background: var(--bg); }
+  .proof-n { font-family: var(--font-display); font-size: 40px; line-height: 1; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--accent-ink); white-space: nowrap; }
+  .proof-l { font-size: 12px; line-height: 1.35; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; }
+  .card .chips { min-height: 25px; margin-block-start: 10px; }
+
+  /* skills and contact */
+  .skills { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 22px; align-items: center; margin-inline: var(--pad); margin-block-start: 14px; padding-block: 12px; border-block: 1px solid var(--rule); }
+  .skills h2 { font-weight: 700; color: var(--ink); }
+  .skills .chips { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .skills .chip { display: grid; place-items: center; padding-block: 5px; padding-inline: 8px; font-size: 12px; line-height: 1.25; text-align: center; }
+  .foot { margin-block-start: 14px; padding-inline: var(--pad); padding-block: 20px 22px; background: var(--accent); color: var(--on-accent); }
+  /* items carry a rule on their start side; the row is pulled 19px past the clip edge, so the first item of every line shows no rule */
+  .foot-clip { overflow: hidden; }
+  .foot-row { display: flex; flex-wrap: wrap; align-items: center; row-gap: 6px; margin-inline-start: -19px; }
+  .foot p { margin-inline-end: 18px; padding-inline-start: 18px; font-size: 14px; line-height: 1.3; font-weight: 600; border-inline-start: 1px solid var(--rule-a); }
+  .foot .mail { font-size: 16px; font-weight: 700; }
+  .foot p:has(bdi:empty) { display: none; }
+
+  /* Hebrew and other rtl scripts: body face for headings and labels, no caps tracking; numerals keep the display face */
+  html[dir="rtl"] :is(h1, .card h3, .mono) { font-family: inherit; letter-spacing: 0; }
+  html[dir="rtl"] .mono { font-size: 11.5px; }
+  html[dir="rtl"] h1 { line-height: 1.1; }
+
+  @media print { html, body { background: var(--bg); } }
+</style>
+</head>
+<body data-oid="card.page">
+<main class="page">
+  <div class="top">
+    <p class="kicker mono"><bdi data-slot="KICKER">Portfolio</bdi></p>
+    <p class="status chip"><bdi data-slot="STATUS">Open to remote roles</bdi></p>
+  </div>
+  <h1 data-oid="card.title"><bdi data-slot="TITLE">Noa Ravenel</bdi></h1>
+  <p class="role" data-oid="card.role"><bdi data-slot="ROLE">Automation engineer. I build tools that check their own work.</bdi></p>
+  <p class="intro"><bdi data-slot="INTRO">Four projects from the last three years. Each one ships with tests and one number you can verify.</bdi></p>
+
+  <div class="work-head mono">
+    <h2><bdi data-slot="WORK_HEADING">Selected work</bdi></h2>
+    <p><bdi data-slot="WORK_META">2023 to 2026</bdi></p>
+  </div>
+  <section class="cards">
+    <article class="card">
+      <div class="card-top"><p class="kind mono"><bdi data-slot="PROJECT_1_KIND">Command-line tool</bdi></p></div>
+      <h3><bdi data-slot="PROJECT_1_TITLE">Ledger Lint</bdi></h3>
+      <p class="what"><bdi data-slot="PROJECT_1_WHAT">Finds mismatched totals in exported invoices before they reach the accountant. Runs on a folder and prints the rows that do not add up.</bdi></p>
+      <div class="proof"><p class="proof-n"><bdi data-slot="PROJECT_1_PROOF_VALUE">412</bdi></p><p class="proof-l"><bdi data-slot="PROJECT_1_PROOF_LABEL">tests, all passing on every commit</bdi></p></div>
+      <ul class="chips"><li class="chip"><bdi data-slot="PROJECT_1_CHIP_1">TypeScript</bdi></li><li class="chip"><bdi data-slot="PROJECT_1_CHIP_2">Node.js</bdi></li><li class="chip"><bdi data-slot="PROJECT_1_CHIP_3">SQLite</bdi></li></ul>
+    </article>
+    <article class="card">
+      <div class="card-top"><p class="kind mono"><bdi data-slot="PROJECT_2_KIND">Web app</bdi></p></div>
+      <h3><bdi data-slot="PROJECT_2_TITLE">Shift Board</bdi></h3>
+      <p class="what"><bdi data-slot="PROJECT_2_WHAT">A scheduling page for a 30-person clinic. Swaps are approved in one tap and written to the shared calendar.</bdi></p>
+      <div class="proof"><p class="proof-n"><bdi data-slot="PROJECT_2_PROOF_VALUE">1.8 s</bdi></p><p class="proof-l"><bdi data-slot="PROJECT_2_PROOF_LABEL">to a usable screen on a mid-range phone</bdi></p></div>
+      <ul class="chips"><li class="chip"><bdi data-slot="PROJECT_2_CHIP_1">React</bdi></li><li class="chip"><bdi data-slot="PROJECT_2_CHIP_2">PWA</bdi></li><li class="chip"><bdi data-slot="PROJECT_2_CHIP_3">Postgres</bdi></li></ul>
+    </article>
+    <article class="card">
+      <div class="card-top"><p class="kind mono"><bdi data-slot="PROJECT_3_KIND">Data pipeline</bdi></p></div>
+      <h3><bdi data-slot="PROJECT_3_TITLE">Quiet Alerts</bdi></h3>
+      <p class="what"><bdi data-slot="PROJECT_3_WHAT">Turns a day of noisy server logs into one summary with the three lines that matter, sent every morning.</bdi></p>
+      <div class="proof"><p class="proof-n"><bdi data-slot="PROJECT_3_PROOF_VALUE">96%</bdi></p><p class="proof-l"><bdi data-slot="PROJECT_3_PROOF_LABEL">fewer alerts in a 30-day side-by-side test</bdi></p></div>
+      <ul class="chips"><li class="chip"><bdi data-slot="PROJECT_3_CHIP_1">Python</bdi></li><li class="chip"><bdi data-slot="PROJECT_3_CHIP_2">Regex</bdi></li><li class="chip"><bdi data-slot="PROJECT_3_CHIP_3">Cron</bdi></li></ul>
+    </article>
+    <article class="card">
+      <div class="card-top"><p class="kind mono"><bdi data-slot="PROJECT_4_KIND">Template kit</bdi></p></div>
+      <h3><bdi data-slot="PROJECT_4_TITLE">Right-to-Left PDF Kit</bdi></h3>
+      <p class="what"><bdi data-slot="PROJECT_4_WHAT">Invoices and letters in Hebrew from plain HTML, with real selectable text and page breaks that hold.</bdi></p>
+      <div class="proof"><p class="proof-n"><bdi data-slot="PROJECT_4_PROOF_VALUE">14</bdi></p><p class="proof-l"><bdi data-slot="PROJECT_4_PROOF_LABEL">templates, each with its own print test</bdi></p></div>
+      <ul class="chips"><li class="chip"><bdi data-slot="PROJECT_4_CHIP_1">HTML</bdi></li><li class="chip"><bdi data-slot="PROJECT_4_CHIP_2">Print CSS</bdi></li><li class="chip"><bdi data-slot="PROJECT_4_CHIP_3">Hebrew</bdi></li></ul>
+    </article>
+  </section>
+
+  <section class="skills">
+    <h2 class="mono"><bdi data-slot="SKILLS_HEADING">Skills</bdi></h2>
+    <ul class="chips"><li class="chip"><bdi data-slot="SKILL_1">TypeScript</bdi></li><li class="chip"><bdi data-slot="SKILL_2">Python</bdi></li><li class="chip"><bdi data-slot="SKILL_3">SQL</bdi></li><li class="chip"><bdi data-slot="SKILL_4">Test design</bdi></li><li class="chip"><bdi data-slot="SKILL_5">Print CSS</bdi></li><li class="chip"><bdi data-slot="SKILL_6">Automation</bdi></li><li class="chip"><bdi data-slot="SKILL_7">Hebrew and English</bdi></li><li class="chip"><bdi data-slot="SKILL_8">Technical writing</bdi></li></ul>
+  </section>
+
+  <footer class="foot cta" data-oid="card.cta">
+    <div class="foot-clip"><div class="foot-row">
+      <p class="mail"><bdi data-slot="CONTACT_EMAIL">noa@ravenel.example</bdi></p>
+      <p><bdi data-slot="CONTACT_PHONE">050-555-0100</bdi></p>
+      <p><bdi data-slot="CONTACT_LINK">ravenel.example/work</bdi></p>
+      <p><bdi data-slot="CONTACT_PLACE">Remote, UTC+2</bdi></p>
+    </div></div>
+  </footer>
+</main>
+</body>
+</html>
