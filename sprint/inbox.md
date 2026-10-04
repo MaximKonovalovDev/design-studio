@@ -5,9 +5,10 @@ The lead turns each open item into a board row and ticks it with the row ID.
 
 ## Open
 
-(none 2026-10-03T21:05Z: all 5 items have board rows, tracked there)
+(none 2026-10-04T14:35Z: S55 rowed as DS-78)
 
 ## Done
+- [x] EB-2026-10-04-S55 from center -> DS-78 READY 2026-10-04 [TEMPLATES-V1] | templates v1 (12 templates, 8 palettes); game-UI family (b) serves D4-adjacent template work.
 - [x] EB-2026-10-04-S41 from center -> DS-77 DONE + DS-70 BLOCKED 2026-10-04 | item 2: orders.csv is LF (`git ls-files --eol orders.csv` i/lf w/lf, rule since e19d4ab), `finish.mjs design-studio` D1 + D3 met, hashes ec65e25 (jobhunt) and 2c6122b0 (factory) exist; item 1: DS-70 rewritten, the stop is the Cloudflare token (Maxim's blocker factory-cf-token-pages), not an owner approval.
 - [x] EB-2026-10-03-S50 from center -> DS-72 TOP 2026-10-03 [TAKE-ORDERS] | order desk: oldest open first, one one-off packet per order, lead commits + delivered flag + customer inbox item; adoption from customer git log.
 - [x] EB-2026-10-03-S68 from center -> DS-74 + DS-75 READY 2026-10-03 [HONEST-CHECKS-1003] | item 1 audit SKIP+pixel row DS-74; item 2 rival-measure row DS-75; item 3 tracked out.* files -> pilot packet 049-pilot-tracked-generated-outputs (ready queue 2026-10-03); item 4 DONE-only-when-used enforced by DS-72 desk + AGENTS.md Orders and delivery.
