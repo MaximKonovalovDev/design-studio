@@ -12,7 +12,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 export const HEADER = "order_id,from_repo,product,brief,status,delivered_path,adopted,date,adopted_commit";
 export const STATUSES = ["open", "building", "delivered", "adopted", "rejected"];
-export const REPOS = ["factory", "marketing-studio", "jobhunt", "engine2040", "forge", "center", "fp-research"];
+export const REPOS = ["factory", "marketing-studio", "jobhunt", "engine2040", "forge", "center", "fp-research", "skillworks"];
 const PRODUCT = /^(cover:(itch|gumroad)\/[a-z0-9-]+|post-visual:[a-z0-9-]+|cv-layout:[a-z0-9-]+|game-ui:[a-z0-9-]+|site-look:[a-z0-9-]+|page:[a-z0-9-]+|portfolio:[a-z0-9-]+|short-frame:[a-z0-9-]+|thumbnail:[a-z0-9-]+|order:[a-z0-9-]+)$/;
 const HASH = /^[0-9a-f]{7,40}$/;
 const SCOREBOARD = process.env.FACTORY_SCOREBOARD || "C:/Users/me/Desktop/autonomous-factory/board/scoreboard.json";
@@ -102,6 +102,7 @@ export const LANES = {
   engine2040: "game",
   forge: "game",
   "fp-research": "lab",
+  skillworks: "store",
 };
 export const laneFor = (repo) => LANES[repo] ?? String(repo);
 const IMG = /\.(png|jpe?g|webp|gif|svg)$/i;
