@@ -1,23 +1,21 @@
-# design-studio handoff - round 61 (token be4c)
+# design-studio handoff - round 62 (token 38fa)
 
-Round: 61
-Written: 2026-10-04T09:21Z by lead (token be4c, lock released).
-Knobs: width 3, heavy_max 3, paid_mode 0 (unchanged).
+Round: 62
+Written: 2026-10-04T11:22Z by lead (token 38fa, lock held).
+Resume: halt file already gone on GO from popper; lock retaken (no valid lock). Width knob now 2 (owner 09:56Z).
+Knobs: width 2, heavy_max 3, paid_mode 0.
 
 ## Heading
-- D1 MOVED 0/5 -> 2/5 bars (D1 met 2 lines, D3 met 1 line): orders.csv 27 CR bytes stripped to 0, `$`-anchored FINISH regexes read again. Both adopted hashes real (ec65e25 jobhunt, 2c6122b0 factory, verified live). Lock-in commit waits on 006 chain review.
+- D2 NOT moved (4/5 adopted: O-006, O-007, O-010, O-015): the 5th adoption is customer-side and no batch here can make it. Lever: DLV-O-024 READY (deliverer) + O-026 now judged PASS. Finish 2/5 (D1, D3 met).
 
 ## Done
-- Center FAIL -> clearing packet: 3 arsenal FAILs were already cleared by 005 in 654d882 (arsenal 12/12 re-verified this round); center's 30m-ago run predates that push. Nothing new to write.
-- 006 builder DONE (DS-77 DOING): CR 0, ORDERS PASS 26, finish D1+D3 met, sprint 21/21. Uncommitted, awaits chain review.
-- Toolsmith DONE (NEED-07 DONE in needs.md): 0b `--built`/`--verdict` landed in tools/orders-check.mjs + tests (17/17); lead-reran BUILT PASS O-024 16/16, ORDERS PASS, sprint PASS. Uncommitted, awaits chain review; DLV rows can now form.
-- O-026 review BLOCKED by same-batch race (0b landed in this batch, after the judge ran): folder kept, re-review next loop through `--built`/`--verdict`.
-- No commits of crew work this round: nothing holds a judge PASS yet (006, 0b, O-026 all pending chain review).
+- 006 builder NOOP (verify-only): orders.csv already LF (CR 0, committed during halt); all 4 adopted hashes verify; ORDERS PASS; finish D1 4 lines, D3 2 lines; sprint 21/21. Nothing to commit.
+- O-026 judge PASS through 0b (BEATS 28.0 vs ~26px, PICTURE yes, FACTS yes, FIT yes, LANE yes); lead-reran BUILT PASS 16/16. Commit: designs/O-026/VERDICT.md below.
+- Halt-pause accounting: 03d5978 closed S41 (DS-77 DONE, DS-70 now BLOCKED on the Cloudflare token), delivered O-025, recorded O-006/O-007 adoptions; inbox 0 open. Keeper's "1 open" is stale.
 
 ## Blockers and notes
-- HALT: `sprint/halt` (Maxim via Loop Boss 09:19Z): finish round, handoff, stop. Lock released. Resume removes the file.
-- Inbox: 0 open (S41 closed 2026-10-04: DS-77 DONE, DS-70 BLOCKED on the Cloudflare token, not an owner row). JDG-O-024/O-025 BLOCKEDs stand (re-judge via 0b on resume). O-025 was copied to skillworks by hand 2026-10-04 (audit PASS, judge SHIP 10/10, --built PASS, eye check; the keeper chain has not run on it).
-- Left dirty: orders.csv LF bytes, 0b files + O-024 VERDICT.md, O-026 folder, EYE/lane/needs outputs, gifcap set, repomap.md, keeper queue files.
+- O-024/O-025 verdicts predate 0b (worker self-PASS only); DLV-O-024 formed off the command-written VERDICT. Re-judge via --verdict on resume if the keeper wants it airtight.
+- Left dirty, not mine: repomap.md, knobs/plugin loop files, template lanes + tools/template.mjs, gifcap set, EYE outputs, consumed ready deletions, keeper review files.
 
-## Next (on resume)
-- Keeper: 006 review (commit orders.csv, close DS-77 + S41 item 2), 0b review (commit tool, re-review O-024/O-025/O-026 through it), then DLV rows for judged folders. Lead commits judged PASS only.
+## Next
+- Keeper: deliverer DLV-O-024, toolsmith NEED-08, eye sweep, BLD next oldest open (O-024/O-025 at judge). Lead commits judged PASS only.
