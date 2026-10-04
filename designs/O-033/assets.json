@@ -1,0 +1,12 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/shot.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/skill-pack/fleet-pack/preview/screenshot-pairs.png",
+      "what": "the customer's own picture screenshot-pairs.png",
+      "bytes": 75954,
+      "sha256": "ab6d679ee5c079ce2ff034004293552f11977321791a0f51274b1b26c900cb7c"
+    }
+  ]
+}
