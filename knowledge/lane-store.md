@@ -9,3 +9,4 @@ O-036: sheet-fan kraft, 2 real shots, 12-pains stamp; PASS SHIP 10/10.
 O-037: sheet-fan clean, 2 real shots; beat factory 16 to 14px; PASS SHIP 10/10.
 O-044: sheet-fan clean, 3 real pages, 25-pages stamp; title read at 256; PASS SHIP 10/10.
 O-043: app-window clean, 1 real report shot; light beat dark 17.6 to ~7px; $19 badge; PASS SHIP 10/10.
+O-045: app-window clean, 1 real matrix shot; quote $ in pwsh SLOTs or badge empties; light beat dark factory; PASS SHIP 10/10.
