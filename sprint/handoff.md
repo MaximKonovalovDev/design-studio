@@ -1,9 +1,9 @@
-# design-studio handoff - round 139 (token 303a)
+# design-studio handoff - round 140 (token 303a)
 
-Round: 139
-Written: 2026-10-05T15:59Z by lead (token 303a, held since 15:42Z).
+Round: 140
+Written: 2026-10-05T16:01Z by lead (token 303a, held since 15:42Z).
 Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground.
-Batch: keeper re-sent 061-review + 062-review (batch.md stale 15:46Z, sixth identical send). NOT re-dispatched: both genuinely PASS in r134, last scoped commit 1544003, tree unchanged.
+Batch: keeper re-sent 061-review + 062-review (batch.md stale 15:46Z, seventh identical send). NOT re-dispatched: both genuinely PASS in r134, last scoped commit 1544003, tree unchanged.
 
 ## Heading
 - Standing verdicts 061 PASS + 062 PASS hold. No movement.
@@ -19,7 +19,7 @@ Batch: keeper re-sent 061-review + 062-review (batch.md stale 15:46Z, sixth iden
 - Lowest bar D5 (19/56 listings adopted) not moved: 0 open factory-cover orders, desk eye-only, eye seat never batched. Adoption is customers' move.
 
 ## Blockers and notes
-- Repeat pattern 8 rounds: batch.md frozen 15:46Z (r137 PROPOSAL for a freshness gate stands, awaiting center).
+- Repeat pattern 9 rounds: batch.md frozen 15:46Z (r137 PROPOSAL for a freshness gate stands, awaiting center).
 - Left dirty, not mine: sample audits, knobs.json, sprint/halt deletion (absent), brief-gate.json strays, queue lifecycle files, ready/ cards.
 - Failed-list 012-bld-o036-store-review is history (O-036 adopted), not rewritten.
 
