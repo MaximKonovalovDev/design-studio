@@ -1,30 +1,31 @@
-# design-studio handoff - round 156 (token 0727)
+# design-studio handoff - round 157 (token 0727) FINAL
 
-Round: 156
-Written: 2026-10-05T22:52Z by lead (token 0727, held since 22:12Z).
-Knobs: width 2, heavy_max 3, paid_mode 1, dispatch foreground (re-read this round per keeper; paid_mode already 1 since 18:57Z).
-Batch: keeper named 063/064 (DS-80 token floor, DONE since 66efd64/DS-80-DONE): overrode toward D5 — judge O-044 (chain review, tops batch per /sprint) + maker-store -> O-043 (oldest open). Both DONE.
+Round: 157
+Written: 2026-10-05T23:05Z by lead (token 0727, held since 22:12Z).
+LOOP STOP: halt file (owner halt 22:48Z: finish the round, write handoff, stop). Lock released with this commit.
+Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground (Loop Boss 22:38Z flip applied; helpers ran base roles).
+Batch: keeper named 063/064 (DS-80 DONE, moves nothing): `packet: deliver-customer` held (no unclaimed ready work); sent full-text delivery O-044 + full-text judge O-043 instead. Both DONE.
 
 ## Heading
-- Thumbnail readability + D5: O-044 VERDICT PASS committed (983c2c7); DLV row formed for delivery next.
-- O-043 built BUILT PASS 16/16, SHIP 10/10, beats factory 17.6px vs ~7px; review next.
-- ROUND real yes (built 36, judged 16, delivered 15, adopted 30, tools 16, unjudged-oldest O-043, in-flight 20).
+- D5 moves: O-044 DELIVERED to factory showroom (26 files, CHECK PASS 26/26), factory commit 5b884cf7 pushed, inbox EB-2026-10-06-S3 sent.
+- O-043 VERDICT PASS committed (2eb56a9); O-044 delivery committed (9cc350e).
+- ROUND real yes (built 37, judged 17, delivered 16, adopted 30, tools 16, unjudged-oldest O-045, in-flight 19).
 
 ## Done
-- O-044: judge PASS (five checks green, verdict tool wrote VERDICT.md) -> committed designs/O-044 + lane-store line, 983c2c7.
-- O-043 (AEO GEO Audit cover): maker DONE, honest $19 badge (theirs stale $29), 1 real shot. NOT committed: review pending.
+- O-044: deliver DONE -> lead verified --check 26/26 -> committed designs/O-044 + orders.csv (9cc350e) + factory folder (5b884cf7) + inbox line. First D5-batch cover inside factory.
+- O-043: judge PASS (five green) -> committed designs/O-043 + lane lines (2eb56a9). DLV row next.
+- O-045: maker DONE BUILT PASS 16/16, SHIP 10/10 (17.6px vs ~7px). Review next (keeper packet pending).
 
 ## Proofs
-- sprint/check RESULT PASS 21/0/0; --built O-044 re-verified + VERDICT.md PASS read by lead; --desk build 18|judge 1|deliver 1|eye 1; --round --save this round.
+- sprint/check RESULT PASS 21/0/0; --built O-043 + VERDICT PASS read; --deliver O-044 --check 26/26 re-run; ORDERS PASS 65; --desk build 17|judge 2|deliver 0|eye 1; --round --save.
 
 ## D5 why-not
-- Bar moves only on adoption: 19 open covers in flight, O-044 first of the batch near delivery. Factory adoption is customers' move.
+- Bar moves only on adoption: 1 of 20 delivered into factory, 0 adopted yet. Factory's move (EB-2026-10-06-S3 names the change).
 
 ## Blockers and notes
-- Failed one-offs 061/062/012: nothing to rewrite (O-040/O-041 judged PASS r154, rows delivered; reviews superseded).
-- Wart: designs/O-044/.cache/ rode along in 983c2c7; exclude .cache from design commits next time.
-- Left dirty: orders.csv (+33 rows, O-053..055 delivered unjudged), covers/, HANDOFF-ADOPT.md, EYE.md notes, warden files.
-- Stale ready/: 063/064/065/067 DS-80 slices (all landed) — keeper to retire to done/.
+- Keeper mechanics stuck: `packet: <seat>` holds while full-text sends run; O-043/O-045 chain reviews never reached ready/ (only stale maker-store-r1/r2-review); 063/064/065/067 + 061/062/012 need retiring to done/.
+- Wart: .cache/ rode into 2eb56a9 again; exclude from design commits.
+- Left dirty: covers/, HANDOFF-ADOPT.md, EYE.md notes, round.md (my --save), warden files. Halt left in place.
 
-## Next
-- DLV-O-044 deliver + maker-store -> next oldest open after O-043 review; O-043 review tops batch.
+## Next (on resume)
+- DLV-O-043 deliver; judge O-045 (write review packet if keeper has not); maker-store -> O-046 (oldest unbuilt).
