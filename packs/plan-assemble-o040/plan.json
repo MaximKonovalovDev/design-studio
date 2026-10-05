@@ -1,0 +1,41 @@
+{
+  "plan": "plan-assemble-o040/cover",
+  "title": "Engine2040 UI-1 Kit",
+  "brandKit": "../../brand-kits/engine2040-ui1.json",
+  "size": { "w": 1280, "h": 720 },
+  "steps": [
+    {
+      "id": "hero",
+      "kind": "hero",
+      "kicker": "ENGINE2040 UI-1 KIT",
+      "title": "Engine2040 UI-1 Kit",
+      "subtitle": "Main, pause, settings, HUD and inventory as data the engine loads. CC0."
+    },
+    {
+      "id": "contents",
+      "kind": "chips",
+      "items": [
+        "atlas.png + json 27 pieces",
+        "font png + json + ttf",
+        "layout.json 5 screens",
+        "icons 1x 2x"
+      ]
+    },
+    {
+      "id": "spec",
+      "kind": "spec",
+      "heading": "What the engine reads",
+      "lines": [
+        "tokens.json colors equal kits/game-ui/tokens.css",
+        "640x360 reference, atlas scales 2 3 4",
+        "5 screens: hud menu pause settings inventory"
+      ]
+    },
+    {
+      "id": "adopt",
+      "kind": "cta",
+      "label": "How to adopt: DELIVERY.md",
+      "note": "Assembled from plan + brand-kit, rendered by tools/render.mjs."
+    }
+  ]
+}

@@ -7,6 +7,14 @@
   "for": ["forge", "engine2040", "design-studio", "marketing-studio"],
   "donor": "kits/game-ui/hud.html (the kit's bar, icon and pause pieces) and designs/O-023 (640x360 reference, 2x scale, ability slots)",
   "palette": "neon",
+  "export": {
+    "adapter": "convert/export-game.mjs",
+    "sheet": "export-sheet",
+    "png": "export-sheet.png",
+    "pdf": "export-sheet.pdf",
+    "size": { "w": 1920, "h": 1080 },
+    "design": "designs/O-042"
+  },
   "sizes": [
     { "w": 1280, "h": 720, "name": "720p" },
     { "w": 640, "h": 360, "name": "reference-360p" }

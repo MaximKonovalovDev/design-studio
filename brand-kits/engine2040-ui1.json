@@ -1,0 +1,83 @@
+{
+  "id": "engine2040-ui1",
+  "name": "Engine2040 UI-1",
+  "source": "Derived from designs/O-042 (judged-PASS kit sheet): same colors as kits/game-ui/tokens.css and O-042 tokens.css.",
+  "palette": {
+    "paper": "#14161f",
+    "panel": "#1f2333",
+    "ink": "#f4f1e8",
+    "muted": "#a8aec2",
+    "accent": "#ffb325",
+    "on-accent": "#1a1206",
+    "line": "#333a52"
+  },
+  "paletteDark": {
+    "paper": "#0e1017",
+    "panel": "#171a27",
+    "ink": "#ffffff",
+    "muted": "#c3c9dc",
+    "accent": "#ffc95e",
+    "on-accent": "#1a1206",
+    "line": "#4b5478"
+  },
+  "type": {
+    "display": "\"DS Pixel 5x7\", Consolas, monospace",
+    "body": "\"Segoe UI\", system-ui, sans-serif",
+    "hebrew": "\"Heebo\", \"Assistant\", \"Noto Sans Hebrew\", \"Segoe UI\", Arial, sans-serif"
+  },
+  "spacing": {
+    "xs": "8px",
+    "sm": "16px",
+    "md": "24px",
+    "lg": "48px",
+    "xl": "64px"
+  },
+  "voice": {
+    "tone": "Terse and technical, no marketing filler. Names files, counts pieces.",
+    "tagline": "Main, pause, settings, HUD and inventory as data the engine loads. CC0.",
+    "cta": "How to adopt: DELIVERY.md"
+  },
+  "slots": {
+    "heroKicker": "ENGINE2040 UI-1 KIT",
+    "heroTitle": "Engine2040 UI-1 Kit",
+    "heroSub": "Main, pause, settings, HUD and inventory as data the engine loads. CC0.",
+    "ctaLabel": "How to adopt: DELIVERY.md"
+  },
+  "lockup": {
+    "wordmark": "ENGINE2040 UI-1",
+    "stack": "wordmark over tagline, accent rule on top",
+    "css": ".eb-lockup{border-block-start:6px solid var(--accent);color:var(--ink);font-family:var(--font-display)}"
+  },
+  "tokens": {
+    "colors": {
+      "paper": "#14161f",
+      "panel": "#1f2333",
+      "ink": "#f4f1e8",
+      "muted": "#a8aec2",
+      "accent": "#ffb325",
+      "on-accent": "#1a1206",
+      "line": "#333a52"
+    },
+    "colorsDark": {
+      "paper": "#0e1017",
+      "panel": "#171a27",
+      "ink": "#ffffff",
+      "muted": "#c3c9dc",
+      "accent": "#ffc95e",
+      "on-accent": "#1a1206",
+      "line": "#4b5478"
+    },
+    "fonts": {
+      "display": "\"DS Pixel 5x7\", Consolas, monospace",
+      "body": "\"Segoe UI\", system-ui, sans-serif",
+      "hebrew": "\"Heebo\", \"Assistant\", \"Noto Sans Hebrew\", \"Segoe UI\", Arial, sans-serif"
+    },
+    "spacing": {
+      "xs": "8px",
+      "sm": "16px",
+      "md": "24px",
+      "lg": "48px",
+      "xl": "64px"
+    }
+  }
+}
