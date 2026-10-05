@@ -9,3 +9,4 @@
 8. forge textures: `bridge/Media.cs` `TexExts` = png/jpg/jpeg/tga/dds/exr; import verb `Asset.Import` stages `src` -> `Content/*.png`.
 9. forge HUD-specific loader (which file draws HUD sprites): unknown after code read.
 10. Open question: which engine2040 renderer file consumes `emit_quads`, and which forge file owns HUD sprites -> next read before any atlas delivery.
+11. O-042 (2026-10-05): engine2040 + forge repos absent from this PC, so both loaders stay unknown; atlas ships plain PNG+JSON per the dry fallback.

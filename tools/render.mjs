@@ -8,8 +8,9 @@
 // running (Start-Process from a shell renders fine in the same minute). So
 // this module launches Edge through a temp .ps1 (Start-Process -Wait) run by
 // powershell.exe, which node can spawn. No Python, no new dependency.
-import { existsSync, mkdirSync, readFileSync, writeFileSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync, rmSync, appendFileSync } from "node:fs";
 import { mkdtempSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { dirname, resolve, sep } from "node:path";
@@ -162,6 +163,93 @@ export function freeDraftReceipt(base, { model } = {}) {
   if (!/:free$/.test(m)) throw new Error("free receipt needs the serving :free model (pin what served, never silent)");
   return { ...base, model: m, draftOnly: true, terms: FREE_TERMS_NOTE };
 }
+// O-038 render history + never-overwrite gate (ideas from
+// nexu-io/html-anything@553ed98c283f9c0f489902d035416a972d6a9699 Apache-2.0,
+// read live via gh api, 0 lines copied):
+// - next/src/lib/history/db.ts putRun/version idea: append-only version log,
+//   never mutates a prior entry; restore-as-new-version -> here a changed
+//   brief re-renders and appends a new entry instead of editing history.
+// - cli/src/index.ts existing-output pre-flight + prompt.ts promptOverwrite
+//   fail-closed idea (default No): refuse to overwrite unless allowed.
+// - cli/src/collision-resolve.ts namespace-instead-of-overwrite idea.
+// Adapted to this repo: node JSONL beside the job (no IDB in a CLI), Edge
+// .ps1 launch path untouched, every existing fail-closed gate stays first.
+// Deliberate delta: donor CLI allows overwrite on non-TTY; here non-TTY
+// REFUSES (fail closed, --force overrides). No prune cap: the packet
+// requires prior entries are never overwritten, so the log only appends.
+export function repoRoot() {
+  return resolve(dirname(fileURLToPath(import.meta.url)), "..");
+}
+export function defaultHistoryPath() {
+  return resolve(repoRoot(), "designs", "job", "history", "render-history.jsonl");
+}
+export function sha256Hex(buf) {
+  return createHash("sha256").update(buf).digest("hex");
+}
+export function briefHashFor(source) {
+  const buf = Buffer.isBuffer(source) ? source : Buffer.from(String(source ?? ""), "utf8");
+  if (!buf.length) throw new Error("brief hash needs source bytes (never silent)");
+  return sha256Hex(buf);
+}
+export function fileSha256(path) {
+  if (!existsSync(path)) return null;
+  return sha256Hex(readFileSync(path));
+}
+// JSONL history: one object per line {date, brief, briefHash, out, sha256,
+// w, h, bytes}. Append-only: this module only ever appends. Bad lines are
+// skipped (fail-open read) so one corrupt line never blocks the gate.
+export function readHistory(historyPath) {
+  const p = historyPath ?? defaultHistoryPath();
+  if (!existsSync(p)) return [];
+  const rows = [];
+  for (const line of String(readFileSync(p, "utf8")).split("\n")) {
+    const s = line.trim();
+    if (!s) continue;
+    try {
+      const e = JSON.parse(s);
+      if (e && typeof e === "object" && e.briefHash && e.out && e.sha256) rows.push(e);
+    } catch { /* skip one bad line, keep the rest */ }
+  }
+  return rows;
+}
+export function lastEntryFor(entries, outAbs) {
+  let last = null;
+  for (const e of entries ?? []) if (resolve(String(e.out)) === outAbs) last = e;
+  return last;
+}
+export function appendHistory(historyPath, entry) {
+  const p = historyPath ?? defaultHistoryPath();
+  for (const k of ["brief", "briefHash", "out", "sha256"]) {
+    if (!entry?.[k]) throw new Error(`history entry needs ${k} (never silent)`);
+  }
+  mkdirSync(dirname(resolve(p)), { recursive: true });
+  const line = JSON.stringify({ date: new Date().toISOString(), ...entry });
+  appendFileSync(p, line + "\n", "utf8");
+  return entry;
+}
+// Never-overwrite gate. Fail closed with the reason:
+// - no existing output -> render.
+// - existing + last entry same briefHash + same sha -> skip (up to date).
+// - existing + last entry older briefHash -> render (brief changed).
+// - existing + no entry (foreign file) or sha mismatch -> refuse.
+export function gateOverwrite({ outPath, briefHash, historyPath } = {}) {
+  if (!briefHash) throw new Error("gate needs the brief hash (never silent)");
+  const out = resolve(outPath);
+  if (!existsSync(out)) return { action: "render", reason: "no existing output; rendering" };
+  const last = lastEntryFor(readHistory(historyPath ?? defaultHistoryPath()), out);
+  const short = (h) => String(h).slice(0, 12);
+  if (!last) {
+    return { action: "refuse", reason: `refusing to overwrite existing output with no history entry (foreign file): ${out} (pass --force to overwrite)` };
+  }
+  if (last.briefHash !== briefHash) {
+    return { action: "render", reason: `brief changed ${short(last.briefHash)} -> ${short(briefHash)}; re-rendering` };
+  }
+  const cur = fileSha256(out);
+  if (cur && cur === last.sha256) {
+    return { action: "skip", reason: `up to date (brief ${short(briefHash)}, sha ${short(cur)}); not re-rendering` };
+  }
+  return { action: "refuse", reason: `refusing to overwrite ${out}: on-disk sha ${short(cur ?? "?")} != history sha ${short(last.sha256)} (changed outside history; pass --force to overwrite)` };
+}
 // DS-21+DS-30 self-check: good preview/stream/refine PASS, bad fixtures FAIL
 // as expected (F2P proven inside a green suite, like audit --sizes/--rtl).
 export function renderSelfCheck() {
@@ -214,14 +302,61 @@ export function renderSelfCheck() {
     const rc = freeDraftReceipt({ url: "https://x.local/h", date: "2026-10-03", rev: "abc1234" }, { model: "meta-llama/llama-3.2-3b-instruct:free" });
     t("free receipt pins serving :free model (draft-only)", rc.model.endsWith(":free") && rc.draftOnly === true, `${rc.model} draftOnly`);
   } catch (e) { t("free receipt pins serving :free model (draft-only)", false, String(e.message || e)); }
+  // O-038 history + never-overwrite gates (no browser needed).
+  {
+    const dir = mkdtempSync(`${tmpdir()}${sep}ds-hist-`);
+    const hp = `${dir}${sep}render-history.jsonl`;
+    const briefA = "<html><body><h1>A</h1></body></html>";
+    const briefB = "<html><body><h1>B</h1></body></html>";
+    const hA = briefHashFor(briefA);
+    const hB = briefHashFor(briefB);
+    const out = `${dir}${sep}out.png`;
+    const fakePng = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==", "base64");
+    try {
+      const g0 = gateOverwrite({ outPath: out, briefHash: hA, historyPath: hp });
+      t("history gate renders when no output exists", g0.action === "render", g0.reason.slice(0, 60));
+      writeFileSync(out, fakePng);
+      const gForeign = gateOverwrite({ outPath: out, briefHash: hA, historyPath: hp });
+      t("history gate refuses foreign file (fail closed)", gForeign.action === "refuse", gForeign.reason.slice(0, 60));
+      appendHistory(hp, { brief: `${dir}${sep}page.html`, briefHash: hA, out, sha256: fileSha256(out), w: 1, h: 1, bytes: fakePng.length });
+      const gSame1 = gateOverwrite({ outPath: out, briefHash: hA, historyPath: hp });
+      const n1 = readHistory(hp).length;
+      const gSame2 = gateOverwrite({ outPath: out, briefHash: hA, historyPath: hp });
+      t("history same brief twice keeps one entry (skip)", gSame1.action === "skip" && gSame2.action === "skip" && n1 === 1, `${gSame1.reason.slice(0, 50)} entries=${n1}`);
+      const gChanged = gateOverwrite({ outPath: out, briefHash: hB, historyPath: hp });
+      t("history changed brief re-renders", gChanged.action === "render", gChanged.reason.slice(0, 60));
+      writeFileSync(out, Buffer.from([...fakePng, 0x00]));
+      const gTampered = gateOverwrite({ outPath: out, briefHash: hA, historyPath: hp });
+      t("history tampered file refuses (fail closed)", gTampered.action === "refuse", gTampered.reason.slice(0, 60));
+    } catch (e) { t("history + never-overwrite fixtures", false, String(e.message || e)); }
+  }
   const pass = results.every((r) => r.pass);
-  console.log(pass ? "RENDER PASS: refine + measured preview + 3-chunk stream green" : `RENDER FAIL: ${results.filter((r) => !r.pass).length} failing check(s)`);
+  console.log(pass ? "RENDER PASS: refine + measured preview + 3-chunk stream + history/never-overwrite green" : `RENDER FAIL: ${results.filter((r) => !r.pass).length} failing check(s)`);
   return { pass, results };
 }
 
 const psq = (s) => `'${String(s).replace(/'/g, "''")}'`;
 
-export function render(htmlPath, outPath, size = { w: 1280, h: 720 }, { minBytes = 4096 } = {}) {
+export function render(htmlPath, outPath, size = { w: 1280, h: 720 }, { minBytes = 4096, history = true, force = false, historyPath } = {}) {
+  // O-038: brief hash + never-overwrite gate run BEFORE any browser launch
+  // (fail closed with the reason; --force overrides a refuse, never a skip
+  // unless the brief changed... force renders regardless).
+  const html = resolve(htmlPath);
+  if (!existsSync(html)) throw new Error(`page missing: ${htmlPath}`);
+  const briefHash = briefHashFor(readFileSync(html));
+  const out = resolve(outPath);
+  const histPath = historyPath ?? defaultHistoryPath();
+  if (history) {
+    const gate = gateOverwrite({ outPath: out, briefHash, historyPath: histPath });
+    if (gate.action === "refuse" && !force) throw new Error(gate.reason);
+    if (gate.action === "skip" && !force) {
+      const buf = readFileSync(out);
+      const dims = pngDims(buf);
+      console.log(`RENDER SKIP ${out}: ${gate.reason}`);
+      return { out, w: dims.w, h: dims.h, bytes: buf.length, skipped: true, reason: gate.reason };
+    }
+    if (gate.action !== "skip") console.log(`HISTORY gate: ${gate.reason}`);
+  }
   const browser = findBrowser();
   if (!browser) {
     throw new Error("no Edge, Chrome or Chromium found: set BROWSER_BIN (never fake the output)");
@@ -229,9 +364,6 @@ export function render(htmlPath, outPath, size = { w: 1280, h: 720 }, { minBytes
   if (!existsSync(POWERSHELL)) {
     throw new Error("powershell.exe missing: cannot launch the browser on this PC");
   }
-  const html = resolve(htmlPath);
-  if (!existsSync(html)) throw new Error(`page missing: ${htmlPath}`);
-  const out = resolve(outPath);
   mkdirSync(dirname(out), { recursive: true });
   const profile = mkdtempSync(`${tmpdir()}${sep}ds-render-`);
   const url = pathToFileURL(html).href;
@@ -282,7 +414,13 @@ export function render(htmlPath, outPath, size = { w: 1280, h: 720 }, { minBytes
   if (buf.length < minBytes) {
     throw new Error(`render suspiciously small (${buf.length}B): the page likely did not render`);
   }
-  return { out, w: dims.w, h: dims.h, bytes: buf.length };
+  // O-038: append-only history entry (brief hash -> out.png sha256 + date).
+  // Appends only; a prior entry is never edited or removed by this module.
+  if (history) {
+    appendHistory(histPath, { brief: html, briefHash, out, sha256: sha256Hex(buf), w: dims.w, h: dims.h, bytes: buf.length });
+    console.log(`HISTORY ${histPath}: brief ${briefHash.slice(0, 12)} -> ${out} sha ${sha256Hex(buf).slice(0, 12)}`);
+  }
+  return { out, w: dims.w, h: dims.h, bytes: buf.length, briefHash };
 }
 
 // PDF through the same Edge launch: real text layer (Edge prints text as text), page size and margins from the page's own @page.
@@ -337,7 +475,9 @@ if (isMain) {
     process.exit(0);
   }
   if (args.length < 2 || args.includes("-h") || args.includes("--help")) {
-    console.log("usage: node tools/render.mjs <page.html> <out.png> [--size 1280x720] [--sizes] | node tools/render.mjs --pdf <page.html> <out.pdf> | node tools/render.mjs --check");
+    console.log("usage: node tools/render.mjs <page.html> <out.png> [--size 1280x720] [--sizes] [--force] [--no-history] | node tools/render.mjs --pdf <page.html> <out.pdf> | node tools/render.mjs --check");
+    console.log("history: every PNG render appends brief-hash -> sha256 + date to designs/job/history/render-history.jsonl (append-only);");
+    console.log("an existing output is never overwritten unless the brief hash changed (--force overrides a refuse).");
     process.exit(args.length < 2 ? 2 : 0);
   }
   // DS-65 FREE-01 helper: offline draft-shape print (no network, no key read,
@@ -355,11 +495,14 @@ if (isMain) {
     process.exit(0);
   }
   // S01 per-size reflow: --sizes renders the full SIZE_MATRIX beside out.png.
+  // O-038: --force/--no-history pass through to every size render.
+  const force = args.includes("--force");
+  const history = !args.includes("--no-history");
   if (args.includes("--sizes")) {
     let fails = 0;
     for (const size of SIZE_MATRIX) {
       try {
-        const r = render(args[0], outForSize(args[1], size), size);
+        const r = render(args[0], outForSize(args[1], size), size, { force, history });
         console.log(`RENDER OK ${r.out} ${r.w}x${r.h} ${r.bytes}B (${size.name})`);
       } catch (e) {
         console.log(`RENDER FAIL ${args[0]} ${size.w}x${size.h}: ${e.message}`);
@@ -380,8 +523,8 @@ if (isMain) {
     }
   }
   try {
-    const r = render(args[0], args[1], size);
-    console.log(`RENDER OK ${r.out} ${r.w}x${r.h} ${r.bytes}B`);
+    const r = render(args[0], args[1], size, { force, history });
+    console.log(`RENDER OK ${r.out} ${r.w}x${r.h} ${r.bytes}B${r.skipped ? " (skipped: up to date)" : ""}`);
   } catch (e) {
     console.log(`RENDER FAIL ${args[0]}: ${e.message}`);
     process.exit(1);
