@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-04T22:51:49Z",
+  "updated": "2026-10-05T11:55:25Z",
   "knobs": {
-    "width": {"value":1,"min":1,"max":30,"step":1,"why":"helpers in one batch"},
+    "width": {"value":2,"min":1,"max":30,"step":1,"why":"helpers in one batch"},
     "dispatch": {"value":"foreground","why":"owner 2026-09-28: every helper seen live"},
     "heavy_max": {"value":3,"min":1,"max":10,"step":1,"why":"CPU-heavy packets in one batch"},
     "helper_max_min": {"value":90,"min":20,"max":240,"step":10,"why":"a helper past this is stopped so its batch ends"},
@@ -28,6 +28,9 @@
     {"at":"2026-10-04T09:40:05Z","knob":"mcp:arsenal@builder","from":"deny","to":"allow","by":"Maxim (center chat 2026-10-04)"},
     {"at":"2026-10-04T09:56:31Z","knob":"width","from":3,"to":2,"by":"Maxim (Loop Boss)"},
     {"at":"2026-10-04T22:51:21Z","knob":"paid_mode","from":0,"to":1,"by":"Loop Boss"},
-    {"at":"2026-10-04T22:51:49Z","knob":"width","from":2,"to":1,"by":"Maxim (Loop Boss)"}
+    {"at":"2026-10-04T22:51:49Z","knob":"width","from":2,"to":1,"by":"Maxim (Loop Boss)"},
+    {"at":"2026-10-05T07:48:32Z","knob":"width","from":1,"to":2,"by":"Maxim"},
+    {"at":"2026-10-05T08:57:57Z","knob":"paid_mode","from":1,"to":0,"by":"Loop Boss"},
+    {"at":"2026-10-05T11:55:25Z","knob":"paid_mode","from":0,"to":1,"by":"Maxim"}
   ]
 }

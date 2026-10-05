@@ -594,6 +594,40 @@
       ],
       "timeout_s": 300,
       "first_job": "2026-10-04: 27 trial builds of all 12 templates (default palette, neon, Hebrew rtl) in a temp folder"
+    },
+    {
+      "name": "cover-fonts",
+      "does": "embeds OFL woff2 into a cover build: copies latin woff2 from fonts/ per cover.json display/body families (or a per-order fonts.json manifest) into designs/<id>/assets/fonts/ + @font-face into tokens.css; gen --fonts re-seats the block instead of wiping it",
+      "run": [
+        "node",
+        "tools/cover.mjs"
+      ],
+      "args": [
+        {
+          "name": "cmd",
+          "does": "fonts",
+          "required": true
+        },
+        {
+          "name": "order",
+          "does": "order id whose cover embeds fonts, e.g. fonts O-037"
+        },
+        {
+          "name": "with_gen",
+          "does": "re-run gen keeping the faces block, e.g. gen O-037 --fonts",
+          "flag": "--fonts"
+        }
+      ],
+      "test": [
+        "node",
+        "tools/cover.mjs",
+        "--check"
+      ],
+      "for": [
+        "store lane: same pixels in the customer repo, no system-font roulette, no hand @font-face"
+      ],
+      "timeout_s": 120,
+      "first_job": "O-037: 3 woff2 (rubik-latin-700 + inter-latin-400,700) + 3 @font-face in tokens.css, audit PASS on re-render"
     }
   ]
 }

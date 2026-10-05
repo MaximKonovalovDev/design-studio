@@ -1,12 +1,14 @@
 // tools/cover.mjs: build one order folder `designs/<order>/` from its cover.json.
-//   node tools/cover.mjs gen <order>...      cover.json (+ art.html, art.css) -> tokens.css, page.html, brief.json, assets.json, DELIVERY.md; copies assets
+//   node tools/cover.mjs gen <order>... [--fonts]  cover.json (+ art.html, art.css) -> tokens.css, page.html, brief.json, assets.json, DELIVERY.md; copies assets
+//   node tools/cover.mjs fonts <order>...           NEED-14: copy OFL woff2 from fonts/ into <order>/assets/fonts/ + @font-face into tokens.css (gen never wipes the block)
 //   node tools/cover.mjs build <order>...    render every size, thumb-256.png, audit (design-audit.json), judge (DESIGN-REVIEW.md)
 //   node tools/cover.mjs compare <order> [theirs.png]   compare.png: ours vs the asset to beat at 256 and 315 px wide
 //   node tools/cover.mjs all <order>...      gen + build
+//   node tools/cover.mjs --check              COVER PASS self-test (fonts step + O-037 first use on disk)
 // The page is real HTML/CSS (one stage, two layouts: wide above 800 px, card at 800 px and below), colour only
 // from tokens.css, every picture a byte copy of a file from the customer's own product folder (assets.json).
 // No new dependency: Edge headless through tools/render.mjs.
-import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { basename, dirname, isAbsolute, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { tmpdir } from "node:os";
@@ -182,6 +184,174 @@ function assetsJson(spec) {
   };
 }
 
+// NEED-14 fonts step: `gen` used to wipe a hand-embedded @font-face block out of
+// tokens.css, so the lane hand-copied woff2 + hand-wrote @font-face and ran `build`
+// only. `node tools/cover.mjs fonts <id>` (and `gen <id> --fonts`) copies the OFL
+// woff2 from the repo fonts/ shelf (tools/fonts.mjs, our own code first) into
+// <order>/assets/fonts/ and emits the @font-face block into tokens.css; `gen`
+// preserves the block on every later run. Mono stacks stay system Consolas:
+// the shelf carries display/body families only, never a mono.
+const CENTRAL_FONTS_DIR = join(ROOT, "fonts");
+const FACES_MARKER = "/* Embedded OFL fonts (tools/cover.mjs fonts <id>; woff2 bytes in assets/fonts/, no system dependency). */";
+
+export function readCentralFontsManifest() {
+  const f = join(CENTRAL_FONTS_DIR, "fonts.json");
+  if (!existsSync(f)) throw new Error("fonts/fonts.json missing — next: node tools/fonts.mjs add inter --subsets latin");
+  return JSON.parse(read(f));
+}
+
+// First family of a CSS font stack: `Rubik, 'Segoe UI', Arial` -> `Rubik`.
+export function firstFamily(stack) {
+  const m = String(stack ?? "").split(",")[0]?.trim().replace(/^["']|["']$/g, "");
+  return m || "";
+}
+export const slugOf = (family) => String(family ?? "").trim().toLowerCase().replace(/\s+/g, "-");
+const titleCase = (slug) => String(slug).split("-").map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w)).join(" ");
+
+// Which families an order embeds. A per-order manifest wins when present:
+// cover.json `fontsEmbed: { families: [{ slug, weights, subsets }] }` or a
+// designs/<id>/fonts.json `{ families: { <slug>: { files: [...] } } }`.
+// Otherwise: display stack first family at the title weight, body stack first
+// family at 400+700 (same family in both stacks merges the weights).
+export function wantedFontFamilies(spec) {
+  if (Array.isArray(spec.fontsEmbed?.families) && spec.fontsEmbed.families.length) {
+    return spec.fontsEmbed.families.map((f) => ({
+      role: "embed", family: f.family ?? titleCase(f.slug), slug: slugOf(f.slug),
+      weights: [...(f.weights ?? [400, 700])].sort((a, b) => a - b), subsets: [...(f.subsets ?? ["latin"])],
+    }));
+  }
+  const disp = firstFamily(spec.fonts?.display);
+  const body = firstFamily(spec.fonts?.body);
+  const titleW = spec.titleWeight ?? 700;
+  const out = [];
+  if (disp) out.push({ role: "display", family: disp, slug: slugOf(disp), weights: [titleW], subsets: ["latin"] });
+  if (body) {
+    const bs = slugOf(body);
+    const same = out.find((w) => w.slug === bs);
+    if (same) { same.weights = [...new Set([...same.weights, 400, 700])].sort((a, b) => a - b); same.role = "display+body"; }
+    else out.push({ role: "body", family: body, slug: bs, weights: [400, 700], subsets: ["latin"] });
+  }
+  return out;
+}
+
+export function orderFontsManifest(dir) {
+  const f = join(dir, "fonts.json");
+  if (!existsSync(f)) return null;
+  return JSON.parse(read(f));
+}
+
+export function embeddedFontFiles(dir) {
+  const d = join(dir, "assets", "fonts");
+  if (!existsSync(d)) return [];
+  return readdirSync(d).filter((f) => f.endsWith(".woff2")).sort();
+}
+
+// <slug>-<subset>-<weight>-normal.woff2; the slug itself may hold hyphens
+// (frank-ruhl-libre-hebrew-400-normal.woff2).
+export function faceFor(file, central) {
+  const m = String(file).match(/^(.+)-([a-z]+)-(\d+)-normal\.woff2$/);
+  if (!m) throw new Error(`font file name not <slug>-<subset>-<weight>-normal.woff2: ${file}`);
+  const [, slug, , weight] = m;
+  const family = central?.families?.[slug]?.cssFamily ?? titleCase(slug);
+  return `@font-face { font-family: "${family}"; font-style: normal; font-display: swap; font-weight: ${weight}; src: url(assets/fonts/${file}) format("woff2"); }`;
+}
+
+export function facesCss(files, central) {
+  return [FACES_MARKER, ...files.map((f) => faceFor(f, central))].join("\n");
+}
+
+// The faces block gen must never wipe: marker line + following @font-face lines.
+export function extractFaceLines(css) {
+  const lines = String(css).split("\n");
+  const at = lines.findIndex((l) => l.includes("Embedded OFL fonts (tools/cover.mjs fonts"));
+  if (at < 0) return lines.filter((l) => l.startsWith("@font-face "));
+  const out = [];
+  for (let i = at + 1; i < lines.length; i++) {
+    if (lines[i].startsWith("@font-face ")) out.push(lines[i]);
+    else if (lines[i].startsWith(":root") || lines[i].startsWith("/*") || lines[i].trim() === "") break;
+    else break;
+  }
+  return out;
+}
+
+// Refresh the faces block in tokens.css from the woff2 actually on disk
+// (byte-stable: skips the write when nothing changed). Returns face count.
+export function ensureFacesInTokens(dir, files, central) {
+  const t = join(dir, "tokens.css");
+  const css = read(t);
+  const keep = css.split("\n").filter((l) => !l.startsWith("@font-face ") && !l.includes("Embedded OFL fonts"));
+  const at = keep.findIndex((l) => l.startsWith(":root"));
+  const block = facesCss(files, central).split("\n");
+  const next = at < 0 ? [...block, ...keep] : [...keep.slice(0, at), ...block, ...keep.slice(at)];
+  const out = `${next.join("\n").replace(/\n{3,}/g, "\n\n")}${next.join("\n").endsWith("\n") ? "" : "\n"}`;
+  if (out !== css) writeFileSync(t, out, "utf8");
+  return files.length;
+}
+
+export function embedFonts(id) {
+  const spec = loadSpec(id);
+  const central = readCentralFontsManifest();
+  const orderMan = orderFontsManifest(spec.dir);
+  const wanted = orderMan
+    ? Object.entries(orderMan.families ?? {}).map(([slug, e]) => ({ role: "manifest", family: central.families?.[slug]?.cssFamily ?? titleCase(slug), slug, weights: [], subsets: [], files: [...(e.files ?? [])] }))
+    : wantedFontFamilies(spec);
+  if (wanted.length === 0) throw new Error(`${spec.id}: no font families in cover.json fonts stacks — next: set fonts.display/fonts.body`);
+  const dest = join(spec.dir, "assets", "fonts");
+  mkdirSync(dest, { recursive: true });
+  let copied = 0;
+  const missing = [];
+  for (const w of wanted) {
+    const entry = central.families?.[w.slug];
+    if (!entry) { missing.push(w.slug); continue; }
+    const list = w.files?.length
+      ? w.files
+      : entry.files.filter((f) => w.weights.some((wt) => f.includes(`-${wt}-`)) && w.subsets.some((ss) => f.includes(`-${ss}-`)));
+    const files = list.length ? list : entry.files.filter((f) => w.weights.some((wt) => f.includes(`-${wt}-`)));
+    if (!files.length) { missing.push(`${w.slug}: no ${w.subsets.join("+")}/${w.weights.join("+")} woff2`); continue; }
+    for (const f of files) {
+      const src = join(CENTRAL_FONTS_DIR, w.slug, f);
+      if (!existsSync(src)) { missing.push(`${w.slug}/${f}`); continue; }
+      const dst = join(dest, f);
+      if (!existsSync(dst) || statSync(dst).size !== statSync(src).size) { copyFileSync(src, dst); copied++; }
+    }
+  }
+  if (missing.length) throw new Error(`${spec.id}: fonts missing in fonts/: ${missing.join(", ")} — next: node tools/fonts.mjs add ${missing[0].split("/")[0].split(":")[0]}`);
+  const files = embeddedFontFiles(spec.dir);
+  const faces = ensureFacesInTokens(spec.dir, files, central);
+  console.log(`FONTS ${spec.id}: ${files.length} woff2 in assets/fonts/, ${faces} @font-face in tokens.css${copied ? ` (${copied} copied)` : ""}`);
+  return { id: spec.id, copied, files, faces };
+}
+
+export function checkCover() {
+  const results = [];
+  const ok = (name, pass, detail) => results.push({ name, pass, detail });
+  for (const fn of ["gen", "build", "compare", "factsCheck", "verdict", "embedFonts", "wantedFontFamilies", "facesCss", "ensureFacesInTokens", "checkCover"]) {
+    ok(`cover.mjs exports ${fn}`, typeof { gen, build, compare, factsCheck, verdict, embedFonts, wantedFontFamilies, facesCss, ensureFacesInTokens, checkCover }[fn] === "function", "NEED-14 fonts step surface");
+  }
+  let central = null;
+  try {
+    central = readCentralFontsManifest();
+    ok("fonts/fonts.json shelf reachable", (central.families?.inter?.files?.length ?? 0) >= 2 && (central.families?.rubik?.files?.length ?? 0) >= 1, `inter ${central.families?.inter?.files?.length ?? 0} + rubik ${central.families?.rubik?.files?.length ?? 0} files`);
+  } catch (e) { ok("fonts/fonts.json shelf reachable", false, e.message); }
+  const d = join(ROOT, "designs", "O-037");
+  const spec = loadSpec("O-037");
+  const wanted = wantedFontFamilies(spec);
+  ok("O-037 wants Rubik display + Inter body", wanted.some((w) => w.slug === "rubik") && wanted.some((w) => w.slug === "inter"), wanted.map((w) => `${w.slug}:${w.weights.join("/")}`).join(", "));
+  const files = embeddedFontFiles(d);
+  ok("O-037 assets/fonts/ holds the embedded woff2", files.length >= 3 && files.every((f) => existsSync(join(d, "assets", "fonts", f))), files.join(", ") || "empty");
+  const css = existsSync(join(d, "tokens.css")) ? read(join(d, "tokens.css")) : "";
+  const refs = [...css.matchAll(/url\(assets\/fonts\/([^)]+)\)/g)].map((m) => m[1]);
+  ok("every disk woff2 is referenced by tokens.css @font-face", files.length > 0 && files.every((f) => refs.includes(f)), `${refs.length} refs`);
+  ok("no orphan @font-face (every ref exists on disk)", refs.length > 0 && refs.every((f) => files.includes(f)), refs.join(", ") || "no refs");
+  const faces = (css.match(/@font-face \{[^}]*\}/g) ?? []);
+  ok("@font-face blocks carry font-display: swap", faces.length > 0 && faces.every((b) => /font-display:\s*swap/.test(b)), `${faces.filter((b) => /font-display:\s*swap/.test(b)).length}/${faces.length} swap`);
+  ok("gen-safe: faces block carries the fonts-step marker", css.includes("Embedded OFL fonts (tools/cover.mjs fonts"), "marker present");
+  const regen = `${tokensCss(spec).split("\n").filter((l) => !l.startsWith("@font-face ")).join("\n")}`;
+  ok("gen tokensCss() holds no faces (embed step owns them)", !regen.includes("@font-face"), "no @font-face in generated body");
+  const pass = results.every((r) => r.pass);
+  return { pass, results };
+}
+
 function deliveryMd(spec) {
   const land = `${spec.landing}`;
   if (spec.deliveryLines) return `# DELIVERY ${spec.id}: ${spec.product} for ${spec.from_repo}\n${spec.deliveryLines.map((l, i) => `${i + 1}. ${l}`).join("\n")}\n`;
@@ -218,7 +388,7 @@ function renderHtmlAsset(a, dst) {
   render(f, dst, { w: Math.round(c.w * z), h: Math.round(c.h * z) }, { minBytes: 512 });
 }
 
-export function gen(id) {
+export function gen(id, opts = {}) {
   const spec = loadSpec(id);
   mkdirSync(join(spec.dir, "assets"), { recursive: true });
   for (const a of spec.assets ?? []) {
@@ -233,6 +403,16 @@ export function gen(id) {
     else if (!existsSync(dst) || statSync(dst).size !== statSync(a.src).size) copyFileSync(a.src, dst);
   }
   if (!spec.ownTokens) writeFileSync(join(spec.dir, "tokens.css"), tokensCss(spec), "utf8");
+  // NEED-14: gen never wipes the embedded-faces block. --fonts (or a per-order
+  // fonts manifest) re-copies from the shelf first; otherwise the faces already
+  // on disk are re-seated into the fresh tokens.css.
+  const fontsDir = join(spec.dir, "assets", "fonts");
+  const hasEmbedded = existsSync(fontsDir) && embeddedFontFiles(spec.dir).length > 0;
+  const wantFonts = Boolean(opts.fonts) || Boolean(spec.fontsEmbed) || existsSync(join(spec.dir, "fonts.json")) || hasEmbedded;
+  if (wantFonts) {
+    if (opts.fonts || spec.fontsEmbed || existsSync(join(spec.dir, "fonts.json"))) embedFonts(id);
+    else ensureFacesInTokens(spec.dir, embeddedFontFiles(spec.dir), readCentralFontsManifest());
+  }
   if (!spec.custom) writeFileSync(join(spec.dir, "page.html"), pageHtml(spec), "utf8");
   writeFileSync(join(spec.dir, "brief.json"), `${JSON.stringify(briefJson(spec), null, 2)}\n`, "utf8");
   writeFileSync(join(spec.dir, "assets.json"), `${JSON.stringify(assetsJson(spec), null, 2)}\n`, "utf8");
@@ -350,12 +530,21 @@ export function verdict(id) {
 const isMain = (() => { try { return fileURLToPath(import.meta.url) === resolve(process.argv[1]); } catch { return false; } })();
 if (isMain) {
   const [cmd, ...rest] = process.argv.slice(2);
-  const ids = rest.filter((x) => !x.endsWith(".png"));
+  const flags = rest.filter((x) => x.startsWith("--"));
+  const ids = rest.filter((x) => !x.startsWith("--") && !x.endsWith(".png"));
   const png = rest.find((x) => x.endsWith(".png"));
+  const withFonts = flags.includes("--fonts");
+  if (cmd === "--check") {
+    const { pass, results } = checkCover();
+    for (const r of results) console.log(`[${r.pass ? "PASS" : "FAIL"}] ${r.name}: ${r.detail}`);
+    console.log(pass ? `COVER PASS: ${results.length} gates green, gen embeds fonts without hand work` : `COVER FAIL: ${results.filter((r) => !r.pass).length} failing check(s)`);
+    process.exit(pass ? 0 : 1);
+  }
   let bad = 0;
   try {
     for (const id of ids) {
-      if (cmd === "gen" || cmd === "all") gen(id);
+      if (cmd === "gen" || cmd === "all") gen(id, { fonts: withFonts });
+      if (cmd === "fonts") embedFonts(id);
       if (cmd === "build" || cmd === "all") { if (!build(id).pass) bad += 1; }
       if (cmd === "compare") compare(id, png);
       if (cmd === "facts") { const f = factsCheck(id); console.log(`FACTS ${id}: ${f.tokens.join(" ")} | missing: ${f.missing.join(" ") || "none"} | forbidden: ${f.forbidden.join(",") || "none"}`); }
@@ -365,8 +554,8 @@ if (isMain) {
     console.log(`COVER FAIL: ${e.message}`);
     process.exit(1);
   }
-  if (!["gen", "build", "all", "compare", "facts", "verdict"].includes(cmd)) {
-    console.log("usage: node tools/cover.mjs gen|build|all|compare|facts|verdict <order>... (designs/<order>/cover.json)");
+  if (!["gen", "build", "all", "compare", "facts", "verdict", "fonts"].includes(cmd)) {
+    console.log("usage: node tools/cover.mjs gen|build|all|compare|facts|verdict|fonts [--fonts] <order>... (designs/<order>/cover.json) | --check");
     process.exit(2);
   }
   process.exit(bad ? 1 : 0);
