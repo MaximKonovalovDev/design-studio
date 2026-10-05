@@ -81,9 +81,10 @@ for a build) and Goal, Scope, Proof and Stop lines, or the keeper refuses it.
    all session, also in the handoff's first line. Another fresh token: stop,
    unless `takeover`. Times from `Get-Date -AsUTC -Format "yyyy-MM-ddTHH:mmZ"`.
 4. `node sprint/check.mjs`: a FAIL is this round's first packet.
-5. `node tools/orders-check.mjs --desk`: refreshes the desk the seats wake on right
-   before the batch, so a new open order never waits on a stale file, and
-   prints `DESK: build n | judge n | failed n | deliver n | eye 1`. A `failed` count above 0 is yours to decide.
+5. `node tools/orders-check.mjs --desk`: refreshes the desk right before the
+    batch and prints `DESK: build n | judge n | failed n | deliver n | eye 1`.
+    All four counts 0 with an empty inbox: no batch, short handoff. A `failed`
+    count above 0 is yours to decide.
 6. `.opencode/knobs.json`: a knob's value wins over any number here. Never edit
    it; propose with a `KNOB PROPOSAL: <knob> <value> because <numbers>` line.
 
