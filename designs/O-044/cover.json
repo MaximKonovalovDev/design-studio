@@ -1,0 +1,79 @@
+{
+  "product": "cover:gumroad/consultant-starter-kit-vol2",
+  "from_repo": "factory",
+  "storeName": "Gumroad",
+  "title": "Consultant Starter Kit Vol 2",
+  "pick": "clean-professional",
+  "template": "covers/sheet-fan",
+  "kicker": "retainer + SOWs + invoices in one print kit",
+  "claim": "25 pages: 1 retainer, 3 SOWs, 5 invoices, 4 trackers, 5 SOPs. Letter + A4, print at 100%.",
+  "chips": [
+    "1 retainer + 3 SOWs",
+    "5 invoice variants",
+    "4 trackers + 5 SOPs",
+    {
+      "t": "25 pages Letter + A4",
+      "wide": true
+    }
+  ],
+  "badge": "$12 one-time",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "Rubik, 'Segoe UI', Arial, sans-serif",
+    "body": "Inter, 'Segoe UI', Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 88,
+  "titlePxCard": 50,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Consultant",
+    "Starter",
+    "Kit Vol 2"
+  ],
+  "titleWrapCard": [
+    "Consultant",
+    "Starter Kit Vol 2"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "sheet-ar": "0.72",
+    "sheet-w": "322px",
+    "sheet-w-card": "188px"
+  },
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/cover.png",
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/listing/Gumroad.md",
+  "landing": "products/niche-business-system/consultant-starter-kit-vol2/covers/from-design-studio/O-044/",
+  "assetsFrom": "the product's own preview/ pages (retainer terms, SOW strategy sprint, retainer billing invoice)",
+  "assets": [
+    {
+      "name": "sheet-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/shot-01.png",
+      "what": "the customer's own picture shot-01.png (Advisory Retainer Terms page)"
+    },
+    {
+      "name": "sheet-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/shot-02.png",
+      "what": "the customer's own picture shot-02.png (SOW Strategy Sprint page)"
+    },
+    {
+      "name": "sheet-3.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/shot-03.png",
+      "what": "the customer's own picture shot-03.png (Invoice Retainer Billing page)"
+    }
+  ]
+}

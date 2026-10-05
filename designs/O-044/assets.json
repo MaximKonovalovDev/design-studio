@@ -1,0 +1,26 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/sheet-1.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/shot-01.png",
+      "what": "the customer's own picture shot-01.png (Advisory Retainer Terms page)",
+      "bytes": 199623,
+      "sha256": "78d93b40bd6fb609e0dedfeb6155e75bdb15c2c88ea033ed9a5ade9532c1d0c2"
+    },
+    {
+      "file": "assets/sheet-2.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/shot-02.png",
+      "what": "the customer's own picture shot-02.png (SOW Strategy Sprint page)",
+      "bytes": 203700,
+      "sha256": "0dcf33f838ffe5736521433fba78b9af86839922d8b74d6c4f8741fa4e3c1d5b"
+    },
+    {
+      "file": "assets/sheet-3.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/shot-03.png",
+      "what": "the customer's own picture shot-03.png (Invoice Retainer Billing page)",
+      "bytes": 129609,
+      "sha256": "0a638bd769bda8e6ac317d7a781c735f17d469c244c31547169db7faa8ded4cc"
+    }
+  ]
+}
