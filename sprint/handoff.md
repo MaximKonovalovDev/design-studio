@@ -1,31 +1,30 @@
-# design-studio handoff - round 155 (token 0727)
+# design-studio handoff - round 156 (token 0727)
 
-Round: 155
-Written: 2026-10-05T22:35Z by lead (token 0727, held since 22:12Z).
-Resume: owner halt lifted (`sprint/halt` deleted in tree, not by me); lock free at start, no takeover needed.
-Knobs: width 2, heavy_max 3, paid_mode 1, dispatch foreground.
-Batch: lead-decided (keeper batch.md stale 18:47Z, re-lists collected 063/064): maker-store -> O-044 + eye-customer -> EYE-2026-10-05. Both DONE.
+Round: 156
+Written: 2026-10-05T22:52Z by lead (token 0727, held since 22:12Z).
+Knobs: width 2, heavy_max 3, paid_mode 1, dispatch foreground (re-read this round per keeper; paid_mode already 1 since 18:57Z).
+Batch: keeper named 063/064 (DS-80 token floor, DONE since 66efd64/DS-80-DONE): overrode toward D5 — judge O-044 (chain review, tops batch per /sprint) + maker-store -> O-043 (oldest open). Both DONE.
 
 ## Heading
-- Thumbnail readability: O-044 built BUILT PASS 16/16, SHIP 10/10, beats factory contact-sheet at 256px (17.6px vs illegible).
-- Adoption: eye re-checked O-009/O-023/O-024, all still unused; O-009 2d nudge sent to marketing-studio.
-- ROUND real yes (built 35, judged 15, delivered 15, adopted 30, tools 16, unjudged-oldest O-043, in-flight 20).
+- Thumbnail readability + D5: O-044 VERDICT PASS committed (983c2c7); DLV row formed for delivery next.
+- O-043 built BUILT PASS 16/16, SHIP 10/10, beats factory 17.6px vs ~7px; review next.
+- ROUND real yes (built 36, judged 16, delivered 15, adopted 30, tools 16, unjudged-oldest O-043, in-flight 20).
 
 ## Done
-- O-044 (Consultant Starter Kit Vol 2 cover): maker DONE, lead re-verified BUILT PASS 16/16. NOT committed: chain review pending.
-- EYE-2026-10-05: DONE, used 0 of 3, 0 new asks. Sent `EB-2026-10-06-S2` (O-009 adopt nudge).
-- Keeper wrote `sprint/queue/chain` review as `ready/maker-store-r1-review.md`: O-044 judge tops next batch.
+- O-044: judge PASS (five checks green, verdict tool wrote VERDICT.md) -> committed designs/O-044 + lane-store line, 983c2c7.
+- O-043 (AEO GEO Audit cover): maker DONE, honest $19 badge (theirs stale $29), 1 real shot. NOT committed: review pending.
 
 ## Proofs
-- sprint/check RESULT PASS 21/0/0; --built O-044 re-run by lead BUILT PASS; ORDERS PASS 55+ (book growing); --desk + --round --save this round.
+- sprint/check RESULT PASS 21/0/0; --built O-044 re-verified + VERDICT.md PASS read by lead; --desk build 18|judge 1|deliver 1|eye 1; --round --save this round.
 
 ## D5 why-not
-- Lowest bar unmoved: 20 open cover orders (O-043..052 + O-056..065 filed by factory mid-round), desk eye-only otherwise. Adoption is customers' move.
+- Bar moves only on adoption: 19 open covers in flight, O-044 first of the batch near delivery. Factory adoption is customers' move.
 
 ## Blockers and notes
-- Slip: maker sent to O-044, not oldest-open O-043. O-043 is unjudged-oldest, first next round.
-- Left dirty, not committable: orders.csv (+23 rows O-043..065, O-053..055 claim delivered with no VERDICT), covers/ 13 folders, HANDOFF-ADOPT.md (not mine), EYE.md x3 + lane-store line (seat notes, unjudged), knobs.json + loop-keeper.js (center warden), sprint/halt deletion.
-- Stale ready/: 065/067 DS-80 slices (DS-80 DONE), maker-game-r1-review (claimed 13:51Z). Keeper to clear or replan.
+- Failed one-offs 061/062/012: nothing to rewrite (O-040/O-041 judged PASS r154, rows delivered; reviews superseded).
+- Wart: designs/O-044/.cache/ rode along in 983c2c7; exclude .cache from design commits next time.
+- Left dirty: orders.csv (+33 rows, O-053..055 delivered unjudged), covers/, HANDOFF-ADOPT.md, EYE.md notes, warden files.
+- Stale ready/: 063/064/065/067 DS-80 slices (all landed) — keeper to retire to done/.
 
 ## Next
-- Judge O-044 (`maker-store-r1-review`), then maker-store -> O-043 (oldest open), deliver chain for O-044 PASS.
+- DLV-O-044 deliver + maker-store -> next oldest open after O-043 review; O-043 review tops batch.
