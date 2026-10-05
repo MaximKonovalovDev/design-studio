@@ -4,7 +4,8 @@ import assert from "node:assert/strict";
 import { mkdtempSync, writeFileSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { buildCss, buildDocs, checkTokens, normalizeTokens, resolveColorRefs, usesReferences, HEBREW_STACK, lintPairMates, darkPairGaps, mergeKits } from "../tools/tokens.mjs";
+import { buildCss, buildDocs, checkTokens, normalizeTokens, resolveColorRefs, usesReferences, HEBREW_STACK, lintPairMates, darkPairGaps, mergeKits, fluidClamp, FLUID_SPACING, FLUID_TYPE, fluidScaleVars, parseClampPx, PALETTE_SLOTS, unknownSlots, compileBrandKit, checkFluidFloor } from "../tools/tokens.mjs";
+import { fileURLToPath } from "node:url";
 
 const GOOD = {
   colors: {
@@ -244,5 +245,69 @@ describe("DS-35 pair convention + dark override (brandkit-vision-r9 C1)", () => 
     const { pass, results } = checkTokens({ json: join(d, "tokens.json"), css: join(d, "tokens.css"), docs: join(d, "tokens.html"), page: join(d, "page.html") });
     assert.equal(pass, false);
     assert.ok(results.some((r) => r.name === "dark: overrides every surface pair" && !r.pass));
+  });
+});
+
+describe("DS-80 fluid token floor (open-props MIT pattern)", () => {
+  it("fluid values match clamp math", () => {
+    assert.equal(fluidClamp(8, 2, 16), "clamp(8px, 2vw, 16px)");
+    const vars = fluidScaleVars();
+    for (const [k, s] of Object.entries(FLUID_SPACING)) {
+      assert.equal(vars[`--space-fluid-${k}`], `clamp(${s.min}px, ${s.pref}vw, ${s.max}px)`);
+    }
+    for (const [k, s] of Object.entries(FLUID_TYPE)) {
+      assert.equal(vars[`--font-size-${k}`], `clamp(${s.min}px, ${s.pref}vw, ${s.max}px)`);
+    }
+    // clamp math: floor at small widths, linear in the middle, cap at large.
+    assert.equal(parseClampPx("clamp(8px, 2vw, 16px)", 320), 8);
+    assert.equal(parseClampPx("clamp(8px, 2vw, 16px)", 600), 12);
+    assert.equal(parseClampPx("clamp(8px, 2vw, 16px)", 1280), 16);
+  });
+
+  it("fails closed on bad clamp input (no NaN/empty)", () => {
+    assert.throws(() => fluidClamp(Number.NaN, 2, 16), /finite/);
+    assert.throws(() => fluidClamp(8, 0, 16), /> 0/);
+    assert.throws(() => fluidClamp(16, 2, 8), />= minPx/);
+    assert.throws(() => parseClampPx("clamp(8px, 2vw, 16px)", Number.NaN), /viewport/);
+    assert.throws(() => parseClampPx("not-a-clamp", 768), /unparseable/);
+    assert.throws(() => parseClampPx("", 768), /unparseable/);
+  });
+
+  it("unknown slot fails closed", () => {
+    assert.deepEqual(unknownSlots({ paper: "#14161f", bogus: "#ffffff" }), ["bogus"]);
+    assert.deepEqual(unknownSlots({ paper: "#14161f", panel: "#1f2333" }), []);
+    assert.ok(PALETTE_SLOTS.includes("paper") && PALETTE_SLOTS.includes("on-accent"));
+    const kit = JSON.parse(readFileSync(fileURLToPath(new URL("../brand-kits/engine2040-ui1.json", import.meta.url)), "utf8"));
+    const bad = { ...kit, palette: { ...kit.palette, bogus: "#ffffff" } };
+    assert.throws(() => compileBrandKit(bad), /unknown palette slot.*bogus/);
+    const badDark = { ...kit, paletteDark: { ...kit.paletteDark, bogus: "#ffffff" } };
+    assert.throws(() => compileBrandKit(badDark), /unknown dark palette slot.*bogus/);
+  });
+
+  it("compiled CSS parses with every kit value present", () => {
+    const kit = JSON.parse(readFileSync(fileURLToPath(new URL("../brand-kits/engine2040-ui1.json", import.meta.url)), "utf8"));
+    const css = compileBrandKit(kit);
+    assert.match(css, /:root\s*\{/);
+    for (const [k, v] of Object.entries(kit.palette)) {
+      assert.ok(css.includes(`--${k}: ${String(v).toLowerCase()}`), `palette --${k} present`);
+    }
+    assert.ok(css.includes(`--font-display: ${kit.type.display}`));
+    assert.ok(css.includes(`--font-body: ${kit.type.body}`));
+    assert.ok(css.includes(`--font-hebrew: ${kit.type.hebrew}`));
+    for (const [k, v] of Object.entries(kit.spacing)) {
+      assert.ok(css.includes(`--space-${k}: ${v}`), `spacing --space-${k} present`);
+    }
+    for (const name of Object.keys(fluidScaleVars())) {
+      assert.ok(css.includes(name), `fluid ${name} present`);
+    }
+    assert.match(css, /\[data-theme="dark"\]/);
+    for (const v of Object.values(kit.paletteDark)) {
+      assert.ok(css.includes(String(v).toLowerCase()), `dark ${v} present`);
+    }
+  });
+
+  it("checkFluidFloor passes on the proof kit", () => {
+    const { pass, results } = checkFluidFloor();
+    assert.equal(pass, true, results.filter((r) => !r.pass).map((r) => `${r.name}: ${r.detail}`).join("; "));
   });
 });

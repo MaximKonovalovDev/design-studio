@@ -160,6 +160,238 @@ export function readTokens(jsonPath = DEFAULT_JSON) {
   return JSON.parse(readFileSync(jsonPath, "utf8"));
 }
 
+// ---- DS-80 token floor (fluid tokens, open-props MIT pattern) ----
+// Donor: https://github.com/argyleink/open-props (MIT), pinned SHA
+// 530682d04327f842f56bb1ec33cf84a3cadb3876 (fetched 2026-10-05):
+// src/props.sizes.css (--size-fluid-1..10 clamp shape) and src/props.fonts.css
+// (--font-size-fluid-0..3 clamp shape). Pattern port only: the clamp() scale
+// shape is open-props'; the px steps below are our own floor (kit spacing is
+// Npx, kit type is px). Single-file fetch, never a full clone.
+// style-dictionary (Apache-2.0) is OUT of scope for this packet.
+//
+// MIT License (open-props, kept with the tool per the license rule):
+//
+// MIT License
+//
+// Copyright (c) 2021 Adam Argyle
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+// clamp() math: clamp(minPx, prefVw vw, maxPx). Throws closed on any
+// non-finite/negative-slope/inverted input so a bad step never ships.
+export function fluidClamp(minPx, prefVw, maxPx) {
+  for (const [name, v] of [["minPx", minPx], ["prefVw", prefVw], ["maxPx", maxPx]]) {
+    if (typeof v !== "number" || !Number.isFinite(v)) {
+      throw new Error(`fluidClamp: ${name} must be a finite number (fail closed): ${String(v)}`);
+    }
+  }
+  if (minPx < 0) throw new Error(`fluidClamp: minPx must be >= 0 (fail closed): ${minPx}`);
+  if (prefVw <= 0) throw new Error(`fluidClamp: prefVw must be > 0 (fail closed): ${prefVw}`);
+  if (maxPx < minPx) throw new Error(`fluidClamp: maxPx must be >= minPx (fail closed): ${minPx} > ${maxPx}`);
+  return `clamp(${minPx}px, ${prefVw}vw, ${maxPx}px)`;
+}
+
+// Fluid spacing floor: 5 steps mirroring the kit xs..xl scale, each a
+// {min, pref, max} triple so tests can verify the emitted clamp() exactly.
+export const FLUID_SPACING = {
+  xs: { min: 4, pref: 1, max: 8 },
+  sm: { min: 8, pref: 2, max: 16 },
+  md: { min: 16, pref: 3, max: 24 },
+  lg: { min: 24, pref: 4, max: 48 },
+  xl: { min: 48, pref: 6, max: 64 },
+};
+
+// Fluid type floor: 4 steps in the open-props --font-size-fluid-0..3 shape.
+export const FLUID_TYPE = {
+  "fluid-0": { min: 12, pref: 2, max: 16 },
+  "fluid-1": { min: 16, pref: 4, max: 24 },
+  "fluid-2": { min: 24, pref: 6, max: 40 },
+  "fluid-3": { min: 32, pref: 9, max: 56 },
+};
+
+// Viewports the floor must resolve cleanly at (mobile / tablet / desktop).
+export const FLUID_PROBE_VIEWPORTS = [320, 768, 1280];
+
+// Every --space-fluid-* / --font-size-fluid-* var the floor ships.
+export function fluidScaleVars() {
+  const out = {};
+  for (const [k, s] of Object.entries(FLUID_SPACING)) out[`--space-fluid-${k}`] = fluidClamp(s.min, s.pref, s.max);
+  for (const [k, s] of Object.entries(FLUID_TYPE)) out[`--font-size-${k}`] = fluidClamp(s.min, s.pref, s.max);
+  return out;
+}
+
+// Resolve one clamp(MINpx, Vvw, MAXpx) string at a viewport width. Throws
+// closed on unparseable or non-finite output (no NaN/empty ever ships).
+export function parseClampPx(clampStr, viewportPx) {
+  const m = String(clampStr ?? "").match(/^clamp\(\s*([\d.]+)px\s*,\s*([\d.]+)vw\s*,\s*([\d.]+)px\s*\)$/);
+  if (!m) throw new Error(`unparseable clamp (fail closed): ${String(clampStr)}`);
+  const min = Number(m[1]);
+  const slope = Number(m[2]);
+  const max = Number(m[3]);
+  if (typeof viewportPx !== "number" || !Number.isFinite(viewportPx) || viewportPx <= 0) {
+    throw new Error(`viewport must be a finite number > 0 (fail closed): ${String(viewportPx)}`);
+  }
+  const val = Math.min(max, Math.max(min, (viewportPx * slope) / 100));
+  if (!Number.isFinite(val)) throw new Error(`clamp resolves non-finite (fail closed): ${String(clampStr)} @ ${viewportPx}px`);
+  return val;
+}
+
+// Palette slots every lane may use. A kit key outside this list fails closed
+// at compile time (typos never ship as silent dead vars).
+export const PALETTE_SLOTS = ["paper", "panel", "ink", "muted", "accent", "on-accent", "line", "success", "warning", "error"];
+
+export function unknownSlots(palette = {}) {
+  return Object.keys(palette ?? {}).filter((k) => !PALETTE_SLOTS.includes(k));
+}
+
+// Compile a brand-kit JSON (brand-kits/<id>.json shape: palette/paletteDark/
+// type/spacing, with tokens.* or flat colors/fonts/spacing accepted) to CSS
+// custom properties: kit palette + fonts + spacing + the fluid floor, with a
+// [data-theme="dark"] override block. Throws closed on unknown slots,
+// non-hex colors, short palettes, or missing display/body stacks.
+export function compileBrandKit(kit) {
+  const raw = kit ?? {};
+  const palette = raw.palette ?? raw.tokens?.colors ?? raw.colors ?? {};
+  const paletteDark = raw.paletteDark ?? raw.tokens?.colorsDark ?? raw.colorsDark ?? raw.colorDark ?? {};
+  const type = raw.type ?? raw.tokens?.fonts ?? raw.fonts ?? {};
+  const spacing = raw.spacing ?? raw.tokens?.spacing ?? raw.space ?? {};
+
+  const bad = unknownSlots(palette);
+  if (bad.length > 0) throw new Error(`unknown palette slot (fail closed): ${bad.join(", ")}`);
+  const badDark = unknownSlots(paletteDark);
+  if (badDark.length > 0) throw new Error(`unknown dark palette slot (fail closed): ${badDark.join(", ")}`);
+
+  const names = Object.keys(palette);
+  if (names.length < 5) throw new Error(`brand kit needs a 5+ hex palette (fail closed): ${names.length} slots`);
+  for (const k of names) {
+    if (!HEX.test(String(palette[k] ?? ""))) {
+      throw new Error(`palette slot ${k} is not #rrggbb (fail closed): ${String(palette[k])}`);
+    }
+  }
+  for (const k of Object.keys(paletteDark)) {
+    if (!HEX.test(String(paletteDark[k] ?? ""))) {
+      throw new Error(`dark palette slot ${k} is not #rrggbb (fail closed): ${String(paletteDark[k])}`);
+    }
+  }
+  if (!type.display || !type.body) throw new Error("brand kit needs type.display + type.body (fail closed)");
+
+  const id = raw.id ?? raw.name ?? "kit";
+  const lines = [
+    `/* Generated by tools/tokens.mjs compileBrandKit (DS-80) from brand kit ${id}. Fluid floor: open-props MIT pattern, donor SHA 530682d. Edit the kit JSON, not this file. */`,
+    ":root {",
+  ];
+  for (const k of names) lines.push(`  --${k}: ${String(palette[k]).toLowerCase()};`);
+  lines.push(`  --font-display: ${type.display};`);
+  lines.push(`  --font-body: ${type.body};`);
+  if (type.hebrew) lines.push(`  --font-hebrew: ${type.hebrew};`);
+  for (const [k, v] of Object.entries(spacing)) lines.push(`  --space-${k}: ${v};`);
+  for (const [name, value] of Object.entries(fluidScaleVars())) lines.push(`  ${name}: ${value};`);
+  lines.push("}");
+  const darkNames = Object.keys(paletteDark);
+  if (darkNames.length > 0) {
+    lines.push('[data-theme="dark"] {');
+    for (const k of darkNames) lines.push(`  --${k}: ${String(paletteDark[k]).toLowerCase()};`);
+    lines.push("}");
+  }
+  return `${lines.join("\n")}\n`;
+}
+
+// Floor self-check: every fluid step parses, resolves finite within
+// [min, max] at every probe viewport, and is a non-empty string; the proof
+// kit's palette fits the slot list and compiles with every value present.
+export function checkFluidFloor({ kitPath = join(ROOT, "brand-kits", "engine2040-ui1.json") } = {}) {
+  const results = [];
+  const ok = (name, pass, detail) => results.push({ name, pass, detail });
+
+  for (const [scale, label, prefix] of [[FLUID_SPACING, "spacing", "--space-fluid-"], [FLUID_TYPE, "type", "--font-size-"]]) {
+    const steps = Object.entries(scale);
+    let bad = null;
+    for (const [k, s] of steps) {
+      let expr;
+      try {
+        expr = fluidClamp(s.min, s.pref, s.max);
+      } catch (e) {
+        bad = `${k}: ${e.message}`;
+        break;
+      }
+      if (!expr || typeof expr !== "string") {
+        bad = `${k}: empty value`;
+        break;
+      }
+      for (const vw of FLUID_PROBE_VIEWPORTS) {
+        let val;
+        try {
+          val = parseClampPx(expr, vw);
+        } catch (e) {
+          bad = `${k} @ ${vw}px: ${e.message}`;
+          break;
+        }
+        if (!(val >= s.min && val <= s.max)) {
+          bad = `${k} @ ${vw}px: ${val} outside [${s.min}, ${s.max}]`;
+          break;
+        }
+      }
+      if (bad) break;
+    }
+    ok(`fluid: ${label} scale (${steps.length} clamp steps)`, bad == null, bad ?? `${steps.length} steps resolve at ${FLUID_PROBE_VIEWPORTS.join("/")}px`);
+  }
+
+  if (!existsSync(kitPath)) {
+    ok("fluid: palette slots (proof kit)", false, `proof kit missing: ${kitPath}`);
+  } else {
+    let kit;
+    try {
+      kit = JSON.parse(readFileSync(kitPath, "utf8"));
+    } catch (e) {
+      kit = null;
+      ok("fluid: palette slots (proof kit)", false, `proof kit unreadable: ${e.message}`);
+    }
+    if (kit) {
+      const pal = kit.palette ?? kit.tokens?.colors ?? kit.colors ?? {};
+      const bad = unknownSlots(pal);
+      ok("fluid: palette slots (proof kit)", bad.length === 0, bad.length ? `unknown slots: ${bad.join(", ")}` : `${Object.keys(pal).length} kit slots all known`);
+      try {
+        const css = compileBrandKit(kit);
+        const missing = [];
+        for (const [k, v] of Object.entries(pal)) {
+          if (!css.includes(String(v).toLowerCase())) missing.push(`${k}:${v}`);
+        }
+        const type = kit.type ?? kit.tokens?.fonts ?? kit.fonts ?? {};
+        for (const [k, v] of Object.entries({ display: type.display, body: type.body })) {
+          if (v && !css.includes(String(v))) missing.push(`font-${k}`);
+        }
+        for (const [k, v] of Object.entries(kit.spacing ?? kit.tokens?.spacing ?? {})) {
+          if (!css.includes(`--space-${k}: ${v}`)) missing.push(`space-${k}`);
+        }
+        for (const name of Object.keys(fluidScaleVars())) {
+          if (!css.includes(name)) missing.push(name);
+        }
+        ok("fluid: kit compiles (every value in CSS)", missing.length === 0, missing.length ? `missing: ${missing.join(", ")}` : "palette + fonts + spacing + fluid floor + dark block");
+      } catch (e) {
+        ok("fluid: kit compiles (every value in CSS)", false, e.message);
+      }
+    }
+  }
+
+  return { pass: results.every((r) => r.pass), results };
+}
+
 export function buildCss(tokens) {
   const t = normalizeTokens(tokens);
   const light = resolveColorRefs(t.colors ?? {}).resolved;
@@ -412,6 +644,27 @@ const isMain = (() => {
 
 if (isMain) {
   const args = process.argv.slice(2);
+  if (args[0] === "build") {
+    // DS-80: compile a brand-kit JSON to CSS custom properties.
+    // usage: node tools/tokens.mjs build <kit.json> --out <tokens.css>
+    const kitArg = args[1];
+    const outFlag = args.indexOf("--out");
+    const outArg = outFlag >= 0 ? args[outFlag + 1] : null;
+    if (!kitArg || kitArg.startsWith("--") || !outArg) {
+      console.log("usage: node tools/tokens.mjs build <kit.json> --out <tokens.css>");
+      process.exitCode = 2;
+    } else {
+      try {
+        const kit = JSON.parse(readFileSync(resolve(kitArg), "utf8"));
+        const css = compileBrandKit(kit);
+        writeFileSync(resolve(outArg), css, "utf8");
+        console.log(`TOKENS BUILD ${kitArg} -> ${outArg}`);
+      } catch (e) {
+        console.log(`TOKENS BUILD FAIL: ${e.message}`);
+        process.exitCode = 1;
+      }
+    }
+  }
   if (args.includes("--build")) {
     const i = args.indexOf("--build");
     const j = args[i + 1]?.startsWith("--") || args[i + 1] == null ? {} : { json: resolve(args[i + 1]) };
@@ -421,11 +674,14 @@ if (isMain) {
   if (args.includes("--check") || args.length === 0) {
     const { pass, results } = checkTokens();
     for (const r of results) console.log(`[${r.pass ? "PASS" : "FAIL"}] ${r.name}: ${r.detail}`);
-    console.log(pass ? "TOKENS PASS: tokens.json -> tokens.css + docs, 0 hardcoded colors" : `TOKENS FAIL: ${results.filter((r) => !r.pass).length} failing check(s)`);
-    if (!pass) process.exitCode = 1;
+    const floor = checkFluidFloor();
+    for (const r of floor.results) console.log(`[${r.pass ? "PASS" : "FAIL"}] ${r.name}: ${r.detail}`);
+    const all = pass && floor.pass;
+    console.log(all ? "TOKENS PASS: tokens.json -> tokens.css + docs, 0 hardcoded colors + fluid floor (5 spacing + 4 type clamp steps)" : `TOKENS FAIL: ${[...results, ...floor.results].filter((r) => !r.pass).length} failing check(s)`);
+    if (!all) process.exitCode = 1;
   }
-  if (!args.includes("--build") && !args.includes("--check") && args.length > 0) {
-    console.log("usage: node tools/tokens.mjs [--build [tokens.json]] [--check]");
+  if (args[0] !== "build" && !args.includes("--build") && !args.includes("--check") && args.length > 0) {
+    console.log("usage: node tools/tokens.mjs [--build [tokens.json]] [--check] | node tools/tokens.mjs build <kit.json> --out <tokens.css>");
     process.exitCode = 2;
   }
 }

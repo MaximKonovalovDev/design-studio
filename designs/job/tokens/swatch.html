@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- DS-80 token floor proof: engine2040-ui1 kit + fluid floor, all color/type/space via var(--*), no hex in this file. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>DS-80 token floor swatch</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body { background: var(--paper); color: var(--ink); font-family: var(--font-body); margin: 0; padding: var(--space-fluid-lg); }
+  h1 { font-family: var(--font-display); font-size: var(--font-size-fluid-3); margin: 0 0 var(--space-fluid-sm); }
+  .sub { color: var(--muted); font-size: var(--font-size-fluid-0); margin: 0 0 var(--space-fluid-md); }
+  .row { display: flex; gap: var(--space-fluid-sm); flex-wrap: wrap; margin: 0 0 var(--space-fluid-md); }
+  .sw { border: 1px solid var(--line); padding: var(--space-fluid-sm); min-width: 140px; }
+  .chip { height: 44px; border: 1px solid var(--line); margin-bottom: var(--space-fluid-xs); }
+  .sw code { font-size: var(--font-size-fluid-0); }
+  .bar { background: var(--panel); border: 1px solid var(--line); margin-bottom: var(--space-fluid-xs); }
+  .cta { display: inline-block; background: var(--accent); color: var(--on-accent); padding: var(--space-fluid-sm) var(--space-fluid-md); font-size: var(--font-size-fluid-1); }
+  .t1 { font-size: var(--font-size-fluid-1); }
+  .t2 { font-size: var(--font-size-fluid-2); }
+  .he { font-family: var(--font-hebrew); color: var(--muted); }
+</style>
+</head>
+<body>
+  <h1>Token floor</h1>
+  <p class="sub">engine2040-ui1 kit + fluid floor (open-props pattern): palette, fluid spacing, fluid type.</p>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background: var(--paper)"></div><code>--paper</code></div>
+    <div class="sw"><div class="chip" style="background: var(--panel)"></div><code>--panel</code></div>
+    <div class="sw"><div class="chip" style="background: var(--ink)"></div><code>--ink</code></div>
+    <div class="sw"><div class="chip" style="background: var(--muted)"></div><code>--muted</code></div>
+    <div class="sw"><div class="chip" style="background: var(--accent)"></div><code>--accent</code></div>
+    <div class="sw"><div class="chip" style="background: var(--line)"></div><code>--line</code></div>
+  </div>
+  <div class="bar" style="height: var(--space-fluid-xs)"></div>
+  <div class="bar" style="height: var(--space-fluid-sm)"></div>
+  <div class="bar" style="height: var(--space-fluid-md)"></div>
+  <div class="bar" style="height: var(--space-fluid-lg)"></div>
+  <div class="bar" style="height: var(--space-fluid-xl)"></div>
+  <p class="t1">Fluid type 1: Main, pause, settings, HUD and inventory.</p>
+  <p class="t2">Fluid type 2: ENGINE2040 UI-1.</p>
+  <p><span class="cta">Accent CTA specimen</span></p>
+  <p class="he">עיצוב שעובד: Hebrew stack ships with the floor.</p>
+</body>
+</html>
