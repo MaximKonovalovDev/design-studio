@@ -5,6 +5,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { factsCheck } from "../tools/cover.mjs";
+import { cacheDirFor, cacheKeyFor, cacheKeyForParts, cacheOutputsFor } from "../tools/cover.mjs";
 import { pngDims } from "../tools/render.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -29,5 +30,35 @@ describe("delivered store covers", () => {
       assert.ok(readFileSync(join(d, "VERDICT.md"), "utf8").startsWith(`# VERDICT ${id}: PASS`), `${id} verdict`);
       assert.ok(readFileSync(join(d, "DELIVERY.md"), "utf8").split("\n").filter(Boolean).length <= 10, `${id} DELIVERY.md over 10 lines`);
     }
+  });
+});
+
+describe("cover result cache (brief + template + tokens + assets, never brief alone)", () => {
+  const parts = {
+    brief: "cover.json + brief.json bytes",
+    template: "page.html bytes",
+    tokens: "tokens.css bytes",
+    assets: [{ path: "hero.png", bytes: Buffer.from([1, 2, 3]) }],
+  };
+  it("key is a stable 64-hex sha256", () => {
+    const a = cacheKeyForParts(parts);
+    const b = cacheKeyForParts({ ...parts, assets: [{ path: "hero.png", bytes: Buffer.from([1, 2, 3]) }] });
+    assert.match(a, /^[0-9a-f]{64}$/);
+    assert.equal(a, b);
+  });
+  it("changing template, tokens or assets changes the key (brief alone never hits)", () => {
+    const base = cacheKeyForParts(parts);
+    assert.notEqual(cacheKeyForParts({ ...parts, template: "other page" }), base, "template matters");
+    assert.notEqual(cacheKeyForParts({ ...parts, tokens: "other tokens" }), base, "tokens matter");
+    assert.notEqual(cacheKeyForParts({ ...parts, assets: [{ path: "hero.png", bytes: Buffer.from([9]) }] }), base, "asset bytes matter");
+    assert.notEqual(cacheKeyForParts({ ...parts, assets: [] }), base, "asset list matters");
+  });
+  it("O-037 key is stable and its outputs cover sizes plus the thumbnail", () => {
+    assert.equal(cacheKeyFor("O-037"), cacheKeyFor("O-037"));
+    assert.match(cacheKeyFor("O-037"), /^[0-9a-f]{64}$/);
+    const out = cacheOutputsFor("O-037");
+    assert.ok(out.includes("out.png"), "sizes cached");
+    assert.ok(out.includes("thumb-256.png"), "thumbnail cached");
+    assert.ok(cacheDirFor("O-037", cacheKeyFor("O-037")).includes(".cache"), "file cache dir");
   });
 });

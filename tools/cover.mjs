@@ -10,9 +10,10 @@
 // No new dependency: Edge headless through tools/render.mjs.
 import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { basename, dirname, isAbsolute, join, resolve } from "node:path";
+import { createHash } from "node:crypto";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { tmpdir } from "node:os";
-import { render, renderPdf, parseSize, pngDims } from "./render.mjs";
+import { render, renderPdf, parseSize, pngDims, PQueue } from "./render.mjs";
 import { thumbBrief } from "./thumb.mjs";
 import { auditBrief } from "./audit.mjs";
 import { judgeSample, writeReview } from "./judge.mjs";
@@ -325,8 +326,8 @@ export function embedFonts(id) {
 export function checkCover() {
   const results = [];
   const ok = (name, pass, detail) => results.push({ name, pass, detail });
-  for (const fn of ["gen", "build", "compare", "factsCheck", "verdict", "embedFonts", "wantedFontFamilies", "facesCss", "ensureFacesInTokens", "checkCover"]) {
-    ok(`cover.mjs exports ${fn}`, typeof { gen, build, compare, factsCheck, verdict, embedFonts, wantedFontFamilies, facesCss, ensureFacesInTokens, checkCover }[fn] === "function", "NEED-14 fonts step surface");
+  for (const fn of ["gen", "build", "buildQueued", "compare", "factsCheck", "verdict", "embedFonts", "wantedFontFamilies", "facesCss", "ensureFacesInTokens", "checkCover"]) {
+    ok(`cover.mjs exports ${fn}`, typeof { gen, build, buildQueued, compare, factsCheck, verdict, embedFonts, wantedFontFamilies, facesCss, ensureFacesInTokens, checkCover }[fn] === "function", "queued build surface");
   }
   let central = null;
   try {
@@ -421,16 +422,124 @@ export function gen(id, opts = {}) {
   return spec;
 }
 
-export function build(id) {
+// Result cache: get-before-render file cache (idea attributed to thumbor,
+// MIT license by APSL: thumbor keeps rendered results keyed by the request
+// and serves the stored bytes on a repeat request without re-rendering).
+// Adapted here: the key is the sha256 of brief + template + tokens + assets
+// together (never the brief alone). A hit copies the stored bytes back and
+// renders 0 times; every lookup logs CACHE HIT or CACHE MISS with the key.
+// The per-render history gate in tools/render.mjs stays as is.
+export function cacheKeyForParts({ brief, template, tokens, assets }) {
+  const h = createHash("sha256");
+  const feed = (label, buf) => {
+    const b = Buffer.isBuffer(buf) ? buf : Buffer.from(String(buf ?? ""), "utf8");
+    h.update(`--${label} ${b.length}\0`);
+    h.update(b);
+  };
+  feed("brief", brief);
+  feed("template", template);
+  feed("tokens", tokens);
+  const list = [...(assets ?? [])].sort((a, b) => (String(a.path) < String(b.path) ? -1 : String(a.path) > String(b.path) ? 1 : 0));
+  h.update(`--assets ${list.length}\0`);
+  for (const a of list) {
+    const b = Buffer.isBuffer(a.bytes) ? a.bytes : Buffer.from(String(a.bytes ?? ""), "utf8");
+    h.update(`--asset ${a.path} ${b.length}\0`);
+    h.update(b);
+  }
+  return h.digest("hex");
+}
+
+function walkFiles(dir, base = "") {
+  const out = [];
+  for (const name of readdirSync(dir).sort()) {
+    const abs = join(dir, name);
+    const rel = base ? `${base}/${name}` : name;
+    if (statSync(abs).isDirectory()) out.push(...walkFiles(abs, rel));
+    else out.push(rel);
+  }
+  return out;
+}
+
+// All four key inputs read from one order folder. Throws when a required
+// input is missing (fail closed: run gen first), never hashes the brief alone.
+export function cacheKeyFor(idOrSpec) {
+  const spec = typeof idOrSpec === "string" ? loadSpec(idOrSpec) : idOrSpec;
+  const dir = spec.dir;
+  const must = (file, what) => {
+    const p = join(dir, file);
+    if (!existsSync(p)) throw new Error(`${spec.id}: cache key needs ${what} (${file}) — next: node tools/cover.mjs gen ${spec.id}`);
+    return readFileSync(p);
+  };
+  const briefFile = join(dir, "brief.json");
+  const brief = Buffer.concat([must("cover.json", "the order brief"), Buffer.from("\0"), existsSync(briefFile) ? readFileSync(briefFile) : Buffer.from(JSON.stringify(briefJson(spec)))]);
+  const opt = (file) => (existsSync(join(dir, file)) ? readFileSync(join(dir, file)) : Buffer.alloc(0));
+  const template = Buffer.concat([must("page.html", "the template page"), Buffer.from("\0"), opt("art.html"), Buffer.from("\0"), opt("art.css")]);
+  const tokens = must("tokens.css", "the tokens");
+  const assetsDir = join(dir, "assets");
+  const assets = existsSync(assetsDir)
+    ? walkFiles(assetsDir).map((rel) => ({ path: rel.split("\\").join("/"), bytes: readFileSync(join(dir, "assets", ...rel.split("/"))) }))
+    : [];
+  return cacheKeyForParts({ brief, template, tokens, assets });
+}
+
+// Every PNG build() renders through the browser: the size list, any extra
+// renders and pdfs from cover.json, plus the 256px thumbnail.
+export function cacheOutputsFor(idOrSpec) {
+  const spec = typeof idOrSpec === "string" ? loadSpec(idOrSpec) : idOrSpec;
+  const files = [
+    ...sizeList(spec).map((z) => z.file),
+    ...(spec.extraRenders ?? []).map((x) => x.out),
+    ...(spec.pdfs ?? []).map((x) => x.out),
+    "thumb-256.png",
+  ];
+  return [...new Set(files)];
+}
+
+export function cacheDirFor(idOrSpec, key) {
+  const spec = typeof idOrSpec === "string" ? loadSpec(idOrSpec) : idOrSpec;
+  return join(spec.dir, ".cache", key);
+}
+
+export function build(id, opts = {}) {
   const spec = loadSpec(id);
-  const page = join(spec.dir, "page.html");
+  const key = cacheKeyFor(spec);
+  const outputs = cacheOutputsFor(spec);
+  const cdir = cacheDirFor(spec, key);
+  const manifest = join(cdir, "manifest.json");
+  const short = key.slice(0, 12);
+  let cached = false;
+  let renders = 0;
+  if (!opts.force && existsSync(manifest)) {
+    let man = null;
+    try { man = JSON.parse(read(manifest)); } catch { man = null; }
+    if (man?.key === key && outputs.every((f) => existsSync(join(cdir, f)))) {
+      for (const f of outputs) copyFileSync(join(cdir, f), join(spec.dir, f));
+      cached = true;
+      console.log(`CACHE HIT ${spec.id}: key ${short} serves ${outputs.length} stored file(s), 0 renders`);
+    }
+  }
   const list = sizeList(spec);
-  const made = list.map((z, i) => render(page, join(spec.dir, z.file), parseSize(`${z.w}x${z.h}`)));
+  let made;
+  let th;
+  if (!cached) {
+    console.log(`CACHE MISS ${spec.id}: key ${short} renders ${list.length} size(s)`);
+    const page = join(spec.dir, "page.html");
+    made = list.map((z, i) => { renders += 1; return render(page, join(spec.dir, z.file), parseSize(`${z.w}x${z.h}`)); });
+    for (const x of spec.extraRenders ?? []) { renders += 1; render(join(spec.dir, x.page), join(spec.dir, x.out), parseSize(`${x.w}x${x.h}`)); }
+    for (const x of spec.pdfs ?? []) { renders += 1; const r = renderPdf(join(spec.dir, x.page), join(spec.dir, x.out)); console.log(`PDF ${id}: ${x.out} ${r.bytes}B`); }
+    renders += 1;
+    th = thumbBrief(join(spec.dir, "brief.json"));
+    mkdirSync(cdir, { recursive: true });
+    for (const f of outputs) copyFileSync(join(spec.dir, f), join(cdir, f));
+    writeFileSync(manifest, `${JSON.stringify({ key, files: outputs, date: new Date().toISOString() }, null, 2)}\n`, "utf8");
+    console.log(`CACHE STORE ${spec.id}: key ${short} kept ${outputs.length} file(s)`);
+  } else {
+    made = list.map((z) => ({ bytes: statSync(join(spec.dir, z.file)).size }));
+    const td = pngDims(readFileSync(join(spec.dir, "thumb-256.png")));
+    th = { w: td.w, h: td.h };
+  }
   const wide = made[0];
   const card = made[1] ?? made[0];
-  for (const x of spec.extraRenders ?? []) render(join(spec.dir, x.page), join(spec.dir, x.out), parseSize(`${x.w}x${x.h}`));
-  for (const x of spec.pdfs ?? []) { const r = renderPdf(join(spec.dir, x.page), join(spec.dir, x.out)); console.log(`PDF ${id}: ${x.out} ${r.bytes}B`); }
-  const th = thumbBrief(join(spec.dir, "brief.json"));
   const a = auditBrief(join(spec.dir, "brief.json"));
   const j = judgeSample(join(spec.dir, "brief.json"));
   writeReview(join(spec.dir, "brief.json"), j);
@@ -449,7 +558,83 @@ export function build(id) {
     if (!ta.pass) a.pass = false;
   }
   console.log(`BUILD ${id}: ${list.map((z, i) => `${z.file} ${made[i].bytes}B`).join(", ")}, thumb ${th.w}x${th.h}, audit ${a.pass ? "PASS" : "FAIL"}${a.pass ? "" : " " + a.errors.slice(0, 3).join("; ")}, judge ${j.score}/${j.max} ${j.pass ? "SHIP" : "REWORK"}`);
-  return { pass: a.pass && j.pass };
+  return { pass: a.pass && j.pass, cached, key, renders };
+}
+
+// Queued build: same steps as build(), but every PNG render goes through one
+// shared `new PQueue({concurrency:1})` via queue.add (never a Promise.all
+// fan-out, so peak concurrent Edge is 1 on a 3-size build); `await
+// queue.onEmpty()` resolves the render phase. Same render() flags and paths,
+// so the PNG bytes are identical to build(). build() stays sync for the
+// template.mjs caller; the CLI below uses this queued path.
+export async function buildQueued(id, opts = {}) {
+  const spec = loadSpec(id);
+  const key = cacheKeyFor(spec);
+  const outputs = cacheOutputsFor(spec);
+  const cdir = cacheDirFor(spec, key);
+  const manifest = join(cdir, "manifest.json");
+  const short = key.slice(0, 12);
+  let cached = false;
+  let renders = 0;
+  if (!opts.force && existsSync(manifest)) {
+    let man = null;
+    try { man = JSON.parse(read(manifest)); } catch { man = null; }
+    if (man?.key === key && outputs.every((f) => existsSync(join(cdir, f)))) {
+      for (const f of outputs) copyFileSync(join(cdir, f), join(spec.dir, f));
+      cached = true;
+      console.log(`CACHE HIT ${spec.id}: key ${short} serves ${outputs.length} stored file(s), 0 renders`);
+    }
+  }
+  const list = sizeList(spec);
+  let made;
+  let th;
+  if (!cached) {
+    console.log(`CACHE MISS ${spec.id}: key ${short} renders ${list.length} size(s) queued`);
+    const page = join(spec.dir, "page.html");
+    const queue = new PQueue({ concurrency: 1 });
+    made = new Array(list.length);
+    let jobError = null;
+    const guard = (p) => p.catch((e) => { if (!jobError) jobError = e; });
+    list.forEach((z, i) => {
+      guard(queue.add(() => { renders += 1; made[i] = render(page, join(spec.dir, z.file), parseSize(`${z.w}x${z.h}`)); }));
+    });
+    for (const x of spec.extraRenders ?? []) {
+      guard(queue.add(() => { renders += 1; render(join(spec.dir, x.page), join(spec.dir, x.out), parseSize(`${x.w}x${x.h}`)); }));
+    }
+    await queue.onEmpty();
+    if (jobError) throw jobError;
+    for (const x of spec.pdfs ?? []) { renders += 1; const r = renderPdf(join(spec.dir, x.page), join(spec.dir, x.out)); console.log(`PDF ${id}: ${x.out} ${r.bytes}B`); }
+    renders += 1;
+    th = thumbBrief(join(spec.dir, "brief.json"));
+    mkdirSync(cdir, { recursive: true });
+    for (const f of outputs) copyFileSync(join(spec.dir, f), join(cdir, f));
+    writeFileSync(manifest, `${JSON.stringify({ key, files: outputs, date: new Date().toISOString() }, null, 2)}\n`, "utf8");
+    console.log(`CACHE STORE ${spec.id}: key ${short} kept ${outputs.length} file(s)`);
+  } else {
+    made = list.map((z) => ({ bytes: statSync(join(spec.dir, z.file)).size }));
+    const td = pngDims(readFileSync(join(spec.dir, "thumb-256.png")));
+    th = { w: td.w, h: td.h };
+  }
+  const wide = made[0];
+  const card = made[1] ?? made[0];
+  const a = auditBrief(join(spec.dir, "brief.json"));
+  const j = judgeSample(join(spec.dir, "brief.json"));
+  writeReview(join(spec.dir, "brief.json"), j);
+  const brief = JSON.parse(read(join(spec.dir, "brief.json")));
+  if (spec.twin) {
+    const t = spec.twin;
+    const tmp = mkdtempSync(join(tmpdir(), "ds-twin-"));
+    copyFileSync(join(spec.dir, t.page), join(tmp, "page.html"));
+    copyFileSync(join(spec.dir, "tokens.css"), join(tmp, "tokens.css"));
+    copyFileSync(join(spec.dir, t.image), join(tmp, "out.png"));
+    writeFileSync(join(tmp, "brief.json"), JSON.stringify({ ...brief, title: t.title, dir: t.dir }, null, 2), "utf8");
+    const ta = auditBrief(join(tmp, "brief.json"));
+    copyFileSync(join(tmp, "design-audit.json"), join(spec.dir, t.report));
+    console.log(`TWIN ${id}: ${t.page} audit ${ta.pass ? "PASS" : "FAIL " + ta.errors.slice(0, 3).join("; ")}`);
+    if (!ta.pass) a.pass = false;
+  }
+  console.log(`BUILD ${id}: ${list.map((z, i) => `${z.file} ${made[i].bytes}B`).join(", ")}, thumb ${th.w}x${th.h}, audit ${a.pass ? "PASS" : "FAIL"}${a.pass ? "" : " " + a.errors.slice(0, 3).join("; ")}, judge ${j.score}/${j.max} ${j.pass ? "SHIP" : "REWORK"}`);
+  return { pass: a.pass && j.pass, cached, key, renders, queued: true };
 }
 
 export function compare(id, theirs) {
@@ -534,6 +719,7 @@ if (isMain) {
   const ids = rest.filter((x) => !x.startsWith("--") && !x.endsWith(".png"));
   const png = rest.find((x) => x.endsWith(".png"));
   const withFonts = flags.includes("--fonts");
+  const force = flags.includes("--force");
   if (cmd === "--check") {
     const { pass, results } = checkCover();
     for (const r of results) console.log(`[${r.pass ? "PASS" : "FAIL"}] ${r.name}: ${r.detail}`);
@@ -541,11 +727,12 @@ if (isMain) {
     process.exit(pass ? 0 : 1);
   }
   let bad = 0;
+  const run = async () => {
   try {
     for (const id of ids) {
       if (cmd === "gen" || cmd === "all") gen(id, { fonts: withFonts });
       if (cmd === "fonts") embedFonts(id);
-      if (cmd === "build" || cmd === "all") { if (!build(id).pass) bad += 1; }
+      if (cmd === "build" || cmd === "all") { if (!(await buildQueued(id, { force })).pass) bad += 1; }
       if (cmd === "compare") compare(id, png);
       if (cmd === "facts") { const f = factsCheck(id); console.log(`FACTS ${id}: ${f.tokens.join(" ")} | missing: ${f.missing.join(" ") || "none"} | forbidden: ${f.forbidden.join(",") || "none"}`); }
       if (cmd === "verdict") { if (!verdict(id)) bad += 1; }
@@ -559,4 +746,6 @@ if (isMain) {
     process.exit(2);
   }
   process.exit(bad ? 1 : 0);
+  };
+  run().catch((e) => { console.log(`COVER FAIL: ${e.message}`); process.exit(1); });
 }

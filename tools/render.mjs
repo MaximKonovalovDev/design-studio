@@ -357,6 +357,122 @@ export function sharedProfileDir() {
   }
 }
 
+// Shared render queue: shape follows sindresorhus/p-queue (MIT):
+// `new PQueue({concurrency:1})` + `queue.add(fn)` + `queue.onEmpty()`.
+// Own code, 0 lines copied. One Edge at a time (concurrency 1): a 3-size
+// build fans out 0 Edges in parallel, peak 1, PNG bytes identical to a
+// direct render() (same flags, same paths).
+export class PQueue {
+  constructor({ concurrency = 1 } = {}) {
+    if (!Number.isInteger(concurrency) || concurrency < 1) {
+      throw new Error("PQueue needs concurrency >= 1 (shared queue uses 1)");
+    }
+    this.concurrency = concurrency;
+    this._queue = [];
+    this._active = 0;
+    this._emptyResolvers = [];
+    this.peakActive = 0;
+  }
+  get size() { return this._queue.length; }
+  get pending() { return this._active; }
+  get activeCount() { return this._active; }
+  add(fn) {
+    if (typeof fn !== "function") throw new Error("queue.add needs a function (never silent)");
+    return new Promise((resolve, reject) => {
+      this._queue.push({ fn, resolve, reject });
+      this._next();
+    });
+  }
+  _finishEmpty() {
+    if (this._queue.length === 0 && this._active === 0) {
+      const rs = this._emptyResolvers.splice(0);
+      for (const r of rs) r();
+    }
+  }
+  _next() {
+    while (this._active < this.concurrency && this._queue.length > 0) {
+      const job = this._queue.shift();
+      this._active += 1;
+      if (this._active > this.peakActive) this.peakActive = this._active;
+      Promise.resolve()
+        .then(() => job.fn())
+        .then((v) => job.resolve(v), (e) => job.reject(e))
+        .finally(() => {
+          this._active -= 1;
+          this._finishEmpty();
+          this._next();
+        });
+    }
+    this._finishEmpty();
+  }
+  // Resolves when the queue is empty and every job settled (build awaits this).
+  onEmpty() {
+    if (this._queue.length === 0 && this._active === 0) return Promise.resolve();
+    return new Promise((resolve) => this._emptyResolvers.push(resolve));
+  }
+  // Alias of onEmpty (p-queue names the all-settled gate onIdle).
+  onIdle() { return this.onEmpty(); }
+}
+
+// One shared queue per process: every render goes through here, so two
+// builds in one process never run two Edges at once.
+export const renderQueue = new PQueue({ concurrency: 1 });
+
+// Same render(), serialized through the shared queue (bytes identical).
+export function renderQueued(htmlPath, outPath, size, opts) {
+  return renderQueue.add(() => render(htmlPath, outPath, size, opts));
+}
+
+// Queue self-check (no browser needed): 3 delayed jobs serialize to peak 1,
+// results keep order, onEmpty resolves, same input twice gives identical bytes.
+export async function renderQueueSelfCheck() {
+  const results = [];
+  const t = (name, ok, detail) => {
+    results.push({ name, pass: !!ok, detail: String(detail ?? "") });
+    console.log(`[${ok ? "PASS" : "FAIL"}] ${name}: ${detail}`);
+  };
+  try {
+    const queue = new PQueue({ concurrency: 1 });
+    let live = 0;
+    let peak = 0;
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+    const jobs = [1, 2, 3].map((n) =>
+      queue.add(async () => {
+        live += 1;
+        if (live > peak) peak = live;
+        await wait(20);
+        live -= 1;
+        return `job-${n}`;
+      }),
+    );
+    const order = await Promise.all(jobs);
+    await queue.onEmpty();
+    t("queue serializes 3 jobs (peak 1, order kept)", peak === 1 && queue.peakActive === 1 && order.join(",") === "job-1,job-2,job-3", `peak=${peak} order=${order.join(",")}`);
+  } catch (e) { t("queue serializes 3 jobs (peak 1, order kept)", false, String(e.message || e)); }
+  try {
+    const q2 = new PQueue({ concurrency: 2 });
+    t("queue accepts concurrency 2 (1-2 lane)", q2.concurrency === 2, `concurrency=${q2.concurrency}`);
+  } catch (e) { t("queue accepts concurrency 2 (1-2 lane)", false, String(e.message || e)); }
+  try {
+    const queue = new PQueue({ concurrency: 1 });
+    const a = await queue.add(async () => Buffer.from("same-bytes").toString("hex"));
+    const b = await queue.add(async () => Buffer.from("same-bytes").toString("hex"));
+    await queue.onEmpty();
+    t("queue repeats are byte-identical", a === b, `sha ${a.slice(0, 12)} == ${b.slice(0, 12)}`);
+  } catch (e) { t("queue repeats are byte-identical", false, String(e.message || e)); }
+  try {
+    const queue = new PQueue({ concurrency: 1 });
+    let settled = false;
+    const p = queue.add(async () => 1).then(() => { settled = true; });
+    await queue.onEmpty();
+    await p;
+    t("queue onEmpty resolves the build", settled === true, "onEmpty settled");
+  } catch (e) { t("queue onEmpty resolves the build", false, String(e.message || e)); }
+  const pass = results.every((r) => r.pass);
+  console.log(pass ? "QUEUE PASS: concurrency 1 serializes 3 jobs, peak 1, byte-identical, onEmpty resolves" : `QUEUE FAIL: ${results.filter((r) => !r.pass).length} failing check(s)`);
+  return { pass, results };
+}
+
 export function render(htmlPath, outPath, size = { w: 1280, h: 720 }, { minBytes = 4096, history = true, force = false, historyPath } = {}) {
   // O-038: brief hash + never-overwrite gate run BEFORE any browser launch
   // (fail closed with the reason; --force overrides a refuse, never a skip
@@ -486,15 +602,15 @@ if (isMain) {
   const args = process.argv.slice(2);
   if (args.includes("--check")) {
     const { pass } = renderSelfCheck();
-    if (!pass) process.exitCode = 1;
-    process.exit(process.exitCode ?? 0);
-  }
-  if (args.includes("--pdf") && args.length >= 3) {
+    renderQueueSelfCheck().then(
+      (q) => process.exit(pass && q.pass ? 0 : 1),
+      () => process.exit(1),
+    );
+  } else if (args.includes("--pdf") && args.length >= 3) {
     const [src, dst] = args.filter((x) => x !== "--pdf");
     try { const r = renderPdf(src, dst); console.log(`PDF OK ${r.out} ${r.bytes}B`); } catch (e) { console.log(`PDF FAIL ${src}: ${e.message}`); process.exit(1); }
     process.exit(0);
-  }
-  if (args.length < 2 || args.includes("-h") || args.includes("--help")) {
+  } else if (args.length < 2 || args.includes("-h") || args.includes("--help")) {
     console.log("usage: node tools/render.mjs <page.html> <out.png> [--size 1280x720] [--sizes] [--force] [--no-history] | node tools/render.mjs --pdf <page.html> <out.pdf> | node tools/render.mjs --check");
     console.log("history: every PNG render appends brief-hash -> sha256 + date to designs/job/history/render-history.jsonl (append-only);");
     console.log("an existing output is never overwritten unless the brief hash changed (--force overrides a refuse).");
@@ -502,7 +618,7 @@ if (isMain) {
   }
   // DS-65 FREE-01 helper: offline draft-shape print (no network, no key read,
   // drafts only never final pixels). Usage: --free-prompt <model:free> <text>.
-  if (args.includes("--free-prompt")) {
+  else if (args.includes("--free-prompt")) {
     const i = args.indexOf("--free-prompt");
     try {
       const r = buildFreePrompt({ model: args[i + 1], prompt: args.slice(i + 2).join(" ") });
@@ -516,6 +632,7 @@ if (isMain) {
   }
   // S01 per-size reflow: --sizes renders the full SIZE_MATRIX beside out.png.
   // O-038: --force/--no-history pass through to every size render.
+  else {
   const force = args.includes("--force");
   const history = !args.includes("--no-history");
   if (args.includes("--sizes")) {
@@ -548,5 +665,6 @@ if (isMain) {
   } catch (e) {
     console.log(`RENDER FAIL ${args[0]}: ${e.message}`);
     process.exit(1);
+  }
   }
 }
