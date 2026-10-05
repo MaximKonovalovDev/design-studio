@@ -1,0 +1,79 @@
+{
+  "product": "cover:itch/niche-playbook-etsy-printables",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Niche Playbook 04: Etsy Printables",
+  "pick": "kraft",
+  "template": "covers/sheet-fan",
+  "kicker": "Pains, places, prices, 30-day plan",
+  "claim": "12 pains, 10 places, 10 price anchors, 20 dated tasks. No earnings claims, ever.",
+  "chips": [
+    "12 pains with sources",
+    "10 places, 10 prices",
+    "20-task 30-day plan",
+    {
+      "t": "10 files + free 3-file starter",
+      "wide": true
+    }
+  ],
+  "badge": "$19 one-time",
+  "tokens": {
+    "bg": "#ead7b7",
+    "bg-2": "#dcc194",
+    "ink": "#2a1a10",
+    "muted": "#573f2f",
+    "accent": "#b3261e",
+    "accent-ink": "#96190f",
+    "on-accent": "#fff4e0",
+    "chip-bg": "#f8ecd6",
+    "chip-ink": "#2a1a10",
+    "chip-line": "#96190f"
+  },
+  "fonts": {
+    "display": "'Palatino Linotype', 'Book Antiqua', Georgia, serif",
+    "body": "'Trebuchet MS', 'Segoe UI', Arial, sans-serif",
+    "mono": "'Courier New', Consolas, monospace"
+  },
+  "titlePx": 78,
+  "titlePxCard": 50,
+  "titleWeight": 700,
+  "titleTrack": "-0.015em",
+  "titleWrapWide": [
+    "Niche Playbook",
+    "04: Etsy",
+    "Printables"
+  ],
+  "titleWrapCard": [
+    "Niche Playbook 04:",
+    "Etsy Printables"
+  ],
+  "chipR": "2px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "sheet-ar": "1.5",
+    "sheet-w": "322px",
+    "sheet-w-card": "188px"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-etsy-printables/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-etsy-printables/preview/cover-1280x720.png",
+  "landing": "products/services/niche-playbook-etsy-printables/covers/from-design-studio/O-036/",
+  "assetsFrom": "the product's own preview/ screenshots plus a faithful price-ladder render",
+  "assets": [
+    {
+      "name": "sheet-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-etsy-printables/preview/shot-pains.png",
+      "what": "the customer's own picture shot-pains.png"
+    },
+    {
+      "name": "sheet-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-etsy-printables/preview/shot-places.png",
+      "what": "the customer's own picture shot-places.png"
+    },
+    {
+      "name": "sheet-3.png",
+      "src": "C:/Users/me/AppData/Local/Temp/opencode/sheet-3.png",
+      "what": "the customer's own picture sheet-3.png"
+    }
+  ]
+}

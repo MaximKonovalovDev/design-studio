@@ -1,0 +1,23 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/sheet-1.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-etsy-printables/preview/shot-pains.png",
+      "what": "the customer's own picture shot-pains.png",
+      "bytes": 51401
+    },
+    {
+      "file": "assets/sheet-2.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-etsy-printables/preview/shot-places.png",
+      "what": "the customer's own picture shot-places.png",
+      "bytes": 43368
+    },
+    {
+      "file": "assets/sheet-3.png",
+      "from": "C:/Users/me/AppData/Local/Temp/opencode/sheet-3.png",
+      "what": "faithful table render of the customer's own assets/price-ladder.csv (10 rows, sources + dates kept)",
+      "bytes": 140227
+    }
+  ]
+}
