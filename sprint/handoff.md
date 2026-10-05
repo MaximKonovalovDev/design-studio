@@ -1,9 +1,9 @@
-# design-studio handoff - round 146 (token 303a)
+# design-studio handoff - round 147 (token 303a)
 
-Round: 146
-Written: 2026-10-05T16:13Z by lead (token 303a, held since 15:42Z).
+Round: 147
+Written: 2026-10-05T16:15Z by lead (token 303a, held since 15:42Z).
 Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground.
-Batch: keeper re-sent 063-build + 064-review (batch.md stale 15:58Z, third identical send). NOT re-dispatched: NOOP + PASS genuinely collected in r144, last scoped commit 66efd64, tree unchanged.
+Batch: keeper re-sent 063-build + 064-review (batch.md stale 15:58Z, fourth identical send). NOT re-dispatched: NOOP + PASS genuinely collected in r144, last scoped commit 66efd64, tree unchanged.
 
 ## Heading
 - Standing: DS-80 token slice NOOP + review PASS (r144). No movement.
@@ -19,7 +19,7 @@ Batch: keeper re-sent 063-build + 064-review (batch.md stale 15:58Z, third ident
 - Lowest bar D5 (19/56 listings adopted) not moved: 0 open factory-cover orders, desk eye-only, eye seat never batched. Adoption is customers' move.
 
 ## Blockers and notes
-- Repeat pattern 14 rounds across two batches (r137 freshness-gate PROPOSAL stands, awaiting center).
+- Repeat pattern 15 rounds across two batches (r137 freshness-gate PROPOSAL stands, awaiting center).
 - Batch.md failed-list claims 061/062 "never sent": wrong, both sent and PASS-collected in r134. Nothing to rewrite into ready/.
 - Left dirty, not mine: sample audits, knobs.json, sprint/halt deletion (absent), brief-gate.json strays, queue lifecycle files, ready/ cards.
 
