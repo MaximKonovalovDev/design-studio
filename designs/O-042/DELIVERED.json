@@ -1,0 +1,146 @@
+{
+  "order_id": "O-042",
+  "from_repo": "engine2040",
+  "maker": "design-studio",
+  "product": "order:game-ui-for-engine2040-eb-2026-10-05-s29",
+  "delivered_utc": "2026-10-05T14:10Z",
+  "source": "design-studio designs/O-042",
+  "landing": "from-design-studio/O-042",
+  "customer": "C:/engine2040",
+    "delivered": [
+    "25 files copied verbatim (refuse-overwrite-if-differs) + ADOPT.md adopt note (builder packet 055)",
+    "landing from-design-studio/O-042/ in engine2040"
+  ],
+  "files": [
+    {
+      "name": "ADOPT.md",
+      "bytes": 389,
+      "sha256": "1133500312362a2f9eeb5f778612b692b733e51aaa006abb0b2ee4acf6067559"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1037,
+      "sha256": "5585ed1b19a99a59ee74f127327fea49cc286684e18e826eca26e9b9a47291ae"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1171,
+      "sha256": "85a231005d47dbc9c6441893c13d11f886020f11aa0485b0609d9602369dc068"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 592,
+      "sha256": "351254bd4e00ea28d4fc770d763d19d3e3972e3dc74b6303d3d7028e42337383"
+    },
+    {
+      "name": "atlas.json",
+      "bytes": 5034,
+      "sha256": "19ea0ae0e493645c72dc28377df8a98066e4db8e7b72813eb7aea8dc2d498b18"
+    },
+    {
+      "name": "atlas.png",
+      "bytes": 1169,
+      "sha256": "b3aba19cd2158a3c7cb1ac5d7f86aa5dffb68d2f3c727d3384f565ce2cd5035c"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 881,
+      "sha256": "b5525124950bce5149228989a383c2f58c0a0d4bb63d31b09258e815fedfc10d"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2709,
+      "sha256": "34600436cd292a53c3be09a7bbb219c235e6c3175fad0265344431a24d45e600"
+    },
+    {
+      "name": "ds-pixel-5x7.ttf",
+      "bytes": 12892,
+      "sha256": "7a512b8d0a4468dd96174432f30fa8b3ea1f51d16394f3c32474ec863f35bd84"
+    },
+    {
+      "name": "font-5x7.json",
+      "bytes": 630,
+      "sha256": "34c5a5595d61e29210f5a083f7a3efcdda63501851359fcdcc1a584bf762531a"
+    },
+    {
+      "name": "font-5x7.png",
+      "bytes": 811,
+      "sha256": "1952de07729ebaaf917a2b71c0303bdfac409225ec7873b28c078ce4c4f8e275"
+    },
+    {
+      "name": "font-glyphs.json",
+      "bytes": 8365,
+      "sha256": "17a5b064707d6e544ab254f04facbee0ac2a04e33a7afcfafad8dc743e02fc82"
+    },
+    {
+      "name": "icons.png",
+      "bytes": 419,
+      "sha256": "3f1f5040636444a65ef408e29caa489af1531b4e59d1b9554074422ce383b7c9"
+    },
+    {
+      "name": "icons@2x.png",
+      "bytes": 626,
+      "sha256": "149a2b877cebe95b33b24d95335fae62991c3565cb3072e0fb4e16b7c8a9ba0f"
+    },
+    {
+      "name": "layout.json",
+      "bytes": 17515,
+      "sha256": "4a141f8a5760127746cc0ea1bba546a73db9ef2973d00ac13cbf378a766c4d8e"
+    },
+    {
+      "name": "out.png",
+      "bytes": 79328,
+      "sha256": "c30a641d34bec87bd2cf866f625484dc20b0c56dab7febd804bf83ce55cd1ae2"
+    },
+    {
+      "name": "page.html",
+      "bytes": 3539,
+      "sha256": "0f4f111c745e2d41d95f6aec824660c4724fad760e5d6e46c2ebfb9e4462cc47"
+    },
+    {
+      "name": "preview-atlas.png",
+      "bytes": 6564,
+      "sha256": "3982c67fe83a4e0f8af84840ca2ef0e43808bb2a0dd0218ff660942a9fdee1c8"
+    },
+    {
+      "name": "preview-hud.png",
+      "bytes": 6720,
+      "sha256": "06f6273bd931e9691f9dadb63e47a040f4eec6732621362be548f11c43296c00"
+    },
+    {
+      "name": "preview-inventory.png",
+      "bytes": 8216,
+      "sha256": "c2358a7bfc67275e68e4eca149c38a45aef95e87d8bf1cccd34b83f7c1689493"
+    },
+    {
+      "name": "preview-menu.png",
+      "bytes": 7962,
+      "sha256": "f892dcabf0a2e9729f7230f4ba2dc3e9a5dc181cf449a0bcf92dac5675a53ac3"
+    },
+    {
+      "name": "preview-pause.png",
+      "bytes": 8283,
+      "sha256": "1f5ad292d14b7d87fa77a06b85f40ec48db85c7bccd283d05310eb081742b88b"
+    },
+    {
+      "name": "preview-settings.png",
+      "bytes": 8291,
+      "sha256": "4b92047928930fb32a9f4d02c2a9eb60a0767b2a61a37888d598f1bc7b64f5aa"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 16858,
+      "sha256": "ce5ccab74e1a67baf03b3b147ac7f5d1c5f8e9ec70485e11a83617e0f04f26ee"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 436,
+      "sha256": "ae7ccd80e7a2ea0bc7489dac5b0b89cf05251c28673e015532916a8799993d52"
+    },
+    {
+      "name": "tokens.json",
+      "bytes": 1242,
+      "sha256": "7c308c64931c70177ed261d5b962ab8b3bd1a90f8a28ebdb14bcb32aa5667da9"
+    }
+  ]
+}
