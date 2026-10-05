@@ -337,6 +337,26 @@ export function renderSelfCheck() {
 
 const psq = (s) => `'${String(s).replace(/'/g, "''")}'`;
 
+// C-263 leg 1: one shared Edge profile per process instead of one
+// fresh-profile launch per render. Same CLI flags, same output paths,
+// same PNG bytes; only the --user-data-dir is reused across render()
+// calls in this process (isolated per pid so parallel processes never
+// share a profile lock). Falls back to a fresh temp dir when the shared
+// dir cannot be created (fail open on the optimization, fail closed on
+// the render itself). renderPdf() keeps its own per-call profile.
+let sharedProfile = null;
+export function sharedProfileDir() {
+  if (sharedProfile && existsSync(sharedProfile)) return sharedProfile;
+  try {
+    const dir = `${tmpdir()}${sep}ds-render-shared-${process.pid}`;
+    mkdirSync(dir, { recursive: true });
+    sharedProfile = dir;
+    return dir;
+  } catch {
+    return null;
+  }
+}
+
 export function render(htmlPath, outPath, size = { w: 1280, h: 720 }, { minBytes = 4096, history = true, force = false, historyPath } = {}) {
   // O-038: brief hash + never-overwrite gate run BEFORE any browser launch
   // (fail closed with the reason; --force overrides a refuse, never a skip
@@ -365,7 +385,7 @@ export function render(htmlPath, outPath, size = { w: 1280, h: 720 }, { minBytes
     throw new Error("powershell.exe missing: cannot launch the browser on this PC");
   }
   mkdirSync(dirname(out), { recursive: true });
-  const profile = mkdtempSync(`${tmpdir()}${sep}ds-render-`);
+  const profile = sharedProfileDir() ?? mkdtempSync(`${tmpdir()}${sep}ds-render-`);
   const url = pathToFileURL(html).href;
   const args = [
     "--headless",

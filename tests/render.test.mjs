@@ -5,7 +5,7 @@ import { existsSync, writeFileSync } from "node:fs";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { sep } from "node:path";
-import { findBrowser, parseSize, pngDims, briefHashFor, fileSha256, readHistory, appendHistory, gateOverwrite, lastEntryFor, defaultHistoryPath } from "../tools/render.mjs";
+import { findBrowser, parseSize, pngDims, briefHashFor, fileSha256, readHistory, appendHistory, gateOverwrite, lastEntryFor, defaultHistoryPath, sharedProfileDir } from "../tools/render.mjs";
 
 describe("render", () => {
   it("finds an Edge/Chrome/Chromium binary on this PC", () => {
@@ -82,5 +82,13 @@ describe("render", () => {
   it("O-038: brief hash rejects empty source (never silent)", () => {
     assert.throws(() => briefHashFor(""), /needs source bytes/);
     assert.throws(() => gateOverwrite({ outPath: "x.png", historyPath: "y.jsonl" }), /needs the brief hash/);
+  });
+
+  it("C-263: shared profile dir is stable within one process", () => {
+    const a = sharedProfileDir();
+    const b = sharedProfileDir();
+    assert.ok(a, "shared profile dir must resolve (or null only when tmp is unwritable)");
+    assert.equal(a, b, "same process reuses one profile dir across renders");
+    assert.ok(existsSync(a), `shared profile dir exists: ${a}`);
   });
 });
