@@ -3,12 +3,12 @@
   "from_repo": "engine2040",
   "maker": "design-studio",
   "product": "order:game-ui-for-engine2040-eb-2026-10-05-s29",
-  "delivered_utc": "2026-10-05T14:10Z",
+  "delivered_utc": "2026-10-05T15:12Z",
   "source": "design-studio designs/O-042",
   "landing": "from-design-studio/O-042",
   "customer": "C:/engine2040",
-    "delivered": [
-    "25 files copied verbatim (refuse-overwrite-if-differs) + ADOPT.md adopt note (builder packet 055)",
+  "delivered": [
+    "27 files copied verbatim (refuse-overwrite-if-differs) + ADOPT.md customer-side adopt note",
     "landing from-design-studio/O-042/ in engine2040"
   ],
   "files": [
@@ -16,8 +16,7 @@
       "name": "ADOPT.md",
       "bytes": 389,
       "sha256": "1133500312362a2f9eeb5f778612b692b733e51aaa006abb0b2ee4acf6067559"
-    },
-    {
+    },    {
       "name": "DELIVERY.md",
       "bytes": 1037,
       "sha256": "5585ed1b19a99a59ee74f127327fea49cc286684e18e826eca26e9b9a47291ae"
@@ -26,6 +25,11 @@
       "name": "DESIGN-REVIEW.md",
       "bytes": 1171,
       "sha256": "85a231005d47dbc9c6441893c13d11f886020f11aa0485b0609d9602369dc068"
+    },
+    {
+      "name": "EYE.md",
+      "bytes": 473,
+      "sha256": "cf851372952f3ea2e3574c9fbe67341e0899bd77a0a85e34f3644e2af92f8c5c"
     },
     {
       "name": "VERDICT.md",
@@ -41,6 +45,11 @@
       "name": "atlas.png",
       "bytes": 1169,
       "sha256": "b3aba19cd2158a3c7cb1ac5d7f86aa5dffb68d2f3c727d3384f565ce2cd5035c"
+    },
+    {
+      "name": "brief-gate.json",
+      "bytes": 1007,
+      "sha256": "8b0e3b69694045aea5e75f024448d7856c46c818168f328f03988cd3cd1da9bc"
     },
     {
       "name": "brief.json",
