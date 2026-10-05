@@ -1,4 +1,5 @@
 // tools/orders-check.mjs: the order book `orders.csv` (S80, finish bars D1-D5).
+//   LF only (DS-77 r2): orders.csv must hold 0 CR bytes; any CR count FAILs loudly.
 //   node tools/orders-check.mjs            check every row (header, status, delivered path, adopted commit)
 //   node tools/orders-check.mjs --covers   D5: live factory listings against adopted cover rows (exit 0 only when all are covered)
 //   node tools/orders-check.mjs --desk [--date YYYY-MM-DD]
@@ -65,6 +66,15 @@ export function parseOrders(text) {
     return { order_id: f[0], from_repo: f[1], product: f[2], brief: f[3], status: f[4], delivered_path: f[5], adopted: f[6], date: f[7], adopted_commit: f[8], fields: f.length };
   });
   return { head: head.trim(), rows };
+}
+
+// DS-77 r2: durable CR-byte gate. orders.csv is LF only: any CR byte (a CRLF
+// regression) must FAIL loudly with the count, never pass silently.
+export function countCR(buf) {
+  const b = Buffer.isBuffer(buf) ? buf : Buffer.from(String(buf ?? ""), "utf8");
+  let n = 0;
+  for (const x of b) if (x === 13) n += 1;
+  return n;
 }
 
 // Returns the list of problems; empty means the book is clean.
@@ -372,6 +382,8 @@ export function collectDesignFiles(id, designsDir = join(ROOT, "designs")) {
 
 export function runDeliver(id, { designsDir = join(ROOT, "designs"), ordersPath = join(ROOT, "orders.csv"), empireJson = EMPIRE_JSON, now = null } = {}) {
   const raw = readFileSync(ordersPath, "utf8");
+  const crDeliver = countCR(Buffer.from(raw, "utf8"));
+  if (crDeliver > 0) return { ok: false, message: `DELIVER FAIL: orders.csv holds ${crDeliver} CR bytes (want 0, LF only)` };
   const book = parseOrders(raw);
   const row = book.rows.find((r) => r.order_id === id);
   if (!row) return { ok: false, message: `DELIVER FAIL: ${id} has no orders.csv row` };
@@ -570,6 +582,8 @@ if (isMain) {
     try { sb = JSON.parse(readFileSync(SCOREBOARD, "utf8").replace(/^\uFEFF/, "")); } catch (e) { console.log(`COVERS FAIL: cannot read ${SCOREBOARD}: ${e.message}`); process.exit(1); }
     const book = parseOrders(readFileSync(file, "utf8"));
     const c = coverStatus(book.rows, sb);
+    const crCovers = countCR(readFileSync(file));
+    if (crCovers > 0) { console.log(`COVERS FAIL: orders.csv holds ${crCovers} CR bytes (want 0, LF only)`); process.exit(1); }
     const open = book.rows.filter((r) => c.missing.includes(r.product) && r.status !== "rejected").map((r) => `${r.order_id} ${r.status}`);
     console.log(`COVERS ${c.covered === c.live ? "PASS" : "OPEN"}: ${c.covered} of ${c.live} live factory listings have an adopted design-studio cover; ${open.length} of the missing ones have an order (${open.slice(0, 5).join(", ") || "none"})`);
     process.exit(c.covered === c.live && c.live > 0 ? 0 : 1);
@@ -582,6 +596,8 @@ if (isMain) {
       if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) { console.log("DESK FAIL: --date wants YYYY-MM-DD"); process.exit(1); }
     }
     const book = parseOrders(readFileSync(file, "utf8"));
+    const crDesk = countCR(readFileSync(file));
+    if (crDesk > 0) { console.log(`DESK FAIL: orders.csv holds ${crDesk} CR bytes (want 0, LF only)`); process.exit(1); }
     const d = buildDesk(book.rows, { designsDir: join(ROOT, "designs"), date });
     mkdirSync(join(ROOT, "sprint/queue"), { recursive: true });
     writeFileSync(join(ROOT, "sprint/queue/desk.md"), `${d.lines.join("\n")}\n`);
@@ -629,7 +645,10 @@ if (isMain) {
     }
   }
   if (process.argv.includes("--round")) {
-    const book = parseOrders(readFileSync(file, "utf8"));
+    const rawRound = readFileSync(file);
+    const crRound = countCR(rawRound);
+    if (crRound > 0) { console.log(`ROUND FAIL: orders.csv holds ${crRound} CR bytes (want 0, LF only)`); process.exit(1); }
+    const book = parseOrders(rawRound.toString("utf8"));
     const r = roundState({ rows: book.rows });
     if (process.argv.includes("--save")) {
       mkdirSync(join(ROOT, "sprint/queue"), { recursive: true });
@@ -639,8 +658,11 @@ if (isMain) {
     console.log(r.line);
     process.exit(r.real ? 0 : 1);
   }
-  const book = parseOrders(readFileSync(file, "utf8"));
+  const rawOrders = readFileSync(file);
+  const crOrders = countCR(rawOrders);
+  const book = parseOrders(rawOrders.toString("utf8"));
   const bad = checkOrders(book);
+  if (crOrders > 0) bad.unshift(`orders.csv holds ${crOrders} CR bytes (want 0, LF only)`);
   const n = (s) => book.rows.filter((r) => r.status === s).length;
   for (const b of bad) console.log(`[FAIL] ${b}`);
   console.log(`ORDERS ${bad.length ? "FAIL" : "PASS"}: ${book.rows.length} orders (${STATUSES.map((s) => `${n(s)} ${s}`).join(", ")})${bad.length ? `, ${bad.length} problems` : ""}`);

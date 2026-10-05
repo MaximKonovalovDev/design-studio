@@ -5,7 +5,7 @@ import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { HEADER, beatAsset, buildDesk, checkBuilt, checkDeliver, checkOrders, collectDesignFiles, coverStatus, customerDirFor, laneFor, parseOrders, pathOnDisk, readVerdict, resolveLanding, roundState, runDeliver, writeVerdict, DESK_HEADER } from "../tools/orders-check.mjs";
+import { HEADER, beatAsset, buildDesk, checkBuilt, checkDeliver, checkOrders, collectDesignFiles, countCR, coverStatus, customerDirFor, laneFor, parseOrders, pathOnDisk, readVerdict, resolveLanding, roundState, runDeliver, writeVerdict, DESK_HEADER } from "../tools/orders-check.mjs";
 
 const row = (o) => ({ order_id: "O-9", from_repo: "factory", product: "cover:gumroad/x", brief: "b", status: "open", delivered_path: "", adopted: "no", date: "2026-10-03", adopted_commit: "", ...o });
 const csv = (...rows) => [HEADER, ...rows.map((r) => Object.values(row(r)).join(","))].join("\n");
@@ -38,6 +38,30 @@ describe("orders.csv rules", () => {
   it("delivered_path counts in this repo or a customer repo", () => {
     assert.equal(pathOnDisk("orders.csv"), true);
     assert.equal(pathOnDisk("no-such-thing-xyz"), false);
+  });
+});
+
+describe("CRLF gate (DS-77 r2)", () => {
+  it("an LF book holds 0 CR bytes and passes the gate", () => {
+    const lf = Buffer.from(csv({}) + "\n", "utf8");
+    assert.equal(countCR(lf), 0);
+  });
+  it("a CRLF book fails the gate with the CR count", () => {
+    const crlf = Buffer.from((csv({}) + "\n").replace(/\n/g, "\r\n"), "utf8");
+    const n = countCR(crlf);
+    assert.ok(n > 0, "CRLF fixture must hold CR bytes");
+    assert.equal(n, (csv({}) + "\n").split("\n").length - 1);
+    assert.match(`orders.csv holds ${n} CR bytes (want 0, LF only)`, /holds \d+ CR bytes/);
+  });
+  it("delivery refuses a CRLF book instead of normalizing it silently", () => {
+    const base = mkdtempSync(join(tmpdir(), "crlf-"));
+    const ordersPath = join(base, "orders.csv");
+    writeFileSync(ordersPath, (csv({}) + "\n").replace(/\n/g, "\r\n"));
+    const dz = join(base, "designs");
+    mkdirSync(join(dz, "O-9"), { recursive: true });
+    const r = runDeliver("O-9", { designsDir: dz, ordersPath, empireJson: join(base, "empire.json") });
+    assert.equal(r.ok, false);
+    assert.match(r.message, /holds \d+ CR bytes/);
   });
 });
 
