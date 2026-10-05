@@ -17,6 +17,9 @@ engine2040 (`crates/ui/src/text.rs`)
 2. The grid already matches `Atlas`: `FIRST` 0x20, `LAST` 0x7E, `COUNT` 95, `COLS` 16, `ROWS` 6. Change `GLYPH_W` 3 to 5 and `GLYPH_H` 5 to 7, set the cell to 6x8 (atlas 96x48), and fill the static bitmaps from `font-glyphs.json` (7 strings of 5 chars per glyph, `#` = lit). `layout`, UV rects and `emit_quads` keep their shape.
 3. Menus (`menus.rs`): use the `menu` list of `layout.json` for the panel, the button states (normal, hover, pressed, disabled) and the text colors.
 
+Stamp a new HUD from this pack:
+- `node tools/template.mjs new O-NEW --template game/hud` (stamps `designs/O-NEW/` from the game/hud template built from O-023).
+
 Proof
 - design-studio: `node tools/ui-pack.mjs --check` -> UIPACK PASS; `node tools/audit.mjs designs/O-023/brief.json` -> PASS.
 - Adopted when your commit holds identical bytes: `git log -1 --format=%h -- from-design-studio/O-023/ui-atlas.png`; the lead then writes that hash into `orders.csv`.

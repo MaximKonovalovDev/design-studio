@@ -2,6 +2,7 @@
 // Every design output is scored by a fixed rubric plus a written
 // DESIGN-REVIEW.md; nothing ships below 8/10. Objective gates only here:
 // taste notes stay human prose in the review file, the score stays machine.
+// SHIP = audit PASS + thumb-256.png legible + receipt.json pin (rev pins out.png sha256).
 //
 // Usage:
 //   node tools/judge.mjs <samples/<name>/brief.json | samples/<name>/

@@ -3,6 +3,7 @@
   "variants": ["a", "b"],
   "metric": "cta click-through on .cta within a 5-minute review session",
   "success": "winner beats control by a named margin with the same audit gates green",
+  "ship": "SHIP = audit PASS + thumb-256.png legible + receipt.json pin (rev pins out.png sha256) — next: publish then re-run tools/check.mjs + tools/judge.mjs",
   "live": { "sample": "samples/cover-b" },
   "beacon": { "endpoint": "/api/beacon", "payload": ["url", "rev"], "verify": "poll-until-live", "source": "plausible AGPL idea-only (no copy, offline verify, no network in --check)" },
   "steps": [
