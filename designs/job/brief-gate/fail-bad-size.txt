@@ -1,0 +1,8 @@
+[PASS] brief.json exists: designs/job/brief-gate/fail-bad-size.json
+[PASS] brief.json parses: Fleet Vol 1
+[PASS] product present: cover:gumroad/fleet-pack
+[PASS] headline present: Fleet Vol 1
+[FAIL] sizes well-formed: sizes[0].w must be an int >= 16, got "1280x720" ΓÇö next: set exact pixels
+[PASS] facts source exists: orders.csv O-042 delivered_path from-design-studio/O-042 on disk (lane-grounded)
+[PASS] no forbidden words: no engine names, score claims or personal data in brief strings
+GATE FAIL: designs/job/brief-gate/fail-bad-size.json: sizes well-formed: sizes[0].w must be an int >= 16, got "1280x720" ΓÇö next: set exact pixels

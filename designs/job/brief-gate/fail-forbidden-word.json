@@ -1,0 +1,9 @@
+{
+  "title": "Unity engine showcase cover",
+  "product": "cover:gumroad/fleet-pack",
+  "sizes": [
+    { "w": 1280, "h": 720, "name": "landscape" }
+  ],
+  "size": { "w": 1280, "h": 720 },
+  "order": "O-042"
+}

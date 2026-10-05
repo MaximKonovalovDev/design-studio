@@ -1,0 +1,9 @@
+{
+  "title": "Fleet Vol 1",
+  "sizes": [
+    { "w": 1280, "h": 720, "name": "landscape" },
+    { "w": 630, "h": 500, "name": "store-card" }
+  ],
+  "size": { "w": 1280, "h": 720 },
+  "order": "O-042"
+}

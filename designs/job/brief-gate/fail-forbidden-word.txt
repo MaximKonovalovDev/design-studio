@@ -1,0 +1,8 @@
+[PASS] brief.json exists: designs/job/brief-gate/fail-forbidden-word.json
+[PASS] brief.json parses: Unity engine showcase cover
+[PASS] product present: cover:gumroad/fleet-pack
+[PASS] headline present: Unity engine showcase cover
+[PASS] sizes well-formed: 1280x720 landscape
+[PASS] facts source exists: orders.csv O-042 delivered_path from-design-studio/O-042 on disk (lane-grounded)
+[FAIL] no forbidden words: forbidden engine name "unity" in field "title" ΓÇö next: drop it from the brief
+GATE FAIL: designs/job/brief-gate/fail-forbidden-word.json: no forbidden words: forbidden engine name "unity" in field "title" ΓÇö next: drop it from the brief

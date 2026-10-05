@@ -1,0 +1,9 @@
+{
+  "title": "Fleet Vol 1",
+  "product": "cover:gumroad/fleet-pack",
+  "sizes": [
+    { "w": "1280x720", "h": 720, "name": "landscape" }
+  ],
+  "size": { "w": 1280, "h": 720 },
+  "order": "O-042"
+}

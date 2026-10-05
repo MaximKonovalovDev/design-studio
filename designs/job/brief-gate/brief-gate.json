@@ -1,0 +1,45 @@
+{
+  "pass": false,
+  "code": 1,
+  "checks": [
+    {
+      "name": "brief.json exists",
+      "pass": true,
+      "detail": "designs/job/brief-gate/fail-forbidden-word.json"
+    },
+    {
+      "name": "brief.json parses",
+      "pass": true,
+      "detail": "Unity engine showcase cover"
+    },
+    {
+      "name": "product present",
+      "pass": true,
+      "detail": "cover:gumroad/fleet-pack"
+    },
+    {
+      "name": "headline present",
+      "pass": true,
+      "detail": "Unity engine showcase cover"
+    },
+    {
+      "name": "sizes well-formed",
+      "pass": true,
+      "detail": "1280x720 landscape"
+    },
+    {
+      "name": "facts source exists",
+      "pass": true,
+      "detail": "orders.csv O-042 delivered_path from-design-studio/O-042 on disk (lane-grounded)"
+    },
+    {
+      "name": "no forbidden words",
+      "pass": false,
+      "detail": "forbidden engine name \"unity\" in field \"title\" — next: drop it from the brief"
+    }
+  ],
+  "errors": [
+    "no forbidden words: forbidden engine name \"unity\" in field \"title\" — next: drop it from the brief"
+  ],
+  "at": "2026-10-05"
+}
