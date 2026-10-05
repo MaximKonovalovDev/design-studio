@@ -1,0 +1,146 @@
+{
+  "order_id": "O-044",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:gumroad/consultant-starter-kit-vol2",
+  "delivered_utc": "2026-10-05T22:59Z",
+  "source": "design-studio designs/O-044",
+  "landing": "products/niche-business-system/consultant-starter-kit-vol2/covers/from-design-studio/O-044",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "26 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/niche-business-system/consultant-starter-kit-vol2/covers/from-design-studio/O-044/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/3dd831c1f60cb91370dc54bfb157d1d1371b7327a3784679c05ed05b7d58c462/manifest.json",
+      "bytes": 194,
+      "sha256": "3bc581831161babb013d321fa197281544f9f071490664e66e626a7c70cc3307"
+    },
+    {
+      "name": ".cache/3dd831c1f60cb91370dc54bfb157d1d1371b7327a3784679c05ed05b7d58c462/out-630x500.png",
+      "bytes": 185937,
+      "sha256": "097ea59df58d2262804a8f0087e159a6b098577561404d4edcc4300e2751a7ef"
+    },
+    {
+      "name": ".cache/3dd831c1f60cb91370dc54bfb157d1d1371b7327a3784679c05ed05b7d58c462/out.png",
+      "bytes": 419945,
+      "sha256": "0cb9222c548c5cf979e84217605c0d846dc0e6e9a37e7559c8230241558b4416"
+    },
+    {
+      "name": ".cache/3dd831c1f60cb91370dc54bfb157d1d1371b7327a3784679c05ed05b7d58c462/thumb-256.png",
+      "bytes": 38494,
+      "sha256": "c831e2c2cb2519062606c1b9db902860a9923e8d9664631bebda59a8c4b44c09"
+    },
+    {
+      "name": "ADOPT.md",
+      "bytes": 654,
+      "sha256": "8b0877fcd33dfa9c5f76666e1faeb7cb496d4447319969bbefd95be645f5763b"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1358,
+      "sha256": "0fc606683f5f3e9b304a40ba7ed30d11573db7cd7965efa37a1ae45450980e59"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1182,
+      "sha256": "7e3ddfad0b1f46e90b49346941fda64fa602738d643e0a48eb2735694c620d15"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 340,
+      "sha256": "7ed877f4f17b192511d5b5e0178a89839131ae410c7357b2717884f87125b485"
+    },
+    {
+      "name": "art.css",
+      "bytes": 3706,
+      "sha256": "1cfa67bb01cde9473c6e5dd23090e943a0c15c965e911ba40cd9b1ceffc1ba65"
+    },
+    {
+      "name": "art.html",
+      "bytes": 642,
+      "sha256": "72f7ddeb5d7b94c87d075c2ca3a31ac52e1c23cfaad58d7c6a8cdc41c7f28bff"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 1257,
+      "sha256": "2c19879c4211897d53eb86e882f66c4bad36b5fb2d5d858f7858ac1aa5704fea"
+    },
+    {
+      "name": "assets/fonts/inter-latin-400-normal.woff2",
+      "bytes": 23664,
+      "sha256": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc"
+    },
+    {
+      "name": "assets/fonts/inter-latin-700-normal.woff2",
+      "bytes": 24356,
+      "sha256": "6f56409fd3d64bb85f7d070bce20749db2d66b6d63cec586cc22d1c761be2491"
+    },
+    {
+      "name": "assets/fonts/rubik-latin-700-normal.woff2",
+      "bytes": 19112,
+      "sha256": "e423f8ae1668156addf5e32f1056d5b22b5b113a9a23afd364df84a6fa88602d"
+    },
+    {
+      "name": "assets/sheet-1.png",
+      "bytes": 199623,
+      "sha256": "78d93b40bd6fb609e0dedfeb6155e75bdb15c2c88ea033ed9a5ade9532c1d0c2"
+    },
+    {
+      "name": "assets/sheet-2.png",
+      "bytes": 203700,
+      "sha256": "0dcf33f838ffe5736521433fba78b9af86839922d8b74d6c4f8741fa4e3c1d5b"
+    },
+    {
+      "name": "assets/sheet-3.png",
+      "bytes": 129609,
+      "sha256": "0a638bd769bda8e6ac317d7a781c735f17d469c244c31547169db7faa8ded4cc"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1350,
+      "sha256": "75df3f75ddca77038ecab1850d686f039de328e62b7447b0ac2916748cc1fdd0"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 196972,
+      "sha256": "cdc38450ec7b16f21678cafe34c6171404d6bff0bc442cf2b4c837b8718a1486"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 2699,
+      "sha256": "b4290f4ad9ecd776db97c87f58dc57c877a5aa0aba8db18986ab0c7c13900c41"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2977,
+      "sha256": "02ab2d389a6b7ee7685837210f1cccbfed987950f9e391c7806a46abb075b3a8"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 185937,
+      "sha256": "097ea59df58d2262804a8f0087e159a6b098577561404d4edcc4300e2751a7ef"
+    },
+    {
+      "name": "out.png",
+      "bytes": 419945,
+      "sha256": "0cb9222c548c5cf979e84217605c0d846dc0e6e9a37e7559c8230241558b4416"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8443,
+      "sha256": "197dd7c041dc09cd62b073df7da15be0e6691ca2f07ffd4971718ea19c0a9201"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 38494,
+      "sha256": "c831e2c2cb2519062606c1b9db902860a9923e8d9664631bebda59a8c4b44c09"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 1331,
+      "sha256": "2c856bb998abd60706dd093757eff18c1f4d84fae57e93ed480dc890ed28e37c"
+    }
+  ]
+}
