@@ -1,5 +1,5 @@
 # repomap: design-studio
-_generated 2026-10-04T16:57:29.072Z | 918 files mapped | 32 hot (commits, last 14d) | cap 25KB_
+_generated 2026-10-05T05:20:55.862Z | 1047 files mapped | 34 hot (commits, last 14d) | cap 25KB_
 
 ## tree
 - `.env` - 1 file
@@ -17,26 +17,26 @@ _generated 2026-10-04T16:57:29.072Z | 918 files mapped | 32 hot (commits, last 1
 - `brand-kits/` - 2 files
 - `canvas/` - 11 files
 - `convert/` - 3 files
-- `designs/` - 509 files
+- `designs/` - 625 files
 - `docs/` - 1 file
 - `fonts/` - 18 files
-- `kits/` - 13 files
-- `knowledge/` - 5 files
+- `kits/` - 14 files
+- `knowledge/` - 6 files
 - `opencode.jsonc` - 1 file
 - `orders.csv` - 1 file
 - `package-lock.json` - 1 file
 - `package.json` - 1 file
-- `packs/` - 44 files
+- `packs/` - 52 files
 - `research/` - 12 files
 - `samples/` - 96 files
-- `sprint/` - 19 files
+- `sprint/` - 18 files
 - `taste/` - 1 file
 - `templates/` - 65 files
-- `tests/` - 25 files
-- `tools/` - 28 files
+- `tests/` - 27 files
+- `tools/` - 30 files
 
 ## symbols (hot first, xN = commits last 14d)
-### `.opencode/plugin/loop-keeper.js` x14 (168KB)
+### `.opencode/plugin/loop-keeper.js` x16 (174KB)
 - `const LoopKeeper`
 ### `tools/audit.mjs` x10 (40KB)
 - `function titleChars`
@@ -188,6 +188,35 @@ _generated 2026-10-04T16:57:29.072Z | 918 files mapped | 32 hot (commits, last 1
 - `function buildBlock`
 - `function runBlockLoop`
 - `function selfCheck`
+### `tools/assets.mjs` x3 (36KB)
+- `const GIT_KEEP_BYTES`
+- `function parsePngDims`
+- `function parseGifDims`
+- `function parseJpegDims`
+- `function imageDims`
+- `const PIC_EXTS`
+- `const sha256`
+- `function factsPaths`
+- `function orderRow`
+- `function findPreviewDir`
+- `function listPreviewPictures`
+- `function mergeAssetsJson`
+- `function productInfo`
+- `function repoRoot`
+- `function slugTokens`
+- `function dirTokens`
+- `function scoreDirName`
+- `function packCandidates`
+- `function resolveOrderPackIn`
+- `function resolveOrderPack`
+- `function productInfoOrder`
+- `function slugify`
+- `function polyhavenSearch`
+- `function pickPolyhavenFile`
+- `function ambientDownloadUrl`
+- `function ambientSearch`
+- `function openverseSearch`
+- `function keepOutOfGit`
 ### `tools/brandkit.mjs` x3 (6.2KB)
 - `export {mergeKits}`
 - `function checkBrandkit`
@@ -250,27 +279,6 @@ _generated 2026-10-04T16:57:29.072Z | 918 files mapped | 32 hot (commits, last 1
 - `const THUMB_W`
 - `function thumbSize`
 - `function thumbBrief`
-### `tools/assets.mjs` x1 (22KB)
-- `const GIT_KEEP_BYTES`
-- `function parsePngDims`
-- `function parseGifDims`
-- `function parseJpegDims`
-- `function imageDims`
-- `const PIC_EXTS`
-- `const sha256`
-- `function factsPaths`
-- `function orderRow`
-- `function findPreviewDir`
-- `function listPreviewPictures`
-- `function mergeAssetsJson`
-- `function productInfo`
-- `function slugify`
-- `function polyhavenSearch`
-- `function pickPolyhavenFile`
-- `function ambientDownloadUrl`
-- `function ambientSearch`
-- `function openverseSearch`
-- `function keepOutOfGit`
 ### `tools/atlas.mjs` x1 (18KB)
 - `function encodePng`
 - `function decodePng`
@@ -288,6 +296,19 @@ _generated 2026-10-04T16:57:29.072Z | 918 files mapped | 32 hot (commits, last 1
 - `function runCompare`
 - `function svgSize`
 - `function runSvg2png`
+- `function selfCheck`
+### `tools/donor.mjs` x1 (13KB)
+- `const ROOT`
+- `const DONOR_URL`
+- `const DONOR_DIR`
+- `const SYSTEMS_DIR`
+- `const SYSTEMS`
+- `function normalizeSlug`
+- `function nearestSlugs`
+- `function donorStatus`
+- `function resolveSystem`
+- `function writeReceipt`
+- `function ensureOpenDesign`
 - `function selfCheck`
 ### `tools/fonts.mjs` x1 (13KB)
 - `const ROOT`
@@ -354,6 +375,15 @@ _generated 2026-10-04T16:57:29.072Z | 918 files mapped | 32 hot (commits, last 1
 - `function runDemo`
 - `function verifyGif`
 - `function parseArgs`
+### `tools/mockup.mjs` x1 (11KB)
+- `const ROOT`
+- `const FRAMES`
+- `const BGS`
+- `function parseSize`
+- `function parseArgs`
+- `function buildMockupHtml`
+- `function runMockup`
+- `function selfCheck`
 ### `tools/pdfcheck.mjs` x1 (12KB)
 - `function pdfjsVersion`
 - `function countScripts`
