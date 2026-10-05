@@ -1,0 +1,79 @@
+{
+  "product": "cover:itch/niche-playbook-income-seekers",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Niche Playbook 05: Income Seekers",
+  "pick": "clean-professional",
+  "template": "covers/sheet-fan",
+  "kicker": "12 pains, 6 places, price ladder, 30-day plan",
+  "claim": "12 pains, 6 places, 10 price anchors, 20 dated tasks. Zero income promises.",
+  "chips": [
+    "12 pains, no fake quotes",
+    "6 places + fit scores",
+    "20-task 30-day plan",
+    {
+      "t": "10 files + free sample",
+      "wide": true
+    }
+  ],
+  "badge": "$19 one-time",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "Rubik, 'Segoe UI', Arial, sans-serif",
+    "body": "Inter, 'Segoe UI', Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 80,
+  "titlePxCard": 44,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Niche Playbook",
+    "05: Income",
+    "Seekers"
+  ],
+  "titleWrapCard": [
+    "Niche Playbook 05:",
+    "Income Seekers"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "sheet-ar": "1.5",
+    "sheet-w": "322px",
+    "sheet-w-card": "188px"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-income-seekers/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-income-seekers/preview/cover-1280x720.png",
+  "landing": "products/services/niche-playbook-income-seekers/covers/from-design-studio/O-037/",
+  "assetsFrom": "the product's own preview/ screenshots plus a faithful price-ladder render of its own assets/price-ladder-10.md",
+  "assets": [
+    {
+      "name": "sheet-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-income-seekers/preview/shot-pains-1280x800.png",
+      "what": "the customer's own picture shot-pains-1280x800.png"
+    },
+    {
+      "name": "sheet-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-income-seekers/preview/shot-places-1280x800.png",
+      "what": "the customer's own picture shot-places-1280x800.png"
+    },
+    {
+      "name": "sheet-3.png",
+      "src": "C:/Users/me/AppData/Local/Temp/opencode/o037-sheet3.png",
+      "what": "faithful table render of the customer's own assets/price-ladder-10.md (10 anchors, sources + dates kept)"
+    }
+  ]
+}

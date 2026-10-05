@@ -1,0 +1,23 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/sheet-1.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-income-seekers/preview/shot-pains-1280x800.png",
+      "what": "the customer's own picture shot-pains-1280x800.png",
+      "bytes": 68669
+    },
+    {
+      "file": "assets/sheet-2.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-income-seekers/preview/shot-places-1280x800.png",
+      "what": "the customer's own picture shot-places-1280x800.png",
+      "bytes": 60224
+    },
+    {
+      "file": "assets/sheet-3.png",
+      "from": "C:/Users/me/AppData/Local/Temp/opencode/o037-sheet3.png",
+      "what": "faithful table render of the customer's own assets/price-ladder-10.md (10 anchors, sources + dates kept)",
+      "bytes": 80035
+    }
+  ]
+}
