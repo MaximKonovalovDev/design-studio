@@ -1,0 +1,126 @@
+{
+  "order_id": "O-037",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/niche-playbook-income-seekers",
+  "delivered_utc": "2026-10-05T08:54Z",
+  "source": "design-studio designs/O-037",
+  "landing": "products/services/niche-playbook-income-seekers/covers/from-design-studio/O-037",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "22 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/services/niche-playbook-income-seekers/covers/from-design-studio/O-037/ in factory"
+  ],
+  "files": [
+    {
+      "name": "ADOPT.md",
+      "bytes": 683,
+      "sha256": "02d8bbee526793dbb1bf6b0fe77a1963d2edf00615fb5c61049b09617d81ca08"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1410,
+      "sha256": "5238c565c389a7c77d5e6871b4f0280805f2f33642f1a1ed34d184ead186f2c1"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1187,
+      "sha256": "ac9b4d2d3163c3104418baa62b109247973fda360c57dcc87ae876d3a4d4ae16"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 339,
+      "sha256": "77196e211be3614c46010851484ecd852f573e5d51cd1513e458e3f0a6c31bc5"
+    },
+    {
+      "name": "art.css",
+      "bytes": 4878,
+      "sha256": "5306a0890aef0ef3f72fb207a7067696248aa6f48391be03376f080c08e32d7b"
+    },
+    {
+      "name": "art.html",
+      "bytes": 612,
+      "sha256": "883dfe6319fa5c0f521af2916e98d7a91b2915d79a97edfa9f17e081b145b272"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 944,
+      "sha256": "ff3434a7422a67580ea5ec5241f291d5fab389aa9862622f77cce0703a0845d5"
+    },
+    {
+      "name": "assets/fonts/inter-latin-400-normal.woff2",
+      "bytes": 23664,
+      "sha256": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc"
+    },
+    {
+      "name": "assets/fonts/inter-latin-700-normal.woff2",
+      "bytes": 24356,
+      "sha256": "6f56409fd3d64bb85f7d070bce20749db2d66b6d63cec586cc22d1c761be2491"
+    },
+    {
+      "name": "assets/fonts/rubik-latin-700-normal.woff2",
+      "bytes": 19112,
+      "sha256": "e423f8ae1668156addf5e32f1056d5b22b5b113a9a23afd364df84a6fa88602d"
+    },
+    {
+      "name": "assets/sheet-1.png",
+      "bytes": 68669,
+      "sha256": "2da03c1515395214588e9b2c287bb966144b725a488e3425688a8b3ad8c89f2b"
+    },
+    {
+      "name": "assets/sheet-2.png",
+      "bytes": 60224,
+      "sha256": "9f859b86c0ba5a559083f547112a6efa837fa9388aab58e9f2e8513901cb5bfd"
+    },
+    {
+      "name": "assets/sheet-3.png",
+      "bytes": 80035,
+      "sha256": "4e844009072c6a76737fe86d5a1b94e74aaef9edd7f7abd5d5f3e610d537a3e8"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1224,
+      "sha256": "fb0e9506ae482b8dbf86d2c8cc1feb063d101661c2f2d085af55aa3d0f5ef39f"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 127127,
+      "sha256": "65cd48ebb9db23731f3883639858c4ce72e03f3460174b3054ed340728f4c5ea"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 2640,
+      "sha256": "19111e49661b7d6035178cf24a7a1583ab5b8ba7fe985e21f108c2d81ce8689a"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2982,
+      "sha256": "0579a83352ffc43d55bf4b4849b757183470f0adebc6b39250b29a74fdca98cd"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 159632,
+      "sha256": "59ff875cb2bde89b786aa20490cceaba9e87c7cca6b780f2a4ca22ff3c1d9871"
+    },
+    {
+      "name": "out.png",
+      "bytes": 386803,
+      "sha256": "04f0a32c816b8f4a8bb37188d744062d0ba22e991e18120eb038a7607e264d49"
+    },
+    {
+      "name": "page.html",
+      "bytes": 9592,
+      "sha256": "e0d857d744ef04ba90d4d2e6d2eb877b1f73d10defbbbcd889127b0379c6dfaf"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 34162,
+      "sha256": "21f24c70be922d78da1d20174f80a79f85a4ea918ed73cd81ec9bb3a8dd743da"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 1335,
+      "sha256": "f0507d443bef26c8ff1221ccd673c6824ae7f7e1d25d3d47a9bb0b8cc879379a"
+    }
+  ]
+}
