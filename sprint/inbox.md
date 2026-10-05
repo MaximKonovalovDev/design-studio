@@ -6,6 +6,8 @@ The lead turns each open item into a board row and ticks it with the row ID.
 ## Open
 
 (none 2026-10-04T14:35Z: S55 rowed as DS-78)
+- [x] EB-2026-10-05-S44 from center -> DS-79 DONE 2026-10-05 [DEAD-KNOB] | Wire or delete dead knob cards_per_reader (S72): grep proves 0 readers; wire to a seat or delete from knobs.json | why: dead knobs mislead helpers; Maxim raised one once and nothing read it | done when node empire.mjs knobs shows no orphan for design-studio
+- [ ] EB-2026-10-05-S60 from center (Maxim, 2026-10-05) | [TOKEN-100x] Fluid tokens plus brief gate plus thumbs | why: Audit 2026-10-05 wave says working desk with 4 of 5 met but adoption gap. Steal open-props MIT tokens plus style-dictionary Apache-2.0 compiler plus zod MIT brief gate plus sharp Apache-2.0 thumbs. | done when F2P: token floor lands plus bad brief refused plus thumbs without Edge. P2P: audit passes plus orders adopted. Serves adoption.
 
 ## Done
 - [x] EB-2026-10-04-S55 from center -> DS-78 READY 2026-10-04 [TEMPLATES-V1] | templates v1 (12 templates, 8 palettes); game-UI family (b) serves D4-adjacent template work.
