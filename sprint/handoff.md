@@ -1,23 +1,22 @@
-# design-studio handoff - round 100 (token c4e8)
+# design-studio handoff - round 101 (token c4e8)
 
-Round: 100
-Written: 2026-10-05T08:16Z by lead (token c4e8, held since 07:50Z).
-Knobs: width 2, heavy_max 3, paid_mode 1, dispatch foreground. Helpers ran on default roles (no paid twin in this session).
-Batch (keeper-named, full width 2): judge 012-bld-o036-store-review (VERDICT PASS) + toolsmith NEED-12/NEED-14 (DONE).
+Round: 101
+Written: 2026-10-05T08:20Z by lead (token c4e8, held since 07:50Z).
+Knobs: width 2, heavy_max 3, paid_mode 1, dispatch foreground.
+Batch (keeper-named, 1 of width 2): judge 012-bld-o036-store-review (VERDICT PASS).
 
 ## Heading
-- D5 did not move this batch: moving it needs the deliverer (DLV-O-036 READY, deliverer not in this batch) plus factory adoption. Closest approach: O-036 triple-PASS ready to deliver, O-037 built awaiting verdict, tools/fonts step landed for the next covers.
+- D5 did not move: the batch held no deliverer (DLV-O-036 READY waits on that seat) and no adoption is ours to make. O-036 is now 4x PASS; further re-reviews add nothing — recommend keeper retire 012-review and send DLV-O-036 + JDG-O-037 next.
 - Book: built 33, judged 13, delivered 28, adopted 7. Unjudged-oldest O-037, in-flight 2.
 
-## Done (committed 7b9c70d; tool files await chain review)
-- O-036 third chain PASS (keeper's own review packet; judge re-ran --built 16/16, opened compare, rewrote VERDICT.md). Committed.
-- Toolsmith: NEED-12 DONE-stale (O-034 delivered), NEED-14 DONE (cover.mjs gen --fonts + tests/cover-fonts.test.mjs 5/5 + arsenal cover-fonts, first use O-037). Lead re-ran proofs: COVER PASS lines, 5/5 tests, ORDERS PASS 37. tools/cover.mjs + arsenal.json + tests + needs.md rows stay uncommitted until keeper chain review.
-- Proofs: ROUND real yes | built 33 | judged 13 | delivered 28 | adopted 7 | tools 16. sprint/check RESULT PASS 21/0/0.
+## Done (committed 2d754df)
+- O-036 fourth chain PASS (judge re-ran --built 16/16, opened compare, rewrote VERDICT.md). Committed.
+- ROUND: real yes | built 33 | judged 13 | delivered 28 | adopted 7 | tools 16.
+- Inbox 0 open. No OWNER rows. No board change. sprint/check carried PASS from r100 (no repo files touched except VERDICT).
 
 ## Blockers and notes
-- DLV-O-036 + DLV for O-037 (after its verdict) + factory inbox items still needed for D5.
-- Left dirty, not mine: knobs.json (Loop Boss), sprint/halt deletion (owner resume), repomap, samples audits x10 (something re-rendered them), round.md, templates previews, palettes.png, O-025 files.
-- Inbox 0 open. No OWNER rows. No board change.
+- D5 needs: DLV-O-036 deliver + factory inbox item; JDG-O-037 verdict then its DLV; O-023/O-032 customer asks.
+- Left dirty, not mine: knobs.json, halt deletion, repomap, samples audits, round.md, templates previews, tool files awaiting review (cover.mjs, arsenal, cover-fonts test, needs rows).
 
 ## Next
-- Keeper: toolsmith chain review (cover --fonts), JDG-O-037 verdict, DLV-O-036 deliver row, eye follow-up O-023/O-032 asks.
+- Keeper: DLV-O-036 deliver row, JDG-O-037 verdict, toolsmith chain review. Stop re-sending 012-review.
