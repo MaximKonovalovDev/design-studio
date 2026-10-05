@@ -1,23 +1,24 @@
-# design-studio handoff - round 112 (token 3f1f)
+# design-studio handoff - round 113 (token 972a)
 
-Round: 112
-Written: 2026-10-05T09:14Z by lead (token 3f1f, held since 09:09Z).
-Knobs: width 2, heavy_max 3, paid_mode 0 (Loop Boss 08:57Z, free-only from this round), dispatch foreground.
-Batch (keeper batch.md 08:45Z, stale but sent): 015-dlv-o036 re-verify (DONE) + 016-o037 re-review (VERDICT PASS).
+Round: 113
+Written: 2026-10-05T10:11Z by lead (token 972a, held since 10:11Z).
+Takeover: replaced stale lock lead#3f1f (round 112, closed app) per takeover arg.
+Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground.
+Batch: keeper batch.md names 0 Task calls (eye-customer already took EYE-2026-10-05 as done/018); sent none.
 
 ## Heading
-- D5 NOT moved this round, and cannot move from here: 4 of 5 met; adoption is factory's act and that loop is halted 7h. Both covers sit committed in factory (8f12a5ec, b019bdab) with inbox asks filed (incl. EB-2026-10-05-S13).
+- No Scorecard row moved this round: takeover + checks only, no maker work open.
 - Book: built 33, judged 14, delivered 30, adopted 7. Unjudged-oldest none, in-flight 0.
 
-## Done (committed 02714bb here, nothing new in factory)
-- 015 re-ran --deliver O-036: 19 files 0 copied 19 identical, CHECK PASS 19/19; only DELIVERED.json timestamp bumped. Factory side already 8f12a5ec, tree clean.
-- 016 re-judged O-037 on committed folder: BUILT 16/16, BEATS 16px vs ~12px, PICTURE/FACTS/FIT/LANE yes, VERDICT PASS rewritten (wording-only diff).
-- Failed-012 (12x listed, never sent): nothing still matters — O-036 is built, judged PASS and delivered. History, no rewrite.
-- Proofs: ROUND real yes | built 33 | judged 14 | delivered 30 | adopted 7 | tools 16. ORDERS PASS 37 (0 open). sprint/check RESULT PASS 21/0/0.
+## Done (no new commits of work; proofs re-verified by lead)
+- sprint/check RESULT PASS 21/0/0. tools/check RESULT PASS (11 samples + audits).
+- ORDERS PASS 37 (0 open, 0 building, 30 delivered, 7 adopted). finish.mjs 4 of 5 (D1-D4 met, D5 open 1/43 adopted).
+- Desk: build 0 | judge 0 | failed 0 | deliver 0 | eye 1 (EYE-2026-10-05 already DONE as done/018: O-008/O-009/O-023 unused, 0 new orders).
+- ROUND real yes | built 33 | judged 14 | delivered 30 | adopted 7 | tools 16 (unchanged totals).
 
 ## Blockers and notes
-- D5 waits on factory adoption (halted loop); eye 2026-10-05 already showed O-008/O-009/O-023 unused with follow-ups ready.
-- Left dirty, not mine: knobs.json, halt deletion, samples audits, templates previews, tool files, tests/cover-fonts, ready/015-018.
+- D5 waits on factory adoption of delivered covers (factory HEAD b019bdab, 8f12a5ec; no halt file today).
+- Left dirty, not mine: knobs.json, arsenal.json, samples audits, templates previews, tools/cover.mjs, tests/cover-fonts, sprint/halt deletion, needs.md.
 
 ## Next
-- Keeper: batch.md still names done packets 015/016 — refresh or hold seats; live work is daily eye + adoption checks only.
+- Daily eye sweep tomorrow + adoption checks only; keeper holds seats until a new ORDER inbox item lands.
