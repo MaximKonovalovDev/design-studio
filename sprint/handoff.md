@@ -1,31 +1,28 @@
-# design-studio handoff - round 153 (token 303a)
+# design-studio handoff - round 154 (token 303a) FINAL
 
-Round: 153
-Written: 2026-10-05T16:27Z by lead (token 303a, held since 15:42Z).
+Round: 154
+Written: 2026-10-05T21:24Z by lead (token 303a, held since 15:42Z).
+LOOP STOP: halt file (owner halt 21:22Z). Lock released with this commit.
 Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground.
-Batch: keeper re-sent 063-build + 064-review (batch.md stale 15:58Z, tenth identical send). NOT re-dispatched: NOOP + PASS genuinely collected in r144, last scoped commit 66efd64, tree unchanged.
-RETRO (5-round): metrics run once this round; one PROPOSAL line at the end.
+Batch: keeper batch.md (18:47Z) re-sent 063-build + 064-review. NOT dispatched: NOOP + PASS genuinely collected in r144, last scoped commit 66efd64, tree unchanged. Noopen work lost.
 
 ## Heading
-- Standing: DS-80 token slice NOOP + review PASS (r144). No movement.
-- Metrics 24h: judge PASS 40/43 (93%), tokens/PASS 3.1M, 3274 calls 0.9% failed, 114 commits at 1.1M/commit (+5 handoff-only commits since r148).
+- Standing results hold: O-040 assembler PASS (061), O-041 export PASS (062), DS-80 token slice NOOP + PASS (063/064, r144).
 - Finish 4 of 5 (D1-D4 met, 30 adopted). Desk: build 0 | judge 0 | deliver 0 | eye 1. ROUND real yes (built 34, judged 15, delivered 12, adopted 30, tools 16, unjudged-oldest none, in-flight 0).
 
 ## Done
-- No commits (handoff only): scoped paths untouched since 66efd64.
+- Session r132-r154: O-040 chain closed (r133), O-040/O-041 reviews PASS (r134), DS-80 token slice verified (r144), retros r137/r143/r148/r153 with PROPOSALs (freshness gate, empty-handoff skip) awaiting center. All commits pushed through beb5315.
 
 ## Proofs
 - sprint/check RESULT PASS 21/0/0; ORDERS PASS 42 (0 open, 12 delivered, 30 adopted); --desk + --round --save this round.
 
 ## D5 why-not
-- Lowest bar D5 (19/56 listings adopted) not moved: 0 open factory-cover orders, desk eye-only, eye seat never batched. Adoption is customers' move.
+- Lowest bar D5 (19/56 listings adopted) unmoved all session: 0 open factory-cover orders, desk eye-only, eye seat never batched. Adoption is customers' move.
 
 ## Blockers and notes
-- Worst repeated failure: 21 straight rounds with zero eligible work; 10 identical batch sends, every round a ~1.1M-token handoff-only commit for zero movement. Both PROPOSALs (r137, r148) unapplied.
-- Batch.md failed-list claims 061/062 "never sent": wrong, both sent and PASS-collected in r134. Nothing to rewrite into ready/.
-- Left dirty, not mine: sample audits, knobs.json, sprint/halt deletion (absent), brief-gate.json strays, queue lifecycle files, ready/ cards.
+- Owner halt: `sprint/halt` (Maxim 21:22Z via Loop Boss). Left in place; resume removes it.
+- Repeat pattern 22 rounds: keeper batch.md re-sends collected packets (063/064 x11 since 15:58Z); r137/r148/r153 PROPOSALs unapplied.
+- Left dirty, not mine: sample audits, knobs.json, brief-gate.json strays, queue lifecycle files, ready/ cards 059-068.
 
-## Next
-- DS-80 slices 2-3 (brief gate, thumbs) or eye seat when keeper batches them.
-
-PROPOSAL: sprint/handoff.md | when desk shows 0 build/judge/deliver rows AND batch.md is byte-identical to last round, lead rewrites the handoff file without committing it (pushes with the next round that moves real work) | empty handoff-only commits now 21 rounds running at ~1.1M tokens/commit, +5 since first proposed in r148 | revert if any round with uncommitted real work skips its commit
+## Next (on resume)
+- DS-80 slices 2-3 (brief gate 065, thumbs 067) or eye seat EYE-2026-10-05 when keeper batches them; standing PASS verdicts (061/062/064) need no re-review.
