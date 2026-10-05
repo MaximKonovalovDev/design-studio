@@ -1,6 +1,7 @@
 {
   "name": "ds-brandkits-v1",
   "kits": [
-    { "id": "studio", "name": "Design Studio", "file": "studio.json" }
+    { "id": "studio", "name": "Design Studio", "file": "studio.json" },
+    { "id": "engine2040-ui1", "name": "Engine2040 UI-1", "file": "engine2040-ui1.json" }
   ]
 }
