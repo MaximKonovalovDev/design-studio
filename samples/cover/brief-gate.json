@@ -1,0 +1,47 @@
+{
+  "pass": false,
+  "code": 1,
+  "checks": [
+    {
+      "name": "brief.json exists",
+      "pass": true,
+      "detail": "C:\\Users\\me\\Desktop\\design-studio\\samples\\cover\\brief.json"
+    },
+    {
+      "name": "brief.json parses",
+      "pass": true,
+      "detail": "DESIGN THAT SHIPS"
+    },
+    {
+      "name": "product present",
+      "pass": false,
+      "detail": "product must be a non-empty product id (cover:itch/<slug>, order:<slug>, ...) — next: set brief.product"
+    },
+    {
+      "name": "headline present",
+      "pass": true,
+      "detail": "DESIGN THAT SHIPS"
+    },
+    {
+      "name": "sizes well-formed",
+      "pass": false,
+      "detail": "sizes must be a non-empty array of {w,h} exact pixels — next: set sizes e.g. [{\"w\":1280,\"h\":720,\"name\":\"hero\"}]"
+    },
+    {
+      "name": "facts source exists",
+      "pass": false,
+      "detail": "no facts source: declare brief.facts (a path on disk) or brief.order matching orders.csv — next: add \"facts\": \"<listing file>\""
+    },
+    {
+      "name": "no forbidden words",
+      "pass": true,
+      "detail": "no engine names, score claims or personal data in brief strings"
+    }
+  ],
+  "errors": [
+    "product present: product must be a non-empty product id (cover:itch/<slug>, order:<slug>, ...) — next: set brief.product",
+    "sizes well-formed: sizes must be a non-empty array of {w,h} exact pixels — next: set sizes e.g. [{\"w\":1280,\"h\":720,\"name\":\"hero\"}]",
+    "facts source exists: no facts source: declare brief.facts (a path on disk) or brief.order matching orders.csv — next: add \"facts\": \"<listing file>\""
+  ],
+  "at": "2026-10-05"
+}

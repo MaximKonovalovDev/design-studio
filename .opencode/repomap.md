@@ -1,5 +1,5 @@
 # repomap: design-studio
-_generated 2026-10-05T05:20:55.862Z | 1047 files mapped | 34 hot (commits, last 14d) | cap 25KB_
+_generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 14d) | cap 25KB_
 
 ## tree
 - `.env` - 1 file
@@ -14,29 +14,29 @@ _generated 2026-10-05T05:20:55.862Z | 1047 files mapped | 34 hot (commits, last 
 - `VISION-TABLES.md` - 1 file
 - `VISION.md` - 1 file
 - `arsenal.json` - 1 file
-- `brand-kits/` - 2 files
+- `brand-kits/` - 3 files
 - `canvas/` - 11 files
-- `convert/` - 3 files
-- `designs/` - 625 files
+- `convert/` - 4 files
+- `designs/` - 713 files
 - `docs/` - 1 file
 - `fonts/` - 18 files
 - `kits/` - 14 files
-- `knowledge/` - 6 files
+- `knowledge/` - 7 files
 - `opencode.jsonc` - 1 file
 - `orders.csv` - 1 file
 - `package-lock.json` - 1 file
 - `package.json` - 1 file
-- `packs/` - 52 files
+- `packs/` - 57 files
 - `research/` - 12 files
-- `samples/` - 96 files
-- `sprint/` - 18 files
+- `samples/` - 97 files
+- `sprint/` - 19 files
 - `taste/` - 1 file
-- `templates/` - 65 files
-- `tests/` - 27 files
-- `tools/` - 30 files
+- `templates/` - 64 files
+- `tests/` - 32 files
+- `tools/` - 33 files
 
 ## symbols (hot first, xN = commits last 14d)
-### `.opencode/plugin/loop-keeper.js` x16 (174KB)
+### `.opencode/plugin/loop-keeper.js` x17 (175KB)
 - `const LoopKeeper`
 ### `tools/audit.mjs` x10 (40KB)
 - `function titleChars`
@@ -55,7 +55,7 @@ _generated 2026-10-05T05:20:55.862Z | 1047 files mapped | 34 hot (commits, last 
 ### `tools/check.mjs` x9 (11KB)
 - `function checkReceipt`
 - `function pickWinner`
-### `tools/render.mjs` x6 (19KB)
+### `tools/render.mjs` x8 (28KB)
 - `function findBrowser`
 - `function parseSize`
 - `function pngDims`
@@ -72,24 +72,38 @@ _generated 2026-10-05T05:20:55.862Z | 1047 files mapped | 34 hot (commits, last 
 - `function freeKey`
 - `function buildFreePrompt`
 - `function freeDraftReceipt`
+- `function repoRoot`
+- `function defaultHistoryPath`
+- `function sha256Hex`
+- `function briefHashFor`
+- `function fileSha256`
+- `function readHistory`
+- `function lastEntryFor`
+- `function appendHistory`
+- `function gateOverwrite`
 - `function renderSelfCheck`
+- `function sharedProfileDir`
 - `function render`
 - `function renderPdf`
-### `.opencode/agents/planner.md` x5 (1.8KB)
-- # Planner
-- ## Dispatch discipline
-- ## Contract
-### `tools/convert.mjs` x5 (9.3KB)
-- `const ROW`
-- `function convertPaths`
-- `function checkConvert`
-### `tools/cover.mjs` x5 (24KB)
+### `tools/cover.mjs` x6 (36KB)
+- `function readCentralFontsManifest`
+- `function firstFamily`
+- `const slugOf`
+- `function wantedFontFamilies`
+- `function orderFontsManifest`
+- `function embeddedFontFiles`
+- `function faceFor`
+- `function facesCss`
+- `function extractFaceLines`
+- `function ensureFacesInTokens`
+- `function embedFonts`
+- `function checkCover`
 - `function gen`
 - `function build`
 - `function compare`
 - `function factsCheck`
 - `function verdict`
-### `tools/judge.mjs` x5 (23KB)
+### `tools/judge.mjs` x6 (29KB)
 - `const RUBRIC_ID`
 - `const RUBRIC_VERSION`
 - `const SHIP_FLOOR`
@@ -102,16 +116,22 @@ _generated 2026-10-05T05:20:55.862Z | 1047 files mapped | 34 hot (commits, last 
 - `function dispatchFix`
 - `function iterateSample`
 - `function listStories`
+- `const BASELINE_FILE`
+- `const BASELINE_PIN_DIR`
+- `function readAuditJson`
+- `function normalizeAudit`
+- `function diffBaseline`
 - `function judgeSample`
 - `function writeReview`
 - `function selfCheck`
-### `tools/orders-check.mjs` x5 (33KB)
+### `tools/orders-check.mjs` x6 (35KB)
 - `const HEADER`
 - `const STATUSES`
 - `const REPOS`
 - `function customerDirs`
 - `function pathOnDisk`
 - `function parseOrders`
+- `function countCR`
 - `function checkOrders`
 - `function coverStatus`
 - `const DESK_HEADER`
@@ -133,10 +153,43 @@ _generated 2026-10-05T05:20:55.862Z | 1047 files mapped | 34 hot (commits, last 
 - `function roundState`
 - `function beatAsset`
 - `function buildDesk`
+### `.opencode/agents/planner.md` x5 (1.8KB)
+- # Planner
+- ## Dispatch discipline
+- ## Contract
+### `tools/convert.mjs` x5 (9.3KB)
+- `const ROW`
+- `function convertPaths`
+- `function checkConvert`
 ### `tools/registry.mjs` x5 (1.7KB)
 - `const RETIRED`
 - `function emitBlock`
 - `function checkRegistry`
+### `tools/tokens.mjs` x5 (30KB)
+- `const HEBREW_STACK`
+- `function normalizeTokens`
+- `function usesReferences`
+- `function refKey`
+- `function resolveColorRefs`
+- `const PAIR_RULES`
+- `function lintPairMates`
+- `function darkPairGaps`
+- `function mergeKits`
+- `function readTokens`
+- `function fluidClamp`
+- `const FLUID_SPACING`
+- `const FLUID_TYPE`
+- `const FLUID_PROBE_VIEWPORTS`
+- `function fluidScaleVars`
+- `function parseClampPx`
+- `const PALETTE_SLOTS`
+- `function unknownSlots`
+- `function compileBrandKit`
+- `function checkFluidFloor`
+- `function buildCss`
+- `function buildDocs`
+- `function checkTokens`
+- `function buildAll`
 ### `sprint/check.mjs` x4 (10KB) - sprint/check.mjs: the design-studio loop's own check (generated by center/loopkit.mjs).
 ### `tools/figma.mjs` x4 (4.8KB)
 - `const ROW`
@@ -150,21 +203,6 @@ _generated 2026-10-05T05:20:55.862Z | 1047 files mapped | 34 hot (commits, last 
 ### `tools/game-ui.mjs` x4 (13KB)
 - `function gapEqual`
 - `function checkGameUi`
-### `tools/tokens.mjs` x4 (18KB)
-- `const HEBREW_STACK`
-- `function normalizeTokens`
-- `function usesReferences`
-- `function refKey`
-- `function resolveColorRefs`
-- `const PAIR_RULES`
-- `function lintPairMates`
-- `function darkPairGaps`
-- `function mergeKits`
-- `function readTokens`
-- `function buildCss`
-- `function buildDocs`
-- `function checkTokens`
-- `function buildAll`
 ### `tools/workshop.mjs` x4 (2.2KB)
 - `const ROW`
 - `const RETIRED`
@@ -251,6 +289,13 @@ _generated 2026-10-05T05:20:55.862Z | 1047 files mapped | 34 hot (commits, last 
 - `function fetchFreeModels`
 - `function freeBackground`
 - `function freeFixtureCheck`
+### `tools/thumb.mjs` x3 (8.2KB)
+- `const THUMB_W`
+- `function thumbSize`
+- `function resolveSourcePng`
+- `function thumbEdge`
+- `function thumbBrief`
+- `function thumbAuto`
 ### `docs/TOOLCHAIN.md` x2 (5.4KB)
 - # TOOLCHAIN: design-studio (2026-10-03)
 - ## The default pipeline (runs today, no new dependency)
@@ -275,10 +320,33 @@ _generated 2026-10-05T05:20:55.862Z | 1047 files mapped | 34 hot (commits, last 
 - `function selfCheck`
 ### `tools/taste.mjs` x2 (3.4KB)
 - `function checkTaste`
-### `tools/thumb.mjs` x2 (4.2KB)
-- `const THUMB_W`
-- `function thumbSize`
-- `function thumbBrief`
+### `convert/export-game.mjs` x1 (17KB)
+- `const SHEET_W`
+- `const SHEET_H`
+- `const SHEET_HTML`
+- `const PRINT_HTML`
+- `const SHEET_PNG`
+- `const SHEET_PDF`
+- `const ADAPTER_REL`
+- `function readGameDesign`
+- `function sheetHtml`
+- `function printHtml`
+- `function exportGame`
+- `function listGameExports`
+- `function checkGameExport`
+### `packs/plan-assemble-o040/README.md` x1 (766B)
+- # packs/plan-assemble-o040 (O-040)
+### `tools/assemble.mjs` x1 (13KB)
+- `const ROOT`
+- `const STEP_KINDS`
+- `function repoRoot`
+- `function resolveBrandKit`
+- `function loadBrandKit`
+- `function loadPlan`
+- `function assembleHtml`
+- `function networkRefs`
+- `function assemblePlan`
+- `function assembleSelfCheck`
 ### `tools/atlas.mjs` x1 (18KB)
 - `function encodePng`
 - `function decodePng`
@@ -289,6 +357,14 @@ _generated 2026-10-05T05:20:55.862Z | 1047 files mapped | 34 hot (commits, last 
 - `function collectInputs`
 - `function runAtlas`
 - `function selfCheck`
+### `tools/brief.mjs` x1 (16KB)
+- `const FORBIDDEN_ENGINES`
+- `const FORBIDDEN_SCORE_WORDS`
+- `const FORBIDDEN_SCORE_RES`
+- `const FORBIDDEN_PII_WORDS`
+- `const FORBIDDEN_PII_RES`
+- `function gateBrief`
+- `function briefSelfCheck`
 ### `tools/compose.mjs` x1 (11KB)
 - `function parseWidths`
 - `function parseArgs`
@@ -395,6 +471,13 @@ _generated 2026-10-05T05:20:55.862Z | 1047 files mapped | 34 hot (commits, last 
 - `function selfCheck`
 ### `tools/pixel-font-ttf.py` x1 (3.0KB)
 - `def draw`
+### `tools/sharp.mjs` x1 (4.0KB)
+- `const SHARP_NAME`
+- `const SHARP_VERSION`
+- `const SHARP_LICENSE`
+- `const SHARP_URL`
+- `function sharpAvailable`
+- `function sharpThumb`
 ### `tools/template.mjs` x1 (40KB)
 - `const TOKENS`
 - `const FONTS`
