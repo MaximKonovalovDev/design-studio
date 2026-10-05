@@ -1,3 +1,3 @@
-USED: no, factory packs/ has no vol0 (packs/offers empty, no from-design-studio/O-008; HEAD 8f12a5ec is O-036 cover)
+USED: no, factory packs/ has no vol0 (packs/offers empty, no covers/from-design-studio dir; HEAD 1ab7bdd8)
 eye: EYE-2026-10-05
-proof: Read autonomous-factory/packs (27 entries no vol0) + Test-Path packs/vol0 False + git log -1 8f12a5ec
+proof: Read factory packs (no vol0) + Test-Path covers/from-design-studio False + git log -1 1ab7bdd8

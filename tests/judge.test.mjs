@@ -5,7 +5,7 @@ import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { RUBRIC_ID, SHIP_FLOOR, CHECK_IDS, judgeSample, writeReview, selfCheck } from "../tools/judge.mjs";
+import { RUBRIC_ID, SHIP_FLOOR, CHECK_IDS, judgeSample, writeReview, selfCheck, diffBaseline, normalizeAudit, BASELINE_PIN_DIR, BASELINE_FILE } from "../tools/judge.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -83,5 +83,69 @@ describe("judge rubric", () => {
   it("self-check passes (fixtures + real samples/cover)", () => {
     const { pass, results } = selfCheck();
     assert.equal(pass, true, results.filter((x) => !x.pass).map((x) => x.name).join("; "));
+  });
+});
+
+describe("baseline-diff (O-039, real pin)", () => {
+  const pinDir = join(ROOT, "designs", "job", "baseline");
+  const pinAudit = () => JSON.parse(readFileSync(join(pinDir, BASELINE_FILE), "utf8"));
+  const mkAuditDir = (obj) => {
+    const d = dir();
+    writeFileSync(join(d, BASELINE_FILE), typeof obj === "string" ? obj : JSON.stringify(obj));
+    return d;
+  };
+
+  it("identical baseline -> PASS", () => {
+    const r = diffBaseline(pinDir, pinDir);
+    assert.equal(r.status, "PASS");
+    assert.equal(r.pass, true);
+    assert.equal(r.changed.length, 0);
+  });
+
+  it("volatile-only differences (at/brief/image paths) still PASS", () => {
+    const live = pinAudit();
+    live.at = "2099-01-01";
+    live.brief = "C:\\other\\machine\\brief.json";
+    live.image = "C:\\other\\machine\\out.png";
+    const r = diffBaseline(mkAuditDir(live), pinDir);
+    assert.equal(r.status, "PASS", r.detail);
+    assert.equal(r.pass, true);
+  });
+
+  it("altered field -> FAIL naming the changed check", () => {
+    const live = pinAudit();
+    const victim = live.checks.find((c) => c && c.pass === true) ?? live.checks[0];
+    victim.pass = false;
+    victim.detail = "fixture flip";
+    const r = diffBaseline(mkAuditDir(live), pinDir);
+    assert.equal(r.status, "FAIL");
+    assert.equal(r.pass, false);
+    assert.ok(r.changed.some((c) => c.includes(String(victim.name))), r.changed.join(" | "));
+  });
+
+  it("flipped top-level pass -> FAIL naming pass", () => {
+    const live = pinAudit();
+    live.pass = !live.pass;
+    const r = diffBaseline(mkAuditDir(live), pinDir);
+    assert.equal(r.status, "FAIL");
+    assert.ok(r.changed.some((c) => c.startsWith("pass:")), r.changed.join(" | "));
+  });
+
+  it("missing baseline -> SKIP, never a false PASS", () => {
+    const r = diffBaseline(mkAuditDir(pinAudit()), join(pinDir, "no-such-baseline"));
+    assert.equal(r.status, "SKIP");
+    assert.notEqual(r.pass, true);
+  });
+
+  it("missing current audit -> SKIP, never a false PASS", () => {
+    const r = diffBaseline(dir(), pinDir);
+    assert.equal(r.status, "SKIP");
+    assert.notEqual(r.pass, true);
+  });
+
+  it("normalizeAudit drops volatile run fields", () => {
+    const n = normalizeAudit({ pass: true, errors: [], at: "2099-01-01", brief: "x", image: "y", checks: [] });
+    assert.equal(n.pass, true);
+    assert.ok(!("at" in n) && !("brief" in n) && !("image" in n));
   });
 });

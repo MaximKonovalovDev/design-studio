@@ -58,6 +58,105 @@ export function iterateSample(input) {
 }
 export function listStories(sample = "cover") { return Object.entries(OIDS).map(([el, oid]) => ({ sample, el, oid })); }
 
+// O-039 baseline-diff (pattern-only from the donor's shape: pin, diff,
+// report; 0 lines of donor code, never fetched). A judged-PASS
+// design-audit.json is frozen under designs/job/baseline/; diffBaseline
+// compares a live audit against the pin field by field and reports what
+// changed. Volatile run fields (at date, absolute brief/image paths) are
+// excluded so a frozen pin can match a live re-audit of the same design.
+export const BASELINE_FILE = "design-audit.json";
+export const BASELINE_PIN_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "designs", "job", "baseline");
+
+function auditFileFor(input) {
+  const p = resolve(String(input ?? ""));
+  if (p.endsWith(BASELINE_FILE)) return p;
+  try {
+    readFileSync(p);
+    return join(dirname(p), BASELINE_FILE);
+  } catch {
+    return join(p, BASELINE_FILE);
+  }
+}
+
+export function readAuditJson(file) {
+  let raw;
+  try {
+    raw = readFileSync(file, "utf8");
+  } catch {
+    throw new Error(`baseline-diff: audit unreadable: ${file}`);
+  }
+  try {
+    return JSON.parse(raw);
+  } catch (e) {
+    throw new Error(`baseline-diff: audit unparsable: ${file}: ${String(e.message || e)}`);
+  }
+}
+
+// Keep the semantic fields; drop volatile run fields (at/brief/image).
+export function normalizeAudit(audit) {
+  const checks = Array.isArray(audit?.checks) ? audit.checks : [];
+  return {
+    pass: audit?.pass === true,
+    errors: Array.isArray(audit?.errors) ? audit.errors.map((e) => String(e)) : [],
+    checks: checks.map((c) => ({
+      name: String(c?.name ?? "?"),
+      pass: c?.pass === true,
+      skipped: c?.skipped === true,
+      detail: String(c?.detail ?? ""),
+    })),
+  };
+}
+
+const short = (s, n = 120) => (s.length > n ? `${s.slice(0, n)}...` : s);
+
+// Diff a live design audit against a pinned baseline. Returns
+// { status: "PASS"|"FAIL"|"SKIP", pass, changed, detail, baseline, current }.
+// Missing/unreadable audits are SKIP with pass:false — never a false PASS.
+export function diffBaseline(currentInput, baselineInput = BASELINE_PIN_DIR) {
+  const curFile = auditFileFor(currentInput);
+  const baseFile = auditFileFor(baselineInput);
+  const skip = (detail) => ({ status: "SKIP", pass: false, changed: [], detail, baseline: baseFile, current: curFile });
+  if (!existsSync(baseFile)) return skip(`baseline missing: ${baseFile} (SKIP, never PASS)`);
+  if (!existsSync(curFile)) return skip(`current audit missing: ${curFile} (SKIP, never PASS)`);
+  let cur;
+  try {
+    cur = normalizeAudit(readAuditJson(curFile));
+  } catch (e) {
+    return skip(String(e.message || e));
+  }
+  let base;
+  try {
+    base = normalizeAudit(readAuditJson(baseFile));
+  } catch (e) {
+    return skip(String(e.message || e));
+  }
+  const changed = [];
+  if (cur.pass !== base.pass) changed.push(`pass: ${base.pass} -> ${cur.pass}`);
+  const byName = (list) => new Map(list.map((c) => [c.name, c]));
+  const bByName = byName(base.checks);
+  const cByName = byName(cur.checks);
+  for (const [name, b] of bByName) {
+    const c = cByName.get(name);
+    if (!c) {
+      changed.push(`check "${name}" missing in current`);
+      continue;
+    }
+    if (c.pass !== b.pass) changed.push(`check "${name}": pass ${b.pass} -> ${c.pass}`);
+    else if (c.skipped !== b.skipped) changed.push(`check "${name}": skipped ${b.skipped} -> ${c.skipped}`);
+    else if (c.detail !== b.detail) changed.push(`check "${name}": detail changed (${short(b.detail)} -> ${short(c.detail)})`);
+  }
+  for (const [name] of cByName) {
+    if (!bByName.has(name)) changed.push(`check "${name}" added in current`);
+  }
+  if (cur.errors.join("\n") !== base.errors.join("\n")) {
+    changed.push(`errors: [${short(base.errors.join("; ") || "none")}] -> [${short(cur.errors.join("; ") || "none")}]`);
+  }
+  if (changed.length === 0) {
+    return { status: "PASS", pass: true, changed, baseline: baseFile, current: curFile, detail: `identical: pass=${cur.pass}, ${cur.checks.length} checks match ${baseFile}` };
+  }
+  return { status: "FAIL", pass: false, changed, baseline: baseFile, current: curFile, detail: `${changed.length} changed field(s) vs ${baseFile}: ${changed.slice(0, 4).join("; ")}${changed.length > 4 ? "; ..." : ""}` };
+}
+
 function resolveSample(input) {
   const p = resolve(String(input ?? ""));
   if (existsSync(p)) {
@@ -450,6 +549,33 @@ export function selfCheck() {
     t("story harness lists 4 cover stories", listStories("cover").length === 4 && listStories("cover").every((s) => s.oid.startsWith("cover.")), listStories("cover").map((s) => s.oid).join(","));
   }
 
+  // O-039 baseline-diff (F2P): the pin diffs clean against itself, an
+  // identical copy still passes (volatile paths ignored), an altered
+  // field fails naming it, a missing baseline skips without a false PASS.
+  {
+    const pinFile = join(BASELINE_PIN_DIR, BASELINE_FILE);
+    if (!existsSync(pinFile)) {
+      t("baseline-diff pin present", false, `missing ${pinFile}`);
+    } else {
+      t("baseline-diff pin present", true, pinFile);
+      const self = diffBaseline(BASELINE_PIN_DIR, BASELINE_PIN_DIR);
+      t("baseline-diff identical baseline -> PASS", self.status === "PASS" && self.pass === true, self.detail);
+      const d = mkdtempSync(`${tmpdir()}\\ds-judge-base-`);
+      writeFileSync(join(d, BASELINE_FILE), readFileSync(pinFile, "utf8"), "utf8");
+      const same = diffBaseline(d, BASELINE_PIN_DIR);
+      t("baseline-diff copy with fresh paths -> PASS", same.status === "PASS" && same.pass === true, same.detail);
+      const altered = JSON.parse(readFileSync(pinFile, "utf8"));
+      const victim = altered.checks.find((c) => c && c.pass === true) ?? altered.checks[0];
+      victim.pass = false;
+      victim.detail = "baseline-diff fixture flip";
+      writeFileSync(join(d, BASELINE_FILE), JSON.stringify(altered), "utf8");
+      const bad = diffBaseline(d, BASELINE_PIN_DIR);
+      t("baseline-diff altered field -> FAIL naming it", bad.status === "FAIL" && bad.pass === false && bad.changed.some((c) => c.includes(String(victim.name))), bad.detail);
+      const miss = diffBaseline(d, join(d, "no-such-baseline"));
+      t("baseline-diff missing baseline -> SKIP never PASS", miss.status === "SKIP" && miss.pass === false, miss.detail);
+    }
+  }
+
   const fails = results.filter((r) => !r.pass);
   console.log(fails.length ? `JUDGE FAIL: ${fails.length} failing check(s)` : `JUDGE PASS: rubric ${RUBRIC_ID} 10 checks, floor ${SHIP_FLOOR}, samples/cover ships`);
   return { pass: fails.length === 0, results };
@@ -468,6 +594,19 @@ if (isMain) {
   if (args.includes("--check")) {
     const { pass } = selfCheck();
     if (!pass) process.exitCode = 1;
+  } else if (args.includes("--baseline")) {
+    const at = args.indexOf("--baseline");
+    const pin = args[at + 1] && !args[at + 1].startsWith("--") ? args[at + 1] : BASELINE_PIN_DIR;
+    const live = args[at + 2] && !args[at + 2].startsWith("--") ? args[at + 2] : pin;
+    if (args[at + 1] !== undefined && args[at + 1].startsWith("--")) {
+      console.log("usage: node tools/judge.mjs --baseline <baseline-dir> [<sample-dir>]");
+      process.exit(2);
+    } else {
+      const r = diffBaseline(live, pin);
+      for (const c of r.changed) console.log(`  - ${c}`);
+      console.log(`[${r.status}] baseline-diff: ${r.detail}`);
+      if (r.status !== "PASS") process.exitCode = r.status === "FAIL" ? 1 : 2;
+    }
   } else if (args.length >= 1 && !args.includes("-h") && !args.includes("--help")) {
     const r = judgeSample(args[0]);
     for (const c of r.checks) console.log(`[${c.pass ? "PASS" : "FAIL"}] ${c.id}: ${c.detail}`);
@@ -475,7 +614,7 @@ if (isMain) {
     console.log(`${r.pass ? "SHIP" : "REWORK"} ${r.score}/${r.max} (floor ${r.floor}) rubric ${r.rubric} -> ${out}`);
     if (!r.pass) process.exitCode = 1;
   } else {
-    console.log("usage: node tools/judge.mjs <samples/<name>/brief.json> | node tools/judge.mjs --check");
+    console.log("usage: node tools/judge.mjs <samples/<name>/brief.json> | node tools/judge.mjs --check | node tools/judge.mjs --baseline <baseline-dir> [<sample-dir>]");
     process.exit(2);
   }
 }
