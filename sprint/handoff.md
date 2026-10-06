@@ -1,24 +1,24 @@
-# design-studio handoff - round 186 (token d5b2)
+# design-studio handoff - round 187 (token d5b2)
 
-Round: 186
-Written: 2026-10-06T13:45Z by lead (token d5b2, TAKEOVER from c41a at 13:20Z: old session closed per keeper log; disk halt absent, inbox 0 open).
-Knobs: width 1; three sequential width-1 packets (deliver, build, chain judge).
-Batch: 104-dlv-o052 -> DONE + 105-bld-o058 -> DONE + 106-jdg-o058 -> PASS first try.
-ROUND real yes | built 47 | judged 28 | delivered 22 | adopted 35 | tools 16 | unjudged-oldest O-059 | in-flight 8.
+Round: 187
+Written: 2026-10-06T14:05Z by lead (token d5b2 held since 13:20Z takeover; disk halt absent, inbox 0 open).
+Knobs: width 1; two sequential width-1 packets (orders repair, deliver).
+Batch: 107-o043-o045-o046-adopted-proof -> DONE + 108-dlv-o058 -> DONE.
+ROUND real yes | built 47 | judged 28 | delivered 23 | adopted 35 | tools 16 | unjudged-oldest O-059 | in-flight 7.
 
 ## Heading
-- D5 moves: O-052 delivered to factory (25 delivered); O-058 (oldest unbuilt) built with 3 real pictures and judged PASS same round. Built 46 -> 47, judged 27 -> 28. Unjudged-oldest now O-059.
+- D5 moves: O-043/O-045/O-046 adopted rows proved with real factory pointer hashes (35 adopted, ORDERS back to PASS); O-058 delivered to factory (23 delivered, 7 open left). No new build; oldest unbuilt stays O-059.
 
 ## Done
-- 7bdaacd deliver O-052 (ADOPT.md + DELIVERED.json 23/23, orders.csv row) + factory 22caaf7d + inbox EB-2026-10-06-S48.
-- 7bee1ec build+judge O-058 (16 files incl VERDICT PASS) + lane-store note + 105/106 packets.
-- Proofs: DELIVER CHECK PASS O-052 23/23; BUILT PASS O-058 16/16; VERDICT PASS O-058 (BEATS ours 17.6px vs theirs ~10px honest $25 vs stale $39; SHIP 10/10); sprint/check RESULT PASS 21/0/0; vision-check PASS 7/0/0.
-- Filed 107-o043-o045-adopted-proof.md (READY builder, no chain) for round 187.
+- 0a18fdc adopted-proof O-043 70a0b0e4, O-045 ebb639f5, O-046 3f85a5ce (all 3 verified as factory commits carrying the listing pointer; O-045 diff read by lead) + 107 packet.
+- bdbb33d deliver O-058 (ADOPT.md + DELIVERED.json 25/25, row delivered) + factory d64d758d + inbox EB-2026-10-06-S51.
+- Proofs: ORDERS PASS 65 (8 open, 0 building, 22 delivered, 35 adopted); DELIVER CHECK PASS O-058 25/25; ORDERS PASS 65 (7 open, 23 delivered); sprint/check RESULT PASS 21/0/0.
+- Keeper's 065 not sent (3rd time): brief gate landed at 9aafa07, DS-80 DONE; batch moved D5 (delivered + adopted proof) instead.
 
 ## Blockers and notes
-- ORDERS FAIL 2 in worktree (NOT in any commit, NOT from this round's packets): O-043/O-045 flipped to adopted/yes with an identical non-hash adopted_commit after 7bdaacd. Fix is packet 107 (verify factory log per AGENTS.md, else revert to delivered).
-- Left dirty (not mine): 12 sample design-audit.json, halt + 064/071 ready deletions, 085 ready leftover, O-042 brief-gate.json, .opencode/plugin/loop-keeper.js, orders.csv O-043/O-045 rows.
-- 104 packet filed to done/ by keeper bookkeeping; 105/106 committed with the build.
+- Mystery flips: O-043/O-045/O-046 rows were set adopted with an identical non-hash value by an unknown hand (not this loop's packets). Repaired with real hashes. If it recurs, suspect a concurrent eye/fixer session writing orders.csv.
+- Left dirty (not mine): 12 sample design-audit.json, halt + 064/071 ready deletions, 085 ready leftover, O-042 brief-gate.json, .opencode/plugin/loop-keeper.js.
+- 108 packet committed with the delivery; keeper will file it to done/.
 
 ## Next
-- 107 adopted-proof (clears ORDERS FAIL); DLV-O-058 delivery; BLD-O-059; NEED-15 toolsmith; EYE sweep.
+- BLD-O-059 (oldest unbuilt); DLV none pending; NEED-15 toolsmith; EYE sweep; DS-82/83/84 board rows.
