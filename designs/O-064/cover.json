@@ -1,0 +1,77 @@
+{
+  "product": "cover:itch/mp-turbo-video-generator",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Turbo Video Generator",
+  "pick": "clean-professional",
+  "template": "covers/sheet-fan",
+  "kicker": "Game trailer templates for indie devs",
+  "claim": "6 video jobs turn your clips into trailers, devlogs and Shorts",
+  "chips": [
+    "6 jobs + 6 voice scripts",
+    "4 genres + 4 caption presets",
+    "28 assets in 32-file zip"
+  ],
+  "badge": "$29 one-time",
+  "fine": "5-min Python dry-run, your footage makes the trailer",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "Inter, Arial, sans-serif",
+    "body": "Inter, Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 100,
+  "titlePxCard": 54,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Turbo Video",
+    "Generator"
+  ],
+  "titleWrapCard": [
+    "Turbo Video",
+    "Generator"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "sheet-ar": "1.5",
+    "sheet-w": "380px",
+    "sheet-w-card": "210px"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/cover-1280x720.png",
+  "theirsPx256": 11.0,
+  "beatNote": "their caps headline full-width ~55px at 1280w -> ~11px at 256w; ours 20px; light sheet-fan with 3 real boards vs dark text-only; true $29 badge beats stale $9.99-$29 packs",
+  "landing": "products/video-studio/mp-turbo-video-generator/covers/from-design-studio/O-064/",
+  "assetsFrom": "the product's own preview/ pictures (screenshot-templates, screenshot-pipeline, demo motion preview)",
+  "assets": [
+    {
+      "name": "sheet-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/screenshot-templates.png",
+      "what": "the customer's own picture screenshot-templates.png"
+    },
+    {
+      "name": "sheet-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/screenshot-pipeline.png",
+      "what": "the customer's own picture screenshot-pipeline.png"
+    },
+    {
+      "name": "sheet-3.gif",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/demo.gif",
+      "what": "the customer's own picture demo.gif"
+    }
+  ]
+}
