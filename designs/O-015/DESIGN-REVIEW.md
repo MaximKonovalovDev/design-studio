@@ -6,7 +6,7 @@ Sample: C:\Users\me\Desktop\design-studio\designs\O-015\brief.json
 ## Score
 
 - [x] brief-complete: Medieval Warriors Vol 4 1280x720
-- [x] render-exists: 1280x720 80084B
+- [x] render-exists: 1280x720 79866B
 - [x] audit-green: fresh auditBrief PASS
 - [x] contrast-aa: title:16.7, subtitle:13.6, cta:10.8, chip:15.0, kicker:10.8
 - [x] thumbnail-legible: 18.4px at 256px (floor 12px), pixels in thumb-256.png 256x144 — human verdict: title reads at listing size

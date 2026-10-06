@@ -6,7 +6,7 @@ Sample: C:\Users\me\Desktop\design-studio\designs\O-056\brief.json
 ## Score
 
 - [x] brief-complete: Character Animation Studio 1280x720
-- [x] render-exists: 1280x720 234466B
+- [x] render-exists: 1280x720 290210B
 - [x] audit-green: fresh auditBrief PASS
 - [x] contrast-aa: title:17.2, subtitle:8.2, cta:5.4, chip:18.4, kicker:6.2
 - [x] thumbnail-legible: 17.6px at 256px (floor 12px), pixels in thumb-256.png 256x144 — human verdict: title reads at listing size

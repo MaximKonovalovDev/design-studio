@@ -3,9 +3,9 @@
   "assets": [
     {
       "file": "assets/shot.png",
-      "from": "C:/Users/me/Desktop/design-studio/templates/covers/app-window/placeholder/shot.png",
-      "what": "PLACEHOLDER screenshot shipped with the template: replace it with the product's own capture (--asset shot=<path>)",
-      "bytes": 25178
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/character-animation-studio/preview/shot-sheets-1280x720.png",
+      "what": "the customer's own picture shot-sheets-1280x720.png",
+      "bytes": 71871
     }
   ]
 }

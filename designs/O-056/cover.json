@@ -5,14 +5,14 @@
   "title": "Character Animation Studio",
   "pick": "clean-professional",
   "template": "covers/app-window",
-  "kicker": "Offline budgeting app",
-  "claim": "A full year of spending on one screen",
+  "kicker": "8-DIRECTION SPRITE PACK",
+  "claim": "8 directions x walk, idle, run, attack, hurt in 5 min",
   "chips": [
-    "CSV import",
-    "No account",
-    "Works offline"
+    "3 chars 15 sheets",
+    "432 frames PNG",
+    "RPG Maker ready"
   ],
-  "badge": "$19 one-time",
+  "badge": "$7.49 one-time",
   "tokens": {
     "bg": "#f6f7fb",
     "bg-2": "#e4e8f4",
@@ -58,8 +58,8 @@
   "assets": [
     {
       "name": "shot.png",
-      "src": "C:/Users/me/Desktop/design-studio/templates/covers/app-window/placeholder/shot.png",
-      "what": "PLACEHOLDER screenshot shipped with the template: replace it with the product's own capture (--asset shot=<path>)"
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/character-animation-studio/preview/shot-sheets-1280x720.png",
+      "what": "the customer's own picture shot-sheets-1280x720.png"
     }
   ]
 }
