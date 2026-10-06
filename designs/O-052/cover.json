@@ -27,8 +27,8 @@
     "chip-line": "#c9cfe3"
   },
   "fonts": {
-    "display": "Bahnschrift, 'Segoe UI', Arial, sans-serif",
-    "body": "'Segoe UI', Verdana, Arial, sans-serif",
+    "display": "Inter, Arial, sans-serif",
+    "body": "Inter, Verdana, Arial, sans-serif",
     "mono": "Consolas, 'Courier New', monospace"
   },
   "titlePx": 88,
