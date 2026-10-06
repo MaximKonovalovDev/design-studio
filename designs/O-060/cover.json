@@ -1,0 +1,74 @@
+{
+  "product": "cover:itch/fall-65-prop-pack",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Fall 65 Prop Pack",
+  "pick": "clean-professional",
+  "template": "covers/sheet-fan",
+  "kicker": "Autumn prop pack for stylized games",
+  "claim": "Dress a porch, fence or orchard for autumn",
+  "chips": [
+    "65 pieces in 9 categories",
+    "12 pumpkins, 10 leaves + more",
+    "First result under 5 minutes"
+  ],
+  "badge": "$7.49 one-time",
+  "fine": "Royalty-free commercial use, no attribution needed",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "Inter, Arial, sans-serif",
+    "body": "Inter, Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 104,
+  "titlePxCard": 58,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Fall 65",
+    "Prop Pack"
+  ],
+  "titleWrapCard": [
+    "Fall 65 Prop Pack"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "sheet-ar": "1.5",
+    "sheet-w": "322px",
+    "sheet-w-card": "188px"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-3d-props/fall-65-prop-pack/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-3d-props/fall-65-prop-pack/preview/cover-v10-1280x720.png",
+  "landing": "products/seasonal-3d-props/fall-65-prop-pack/covers/from-design-studio/O-060/",
+  "assetsFrom": "the product's own preview/ re-renders of the 3 demo scenes (r7 porch, r7 fence, r7 orchard)",
+  "assets": [
+    {
+      "name": "sheet-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-3d-props/fall-65-prop-pack/preview/r7_porch.png",
+      "what": "the customer's own picture r7_porch.png"
+    },
+    {
+      "name": "sheet-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-3d-props/fall-65-prop-pack/preview/r7_fence.png",
+      "what": "the customer's own picture r7_fence.png"
+    },
+    {
+      "name": "sheet-3.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-3d-props/fall-65-prop-pack/preview/r7_orchard.png",
+      "what": "the customer's own picture r7_orchard.png"
+    }
+  ]
+}
