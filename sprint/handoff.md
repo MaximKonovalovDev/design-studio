@@ -1,23 +1,24 @@
-# design-studio handoff - round 178 (token 4ac2)
+# design-studio handoff - round 179 (token c41a)
 
-Round: 178
-Written: 2026-10-06T12:41Z by lead (token 4ac2, held since 12:31Z; lock mine; disk halt absent, inbox 0 open).
-Knobs: width 1; two sequential width-1 packets (builder then chain judge).
-Batch: 091-bld-o051-store -> DONE + 092-jdg-o051-review -> PASS first try, landed e350621.
-ROUND real yes | built 45 | judged 24 | delivered 21 | adopted 32 | tools 16 | unjudged-oldest O-052 | in-flight 12.
+Round: 179
+Written: 2026-10-06T12:46Z by lead (token c41a; TAKEOVER: replaced stale lead#4ac2 lock left by closed app, per takeover arg; disk halt absent, inbox 0 open).
+Knobs: width 1; one width-1 deliverer packet.
+Batch: 093-dlv-o051-factory -> DONE, landed f30afa5 + factory 7b7e21c0.
+ROUND real yes | built 45 | judged 24 | delivered 22 | adopted 32 | tools 16 | unjudged-oldest O-052 | in-flight 11.
 
 ## Heading
-- D5 moves: O-051 (oldest unbuilt) built with 1 real picture and judged PASS same round. Unjudged-oldest now O-052.
-- Builder filed NEED-15 READY (toolsmith): app-window template emits system fonts; future toolsmith batch.
+- D5 moves: O-051 (r178 PASS) delivered to factory product folder, 27/27 files. Delivered 21 -> 22. Unjudged-oldest still O-052.
 
 ## Done
-- e350621 designs/O-051 (30 files incl VERDICT PASS, full product landing) + lane-store note + NEED-15 + 091/092 packets.
-- Proofs: BUILT PASS 16/16; VERDICT PASS O-051 (BEATS 17.6px vs ~8px); audit PASS; SHIP 10/10.
+- f30afa5 designs/O-051 (ADOPT.md + DELIVERED.json) + orders.csv O-051 open->delivered + 093 packet.
+- Factory 7b7e21c0 products/services/aeo-geo-audit/covers/from-design-studio/O-051/ (16 files incl ADOPT.md).
+- Factory inbox EB-2026-10-06-S45 names the path.
+- Proofs: DELIVER CHECK PASS: O-051 (27/27 files); ORDERS PASS: 65 orders (11 open, 0 building, 22 delivered, 32 adopted, 0 rejected).
 
 ## Blockers and notes
-- batch.md still frozen 11:11Z at 064; overriding with desk oldest-first until keeper refreshes.
-- 061/062 failed reviews: stale, recommend history (r177); no rewrite.
-- Left dirty (not mine): 12 sample design-audit.json, halt + 071 ready deletions.
+- batch.md still frozen at 064; overriding with desk oldest-first until keeper refreshes.
+- 093 packet Write needed a second write (first reported success, file absent); resent full text in Task prompt, no work lost.
+- Left dirty (not mine, predates takeover): 12 sample design-audit.json, halt + 071 ready deletions, 085 ready leftover, factory working-tree files.
 
 ## Next
-- DLV-O-051 delivery; BLD-O-052; NEED-15 toolsmith; chain judge O-056/O-057; EYE sweep.
+- JDG-O-056 judge (keeper review packet, or lead one-off 094); BLD-O-052 oldest unbuilt; NEED-15 toolsmith; EYE sweep.
