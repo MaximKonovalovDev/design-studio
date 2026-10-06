@@ -1,16 +1,16 @@
 # DESIGN-REVIEW.md: rubric ds-quality-v1 v1 — 10/10 SHIP
 
 Rubric: ds-quality-v1 (10 fixed checks, ship floor 8/10). Scored by `node tools/judge.mjs`.
-Sample: C:\Users\me\Desktop\design-studio\designs\O-046\brief.json
+Sample: C:\Users\me\Desktop\design-studio\covers\n-z\niche-playbook-income-seekers-gumroad\brief.json
 
 ## Score
 
-- [x] brief-complete: Indie Game Launch System 1280x720
-- [x] render-exists: 1280x720 305484B
+- [x] brief-complete: Niche Playbook: Income Seekers 1280x720
+- [x] render-exists: 1280x720 93473B
 - [x] audit-green: fresh auditBrief PASS
-- [x] contrast-aa: title:17.2, subtitle:8.2, cta:5.4, chip:18.4, kicker:6.2
-- [x] thumbnail-legible: 17.2px at 256px (floor 12px), pixels in thumb-256.png 256x144 — human verdict: title reads at listing size
-- [x] title-fits: need ~559px, box 594px
+- [x] contrast-aa: title:11.9, subtitle:6.9, cta:6.0, chip:14.3, kicker:6.1
+- [x] thumbnail-legible: 15.6px at 256px (floor 12px)
+- [x] title-fits: need ~546px, box 594px
 - [x] tokens-disciplined: all color via var(--*)
 - [x] type-pair: 3 font token(s), page uses type
 - [x] rtl-gate: dir=ltr
@@ -22,7 +22,7 @@ Sample: C:\Users\me\Desktop\design-studio\designs\O-046\brief.json
 
 ## Verdict
 
-SHIP: 10/10 meets the floor. Thumbnail confirmed by eye in thumb-256.png (256x144); taste still human.
+SHIP: 10/10 meets the floor. A human eye still confirms thumbnail and taste.
 
 ## Taste (human, not scored)
 

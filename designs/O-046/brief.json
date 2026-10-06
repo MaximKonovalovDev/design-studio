@@ -1,5 +1,5 @@
 {
-  "title": "Forge engine2040 Launch System",
+  "title": "Indie Game Launch System",
   "size": {
     "w": 1280,
     "h": 720
@@ -21,7 +21,7 @@
         0.96,
         0.3
       ],
-      "title_longest": 16
+      "title_longest": 13
     }
   ],
   "dir": "ltr",

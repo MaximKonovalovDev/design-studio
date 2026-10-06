@@ -2,17 +2,18 @@
   "product": "cover:gumroad/forge-engine2040-launch-system",
   "from_repo": "factory",
   "storeName": "Gumroad",
-  "title": "Forge engine2040 Launch System",
+  "title": "Indie Game Launch System",
   "pick": "clean-professional",
   "template": "covers/app-window",
-  "kicker": "Offline budgeting app",
-  "claim": "A full year of spending on one screen",
+  "kicker": "Forge + engine2040 pre-launch system",
+  "claim": "25 dated channels plus 40-task 8-week plan plus 5 tutorials",
   "chips": [
-    "CSV import",
-    "No account",
-    "Works offline"
+    "25 verified channels",
+    "40-task 8-week plan",
+    "5 tutorials + devlog drafts"
   ],
   "badge": "$19 one-time",
+  "fine": "Markdown + CSV - opens anywhere, no install",
   "tokens": {
     "bg": "#f6f7fb",
     "bg-2": "#e4e8f4",
@@ -35,12 +36,11 @@
   "titleWeight": 700,
   "titleTrack": "-0.02em",
   "titleWrapWide": [
-    "Forge",
-    "engine2040",
+    "Indie Game",
     "Launch System"
   ],
   "titleWrapCard": [
-    "Forge engine2040",
+    "Indie Game",
     "Launch System"
   ],
   "chipR": "8px",
@@ -58,8 +58,8 @@
   "assets": [
     {
       "name": "shot.png",
-      "src": "C:/Users/me/Desktop/design-studio/templates/covers/app-window/placeholder/shot.png",
-      "what": "PLACEHOLDER screenshot shipped with the template: replace it with the product's own capture (--asset shot=<path>)"
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/forge-engine2040-launch-system/preview/shot-channels.png",
+      "what": "the customer's own picture shot-channels.png"
     }
   ]
 }

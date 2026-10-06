@@ -1,0 +1,26 @@
+/* covers/n-z/niche-playbook-income-seekers-gumroad/tokens.css: O-055 Niche Playbook: Income Seekers (kraft). All page color comes from these vars. */
+:root {
+  --bg: #ead7b7;
+  --bg-2: #dcc194;
+  --ink: #2a1a10;
+  --muted: #573f2f;
+  --accent: #b3261e;
+  --accent-ink: #96190f;
+  --on-accent: #fff4e0;
+  --chip-bg: #f8ecd6;
+  --chip-ink: #2a1a10;
+  --chip-line: #96190f;
+  --font-display: 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-body: 'Trebuchet MS', 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'Courier New', Consolas, monospace;
+  --title-px: 78px;
+  --title-px-card: 50px;
+  --title-weight: 700;
+  --title-track: -0.015em;
+  --copy-w: 52%;
+  --claim-w: 560px;
+  --chip-r: 2px;
+  --sheet-ar: 1.5;
+  --sheet-w: 322px;
+  --sheet-w-card: 188px;
+}
