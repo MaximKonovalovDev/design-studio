@@ -1,5 +1,5 @@
 # repomap: design-studio
-_generated 2026-10-06T06:20:52.780Z | 6560 files mapped | 50 hot (commits, last 14d) | cap 25KB_
+_generated 2026-10-06T18:51:02.280Z | 6944 files mapped | 50 hot (commits, last 14d) | cap 25KB_
 
 ## tree
 - `.env` - 1 file
@@ -20,7 +20,7 @@ _generated 2026-10-06T06:20:52.780Z | 6560 files mapped | 50 hot (commits, last 
 - `convert/` - 4 files
 - `covers/` - 127 files
 - `design-audit.json` - 1 file
-- `designs/` - 853 files
+- `designs/` - 1233 files
 - `docs/` - 1 file
 - `fonts/` - 18 files
 - `kits/` - 14 files
@@ -32,7 +32,7 @@ _generated 2026-10-06T06:20:52.780Z | 6560 files mapped | 50 hot (commits, last 
 - `packs/` - 57 files
 - `research/` - 5134 files
 - `samples/` - 97 files
-- `sprint/` - 18 files
+- `sprint/` - 22 files
 - `taste/` - 1 file
 - `templates/` - 64 files
 - `tests/` - 37 files
@@ -40,7 +40,7 @@ _generated 2026-10-06T06:20:52.780Z | 6560 files mapped | 50 hot (commits, last 
 - `tools/` - 44 files
 
 ## symbols (hot first, xN = commits last 14d)
-### `.opencode/plugin/loop-keeper.js` x18 (176KB) - loop-keeper: continues THIS repo's /sprint when its session goes idle, and
+### `.opencode/plugin/loop-keeper.js` x19 (181KB) - loop-keeper: continues THIS repo's /sprint when its session goes idle, and
 ### `tools/audit.mjs` x10 (40KB)
 - `function titleChars`
 - `function luminance`
@@ -332,6 +332,29 @@ _generated 2026-10-06T06:20:52.780Z | 6560 files mapped | 50 hot (commits, last 
 - `function selfCheck`
 ### `tools/taste.mjs` x2 (3.4KB)
 - `function checkTaste`
+### `tools/template.mjs` x2 (42KB)
+- `const TOKENS`
+- `const FONTS`
+- `const CONTRAST_PAIRS`
+- `const CONTRAST_MIN`
+- `function loadPalettes`
+- `function paletteProblems`
+- `function tokensCss`
+- `function inlineTokens`
+- `function templateDirs`
+- `function loadTemplate`
+- `function hardColours`
+- `function templateProblems`
+- `function wrapTitle`
+- `function fitTitle`
+- `function stamp`
+- `function writeStamp`
+- `function newOrder`
+- `function buildOrder`
+- `function preview`
+- `function paletteSheet`
+- `function check`
+- `function parseArgs`
 ### `convert/export-game.mjs` x1 (17KB)
 - `const SHEET_W`
 - `const SHEET_H`
@@ -580,29 +603,6 @@ _generated 2026-10-06T06:20:52.780Z | 6560 files mapped | 50 hot (commits, last 
 - `const SHARP_URL`
 - `function sharpAvailable`
 - `function sharpThumb`
-### `tools/template.mjs` x1 (40KB)
-- `const TOKENS`
-- `const FONTS`
-- `const CONTRAST_PAIRS`
-- `const CONTRAST_MIN`
-- `function loadPalettes`
-- `function paletteProblems`
-- `function tokensCss`
-- `function inlineTokens`
-- `function templateDirs`
-- `function loadTemplate`
-- `function hardColours`
-- `function templateProblems`
-- `function wrapTitle`
-- `function fitTitle`
-- `function stamp`
-- `function writeStamp`
-- `function newOrder`
-- `function buildOrder`
-- `function preview`
-- `function paletteSheet`
-- `function check`
-- `function parseArgs`
 ### `tools/ui-pack.mjs` x1 (29KB)
 - `class Img`
 - `function encodePng`

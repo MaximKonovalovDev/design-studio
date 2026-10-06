@@ -1,3 +1,3 @@
-USED: yes d5d347e1d (forge Wave G O-023 Rome step-7 adopt; o23-bind.json status adopted, RomeHud.cs binds the O-023 atlas+font)
+USED: yes d5d347e1d (forge Wave G O-023 Rome step-7 adopt; RomeHud.cs cites the O-023 atlas+font, ui-atlas.png logged at d5d347e1d)
 eye: EYE-2026-10-06
-proof: Read forge from-design-studio/O-023/layout.json + o23-bind.json adopted yes + git log d5d347e1d
+proof: Read forge from-design-studio/O-023/ADOPT.md + game/slice/rome/RomeHud.cs O-023 cite + git log d5d347e1d
