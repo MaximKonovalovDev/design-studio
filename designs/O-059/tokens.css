@@ -1,0 +1,29 @@
+/* designs/O-059/tokens.css: O-059 Content Repurposing Kit (clean-professional). All page color comes from these vars. */
+/* Embedded OFL fonts (tools/cover.mjs fonts <id>; woff2 bytes in assets/fonts/, no system dependency). */
+@font-face { font-family: "Inter"; font-style: normal; font-display: swap; font-weight: 400; src: url(assets/fonts/inter-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-display: swap; font-weight: 700; src: url(assets/fonts/inter-latin-700-normal.woff2) format("woff2"); }
+:root {
+  --bg: #f6f7fb;
+  --bg-2: #e4e8f4;
+  --ink: #12131f;
+  --muted: #444a63;
+  --accent: #087a4a;
+  --accent-ink: #066a3f;
+  --on-accent: #ffffff;
+  --chip-bg: #ffffff;
+  --chip-ink: #12131f;
+  --chip-line: #c9cfe3;
+  --font-display: Inter, Arial, sans-serif;
+  --font-body: Inter, Verdana, Arial, sans-serif;
+  --font-mono: Consolas, 'Courier New', monospace;
+  --title-px: 88px;
+  --title-px-card: 50px;
+  --title-weight: 700;
+  --title-track: -0.02em;
+  --copy-w: 52%;
+  --claim-w: 560px;
+  --chip-r: 8px;
+  --sheet-ar: 0.72;
+  --sheet-w: 322px;
+  --sheet-w-card: 188px;
+}
