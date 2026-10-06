@@ -1,6 +1,6 @@
 VERDICT: PASS O-056
-BEATS: ours 88px/17.6px@256 vs theirs ~smaller labeled strip, wins
-PICTURE: assets/shot.png is product preview/shot-sheets-1280x720.png
-FACTS: 3/15/432/.49/RPG-Maker-ready from itch.md, no Godot-Unity in copy
-FIT: both sizes whole, 17.6px and 20.3px at 256px >=12px
-LANE: full products/character-animation-studio/character-animation-studio/covers/from-design-studio/O-056/ in cover.json+DELIVERY.md
+BEATS: ours 17.6px at 256px vs theirs small dense grid, larger/clearer yes
+PICTURE: own shot-sheets-1280x720.png via assets/shot.png yes
+FACTS: itch.md only (3/15/432/7.49/5min/RPG Maker, no engine names) yes
+FIT: both sizes whole, 17.6/20.3px at 256px nothing under 12px yes
+LANE: full products/character-animation-studio/character-animation-studio/covers/from-design-studio/O-056/ in DELIVERY.md+cover.json yes
