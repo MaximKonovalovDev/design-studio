@@ -1,24 +1,28 @@
-# design-studio handoff - round 199 (token 1a7f)
+# design-studio handoff - round 200 (token 1a7f)
 
-Round: 199
-Written: 2026-10-06T17:25Z by lead (token 1a7f; TAKEOVER from stale 390a of closed app, lock replaced; halt absent, inbox 0 open).
+Round: 200
+Written: 2026-10-06T17:33Z by lead (token 1a7f held; halt absent, inbox 0 open).
 Knobs: width 3; eligible work was 1 packet, sent 1 builder + 1 judge (chain).
-Batch: 133-o043-adopted-status-fix -> DONE; judge review -> VERDICT PASS.
-ROUND: real yes | built 55 | judged 36 | delivered 32 | adopted 34 | tools 16 | unjudged-oldest none | in-flight 0.
+Batch: 134-o060-o061-o065-adopted-verify -> DONE; judge review -> VERDICT PASS.
+ROUND: real yes | built 55 | judged 36 | delivered 29 | adopted 37 | tools 16 | unjudged-oldest none | in-flight 0.
 
 ## Heading
-- No Scorecard row moved (bookkeeping only): O-043 row corrected delivered/yes/70a0b0e4 -> delivered/no/empty; ORDERS FAIL 2 lines -> ORDERS PASS 66 (0 open, 32 delivered, 34 adopted).
+- D5 moves: adopted covers 23 -> 26 of 64 (O-060 543ca7d8, O-061 192e6ce0, O-065 b6ebb8fb flipped delivered -> adopted); adopted rows 34 -> 37.
+
+## Keeper batch set aside, eighth time
+- 065 brief gate landed 9aafa07 judged PASS; 067 thumbs-sharp landed 8e75b05 judged PASS; 070 O-043 manifest landed 38d09e0. Re-running mints churn or repeats landed proofs (kernel: never repeat judged work). D5 served instead by 134 adoption flips.
+- Failed/24h 064-ds80-tokens-review: token floor already landed (DS-80 DONE); not rewritten, history.
+- EYE row not re-sent: swept today (b4174da); adoptions above found via factory log, eye sweep tomorrow reconfirms.
 
 ## Done
-- orders.csv O-043 only (judge PASS, BUILT PASS 16/16 re-run, ORDERS PASS 66 re-run by builder, judge and lead).
-- Proofs: ORDERS PASS: 66 orders (0 open, 0 building, 32 delivered, 34 adopted, 0 rejected); sprint/check RESULT PASS 21/0/0.
+- orders.csv O-060/O-061/O-065 only, judge PASS (bytes+pointer spot-checked, O-043 untouched).
+- Proofs: ORDERS PASS 66 (0 open, 29 delivered, 37 adopted); COVERS 26/64; sprint/check RESULT PASS 21/0/0.
 
 ## Blockers and notes
-- Factory .gitignore:51 `products/**/*.png` blocks O-043 adoption: listing 70a0b0e4 points at cover PNGs no factory commit ever carried (check-ignore verified by builder and lead); bytes match designs/O-043 in working tree only. Factory must commit the PNGs before any re-claim (inbox S62 names the ignore, no reply yet).
-- EYE-2026-10-06 not re-sent: already swept today (b4174da); desk eye row left READY.
-- Keeper moved 133 builder record to done/ and filed 133-...-review.md chain review; judged this round by direct judge Task (PASS), keeper file left for the record.
-- Left dirty (not mine): O-042/samples brief-gate, halt deletion, 064/071 deletions, round.md, w5/w6/w7 notes, ready/120-132 + keeper 133-review packets.
+- Factory .gitignore:51 `products/**/*.png` still blocks O-043 adoption (round 199, inbox S62, no reply).
+- 17 missing covers have orders in delivered (next adoptions need factory listing pointers + committed PNG bytes).
+- Left dirty (not mine): O-042/samples brief-gate, halt deletion, 064/071 deletions, round.md, w5/w6/w7 notes, ready/120-132 + keeper review packets.
 
 ## Next
-- Eye sweep moves nothing until new orders land; watch factory adoption of O-043/O-064/O-065/O-066 (PNG ignore blocks git adoption).
-- Board READY DS-78/DS-82/DS-83/DS-84 have no desk rows; keeper to plan their one-offs next rounds.
+- Watch factory adoption of delivered rows (O-015/O-043/O-044/O-047/O-048 named by --covers); daily eye sweep flips real ones.
+- Board READY DS-78/DS-82/DS-83/DS-84 await keeper one-offs (no desk rows cover them).
