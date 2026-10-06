@@ -1,0 +1,151 @@
+{
+  "order_id": "O-057",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/sci-fi-crew-vol2",
+  "delivered_utc": "2026-10-06T13:07Z",
+  "source": "design-studio designs/O-057",
+  "landing": "products/character-animation-studio/sci-fi-crew-vol2/covers/from-design-studio/O-057",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "27 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/character-animation-studio/sci-fi-crew-vol2/covers/from-design-studio/O-057/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/80808dc80a216f7d3bfe902c2199f65297e79497c9a7be0e9fe36024ee7a0ecc/manifest.json",
+      "bytes": 194,
+      "sha256": "1102a2f9ac3df6b6d0f6fc7a2a3a985a25df439db604f56626fa293585c06bff"
+    },
+    {
+      "name": ".cache/80808dc80a216f7d3bfe902c2199f65297e79497c9a7be0e9fe36024ee7a0ecc/out-630x500.png",
+      "bytes": 110705,
+      "sha256": "bc4707629ae3783b22e0f5ab30338bd4632a6e0af3e9e925f612d59dd35ea962"
+    },
+    {
+      "name": ".cache/80808dc80a216f7d3bfe902c2199f65297e79497c9a7be0e9fe36024ee7a0ecc/out.png",
+      "bytes": 230244,
+      "sha256": "f8199ec47c0b8d1107400837cba2574e7cce7038e5407777f935d751512b11b2"
+    },
+    {
+      "name": ".cache/80808dc80a216f7d3bfe902c2199f65297e79497c9a7be0e9fe36024ee7a0ecc/thumb-256.png",
+      "bytes": 24069,
+      "sha256": "0fdd23ee0b834f046737bedf51dce61983d75cb6c87fc82c5309372397bda8aa"
+    },
+    {
+      "name": ".cache/e196d45a3f3ff2eba3e16e4278e9710d6fe6d9489413e58836f67bdaad67f8ea/manifest.json",
+      "bytes": 194,
+      "sha256": "b3667e7a17c19c65183b1de8b16455b7ee5d0bcb3c52aebb1ca32bda8748cb33"
+    },
+    {
+      "name": ".cache/e196d45a3f3ff2eba3e16e4278e9710d6fe6d9489413e58836f67bdaad67f8ea/out-630x500.png",
+      "bytes": 119281,
+      "sha256": "ed5d83e3657bb3c6752b085d0a17fd5bc64d626c7889fce67fe1be54c742c3e9"
+    },
+    {
+      "name": ".cache/e196d45a3f3ff2eba3e16e4278e9710d6fe6d9489413e58836f67bdaad67f8ea/out.png",
+      "bytes": 249341,
+      "sha256": "d4aacea4459fee0c0912dc9d48358650904b9b341878f173aef07f9959a492d1"
+    },
+    {
+      "name": ".cache/e196d45a3f3ff2eba3e16e4278e9710d6fe6d9489413e58836f67bdaad67f8ea/thumb-256.png",
+      "bytes": 24069,
+      "sha256": "0fdd23ee0b834f046737bedf51dce61983d75cb6c87fc82c5309372397bda8aa"
+    },
+    {
+      "name": "ADOPT.md",
+      "bytes": 727,
+      "sha256": "2552fa79cb01bb292bd8d5576cb51bca324a600c507e1e3ff5bc352ca5239bdb"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1332,
+      "sha256": "56f90828a37ae7bf77266ccd8fc3ed51171cd24062d54063fb7e40dcd60b8bb9"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1171,
+      "sha256": "2a52f28a0e4a109e0932b9f9a9d2f530e505ce00f61a351f0610edd3e65c84f5"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 327,
+      "sha256": "e97254aca0b90244544b2b9b07ff10328a8f7bab905f9b3c3edb464567f5f37f"
+    },
+    {
+      "name": "art.css",
+      "bytes": 4107,
+      "sha256": "bd4c6a52f3b92cb798f818b05dd0cd10e51818b29f4fc3729ba3cf3df60cb8a4"
+    },
+    {
+      "name": "art.html",
+      "bytes": 495,
+      "sha256": "c881c43f4686660f0443bdd6e84b17b86ec96ade54a451982453f98ffd2b754a"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 413,
+      "sha256": "1310b458652c2b770e62408eec642d72dff5a51e4f45b769d2436cb6ca54a9ab"
+    },
+    {
+      "name": "assets/shot.png",
+      "bytes": 29641,
+      "sha256": "e5b22c6f0ea458905e5058fc8d146425a5e240f8e5b53b1d42ac94e68581cd87"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1196,
+      "sha256": "29a10d89708ac255d23ee0f2c71985149ba653aa7c8169826dd8356c2826b441"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 115336,
+      "sha256": "a124b3f38e9cc3138c2255c0300e8a6a0768cf01b3d1078acc8b723aa8e18733"
+    },
+    {
+      "name": "cover-1280x720.png",
+      "bytes": 230244,
+      "sha256": "f8199ec47c0b8d1107400837cba2574e7cce7038e5407777f935d751512b11b2"
+    },
+    {
+      "name": "cover-630x500.png",
+      "bytes": 110705,
+      "sha256": "bc4707629ae3783b22e0f5ab30338bd4632a6e0af3e9e925f612d59dd35ea962"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 1872,
+      "sha256": "e118bfcb6ec6ed0da028f8e978da9eb472dfd7a2eb52049c51c4b710be3d51fa"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2966,
+      "sha256": "bf94a66bd7a630441dfee9ea7dbdf7dc71f89ea858450965ef8abeba46ed3b65"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 119281,
+      "sha256": "ed5d83e3657bb3c6752b085d0a17fd5bc64d626c7889fce67fe1be54c742c3e9"
+    },
+    {
+      "name": "out.png",
+      "bytes": 249341,
+      "sha256": "d4aacea4459fee0c0912dc9d48358650904b9b341878f173aef07f9959a492d1"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8540,
+      "sha256": "3c6e237518146e2e123a67b5b4c43d04dff20eccdd1a735a009625b703b4945b"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 39229,
+      "sha256": "511fbd0d3c73eac7e1e45d5066bc43471a6dd5b015ad27312685cf6f27f40a22"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 706,
+      "sha256": "643dfcc270213ac429b26cd8d003c628b3ead81ee6d1e497dfd321ae83539e55"
+    }
+  ]
+}
