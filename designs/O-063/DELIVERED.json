@@ -3,7 +3,7 @@
   "from_repo": "factory",
   "maker": "design-studio",
   "product": "cover:itch/game-dev-duo",
-  "delivered_utc": "2026-10-06T16:25Z",
+  "delivered_utc": "2026-10-06T20:59Z",
   "source": "design-studio designs/O-063",
   "landing": "products/game-dev-2d/game-dev-duo/covers/from-design-studio/O-063",
   "customer": "C:/Users/me/Desktop/autonomous-factory",
@@ -49,8 +49,8 @@
     },
     {
       "name": "VERDICT.md",
-      "bytes": 339,
-      "sha256": "b9274496a51886100b8503340fbf8227615d0782e3b9b58c9db42c6b63c73684"
+      "bytes": 267,
+      "sha256": "ff3272c72bb10fca6cb3ce0d2eb3bc7532084f7541e8245c383aba2e3a5520d6"
     },
     {
       "name": "art.css",
@@ -89,8 +89,8 @@
     },
     {
       "name": "compare.png",
-      "bytes": 156076,
-      "sha256": "8e360f0bb2c590452b2ae92484498f240de76cb4c03574cf74bfd3d56b3ba62c"
+      "bytes": 172291,
+      "sha256": "627e658668c0b8cab4aaf1439adb3fd94faaabcd4f99cea356e77201f8fde1a0"
     },
     {
       "name": "cover.json",
