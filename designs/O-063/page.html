@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- designs/O-063/page.html: O-063 itch.io cover for Game Dev Duo (clean-professional). Facts only from game-dev-duo/itch.md. Color only via tokens.css. 1280x720 hero above 800px wide, 630x500 store card at 800px and below. -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+  .stage { position: relative; display: flex; width: 100%; height: 100%; overflow: hidden; background: var(--stage-bg, var(--bg)); }
+  .copy { position: relative; z-index: 3; flex: 0 0 var(--copy-w, 52%); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-inline-start: var(--pad, 72px); padding-block: 48px; }
+  .art { position: relative; z-index: 1; flex: 1; }
+  .kicker { font-weight: 800; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 16px; }
+  h1 { text-wrap: balance; font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: var(--title-px, 104px); line-height: 0.96; letter-spacing: var(--title-track, -0.01em); color: var(--ink); margin-bottom: 22px; }
+  .claim { text-wrap: balance; font-size: var(--claim-px, 32px); line-height: 1.2; color: var(--muted); font-weight: 600; margin-bottom: 26px; max-width: var(--claim-w, 560px); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-bottom: 28px; max-width: var(--claim-w, 560px); }
+  .chips li { font-size: 21px; font-weight: 700; line-height: 1.1; padding: 9px 14px; border-radius: var(--chip-r, 8px); background: var(--chip-bg); color: var(--chip-ink); border: 2px solid var(--chip-line); }
+  .cta { font-size: 30px; font-weight: 800; line-height: 1; padding: 15px 30px; border-radius: var(--chip-r, 8px); background: var(--accent); color: var(--on-accent); }
+  .fine { margin-top: 16px; font-size: 19px; color: var(--muted); max-width: var(--claim-w, 560px); }
+  .win { position: absolute; border-radius: 10px; overflow: hidden; background: var(--win-bg, var(--ink)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.22); }
+  .win::before { content: ""; display: block; height: 22px; background: var(--win-bar, var(--ink)); border-bottom: 3px solid var(--accent); }
+  .win img { display: block; width: 100%; }
+  .win .vp { position: relative; overflow: hidden; }
+  .win .vp img { position: absolute; max-width: none; }
+  @media (max-width: 800px) {
+    .stage { flex-direction: column; }
+    .copy { flex: 0 0 auto; padding-inline: var(--pad-card, 26px); padding-block: var(--pad-top-card, 22px) 0; }
+    .kicker { font-size: 14px; margin-bottom: 8px; }
+    h1 { font-size: var(--title-px-card, 60px); margin-bottom: 8px; }
+    .claim { font-size: var(--claim-px-card, 21px); margin-bottom: 12px; max-width: none; }
+    .chips { gap: 6px; margin-bottom: 0; max-width: none; }
+    .chips li { font-size: 14px; padding: 5px 9px; border-width: 1.5px; }
+    .chips li.wide-only { display: none; }
+    .cta { font-size: 19px; padding: 9px 18px; }
+    .fine { display: none; }
+    .art { flex: 1; min-height: 0; }
+  }
+  /* covers/sheet-fan: three pages fanned from one centre, a round stamp on the front page, one label.
+     Every picture is cropped from its top, reading start, to the sheet shape. Tune it in cover.json "vars": sheet-ar (0.72 = a page, 1.5 = a wide screenshot), sheet-w and sheet-w-card (the sheet width in each layout). */
+  .stage { background: linear-gradient(150deg, var(--bg) 0%, var(--bg) 34%, var(--bg-2) 100%); }
+  h1 { max-width: var(--claim-w, 560px); }
+  .art .disc { position: absolute; width: 600px; height: 600px; border-radius: 50%; inset-inline-start: 53%; top: 50%; transform: translate(-50%, -50%); background: color-mix(in srgb, var(--accent) 20%, transparent); }
+  .art .ring { position: absolute; width: 690px; height: 690px; border-radius: 50%; inset-inline-start: 53%; top: 50%; transform: translate(-50%, -50%); border: 2px dashed color-mix(in srgb, var(--accent-ink) 55%, transparent); }
+  .art .fan { position: absolute; inset-inline-start: 53%; top: 51%; width: 0; height: 0; }
+  .art .sheet { position: absolute; inset-inline-start: 0; top: 0; width: var(--sheet-w, 322px); aspect-ratio: var(--sheet-ar, 0.72); overflow: hidden; border-radius: 8px; background: var(--chip-bg); box-shadow: 0 24px 46px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2); }
+  .art .sheet img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 0% 0%; }
+  .art .back-a { transform: translate(-50%, -50%) translate(-37%, 2%) rotate(-11deg); }
+  .art .back-b { transform: translate(-50%, -50%) translate(37%, -2%) rotate(9deg); }
+  .art .front { transform: translate(-50%, -50%) rotate(-2deg); }
+  .art .stamp { position: absolute; z-index: 3; inset-inline-end: 30px; top: 84px; width: 172px; height: 172px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--accent); color: var(--on-accent); transform: rotate(10deg); box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3); }
+  .art .stamp::before { content: ""; position: absolute; inset: 9px; border-radius: 50%; border: 3px dashed color-mix(in srgb, var(--on-accent) 75%, transparent); }
+  .art .stamp b { font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: 76px; line-height: 0.9; letter-spacing: var(--title-track, -0.01em); }
+  .art .stamp span { margin-top: 4px; font-size: 19px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .art .tag { position: absolute; z-index: 3; inset-inline-start: 26px; bottom: 86px; padding: 12px 22px; border-radius: 999px; background: var(--ink); color: var(--bg); font-size: 22px; font-weight: 800; line-height: 1; white-space: nowrap; transform: rotate(-5deg); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28); }
+  .art .stamp[data-n=""], .art .tag[data-n=""] { display: none; }
+  @media (max-width: 800px) {
+    h1 { max-width: none; }
+    .chips { margin-bottom: 9px; }
+    .art .disc { width: 380px; height: 380px; inset-inline-start: 43%; top: 64%; }
+    .art .ring { width: 446px; height: 446px; inset-inline-start: 43%; top: 64%; border-width: 1.5px; }
+    .art .fan { inset-inline-start: 43%; top: 64%; }
+    .art .sheet { width: var(--sheet-w-card, 188px); border-radius: 5px; box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2); }
+    .art .stamp { width: 108px; height: 108px; inset-inline-end: 104px; top: 12px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.28); }
+    .art .stamp::before { inset: 6px; border-width: 2px; }
+    .art .stamp b { font-size: 46px; }
+    .art .stamp span { margin-top: 2px; font-size: 12px; }
+    .art .tag { inset-inline-start: auto; inset-inline-end: 30px; bottom: 30px; padding: 8px 14px; font-size: 14px; }
+  }
+</style>
+</head>
+<body data-oid="cover.hero">
+<div class="stage">
+  <div class="copy">
+    <div class="kicker">Pixel sprites plus retro SFX bundle</div>
+    <h1 data-oid="cover.title">Game Dev Duo</h1>
+    <p class="claim" data-oid="cover.subtitle">200 sprites plus 1024 sounds with combo guide</p>
+    <ul class="chips"><li>200 sprites 10 themes x 20</li><li>512 WAV + 512 MP3</li><li>36 pairings + 1,276 files</li></ul>
+    <span class="cta" data-oid="cover.cta">$19 fixed one-time</span>
+    <p class="fine">32x32 PNG + 44.1kHz audio, 5-min import</p>
+  </div>
+  <div class="art">
+    <div class="disc"></div>
+    <div class="ring"></div>
+    <div class="fan">
+      <div class="sheet back-a"><img src="assets/sheet-3.png" alt="Four themed sprite contact sheets, 20 sprites each"></div>
+      <div class="sheet back-b"><img src="assets/sheet-2.png" alt="Real SFX waveforms, 44.1kHz mono"></div>
+      <div class="sheet front"><img src="assets/sheet-1.png" alt="Real pixel-art sprite sheet, 10 themes x 20"></div>
+    </div>
+    <div class="stamp" data-n="1276"><b>1276</b><span>files</span></div>
+    <div class="tag" data-n="Real sprites + real SFX">Real sprites + real SFX</div>
+
+  </div>
+</div>
+</body>
+</html>

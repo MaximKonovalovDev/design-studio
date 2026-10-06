@@ -1,0 +1,77 @@
+{
+  "product": "cover:itch/game-dev-duo",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Game Dev Duo",
+  "pick": "clean-professional",
+  "template": "covers/sheet-fan",
+  "kicker": "Pixel sprites plus retro SFX bundle",
+  "claim": "200 sprites plus 1024 sounds with combo guide",
+  "chips": [
+    "200 sprites 10 themes x 20",
+    "512 WAV + 512 MP3",
+    "36 pairings + 1,276 files"
+  ],
+  "badge": "$19 fixed one-time",
+  "fine": "32x32 PNG + 44.1kHz audio, 5-min import",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "Inter, Arial, sans-serif",
+    "body": "Inter, Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 88,
+  "titlePxCard": 50,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Game Dev",
+    "Duo"
+  ],
+  "titleWrapCard": [
+    "Game Dev",
+    "Duo"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "sheet-ar": "0.72",
+    "sheet-w": "322px",
+    "sheet-w-card": "188px"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/cover.png",
+  "theirsPx256": 12.0,
+  "beatNote": "their caps title cap-height ~60px at 1280w by pixel measure -> ~12px at 256w; ours 17.6px; light sheet-fan vs dark neon-green; true $19 badge beats stale $29",
+  "landing": "products/game-dev-2d/game-dev-duo/covers/from-design-studio/O-063/",
+  "assetsFrom": "the product's own preview/ screenshots (screenshot-sprites, screenshot-waveforms, screenshot-bundle)",
+  "assets": [
+    {
+      "name": "sheet-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-sprites.png",
+      "what": "the customer's own picture screenshot-sprites.png"
+    },
+    {
+      "name": "sheet-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-waveforms.png",
+      "what": "the customer's own picture screenshot-waveforms.png"
+    },
+    {
+      "name": "sheet-3.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-bundle.png",
+      "what": "the customer's own picture screenshot-bundle.png"
+    }
+  ]
+}
