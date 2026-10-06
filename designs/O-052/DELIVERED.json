@@ -1,0 +1,131 @@
+{
+  "order_id": "O-052",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/carousel-template-studio",
+  "delivered_utc": "2026-10-06T13:21Z",
+  "source": "design-studio designs/O-052",
+  "landing": "products/social-media-carousel/carousel-template-studio/covers/from-design-studio/O-052",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "23 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/social-media-carousel/carousel-template-studio/covers/from-design-studio/O-052/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/dfdf0339919f4a228856420d6698abe58e361c23a1234d88b7ab86379f14d272/manifest.json",
+      "bytes": 194,
+      "sha256": "206c163c9958394b1224541045593aef205a78d33934785cff7987f8e1ced6f9"
+    },
+    {
+      "name": ".cache/dfdf0339919f4a228856420d6698abe58e361c23a1234d88b7ab86379f14d272/out-630x500.png",
+      "bytes": 149262,
+      "sha256": "36bc339301d30e2876d02302a455144f79354dc95bb2c44ad6967e41a06c5e57"
+    },
+    {
+      "name": ".cache/dfdf0339919f4a228856420d6698abe58e361c23a1234d88b7ab86379f14d272/out.png",
+      "bytes": 345570,
+      "sha256": "1d1ca9d92e2a457d6ab9da821a696e0d316ed2bea6af7e10bacf5edbdb0c591b"
+    },
+    {
+      "name": ".cache/dfdf0339919f4a228856420d6698abe58e361c23a1234d88b7ab86379f14d272/thumb-256.png",
+      "bytes": 32607,
+      "sha256": "30b7d006844f7e4958ed9d72f74d9b010cb5238ec2d29f7c0583f143baa8e141"
+    },
+    {
+      "name": "ADOPT.md",
+      "bytes": 676,
+      "sha256": "9660fe276a9984cb397ddbc714e4264f4f92c561b8b91ea9fbb7e8d11aeaef11"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1364,
+      "sha256": "425e83d1360d6cae28824520dc8ff3d81d0c7921c84910ff00c933e2e87d76a2"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1178,
+      "sha256": "e8b4794ac5fe4f00b63ae9ddaa4549e362a879553030eca35cdadd0a4ca41df1"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 158,
+      "sha256": "ee1ae05ec82d04ef94c5ceb9febdc751f2d22fd3e0eb853350be45bdef6a5ef5"
+    },
+    {
+      "name": "art.css",
+      "bytes": 3706,
+      "sha256": "1cfa67bb01cde9473c6e5dd23090e943a0c15c965e911ba40cd9b1ceffc1ba65"
+    },
+    {
+      "name": "art.html",
+      "bytes": 589,
+      "sha256": "3cb2024512a29801eb5119daf5aca0e433c58c7150372b9cb60015705f2e60b7"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 992,
+      "sha256": "8e2888b75599dc33a1b944cdce7c82db81eb2c43947cf48dd87b668f31a96ee4"
+    },
+    {
+      "name": "assets/sheet-1.png",
+      "bytes": 79675,
+      "sha256": "875682df577860e61bf03740cd45c5829f2f9496c2f8ff46eb2d77f2064d5cda"
+    },
+    {
+      "name": "assets/sheet-2.png",
+      "bytes": 65184,
+      "sha256": "d2943460e1465d5edef7eb4a39879d51278117fb416328444cda19f7d4920b87"
+    },
+    {
+      "name": "assets/sheet-3.png",
+      "bytes": 70582,
+      "sha256": "2fc24e7d03c0635cfa52d99411dfb12f5e28b4abac1374c0da1e0bc36055078d"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1209,
+      "sha256": "de6356ff59e4137e9a3a9fc001da88efe08858859edbfecf77f77702cb085ca7"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 142193,
+      "sha256": "57a4bc3af7c6e75a625d7249d210d2d81387b57176ce61acf0a0a41f71ef4e3b"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 2612,
+      "sha256": "9ed46c19439f1c1c512e6c4e82352700919a98f0a210f760e0d070653b731813"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2973,
+      "sha256": "07857b206ffa6e9e98c1fbdc483983b81998cf841ac8bf905266cdaf229094fe"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 149262,
+      "sha256": "36bc339301d30e2876d02302a455144f79354dc95bb2c44ad6967e41a06c5e57"
+    },
+    {
+      "name": "out.png",
+      "bytes": 345570,
+      "sha256": "1d1ca9d92e2a457d6ab9da821a696e0d316ed2bea6af7e10bacf5edbdb0c591b"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8410,
+      "sha256": "2dae08ac0ba694c42b6c8eff1fbd73a2f0021b1635a272f87050e01b8c6a7c75"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 32607,
+      "sha256": "30b7d006844f7e4958ed9d72f74d9b010cb5238ec2d29f7c0583f143baa8e141"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 727,
+      "sha256": "e9cdfb852f9fd897aea137d1bd991928e3ffb8834d71c79ff5fcb8d682f2cec8"
+    }
+  ]
+}
