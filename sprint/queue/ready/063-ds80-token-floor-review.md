@@ -1,0 +1,30 @@
+---
+role: judge
+title: review build DS-80 token floor (fluid tokens, open-props MIT)
+chain: review
+of: 063-ds80-token-floor
+writer: builder
+attempt: 1
+origin_title: build DS-80 token floor (fluid tokens, open-props MIT)
+---
+Review 063-ds80-token-floor, built by builder. Its record: C:\Users\me\Desktop\design-studio\sprint\queue\done\063-ds80-token-floor.md. Its result, cut, is at the end.
+
+A. A design folder (the result names an order id like `O-007` and `designs/<order>/` exists): you judge ours against the customer's own current asset. You build nothing, you judge that one folder, and the verdict is written by a command, never by hand. If `node tools/orders-check.mjs --built` or `--verdict` is not there yet (the tool sprint's packet 0b), end `VERDICT: BLOCKED - tool 0b not landed`.
+1. `node tools/orders-check.mjs --built <order>`: the folder is complete (every file `AGENTS.md` "Orders and delivery" lists, both sizes at exact pixels, audit PASS, SHIP at 8 or more, every real image it uses listed in `assets.json`). It prints a FAIL: write the verdict FAIL with that first failing line and stop.
+2. Open the pictures yourself with the Read tool (an unopened PNG is unverified): `out.png`, the second size, `thumb-256.png`, and the customer's current asset the brief names (the store cover to beat; a lane with none: the lane's newest PASS in `designs/`). Then `node tools/compose.mjs compare <ours> <theirs> --widths 256,315 --out designs/<order>/compare.png` and open `compare.png`. Until that tool lands (tool sprint, first 24 h) put the two files side by side by eye at 256 px wide.
+3. Judge only these five, each with a number or a plain yes or no:
+   - BEATS: at 256 px wide is our headline larger or clearer than the customer's current asset? Write both heights in px (ours from `design-audit.json`; theirs "about", from your eyes on `compare.png`). Not better: FAIL, unless there is no current asset.
+   - PICTURE: it shows a real picture of the product (a screenshot, sheet, page or scene from the product's own files) when the product has any (`assets.json`). Text and boxes only where pictures exist: FAIL.
+   - FACTS: every number and claim is in the listing file the brief names; every word the brief forbids (engine names, scores, personal data) is absent. One invented fact: FAIL.
+   - FIT: both sizes whole, nothing cut at an edge, nothing under 12 px at 256 px wide.
+   - LANE: cv = real text in the PDF text layer and Hebrew reads right to left; game = the files the engine loads exist, not only HTML; lab = no real brand name, logo or exact brand colour; social = the headline in the brief appears word for word; store = the cover to beat is named in `DELIVERY.md` and delivery goes to `covers/from-design-studio/`.
+4. Write the verdict: `node tools/orders-check.mjs --verdict <order> PASS|FAIL --line "BEATS ...; PICTURE ...; FACTS ...; FIT ...; LANE ..."`. It writes `designs/<order>/VERDICT.md`, and refuses a PASS unless `--built` passes. Partly is FAIL. Never edit a design file.
+Reply (15 lines at most): `VERDICT: PASS|FAIL|BLOCKED`, the five lines, and how to revert (the one folder).
+
+B. Anything else (a tool, a pack, a doc, a seat file): rerun its proof yourself, read its diff and check its done-when as written. Your whole reply is at most 15 lines: `VERDICT: PASS|FAIL|BLOCKED`, what changed, the checks before and after (commands and numbers), and how to revert it.
+
+Its result, cut:
+<task id="ses_eef24b101ffesjt7QYtImBbVxB" state="completed"> <task_result> Goal: DS-80 token floor (fluid open-props-pattern clamp scales + brand-kit compiler). Scope: `tools/tokens.mjs`, `tests/tokens.test.mjs`, `designs/job/tokens/` (working tree only, nothing committed). Proof: `node tools/tokens.mjs --check` → TOKENS PASS: tokens.json -> tokens.css + docs, 0 hardcoded colors + fluid floor (5 spacing + 4 type clamp steps). Stop: token floor only — no brief gate, no thumbs, no compiler changes; floor code already landed (board DS-80 DONE), so this packet re-verified and refreshed the proof artifacts. What I did (skills `open-design` + `od-theme-tokens` loaded; DS-80 DONE row + parked DS-51 no-consumer row read; `assemble.mjs --help` + `engine2040-ui1.json` consumer shape confirmed — kit palette/paletteDark/type/spacing is exactly what `compileBrandKit` consumes): - `tools/tokens.mjs` — already holds the floor: `fluidClamp` (fail-closed), `FLUID_SPACING` 5 steps, `FLUID_TYPE` 4 steps, `parseClampPx`, `PALETTE_SLOTS` + `unknownSlots`, `compileBrandKit` (kit → CSS vars + dark block), `checkFluidFloor`. MIT LICENSE text + donor SHA kept with the tool; style-dictionary untouched. No edits needed. - `tests/tokens.test.mjs` — DS-80 block already covers clamp math, fail-closed inputs, unknown-slot rejection, full kit-value presence in compiled CSS, `checkFluidFloor` on the proof kit. `node --test tests/tokens.test.mjs` → 24 pass, 0 fail. - `designs/job/tokens/` — recompiled `tokens.css` from `brand-kits/engine2040-ui1.json` (rebuild byte-identical, no drift) and re-rendered `swatch.png` via `tools/render.mjs --size 1280x720 --force` → RENDER OK 1280x720 29007B; opened the PNG and confirmed palette chips, fluid spacing bars, fluid type specimens and CTA all render. - `node sprint/check.mjs` → RESULT PASS 21/0/0. One flag outside Scope (not touched, for the keeper/lead): `node tools/orders-check.mjs` → ORDERS FAIL, 5 problems — O-057 has `adopted yes` with status still `open` (pre-existing `orders.csv` drift; the M on orders.csv predates this packet). Next step: lead fixes the O-057 row, then keeper sends the judge via `sprint/queue/chain/review.md`. RESULT: DONE - DS-80 token floor verified green, swatch proof re-rendered | proof: node tools/tokens.mjs --check → TOKENS PASS (fluid floor 5 spacing + 4 type clamp steps) </task_result> </task>
+
+Keeper facts: run 063-ds80-token-floor (@builder), build DS-80 token floor (fluid tokens, open-props MIT).
+RESULT: DONE - DS-80 token floor verified green, swatch proof re-rendered | proof: node tools/tokens.mjs --check → TOKENS PASS (fluid floor 5 spacing + 4 type clamp steps)
