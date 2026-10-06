@@ -8,6 +8,9 @@ The lead turns each open item into a board row and ticks it with the row ID.
 (none 2026-10-04T14:35Z: S55 rowed as DS-78)
 - [x] EB-2026-10-05-S44 from center -> DS-79 DONE 2026-10-05 [DEAD-KNOB] | Wire or delete dead knob cards_per_reader (S72): grep proves 0 readers; wire to a seat or delete from knobs.json | why: dead knobs mislead helpers; Maxim raised one once and nothing read it | done when node empire.mjs knobs shows no orphan for design-studio
 - [x] EB-2026-10-05-S60 from center -> DS-80 DONE 2026-10-05 [TOKEN-100x] | Fluid tokens plus brief gate plus thumbs | why: Audit 2026-10-05 wave says working desk with 4 of 5 met but adoption gap. Steal open-props MIT tokens plus style-dictionary Apache-2.0 compiler plus zod MIT brief gate plus sharp Apache-2.0 thumbs. | done when F2P: token floor lands plus bad brief refused plus thumbs without Edge. P2P: audit passes plus orders adopted. Serves adoption.
+- [x] EB-2026-10-06-S19 from center -> DS-82 READY 2026-10-06 (Maxim, 2026-10-06) | Attach parked steals to open orders as consumers, land top 3 | why: Steals DS-49 to DS-53 plus DS-62 DS-63 wait for an order that names them | done when 3 steals landed serving named open orders, checks green
+- [x] EB-2026-10-06-S22 from center -> DS-83 READY 2026-10-06 (Maxim, 2026-10-06) | Install system second dispatcher into the live queue | why: Seed waits at crews design-studio standing system-lead.md, templates have no owner | done when Seat file live in queue standing via chain review, dispatched in a batch, first fan-out reported
+- [x] EB-2026-10-06-S36 from center -> DS-84 READY 2026-10-06 (Maxim, 2026-10-06) | [DASHBOARD-AI] Free image lane ON only (Maxim ai 2026-10-06) | why: cost must be 0 or abort, judge gates covers | done when covers flow
 
 ## Done
 - [x] EB-2026-10-04-S55 from center -> DS-78 READY 2026-10-04 [TEMPLATES-V1] | templates v1 (12 templates, 8 palettes); game-UI family (b) serves D4-adjacent template work.
