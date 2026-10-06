@@ -1,0 +1,67 @@
+{
+  "product": "cover:gumroad/indie-game-suite",
+  "from_repo": "factory",
+  "storeName": "Gumroad",
+  "title": "Indie Game Suite",
+  "pick": "clean-professional",
+  "template": "covers/app-window",
+  "kicker": "One brief in, one matching pack out",
+  "claim": "Sprites, tiles, sound, UI kit and trailer in one palette you choose. $19 one-time, runs offline.",
+  "chips": [
+    "23 sprite sheets",
+    "48 sounds + music loop",
+    "32 colors or fewer",
+    {
+      "t": "47-tile autotile + 58 UI pieces + 13-second trailer",
+      "wide": true
+    }
+  ],
+  "badge": "$19 one-time",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "Rubik, 'Segoe UI', Arial, sans-serif",
+    "body": "Inter, 'Segoe UI', Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 104,
+  "titlePxCard": 58,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Indie Game",
+    "Suite"
+  ],
+  "titleWrapCard": [
+    "Indie Game Suite"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "shot-zoom": "1",
+    "shot-x": "0%",
+    "shot-y": "0%"
+  },
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/preview/cover-1280x720.png",
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/listing/gumroad.md",
+  "landing": "products/game-suite/indie-game-suite/covers/from-design-studio/O-048/",
+  "assetsFrom": "the product's own preview/screenshot-pack-sheet-1280x800.png (Ember Hollow pack sheet)",
+  "assets": [
+    {
+      "name": "shot.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/preview/screenshot-pack-sheet-1280x800.png",
+      "what": "the customer's own picture screenshot-pack-sheet-1280x800.png (Ember Hollow pack sheet: sprites and tiles in one 27-color palette)"
+    }
+  ]
+}

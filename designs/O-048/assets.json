@@ -1,0 +1,11 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/shot.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/preview/screenshot-pack-sheet-1280x800.png",
+      "what": "the customer's own picture screenshot-pack-sheet-1280x800.png (Ember Hollow pack sheet: sprites and tiles in one 27-color palette)",
+      "bytes": 27927
+    }
+  ]
+}
