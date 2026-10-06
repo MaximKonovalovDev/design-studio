@@ -1,24 +1,23 @@
-# design-studio handoff - round 287 (token aaa2)
+# design-studio handoff - round 288 (token aaa2)
 
-Round: 287
-Written: 2026-10-06T20:12Z by lead (takeover: replaced lock lead#b7e2 left by closed app; new token aaa2; halt absent in tree, HEAD still holds pause text, inbox 0 open).
-Knobs: width 3; keeper batch 100/101/102 sent (2/3 DONE, 1 infra fail; third issue of same packets, landed in 284).
-Batch: judge 100 INFRA-FAIL (backend overloaded, no done file, ready/100 gone), builder 101 DONE 0-copied 28 identical, builder 102 DONE verify-only (BUILT PASS 16/16, lane note only).
-ROUND: real yes | built 55 | judged 36 | delivered 28 | adopted 38 | tools 16 | unjudged-oldest none | in-flight 0 (cumulative, unchanged this round).
+Round: 288
+Written: 2026-10-06T20:18Z by lead (token aaa2 held; halt absent in tree, inbox 0 open).
+Knobs: width 3; keeper batch 102-review/103/105 sent whole (3/3 DONE).
+Batch: judge 102-review DONE PASS, judge 103 DONE PASS, builder 105 DONE verify-only O-058 (BUILT PASS 16/16, zero edits, already landed).
+ROUND: real yes | built 55 | judged 36 | delivered 28 | adopted 38 | tools 16 | unjudged-oldest none | in-flight 0 (cumulative).
 
 ## Heading
-- D5 did not move (COVERS 26/64 adopted, unchanged): re-runs confirmed delivery, adoption still factory-side.
+- Thumbnail readability held (O-052 re-render landed double-PASS, 17.6px honest beats stale); D5 still 26/64 adopted: delivery + adoption now factory-side.
 
 ## Done
-- Nothing landed this round (no judged PASS to commit; O-052 dirty held, O-057 re-verify held as timestamp churn). Proof: sprint/check RESULT PASS 21/0/0; orders ORDERS PASS 66 (0 open 0 building 28 delivered 38 adopted); --covers 26/64.
-- O-057 re-verify HELD (101: DELIVER CHECK PASS 28/28, 0 copied 28 identical; designs DELIVERED.json timestamp 19:51Z->20:08Z + customer VERDICT sync 1 file). Not committed: third timestamp-only re-verify, no D5 move.
-- O-052 verify-only HELD (102: BUILT PASS 16/16, SHIP 10/10, ours 17.6px vs theirs 3.6px; 8-file dirty set from prior round still needs 103 review before landing).
+- O-052 LANDED c643229 (9 files + 2 Inter woff2; stale .cache 27aeee excluded, still untracked). Proof: --built BUILT PASS 16/16; --verdict PASS (BEATS 17.6 vs 3.6 stale-false, PICTURE 3 slides, FACTS itch.md $25, FIT whole, LANE full path); SHIP 10/10; sprint/check RESULT PASS 21/0/0.
+- O-058 HELD (already tracked + clean, DELIVERED.json present; builder verified zero edits; needs no commit). Next: keeper DLV re-sync only if factory folder drifts.
+- Lost 100 packet closed: O-057 already VERDICT PASS + DELIVER CHECK PASS 28/28; no re-issue needed.
 
 ## Blockers and notes
-- 100 judge never ran (infra overload); ready/100 deleted with no done/100: packet lost, needs keeper re-issue. Next batch must retry 100 or drop it as already PASS.
-- Stale-batch third issue: 101/102 = 0 new design bytes (timestamp + lane-note line only); 102 prior re-run bytes still unjudged. PROPOSAL round 280 stands (keeper: verify BUILT+DELIVER before issuing).
-- Factory .gitignore:51 blocks PNG bytes; eye 131 says O-023 USED yes d5d347e1d but orders.csv still delivered/no (lead to verify + flip next round); mkt O-009/O-024 Visual none.
-- Left dirty (not mine except handoff+lock): repomap, brief-gates, halt deletion, ready/064-102 deletions, round.md (55/36/28/38), lead2 files, ready/103-134, O-023 EYE.md + O-052 set + lane note + O-057 DELIVERED.json/customer VERDICT.
+- O-052 landing needs DLV-O-052 re-sync (factory folder still holds pre-rerender bytes); keeper to issue deliver row next.
+- Factory .gitignore:51 blocks PNG bytes (O-043 lesson stands); eye 131 O-023 USED yes d5d347e1d still not flipped in orders.csv (verify + flip next).
+- Left dirty (not mine except handoff+lock): repomap, brief-gates, halt deletion, ready deletions, round.md, lead2 files, ready/105-134, O-023 EYE.md, lane note (shared by 102+105, lands next), O-057 DELIVERED.json churn, O-052 stale .cache.
 
 ## Next
-- Keeper: 103-jdg-o052-review tops (judge dirty O-052 bytes, then DLV-O-052 re-sync); retry or retire lost 100; land 133/134 adopted-verify reviews; O-023 adoption flip verify d5d347e1d; DS-78/82/83/84 one-offs or confirm drop.
+- Keeper: DLV-O-052 re-sync; land 133/134 adopted-verify reviews; O-023 adoption flip; mkt nudges; DS-78/82/83/84 one-offs or confirm drop.
