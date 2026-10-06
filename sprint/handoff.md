@@ -1,25 +1,28 @@
-# design-studio handoff - round 189 (token d5b2)
+# design-studio handoff - round 190 (token e0f1)
 
-Round: 189
-Written: 2026-10-06T14:50Z by lead (token d5b2 held since 13:20Z takeover; disk halt absent, inbox 0 open).
-Knobs: width 3 (Loop Boss 14:04Z, applied this round); one batch of 3 live packets, disjoint scopes.
-Batch: 111-dlv-o059 -> DONE + 112-bld-o060 -> DONE + 113-need15 -> DONE.
-ROUND real yes | built 49 | judged 29 | delivered 24 | adopted 35 | tools 16 | unjudged-oldest O-060 | in-flight 7.
+Round: 190
+Written: 2026-10-06T15:04Z by lead (takeover: stale lock lead#d5b2 from a closed session replaced with lead#e0f1; disk halt absent, inbox 0 open).
+Knobs: width 3 (Loop Boss 14:04Z); one batch of 3 live packets, disjoint scopes.
+Batch: 114-jdg-o060 -> PASS + 115-need15 -> PASS + 116-bld-o061 -> DONE.
+ROUND: real yes | built 50 | judged 30 | delivered 24 | adopted 35 | tools 16 | unjudged-oldest O-061 | in-flight 7.
 
 ## Heading
-- D5 moves: O-059 delivered (24 delivered, 6 open); O-060 built with 3 real re-renders, awaits judge; NEED-15 DONE (app-window defaults Inter, no more hand font fix). Built 48 -> 49.
+- D5 moves: O-060 judged PASS (judged 29 -> 30); O-061 built BUILT 16/16 with 3 real re-renders, awaits judge (built 49 -> 50). NEED-15 review PASS, no new commit (work already in 062267d).
 
 ## Done
-- 4cf6f89 deliver O-059 (ADOPT.md + DELIVERED.json 25/25) + factory 8b94ed32 (+ backup 17fe041e held most files) + inbox EB-2026-10-06-S52.
-- 7d3a199 build O-060 (BUILT 16/16, SHIP 10/10, ours 20.8px vs theirs 13px, zero engine names) + 112 packet, unjudged.
-- 062267d NEED-15 (template fonts override + stamp + test gate 18/18, TEMPLATE PASS 14, COVER PASS 19) + needs row DONE + 113 packet.
-- Proofs: DELIVER CHECK PASS O-059 25/25; BUILT PASS O-060 16/16; TEMPLATE PASS; ORDERS PASS 66; sprint/check RESULT PASS 21/0/0.
-- Keeper's 065/067/070 NOT sent, all verified stale with proof: brief gate green on disk (9aafa07 landed), 067 subject committed 8e75b05, O-043 DELIVER CHECK PASS 25/25.
+- 10d8c58 judge PASS O-060 (VERDICT.md: BEATS 20.8px vs ~13px, 3 real pictures, FACTS clean, FIT whole, LANE full path) + 114 packet to done/.
+- 115 NEED-15 review PASS (judge re-ran: TEMPLATE PASS 14/8, tests 18/18, COVER PASS 19, ORDERS PASS 66; Inter-first, 0 Bahnschrift/Segoe UI) - nothing to land.
+- O-061 DONE unjudged (sheet-fan clean-professional, 3 real shots, ours 17.6px vs theirs 5.0px, SHIP 10/10, full landing path); keeper auto-chained 116-bld-o061-store-review.md to ready/.
+- Proofs: BUILT PASS O-060 16/16; BUILT PASS O-061 16/16; ORDERS PASS 66; sprint/check RESULT PASS 21/0/0.
+
+## Retro (round 190, every-5)
+- Worst repeated failure: edit oldString mismatch 4 in 24h (+2), builder+lead (metrics 10-06T15:04Z).
+- PROPOSAL: sprint/queue/standing/maker-store.md | recipe step 4 add in-packet re-read plus oldString <=30 lines rule | edit-mismatch now 4/24h, revert if not down in 3 rounds.
 
 ## Blockers and notes
-- Center shares this tree and commits: O-066 order (roman-legion-vol3 itch) + backup da93cbc + orders fixes 23a39c1/82098e6 landed under my round; O-059 row flip kept correct. Pull before every commit; verify-then-land held.
-- Left dirty (not mine): 12 sample design-audit.json, halt + 064/071 ready deletions, 085 ready leftover, O-042 brief-gate.json, .opencode/plugin/loop-keeper.js.
-- Chain pending: 112 build + 113 tool need judge reviews (114/115) next batch; then DLV-O-060.
+- Batch went as full-text prompts, not `packet: <name>`; the keeper filed done/114-116 and chained the O-061 review anyway. Next rounds use packet names.
+- Left dirty (not mine): designs/O-042/brief-gate.json, halt + 064/071 ready deletions, round.md; ready/ holds 49 files (stale packets accumulate).
+- O-061 folder + lane-store.md line stay uncommitted until its judge PASS next round.
 
 ## Next
-- 114-jdg-o060-review + 115-need15-review (judge x2) + BLD-O-061; EYE sweep due (row open a day).
+- 116-jdg-o061-review (judge) + BLD-O-062 + DLV-O-060 (deliverer; desk deliver 0 until --desk re-runs); EYE sweep still due (row open 2 days).
