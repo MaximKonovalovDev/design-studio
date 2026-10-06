@@ -3,12 +3,12 @@
   "from_repo": "factory",
   "maker": "design-studio",
   "product": "cover:itch/character-animation-studio",
-  "delivered_utc": "2026-10-06T12:57Z",
+  "delivered_utc": "2026-10-06T19:38Z",
   "source": "design-studio designs/O-056",
   "landing": "products/character-animation-studio/character-animation-studio/covers/from-design-studio/O-056",
   "customer": "C:/Users/me/Desktop/autonomous-factory",
   "delivered": [
-    "27 files copied verbatim (refuse-overwrite-if-differs)",
+    "28 files copied verbatim (refuse-overwrite-if-differs)",
     "landing products/character-animation-studio/character-animation-studio/covers/from-design-studio/O-056/ in factory"
   ],
   "files": [
@@ -69,8 +69,8 @@
     },
     {
       "name": "VERDICT.md",
-      "bytes": 419,
-      "sha256": "c83a76d29fcb901884f2b4ac79b9204a26da70bafd3d728fcc18d14853805278"
+      "bytes": 433,
+      "sha256": "966e7719a22b0108cace5239df28ce81880291d10c042b6561e247ad6759287a"
     },
     {
       "name": "art.css",
@@ -121,6 +121,11 @@
       "name": "design-audit.json",
       "bytes": 2975,
       "sha256": "2a8006a7b91c768b4f96e11662d6023bef0c3ce80eb5e9af39e3377701ed1afd"
+    },
+    {
+      "name": "kaggle-octosprite-8dir.png",
+      "bytes": 790722,
+      "sha256": "31325337c2265c6434b37c64ec3bb58cac230b46481207cb2e779c18a757e2c5"
     },
     {
       "name": "out-630x500.png",
