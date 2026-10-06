@@ -1,26 +1,24 @@
-# design-studio handoff - round 198 (token 390a)
+# design-studio handoff - round 199 (token 1a7f)
 
-Round: 198
-Written: 2026-10-06T17:17Z by lead (token 390a held; disk halt absent, inbox 0 open; sent factory EB-2026-10-06-S62).
-Knobs: width 3; eligible work was 1 packet, sent 1.
-Batch: 132-dlv-o066-factory -> DONE.
+Round: 199
+Written: 2026-10-06T17:25Z by lead (token 1a7f; TAKEOVER from stale 390a of closed app, lock replaced; halt absent, inbox 0 open).
+Knobs: width 3; eligible work was 1 packet, sent 1 builder + 1 judge (chain).
+Batch: 133-o043-adopted-status-fix -> DONE; judge review -> VERDICT PASS.
 ROUND: real yes | built 55 | judged 36 | delivered 32 | adopted 34 | tools 16 | unjudged-oldest none | in-flight 0.
 
 ## Heading
-- D5 moves: O-066 delivered to factory (delivered 31 -> 32); build, judge and deliver queues all 0; only the daily eye row remains.
-
-## Keeper batch set aside, seventh time
-- 065 NOOP + 067 PASS + 070 DONE all completed last round (38d09e0); re-running mints timestamp churn (070) or repeats landed proofs (065/067, kernel: never repeated). D5 mandate served instead by DLV-O-066.
-- EYE-2026-10-06 already swept today (b4174da); not re-sent same day.
+- No Scorecard row moved (bookkeeping only): O-043 row corrected delivered/yes/70a0b0e4 -> delivered/no/empty; ORDERS FAIL 2 lines -> ORDERS PASS 66 (0 open, 32 delivered, 34 adopted).
 
 ## Done
-- c72f513 deliver O-066 (ADOPT.md + DELIVERED.json + row -> delivered; DELIVER CHECK PASS 28/28, re-verified by lead) + factory 09902bf9 (folder by path only, pushed clean) + inbox EB-2026-10-06-S62.
-- Proofs: DELIVER CHECK PASS O-066 28/28; sprint/check RESULT PASS 21/0/0.
+- orders.csv O-043 only (judge PASS, BUILT PASS 16/16 re-run, ORDERS PASS 66 re-run by builder, judge and lead).
+- Proofs: ORDERS PASS: 66 orders (0 open, 0 building, 32 delivered, 34 adopted, 0 rejected); sprint/check RESULT PASS 21/0/0.
 
 ## Blockers and notes
-- Factory .gitignore:51 `products/**/*.png` leaves delivered cover PNGs untracked (inbox S62 names it, no reply yet).
-- ORDERS FAIL on O-043 only (adopted yes + adopted_commit with status delivered): other session's drift, untouched.
-- Left dirty (not mine): O-042 brief-gate, halt deletion + 064/071 deletions, round.md, w5/w6/w7 notes, ready/120-132 packets.
+- Factory .gitignore:51 `products/**/*.png` blocks O-043 adoption: listing 70a0b0e4 points at cover PNGs no factory commit ever carried (check-ignore verified by builder and lead); bytes match designs/O-043 in working tree only. Factory must commit the PNGs before any re-claim (inbox S62 names the ignore, no reply yet).
+- EYE-2026-10-06 not re-sent: already swept today (b4174da); desk eye row left READY.
+- Keeper moved 133 builder record to done/ and filed 133-...-review.md chain review; judged this round by direct judge Task (PASS), keeper file left for the record.
+- Left dirty (not mine): O-042/samples brief-gate, halt deletion, 064/071 deletions, round.md, w5/w6/w7 notes, ready/120-132 + keeper 133-review packets.
 
 ## Next
-- EYE sweep moves nothing until new orders land; watch factory adoption of O-064/O-065/O-066 (PNG ignore blocks git adoption).
+- Eye sweep moves nothing until new orders land; watch factory adoption of O-043/O-064/O-065/O-066 (PNG ignore blocks git adoption).
+- Board READY DS-78/DS-82/DS-83/DS-84 have no desk rows; keeper to plan their one-offs next rounds.
