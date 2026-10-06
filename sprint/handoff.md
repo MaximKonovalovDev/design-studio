@@ -1,25 +1,22 @@
-# design-studio handoff - round 281 (token b7e2)
+# design-studio handoff - round 282 (token b7e2)
 
-Round: 281
-Written: 2026-10-06T19:33Z by lead (token b7e2; takeover from stale lead#d624 of closed app; halt absent, inbox 0 open).
-Takeover: lock lead#d624 since 2026-10-06T19:23Z replaced by lead#b7e2 since 2026-10-06T19:25Z; old session closed, stated here per takeover arg.
-Knobs: width 3; keeper batch 094/095/096 (O-056 chain) fifth issue, dropped again, sent eye 131 instead.
-Batch: 1 sent (pilot 131-eye-2026-10-06 DONE); O-056 review/repair/review2 = 0 lines (VERDICT PASS + BUILT 16/16 stand, factory 97599454).
+Round: 282
+Written: 2026-10-06T19:35Z by lead (token b7e2 held; halt absent, inbox 0 open).
+Knobs: width 3; keeper batch 094/095/096 sent whole (3/3) after continue #1 note.
+Batch: judge 094 DONE PASS, builder 095 NOOP (landing already full path), judge 096 DONE PASS.
 ROUND: real yes | built 55 | judged 36 | delivered 28 | adopted 38 | tools 16 | unjudged-oldest none | in-flight 0 (cumulative, unchanged).
 
 ## Heading
-- D5 did not move (COVERS 26/64 adopted, unchanged): 0 open orders; gap is customer-side adoption only.
+- D5 did not move (COVERS 26/64 adopted, unchanged): O-056 re-judged, already delivered; gap is factory-side adoption only.
 
 ## Done
-- Eye sweep 2026-10-06: O-009 + O-024 USED no verified and committed c67a6e3 (mkt HEAD d1bc052, both launch.md Visual none, from-design-studio O-006 O-024 only).
-- O-023 USED-yes claim HELD, not committed: eye cites forge d5d347e1d + RomeHud.cs but C:/forge-data has no from-design-studio/O-023 and no RomeHud; empire used forge 1/2 (O-011 only). designs/O-023/EYE.md left dirty for a verify packet.
-- Inbox nudge lines for O-009/O-024 NOT sent: empire inbox add now requires --why/--need flags; exact lines below for keeper to re-issue.
+- O-056 re-PASS committed 9afc143 (BEATS 17.6px vs dense grid; PICTURE own shot-sheets; FACTS itch.md only; FIT 17.6/20.3px; LANE full product path). Proof: --verdict PASS + --built 16/16.
+- 095 NOOP: cover.json:56 + DELIVERY.md:2,8 already full path, 0 lines changed; 096 review2 PASS on same bytes (collect-time note: no writer change).
 
 ## Blockers and notes
-- Adoption-side blocker stands: factory .gitignore:51 products/**/*.png (S62, no reply); mkt O-009 (3d) + O-024 (2d) still Visual none.
-- O-056 duplicates x39 now (094/095/096 fifth issue + prior x38); why-not-D5 stands from round 277.
-- Left dirty (not mine): repomap, brief-gates, halt deletion, 064-093 ready deletions, round.md, lead2 files, ready/120-134 packets, O-023 EYE.md, this handoff + lock.
+- O-056 delivered at factory 97599454 (27 files); adoption needs factory listing pointer + committed PNG bytes (.gitignore:51 stands).
+- O-023 USED-yes still held (no forge path); mkt O-009 (3d) + O-024 (2d) Visual none; inbox nudges await flags.
+- Left dirty (not mine): repomap, brief-gates, halt deletion, 064-093 ready deletions, round.md, lead2 files, ready/120-134, O-023 EYE.md.
 
 ## Next
-- Keeper: O-023 adoption-verify one-off (forge path + byte compare + log hash) or reject eye line; re-issue mkt inbox nudges with flags; new batch (DS-78/82/83/84 one-offs) or confirm the drop.
-- Paste-ready (add flags before sending): mkt O-009 copy samples/ads into campaigns/aeo-checker per HANDOFF; mkt O-024 copy from-design-studio/O-024/out.png to header.png per DELIVERY.md.
+- Keeper: deliverer DLV-O-056 only if factory copy missing bytes else drop; O-023 verify one-off; mkt nudges with flags; DS-78/82/83/84 one-offs or confirm drop.
