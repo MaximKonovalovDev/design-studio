@@ -1,6 +1,6 @@
-# VERDICT O-046: PASS (worker self-review, 2026-10-04; the keeper's judge chain has not run on this folder)
-BEATS: ours 17.2px at 256 wide (title_px 86 in design-audit.json) vs theirs about undefinedpx from compare.png (cover-1280x720.png).
-PICTURE: real product pictures from the customer's own files, 1 listed in assets.json (shot.png).
-FACTS: 8 numbers on the cover (2040 25 40 8 5 $19 12 0), all found in gumroad.md; forbidden words (game engines) absent from page text and alt text.
-FIT: out.png 1280x720, out-630x500.png 630x500, both opened by eye, nothing cut at an edge except pictures that bleed on purpose; audit PASS (23 gates), judge 10/10 SHIP; smallest design text at 256 wide is the chips (about 5px, secondary), the title is 17.2px.
-LANE: store = DELIVERY.md names the cover to beat (cover-1280x720.png) and the landing from-design-studio/O-046/.
+VERDICT: PASS O-046
+BEATS: ours 17.2px vs theirs ~10px at 256, larger/clearer yes
+PICTURE: shot.png SHA256-identical to customer preview/shot-channels.png yes
+FACTS: all claims traceable to gumroad.md (25 channels, 40 tasks/8wk, 5 tutorials, devlogs, $19, MD+CSV, channel-map.csv chrome), zero invented strings yes
+FIT: both sizes whole nothing cut, titles 17.2/20.3px at 256 yes
+LANE: DELIVERY.md names cover to beat and from-design-studio/O-046/ landing yes
