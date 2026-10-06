@@ -1,0 +1,66 @@
+{
+  "product": "cover:itch/aeo-geo-audit",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "AI Search Visibility Audit Kit",
+  "pick": "clean-professional",
+  "template": "covers/app-window",
+  "kicker": "AI-search visibility audit - itch edition",
+  "claim": "150 dated probes plus 20-point fix plan plus 3 worked reports",
+  "chips": [
+    "150 GEO probes",
+    "20-point checklist",
+    "3 worked reports"
+  ],
+  "badge": "$19 one-time",
+  "fine": "Sample data dated 2026-09-30 - SEARCH-PROXY: live SERP brand-match, not AI citations",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "'Inter','Segoe UI',Arial,sans-serif",
+    "body": "'Inter',Verdana,Arial,sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 88,
+  "titlePxCard": 50,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "AI Search",
+    "Visibility",
+    "Audit Kit"
+  ],
+  "titleWrapCard": [
+    "AI Search Visibility",
+    "Audit Kit"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "shot-zoom": "1",
+    "shot-x": "0%",
+    "shot-y": "0%"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/services/aeo-geo-audit/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/services/aeo-geo-audit/preview/cover-1280x720.png",
+  "landing": "products/services/aeo-geo-audit/covers/from-design-studio/O-051/",
+  "assetsFrom": "the product's own preview/ pictures",
+  "assets": [
+    {
+      "name": "shot.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/aeo-geo-audit/preview/shot-report.png",
+      "what": "the customer's own picture shot-report.png"
+    }
+  ]
+}

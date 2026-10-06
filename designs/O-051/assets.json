@@ -1,0 +1,11 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/shot.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/services/aeo-geo-audit/preview/shot-report.png",
+      "what": "the customer's own picture shot-report.png",
+      "bytes": 72562
+    }
+  ]
+}
