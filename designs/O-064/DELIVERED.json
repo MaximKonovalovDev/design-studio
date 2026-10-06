@@ -1,0 +1,131 @@
+{
+  "order_id": "O-064",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/mp-turbo-video-generator",
+  "delivered_utc": "2026-10-06T16:37Z",
+  "source": "design-studio designs/O-064",
+  "landing": "products/video-studio/mp-turbo-video-generator/covers/from-design-studio/O-064",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "23 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/video-studio/mp-turbo-video-generator/covers/from-design-studio/O-064/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/b7f018d089812e54e4e2b213afc149308c7014bec463ceec5e9d19d4bdcaae15/manifest.json",
+      "bytes": 194,
+      "sha256": "ec40d7a275b466e480a515a41b57b832ba8a5d149f32b4c4d606a4a422383cce"
+    },
+    {
+      "name": ".cache/b7f018d089812e54e4e2b213afc149308c7014bec463ceec5e9d19d4bdcaae15/out-630x500.png",
+      "bytes": 184581,
+      "sha256": "0c54d9b0ea2dc67050a27ec32b5f0d3289ca8a249499538acdfe626481a95c89"
+    },
+    {
+      "name": ".cache/b7f018d089812e54e4e2b213afc149308c7014bec463ceec5e9d19d4bdcaae15/out.png",
+      "bytes": 470327,
+      "sha256": "e56e896f5692b0288fa1371d4201f7471de38896499ba728c65acbcc15927f6b"
+    },
+    {
+      "name": ".cache/b7f018d089812e54e4e2b213afc149308c7014bec463ceec5e9d19d4bdcaae15/thumb-256.png",
+      "bytes": 37072,
+      "sha256": "8cfe4c93c3eb1321bbb5ff62b1b6cb98cff4a02fec0ddfb579319e367ad3d216"
+    },
+    {
+      "name": "ADOPT.md",
+      "bytes": 456,
+      "sha256": "609f997a03b9c6da0ade6a7b35c27063e507e1291b016060fdaae21a73f8f2e3"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1390,
+      "sha256": "990cd4c33e9aa3a5a8c6dfb7ec89a8649bc2f5acaebdd2b6d96deb8043d82584"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1175,
+      "sha256": "ef289106db25b092ab9c174eb4d5410b4d9960519a28b0abc681dbf3bf60a37c"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 345,
+      "sha256": "4c7d2c19ce6575ca51b6e78797b688a789297c49f7d78f1f8a91c86adfb9962a"
+    },
+    {
+      "name": "art.css",
+      "bytes": 3706,
+      "sha256": "1cfa67bb01cde9473c6e5dd23090e943a0c15c965e911ba40cd9b1ceffc1ba65"
+    },
+    {
+      "name": "art.html",
+      "bytes": 620,
+      "sha256": "fa98b621dbc67e99a59ac916bab0c4e0ea7d4796c20d75b0933d99973a201b65"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 923,
+      "sha256": "8a55013173ef13d50fb926b2feb9743bbf5781db9395be8f4d81a061fc7f6313"
+    },
+    {
+      "name": "assets/sheet-1.png",
+      "bytes": 192147,
+      "sha256": "64945e001bac77d1a2b7b6c0b203938a84a4612865d99546031c3ed0c8d6aa2a"
+    },
+    {
+      "name": "assets/sheet-2.png",
+      "bytes": 156255,
+      "sha256": "b301b6dc3f3cb8d6eb291ca5eef1b3a99551ddd1ad430c23ea38dfbf68bf2d55"
+    },
+    {
+      "name": "assets/sheet-3.gif",
+      "bytes": 106002,
+      "sha256": "b4cb23ab0497fc02bb71b04b8d91ee8976a73d07645d5211c443f4e40eef9e2c"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1208,
+      "sha256": "3a04c2ac9885f1f07064f96b7c7472b6dce98f3995b3e6faea7cca8d61d14073"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 149791,
+      "sha256": "0d69224eacbda750029fdd07c13cced4e05e8a3caed45ae5fa35ad9f9239c14d"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 2731,
+      "sha256": "d90c3663a63d32c3c3ce18b7e5059fd687ffcf0f51b51bdf5412ccf9b04ef97a"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2970,
+      "sha256": "71e12bc776c6433507431c62102eaf4568f33b97da055e20a350e6d92056978f"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 184581,
+      "sha256": "0c54d9b0ea2dc67050a27ec32b5f0d3289ca8a249499538acdfe626481a95c89"
+    },
+    {
+      "name": "out.png",
+      "bytes": 470327,
+      "sha256": "e56e896f5692b0288fa1371d4201f7471de38896499ba728c65acbcc15927f6b"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8418,
+      "sha256": "65a7955756957f56b865465f8c57486aa3c9b36457a28f4c277bf58a8c3eae33"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 37072,
+      "sha256": "8cfe4c93c3eb1321bbb5ff62b1b6cb98cff4a02fec0ddfb579319e367ad3d216"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 701,
+      "sha256": "17d6292a9e7a13353e0cbc499370938ed405b4986dff3f36710c63d54ed7d4f7"
+    }
+  ]
+}
