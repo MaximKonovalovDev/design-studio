@@ -1,23 +1,23 @@
-# design-studio handoff - round 291 (token d75b)
+# design-studio handoff - round 292 (token d75b)
 
-Round: 291
-Written: 2026-10-06T20:39Z by lead (token d75b; TAKEOVER from stale aaa2 lock left by closed app; halt absent, inbox 0 open).
-Knobs: width 3; keeper batch 100/111/112 sent whole (3 DONE, 0 NOOP, 0 BLOCKED).
-Batch: judge 100 DONE PASS O-057, builder 111 DONE O-059 re-delivered 25/25, builder 112 DONE O-060 verified already-built (no file change, collect-time drop).
+Round: 292
+Written: 2026-10-06T20:44Z by lead (token d75b held; halt absent, inbox 0 open).
+Knobs: width 3; keeper batch 112-review/113/120-review sent whole (2 DONE PASS, 1 NOOP verified).
+Batch: judge 112-review DONE PASS O-060, builder 113 NOOP NEED-15 already in HEAD, judge 120-review DONE PASS O-063.
 ROUND: real yes | built 55 | judged 36 | delivered 27 | adopted 39 | tools 16 | unjudged-oldest none | in-flight 0 (cumulative).
 
 ## Heading
-- D5 held (COVERS 27/64 adopted, unchanged): O-057 re-PASS landed 19611ee, O-059 VERDICT-drift re-delivery synced both sides (19611ee + factory ba31d33d), adoption still factory-side.
+- D5 did not move numerically (COVERS 27/64 adopted, unchanged): this batch judged two covers (O-060 re-PASS verified, O-063 PASS landed 6b695e6) and verified the font tool fix already live. Judging moves the pipeline; the adopted count flips only on factory commits, which is factory-side.
 
 ## Done
-- O-057 re-judged PASS 19611ee (VERDICT.md reword only, PASS stands). Proof: --built BUILT PASS 16/16; --verdict PASS (BEATS 20.8 vs ~8px, PICTURE byte-identical, FACTS itch.md, FIT both sizes, LANE full path); --deliver --check DELIVER CHECK PASS 28/28; sprint/check RESULT PASS 21/0/0; ORDERS PASS 66.
-- O-059 re-delivered 19611ee + factory ba31d33d (customer VERDICT.md held pre-round-188 PASS bytes, synced source->customer, owned folder only). Proof: DELIVER CHECK PASS 25/25. Factory inbox EB-2026-10-06-S80 sent.
-- O-060 verified already adopted (BUILT PASS 16/16, SHIP 10/10, no changes): nothing to commit, no new review.
+- O-063 chain-judge PASS 6b695e6 (VERDICT.md + judge re-rendered compare.png). Proof: --built BUILT PASS 16/16; --verdict PASS (BEATS 17.6 vs ~12px, PICTURE 3 real screenshots, FACTS itch.md, FIT both sizes, LANE toBeat named); sprint/check RESULT PASS 21/0/0; ORDERS PASS 66.
+- O-060 re-PASS verified (20.8 vs ~13px, 3 real renders, SHIP 10/10): no file change, nothing to commit.
+- NEED-15 NOOP verified in HEAD (Inter OFL default + per-template override + 18/18 tests): TEMPLATE PASS 14, COVER PASS 19, no edit made.
 
 ## Blockers and notes
-- O-058 VERDICT-drift refusal (round-290 blocker) not in this batch; same manifest-refresh pattern as O-059 likely clears it. Next: keeper re-issues or confirms delivered bytes final.
-- Left dirty (not mine): repomap, O-023 EYE.md, O-042 brief-gate, lane-store fold (O-058 split, provenance unclear, not committed), cover brief-gates, halt deletion, ready deletions, round.md leftovers.
+- O-058 VERDICT-drift refusal still not re-issued; same manifest-refresh pattern as O-059 should clear it.
+- Left dirty (not mine): repomap, O-023 EYE.md, O-042 brief-gate, lane-store fold, cover brief-gates, halt deletion, ready deletions.
 - DLV-O-052 re-sync still open; O-023 adoption flip still open; DS-78/82/83/84 untouched.
 
 ## Next
-- Keeper: O-058 re-issue with manifest refresh; DLV-O-052 re-sync; land 133/134 adopted-verify reviews; O-023 adoption flip; DS-78/82/83/84 one-offs or confirm drop.
+- Keeper: O-063 delivery (DLV row) now unblocked by this PASS; O-058 re-issue; DLV-O-052 re-sync; land 133/134 adopted-verify reviews; O-023 flip; DS-78/82/83/84 one-offs or confirm drop.
