@@ -1,5 +1,5 @@
 {
-  "title": "AI Search Visibility Audit Kit",
+  "title": "Content Repurposing Kit",
   "size": {
     "w": 1280,
     "h": 720
@@ -21,7 +21,7 @@
         0.96,
         0.3
       ],
-      "title_longest": 20
+      "title_longest": 23
     }
   ],
   "dir": "ltr",
@@ -67,7 +67,7 @@
     0.5
   ],
   "title_px": 88,
-  "title_longest": 10,
-  "order": "O-043",
-  "product": "cover:gumroad/aeo-geo-audit"
+  "title_longest": 11,
+  "order": "O-045",
+  "product": "cover:gumroad/content-engine-service"
 }

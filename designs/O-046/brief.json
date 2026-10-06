@@ -1,5 +1,5 @@
 {
-  "title": "AI Search Visibility Audit Kit",
+  "title": "Forge engine2040 Launch System",
   "size": {
     "w": 1280,
     "h": 720
@@ -21,7 +21,7 @@
         0.96,
         0.3
       ],
-      "title_longest": 20
+      "title_longest": 16
     }
   ],
   "dir": "ltr",
@@ -66,8 +66,8 @@
     0.52,
     0.5
   ],
-  "title_px": 88,
-  "title_longest": 10,
-  "order": "O-043",
-  "product": "cover:gumroad/aeo-geo-audit"
+  "title_px": 86,
+  "title_longest": 13,
+  "order": "O-046",
+  "product": "cover:gumroad/forge-engine2040-launch-system"
 }
