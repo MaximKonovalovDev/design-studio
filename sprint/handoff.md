@@ -1,22 +1,25 @@
-# design-studio handoff - round 172 (token b7e4)
+# design-studio handoff - round 173 (token 4ac2)
 
-Round: 172
-Written: 2026-10-06T12:05Z by lead (token b7e4, held since 11:58Z; lock mine; disk halt absent, inbox 0 open).
-Knobs: width 1; two sequential width-1 packets (builder then chain judge).
-Batch: 082-bld-o048-store -> DONE + 083-jdg-o048-review -> PASS first try, landed a9d4c56.
-ROUND real yes | built 42 | judged 21 | delivered 18 | adopted 32 | tools 16 | unjudged-oldest O-049 | in-flight 15.
+Round: 173
+Written: 2026-10-06T12:07Z by lead (token 4ac2; takeover: replaced lock lead#b7e4 left by closed app; lock mine; disk halt absent, inbox 0 open).
+Knobs: width 1; one width-1 packet (deliver).
+Batch: 084-dlv-o048-factory -> DONE, landed 6e34393 + factory d233ddfe.
+ROUND real yes | built 42 | judged 21 | delivered 19 | adopted 32 | tools 16 | unjudged-oldest O-049 | in-flight 14.
 
 ## Heading
-- D5 moves: O-048 (oldest unbuilt) built with 1 real picture and judged PASS same round. Unjudged-oldest now O-049.
-- Why not keeper's 064: batch.md frozen 11:11Z, DS-80 DONE; D5 needs covers built+judged, oldest-first won.
+- D5 moves: O-048 (oldest open order) delivered to factory. Delivered 18 -> 19, open 15 -> 14.
+- Why this packet: oldest open order first; cheapest proof (M 15 min); chain judges O-056/O-057 next.
 
 ## Done
-- a9d4c56 designs/O-048 (23 files incl VERDICT PASS, full product landing) + lane-store note + 082/083 packets.
-- Proofs: BUILT PASS 16/16; VERDICT PASS O-048; ours 20.8px vs theirs 12.6px at 256.
+- 6e34393 designs/O-048 (ADOPT.md + DELIVERED.json) + orders.csv O-048 open -> delivered + 084 packet.
+- Factory d233ddfe products/game-suite/indie-game-suite/covers/from-design-studio/O-048/ (21 files on disk, 13 tracked sources).
+- Proofs: DELIVER CHECK PASS O-048 21/21; ORDERS PASS 65 (14 open, 0 building, 19 delivered, 32 adopted); BUILT PASS 16/16 + VERDICT PASS re-verified before deliver.
 
 ## Blockers and notes
-- batch.md still stale 064; overriding until keeper refreshes.
-- Left dirty (not mine): 12 sample design-audit.json, halt + 071 ready worktree-deletions.
+- Takeover: lock lead#b7e4 (closed app, handoff r172) replaced by lead#4ac2; no other session active.
+- batch.md still stale 064 (frozen 11:11Z); overriding with desk oldest-first until keeper refreshes.
+- Factory inbox no room (21 open > cap 10): no inbox item sent; order board is the notice.
+- Left dirty (not mine): 12 sample design-audit.json, halt + 071 ready deletions, board/empire-inbox.md in factory.
 
 ## Next
-- DLV-O-048 delivery; BLD-O-049; chain judge O-056/O-057; EYE adoption sweep (5 delivered awaiting repoint).
+- BLD-O-049 (oldest unbuilt, folder missing); chain judge O-056/O-057 (built, no VERDICT); EYE adoption sweep (delivered awaiting use).
