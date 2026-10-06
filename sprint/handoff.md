@@ -1,31 +1,37 @@
-# design-studio handoff - round 157 (token 0727) FINAL
+# design-studio handoff - round 159 (token 9f08)
 
-Round: 157
-Written: 2026-10-05T23:05Z by lead (token 0727, held since 22:12Z).
-LOOP STOP: halt file (owner halt 22:48Z: finish the round, write handoff, stop). Lock released with this commit.
-Knobs: width 2, heavy_max 3, paid_mode 0, dispatch foreground (Loop Boss 22:38Z flip applied; helpers ran base roles).
-Batch: keeper named 063/064 (DS-80 DONE, moves nothing): `packet: deliver-customer` held (no unclaimed ready work); sent full-text delivery O-044 + full-text judge O-043 instead. Both DONE.
+Round: 159
+Written: 2026-10-06T10:54Z by lead (token 9f08, held since 10:50Z).
+Resume: takeover - replaced stale lock lead#9f3c left by closed app; disk halt deleted (owner resume), HEAD still holds pause text.
+Knobs: width 1, heavy_max 3, paid_mode 0, dispatch foreground.
+Batch: sent 069-dlv-o043-factory (builder deliver O-043) -> PARTIAL (ADOPT.md tool gap).
+ROUND real yes | built 40 | judged 17 | delivered 14 | adopted 33 | tools 16 | unjudged-oldest O-045 | in-flight 18.
 
 ## Heading
-- D5 moves: O-044 DELIVERED to factory showroom (26 files, CHECK PASS 26/26), factory commit 5b884cf7 pushed, inbox EB-2026-10-06-S3 sent.
-- O-043 VERDICT PASS committed (2eb56a9); O-044 delivery committed (9cc350e).
-- ROUND real yes (built 37, judged 17, delivered 16, adopted 30, tools 16, unjudged-oldest O-045, in-flight 19).
+- D5 moves on delivery: O-043 24 files now in factory, --check FAILs on ADOPT.md tool design.
+- Covers 22/64 adopted; O-043 delivered-uncommitted, O-044 delivered, O-045/046 await chain judge.
 
 ## Done
-- O-044: deliver DONE -> lead verified --check 26/26 -> committed designs/O-044 + orders.csv (9cc350e) + factory folder (5b884cf7) + inbox line. First D5-batch cover inside factory.
-- O-043: judge PASS (five green) -> committed designs/O-043 + lane lines (2eb56a9). DLV row next.
-- O-045: maker DONE BUILT PASS 16/16, SHIP 10/10 (17.6px vs ~7px). Review next (keeper packet pending).
+- O-043 deliver PARTIAL: DELIVER PASS 24 files to factory covers/from-design-studio/O-043/ + ADOPT.md 4 lines; orders.csv O-043 open->delivered; DELIVERED.json written.
+- No work commit: --check FAIL blocks PASS (ADOPT.md in customer folder not in DELIVERED.json).
+- Ready packet 069 written by lead for the crew (deliver seat has no ready file).
 
 ## Proofs
-- sprint/check RESULT PASS 21/0/0; --built O-043 + VERDICT PASS read; --deliver O-044 --check 26/26 re-run; ORDERS PASS 65; --desk build 17|judge 2|deliver 0|eye 1; --round --save.
+- sprint/check RESULT PASS 21/0/0; tools/check RESULT PASS; vision-check RESULT PASS 7/0/0.
+- --built O-043 BUILT PASS 16/16; DELIVER PASS 24 copied 0 identical; --check FAIL line above.
+- ORDERS FAIL 5 pre-existing (O-015 adopted no hash; O-056/057 open+adopted yes+disk); finish 4/5 D5 open.
+- empire orders: open 18 | delivered 47 | used 36.
 
 ## D5 why-not
-- Bar moves only on adoption: 1 of 20 delivered into factory, 0 adopted yet. Factory's move (EB-2026-10-06-S3 names the change).
+- O-043 files sit uncommitted in both repos until repair re-runs --deliver --check PASS.
+- O-045/O-046 BUILT PASS with worker self-review only; O-056/057 BUILT PASS no VERDICT.
 
 ## Blockers and notes
-- Keeper mechanics stuck: `packet: <seat>` holds while full-text sends run; O-043/O-045 chain reviews never reached ready/ (only stale maker-store-r1/r2-review); 063/064/065/067 + 061/062/012 need retiring to done/.
-- Wart: .cache/ rode into 2eb56a9 again; exclude from design commits.
-- Left dirty: covers/, HANDOFF-ADOPT.md, EYE.md notes, round.md (my --save), warden files. Halt left in place.
+- Tool gap (O-042 precedent): --deliver manifests designs/ only, then ADOPT.md added to customer breaks --check. Fix: identical designs/O-043/ADOPT.md + re-deliver.
+- ORDERS data from Maxim waves E/F: O-056/057 status open but adopted yes disk gitignored; O-015 adopted disk no hash. Needs eye/owner rule for gitignored PNGs.
+- Left dirty: 12 sample design-audit.json, halt deletion, prior handoff dirt, O-043 delivery files.
+- Stale ready DS-80 063/064/065/067 + stale batch.md naming 063 need retiring.
 
-## Next (on resume)
-- DLV-O-043 deliver; judge O-045 (write review packet if keeper has not); maker-store -> O-046 (oldest unbuilt).
+## Next
+- Repair O-043 (one builder: copy ADOPT.md into designs + --deliver + --check PASS), then commit both repos + inbox factory.
+- Chain-judge O-045 via ready maker-store-r2-review; maker-store -> BLD-O-047 oldest unbuilt; EYE-2026-10-06 sweep.
