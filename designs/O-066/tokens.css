@@ -1,0 +1,26 @@
+/* designs/O-066/tokens.css: O-066 Roman Legion Vol 3 (clean-professional). All page color comes from these vars. */
+:root {
+  --bg: #f6f7fb;
+  --bg-2: #e4e8f4;
+  --ink: #12131f;
+  --muted: #444a63;
+  --accent: #087a4a;
+  --accent-ink: #066a3f;
+  --on-accent: #ffffff;
+  --chip-bg: #ffffff;
+  --chip-ink: #12131f;
+  --chip-line: #c9cfe3;
+  --font-display: Inter, Arial, sans-serif;
+  --font-body: Inter, Verdana, Arial, sans-serif;
+  --font-mono: Consolas, 'Courier New', monospace;
+  --title-px: 92px;
+  --title-px-card: 58px;
+  --title-weight: 700;
+  --title-track: -0.02em;
+  --copy-w: 52%;
+  --claim-w: 560px;
+  --chip-r: 8px;
+  --item-size: 96px;
+  --item-size-card: 48px;
+  --item-render: pixelated;
+}

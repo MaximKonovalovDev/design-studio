@@ -1,0 +1,53 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/item-1.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-walk.png",
+      "what": "the customer's own picture od-act-walk.png (hastatus walk close-up)",
+      "bytes": 629
+    },
+    {
+      "file": "assets/item-2.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-run.png",
+      "what": "the customer's own picture od-act-run.png (hastatus run close-up)",
+      "bytes": 647
+    },
+    {
+      "file": "assets/item-3.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-attack.png",
+      "what": "the customer's own picture od-act-attack.png (hastatus attack close-up)",
+      "bytes": 629
+    },
+    {
+      "file": "assets/item-4.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-idle.png",
+      "what": "the customer's own picture od-act-idle.png (hastatus idle close-up)",
+      "bytes": 626
+    },
+    {
+      "file": "assets/item-5.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-hurt.png",
+      "what": "the customer's own picture od-act-hurt.png (hastatus hurt close-up)",
+      "bytes": 717
+    },
+    {
+      "file": "assets/item-6.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-idle-hastatus.png",
+      "what": "the customer's own picture od-idle-hastatus.png (hastatus legionary)",
+      "bytes": 626
+    },
+    {
+      "file": "assets/item-7.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-idle-centurion.png",
+      "what": "the customer's own picture od-idle-centurion.png (centurion legionary)",
+      "bytes": 607
+    },
+    {
+      "file": "assets/item-8.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-idle-archer.png",
+      "what": "the customer's own picture od-idle-archer.png (archer legionary)",
+      "bytes": 561
+    }
+  ]
+}

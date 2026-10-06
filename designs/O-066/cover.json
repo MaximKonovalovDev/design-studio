@@ -1,0 +1,99 @@
+{
+  "product": "cover:itch/roman-legion-vol3",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Roman Legion Vol 3",
+  "pick": "clean-professional",
+  "template": "covers/item-board",
+  "kicker": "Roman soldier sprite pack",
+  "claim": "3 legionaries x 5 actions x 8 directions",
+  "chips": [
+    "15 PNG sheets 64x64 cells",
+    "432 frames total",
+    "Browser demo, nothing to install"
+  ],
+  "badge": "$19 one-time",
+  "fine": "Royalty-free commercial use in games, videos, streams",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "Inter, Arial, sans-serif",
+    "body": "Inter, Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 92,
+  "titlePxCard": 58,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Roman Legion",
+    "Vol 3"
+  ],
+  "titleWrapCard": [
+    "Roman Legion Vol 3"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "item-size": "96px",
+    "item-size-card": "48px",
+    "item-render": "pixelated"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/cover.png",
+  "landing": "products/character-animation-studio/roman-legion-vol3/covers/from-design-studio/O-066/",
+  "assetsFrom": "the product's own preview/ sprite renders (5 action close-ups + 3 legionary idles)",
+  "assets": [
+    {
+      "name": "item-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-walk.png",
+      "what": "the customer's own picture od-act-walk.png (hastatus walk close-up)"
+    },
+    {
+      "name": "item-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-run.png",
+      "what": "the customer's own picture od-act-run.png (hastatus run close-up)"
+    },
+    {
+      "name": "item-3.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-attack.png",
+      "what": "the customer's own picture od-act-attack.png (hastatus attack close-up)"
+    },
+    {
+      "name": "item-4.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-idle.png",
+      "what": "the customer's own picture od-act-idle.png (hastatus idle close-up)"
+    },
+    {
+      "name": "item-5.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-hurt.png",
+      "what": "the customer's own picture od-act-hurt.png (hastatus hurt close-up)"
+    },
+    {
+      "name": "item-6.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-idle-hastatus.png",
+      "what": "the customer's own picture od-idle-hastatus.png (hastatus legionary)"
+    },
+    {
+      "name": "item-7.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-idle-centurion.png",
+      "what": "the customer's own picture od-idle-centurion.png (centurion legionary)"
+    },
+    {
+      "name": "item-8.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-idle-archer.png",
+      "what": "the customer's own picture od-idle-archer.png (archer legionary)"
+    }
+  ]
+}

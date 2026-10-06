@@ -1,0 +1,25 @@
+  /* covers/item-board: eight items on one board, the pack size as a big number above it, one label on the board's corner.
+     Tune it in cover.json "vars": item-size and item-size-card (a whole multiple of the sprite's own pixels stays crisp), item-render (pixelated for sprites, auto for photos and icons). */
+  .stage { background: linear-gradient(140deg, var(--bg) 0%, var(--bg) 34%, var(--bg-2) 100%); }
+  h1 { max-width: var(--claim-w, 560px); }
+  .art .shape { position: absolute; width: 410px; height: 410px; inset-inline-start: 158px; top: 296px; border-radius: 40px; transform: rotate(45deg); background: color-mix(in srgb, var(--accent) 22%, transparent); }
+  .art .count { position: absolute; inset-inline-end: 40px; top: 62px; text-align: end; }
+  .art .count b { display: block; font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: 190px; line-height: 0.86; letter-spacing: -0.05em; color: var(--accent-ink); }
+  .art .count span { display: block; margin-top: 8px; font-size: 26px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); }
+  .art .board { position: absolute; inset-inline-start: 2px; top: 314px; width: 590px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 14px; border-radius: 22px; background: var(--ink); box-shadow: 0 28px 54px rgba(0, 0, 0, 0.32), 0 5px 12px rgba(0, 0, 0, 0.2); transform: rotate(-2deg); }
+  .art .cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: color-mix(in srgb, var(--ink) 86%, var(--chip-bg)); border: 2px solid color-mix(in srgb, var(--ink) 66%, var(--chip-bg)); }
+  .art .cell img { display: block; width: var(--item-size, 96px); height: var(--item-size, 96px); object-fit: contain; image-rendering: var(--item-render, pixelated); }
+  .art .tag { position: absolute; z-index: 3; inset-inline-start: 30px; top: 290px; padding: 11px 20px; border-radius: 999px; background: var(--accent); color: var(--on-accent); font-size: 21px; font-weight: 800; line-height: 1; white-space: nowrap; transform: rotate(-5deg); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.28); }
+  .art .count[data-n=""], .art .tag[data-n=""] { display: none; }
+  @media (max-width: 800px) {
+    h1 { max-width: none; }
+    .chips { margin-bottom: 9px; }
+    .art .shape { width: 250px; height: 250px; inset-inline-start: 82px; top: 22px; border-radius: 24px; }
+    .art .board { inset-inline-start: 24px; top: 26px; width: 360px; gap: 7px; padding: 9px; border-radius: 14px; box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3), 0 3px 8px rgba(0, 0, 0, 0.2); }
+    .art .cell { border-radius: 8px; border-width: 1.5px; }
+    .art .cell img { width: var(--item-size-card, 48px); height: var(--item-size-card, 48px); }
+    .art .count { inset-inline-end: 26px; top: 26px; }
+    .art .count b { font-size: 94px; }
+    .art .count span { margin-top: 5px; font-size: 14px; }
+    .art .tag { inset-inline-start: auto; inset-inline-end: 26px; top: 160px; padding: 7px 13px; font-size: 13px; }
+  }
