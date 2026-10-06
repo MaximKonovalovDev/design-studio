@@ -1,0 +1,75 @@
+{
+  "product": "cover:itch/game-dev-asset-bundle",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Game Dev Asset Bundle",
+  "pick": "clean-professional",
+  "template": "covers/sheet-fan",
+  "kicker": "4 packs, one checkout: art + audio",
+  "claim": "512 vector sprites + 990 retro SFX + 290 animated sheets + 12 pairings. Base $19 / Full $39.",
+  "chips": [
+    "512 sprites SVG + PNG",
+    "990 SFX WAV + MP3 + OGG",
+    "290 sheets, 740 frames"
+  ],
+  "badge": "Base $19 / Full $39",
+  "fine": "Base $19: $36.49 value / Full $39: $94.49 value",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "Inter, Arial, sans-serif",
+    "body": "Inter, Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 104,
+  "titlePxCard": 58,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Game Dev",
+    "Asset Bundle"
+  ],
+  "titleWrapCard": [
+    "Game Dev",
+    "Asset Bundle"
+  ],
+  "chipR": "8px",
+  "copyW": "56%",
+  "claimW": "660px",
+  "vars": {
+    "sheet-ar": "1.5",
+    "sheet-w": "322px",
+    "sheet-w-card": "188px"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/cover.png",
+  "landing": "products/game-dev-bundle/game-dev-asset-bundle/covers/from-design-studio/O-062/",
+  "assetsFrom": "the product's own preview/ screenshots (vector grid, SFX waveforms, animated sheets)",
+  "assets": [
+    {
+      "name": "sheet-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-1-vector.png",
+      "what": "the customer's own picture screenshot-1-vector.png (512 vector sprites grid)"
+    },
+    {
+      "name": "sheet-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-3-waveforms.png",
+      "what": "the customer's own picture screenshot-3-waveforms.png (990 retro SFX waveform grid)"
+    },
+    {
+      "name": "sheet-3.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-2-sheets.png",
+      "what": "the customer's own picture screenshot-2-sheets.png (290 animated sheets close-up)"
+    }
+  ]
+}
