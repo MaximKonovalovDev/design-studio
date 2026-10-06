@@ -1,6 +1,6 @@
 VERDICT: PASS O-059
-BEATS: yes ours 17.6px vs theirs 6.4px at 256px
-PICTURE: yes 3 real previews shot-flagship/matrix/outputs
-FACTS: yes 1/12/3/7+7d/5-stage/ vs itch.md no fakes
-FIT: yes both whole 17.6/20.3px over 12px
-LANE: yes beat named landing FULL covers/from-design-studio/O-059
+BEATS: yes 17.6px vs 6.4px at 256, larger/clearer
+PICTURE: yes 3 real shots byte-identical
+FACTS: yes  + counts match itch.md, no fake price/engine names
+FIT: yes both sizes whole, 17.6/20.3px >=12
+LANE: yes cover named, landing products/services/content-engine-service/covers/from-design-studio/O-059/
