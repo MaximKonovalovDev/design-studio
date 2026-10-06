@@ -3,7 +3,7 @@
   "from_repo": "factory",
   "maker": "design-studio",
   "product": "cover:itch/sci-fi-crew-vol2",
-  "delivered_utc": "2026-10-06T19:51Z",
+  "delivered_utc": "2026-10-06T20:08Z",
   "source": "design-studio designs/O-057",
   "landing": "products/character-animation-studio/sci-fi-crew-vol2/covers/from-design-studio/O-057",
   "customer": "C:/Users/me/Desktop/autonomous-factory",
@@ -69,8 +69,8 @@
     },
     {
       "name": "VERDICT.md",
-      "bytes": 197,
-      "sha256": "b78a793245887adec2af3e4199a2d07aa70fd83d00344bf686f176b3a81e595c"
+      "bytes": 194,
+      "sha256": "fa8abe0ecd0c7c9b88d35cb7267a6d350d9409cce8354fb5fcac4a59744e9e67"
     },
     {
       "name": "art.css",
