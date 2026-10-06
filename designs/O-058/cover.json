@@ -1,0 +1,76 @@
+{
+  "product": "cover:itch/coaches-carousel-studio",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Coaches Carousel Studio",
+  "pick": "clean-professional",
+  "template": "covers/sheet-fan",
+  "kicker": "Coaching carousels for Instagram Facebook LinkedIn",
+  "claim": "120 branded coaching slides with real copy",
+  "chips": [
+    "120 PNG + 120 SVG",
+    "12 layouts, 10 colorways, 4 treatments",
+    "120 captions + 3 guides"
+  ],
+  "badge": "$25 one-time",
+  "fine": "Rebrand by manual SVG retype plus recolor",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "Inter, Arial, sans-serif",
+    "body": "Inter, Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 88,
+  "titlePxCard": 50,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Coaches",
+    "Carousel",
+    "Studio"
+  ],
+  "titleWrapCard": [
+    "Coaches Carousel",
+    "Studio"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "sheet-ar": "0.72",
+    "sheet-w": "322px",
+    "sheet-w-card": "188px"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/coaches-carousel-studio/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/coaches-carousel-studio/preview/cover.png",
+  "landing": "products/social-media-carousel/coaches-carousel-studio/covers/from-design-studio/O-058/",
+  "assetsFrom": "the product's own preview/ pictures",
+  "assets": [
+    {
+      "name": "sheet-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/coaches-carousel-studio/assets/instagram-testimonial-001.png",
+      "what": "the customer's own picture instagram-testimonial-001.png"
+    },
+    {
+      "name": "sheet-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/coaches-carousel-studio/assets/instagram-tip-002.png",
+      "what": "the customer's own picture instagram-tip-002.png"
+    },
+    {
+      "name": "sheet-3.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/coaches-carousel-studio/assets/facebook-booking-051.png",
+      "what": "the customer's own picture facebook-booking-051.png"
+    }
+  ]
+}

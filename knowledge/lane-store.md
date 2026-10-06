@@ -8,3 +8,4 @@ O-044/047: sheet-fan clean, 3 real pages, page-count stamps; title read at 256; 
 O-048: app-window clean, 1 real pack sheet, $19 badge; title 20.8 vs 12.6px; PASS SHIP 10/10.
 O-049: sheet-fan clean, 3 real shots, 50-states stamp; title 20.8 vs 7.8px; PASS SHIP 10/10.
 O-052: sheet-fan clean, 3 real 1080x1350 slides, 108-stamp, honest $25 badge; quote $ in pwsh; title 17.6px; PASS SHIP 10/10.
+O-058: sheet-fan clean, 3 real assets/ slides, listing $25 beats stale $39 cover, Inter hand-stack; title 17.6px; PASS SHIP 10/10.

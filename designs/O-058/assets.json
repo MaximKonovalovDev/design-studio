@@ -1,0 +1,23 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/sheet-1.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/coaches-carousel-studio/assets/instagram-testimonial-001.png",
+      "what": "the customer's own picture instagram-testimonial-001.png",
+      "bytes": 76098
+    },
+    {
+      "file": "assets/sheet-2.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/coaches-carousel-studio/assets/instagram-tip-002.png",
+      "what": "the customer's own picture instagram-tip-002.png",
+      "bytes": 64079
+    },
+    {
+      "file": "assets/sheet-3.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/coaches-carousel-studio/assets/facebook-booking-051.png",
+      "what": "the customer's own picture facebook-booking-051.png",
+      "bytes": 69913
+    }
+  ]
+}
