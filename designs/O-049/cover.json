@@ -1,0 +1,74 @@
+{
+  "product": "cover:gumroad/mileage-kit",
+  "from_repo": "factory",
+  "storeName": "Gumroad",
+  "title": "Mileage Kit 2026",
+  "pick": "clean-professional",
+  "template": "covers/sheet-fan",
+  "kicker": "Mileage Log Book - Business Mileage Tracker",
+  "claim": "IRS-ready mileage log for every US state",
+  "chips": [
+    "50 fillable PDFs",
+    "50 trip entries + YEAR TOTALS",
+    "Type or print — $19"
+  ],
+  "badge": "$19 one-time",
+  "fine": "Record-keeping aid. Not tax advice.",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "Bahnschrift, 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 104,
+  "titlePxCard": 58,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Mileage",
+    "Kit 2026"
+  ],
+  "titleWrapCard": [
+    "Mileage Kit 2026"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "sheet-ar": "0.72",
+    "sheet-w": "322px",
+    "sheet-w-card": "188px"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/listing/gumroad.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/cover-gumroad.png",
+  "landing": "products/seasonal-tax/mileage-kit/covers/from-design-studio/O-049/",
+  "assetsFrom": "product preview/ screenshots plus alt cover (gumroad.md Images 1-4)",
+  "assets": [
+    {
+      "name": "sheet-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/screenshot-log.png",
+      "what": "the customer's own picture screenshot-log.png"
+    },
+    {
+      "name": "sheet-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/screenshot-summary.png",
+      "what": "the customer's own picture screenshot-summary.png"
+    },
+    {
+      "name": "sheet-3.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/cover-etsy.png",
+      "what": "the customer's own picture cover-etsy.png"
+    }
+  ]
+}

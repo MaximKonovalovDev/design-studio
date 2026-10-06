@@ -10,3 +10,4 @@ O-043: app-window clean, 1 real report shot; light beat dark; $19 badge; PASS SH
 O-045: app-window clean, 1 real matrix shot; quote $ in pwsh; light beat dark factory; PASS SHIP 10/10.
 O-047: sheet-fan clean, 3 real pages, 20-pages stamp; title 17.6 vs 7.2px; PASS SHIP 10/10.
 O-048: app-window clean, 1 real pack sheet, $19 badge; title 20.8 vs 12.6px; PASS SHIP 10/10.
+O-049: sheet-fan clean, log+summary+altcover shots, 50-states stamp; title 20.8 vs 7.8px; PASS SHIP 10/10.
