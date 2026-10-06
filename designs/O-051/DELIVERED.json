@@ -1,0 +1,151 @@
+{
+  "order_id": "O-051",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/aeo-geo-audit",
+  "delivered_utc": "2026-10-06T12:44Z",
+  "source": "design-studio designs/O-051",
+  "landing": "products/services/aeo-geo-audit/covers/from-design-studio/O-051",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "27 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/services/aeo-geo-audit/covers/from-design-studio/O-051/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/bad7d7c36243ca654efc7cf2a05c4076bcbf3fd13dca888c99c70c4310346c07/manifest.json",
+      "bytes": 194,
+      "sha256": "455e0715efa89e6d2fd0fafe816ccda2c3a8383f34580dcc7175b5074b12e30a"
+    },
+    {
+      "name": ".cache/bad7d7c36243ca654efc7cf2a05c4076bcbf3fd13dca888c99c70c4310346c07/out-630x500.png",
+      "bytes": 146501,
+      "sha256": "79e38fba1e6cf3cf3207087515d11564779a208744868ff22a314e7d84be2bff"
+    },
+    {
+      "name": ".cache/bad7d7c36243ca654efc7cf2a05c4076bcbf3fd13dca888c99c70c4310346c07/out.png",
+      "bytes": 337665,
+      "sha256": "feb34cd667bb3f489ccf3cd816356490f1928ae8f5db3af0b9132e8675b2c2fc"
+    },
+    {
+      "name": ".cache/bad7d7c36243ca654efc7cf2a05c4076bcbf3fd13dca888c99c70c4310346c07/thumb-256.png",
+      "bytes": 31345,
+      "sha256": "44d47b575ab7a24f9d1b29e675c7de9bed1c25a08512ccd39276901f7b9912c9"
+    },
+    {
+      "name": ".cache/d0deae9c0e1fbfa024fc80fab997f5e9186e5c1e617f372eaec14550f9741e87/manifest.json",
+      "bytes": 194,
+      "sha256": "2e8d11e6a4839c2e9c95ce361f7b181ef090d9075c35d796d27cfd25958bd10e"
+    },
+    {
+      "name": ".cache/d0deae9c0e1fbfa024fc80fab997f5e9186e5c1e617f372eaec14550f9741e87/out-630x500.png",
+      "bytes": 156692,
+      "sha256": "260cf6d26a4034d6d066927c7f732dca5599f908de69db8f6876acd332a4543a"
+    },
+    {
+      "name": ".cache/d0deae9c0e1fbfa024fc80fab997f5e9186e5c1e617f372eaec14550f9741e87/out.png",
+      "bytes": 352157,
+      "sha256": "98e3bf52283a0cfab8d766ec2979b5bbbb5fc0699ac4df5cab0c90911c277045"
+    },
+    {
+      "name": ".cache/d0deae9c0e1fbfa024fc80fab997f5e9186e5c1e617f372eaec14550f9741e87/thumb-256.png",
+      "bytes": 31345,
+      "sha256": "44d47b575ab7a24f9d1b29e675c7de9bed1c25a08512ccd39276901f7b9912c9"
+    },
+    {
+      "name": "ADOPT.md",
+      "bytes": 651,
+      "sha256": "eba4b1a400dbc888b92673250412fee46af0d3d29daae75939922b33824b055d"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1254,
+      "sha256": "9b60b7464ee73fe9bebea298fac3e83645fda768cc4ede9628a0ac3b64b9869a"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 2626,
+      "sha256": "1336d3d1b9804499faf7400c9e00af76275e71cfbd3916deeba10281f0617af9"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 351,
+      "sha256": "4d9e5ac13d2d36ab9926de35d7633da64ee1a1a2baa71c9feff7af7ae348ac42"
+    },
+    {
+      "name": "art.css",
+      "bytes": 4107,
+      "sha256": "bd4c6a52f3b92cb798f818b05dd0cd10e51818b29f4fc3729ba3cf3df60cb8a4"
+    },
+    {
+      "name": "art.html",
+      "bytes": 557,
+      "sha256": "eed58502e55288abde14e44d67d467036ba866f6ed48c54b51e2bec8d0b4fe71"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 368,
+      "sha256": "d786ce03066521f2a981c15603d47a5ecebe23e7790e66eee11fdeb06642d798"
+    },
+    {
+      "name": "assets/fonts/inter-latin-400-normal.woff2",
+      "bytes": 23664,
+      "sha256": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc"
+    },
+    {
+      "name": "assets/fonts/inter-latin-700-normal.woff2",
+      "bytes": 24356,
+      "sha256": "6f56409fd3d64bb85f7d070bce20749db2d66b6d63cec586cc22d1c761be2491"
+    },
+    {
+      "name": "assets/shot.png",
+      "bytes": 72562,
+      "sha256": "9ac7b367629dbab6b18739848e9e2d5adb38cb4d995ec8baade9a33705a52590"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1267,
+      "sha256": "0c52a7398917a6588fd7d32b41e38ff3147b7be1850561b479657d97f2967278"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 173405,
+      "sha256": "c593604106b8a3557a88840607a0c9b15e57c0abc573cdce209477eee3c83be9"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 1943,
+      "sha256": "9859541b59fed12d64aaa58af7a6957ee244ae62ad800432e24591464c242bc8"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2979,
+      "sha256": "7026eedfff6ad2b2bf7e49da8d7a8b1f446b3892e1cbe158ce7749675bba59a0"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 156692,
+      "sha256": "260cf6d26a4034d6d066927c7f732dca5599f908de69db8f6876acd332a4543a"
+    },
+    {
+      "name": "out.png",
+      "bytes": 352157,
+      "sha256": "98e3bf52283a0cfab8d766ec2979b5bbbb5fc0699ac4df5cab0c90911c277045"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8770,
+      "sha256": "281c402288b1d8a4cc2b8cc75e5efa908f75cd62aebeb83055cf374a7109cfec"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 51840,
+      "sha256": "b52425058dd4d4b1405a27203090f73273e129b7b4916c8f1056191fcf983513"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 1140,
+      "sha256": "8745387216716603d199fb37678296b702608a5ecf404f952e35a1489bf27811"
+    }
+  ]
+}
