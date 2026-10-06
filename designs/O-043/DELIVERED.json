@@ -1,0 +1,141 @@
+{
+  "order_id": "O-043",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:gumroad/aeo-geo-audit",
+  "delivered_utc": "2026-10-06T11:07Z",
+  "source": "design-studio designs/O-043",
+  "landing": "products/services/aeo-geo-audit/covers/from-design-studio/O-043",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "25 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/services/aeo-geo-audit/covers/from-design-studio/O-043/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/fc913c80ebd809314acc57af98126bb617c4b0ebf8a0465c1da78a4841c75d57/manifest.json",
+      "bytes": 194,
+      "sha256": "9832a9b5b17db68c1a0b07df3f00b0aa5261e4cbbe617db7591965e6feb165a2"
+    },
+    {
+      "name": ".cache/fc913c80ebd809314acc57af98126bb617c4b0ebf8a0465c1da78a4841c75d57/out-630x500.png",
+      "bytes": 157045,
+      "sha256": "d5010a8ea8734b49180db4270e5753f1d74e0ea847b9a31f0eb50aa415564576"
+    },
+    {
+      "name": ".cache/fc913c80ebd809314acc57af98126bb617c4b0ebf8a0465c1da78a4841c75d57/out.png",
+      "bytes": 352188,
+      "sha256": "bed2d9e9677d7703a705b80ffe1a761563e78dffbc005bced29f1aba6da1ddb8"
+    },
+    {
+      "name": ".cache/fc913c80ebd809314acc57af98126bb617c4b0ebf8a0465c1da78a4841c75d57/thumb-256.png",
+      "bytes": 34627,
+      "sha256": "e21250acfa672e952d6da4fb55de8273876cba6d7382daf5d6a43ec189945a7a"
+    },
+    {
+      "name": "ADOPT.md",
+      "bytes": 610,
+      "sha256": "f71e89d58f23532b65cc745687029659ead25758b1b1aab219b86d855438b651"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1184,
+      "sha256": "7a27f74147c68360d4dd988d7079fa9622a034f7d70552791da533399752edb1"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1184,
+      "sha256": "10fdcfd47dce0829650bf24b37e92705efdb67ee04122fa4a625d26e9573af93"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 281,
+      "sha256": "1e6099bf459f3967f450879e038e700359430c67bc0aadd9759f52cffcf25d9e"
+    },
+    {
+      "name": "art.css",
+      "bytes": 4107,
+      "sha256": "bd4c6a52f3b92cb798f818b05dd0cd10e51818b29f4fc3729ba3cf3df60cb8a4"
+    },
+    {
+      "name": "art.html",
+      "bytes": 557,
+      "sha256": "eed58502e55288abde14e44d67d467036ba866f6ed48c54b51e2bec8d0b4fe71"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 368,
+      "sha256": "d786ce03066521f2a981c15603d47a5ecebe23e7790e66eee11fdeb06642d798"
+    },
+    {
+      "name": "assets/fonts/inter-latin-400-normal.woff2",
+      "bytes": 23664,
+      "sha256": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc"
+    },
+    {
+      "name": "assets/fonts/inter-latin-700-normal.woff2",
+      "bytes": 24356,
+      "sha256": "6f56409fd3d64bb85f7d070bce20749db2d66b6d63cec586cc22d1c761be2491"
+    },
+    {
+      "name": "assets/shot.png",
+      "bytes": 72562,
+      "sha256": "9ac7b367629dbab6b18739848e9e2d5adb38cb4d995ec8baade9a33705a52590"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1208,
+      "sha256": "b15124b1f9be2fa44feb23eb81c5ba2cfce62c91101bc09e0d2203ad9e3899ac"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 174016,
+      "sha256": "4e986ff6073011a85fa196ffb2c23cc86fbb6243c97c75b52f92d7cecf232bf6"
+    },
+    {
+      "name": "cover-1280x720.png",
+      "bytes": 352188,
+      "sha256": "bed2d9e9677d7703a705b80ffe1a761563e78dffbc005bced29f1aba6da1ddb8"
+    },
+    {
+      "name": "cover-630x500.png",
+      "bytes": 157045,
+      "sha256": "d5010a8ea8734b49180db4270e5753f1d74e0ea847b9a31f0eb50aa415564576"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 1957,
+      "sha256": "a9cf146950222641a3b7a234eee6ca01b38bdd8667e7466427fa23e96d9330b6"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2979,
+      "sha256": "2e4712b95661f37cadadfbfa1fca89796db1c886b4aac53c7d5c02c7181407e2"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 157045,
+      "sha256": "d5010a8ea8734b49180db4270e5753f1d74e0ea847b9a31f0eb50aa415564576"
+    },
+    {
+      "name": "out.png",
+      "bytes": 352188,
+      "sha256": "bed2d9e9677d7703a705b80ffe1a761563e78dffbc005bced29f1aba6da1ddb8"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8781,
+      "sha256": "3d20ac15a07856d2cc0dd55625ca1714e39ab3ed4dff614cb37c6f8c8d1238c8"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 34627,
+      "sha256": "e21250acfa672e952d6da4fb55de8273876cba6d7382daf5d6a43ec189945a7a"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 1140,
+      "sha256": "a28190348baa12a6a1f4f63980cd0ef6e663050b9b2940acfe153df441c3edb8"
+    }
+  ]
+}
