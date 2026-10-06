@@ -1,24 +1,28 @@
-# design-studio handoff - round 168 (token b7e4)
+# design-studio handoff - round 169 (token b7e4)
 
-Round: 168
-Written: 2026-10-06T11:38Z by lead (token b7e4, held since 11:31Z; lock mine; disk halt absent, inbox 0 open).
-Knobs: width 1; three sequential width-1 packets (judge, repair builder, re-review judge).
-Batch: 074-jdg-o046-review -> FAIL (FACTS) + 075-o046-repair -> DONE + 076 re-review -> PASS, landed cf44b24.
-ROUND real yes | built 40 | judged 19 | delivered 16 | adopted 32 | tools 16 | unjudged-oldest O-047 | in-flight 17.
+Round: 169
+Written: 2026-10-06T11:45Z by lead (token b7e4, held since 11:38Z; lock mine; disk halt absent, inbox 0 open).
+Knobs: width 1; two sequential width-1 packets (delivery, landing-fix+deliver).
+Batch: 077-dlv-o046 -> BLOCKED (landing rooted) + 078-o046-landing-fix-deliver -> DONE, committed both repos, factory inbox told (EB-2026-10-06-S42).
+ROUND real yes | built 40 | judged 19 | delivered 17 | adopted 32 | tools 16 | unjudged-oldest O-047 | in-flight 16.
 
 ## Heading
-- D5 moves: O-046 judged PASS and committed (oldest unjudged closed; unjudged-oldest now O-047). First review caught invented FACTS (12mo/40charts/0logins + browser chrome); repair sourced 25 channels/40 tasks/5 tutorials/channel-map.csv from the listing.
-- Why not keeper's 064 again: batch.md frozen at 11:11Z, DS-80 DONE; D5 needs covers judged, and O-046 was the oldest unjudged.
+- D5 moves: O-046 DELIVERED and committed in both repos. 077 found cover.json landing pointed at repo root (would have missed the product folder); 078 fixed both landing lines to the full product path per Maxim S84, then delivered 27/27.
+- Why not keeper's 064: batch.md frozen 11:11Z, DS-80 DONE; D5 needs covers delivered, O-046 was next in line.
 
 ## Done
-- cf44b24 designs/O-046 (12 files: repaired page/art/tokens, VERDICT PASS, compare.png) + 074/075/076 packets.
-- Proofs: BUILT PASS 16/16; VERDICT PASS O-046; audit 22 green+1 SKIP; ORDERS PASS 65/0 from round 167 holds.
+- d379901 here: designs/O-046 (ADOPT.md first, DELIVERED.json, landing fix) + orders.csv O-046 -> delivered.
+- d8d6800c factory: products/services/forge-engine2040-launch-system/covers/from-design-studio/O-046/ (27 files incl ADOPT.md).
+- Lead re-verified DELIVER CHECK PASS 27/27 + ORDERS PASS before committing (O-045 precedent).
+
+## Proofs
+- DELIVER CHECK PASS: O-046 (27/27 files); ORDERS PASS: 65 (16 open, 0 building, 17 delivered, 32 adopted).
+- VERDICT PASS O-046 (round 168); sprint/check RESULT PASS 21/0/0 (round start).
 
 ## Blockers and notes
-- Judge note: compare.png looked stale mid-review but committed fresh; deliverer to refresh compare at delivery if the folder changes.
-- batch.md still stale 064; keeper repeats it each continue. Lead keeps overriding with D5-first packets until keeper refreshes.
+- O-046 now awaits factory listing repoint (same as O-043/O-045): EB-S42 filed.
+- batch.md still stale 064; lead keeps overriding with D5-first packets until keeper refreshes.
 - Left dirty (not mine): 12 sample design-audit.json, halt + 071 ready worktree-deletions.
 
 ## Next
-- DLV-O-046 delivery (ADOPT.md first per O-045 lesson, then --deliver) + factory inbox item.
-- BLD-O-047 oldest unbuilt; chain judge O-056/O-057; EYE sweep over 17 open.
+- BLD-O-047 oldest unbuilt; chain judge O-056/O-057; EYE sweep (O-043/O-045/O-046 adoption checks).
