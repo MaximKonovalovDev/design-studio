@@ -1,0 +1,14 @@
+{
+  "pass": false,
+  "checks": [
+    {
+      "name": "brief.json parses",
+      "pass": false,
+      "detail": "EISDIR: illegal operation on a directory, read — next: fix JSON syntax in brief.json"
+    }
+  ],
+  "errors": [
+    "brief.json parses: EISDIR: illegal operation on a directory, read — next: fix JSON syntax in brief.json"
+  ],
+  "at": "2026-10-06"
+}

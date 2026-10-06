@@ -1,0 +1,43 @@
+{
+  "order": "O-059",
+  "product": "cover:itch/content-engine-service",
+  "title": "Content Engine Service",
+  "kicker": "ONE LONGFORM TO 12",
+  "claim": "1 flagship in, 12 outputs out in 7 days",
+  "chips": [
+    "3 shorts scripts",
+    "newsletter + 7 posts",
+    "matrix + calendar"
+  ],
+  "badge": "$19 one-time",
+  "sizes": [
+    {
+      "w": 1280,
+      "h": 720,
+      "file": "cover-1280x720.png"
+    },
+    {
+      "w": 630,
+      "h": 500,
+      "file": "cover-630x500.png"
+    }
+  ],
+  "palette": "kraft series (matches adopted O-036/O-037)",
+  "tokens": {
+    "bg": "#ead7b7",
+    "side": "#dcc194",
+    "ink": "#2a1a10",
+    "muted": "#573f2f",
+    "accent": "#b3261e",
+    "accentInk": "#96190f",
+    "onAccent": "#fff4e0",
+    "chipBg": "#f8ecd6",
+    "chipInk": "#2a1a10",
+    "chipLine": "#96190f",
+    "sheet": "#f8ecd6"
+  },
+  "svg": [
+    "cover-1280x720.svg",
+    "cover-630x500.svg"
+  ]
+}

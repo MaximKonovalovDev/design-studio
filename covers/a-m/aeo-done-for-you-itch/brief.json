@@ -1,0 +1,43 @@
+{
+  "order": "O-050",
+  "product": "cover:itch/aeo-done-for-you",
+  "title": "GEO Audit Done For You",
+  "kicker": "DONE FOR YOU AUDIT",
+  "claim": "200 probes run on your brand + fixes applied",
+  "chips": [
+    "200 probes",
+    "20-param report",
+    "fixes in 10 days"
+  ],
+  "badge": "$99 one-time",
+  "sizes": [
+    {
+      "w": 1280,
+      "h": 720,
+      "file": "cover-1280x720.png"
+    },
+    {
+      "w": 630,
+      "h": 500,
+      "file": "cover-630x500.png"
+    }
+  ],
+  "palette": "kraft series (matches adopted O-036/O-037)",
+  "tokens": {
+    "bg": "#ead7b7",
+    "side": "#dcc194",
+    "ink": "#2a1a10",
+    "muted": "#573f2f",
+    "accent": "#b3261e",
+    "accentInk": "#96190f",
+    "onAccent": "#fff4e0",
+    "chipBg": "#f8ecd6",
+    "chipInk": "#2a1a10",
+    "chipLine": "#96190f",
+    "sheet": "#f8ecd6"
+  },
+  "svg": [
+    "cover-1280x720.svg",
+    "cover-630x500.svg"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "order": "O-060",
+  "product": "cover:itch/fall-65-prop-pack",
+  "title": "Fall 65 Prop Pack",
+  "kicker": "65 LOW-POLY PROPS",
+  "claim": "65 autumn pieces + 195 GLB + 3 demo scenes",
+  "chips": [
+    "65 pieces 9 groups",
+    "GLB + FBX + PBR",
+    "3 Blender scenes"
+  ],
+  "badge": "$7.49 one-time",
+  "sizes": [
+    {
+      "w": 1280,
+      "h": 720,
+      "file": "cover-1280x720.png"
+    },
+    {
+      "w": 630,
+      "h": 500,
+      "file": "cover-630x500.png"
+    }
+  ],
+  "palette": "kraft series (matches adopted O-036/O-037)",
+  "tokens": {
+    "bg": "#ead7b7",
+    "side": "#dcc194",
+    "ink": "#2a1a10",
+    "muted": "#573f2f",
+    "accent": "#b3261e",
+    "accentInk": "#96190f",
+    "onAccent": "#fff4e0",
+    "chipBg": "#f8ecd6",
+    "chipInk": "#2a1a10",
+    "chipLine": "#96190f",
+    "sheet": "#f8ecd6"
+  },
+  "svg": [
+    "cover-1280x720.svg",
+    "cover-630x500.svg"
+  ]
+}

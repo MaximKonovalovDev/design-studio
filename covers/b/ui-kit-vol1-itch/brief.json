@@ -1,0 +1,43 @@
+{
+  "order": "O-065",
+  "product": "cover:itch/ui-kit-vol1",
+  "title": "Game UI Kit Vol 1",
+  "kicker": "DUNGEON-PIXEL UI",
+  "claim": "53 nine-slice PNGs for HUD + menus any size",
+  "chips": [
+    "53 PNG + manifest",
+    "HUD + inventory",
+    "nine-slice any size"
+  ],
+  "badge": "$12 one-time",
+  "sizes": [
+    {
+      "w": 1280,
+      "h": 720,
+      "file": "cover-1280x720.png"
+    },
+    {
+      "w": 630,
+      "h": 500,
+      "file": "cover-630x500.png"
+    }
+  ],
+  "palette": "kraft series (matches adopted O-036/O-037)",
+  "tokens": {
+    "bg": "#ead7b7",
+    "side": "#dcc194",
+    "ink": "#2a1a10",
+    "muted": "#573f2f",
+    "accent": "#b3261e",
+    "accentInk": "#96190f",
+    "onAccent": "#fff4e0",
+    "chipBg": "#f8ecd6",
+    "chipInk": "#2a1a10",
+    "chipLine": "#96190f",
+    "sheet": "#f8ecd6"
+  },
+  "svg": [
+    "cover-1280x720.svg",
+    "cover-630x500.svg"
+  ]
+}

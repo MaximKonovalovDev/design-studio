@@ -1,0 +1,43 @@
+{
+  "order": "O-063",
+  "product": "cover:itch/game-dev-duo",
+  "title": "Game Dev Duo",
+  "kicker": "SPRITES + SFX",
+  "claim": "200 sprites + 1024 SFX that match out of the box",
+  "chips": [
+    "200 sprites",
+    "1024 SFX",
+    "combo guide"
+  ],
+  "badge": "$19 one-time",
+  "sizes": [
+    {
+      "w": 1280,
+      "h": 720,
+      "file": "cover-1280x720.png"
+    },
+    {
+      "w": 630,
+      "h": 500,
+      "file": "cover-630x500.png"
+    }
+  ],
+  "palette": "kraft series (matches adopted O-036/O-037)",
+  "tokens": {
+    "bg": "#ead7b7",
+    "side": "#dcc194",
+    "ink": "#2a1a10",
+    "muted": "#573f2f",
+    "accent": "#b3261e",
+    "accentInk": "#96190f",
+    "onAccent": "#fff4e0",
+    "chipBg": "#f8ecd6",
+    "chipInk": "#2a1a10",
+    "chipLine": "#96190f",
+    "sheet": "#f8ecd6"
+  },
+  "svg": [
+    "cover-1280x720.svg",
+    "cover-630x500.svg"
+  ]
+}

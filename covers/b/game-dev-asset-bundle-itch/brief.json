@@ -1,0 +1,43 @@
+{
+  "order": "O-062",
+  "product": "cover:itch/game-dev-asset-bundle",
+  "title": "Game Dev Asset Bundle",
+  "kicker": "4 PACKS ONE CHECKOUT",
+  "claim": "4 packs + combo guide from $19 one checkout",
+  "chips": [
+    "sprites + SFX",
+    "4 packs 1 checkout",
+    "combo guide"
+  ],
+  "badge": "$19 one-time",
+  "sizes": [
+    {
+      "w": 1280,
+      "h": 720,
+      "file": "cover-1280x720.png"
+    },
+    {
+      "w": 630,
+      "h": 500,
+      "file": "cover-630x500.png"
+    }
+  ],
+  "palette": "kraft series (matches adopted O-036/O-037)",
+  "tokens": {
+    "bg": "#ead7b7",
+    "side": "#dcc194",
+    "ink": "#2a1a10",
+    "muted": "#573f2f",
+    "accent": "#b3261e",
+    "accentInk": "#96190f",
+    "onAccent": "#fff4e0",
+    "chipBg": "#f8ecd6",
+    "chipInk": "#2a1a10",
+    "chipLine": "#96190f",
+    "sheet": "#f8ecd6"
+  },
+  "svg": [
+    "cover-1280x720.svg",
+    "cover-630x500.svg"
+  ]
+}

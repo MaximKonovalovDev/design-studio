@@ -1,0 +1,43 @@
+{
+  "order": "O-057",
+  "product": "cover:itch/sci-fi-crew-vol2",
+  "title": "Sci-Fi Crew Vol 2",
+  "kicker": "8-DIRECTION SPRITES",
+  "claim": "3 crew x 5 actions, 8 directions, 432 frames",
+  "chips": [
+    "3 crew 15 sheets",
+    "432 frames PNG",
+    "5 actions 8 facings"
+  ],
+  "badge": "$19 one-time",
+  "sizes": [
+    {
+      "w": 1280,
+      "h": 720,
+      "file": "cover-1280x720.png"
+    },
+    {
+      "w": 630,
+      "h": 500,
+      "file": "cover-630x500.png"
+    }
+  ],
+  "palette": "kraft series (matches adopted O-036/O-037)",
+  "tokens": {
+    "bg": "#ead7b7",
+    "side": "#dcc194",
+    "ink": "#2a1a10",
+    "muted": "#573f2f",
+    "accent": "#b3261e",
+    "accentInk": "#96190f",
+    "onAccent": "#fff4e0",
+    "chipBg": "#f8ecd6",
+    "chipInk": "#2a1a10",
+    "chipLine": "#96190f",
+    "sheet": "#f8ecd6"
+  },
+  "svg": [
+    "cover-1280x720.svg",
+    "cover-630x500.svg"
+  ]
+}
