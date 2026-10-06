@@ -1,5 +1,5 @@
 # repomap: design-studio
-_generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 14d) | cap 25KB_
+_generated 2026-10-06T06:20:52.780Z | 6560 files mapped | 50 hot (commits, last 14d) | cap 25KB_
 
 ## tree
 - `.env` - 1 file
@@ -9,6 +9,7 @@ _generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 
 - `.opencode/` - 51 files
 - `AGENTS.md` - 1 file
 - `FINISH-LINE.md` - 1 file
+- `HANDOFF-ADOPT.md` - 1 file
 - `LICENSE` - 1 file
 - `README.md` - 1 file
 - `VISION-TABLES.md` - 1 file
@@ -17,7 +18,9 @@ _generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 
 - `brand-kits/` - 3 files
 - `canvas/` - 11 files
 - `convert/` - 4 files
-- `designs/` - 713 files
+- `covers/` - 127 files
+- `design-audit.json` - 1 file
+- `designs/` - 853 files
 - `docs/` - 1 file
 - `fonts/` - 18 files
 - `kits/` - 14 files
@@ -27,17 +30,17 @@ _generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 
 - `package-lock.json` - 1 file
 - `package.json` - 1 file
 - `packs/` - 57 files
-- `research/` - 12 files
+- `research/` - 5134 files
 - `samples/` - 97 files
-- `sprint/` - 19 files
+- `sprint/` - 18 files
 - `taste/` - 1 file
 - `templates/` - 64 files
-- `tests/` - 32 files
-- `tools/` - 33 files
+- `tests/` - 37 files
+- `tokens/` - 2 files
+- `tools/` - 44 files
 
 ## symbols (hot first, xN = commits last 14d)
-### `.opencode/plugin/loop-keeper.js` x17 (175KB)
-- `const LoopKeeper`
+### `.opencode/plugin/loop-keeper.js` x18 (176KB) - loop-keeper: continues THIS repo's /sprint when its session goes idle, and
 ### `tools/audit.mjs` x10 (40KB)
 - `function titleChars`
 - `function luminance`
@@ -55,7 +58,7 @@ _generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 
 ### `tools/check.mjs` x9 (11KB)
 - `function checkReceipt`
 - `function pickWinner`
-### `tools/render.mjs` x8 (28KB)
+### `tools/render.mjs` x9 (33KB)
 - `function findBrowser`
 - `function parseSize`
 - `function pngDims`
@@ -83,9 +86,13 @@ _generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 
 - `function gateOverwrite`
 - `function renderSelfCheck`
 - `function sharedProfileDir`
+- `class PQueue`
+- `const renderQueue`
+- `function renderQueued`
+- `function renderQueueSelfCheck`
 - `function render`
 - `function renderPdf`
-### `tools/cover.mjs` x6 (36KB)
+### `tools/cover.mjs` x7 (45KB)
 - `function readCentralFontsManifest`
 - `function firstFamily`
 - `const slugOf`
@@ -99,11 +106,16 @@ _generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 
 - `function embedFonts`
 - `function checkCover`
 - `function gen`
+- `function cacheKeyForParts`
+- `function cacheKeyFor`
+- `function cacheOutputsFor`
+- `function cacheDirFor`
 - `function build`
+- `function buildQueued`
 - `function compare`
 - `function factsCheck`
 - `function verdict`
-### `tools/judge.mjs` x6 (29KB)
+### `tools/judge.mjs` x7 (29KB)
 - `const RUBRIC_ID`
 - `const RUBRIC_VERSION`
 - `const SHIP_FLOOR`
@@ -336,6 +348,25 @@ _generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 
 - `function checkGameExport`
 ### `packs/plan-assemble-o040/README.md` x1 (766B)
 - # packs/plan-assemble-o040 (O-040)
+### `tokens/a06-cards.mjs` x1 (5.5KB)
+- `const A06_TOKENS`
+- `function cardCss`
+- `function CardHeader`
+- `function CardContent`
+- `function CardFooter`
+- `function renderSummary`
+- `function renderProof`
+- `function renderCta`
+- `function renderAll`
+- `function restyle`
+- `function shiftProof`
+### `tokens/g07-build.mjs` x1 (3.9KB)
+- `const G07_TOKENS`
+- `const SD_FIXTURE_SHA`
+- `function localBuildCss`
+- `const LOCAL_FIXTURE_CSS`
+- `function sha256Hex`
+- `function buildTwice`
 ### `tools/assemble.mjs` x1 (13KB)
 - `const ROOT`
 - `const STEP_KINDS`
@@ -357,6 +388,17 @@ _generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 
 - `function collectInputs`
 - `function runAtlas`
 - `function selfCheck`
+### `tools/batch-covers-2026-10-06.mjs` x1 (3.2KB)
+- `function runBatch`
+### `tools/brand-cards/cards.py` x1 (3.6KB)
+- `def hex_to_rgb`
+- `def load_font`
+- `def wrap`
+- `def gradient`
+- `def make`
+- `def main`
+### `tools/brand-cards/page.py` x1 (1.5KB)
+- `def main`
 ### `tools/brief.mjs` x1 (16KB)
 - `const FORBIDDEN_ENGINES`
 - `const FORBIDDEN_SCORE_WORDS`
@@ -365,6 +407,17 @@ _generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 
 - `const FORBIDDEN_PII_RES`
 - `function gateBrief`
 - `function briefSelfCheck`
+### `tools/c04-frame-pull.mjs` x1 (5.7KB)
+- `const ROW`
+- `const WHAT`
+- `const TOOL`
+- `const TOKEN_ENV_NAMES`
+- `const FIXTURE_TOKEN_NAMES`
+- `const FIXTURE_PULL`
+- `function tokenFromEnv`
+- `function pullFrame`
+- `function tokenNamesSurvive`
+- `function checkC04`
 ### `tools/compose.mjs` x1 (11KB)
 - `function parseWidths`
 - `function parseArgs`
@@ -410,6 +463,29 @@ _generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 
 - `function listFonts`
 - `function pairText`
 - `function checkFonts`
+### `tools/g08-eye-judge.mjs` x1 (13KB)
+- `const EYE_VOTERS`
+- `const SHIP_VOTES`
+- `const TOUCH_MIN`
+- `const THUMB_MIN`
+- `function ctaSizeEstimate`
+- `function toolFacts`
+- `function eyeVotes`
+- `function judgeEye`
+- `function selfCheck`
+### `tools/g09-figma-rtl.mjs` x1 (8.0KB)
+- `const ROW`
+- `const WHAT`
+- `const TOOL`
+- `const NO_FLIP_ICONS`
+- `const FIXTURE_FRAME_URL`
+- `const FIXTURE_FRAME`
+- `function parseFrameUrl`
+- `function buildFrameRequest`
+- `function readFrame`
+- `function isNoFlipSelector`
+- `function flipCss`
+- `function checkG09`
 ### `tools/gifcap.mjs` x1 (29KB)
 - `const MIN_S`
 - `const MAX_S`
@@ -469,6 +545,32 @@ _generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 
 - `function gateInfo`
 - `function parseArgs`
 - `function selfCheck`
+### `tools/pil/bg.py` x1 (5.2KB)
+- `def parse_color`
+- `def parse_size`
+- `def gradient`
+- `def add_grain`
+- `def vignette`
+- `def blur_bars`
+- `def selftest`
+- `def main`
+### `tools/pil/mockup.py` x1 (4.4KB)
+- `def parse_size`
+- `def parse_bg`
+- `def cover`
+- `def round_mask`
+- `def make`
+- `def selftest`
+- `def main`
+### `tools/pil/textfx.py` x1 (3.1KB)
+- `def load_font`
+- `def blank`
+- `def stroke`
+- `def shadow`
+- `def gradient_text`
+- `def outline_box`
+- `def selftest`
+- `def main`
 ### `tools/pixel-font-ttf.py` x1 (3.0KB)
 - `def draw`
 ### `tools/sharp.mjs` x1 (4.0KB)
@@ -515,3 +617,209 @@ _generated 2026-10-05T17:50:49.675Z | 1152 files mapped | 39 hot (commits, last 
 - `function upscale`
 - `function tokensJson`
 - `function buildAll`
+### `research/donors/open-design/design-templates/html-ppt-zhangzara-creative-mode/assets/deck-stage.js` (23KB) - *
+### `research/donors/open-design/design-templates/html-ppt-zhangzara-editorial-tri-tone/assets/deck-stage.js` (23KB) - *
+### `research/donors/open-design/design-templates/html-ppt-zhangzara-neo-grid-bold/assets/deck-stage.js` (23KB) - *
+### `research/donors/open-design/design-templates/html-ppt-zhangzara-peoples-platform/assets/deck-stage.js` (23KB) - *
+### `research/donors/open-design/design-templates/html-ppt-zhangzara-pin-and-paper/assets/deck-stage.js` (23KB) - *
+### `research/donors/open-design/design-templates/html-ppt-zhangzara-pink-script/assets/deck-stage.js` (23KB) - *
+### `research/donors/open-design/design-templates/html-ppt-zhangzara-soft-editorial/assets/deck-stage.js` (23KB) - *
+### `research/donors/open-design/design-templates/html-ppt-zhangzara-stencil-tablet/assets/deck-stage.js` (23KB) - *
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx-runtime.js` (3.2KB) - html-ppt :: fx-runtime.js
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/_util.js` (2.0KB) - html-ppt fx :: shared helpers
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/chain-react.js` (1.4KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/confetti-cannon.js` (1.6KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/constellation.js` (1.3KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/counter-explosion.js` (2.3KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/data-stream.js` (1.5KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/firework.js` (1.7KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/galaxy-swirl.js` (1.1KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/gradient-blob.js` (1.4KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/knowledge-graph.js` (2.5KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/letter-explode.js` (2.1KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/magnetic-field.js` (1.3KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/matrix-rain.js` (1.1KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/neural-net.js` (2.7KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/orbit-ring.js` (1.4KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/particle-burst.js` (1.3KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/shockwave.js` (1.4KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/sparkle-trail.js` (2.0KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/starfield.js` (1020B)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/typewriter-multi.js` (2.2KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/animations/fx/word-cascade.js` (1.7KB)
+### `research/donors/open-design/design-templates/html-ppt/assets/runtime.js` (37KB) - html-ppt :: runtime.js
+### `research/donors/open-design/design-templates/hyperframes/scripts/animation-map.mjs` (20KB) - animation-map.mjs — HyperFrames animation map for agents
+### `research/donors/open-design/design-templates/hyperframes/scripts/contrast-report.mjs` (12KB) - contrast-report.mjs — HyperFrames contrast audit
+### `research/donors/open-design/design-templates/hyperframes/scripts/package-loader.mjs` (8.4KB)
+- `function importPackagesOrBootstrap`
+- `function hyperframesPackageSpec`
+### `research/donors/open-design/design-templates/last30days/scripts/briefing.py` (8.4KB)
+- `def _parse_sqlite_utc_timestamp`
+- `def generate_daily`
+- `def generate_weekly`
+- `def show_briefing`
+- `def _save_briefing`
+- `def main`
+### `research/donors/open-design/design-templates/last30days/scripts/last30days.py` (39KB)
+- `def ensure_supported_python`
+- `def register_child_pid`
+- `def unregister_child_pid`
+- `def _cleanup_children`
+- `def parse_search_flag`
+- `def slugify`
+- `def save_output`
+- `def emit_output`
+- `def emit_comparison_output`
+- `def compute_save_path_display`
+- `def read_synthesis_file`
+- `def persist_report`
+- `def build_parser`
+- `def parse_competitors_plan`
+- `def subrun_kwargs_for`
+- `def resolve_competitors_args`
+- `def _missing_sources_for_promo`
+- `def _show_runtime_ui`
+- `def main`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/__init__.py` (30B) - last30days library modules
+### `research/donors/open-design/design-templates/last30days/scripts/lib/bird_x.py` (15KB)
+- `def _first_of`
+- `def set_credentials`
+- `def _has_injected_credentials`
+- `def _has_process_credentials`
+- `def _subprocess_env`
+- `def _log`
+- `def _extract_core_subject`
+- `def is_bird_installed`
+- `def is_bird_authenticated`
+- `def check_npm_available`
+- `def install_bird`
+- `def get_bird_status`
+- `def _run_bird_search`
+- `def search_x`
+- `def search_handles`
+- `def parse_bird_response`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/bluesky.py` (8.7KB)
+- `def _log`
+- `def _create_session`
+- `def _reset_session_cache`
+- `def _extract_core_subject`
+- `def _parse_date`
+- `def search_bluesky`
+- `def parse_bluesky_response`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/categories.py` (7.7KB)
+- `class _CategoryEntry`
+- `def detect_category`
+- `def peer_subs_for`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/chrome_cookies.py` (8.7KB)
+- `def _get_chrome_encryption_key`
+- `def _derive_aes_key`
+- `def _decrypt_v10_value`
+- `def _remove_pkcs7_padding`
+- `def _get_db_version`
+- `def extract_chrome_cookies_macos`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/cluster.py` (11KB)
+- `def _candidate_text`
+- `def _extract_entities`
+- `def _entity_overlap`
+- `def _mmr_representatives`
+- `def cluster_candidates`
+- `def _merge_entity_clusters`
+- `def _cluster_uncertainty`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/competitors.py` (7.4KB)
+- `def _log`
+- `def _topic_tokens`
+- `def _candidate_ok`
+- `def _normalize_candidate`
+- `def _extract_peer_entities`
+- `def _queries_for`
+- `def discover_competitors`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/cookie_extract.py` (14KB)
+- `def _is_wsl`
+- `def _get_wsl_firefox_profiles_dir`
+- `def _get_firefox_profiles_dir`
+- `def _find_default_profile`
+- `def _resolve_profile_path`
+- `def _fallback_find_profile`
+- `def _query_cookies_db`
+- `def _try_firefox_dir`
+- `def extract_firefox_cookies`
+- `def extract_chrome_cookies`
+- `def extract_safari_cookies`
+- `def extract_cookies`
+- `def _extract_firefox_with_source`
+- `def extract_cookies_with_source`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/dates.py` (3.2KB)
+- `def get_date_range`
+- `def parse_date`
+- `def timestamp_to_date`
+- `def get_date_confidence`
+- `def days_ago`
+- `def recency_score`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/dedupe.py` (3.4KB)
+- `def normalize_text`
+- `def _ngrams_of_normalized`
+- `def get_ngrams`
+- `def jaccard_similarity`
+- `def token_jaccard`
+- `def hybrid_similarity`
+- `def _tokenize`
+- `class _PreparedText`
+- `def prepared_similarity`
+- `def item_text`
+- `def dedupe_items`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/entity_extract.py` (4.2KB)
+- `def extract_entities`
+- `def _extract_x_handles`
+- `def _extract_x_hashtags`
+- `def _extract_subreddits`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/env.py` (22KB)
+- `class OpenAIAuth`
+- `def _check_file_permissions`
+- `def load_env_file`
+- `def _decode_jwt_payload`
+- `def _token_expired`
+- `def extract_chatgpt_account_id`
+- `def load_codex_auth`
+- `def get_codex_access_token`
+- `def get_openai_auth`
+- `def _find_project_env`
+- `def get_config`
+- `def extract_browser_credentials`
+- `def get_x_source_with_method`
+- `def config_exists`
+- `def get_reddit_source`
+- `def get_x_source`
+- `def is_ytdlp_available`
+- `def is_youtube_comments_available`
+- `def is_tiktok_comments_available`
+- `def is_youtube_sc_available`
+- `def is_hackernews_available`
+- `def is_bluesky_available`
+- `def is_truthsocial_available`
+- `def is_polymarket_available`
+- `def is_tiktok_available`
+- `def get_tiktok_token`
+- `def _parse_include_sources`
+- `def is_threads_available`
+- `def is_instagram_available`
+- `def get_instagram_token`
+- `def get_xiaohongshu_api_base`
+- `def is_xiaohongshu_available`
+- `def get_x_source_status`
+- `def is_pinterest_available`
+- `def get_pinterest_token`
+- `def is_xquik_available`
+- `def get_xquik_token`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/fanout.py` (3.2KB)
+- `def _log`
+- `def run_competitor_fanout`
+### `research/donors/open-design/design-templates/last30days/scripts/lib/fusion.py` (8.6KB)
+- `def _candidate_sort_key`
+- `def _normalize_url`
+- `def candidate_key`
+- `def _extract_author`
+- `def _apply_per_author_cap`
+- `def _diversify_pool`
+- `def weighted_rrf`
+
+_88 cold files dropped to fit cap_
