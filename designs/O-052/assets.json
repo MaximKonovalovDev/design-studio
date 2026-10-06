@@ -1,0 +1,23 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/sheet-1.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/assets/instagram-big-stat-007.png",
+      "what": "the customer's own picture instagram-big-stat-007.png",
+      "bytes": 79675
+    },
+    {
+      "file": "assets/sheet-2.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/sample/linkedin-before-after-058.png",
+      "what": "the customer's own picture linkedin-before-after-058.png",
+      "bytes": 65184
+    },
+    {
+      "file": "assets/sheet-3.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/sample/tiktok-checklist-034.png",
+      "what": "the customer's own picture tiktok-checklist-034.png",
+      "bytes": 70582
+    }
+  ]
+}

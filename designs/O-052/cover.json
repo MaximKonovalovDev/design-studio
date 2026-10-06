@@ -1,0 +1,76 @@
+{
+  "product": "cover:itch/carousel-template-studio",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Carousel Template Studio",
+  "pick": "clean-professional",
+  "template": "covers/sheet-fan",
+  "kicker": "27 slides each for Instagram TikTok LinkedIn Pinterest",
+  "claim": "108 branded carousel templates in 5 minutes from your brand input",
+  "chips": [
+    "108 PNG 1080x1350 + 108 SVG",
+    "10 layouts x 5 colorways",
+    "108 captions + 3 guides"
+  ],
+  "badge": "$25 one-time",
+  "fine": "Editable SVG text - Figma import not click-verified",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "Bahnschrift, 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 88,
+  "titlePxCard": 50,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Carousel",
+    "Template",
+    "Studio"
+  ],
+  "titleWrapCard": [
+    "Carousel",
+    "Template Studio"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "sheet-ar": "0.72",
+    "sheet-w": "322px",
+    "sheet-w-card": "188px"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/preview/cover-od-1280x720.png",
+  "landing": "products/social-media-carousel/carousel-template-studio/covers/from-design-studio/O-052/",
+  "assetsFrom": "the product's own preview/ pictures",
+  "assets": [
+    {
+      "name": "sheet-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/assets/instagram-big-stat-007.png",
+      "what": "the customer's own picture instagram-big-stat-007.png"
+    },
+    {
+      "name": "sheet-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/sample/linkedin-before-after-058.png",
+      "what": "the customer's own picture linkedin-before-after-058.png"
+    },
+    {
+      "name": "sheet-3.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/sample/tiktok-checklist-034.png",
+      "what": "the customer's own picture tiktok-checklist-034.png"
+    }
+  ]
+}

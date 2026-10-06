@@ -1,0 +1,31 @@
+  /* covers/sheet-fan: three pages fanned from one centre, a round stamp on the front page, one label.
+     Every picture is cropped from its top, reading start, to the sheet shape. Tune it in cover.json "vars": sheet-ar (0.72 = a page, 1.5 = a wide screenshot), sheet-w and sheet-w-card (the sheet width in each layout). */
+  .stage { background: linear-gradient(150deg, var(--bg) 0%, var(--bg) 34%, var(--bg-2) 100%); }
+  h1 { max-width: var(--claim-w, 560px); }
+  .art .disc { position: absolute; width: 600px; height: 600px; border-radius: 50%; inset-inline-start: 53%; top: 50%; transform: translate(-50%, -50%); background: color-mix(in srgb, var(--accent) 20%, transparent); }
+  .art .ring { position: absolute; width: 690px; height: 690px; border-radius: 50%; inset-inline-start: 53%; top: 50%; transform: translate(-50%, -50%); border: 2px dashed color-mix(in srgb, var(--accent-ink) 55%, transparent); }
+  .art .fan { position: absolute; inset-inline-start: 53%; top: 51%; width: 0; height: 0; }
+  .art .sheet { position: absolute; inset-inline-start: 0; top: 0; width: var(--sheet-w, 322px); aspect-ratio: var(--sheet-ar, 0.72); overflow: hidden; border-radius: 8px; background: var(--chip-bg); box-shadow: 0 24px 46px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2); }
+  .art .sheet img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 0% 0%; }
+  .art .back-a { transform: translate(-50%, -50%) translate(-37%, 2%) rotate(-11deg); }
+  .art .back-b { transform: translate(-50%, -50%) translate(37%, -2%) rotate(9deg); }
+  .art .front { transform: translate(-50%, -50%) rotate(-2deg); }
+  .art .stamp { position: absolute; z-index: 3; inset-inline-end: 30px; top: 84px; width: 172px; height: 172px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--accent); color: var(--on-accent); transform: rotate(10deg); box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3); }
+  .art .stamp::before { content: ""; position: absolute; inset: 9px; border-radius: 50%; border: 3px dashed color-mix(in srgb, var(--on-accent) 75%, transparent); }
+  .art .stamp b { font-family: var(--font-display); font-weight: var(--title-weight, 800); font-size: 76px; line-height: 0.9; letter-spacing: var(--title-track, -0.01em); }
+  .art .stamp span { margin-top: 4px; font-size: 19px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .art .tag { position: absolute; z-index: 3; inset-inline-start: 26px; bottom: 86px; padding: 12px 22px; border-radius: 999px; background: var(--ink); color: var(--bg); font-size: 22px; font-weight: 800; line-height: 1; white-space: nowrap; transform: rotate(-5deg); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28); }
+  .art .stamp[data-n=""], .art .tag[data-n=""] { display: none; }
+  @media (max-width: 800px) {
+    h1 { max-width: none; }
+    .chips { margin-bottom: 9px; }
+    .art .disc { width: 380px; height: 380px; inset-inline-start: 43%; top: 64%; }
+    .art .ring { width: 446px; height: 446px; inset-inline-start: 43%; top: 64%; border-width: 1.5px; }
+    .art .fan { inset-inline-start: 43%; top: 64%; }
+    .art .sheet { width: var(--sheet-w-card, 188px); border-radius: 5px; box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2); }
+    .art .stamp { width: 108px; height: 108px; inset-inline-end: 104px; top: 12px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.28); }
+    .art .stamp::before { inset: 6px; border-width: 2px; }
+    .art .stamp b { font-size: 46px; }
+    .art .stamp span { margin-top: 2px; font-size: 12px; }
+    .art .tag { inset-inline-start: auto; inset-inline-end: 30px; bottom: 30px; padding: 8px 14px; font-size: 14px; }
+  }
