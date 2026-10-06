@@ -7,6 +7,10 @@
   "for": ["factory", "skillworks", "marketing-studio"],
   "donor": "designs/O-013",
   "palette": "clean-professional",
+  "fonts": {
+    "display": "'Inter', Arial, sans-serif",
+    "body": "'Inter', Verdana, Arial, sans-serif"
+  },
   "sizes": [
     { "w": 1280, "h": 720, "name": "landscape" },
     { "w": 630, "h": 500, "name": "store-card" }

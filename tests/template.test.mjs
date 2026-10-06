@@ -105,6 +105,16 @@ describe("stamp", () => {
     assert.ok(st.files.has("art.html") && st.files.has("art.css"));
     assert.ok(st.pictures.length > 0);
   });
+  it("NEED-15: covers/app-window defaults to the OFL shelf, no system-font hand fix", () => {
+    const st = stamp({ template: "covers/app-window", order: "T-15" });
+    const spec = JSON.parse(st.files.get("cover.json"));
+    for (const k of ["display", "body"]) {
+      assert.ok(spec.fonts[k].startsWith("'Inter'"), `${k}: ${spec.fonts[k]}`);
+      assert.ok(!/Bahnschrift|Segoe UI/.test(spec.fonts[k]), `${k}: ${spec.fonts[k]}`);
+    }
+    const shelf = JSON.parse(readFileSync(join("fonts", "fonts.json"), "utf8"));
+    assert.ok(shelf.families?.inter?.license?.startsWith("OFL"), "inter is OFL stock");
+  });
   it("an unknown slot, palette, picture or a {{ in a value is refused", () => {
     assert.throws(() => stamp({ template: "social/card", slots: { NOPE: "x" } }), /unknown slot NOPE/);
     assert.throws(() => stamp({ template: "social/card", palette: "nope" }), /unknown palette/);

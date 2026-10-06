@@ -151,6 +151,29 @@ export function templateProblems(t, palettes) {
   for (const k of ["title", "what", "donor"]) if (typeof meta[k] !== "string" || !meta[k].trim()) bad.push(`${k} missing`);
   if (!Array.isArray(meta.for) || !meta.for.length || !meta.for.every((x) => typeof x === "string")) bad.push("for must list repo names");
   if (!palettes[meta.palette]) bad.push(`palette ${JSON.stringify(meta.palette)} is not in palettes.json`);
+  // NEED-15: a cover template may default display/body to the OFL shelf
+  // (template.json "fonts"); the palette stays the colour source and keeps
+  // mono. The first family must embed via `cover.mjs fonts` (fonts/fonts.json).
+  if (meta.fonts !== undefined) {
+    const f = meta.fonts;
+    if (!f || typeof f !== "object" || Array.isArray(f)) bad.push(`fonts must be an object {display, body} of OFL stacks`);
+    else {
+      for (const k of Object.keys(f)) if (!["display", "body"].includes(k)) bad.push(`fonts.${k}: only display and body may override the palette (mono stays the palette stack)`);
+      for (const k of ["display", "body"]) {
+        const v = f[k];
+        if (typeof v !== "string" || !v.trim()) bad.push(`fonts.${k} missing`);
+        else if (v.includes('"')) bad.push(`fonts.${k} uses double quotes (single quotes only: stacks go into style attributes)`);
+        else {
+          const first = String(v).split(",")[0]?.trim().replace(/^'|'$/g, "");
+          try {
+            const shelf = JSON.parse(read(join(ROOT, "fonts", "fonts.json")));
+            const slug = String(first ?? "").toLowerCase().replace(/\s+/g, "-");
+            if (!shelf.families?.[slug]) bad.push(`fonts.${k} first family ${JSON.stringify(first)} is not on the OFL shelf (fonts/fonts.json)`);
+          } catch { /* shelf unreadable here: the shape checks above still stand */ }
+        }
+      }
+    }
+  }
   const sizesOk = Array.isArray(meta.sizes) && meta.sizes.length && meta.sizes.every((z) => Number.isInteger(z?.w) && Number.isInteger(z?.h) && z.w >= 16 && z.h >= 16 && typeof z.name === "string" && z.name);
   if (!sizesOk) bad.push("sizes must be [{w, h, name}] with whole numbers of 16 or more");
   const files = Array.isArray(meta.files) ? meta.files : [];
@@ -339,7 +362,8 @@ export function stamp({ template, palette, order = "PREVIEW", slots = {}, assets
     const head = { product: spec.product, from_repo: spec.from_repo, storeName: spec.storeName, title: spec.title, pick: paletteId, template: t.ref, kicker: spec.kicker, claim: spec.claim, chips: spec.chips, badge: spec.badge, ...(spec.fine ? { fine: spec.fine } : {}) };
     const look = {
       tokens: Object.fromEntries(TOKENS.map((k) => [k, p.tokens[k]])),
-      fonts: { display: p.fonts.display, body: p.fonts.body, mono: p.fonts.mono },
+      // NEED-15: the template's own OFL default wins for display/body; mono stays the palette stack.
+      fonts: { display: meta.fonts?.display ?? p.fonts.display, body: meta.fonts?.body ?? p.fonts.body, mono: p.fonts.mono },
       titlePx: wide.px, titlePxCard: card.px,
       titleWeight: spec.titleWeight ?? style.titleWeight ?? 800, titleTrack: spec.titleTrack ?? style.titleTrack ?? "-0.01em",
       titleWrapWide: wide.lines, titleWrapCard: card.lines,
