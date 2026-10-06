@@ -1,0 +1,63 @@
+{
+  "product": "cover:itch/sci-fi-crew-vol2",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Sci-Fi Crew Vol 2",
+  "pick": "clean-professional",
+  "template": "covers/app-window",
+  "kicker": "Offline budgeting app",
+  "claim": "A full year of spending on one screen",
+  "chips": [
+    "CSV import",
+    "No account",
+    "Works offline"
+  ],
+  "badge": "$19 one-time",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "Bahnschrift, 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 104,
+  "titlePxCard": 58,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Sci-Fi",
+    "Crew Vol 2"
+  ],
+  "titleWrapCard": [
+    "Sci-Fi Crew Vol 2"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "shot-zoom": "1",
+    "shot-x": "0%",
+    "shot-y": "0%"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/sci-fi-crew-vol2/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/sci-fi-crew-vol2/preview/cover.png",
+  "landing": "from-design-studio/O-057/",
+  "assetsFrom": "the product's own preview/ pictures",
+  "assets": [
+    {
+      "name": "shot.png",
+      "src": "C:/Users/me/Desktop/design-studio/templates/covers/app-window/placeholder/shot.png",
+      "what": "PLACEHOLDER screenshot shipped with the template: replace it with the product's own capture (--asset shot=<path>)"
+    }
+  ]
+}

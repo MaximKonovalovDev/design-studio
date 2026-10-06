@@ -1,0 +1,11 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/shot.png",
+      "from": "C:/Users/me/Desktop/design-studio/templates/covers/app-window/placeholder/shot.png",
+      "what": "PLACEHOLDER screenshot shipped with the template: replace it with the product's own capture (--asset shot=<path>)",
+      "bytes": 25178
+    }
+  ]
+}

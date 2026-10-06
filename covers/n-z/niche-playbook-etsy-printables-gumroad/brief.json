@@ -1,0 +1,90 @@
+{
+  "order": "O-054",
+  "product": "cover:gumroad/niche-playbook-etsy-printables",
+  "title": "Niche Playbook 04: Etsy Printables",
+  "kicker": "NICHE PLAYBOOK 04",
+  "claim": "12 pains + 10 places + prices + 30-day plan",
+  "chips": [
+    "12 pains + dates",
+    "10-anchor ladder",
+    "30-day calendar"
+  ],
+  "badge": "$12 one-time",
+  "size": {
+    "w": 1280,
+    "h": 720
+  },
+  "sizes": [
+    {
+      "w": 1280,
+      "h": 720,
+      "name": "landscape",
+      "file": "cover-1280x720.png"
+    },
+    {
+      "w": 630,
+      "h": 500,
+      "name": "store-card",
+      "file": "cover-630x500.png",
+      "title_px": 50,
+      "title_box": [
+        0.04,
+        0.04,
+        0.96,
+        0.3
+      ],
+      "title_longest": 18
+    }
+  ],
+  "dir": "ltr",
+  "tokens": "tokens.css",
+  "page": "page.html",
+  "image": "cover-1280x720.png",
+  "text": [
+    {
+      "label": "title",
+      "fg": "#2a1a10",
+      "bg": "#ead7b7",
+      "min": 4.5
+    },
+    {
+      "label": "subtitle",
+      "fg": "#573f2f",
+      "bg": "#ead7b7",
+      "min": 4.5
+    },
+    {
+      "label": "cta",
+      "fg": "#fff4e0",
+      "bg": "#b3261e",
+      "min": 4.5
+    },
+    {
+      "label": "chip",
+      "fg": "#2a1a10",
+      "bg": "#f8ecd6",
+      "min": 4.5
+    },
+    {
+      "label": "kicker",
+      "fg": "#96190f",
+      "bg": "#ead7b7",
+      "min": 3
+    }
+  ],
+  "title_box": [
+    0.056,
+    0.2,
+    0.52,
+    0.5
+  ],
+  "title_px": 78,
+  "title_longest": 14,
+  "palette": "kraft series (matches adopted O-036/O-037)",
+  "svg": [
+    "cover-1280x720.svg",
+    "cover-630x500.svg"
+  ],
+  "facts_from": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-etsy-printables/listing/gumroad.md",
+  "to_beat": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-etsy-printables/preview/cover-1280x720.png"
+}

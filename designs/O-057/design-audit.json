@@ -1,0 +1,125 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "name": "brief.json parses",
+      "pass": true,
+      "detail": "Sci-Fi Crew Vol 2"
+    },
+    {
+      "name": "brief size sane",
+      "pass": true,
+      "detail": "1280x720"
+    },
+    {
+      "name": "tokens.css parses with 2+ colors",
+      "pass": true,
+      "detail": "10 vars"
+    },
+    {
+      "name": "page.html carries the title",
+      "pass": true,
+      "detail": "title text present"
+    },
+    {
+      "name": "no hardcoded colors in page.html",
+      "pass": true,
+      "detail": "all color via var(--*)"
+    },
+    {
+      "name": "page.html uses tokens",
+      "pass": true,
+      "detail": "var(--*) found"
+    },
+    {
+      "name": "ltr: html dir matches brief",
+      "pass": true,
+      "detail": "dir=ltr"
+    },
+    {
+      "name": "out.png size matches brief",
+      "pass": true,
+      "detail": "1280x720"
+    },
+    {
+      "name": "out.png non-trivial",
+      "pass": true,
+      "detail": "230244B"
+    },
+    {
+      "name": "contrast title",
+      "pass": true,
+      "detail": "17.23:1 vs 4.5:1 (#12131f on #f6f7fb)"
+    },
+    {
+      "name": "contrast subtitle",
+      "pass": true,
+      "detail": "8.15:1 vs 4.5:1 (#444a63 on #f6f7fb)"
+    },
+    {
+      "name": "contrast cta",
+      "pass": true,
+      "detail": "5.39:1 vs 4.5:1 (#ffffff on #087a4a)"
+    },
+    {
+      "name": "contrast chip",
+      "pass": true,
+      "detail": "18.44:1 vs 4.5:1 (#12131f on #ffffff)"
+    },
+    {
+      "name": "contrast kicker",
+      "pass": true,
+      "detail": "6.24:1 vs 3:1 (#066a3f on #f6f7fb)"
+    },
+    {
+      "name": "title_box valid fractions",
+      "pass": true,
+      "detail": "0.056,0.2,0.52,0.5"
+    },
+    {
+      "name": "title legible at 256px",
+      "pass": true,
+      "detail": "20.8px at 256px wide (floor 12px)"
+    },
+    {
+      "name": "title fits its box",
+      "pass": true,
+      "detail": "need ~520px, box 594px"
+    },
+    {
+      "name": "title legible at 315px listing",
+      "pass": true,
+      "detail": "25.6px at 315px listing (floor 12px)"
+    },
+    {
+      "name": "size 1280x720: title legible at 256px",
+      "pass": true,
+      "detail": "20.8px at 256px (floor 12px)"
+    },
+    {
+      "name": "size 1280x720: title fits its box",
+      "pass": true,
+      "detail": "need ~520px, box 594px"
+    },
+    {
+      "name": "size 630x500: title legible at 256px",
+      "pass": true,
+      "detail": "23.6px at 256px (floor 12px)"
+    },
+    {
+      "name": "size 630x500: title fits its box",
+      "pass": true,
+      "detail": "need ~493px, box 580px"
+    },
+    {
+      "name": "reference.png parity",
+      "pass": true,
+      "detail": "no reference declared, SKIP — add reference.png to gate pixels",
+      "skipped": true
+    }
+  ],
+  "errors": [],
+  "brief": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-057\\brief.json",
+  "image": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-057\\out.png",
+  "at": "2026-10-06"
+}
