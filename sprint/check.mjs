@@ -129,11 +129,20 @@ for (const file of gitFiles()) {
   if (file.includes("/") && (file.endsWith(".md") || file.endsWith(".mjs") || file.endsWith(".js") || file.endsWith(".json") || file.endsWith(".html"))) {
     const content = read(file);
     if (!content) continue;
-    // Check for gmail addresses
-    if (/\bgmail\.com\b/i.test(content)) {
-      privacyFiles.set(file, privacyFiles.get(file) ?? []);
-      privacyFiles.get(file).push("gmail.com address");
-      privacyFail = true;
+    // Check for gmail addresses outside forbid list
+    {
+      const forbid = forbidList.get("forbid") ?? [];
+      const gmailLines = content.split("\n");
+      for (let i = 0; i < gmailLines.length; i++) {
+        if (new RegExp("\\bgmail\\.com\\b", "i").test(gmailLines[i])) {
+          if (!forbid.some((f) => gmailLines[i].includes(f))) {
+            privacyFiles.set(file, privacyFiles.get(file) ?? []);
+            privacyFiles.get(file).push("gmail.com address");
+            privacyFail = true;
+            break;
+          }
+        }
+      }
     }
     // Check for Israeli mobile (05X XXXXXXX), excluding placeholders (all same digit, 123, 555 patterns)
     const mobMatch = content.match(/\b05\d{7}\b/g);
