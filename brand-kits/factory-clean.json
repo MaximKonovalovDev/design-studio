@@ -1,0 +1,83 @@
+{
+  "id": "factory-clean",
+  "name": "Factory Clean",
+  "source": "Promoted from templates palette clean-professional (DS-78d): picked 27 times across designs/*/cover.json, most by factory covers O-043..O-066. Same hex, kit shape.",
+  "palette": {
+    "paper": "#f6f7fb",
+    "panel": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "on-accent": "#ffffff",
+    "line": "#c9cfe3"
+  },
+  "paletteDark": {
+    "paper": "#101319",
+    "panel": "#1a1f30",
+    "ink": "#f6f7fb",
+    "muted": "#b6bdd4",
+    "accent": "#2ea36b",
+    "on-accent": "#06281a",
+    "line": "#2c3550"
+  },
+  "type": {
+    "display": "Bahnschrift, 'Segoe UI', Arial, sans-serif",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif",
+    "hebrew": "'Heebo', 'Assistant', 'Noto Sans Hebrew', 'Segoe UI', Arial, sans-serif"
+  },
+  "spacing": {
+    "xs": "8px",
+    "sm": "16px",
+    "md": "24px",
+    "lg": "48px",
+    "xl": "64px"
+  },
+  "voice": {
+    "tone": "Plain and honest, one claim per line. Names the product, the price and what is inside.",
+    "tagline": "Clean cover, true price, readable at 256px.",
+    "cta": "How to adopt: DELIVERY.md"
+  },
+  "slots": {
+    "heroKicker": "FACTORY CLEAN COVER",
+    "heroTitle": "Product name here",
+    "heroSub": "One honest claim, facts only from the listing.",
+    "ctaLabel": "How to adopt: DELIVERY.md"
+  },
+  "lockup": {
+    "wordmark": "FACTORY CLEAN",
+    "stack": "wordmark over tagline, accent rule on top",
+    "css": ".eb-lockup{border-block-start:6px solid var(--accent);color:var(--ink);font-family:var(--font-display)}"
+  },
+  "tokens": {
+    "colors": {
+      "paper": "#f6f7fb",
+      "panel": "#e4e8f4",
+      "ink": "#12131f",
+      "muted": "#444a63",
+      "accent": "#087a4a",
+      "on-accent": "#ffffff",
+      "line": "#c9cfe3"
+    },
+    "colorsDark": {
+      "paper": "#101319",
+      "panel": "#1a1f30",
+      "ink": "#f6f7fb",
+      "muted": "#b6bdd4",
+      "accent": "#2ea36b",
+      "on-accent": "#06281a",
+      "line": "#2c3550"
+    },
+    "fonts": {
+      "display": "Bahnschrift, 'Segoe UI', Arial, sans-serif",
+      "body": "'Segoe UI', Verdana, Arial, sans-serif",
+      "hebrew": "'Heebo', 'Assistant', 'Noto Sans Hebrew', 'Segoe UI', Arial, sans-serif"
+    },
+    "spacing": {
+      "xs": "8px",
+      "sm": "16px",
+      "md": "24px",
+      "lg": "48px",
+      "xl": "64px"
+    }
+  }
+}

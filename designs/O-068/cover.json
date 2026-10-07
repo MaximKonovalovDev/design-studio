@@ -1,0 +1,98 @@
+{
+  "product": "cover:itch/sample-pack",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Dungeon Asset Pack",
+  "pick": "pixel",
+  "template": "covers/item-board",
+  "kicker": "Pixel item pack",
+  "claim": "128 crisp item sprites on a 16x16 grid",
+  "chips": [
+    "PNG + SVG",
+    "8 families",
+    "Tile-ready"
+  ],
+  "badge": "$9 one-time",
+  "tokens": {
+    "bg": "#ff8a1f",
+    "bg-2": "#ff6f0a",
+    "ink": "#1a1030",
+    "muted": "#33204f",
+    "accent": "#3a1d8a",
+    "accent-ink": "#2a1263",
+    "on-accent": "#ffd27a",
+    "chip-bg": "#fff3e0",
+    "chip-ink": "#1a1030",
+    "chip-line": "#1a1030"
+  },
+  "fonts": {
+    "display": "Verdana, Tahoma, 'Segoe UI', sans-serif",
+    "body": "Verdana, Tahoma, 'Segoe UI', sans-serif",
+    "mono": "'Lucida Console', Consolas, monospace"
+  },
+  "titlePx": 90,
+  "titlePxCard": 50,
+  "titleWeight": 700,
+  "titleTrack": "-0.04em",
+  "titleWrapWide": [
+    "Dungeon",
+    "Asset Pack"
+  ],
+  "titleWrapCard": [
+    "Dungeon Asset Pack"
+  ],
+  "chipR": "0px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "item-size": "96px",
+    "item-size-card": "48px",
+    "item-render": "pixelated"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/theme-kit-vol1/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/theme-kit-vol1/preview/cover.png",
+  "landing": "from-design-studio/O-068/",
+  "assetsFrom": "the product's own assets/ pictures",
+  "assets": [
+    {
+      "name": "item-1.png",
+      "src": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-1.png",
+      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-1=<path>)"
+    },
+    {
+      "name": "item-2.png",
+      "src": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-2.png",
+      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-2=<path>)"
+    },
+    {
+      "name": "item-3.png",
+      "src": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-3.png",
+      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-3=<path>)"
+    },
+    {
+      "name": "item-4.png",
+      "src": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-4.png",
+      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-4=<path>)"
+    },
+    {
+      "name": "item-5.png",
+      "src": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-5.png",
+      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-5=<path>)"
+    },
+    {
+      "name": "item-6.png",
+      "src": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-6.png",
+      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-6=<path>)"
+    },
+    {
+      "name": "item-7.png",
+      "src": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-7.png",
+      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-7=<path>)"
+    },
+    {
+      "name": "item-8.png",
+      "src": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-8.png",
+      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-8=<path>)"
+    }
+  ]
+}

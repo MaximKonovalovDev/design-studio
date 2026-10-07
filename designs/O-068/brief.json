@@ -1,5 +1,5 @@
 {
-  "title": "Consultant Starter Kit Vol 2",
+  "title": "Dungeon Asset Pack",
   "size": {
     "w": 1280,
     "h": 720
@@ -21,7 +21,7 @@
         0.96,
         0.3
       ],
-      "title_longest": 17
+      "title_longest": 18
     }
   ],
   "dir": "ltr",
@@ -66,8 +66,8 @@
     0.52,
     0.5
   ],
-  "title_px": 88,
+  "title_px": 90,
   "title_longest": 10,
-  "order": "O-044",
-  "product": "cover:gumroad/consultant-starter-kit-vol2"
+  "order": "O-068",
+  "product": "cover:itch/sample-pack"
 }

@@ -1,0 +1,26 @@
+/* designs/O-069/tokens.css: O-069 Dungeon Tileset Pack (pixel). All page color comes from these vars. */
+:root {
+  --bg: #ff8a1f;
+  --bg-2: #ff6f0a;
+  --ink: #1a1030;
+  --muted: #33204f;
+  --accent: #3a1d8a;
+  --accent-ink: #2a1263;
+  --on-accent: #ffd27a;
+  --chip-bg: #fff3e0;
+  --chip-ink: #1a1030;
+  --chip-line: #1a1030;
+  --font-display: Verdana, Tahoma, 'Segoe UI', sans-serif;
+  --font-body: Verdana, Tahoma, 'Segoe UI', sans-serif;
+  --font-mono: 'Lucida Console', Consolas, monospace;
+  --title-px: 88px;
+  --title-px-card: 50px;
+  --title-weight: 700;
+  --title-track: -0.04em;
+  --copy-w: 52%;
+  --claim-w: 560px;
+  --chip-r: 0px;
+  --item-size: 96px;
+  --item-size-card: 48px;
+  --item-render: pixelated;
+}

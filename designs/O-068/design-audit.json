@@ -4,7 +4,7 @@
     {
       "name": "brief.json parses",
       "pass": true,
-      "detail": "Consultant Starter Kit Vol 2"
+      "detail": "Dungeon Asset Pack"
     },
     {
       "name": "brief size sane",
@@ -44,32 +44,32 @@
     {
       "name": "out.png non-trivial",
       "pass": true,
-      "detail": "419945B"
+      "detail": "224923B"
     },
     {
       "name": "contrast title",
       "pass": true,
-      "detail": "17.23:1 vs 4.5:1 (#12131f on #f6f7fb)"
+      "detail": "7.67:1 vs 4.5:1 (#1a1030 on #ff8a1f)"
     },
     {
       "name": "contrast subtitle",
       "pass": true,
-      "detail": "8.15:1 vs 4.5:1 (#444a63 on #f6f7fb)"
+      "detail": "6.10:1 vs 4.5:1 (#33204f on #ff8a1f)"
     },
     {
       "name": "contrast cta",
       "pass": true,
-      "detail": "5.39:1 vs 4.5:1 (#ffffff on #087a4a)"
+      "detail": "8.56:1 vs 4.5:1 (#ffd27a on #3a1d8a)"
     },
     {
       "name": "contrast chip",
       "pass": true,
-      "detail": "18.44:1 vs 4.5:1 (#12131f on #ffffff)"
+      "detail": "16.50:1 vs 4.5:1 (#1a1030 on #fff3e0)"
     },
     {
       "name": "contrast kicker",
       "pass": true,
-      "detail": "6.24:1 vs 3:1 (#066a3f on #f6f7fb)"
+      "detail": "6.52:1 vs 3:1 (#2a1263 on #ff8a1f)"
     },
     {
       "name": "title_box valid fractions",
@@ -79,27 +79,27 @@
     {
       "name": "title legible at 256px",
       "pass": true,
-      "detail": "17.6px at 256px wide (floor 12px)"
+      "detail": "18.0px at 256px wide (floor 12px)"
     },
     {
       "name": "title fits its box",
       "pass": true,
-      "detail": "need ~440px, box 594px"
+      "detail": "need ~450px, box 594px"
     },
     {
       "name": "title legible at 315px listing",
       "pass": true,
-      "detail": "21.7px at 315px listing (floor 12px)"
+      "detail": "22.1px at 315px listing (floor 12px)"
     },
     {
       "name": "size 1280x720: title legible at 256px",
       "pass": true,
-      "detail": "17.6px at 256px (floor 12px)"
+      "detail": "18.0px at 256px (floor 12px)"
     },
     {
       "name": "size 1280x720: title fits its box",
       "pass": true,
-      "detail": "need ~440px, box 594px"
+      "detail": "need ~450px, box 594px"
     },
     {
       "name": "size 630x500: title legible at 256px",
@@ -109,7 +109,7 @@
     {
       "name": "size 630x500: title fits its box",
       "pass": true,
-      "detail": "need ~425px, box 580px"
+      "detail": "need ~450px, box 580px"
     },
     {
       "name": "reference.png parity",
@@ -119,7 +119,7 @@
     }
   ],
   "errors": [],
-  "brief": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-044\\brief.json",
-  "image": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-044\\out.png",
+  "brief": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-068\\brief.json",
+  "image": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-068\\out.png",
   "at": "2026-10-06"
 }

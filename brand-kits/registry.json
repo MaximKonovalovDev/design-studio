@@ -2,6 +2,7 @@
   "name": "ds-brandkits-v1",
   "kits": [
     { "id": "studio", "name": "Design Studio", "file": "studio.json" },
-    { "id": "engine2040-ui1", "name": "Engine2040 UI-1", "file": "engine2040-ui1.json" }
+    { "id": "engine2040-ui1", "name": "Engine2040 UI-1", "file": "engine2040-ui1.json" },
+    { "id": "factory-clean", "name": "Factory Clean", "file": "factory-clean.json" }
   ]
 }
