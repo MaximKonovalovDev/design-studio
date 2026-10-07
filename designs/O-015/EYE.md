@@ -1,3 +1,3 @@
-USED: yes 2c6122b0 (factory LS-10 adopt O-015 re-cover to preview/cover.png; listing/itch.md:68,74 coveradopt)
-eye: EYE-2026-10-06
-proof: Read factory from-design-studio/O-015/out-630x500.png + listing/itch.md coveradopt lines + git log 2c6122b0
+USED: yes 2c6122b0 (factory listing/itch.md:68,74 coveradopt O-015 re-cover; from-design-studio/O-015 bytes on disk; preview/cover.png last ded4c5e4 note)
+eye: EYE-2026-10-07
+proof: Read listing/itch.md coveradopt lines + Read DELIVERY.md + git log 2c6122b0 adopt; csv still delivered/no, lead flips per DS-98

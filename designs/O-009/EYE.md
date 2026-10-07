@@ -1,3 +1,3 @@
-USED: no, marketing-studio campaigns/aeo-checker still 0 PNG and launch.md:19 still says Visual: none; from-design-studio holds only O-006 O-024; HEAD d1bc052
-eye: EYE-2026-10-06
-proof: Read campaigns/aeo-checker/launch.md Visual none + listed from-design-studio (O-006 O-024 only); 3d unadopted, lead inbox line: marketing-studio copy samples/ads ad-1 ad-2 ad-3 hero hero-b into campaigns/aeo-checker per HANDOFF-marketing-studio.md and commit naming the files
+USED: no, marketing-studio campaigns/aeo-checker/launch.md:19 still says Visual: none; from-design-studio/O-009 bytes landed at 87d0b88 but launch not pointed; HEAD 764aad0
+eye: EYE-2026-10-07
+proof: Read launch.md Visual none + Read ad-1.png.json order O-009 + listed from-design-studio/O-009 (ad-1/2/3 hero); 4d unadopted, lead inbox line ready in RESULT
