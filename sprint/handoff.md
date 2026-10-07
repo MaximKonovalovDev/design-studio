@@ -3,7 +3,7 @@
 Round: 295
 Written: 2026-10-07T00:47Z by lead (token d75b refreshed 00:36Z; halt absent, inbox 0 open).
 Knobs: width 3; keeper batch lead2/125/127 reshaped to 135+136/125/127 (FAIL-first law): pilot deferred (ran 21:03Z, still fresh).
-Batch: builder 135 PARTIAL->BLOCKED forbid.json (konovalov cleared, gmail branch ignored forbid), builder 136 DONE gmail branch forbid-aware, builder 125 DONE O-065 verified-built, builder 127 DONE O-064 re-delivered 23/23.
+Batch: builder 135 PARTIAL->BLOCKED forbid.json (<redacted> cleared, gmail branch ignored forbid), builder 136 DONE gmail branch forbid-aware, builder 125 DONE O-065 verified-built, builder 127 DONE O-064 re-delivered 23/23.
 ROUND: real no | built 55 | judged 36 | delivered 27 | adopted 39 | tools 16 | unjudged-oldest none | in-flight 0 (cumulative, unchanged).
 
 ## Heading

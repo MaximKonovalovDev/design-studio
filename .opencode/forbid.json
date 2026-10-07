@@ -11,6 +11,7 @@
     "Contact me at test@gmail.com for more info",
     "Test 1: Detect gmail.com",
     "PASS: gmail.com detected",
-    "WARN: gmail.com detection may not be working as expected"
+    "WARN: gmail.com detection may not be working as expected",
+    "\\"
   ]
 }
