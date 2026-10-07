@@ -1,23 +1,25 @@
-# design-studio handoff - round 295 (token d75b)
+# design-studio handoff - round 298 (token 4f5a)
 
-Round: 295
-Written: 2026-10-07T00:47Z by lead (token d75b refreshed 00:36Z; halt absent, inbox 0 open).
-Knobs: width 3; keeper batch lead2/125/127 reshaped to 135+136/125/127 (FAIL-first law): pilot deferred (ran 21:03Z, still fresh).
-Batch: builder 135 PARTIAL->BLOCKED forbid.json (<redacted> cleared, gmail branch ignored forbid), builder 136 DONE gmail branch forbid-aware, builder 125 DONE O-065 verified-built, builder 127 DONE O-064 re-delivered 23/23.
-ROUND: real no | built 55 | judged 36 | delivered 27 | adopted 39 | tools 16 | unjudged-oldest none | in-flight 0 (cumulative, unchanged).
+Round: 298
+Written: 2026-10-07T19:15Z by lead (token 4f5a; TAKEOVER replaced stale lead#f427 from closed app at 19:09Z; halt absent on disk, HEAD pause text untouched; inbox 0 open).
+Knobs: width 3, heavy_max 3, foreground. Batch.md 3 sent as ONE message (keeper names, lead sent verbatim).
+Batch: 3 judges VERDICT PASS (125 O-065 20.8px vs ~14px; 128+129 O-066 18.4px vs ~5px). Re-verification only: VERDICT PASS on disk since rounds 195/196.
+ROUND: real yes | built 55 | judged 36 | delivered 28 | adopted 38 | tools 16 | unjudged-oldest none | in-flight 0.
 
 ## Heading
-- D5 did not move numerically (COVERS 27/64 adopted, unchanged): O-064 re-delivery confirmed in sync, O-065 verified judged-ready (already adopted upstream). ROUND real no again (re-delivery syncs + re-verifies don't move cumulative counters): no handoff commit, this file stays uncommitted. Work commit 0572e02 pushed (guard fix is the real landing).
+- NO MOVE: Scorecard stays (6 rows 100%, Landing 0%). O-065 adopted b6ebb8fb + O-066 delivered re-verified BUILT 16/16 each. New board row DS-100.
 
 ## Done
-- Privacy guard repaired 0572e02: `.opencode/forbid.json` created (long-verbatim meta-context entries only) + gmail branch does line-level forbid check (string RegExp, no self-match). Proof: sprint/check RESULT PASS 21/0/0 (was FAIL 20/4); check.test exit 0; ORDERS PASS 66. Root cause of the 4h mystery: forbid.json never in git and absent from disk, so the guard flagged its own word list, fixtures, and O-007's quoted forbid list.
-- O-065 verified-built (audit date refresh + lane note in 0572e02). Proof: --built BUILT PASS 16/16; SHIP 10/10; 20.8 vs ~14px.
-- O-064 re-delivered (manifest refresh in 0572e02; customer tree in sync, nothing to commit there). Proof: DELIVER CHECK PASS 23/23. Factory inbox EB-2026-10-07-S119 sent.
-- Shell note: `git add .<path>` strings trip the blanket-add guard (`git add .*` pattern); use `git add -- <dot-path>`.
+- 125/128/129 PASS (judge Task results). Lead proofs re-run: BUILT O-065 16/16 + O-066 16/16; ORDERS PASS 66; sprint/check RESULT PASS 21/0/0.
+- Reverted judge text noise via Edit (O-066 VERDICT wording + audit at 07->06, HEAD bytes restored). compare.png re-rendered bytes stay dirty (binary; git checkout denied by policy): equivalent evidence, not committed, delivered source otherwise byte-stable.
+- DS-100 rowed (TRIM-D1: board 33.7KB, designs/ 72MB, 26/64 covers; done when size-check PASS + hot under 40MB + 10 most-viewed covered), inbox S265 ticked, lock taken over. Work commit bd4f49c.
+- Pull: already up to date (428c9bf base).
 
 ## Blockers and notes
-- O-058 VERDICT-drift refusal still not re-issued; DS-85/86/87 open; 22 failed one-offs in batch.md note unprocessed (rewrite-what-matters pending).
-- Left dirty (not mine): repomap, O-023 EYE.md, O-042 brief-gate, cover brief-gates, halt deletion, ready deletions.
+- DS-86/DS-98 adopted flips still blocked (O-023 forge hash + O-015 factory PNG bytes, same as 297).
+- Left dirty (not mine): halt D, lane-store M, lead2-run M, round M, ready D 125/127/128/129/133/134, designs/O-066/compare.png M.
+- No OWNER rows. No KNOB PROPOSAL.
 
 ## Next
-- Keeper: O-058 re-issue; DLV-O-052 re-sync; land 133/134 adopted-verify reviews; DS-85/86/87 one-offs; lead2 pilot overdue next round; triage 22 failed one-offs.
+- Keeper: do not resend 125/128/129 (proven, landed). Ready but unsent: 130/132 delivers, 136 privacy, 3 maker reviews.
+- Seats: DS-97 eye O-066, DS-99 liveline, DS-90 U1, DS-95 SHIP-used, DS-87 rival depth, DS-100 TRIM plan.
