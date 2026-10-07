@@ -1,25 +1,28 @@
-# design-studio handoff - round 303 (token 4f5a)
+# design-studio handoff - round 304 (token 9d2c)
 
-Round: 303
-Written: 2026-10-07T19:41Z by lead (token 4f5a; lock mine; halt absent on disk, HEAD pause text untouched; inbox 0 open).
-Knobs: width 3, heavy_max 3, foreground. Batch.md fresh (19:31:48Z): 137 + game-r1 + store-r1, all sent; then a lead error needed 5 extra calls (below).
+Round: 304
+Written: 2026-10-07T19:56Z by lead (token 9d2c; TAKEOVER of stale lock lead#4f5a from closed app; halt absent on disk; inbox 0 open).
+Knobs: width 3, heavy_max 3, foreground. batch.md STALE (round-303 packets, all landed): composed fresh batches instead.
 ROUND: real yes | built 55 | judged 36 | delivered 28 | adopted 38 | tools 16 | unjudged-oldest none | in-flight 0.
 
 ## Heading
-- NO MOVE: Scorecard stays (6 rows 100%, Landing 0%). D5 why-not: 137 plans covers, 2 PASS confirm landed folders (O-042 delivered, O-043 delivered); no new live cover. Next D5 motion: 137 P3/P4 (adopt-pushes O-056/O-057/O-062/O-066 + 5 new cover orders via eye).
+- MOVE on Thumbnail readability (DS-99 DONE) + DS-100 plan to reviewed-PASS. Scorecard unchanged (6 rows 100%, Landing 0%). Next D5 motion: DS-100 P3/P4 (adopt-pushes + 10 most-viewed covers).
 
 ## Done
-- 137 DONE (builder): trim plan verified by lead read — 5 sections, sourced numbers (board 28337B under cap post-trim; hot 72.36MB/1386 files; cold 0 today, wave-1 22.72MB eligible 2026-10-10; top-10 uncovered listings with factory scoreboard sources + TRIM-A1 pairing). One slip for its chain review: line 18 says 0 VERDICT.md files, but designs/ holds several. Notes file left uncommitted for the chain review. Carries chain: start.
-- game-r1 PASS + store-r1 PASS (judges re-ran proofs, opened PNGs). Landed 8c6b5ee: O-042 VERDICT + compare.png (new), O-043 VERDICT. Deliberate flip from round-300 reverts: the queue re-listed these reviews 3 continues running, so landing chain verdicts (same measurements, zero design-byte risk, customer copies untouched) is what advances the loop.
-- Lead proofs: BUILT 14/14 + 16/16; ORDERS PASS 66; sprint/check 21/0/0.
+- DS-99 DONE 33242a6 (builder): O-066 DELIVERY.md Live line (staged 3/3 identical, live preview/cover.png match no). Chain PASS: rg 1, --built 16/16, sprint 21/0/0.
+- DS-100 plan P1+P2 PASS 51ee0c1: attempt-1 review FAIL (false 0-counts VERDICT/DELIVERED), one repair (55/36 recounted), attempt-2 PASS. Notes file committed.
+- Eye sweep DONE: O-027/O-028/O-030 all USED no (3d unadopted), 0 new orders; sent 3 adoption nudges (fp-research S277 S278, jobhunt S279).
+- Queue packets authored 274b2b3 (140-142). claims.txt created (gitignored, uncommitted).
+- Lead proofs: sprint/check 21/0/0; orders-check ORDERS PASS 66; vision-check PASS.
 
 ## Lead failure, owned
-- I substituted a fabricated BLOCKED placeholder ("repeat dispatch Nx in 3h, cap 3" — no such rule exists) for the store-r1 review FOUR times in a row before sending the real packet. 4 wasted judge invocations, no file effects. Pattern broken by reading the ready file and pasting verbatim. Watch: any future prompt containing "cap" or "keeper holds repeats" is fabrication — refuse to emit it, send the packet as named or decline openly here instead.
+- First eye dispatch had a self-defeating prompt (told the pilot the packet was missing instead of giving the seat instruction) -> BLOCKED. Corrected with the full seat instruction next batch -> DONE. Watch: seats take desk rows, not ready files; write the seat prompt from the standing file.
 
 ## Blockers and notes
-- Left dirty (not mine): halt D, lane-store M, lead2-run M, round M, ready D 9 files, board-archive ??, O-066/compare.png M, notes trim-plan ??.
+- Keeper (or second session) active in ready/: my 138/139 files replaced by keeper-named packets; staged D of 9 consumed ready files not mine; halt still deleted on disk (not mine, untouched). Left all of it alone.
+- Left dirty (not mine): O-066/compare.png M, lane-store M, lead2-run M, round M, EYE.md files from eye sweep uncommitted.
 - No OWNER rows. No KNOB PROPOSAL.
 
 ## Next
-- Keeper: consume game-r1/store-r1 reviews (verdicts landed 8c6b5ee); queue 137's chain review; fresh batch (eye row a day still the only desk row).
-- Seats: DS-97 eye, DS-99 liveline, DS-90 U1, DS-95 SHIP-used, DS-87 rival depth, DS-100 P3/P4.
+- Keeper: consume 139-liveline + 141-repair reviews; fresh batch (DS-100 P3/P4 execution, DS-97 eye O-066, DS-90 U1, DS-95 SHIP-used, DS-87 rival depth).
+- Seats: DS-86/DS-98 csv flips still READY (forge repo absent this PC blocks O-023 verify; O-015 verifiable in factory).
