@@ -1,0 +1,11 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/shot.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/rpgmaker-import-fixer/preview/screenshot_fix.png",
+      "what": "the customer's own picture screenshot_fix.png",
+      "bytes": 15148
+    }
+  ]
+}

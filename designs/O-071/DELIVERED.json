@@ -1,0 +1,116 @@
+{
+  "order_id": "O-071",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/wildflowers-vol1",
+  "delivered_utc": "2026-10-07T23:20Z",
+  "source": "design-studio designs/O-071",
+  "landing": "products/print-niche/wildflowers-vol1/covers/from-design-studio/O-071",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "20 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/print-niche/wildflowers-vol1/covers/from-design-studio/O-071/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/761b930c500e0546b27d8bef21c90cf74b0624ebff7b386e4fd1ef3064ba3fc7/manifest.json",
+      "bytes": 194,
+      "sha256": "d2ba44200a8cb1d2ed8defcf3eee8c6f2efcd3abeb1815ad403c96a06b3f6bb7"
+    },
+    {
+      "name": ".cache/761b930c500e0546b27d8bef21c90cf74b0624ebff7b386e4fd1ef3064ba3fc7/out-630x500.png",
+      "bytes": 131275,
+      "sha256": "2676380d3da2568a934135ffd236d1df462306697942acaedc1e2a5ab081eff1"
+    },
+    {
+      "name": ".cache/761b930c500e0546b27d8bef21c90cf74b0624ebff7b386e4fd1ef3064ba3fc7/out.png",
+      "bytes": 290325,
+      "sha256": "821ae4ab8b5f3496d5bb4f4aa1625cb99533aaae691be2bc7f89a1f12b8e69a6"
+    },
+    {
+      "name": ".cache/761b930c500e0546b27d8bef21c90cf74b0624ebff7b386e4fd1ef3064ba3fc7/thumb-256.png",
+      "bytes": 24105,
+      "sha256": "61b57ba62a676fa5ab8bdb3687f41d22706e303ce9afd571476fbb6aebd949e6"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1272,
+      "sha256": "aa31734a5941fc053d86f6f877d7f3c2980b6c09544912e5b265e22b48d0d1ab"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1182,
+      "sha256": "78ac6c40128100dc9258ca2851292ec6ec7425723137f8317bc45d74362e6171"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 525,
+      "sha256": "f423e40f7abeb86a9c2357ee74dbf4e999d3b855f84e9310783007633dedce0b"
+    },
+    {
+      "name": "art.css",
+      "bytes": 4107,
+      "sha256": "bd4c6a52f3b92cb798f818b05dd0cd10e51818b29f4fc3729ba3cf3df60cb8a4"
+    },
+    {
+      "name": "art.html",
+      "bytes": 494,
+      "sha256": "46735500e3b504a3ec1a89cdfe138e781a5d8111a9db100909ee3e5ed5b6ed3a"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 377,
+      "sha256": "c667be4239504f3859dfa4cb2191e945e8100dc2ff99b268ba8858818f7b4387"
+    },
+    {
+      "name": "assets/shot.png",
+      "bytes": 168384,
+      "sha256": "ef9df7fedeaa2ba46453186cbf23b2926ddf4dbbf06ecd806660314d3e077038"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1206,
+      "sha256": "07c37b8670a5f5b37ed06452c9337a6541f710c84cd8a7f9112f73d2d410ac05"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 125549,
+      "sha256": "40f8ab8899aaf67a30a9a1d72b672b3a5ba8eab7d827199d78cf849f4753885b"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 1804,
+      "sha256": "6c69ba1ab8e2bb0a54ad3d72bf83d309c0d8bc1c295286eac3b0af828511473a"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2977,
+      "sha256": "615404e2b3cdeee3b42220791517e158f5d4ff028aca513d049c286d1fac7b74"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 131275,
+      "sha256": "2676380d3da2568a934135ffd236d1df462306697942acaedc1e2a5ab081eff1"
+    },
+    {
+      "name": "out.png",
+      "bytes": 290325,
+      "sha256": "821ae4ab8b5f3496d5bb4f4aa1625cb99533aaae691be2bc7f89a1f12b8e69a6"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8548,
+      "sha256": "b491c7b6306a280c3ae37e374a99e475feae5044eae0285bcdabfed8e3336df7"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 24105,
+      "sha256": "61b57ba62a676fa5ab8bdb3687f41d22706e303ce9afd571476fbb6aebd949e6"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 697,
+      "sha256": "a0a0ddc6d5f76654d37d1ac84cb47951f675c28d38fcdc3f53345fa55d0861dc"
+    }
+  ]
+}

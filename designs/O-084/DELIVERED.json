@@ -1,0 +1,116 @@
+{
+  "order_id": "O-084",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/woodland-vol2",
+  "delivered_utc": "2026-10-07T23:23Z",
+  "source": "design-studio designs/O-084",
+  "landing": "products/print-niche/woodland-vol2/covers/from-design-studio/O-084",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "20 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/print-niche/woodland-vol2/covers/from-design-studio/O-084/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/fe2d64aaa93798600ef60407c6f6daf932125f8c32394c1f636d828b47e46d18/manifest.json",
+      "bytes": 194,
+      "sha256": "083c45725a76403b7e54404fb3529966643ba62a60a1205feae0b3c888b531f8"
+    },
+    {
+      "name": ".cache/fe2d64aaa93798600ef60407c6f6daf932125f8c32394c1f636d828b47e46d18/out-630x500.png",
+      "bytes": 126533,
+      "sha256": "92d64c4440e77fd91b2a6d26b807168a96989dd09c4686fd57530a95eed3105e"
+    },
+    {
+      "name": ".cache/fe2d64aaa93798600ef60407c6f6daf932125f8c32394c1f636d828b47e46d18/out.png",
+      "bytes": 267756,
+      "sha256": "45157826e7f09d33cdc7ea3fbbbee026fa749fc340d55fd083bfb94c9f56bda8"
+    },
+    {
+      "name": ".cache/fe2d64aaa93798600ef60407c6f6daf932125f8c32394c1f636d828b47e46d18/thumb-256.png",
+      "bytes": 22876,
+      "sha256": "b6e60c743acd45e40968b56e384eb6fa1915529e259a3e68b7dbd73201508b69"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1257,
+      "sha256": "41811b3bcca5821b4a60bf8455f2637906f7f058f522532ca7b01b9bb2d762f4"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1180,
+      "sha256": "96cbb23bcc6d959710b952b6957084915a0a3e97e4833e57e8a144d7dcc45a75"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 522,
+      "sha256": "3a01183e85f20e4282b6ace3d4a164eca9d9e810ca7c20b0bf009bcec4e20b97"
+    },
+    {
+      "name": "art.css",
+      "bytes": 4107,
+      "sha256": "bd4c6a52f3b92cb798f818b05dd0cd10e51818b29f4fc3729ba3cf3df60cb8a4"
+    },
+    {
+      "name": "art.html",
+      "bytes": 490,
+      "sha256": "05db0ffb36b473f088f13bb835f0c1dde73b6bdf91772054bf3da8a66cbfc464"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 374,
+      "sha256": "09c619c3eccd029ddd24acb67044adc87004a145342180b799b2cdc2ab3f387f"
+    },
+    {
+      "name": "assets/shot.png",
+      "bytes": 137887,
+      "sha256": "a01ac9f1af52f39e14e534285a9f535b13c10bdee27a6205e078c217b5856e6d"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1201,
+      "sha256": "f04841a1095e27f471ded485b5060e26cd26572e1957d74a435c56ea300a1bca"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 117049,
+      "sha256": "cbe1952d01a1f802babd0be811dcd8eddc85eaeb12b505b8d7b99e8a740be6bb"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 1777,
+      "sha256": "88c1e665982f5639fbcffd453ad0bfe53dc1cb75838fda58bec61e0ed4c2cac8"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2975,
+      "sha256": "dc64c034208dd34a1abb9237e39a72daf3732050bf3a008507250cdee9cec413"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 126533,
+      "sha256": "92d64c4440e77fd91b2a6d26b807168a96989dd09c4686fd57530a95eed3105e"
+    },
+    {
+      "name": "out.png",
+      "bytes": 267756,
+      "sha256": "45157826e7f09d33cdc7ea3fbbbee026fa749fc340d55fd083bfb94c9f56bda8"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8531,
+      "sha256": "c3a8ff8262a2a449234ea11ba08cae3e03899cfa7f5ebad0c1eaaf765c8a935b"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 22876,
+      "sha256": "b6e60c743acd45e40968b56e384eb6fa1915529e259a3e68b7dbd73201508b69"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 695,
+      "sha256": "947f163fdf40f7d4de2da1a661ad37383a75db8f85b43e9d53a155492b6575d9"
+    }
+  ]
+}

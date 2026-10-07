@@ -1,0 +1,116 @@
+{
+  "order_id": "O-072",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/glimmer-screen-seeing-desktop-pet",
+  "delivered_utc": "2026-10-07T23:20Z",
+  "source": "design-studio designs/O-072",
+  "landing": "products/ai-pet/screen-seeing-companion/covers/from-design-studio/O-072",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "20 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/ai-pet/screen-seeing-companion/covers/from-design-studio/O-072/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/ee13409d921709d1422f2a24f4cecf370feba96a3ec925b5891f1fdcdfe2dbde/manifest.json",
+      "bytes": 194,
+      "sha256": "ab65686e70ce4273efc800e869d404490bf5a54c779301c0dbb99b3835a71ccf"
+    },
+    {
+      "name": ".cache/ee13409d921709d1422f2a24f4cecf370feba96a3ec925b5891f1fdcdfe2dbde/out-630x500.png",
+      "bytes": 123133,
+      "sha256": "03449c531c365122c7409b986f7bac901796c1410497bb83ca68896ad2196f02"
+    },
+    {
+      "name": ".cache/ee13409d921709d1422f2a24f4cecf370feba96a3ec925b5891f1fdcdfe2dbde/out.png",
+      "bytes": 256491,
+      "sha256": "8e3f8a4db0cfd3d6a372f2c368b10de5390de80b11f6630a3a2a9a491f895416"
+    },
+    {
+      "name": ".cache/ee13409d921709d1422f2a24f4cecf370feba96a3ec925b5891f1fdcdfe2dbde/thumb-256.png",
+      "bytes": 24067,
+      "sha256": "f11990819d76ea78fb0f9006bb3c4cd0e9c8951d6bbdd4753f2cae949b4e2f76"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1297,
+      "sha256": "fda15c4da989faf38c251d3ab0b2f575bbaefd9ba889708393a82aa6bfd43622"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1173,
+      "sha256": "21bb81587c712e782ba38aeb3dbab12ccc18d4c0294593d39bfaa2089e48ebff"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 529,
+      "sha256": "6b3b1f923bb4d38af9c39bb0add435f5876b72892dbcc4469f07477c69290ce2"
+    },
+    {
+      "name": "art.css",
+      "bytes": 4107,
+      "sha256": "bd4c6a52f3b92cb798f818b05dd0cd10e51818b29f4fc3729ba3cf3df60cb8a4"
+    },
+    {
+      "name": "art.html",
+      "bytes": 500,
+      "sha256": "ee7f06952c43f223f8565165a168c2b23b16cc89aca82bf773de822340327ce5"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 374,
+      "sha256": "3c0f23caf87833cd76285ee2310dd0dde8579a51bb79d8ef0ce2e84164983a49"
+    },
+    {
+      "name": "assets/shot.png",
+      "bytes": 61908,
+      "sha256": "0f596b85f4e3c7dd9850ae1355f009585d4620b33b470dd07eebab9abf34cb0b"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1215,
+      "sha256": "db95e0077ad4eab08d557c9fcb024103c87808e98d7feb9d549928ab5c505a58"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 138917,
+      "sha256": "c8767a5cecc0dfee26d73e4c63ba0220260d55e7d1a65010f95b21b2dd7fc2ef"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 1770,
+      "sha256": "25bca91b1ab5f52f1db2db857183a0774c0fb42133d9502d8035cbdad887a0bd"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2968,
+      "sha256": "35609db82297ea1504448e47ccf5c153cbba7f731525f6d15a05d5d9e3b4240a"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 123133,
+      "sha256": "03449c531c365122c7409b986f7bac901796c1410497bb83ca68896ad2196f02"
+    },
+    {
+      "name": "out.png",
+      "bytes": 256491,
+      "sha256": "8e3f8a4db0cfd3d6a372f2c368b10de5390de80b11f6630a3a2a9a491f895416"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8528,
+      "sha256": "83f408d3897b95373f4d94f8256fa5ed66b8510d1595e0783ecd9fd34e6d5c55"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 24067,
+      "sha256": "f11990819d76ea78fb0f9006bb3c4cd0e9c8951d6bbdd4753f2cae949b4e2f76"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 689,
+      "sha256": "786a32da62d0a315b84aa9f0f1e61a4ff7b975657efc615df09863de416f9c9c"
+    }
+  ]
+}

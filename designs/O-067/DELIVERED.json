@@ -1,0 +1,116 @@
+{
+  "order_id": "O-067",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/octosprite-8-direction-sprite-generator",
+  "delivered_utc": "2026-10-07T23:19Z",
+  "source": "design-studio designs/O-067",
+  "landing": "products/game-dev-2d/pixzels-8dir/covers/from-design-studio/O-067",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "20 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/game-dev-2d/pixzels-8dir/covers/from-design-studio/O-067/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/e2dcaa5a993363be0a8d5fab1701dc78670d56ada48980ff77a93894536c3611/manifest.json",
+      "bytes": 194,
+      "sha256": "feca65f6d04355f845a7765d1b1336430302c789e4c1c815e7d39129954d99b4"
+    },
+    {
+      "name": ".cache/e2dcaa5a993363be0a8d5fab1701dc78670d56ada48980ff77a93894536c3611/out-630x500.png",
+      "bytes": 135134,
+      "sha256": "4800f381ea0600c3036f97426584365be74ced0a9e7180b9b28da287d8af5ead"
+    },
+    {
+      "name": ".cache/e2dcaa5a993363be0a8d5fab1701dc78670d56ada48980ff77a93894536c3611/out.png",
+      "bytes": 299401,
+      "sha256": "c35db18f0c196985ac08ea74e04bed1862b164172989178d90717af4848ae349"
+    },
+    {
+      "name": ".cache/e2dcaa5a993363be0a8d5fab1701dc78670d56ada48980ff77a93894536c3611/thumb-256.png",
+      "bytes": 26618,
+      "sha256": "f6fcc34147364d989452b5fc968026ba02fedc9ea45a37d0d2dea9163ec0ed3e"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1287,
+      "sha256": "c978e4b5782e70fa1b932bf80e48f191d3d47f48bd5ffbc3bb09126d3c37c907"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1183,
+      "sha256": "515d7015962fcc20abc220f789de93a322e4e040912944e204a8855e934d1c95"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 531,
+      "sha256": "4c7fd7dbfb6dfaa6c1025fa829db590a7f9539c06956e796776be8e966331b5a"
+    },
+    {
+      "name": "art.css",
+      "bytes": 4107,
+      "sha256": "bd4c6a52f3b92cb798f818b05dd0cd10e51818b29f4fc3729ba3cf3df60cb8a4"
+    },
+    {
+      "name": "art.html",
+      "bytes": 517,
+      "sha256": "d473b2cd923ad526dc8310397273c52abafbc265dee6ee14b2afc6fdba081dc4"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 366,
+      "sha256": "e8df180bb883865f1bade7d5f965ac228a04d50bfd4810f52d51002b135cd458"
+    },
+    {
+      "name": "assets/shot.png",
+      "bytes": 34149,
+      "sha256": "3214f03aec91169a5abdee78d7c85c1ca9e86a2d2845b00e8412208013a5664b"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1230,
+      "sha256": "6ff6578026e2b9432d682d69364a424d75f7d3698afb06fb6acf0e67e8a60a59"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 154756,
+      "sha256": "0c64da29fde5a3680ac27614fd7467bc274f2555d624bab9c21569a8b15ed6e8"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 1848,
+      "sha256": "1d90d996b9b2908e7056bf34c625d70389479a2ada80d8476d5f8658009b7045"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2978,
+      "sha256": "888eb6539c688fb4521106ca50db75db983c8e236a2c64efbbd1596870333b54"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 135134,
+      "sha256": "4800f381ea0600c3036f97426584365be74ced0a9e7180b9b28da287d8af5ead"
+    },
+    {
+      "name": "out.png",
+      "bytes": 299401,
+      "sha256": "c35db18f0c196985ac08ea74e04bed1862b164172989178d90717af4848ae349"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8601,
+      "sha256": "7be1286548287cff07209927ff06fa12b1142bc7c4fc0bd573d4f74a177bbbcb"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 26618,
+      "sha256": "f6fcc34147364d989452b5fc968026ba02fedc9ea45a37d0d2dea9163ec0ed3e"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 698,
+      "sha256": "4ddde821e247b8c387fac68b21114b0499ef455ac12f9568ac7960f19643810d"
+    }
+  ]
+}

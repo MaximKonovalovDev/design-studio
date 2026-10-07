@@ -5,12 +5,12 @@ Sample: C:\Users\me\Desktop\design-studio\designs\O-067\brief.json
 
 ## Score
 
-- [x] brief-complete: Overworld Tileset Pack 1280x720
-- [x] render-exists: 1280x720 225488B
+- [x] brief-complete: OctoSprite 8-Direction Studio 1280x720
+- [x] render-exists: 1280x720 299401B
 - [x] audit-green: fresh auditBrief PASS
-- [x] contrast-aa: title:7.7, subtitle:6.1, cta:8.6, chip:16.5, kicker:6.5
+- [x] contrast-aa: title:17.2, subtitle:8.2, cta:5.4, chip:18.4, kicker:6.2
 - [x] thumbnail-legible: 17.6px at 256px (floor 12px), pixels in thumb-256.png 256x144 — human verdict: title reads at listing size
-- [x] title-fits: need ~396px, box 594px
+- [x] title-fits: need ~484px, box 594px
 - [x] tokens-disciplined: all color via var(--*)
 - [x] type-pair: 3 font token(s), page uses type
 - [x] rtl-gate: dir=ltr

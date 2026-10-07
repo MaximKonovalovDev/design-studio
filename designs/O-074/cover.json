@@ -1,0 +1,63 @@
+{
+  "product": "cover:itch/e2040-mcp-listing",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "e2040 MCP Tools",
+  "pick": "clean-professional",
+  "template": "covers/app-window",
+  "kicker": "Agent tools for game worlds",
+  "claim": "20 tools for agents. 5 min setup. Free.",
+  "chips": [
+    "20 tools",
+    "5 min setup",
+    "Free"
+  ],
+  "badge": "$0 free",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "'Inter', Arial, sans-serif",
+    "body": "'Inter', Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 104,
+  "titlePxCard": 58,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "e2040 MCP",
+    "Tools"
+  ],
+  "titleWrapCard": [
+    "e2040 MCP Tools"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "shot-zoom": "1",
+    "shot-x": "0%",
+    "shot-y": "0%"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/tools-funnel/e2040-mcp-listing/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/tools-funnel/e2040-mcp-listing/preview/cover-630x500.png",
+  "landing": "products/tools-funnel/e2040-mcp-listing/covers/from-design-studio/O-074/",
+  "assetsFrom": "the product's own preview/ pictures",
+  "assets": [
+    {
+      "name": "shot.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/tools-funnel/e2040-mcp-listing/preview/shot-tools.png",
+      "what": "the customer's own picture shot-tools.png"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/shot.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-3d-props/spring-40-prop-pack/preview/screenshot_garden_bloom_1920x1080.png",
+      "what": "the customer's own picture screenshot_garden_bloom_1920x1080.png",
+      "bytes": 2512703
+    }
+  ]
+}

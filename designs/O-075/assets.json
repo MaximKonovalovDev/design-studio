@@ -1,0 +1,11 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/shot.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/mixed-tileset-exporter/preview/screenshot_map.png",
+      "what": "the customer's own picture screenshot_map.png",
+      "bytes": 8241
+    }
+  ]
+}

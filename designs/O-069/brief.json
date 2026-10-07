@@ -1,5 +1,5 @@
 {
-  "title": "Dungeon Tileset Pack",
+  "title": "Dungeon Asset Pack",
   "size": {
     "w": 1280,
     "h": 720
@@ -14,14 +14,14 @@
       "w": 630,
       "h": 500,
       "name": "store-card",
-      "title_px": 50,
+      "title_px": 58,
       "title_box": [
         0.04,
         0.04,
         0.96,
         0.3
       ],
-      "title_longest": 12
+      "title_longest": 18
     }
   ],
   "dir": "ltr",
@@ -66,8 +66,8 @@
     0.52,
     0.5
   ],
-  "title_px": 88,
-  "title_longest": 7,
+  "title_px": 104,
+  "title_longest": 10,
   "order": "O-069",
-  "product": "cover:itch/sample-pack"
+  "product": "cover:itch/theme-kit-vol-1-dungeon"
 }

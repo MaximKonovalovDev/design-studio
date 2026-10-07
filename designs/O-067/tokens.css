@@ -1,26 +1,26 @@
-/* designs/O-067/tokens.css: O-067 Overworld Tileset Pack (pixel). All page color comes from these vars. */
+/* designs/O-067/tokens.css: O-067 OctoSprite 8-Direction Studio (clean-professional). All page color comes from these vars. */
 :root {
-  --bg: #ff8a1f;
-  --bg-2: #ff6f0a;
-  --ink: #1a1030;
-  --muted: #33204f;
-  --accent: #3a1d8a;
-  --accent-ink: #2a1263;
-  --on-accent: #ffd27a;
-  --chip-bg: #fff3e0;
-  --chip-ink: #1a1030;
-  --chip-line: #1a1030;
-  --font-display: Verdana, Tahoma, 'Segoe UI', sans-serif;
-  --font-body: Verdana, Tahoma, 'Segoe UI', sans-serif;
-  --font-mono: 'Lucida Console', Consolas, monospace;
+  --bg: #f6f7fb;
+  --bg-2: #e4e8f4;
+  --ink: #12131f;
+  --muted: #444a63;
+  --accent: #087a4a;
+  --accent-ink: #066a3f;
+  --on-accent: #ffffff;
+  --chip-bg: #ffffff;
+  --chip-ink: #12131f;
+  --chip-line: #c9cfe3;
+  --font-display: 'Inter', Arial, sans-serif;
+  --font-body: 'Inter', Verdana, Arial, sans-serif;
+  --font-mono: Consolas, 'Courier New', monospace;
   --title-px: 88px;
   --title-px-card: 50px;
   --title-weight: 700;
-  --title-track: -0.04em;
+  --title-track: -0.02em;
   --copy-w: 52%;
   --claim-w: 560px;
-  --chip-r: 0px;
-  --item-size: 96px;
-  --item-size-card: 48px;
-  --item-render: pixelated;
+  --chip-r: 8px;
+  --shot-zoom: 1;
+  --shot-x: 0%;
+  --shot-y: 0%;
 }

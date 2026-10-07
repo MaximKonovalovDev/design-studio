@@ -1,5 +1,5 @@
 {
-  "title": "Overworld Tileset Pack",
+  "title": "OctoSprite 8-Direction Studio",
   "size": {
     "w": 1280,
     "h": 720
@@ -21,7 +21,7 @@
         0.96,
         0.3
       ],
-      "title_longest": 12
+      "title_longest": 18
     }
   ],
   "dir": "ltr",
@@ -67,7 +67,7 @@
     0.5
   ],
   "title_px": 88,
-  "title_longest": 9,
+  "title_longest": 11,
   "order": "O-067",
-  "product": "cover:itch/sample-pack"
+  "product": "cover:itch/octosprite-8-direction-sprite-generator"
 }

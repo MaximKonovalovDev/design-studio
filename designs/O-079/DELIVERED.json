@@ -1,0 +1,116 @@
+{
+  "order_id": "O-079",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/mileage-kit",
+  "delivered_utc": "2026-10-07T23:22Z",
+  "source": "design-studio designs/O-079",
+  "landing": "products/seasonal-tax/mileage-kit/covers/from-design-studio/O-079",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "20 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/seasonal-tax/mileage-kit/covers/from-design-studio/O-079/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/7091f6df5e3fc0412fca225f8b349b289f505fde26e26716ef63dfab3a2cfd90/manifest.json",
+      "bytes": 194,
+      "sha256": "4b40ff0342e808f39ed9afd460fd473dd6de73a3d43ee6d31bd407f4bbb83bfd"
+    },
+    {
+      "name": ".cache/7091f6df5e3fc0412fca225f8b349b289f505fde26e26716ef63dfab3a2cfd90/out-630x500.png",
+      "bytes": 119138,
+      "sha256": "d5fe50cb756a670ee12708a17d40084a976ced3c907b4dd1658351d6d79e1eb1"
+    },
+    {
+      "name": ".cache/7091f6df5e3fc0412fca225f8b349b289f505fde26e26716ef63dfab3a2cfd90/out.png",
+      "bytes": 250310,
+      "sha256": "9aafbaa0acb5c6fcc756f82b38176292567d5b0ce693f069c12b76682ccccd29"
+    },
+    {
+      "name": ".cache/7091f6df5e3fc0412fca225f8b349b289f505fde26e26716ef63dfab3a2cfd90/thumb-256.png",
+      "bytes": 24356,
+      "sha256": "34abc21c7183132d0be21ab2f584676d469e840483d84e7800affc94f6ebdaec"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1266,
+      "sha256": "f9df14b5201ef2b74b6868f4d95a5289bbf8d5d19def0ae31c138c0669dc5193"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1170,
+      "sha256": "d6b8b81356b87a2649bcdd2ab5d58dbbd9b94c5afcfd20c829320ce29e45727c"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 543,
+      "sha256": "03e5f8d6cf9188f3858c9c00d2577b89c6882cb52b878caa9223c7624f9211d3"
+    },
+    {
+      "name": "art.css",
+      "bytes": 4107,
+      "sha256": "bd4c6a52f3b92cb798f818b05dd0cd10e51818b29f4fc3729ba3cf3df60cb8a4"
+    },
+    {
+      "name": "art.html",
+      "bytes": 500,
+      "sha256": "8dafb48fe0f7fbaa9058effbbffa342613315c54515bd97976666a9e4d69983a"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 376,
+      "sha256": "e47b04da9591a8072b13bf7da371645efb4b44feabfdc55456ea74a5b3f2dfda"
+    },
+    {
+      "name": "assets/shot.png",
+      "bytes": 53182,
+      "sha256": "f54cc0cf6363d86b4471a81e97ac789a438363db6b0e20e8789283380b7933bb"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1189,
+      "sha256": "faf49ea21b7006a789e22d012a9313eb8e43d3eb367e90a42e20a128d3f7da49"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 121311,
+      "sha256": "01c7a54dfa86e0fc1fb03d1dde39ad7a3b8421bc17ff009c59e352a2a487dd3e"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 1750,
+      "sha256": "82e3564590f270ac8c61ca7467113553443cf1bb04cd531177bf63d273b9abf8"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2965,
+      "sha256": "4174e09c095724876a557d6f5eb1d892df3fd3b71b39d4512009439583aa53f7"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 119138,
+      "sha256": "d5fe50cb756a670ee12708a17d40084a976ced3c907b4dd1658351d6d79e1eb1"
+    },
+    {
+      "name": "out.png",
+      "bytes": 250310,
+      "sha256": "9aafbaa0acb5c6fcc756f82b38176292567d5b0ce693f069c12b76682ccccd29"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8522,
+      "sha256": "aa5bbc89408e6c5c3b24d30b26529e4e442c13264f20e98724277add7baa76fd"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 24356,
+      "sha256": "34abc21c7183132d0be21ab2f584676d469e840483d84e7800affc94f6ebdaec"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 686,
+      "sha256": "8ce0455ce6e55b183b5f7e30172179484f29d9169f1738ca9d8875a997dc2477"
+    }
+  ]
+}

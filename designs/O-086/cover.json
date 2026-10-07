@@ -1,0 +1,63 @@
+{
+  "product": "cover:itch/rpgmaker-import-fixer",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Map Import Fixer",
+  "pick": "clean-professional",
+  "template": "covers/app-window",
+  "kicker": "Tileset import tool",
+  "claim": "Fix sheets plus names plus shadows in 5 min.",
+  "chips": [
+    "16 plus 32 plus 48 px",
+    "5 min fix",
+    "Interiors"
+  ],
+  "badge": "$9 one-time",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "'Inter', Arial, sans-serif",
+    "body": "'Inter', Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 104,
+  "titlePxCard": 58,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Map Import",
+    "Fixer"
+  ],
+  "titleWrapCard": [
+    "Map Import Fixer"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "shot-zoom": "1",
+    "shot-x": "0%",
+    "shot-y": "0%"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/rpgmaker-import-fixer/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/rpgmaker-import-fixer/preview/cover.png",
+  "landing": "products/game-dev-2d/rpgmaker-import-fixer/covers/from-design-studio/O-086/",
+  "assetsFrom": "the product's own preview/ pictures",
+  "assets": [
+    {
+      "name": "shot.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/rpgmaker-import-fixer/preview/screenshot_fix.png",
+      "what": "the customer's own picture screenshot_fix.png"
+    }
+  ]
+}

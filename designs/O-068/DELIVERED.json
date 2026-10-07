@@ -1,0 +1,116 @@
+{
+  "order_id": "O-068",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/overworld-tileset-pack",
+  "delivered_utc": "2026-10-07T23:19Z",
+  "source": "design-studio designs/O-068",
+  "landing": "products/game-dev-2d/tileset-overworld-pack/covers/from-design-studio/O-068",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "20 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/game-dev-2d/tileset-overworld-pack/covers/from-design-studio/O-068/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/75e1d03c25d0c7c3f194f34b80fc6dfeaad1fa0052c371fdf6eec5c3a2628792/manifest.json",
+      "bytes": 194,
+      "sha256": "ca6cfd9d0de6a20f09995ac80c5172be2184a2c5165102ebc5e94e01ab3120c6"
+    },
+    {
+      "name": ".cache/75e1d03c25d0c7c3f194f34b80fc6dfeaad1fa0052c371fdf6eec5c3a2628792/out-630x500.png",
+      "bytes": 144041,
+      "sha256": "793a682f8972a27c7c31c0be201468c9b9696c3536bc089bc7a3cfc418b35a93"
+    },
+    {
+      "name": ".cache/75e1d03c25d0c7c3f194f34b80fc6dfeaad1fa0052c371fdf6eec5c3a2628792/out.png",
+      "bytes": 310037,
+      "sha256": "87de68272afd10515f674ba02851cf217131571e35f301958e4343f70000b48b"
+    },
+    {
+      "name": ".cache/75e1d03c25d0c7c3f194f34b80fc6dfeaad1fa0052c371fdf6eec5c3a2628792/thumb-256.png",
+      "bytes": 34652,
+      "sha256": "92b1cc75b7fc9eb93bfc23e0c4f0e07f8c6ff60fd20e0921b57a524a5abdc19b"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1302,
+      "sha256": "483ed67eff2eaf4f932a17bddcf4ce4e19663d86522921fc922341f1d45f708c"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1176,
+      "sha256": "bdfe824b2d956f5e6292ca6be76d619f6417e97b89416a7cc204435b625da8c1"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 535,
+      "sha256": "bff55eb2eed6c17b34eb8101e3aec55b10b25ada0d3549a80696540cd3caa072"
+    },
+    {
+      "name": "art.css",
+      "bytes": 4107,
+      "sha256": "bd4c6a52f3b92cb798f818b05dd0cd10e51818b29f4fc3729ba3cf3df60cb8a4"
+    },
+    {
+      "name": "art.html",
+      "bytes": 516,
+      "sha256": "d066111a5b4bb6f2ffd751c2868ec6d40a780c7e95bc336fa172feb7a928f69d"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 374,
+      "sha256": "164149c75f64305368e9c8e82891179932f91d6e536895f536eff88b9371f35f"
+    },
+    {
+      "name": "assets/shot.png",
+      "bytes": 14837,
+      "sha256": "3927abfe06bb955a50f66ac60bc7844381edae321a263bd2cfd77d96ff61c995"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1206,
+      "sha256": "070055b2ea6c7f854773a8603a3132b411eb6a2c9d051ae3f198579f56df8a43"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 168818,
+      "sha256": "13fd970f0280f2fda6f417a5632b64c2a519ed257ae69ccbb52bba830e205240"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 1808,
+      "sha256": "403af5f48ec4ccdd08d8e468e5bf71d2c755d4b5c8e2bcc8705ff050fe88f5fb"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2971,
+      "sha256": "66e5434f8d27dca9a428f18b02f249b5c47936d18cfb126584416bb747c8a316"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 144041,
+      "sha256": "793a682f8972a27c7c31c0be201468c9b9696c3536bc089bc7a3cfc418b35a93"
+    },
+    {
+      "name": "out.png",
+      "bytes": 310037,
+      "sha256": "87de68272afd10515f674ba02851cf217131571e35f301958e4343f70000b48b"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8578,
+      "sha256": "4aa0d794c18d6b985b68c0f05a8b12a673ab39eaa16f84864b76bc03c0de1077"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 34652,
+      "sha256": "92b1cc75b7fc9eb93bfc23e0c4f0e07f8c6ff60fd20e0921b57a524a5abdc19b"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 691,
+      "sha256": "30aacb46099f5cccfcfc84feb8e89c4b453f7687d95a35832f183038c0f1531f"
+    }
+  ]
+}

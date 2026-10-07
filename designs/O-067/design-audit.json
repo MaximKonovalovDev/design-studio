@@ -4,7 +4,7 @@
     {
       "name": "brief.json parses",
       "pass": true,
-      "detail": "Overworld Tileset Pack"
+      "detail": "OctoSprite 8-Direction Studio"
     },
     {
       "name": "brief size sane",
@@ -44,32 +44,32 @@
     {
       "name": "out.png non-trivial",
       "pass": true,
-      "detail": "225488B"
+      "detail": "299401B"
     },
     {
       "name": "contrast title",
       "pass": true,
-      "detail": "7.67:1 vs 4.5:1 (#1a1030 on #ff8a1f)"
+      "detail": "17.23:1 vs 4.5:1 (#12131f on #f6f7fb)"
     },
     {
       "name": "contrast subtitle",
       "pass": true,
-      "detail": "6.10:1 vs 4.5:1 (#33204f on #ff8a1f)"
+      "detail": "8.15:1 vs 4.5:1 (#444a63 on #f6f7fb)"
     },
     {
       "name": "contrast cta",
       "pass": true,
-      "detail": "8.56:1 vs 4.5:1 (#ffd27a on #3a1d8a)"
+      "detail": "5.39:1 vs 4.5:1 (#ffffff on #087a4a)"
     },
     {
       "name": "contrast chip",
       "pass": true,
-      "detail": "16.50:1 vs 4.5:1 (#1a1030 on #fff3e0)"
+      "detail": "18.44:1 vs 4.5:1 (#12131f on #ffffff)"
     },
     {
       "name": "contrast kicker",
       "pass": true,
-      "detail": "6.52:1 vs 3:1 (#2a1263 on #ff8a1f)"
+      "detail": "6.24:1 vs 3:1 (#066a3f on #f6f7fb)"
     },
     {
       "name": "title_box valid fractions",
@@ -84,7 +84,7 @@
     {
       "name": "title fits its box",
       "pass": true,
-      "detail": "need ~396px, box 594px"
+      "detail": "need ~484px, box 594px"
     },
     {
       "name": "title legible at 315px listing",
@@ -99,7 +99,7 @@
     {
       "name": "size 1280x720: title fits its box",
       "pass": true,
-      "detail": "need ~396px, box 594px"
+      "detail": "need ~484px, box 594px"
     },
     {
       "name": "size 630x500: title legible at 256px",
@@ -109,7 +109,7 @@
     {
       "name": "size 630x500: title fits its box",
       "pass": true,
-      "detail": "need ~300px, box 580px"
+      "detail": "need ~450px, box 580px"
     },
     {
       "name": "reference.png parity",
@@ -121,5 +121,5 @@
   "errors": [],
   "brief": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-067\\brief.json",
   "image": "C:\\Users\\me\\Desktop\\design-studio\\designs\\O-067\\out.png",
-  "at": "2026-10-06"
+  "at": "2026-10-07"
 }

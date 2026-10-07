@@ -1,0 +1,11 @@
+{
+  "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
+  "assets": [
+    {
+      "file": "assets/shot.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/services/forge-engine2040-launch-system/preview/shot-plan.png",
+      "what": "the customer's own picture shot-plan.png",
+      "bytes": 80487
+    }
+  ]
+}

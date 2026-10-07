@@ -1,0 +1,65 @@
+{
+  "product": "cover:itch/woodland-vol2",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Woodland Embroidery Bundle",
+  "pick": "clean-professional",
+  "template": "covers/app-window",
+  "kicker": "Fox deer owl motifs",
+  "claim": "30 motifs in 4 hoop sizes with stitch guide.",
+  "chips": [
+    "30 motifs",
+    "4 hoop sizes",
+    "Stitch guide"
+  ],
+  "badge": "$9 one-time",
+  "tokens": {
+    "bg": "#f6f7fb",
+    "bg-2": "#e4e8f4",
+    "ink": "#12131f",
+    "muted": "#444a63",
+    "accent": "#087a4a",
+    "accent-ink": "#066a3f",
+    "on-accent": "#ffffff",
+    "chip-bg": "#ffffff",
+    "chip-ink": "#12131f",
+    "chip-line": "#c9cfe3"
+  },
+  "fonts": {
+    "display": "'Inter', Arial, sans-serif",
+    "body": "'Inter', Verdana, Arial, sans-serif",
+    "mono": "Consolas, 'Courier New', monospace"
+  },
+  "titlePx": 88,
+  "titlePxCard": 50,
+  "titleWeight": 700,
+  "titleTrack": "-0.02em",
+  "titleWrapWide": [
+    "Woodland",
+    "Embroidery",
+    "Bundle"
+  ],
+  "titleWrapCard": [
+    "Woodland",
+    "Embroidery Bundle"
+  ],
+  "chipR": "8px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "shot-zoom": "1",
+    "shot-x": "0%",
+    "shot-y": "0%"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/woodland-vol2/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/woodland-vol2/preview/cover.png",
+  "landing": "products/print-niche/woodland-vol2/covers/from-design-studio/O-084/",
+  "assetsFrom": "the product's own preview/ pictures",
+  "assets": [
+    {
+      "name": "shot.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/woodland-vol2/preview/motifs-sheet.png",
+      "what": "the customer's own picture motifs-sheet.png"
+    }
+  ]
+}

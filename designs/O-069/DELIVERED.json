@@ -1,0 +1,116 @@
+{
+  "order_id": "O-069",
+  "from_repo": "factory",
+  "maker": "design-studio",
+  "product": "cover:itch/theme-kit-vol-1-dungeon",
+  "delivered_utc": "2026-10-07T23:19Z",
+  "source": "design-studio designs/O-069",
+  "landing": "products/game-dev-bundle/theme-kit-vol1/covers/from-design-studio/O-069",
+  "customer": "C:/Users/me/Desktop/autonomous-factory",
+  "delivered": [
+    "20 files copied verbatim (refuse-overwrite-if-differs)",
+    "landing products/game-dev-bundle/theme-kit-vol1/covers/from-design-studio/O-069/ in factory"
+  ],
+  "files": [
+    {
+      "name": ".cache/3039d982d43a585c73185200d4d3d34aa9dedc336465b4cdf8732a19dceaa656/manifest.json",
+      "bytes": 194,
+      "sha256": "c7a83da763f8427918ba50aa19122c9d41cf6c30ecdb596e66764a69b408d0e3"
+    },
+    {
+      "name": ".cache/3039d982d43a585c73185200d4d3d34aa9dedc336465b4cdf8732a19dceaa656/out-630x500.png",
+      "bytes": 120935,
+      "sha256": "799498bc0212c6df3e16aa1a01aea8d2d9565479e661fb4ca6ba341299cf451c"
+    },
+    {
+      "name": ".cache/3039d982d43a585c73185200d4d3d34aa9dedc336465b4cdf8732a19dceaa656/out.png",
+      "bytes": 251511,
+      "sha256": "c90d784fa413ebb0a61f571d2ad1c5669f64633a4d5bcf45e754fabdc43b4478"
+    },
+    {
+      "name": ".cache/3039d982d43a585c73185200d4d3d34aa9dedc336465b4cdf8732a19dceaa656/thumb-256.png",
+      "bytes": 26155,
+      "sha256": "d82175452d8ccdf203916ce59a4db0e79fb3f3e6832da5e9bf73b63734f53135"
+    },
+    {
+      "name": "DELIVERY.md",
+      "bytes": 1287,
+      "sha256": "ba99ec1c5a6c3f263c7c1ead346374d0c82adc9fab7b780be6a0cb331290392f"
+    },
+    {
+      "name": "DESIGN-REVIEW.md",
+      "bytes": 1172,
+      "sha256": "f35e0682a3114ee21f22737ec5a04035aff6c892a95c326ed802691af58d595d"
+    },
+    {
+      "name": "VERDICT.md",
+      "bytes": 529,
+      "sha256": "9a9a4e048fd0232ac1223e10d1ae88ea35864a607c38b4c4cb95013e5dc840af"
+    },
+    {
+      "name": "art.css",
+      "bytes": 4107,
+      "sha256": "bd4c6a52f3b92cb798f818b05dd0cd10e51818b29f4fc3729ba3cf3df60cb8a4"
+    },
+    {
+      "name": "art.html",
+      "bytes": 502,
+      "sha256": "ff8222c6b4af913bcc83508b67e28c8f7cf0d14743129bf5c45cd7388a6d814c"
+    },
+    {
+      "name": "assets.json",
+      "bytes": 375,
+      "sha256": "e9649ee411d19f2cacf303824ce09e3b684a55d9e45907b0ab5b6196ffa34c82"
+    },
+    {
+      "name": "assets/shot.png",
+      "bytes": 8840,
+      "sha256": "8cf73a22d898762c41ee5f2f235ff1b20a8a184e3146e3d5ff7eaa84da2da94a"
+    },
+    {
+      "name": "brief.json",
+      "bytes": 1204,
+      "sha256": "b36ab029e7a8dc37cefcb944f088eca9539b6ae7a95b15a291dac75307a4828b"
+    },
+    {
+      "name": "compare.png",
+      "bytes": 122309,
+      "sha256": "d8c7188ed2b54efbb57c671fbad88669564e72f1ab0f891bb4a5793c9f59d642"
+    },
+    {
+      "name": "cover.json",
+      "bytes": 1753,
+      "sha256": "ec08d782ab225d6cef12887d133ba589d7102976330046b10aa6c01d1c445753"
+    },
+    {
+      "name": "design-audit.json",
+      "bytes": 2967,
+      "sha256": "88eb58928aabe3dca7bbab3fcb521a42d728e051111df28df820be1427ea8b5f"
+    },
+    {
+      "name": "out-630x500.png",
+      "bytes": 120935,
+      "sha256": "799498bc0212c6df3e16aa1a01aea8d2d9565479e661fb4ca6ba341299cf451c"
+    },
+    {
+      "name": "out.png",
+      "bytes": 251511,
+      "sha256": "c90d784fa413ebb0a61f571d2ad1c5669f64633a4d5bcf45e754fabdc43b4478"
+    },
+    {
+      "name": "page.html",
+      "bytes": 8513,
+      "sha256": "9c40ba7e1fb54e90ef2126dba8bcb9e4e4a13a939f369143fbeae090aa32f5ff"
+    },
+    {
+      "name": "thumb-256.png",
+      "bytes": 26155,
+      "sha256": "d82175452d8ccdf203916ce59a4db0e79fb3f3e6832da5e9bf73b63734f53135"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 688,
+      "sha256": "6053f9aa1d3f7f95e98dc21fd36ed59caad6e518fb9324edaa4b433bbc121835"
+    }
+  ]
+}

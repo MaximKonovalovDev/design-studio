@@ -2,52 +2,10 @@
   "note": "Every real picture the page uses: byte copies of files from the customer's own product folder.",
   "assets": [
     {
-      "file": "assets/item-1.png",
-      "from": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-1.png",
-      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-1=<path>)",
-      "bytes": 458
-    },
-    {
-      "file": "assets/item-2.png",
-      "from": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-2.png",
-      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-2=<path>)",
-      "bytes": 411
-    },
-    {
-      "file": "assets/item-3.png",
-      "from": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-3.png",
-      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-3=<path>)",
-      "bytes": 439
-    },
-    {
-      "file": "assets/item-4.png",
-      "from": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-4.png",
-      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-4=<path>)",
-      "bytes": 440
-    },
-    {
-      "file": "assets/item-5.png",
-      "from": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-5.png",
-      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-5=<path>)",
-      "bytes": 449
-    },
-    {
-      "file": "assets/item-6.png",
-      "from": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-6.png",
-      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-6=<path>)",
-      "bytes": 427
-    },
-    {
-      "file": "assets/item-7.png",
-      "from": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-7.png",
-      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-7=<path>)",
-      "bytes": 432
-    },
-    {
-      "file": "assets/item-8.png",
-      "from": "C:/Users/me/Desktop/design-studio/templates/covers/item-board/placeholder/item-8.png",
-      "what": "PLACEHOLDER sprite shipped with the template: replace it with the product's own item (--asset item-8=<path>)",
-      "bytes": 468
+      "file": "assets/shot.png",
+      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tileset-overworld-pack/preview/shot-map.png",
+      "what": "the customer's own picture shot-map.png",
+      "bytes": 14837
     }
   ]
 }
