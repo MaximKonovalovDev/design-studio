@@ -1,2 +1,2 @@
-# round 2026-10-06
-ROUND: real yes | built 46 | judged 27 | delivered 24 | adopted 32 | tools 16 | unjudged-oldest O-058 | in-flight 9
+# round 2026-10-07
+ROUND: real no | built 55 | judged 36 | delivered 27 | adopted 39 | tools 16 | unjudged-oldest none | in-flight 0

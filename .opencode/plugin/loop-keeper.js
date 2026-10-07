@@ -146,77 +146,17 @@ const REPOS = {
     state: "C:/Users/me/Desktop/asset-vault/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/asset-vault/sprint/loop-keeper.cmd.json",
     knobs: "C:/Users/me/Desktop/asset-vault/.opencode/knobs.json", command: "C:/Users/me/Desktop/asset-vault/.opencode/commands/sprint.md",
   },
-  "hard-solvers": {
-    lock: "C:/Users/me/Desktop/hard-solvers/sprint/lock.txt", halt: "C:/Users/me/Desktop/hard-solvers/sprint/halt",
-    handoff: "C:/Users/me/Desktop/hard-solvers/sprint/handoff.md", inbox: "C:/Users/me/Desktop/hard-solvers/sprint/inbox.md",
-    state: "C:/Users/me/Desktop/hard-solvers/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/hard-solvers/sprint/loop-keeper.cmd.json",
-    knobs: "C:/Users/me/Desktop/hard-solvers/.opencode/knobs.json", command: "C:/Users/me/Desktop/hard-solvers/.opencode/commands/sprint.md",
+  works: {
+    lock: "C:/Users/me/Desktop/works/sprint/lock.txt", halt: "C:/Users/me/Desktop/works/sprint/halt",
+    handoff: "C:/Users/me/Desktop/works/sprint/handoff.md", inbox: "C:/Users/me/Desktop/works/sprint/inbox.md",
+    state: "C:/Users/me/Desktop/works/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/works/sprint/loop-keeper.cmd.json",
+    knobs: "C:/Users/me/Desktop/works/.opencode/knobs.json", command: "C:/Users/me/Desktop/works/.opencode/commands/sprint.md",
   },
-  "security-jams": {
-    lock: "C:/Users/me/Desktop/security-jams/sprint/lock.txt", halt: "C:/Users/me/Desktop/security-jams/sprint/halt",
-    handoff: "C:/Users/me/Desktop/security-jams/sprint/handoff.md", inbox: "C:/Users/me/Desktop/security-jams/sprint/inbox.md",
-    state: "C:/Users/me/Desktop/security-jams/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/security-jams/sprint/loop-keeper.cmd.json",
-    knobs: "C:/Users/me/Desktop/security-jams/.opencode/knobs.json", command: "C:/Users/me/Desktop/security-jams/.opencode/commands/sprint.md",
-  },
-  "game-jams": {
-    lock: "C:/Users/me/Desktop/game-jams/sprint/lock.txt", halt: "C:/Users/me/Desktop/game-jams/sprint/halt",
-    handoff: "C:/Users/me/Desktop/game-jams/sprint/handoff.md", inbox: "C:/Users/me/Desktop/game-jams/sprint/inbox.md",
-    state: "C:/Users/me/Desktop/game-jams/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/game-jams/sprint/loop-keeper.cmd.json",
-    knobs: "C:/Users/me/Desktop/game-jams/.opencode/knobs.json", command: "C:/Users/me/Desktop/game-jams/.opencode/commands/sprint.md",
-  },
-  "steal-rewriter": {
-    lock: "C:/Users/me/Desktop/steal-rewriter/sprint/lock.txt", halt: "C:/Users/me/Desktop/steal-rewriter/sprint/halt",
-    handoff: "C:/Users/me/Desktop/steal-rewriter/sprint/handoff.md", inbox: "C:/Users/me/Desktop/steal-rewriter/sprint/inbox.md",
-    state: "C:/Users/me/Desktop/steal-rewriter/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/steal-rewriter/sprint/loop-keeper.cmd.json",
-    knobs: "C:/Users/me/Desktop/steal-rewriter/.opencode/knobs.json", command: "C:/Users/me/Desktop/steal-rewriter/.opencode/commands/sprint.md",
-  },
-  "llm-layers": {
-    lock: "C:/Users/me/Desktop/llm-layers/sprint/lock.txt", halt: "C:/Users/me/Desktop/llm-layers/sprint/halt",
-    handoff: "C:/Users/me/Desktop/llm-layers/sprint/handoff.md", inbox: "C:/Users/me/Desktop/llm-layers/sprint/inbox.md",
-    state: "C:/Users/me/Desktop/llm-layers/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/llm-layers/sprint/loop-keeper.cmd.json",
-    knobs: "C:/Users/me/Desktop/llm-layers/.opencode/knobs.json", command: "C:/Users/me/Desktop/llm-layers/.opencode/commands/sprint.md",
-  },
-  "cheap-llm-router": {
-    lock: "C:/Users/me/Desktop/cheap-llm-router/sprint/lock.txt", halt: "C:/Users/me/Desktop/cheap-llm-router/sprint/halt",
-    handoff: "C:/Users/me/Desktop/cheap-llm-router/sprint/handoff.md", inbox: "C:/Users/me/Desktop/cheap-llm-router/sprint/inbox.md",
-    state: "C:/Users/me/Desktop/cheap-llm-router/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/cheap-llm-router/sprint/loop-keeper.cmd.json",
-    knobs: "C:/Users/me/Desktop/cheap-llm-router/.opencode/knobs.json", command: "C:/Users/me/Desktop/cheap-llm-router/.opencode/commands/sprint.md",
-  },
-  "router-3d": {
-    lock: "C:/Users/me/Desktop/router-3d/sprint/lock.txt", halt: "C:/Users/me/Desktop/router-3d/sprint/halt",
-    handoff: "C:/Users/me/Desktop/router-3d/sprint/handoff.md", inbox: "C:/Users/me/Desktop/router-3d/sprint/inbox.md",
-    state: "C:/Users/me/Desktop/router-3d/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/router-3d/sprint/loop-keeper.cmd.json",
-    knobs: "C:/Users/me/Desktop/router-3d/.opencode/knobs.json", command: "C:/Users/me/Desktop/router-3d/.opencode/commands/sprint.md",
-  },
-  "web2api-plus": {
-    lock: "C:/Users/me/Desktop/web2api-plus/sprint/lock.txt", halt: "C:/Users/me/Desktop/web2api-plus/sprint/halt",
-    handoff: "C:/Users/me/Desktop/web2api-plus/sprint/handoff.md", inbox: "C:/Users/me/Desktop/web2api-plus/sprint/inbox.md",
-    state: "C:/Users/me/Desktop/web2api-plus/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/web2api-plus/sprint/loop-keeper.cmd.json",
-    knobs: "C:/Users/me/Desktop/web2api-plus/.opencode/knobs.json", command: "C:/Users/me/Desktop/web2api-plus/.opencode/commands/sprint.md",
-  },
-  "video-engine": {
-    lock: "C:/Users/me/Desktop/video-engine/sprint/lock.txt", halt: "C:/Users/me/Desktop/video-engine/sprint/halt",
-    handoff: "C:/Users/me/Desktop/video-engine/sprint/handoff.md", inbox: "C:/Users/me/Desktop/video-engine/sprint/inbox.md",
-    state: "C:/Users/me/Desktop/video-engine/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/video-engine/sprint/loop-keeper.cmd.json",
-    knobs: "C:/Users/me/Desktop/video-engine/.opencode/knobs.json", command: "C:/Users/me/Desktop/video-engine/.opencode/commands/sprint.md",
-  },
-  "prompt-works": {
-    lock: "C:/Users/me/Desktop/prompt-works/sprint/lock.txt", halt: "C:/Users/me/Desktop/prompt-works/sprint/halt",
-    handoff: "C:/Users/me/Desktop/prompt-works/sprint/handoff.md", inbox: "C:/Users/me/Desktop/prompt-works/sprint/inbox.md",
-    state: "C:/Users/me/Desktop/prompt-works/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/prompt-works/sprint/loop-keeper.cmd.json",
-    knobs: "C:/Users/me/Desktop/prompt-works/.opencode/knobs.json", command: "C:/Users/me/Desktop/prompt-works/.opencode/commands/sprint.md",
-  },
-  "mcp-forge": {
-    lock: "C:/Users/me/Desktop/mcp-forge/sprint/lock.txt", halt: "C:/Users/me/Desktop/mcp-forge/sprint/halt",
-    handoff: "C:/Users/me/Desktop/mcp-forge/sprint/handoff.md", inbox: "C:/Users/me/Desktop/mcp-forge/sprint/inbox.md",
-    state: "C:/Users/me/Desktop/mcp-forge/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/mcp-forge/sprint/loop-keeper.cmd.json",
-    knobs: "C:/Users/me/Desktop/mcp-forge/.opencode/knobs.json", command: "C:/Users/me/Desktop/mcp-forge/.opencode/commands/sprint.md",
-  },
-  "human-proof": {
-    lock: "C:/Users/me/Desktop/human-proof/sprint/lock.txt", halt: "C:/Users/me/Desktop/human-proof/sprint/halt",
-    handoff: "C:/Users/me/Desktop/human-proof/sprint/handoff.md", inbox: "C:/Users/me/Desktop/human-proof/sprint/inbox.md",
-    state: "C:/Users/me/Desktop/human-proof/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/human-proof/sprint/loop-keeper.cmd.json",
-    knobs: "C:/Users/me/Desktop/human-proof/.opencode/knobs.json", command: "C:/Users/me/Desktop/human-proof/.opencode/commands/sprint.md",
+  "video-studio": {
+    lock: "C:/Users/me/Desktop/video-studio/sprint/lock.txt", halt: "C:/Users/me/Desktop/video-studio/sprint/halt",
+    handoff: "C:/Users/me/Desktop/video-studio/sprint/handoff.md", inbox: "C:/Users/me/Desktop/video-studio/sprint/inbox.md",
+    state: "C:/Users/me/Desktop/video-studio/sprint/loop-keeper.json", cmd: "C:/Users/me/Desktop/video-studio/sprint/loop-keeper.cmd.json",
+    knobs: "C:/Users/me/Desktop/video-studio/.opencode/knobs.json", command: "C:/Users/me/Desktop/video-studio/.opencode/commands/sprint.md",
   },
 };
 const CFG = {
@@ -1632,6 +1572,17 @@ Ready work: ${readyItem.id}. Claim only this item; selectors do not authorize sw
       return p && !isBg(p) && RESEARCH_ROLE.test(p.role) && roles.has(p.role.replace(/-paid$/, "")) && !((standingRest.get(f) ?? 0) > now()) && seatReadiness.evaluate(p, readyUsed).ok;
     }).length;
     const reserve = Math.min(researchSeatsReady, Math.max(1, Math.ceil(width / 5)));
+    const copies = new Map();
+    // Lead 2, the User (Maxim 2026-10-06): a seat with `reserve: 1` takes its place before the one-offs,
+    // so a full ready/ never starves it (jobhunt 2026-10-06: width 2, 14 one-offs waiting, it never ran).
+    for (const f of names("standing")) {
+      if (list.length >= width) break;
+      const p = parsePacket(read(join(qsub("standing"), f)));
+      if (!p || isBg(p) || String(p.fm?.reserve ?? "") !== "1") continue;
+      const hold = seatHold(f, p, readyUsed);
+      if (!hold.ok) { if (hold.kind === "resting") held.resting.add(f.slice(0, -3)); else if (hold.kind === "readiness") held.readiness.add(f.slice(0, -3)); continue; }
+      if (take(f.slice(0, -3), p, "seat")) copies.set(f, (copies.get(f) ?? 0) + 1);
+    }
     for (const f of names("ready")) {
       if (list.length >= width - reserve) break;
       const p = parsePacket(read(join(qsub("ready"), f)));
@@ -1651,7 +1602,6 @@ Ready work: ${readyItem.id}. Claim only this item; selectors do not authorize sw
       }
       seats.push({ f, p });
     }
-    const copies = new Map();
     if (reserve) {
       let got = 0;
       for (const { f, p } of seats) {
