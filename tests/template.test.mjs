@@ -57,10 +57,11 @@ describe("the templates on disk", () => {
     assert.deepEqual(r.results.filter((x) => !x.pass).map((x) => `${x.name}: ${x.detail}`), []);
     assert.deepEqual(r.notes, []);
   });
-  it("3 cover layouts and 11 page templates, each with a preview picture", () => {
+  it("3 cover layouts and 12 page templates, each with a preview picture", () => {
     const dirs = templateDirs();
     assert.equal(dirs.filter((d) => d.family === "covers").length, 3);
-    assert.equal(dirs.filter((d) => d.family !== "covers").length, 11);
+    assert.equal(dirs.filter((d) => d.family !== "covers").length, 12);
+    assert.equal(dirs.filter((d) => d.family === "framer").length, 1);
     for (const d of dirs) assert.ok(existsSync(join(d.dir, "preview.png")), `${d.ref} preview.png`);
   });
   it("the old starters are not templates here", () => {
