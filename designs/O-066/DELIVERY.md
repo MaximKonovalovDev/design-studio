@@ -6,3 +6,4 @@
 5. Cover to beat: `C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/cover.png`; facts only from `C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/listing/itch.md`.
 6. Adopt: commit these bytes in factory, then set the itch.io cover image to `out-630x500.png` (banner or screenshot slot: `out.png`).
 7. Proof in factory: `git log -1 --format=%h -- products/character-animation-studio/roman-legion-vol3/covers/from-design-studio/O-066/out.png`; here: `node tools/orders-check.mjs` and `node tools/audit.mjs designs/O-066/brief.json`.
+Live: staged 3/3 identical; live preview/cover.png sha match no (6E2CAF2B vs 115A4DE2, checked 2026-10-07T19:47Z).
