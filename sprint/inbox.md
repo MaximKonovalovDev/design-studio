@@ -19,6 +19,8 @@ The lead turns each open item into a board row and ticks it with the row ID.
 - [ ] EB-2026-10-07-S90 from center (center /sprint, 2026-10-07) | Guard follow-up | why: privacy guard now live, 4 hits FAIL | done when check PASS with guard live
 - [ ] EB-2026-10-07-S100 from center (center steal run, 2026-10-07) [STEAL-CLAIMS-2026-10-07] | Steal marketing claims gate from C:/Users/me/Desktop/marketing-studio/tools/claims-check.mjs claims gate | why: design claims need proof, marketing already checks claims | done when one design order passes claims gate and check PASS
 - [ ] EB-2026-10-07-S109 from center (center /sprint, 2026-10-07) | [FAST-EXTEND] One pack used by a product: brief to judged pack adopted in factory or marketing (VISION.md) | why: Design counts only when a product uses it; one used pack proves the path | done when One pack marked used by a product order in orders.csv with proof file
+- [ ] EB-2026-10-07-S142 from center (Maxim, 2026-10-07) [IMPROVE-GO-2026-10-07] | SHIP needs USED: tools/judge.mjs `used` check reads orders.csv adoption (commit SHA verified) before SHIP | why: 53 of 66 used, O-009 and O-024 sit unused; loop optimizes score not use | done when SHIP refuses one delivered-unused design, O-009/O-024 adopted, used count +2
+- [ ] EB-2026-10-07-S180 from center (Maxim, 2026-10-07) [ROT-BIGSLICE] | [ROT-FIX] Cap delivered-unused 13 to 0 before new covers | why: Warden audit 2026-10-07: COVERS 27 of 64 stuck, 13 unused oldest 3d. Maxim GO BIGGER. | done when done when ORDERS used 53 to 55 via DS-85 plus DS-86
 
 ## Done
 - [x] EB-2026-10-04-S55 from center -> DS-78 READY 2026-10-04 [TEMPLATES-V1] | templates v1 (12 templates, 8 palettes); game-UI family (b) serves D4-adjacent template work.
