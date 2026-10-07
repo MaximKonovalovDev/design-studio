@@ -1,7 +1,7 @@
-Lead 2 21:03: honest loop, green checks, adoption stall is the gap
-Use: eye ran 1.5h ago, read it instead of re-running; O-009/O-024 unused, O-023 adopted in forge but unflipped.
-Usage: ORDERS open 0 | delivered 66 | used 53; 13 delivered sit unused, oldest O-009 3d; 4 NOOP in 24h, all builder (095,099,109,113).
-Diagnose: sprint/check.mjs RESULT PASS 21/0/0 now; worst is empire's view: loop/vision/size/arsenal checks 21h stale.
-Compare: Brief-to-render 100% re-confirmed today (render.mjs RENDER+QUEUE PASS); v0 docs lastUpdated 2026-10-06 still publish no fixed rubric, rival stays UNKNOWN.
-Recheck: 6b695e6 O-063 BUILT 16/16 + VERDICT PASS on disk; 65d256f O-059 same; 77a0ff8 O-043 adopted, 70a0b0e4 in factory touches listing; 0 fake greens.
-Asks: 3 filed, 0 held (inbox had 0 open): EB-2026-10-07-S3 adoption nudge O-009/O-024, S4 O-023 used-flip, S5 v0-agent depth card.
+Lead 2 17:51: strong craft, honest counts, live switch is the gap
+Journeys: J1 7 (O-066 readable at 256px, staged 18 files, live still old), J2 9 (RTL/fonts/print pass), J3 7 (58/66 used, flags stale).
+Usage: ORDERS open 0 | delivered 66 | used 58 (factory 47/47, fp-research 0/2 worst); 5 NOOP of 39 done files in 24h.
+Diagnose: sprint/check.mjs RESULT PASS 21/0/0 now; worst is empire checks 41.8h stale (loop/vision/size/arsenal unrerun).
+Compare: Brief-to-render 100% re-passes today (tools/check.mjs RESULT PASS 11 samples); v0 docs lastUpdated 2026-10-07 still no fixed rubric, rival stays UNKNOWN.
+Recheck: 65d256f O-059 BUILT 16/16, f8346b7 O-057 DELIVER 28/28, 77a0ff8 O-043 adopted (70a0b0e4 touches factory gumroad.md); 0 fake greens.
+Asks: 3 filed, 0 held (0 open): EB-2026-10-07-S232 O-066 eye+nudge, S233 O-015 used-flip, S234 DELIVERY.md live-status line.
