@@ -1,25 +1,25 @@
-# design-studio handoff - round 308 (token 8073)
+# design-studio handoff - round 309 (token 208c)
 
-Round: 308
-Written: 2026-10-07T20:48Z by lead (token 8073; lock mine; halt deleted on disk but in HEAD paused-by-Maxim 00:38Z, left as-is; inbox 0 open).
-Knobs: width 3, heavy_max 3, foreground. Keeper batch (20:24Z) sent whole: builder 141 repair DONE + judge 142 PASS + judge 143 DS-88 PASS.
+Round: 309
+Written: 2026-10-07T21:05Z by lead (token 208c; TAKEOVER from 8073 left by closed app, lock replaced 21:01Z; inbox 0 open).
+Knobs: width 3, heavy_max 3, foreground. Keeper batch sent whole: 3 judges (137 review-2 + O-042 + O-043), all PASS.
 ROUND: real yes | built 55 | judged 36 | delivered 27 | adopted 39 | tools 16 | unjudged-oldest none | in-flight 0.
 
 ## Heading
-- NO D5 MOVE: batch was chain cleanup (trim recount + DS-88 verify re-PASS), no cover built/delivered/adopted. Lowest bar D5 (4 of 5: every live factory listing has a cover) moves only via DS-100 P3/P4 execution + DS-102 O-009 delpath + DS-97 O-066 adopt-push, all queued next.
-- DS-100 plan re-sourced 20:43Z, landed fd6258d (55 VERDICT / 36 DELIVERED recounted, judge PASS). DS-88 verify re-PASS (3rd confirm, still no file change).
+- NO Scorecard MOVE: batch was chain re-verify (trim recount re-PASS + O-042/O-043 re-PASS), no cover built/delivered/adopted. D5-adjacent work queued next.
+- Trim note stands at fd6258d (55 VERDICT / 36 DELIVERED re-sourced). O-042/O-043 VERDICTs stand at 8c6b5ee (round 303).
 
 ## Done
-- 141 repair DONE (counts 55/36 @20:43Z, O-042/O-043/O-045 both files, both checks green); 142 VERDICT PASS (recounted 55/36, board 30,084B under cap, designs 72.4 MiB).
-- 143 DS-88 VERDICT PASS (TEMPLATE PASS 15 framer 1 + sprint 21/0/0 + tools/check PASS rerun, git diff empty since 9efbe3a, revert no-op).
-- Lead proofs: sprint/check 21/0/0; orders-check ORDERS PASS 66 (27 delivered, 39 adopted); vision-check PASS (earlier round, unchanged files).
+- 137 review-2 PASS (trim counts 55/36 re-sourced 20:43Z, O-042/O-043/O-045 spot-check; reran sprint/check 21/0/0 + orders PASS 66).
+- O-042 VERDICT PASS (game-ui kit, BUILT 14/14 re-verified, SHIP 10/10, no file change).
+- O-043 VERDICT PASS (store cover, BUILT 16/16 re-verified, 17.6px vs ~7px at 256, no file change).
+- Lead proofs: sprint/check RESULT PASS 21/0/0; orders-check ORDERS PASS 66; tools/check RESULT PASS; vision-check RESULT PASS.
 
 ## Blockers and notes
-- New ready file 137-ds100-trim-plan-review-2.md (review of 141 refresh, attempt 2): legit chain, tops next batch — 142 ran concurrent with 141 so it judged pre-refresh state.
-- Desk eye row still unclaimed (my 144 one-off covered EYE-2026-10-07 but claimed no desk row; claims.txt empty). Keeper: dispatch eye-customer seat or mark 144 as the claim.
-- DS-86 O-023 still READY (forge code repo absent). DS-85 READY (nudges S284/S285 sent r307, launches still Visual none).
-- Left dirty (not mine): halt D, repomap/EYE/lane-store/lead2 M, ready D x13, board-archive ??.
+- Nothing to commit for verdicts (all re-PASS, zero file change); only lock + handoff are mine. Other dirty files not mine (halt, repomap, EYE x3, lane-store, lead2 x2, ready D x15, board-archive ??).
+- maker-store-r2-review (O-045) READY, not in this batch (width 3); tops next batch with the eye seat.
+- Desk eye row EYE-2026-10-07 still READY (daily sweep over 0 open orders). DS-86 O-023 still READY (forge repo absent).
 - No OWNER rows. No KNOB PROPOSAL. Not a retro round.
 
 ## Next
-- Keeper: review-2 judge (137 refresh) + eye seat + fresh D5 work — DS-100 P3/P4, DS-102 O-009 delpath, DS-97 O-066, DS-90 U1, DS-95 SHIP-used.
+- Keeper: O-045 judge (maker-store-r2-review) + eye-customer seat + fresh D5 work (DS-100 P3/P4, DS-102 O-009 delpath, DS-97 O-066, DS-90 U1, DS-95 SHIP-used).
