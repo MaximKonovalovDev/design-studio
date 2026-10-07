@@ -2,6 +2,7 @@
 // Command, agents, board, handoff, inbox, keeper, crew, knobs and vision: PASS/WARN/FAIL
 // lines, exit 1 on FAIL. A FAIL is the lead's first packet (the keeper carries it).
 import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { execSync } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -121,7 +122,6 @@ const privacyFiles = new Map();
 let privacyFail = false;
 const gitFiles = (cmd) => {
   try {
-    const { execSync } = require("node:child_process");
     return String(execSync(`git ls-files`, { cwd: ROOT, encoding: "utf8" })).split("\n").filter(f => f.trim());
   } catch { return []; }
 };
