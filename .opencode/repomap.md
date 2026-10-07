@@ -1,5 +1,5 @@
 # repomap: design-studio
-_generated 2026-10-07T07:21:11.122Z | 7036 files mapped | 50 hot (commits, last 14d) | cap 25KB_
+_generated 2026-10-07T19:50:59.806Z | 7054 files mapped | 50 hot (commits, last 14d) | cap 25KB_
 
 ## tree
 - `.env` - 1 file
@@ -20,7 +20,7 @@ _generated 2026-10-07T07:21:11.122Z | 7036 files mapped | 50 hot (commits, last 
 - `convert/` - 4 files
 - `covers/` - 127 files
 - `design-audit.json` - 1 file
-- `designs/` - 1321 files
+- `designs/` - 1322 files
 - `docs/` - 1 file
 - `fonts/` - 18 files
 - `kits/` - 14 files
@@ -30,17 +30,17 @@ _generated 2026-10-07T07:21:11.122Z | 7036 files mapped | 50 hot (commits, last 
 - `package-lock.json` - 1 file
 - `package.json` - 1 file
 - `packs/` - 57 files
-- `research/` - 5135 files
+- `research/` - 5147 files
 - `samples/` - 97 files
-- `sprint/` - 23 files
+- `sprint/` - 25 files
 - `taste/` - 1 file
-- `templates/` - 64 files
+- `templates/` - 67 files
 - `tests/` - 37 files
 - `tokens/` - 2 files
 - `tools/` - 44 files
 
 ## symbols (hot first, xN = commits last 14d)
-### `.opencode/plugin/loop-keeper.js` x20 (177KB) - loop-keeper: continues THIS repo's /sprint when its session goes idle, and
+### `.opencode/plugin/loop-keeper.js` x22 (180KB) - loop-keeper: continues THIS repo's /sprint when its session goes idle, and
 ### `tools/audit.mjs` x10 (40KB)
 - `function titleChars`
 - `function luminance`
@@ -822,4 +822,4 @@ _generated 2026-10-07T07:21:11.122Z | 7036 files mapped | 50 hot (commits, last 
 - `def _diversify_pool`
 - `def weighted_rrf`
 
-_88 cold files dropped to fit cap_
+_89 cold files dropped to fit cap_
