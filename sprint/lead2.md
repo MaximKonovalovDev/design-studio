@@ -1,7 +1,7 @@
-Lead 2 2026-10-08T10:55Z: strong delivery, dead judge pointer, stale tail of 4 unused.
-Journeys: J4 0 (no open brief + chain/review.md missing), J1 9 (O-087 readable, factory points at it), J3 7 (81 of 85 used).
-Usage: delivered 85 used 81; 4 NOOPs in 24h (2 deliver, 1 repair, 1 privacy-guard) all already-done.
-Diagnose: sprint/check.mjs PASS 21/0/0, empire checks PASS 2.1h old; halt file set (loop pausing), lock 43m, 17 dirty.
-Compare: Brief-to-render ours still PASS 11 samples today; v0.app fetch timed out so theirs stays UNKNOWN (evidence 2026-10-02, oldest row).
-Recheck: 3d39e70 ORDERS PASS 76 adopted holds; DS-88 TEMPLATE PASS 15 holds; O-015 factory 2c6122b0 holds; no fake greens.
-Asks: EB-2026-10-08-S73 judgepath, S74 staledeliver, S75 trialjudge (0 open before, none held).
+Lead 2 15:44: CV shines, game UI idle, brief path still stalls.
+Journeys: J4 1 (O-090, dead judge pointer + no folder), J1 7 (O-042 readable, unwired), J2 9 (RTL clean, one page).
+Usage: ORDERS open 3 delivered 87 used 82; last-24h NOOP 4 of 33 done (deliveries already landed, 1 trim repair).
+Diagnose: sprint/check RESULT PASS 21/0/0; empire checks 2.3h old, all PASS; halt file set, loop pausing.
+Compare: Brief-to-render 2026-10-02 re-ran PASS today (cover 34186B+thumb 5567B); v0 docs live 2026-10-08 still no fixed rubric, stays UNKNOWN.
+Recheck: 1c9d1f6, 031c4d2, e693a38 proofs all still PASS (O-023 rg 1, ORDERS 90, COVERS 64/64); no fake green.
+Asks: EB-2026-10-08-S192 LEAD2-o042adopt, EB-2026-10-08-S193 LEAD2-compare (judgepath/coverjson skipped: DS-103/DS-106 still READY).
