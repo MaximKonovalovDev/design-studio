@@ -1,7 +1,10 @@
 // tests/png.test.mjs: the one PNG codec (tools/png.mjs): every filter type, round trips, fail-closed reads.
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { deflateSync } from "node:zlib";
+import { crc32, deflateSync } from "node:zlib";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { chunk, decodePng, decodePngPixels, encodePng, pngDims, PNG_MAGIC } from "../tools/png.mjs";
 
 // Forward filter for one row of bytes, the inverse of the decoder's predictor.
@@ -90,5 +93,34 @@ describe("png codec", () => {
     palette[8 + 8 + 9] = 3; // IHDR colour type byte: palette is not decoded to RGBA
     assert.throws(() => decodePng(palette), /unsupported color type 3/);
     assert.throws(() => pngDims(Buffer.from("not a png")), /not a PNG/);
+  });
+
+  it("round-trips a small PNG written to disk and read back", () => {
+    const dir = mkdtempSync(join(tmpdir(), "png-roundtrip-"));
+    try {
+      const file = join(dir, "small.png");
+      const w = 4;
+      const h = 3;
+      const rgba = new Uint8Array(w * h * 4).map((_, i) => (i * 29 + 5) & 255);
+      writeFileSync(file, encodePng(w, h, rgba));
+      const bytes = readFileSync(file);
+      const back = decodePng(bytes);
+      assert.equal(back.w, w);
+      assert.equal(back.h, h);
+      assert.deepEqual(Array.from(back.data), Array.from(rgba));
+      assert.deepEqual(Array.from(decodePngPixels(bytes).data), Array.from(rgba));
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("computes the CRC of a known chunk", () => {
+    // The empty IEND chunk always has the same bytes: length 0, type, CRC AE 42 60 82.
+    assert.equal(chunk("IEND", Buffer.alloc(0)).toString("hex"), "0000000049454e44ae426082");
+    // Any chunk: the CRC covers type + data and matches node's crc32 over the same bytes.
+    const data = Buffer.from("design-studio");
+    const c = chunk("tEXt", data);
+    assert.equal(c.readUInt32BE(0), data.length);
+    assert.equal(c.subarray(c.length - 4).readUInt32BE(0), crc32(Buffer.concat([Buffer.from("tEXt"), data])) >>> 0);
   });
 });

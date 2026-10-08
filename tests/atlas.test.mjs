@@ -12,7 +12,7 @@ import {
   runAtlas,
   verifyLayout,
 } from "../tools/atlas.mjs";
-import { decodePng, encodePng } from "../tools/png.mjs";
+import { chunk, decodePng, encodePng } from "../tools/png.mjs";
 
 function solid(w, h, r, g, b, a = 255) {
   const d = new Uint8Array(w * h * 4);
@@ -104,25 +104,6 @@ describe("atlas png codec", () => {
   it("decodes RGB (color type 2) as opaque", () => {
     // Minimal hand-built 2x1 RGB PNG: our encoder writes RGBA only, so this
     // exercises the type-2 branch of decodePng directly.
-    const table = new Int32Array(256);
-    for (let n = 0; n < 256; n++) {
-      let c = n;
-      for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
-      table[n] = c;
-    }
-    const crc = (buf) => {
-      let c = -1;
-      for (const v of buf) c = table[(c ^ v) & 255] ^ (c >>> 8);
-      return (c ^ -1) >>> 0;
-    };
-    const box = (type, data) => {
-      const len = Buffer.alloc(4);
-      len.writeUInt32BE(data.length);
-      const td = Buffer.concat([Buffer.from(type, "ascii"), data]);
-      const cc = Buffer.alloc(4);
-      cc.writeUInt32BE(crc(td));
-      return Buffer.concat([len, td, cc]);
-    };
     const ihdr = Buffer.alloc(13);
     ihdr.writeUInt32BE(2, 0);
     ihdr.writeUInt32BE(1, 4);
@@ -131,9 +112,9 @@ describe("atlas png codec", () => {
     const raw = Buffer.from([0, 255, 0, 0, 0, 0, 255]);
     const png = Buffer.concat([
       Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]),
-      box("IHDR", ihdr),
-      box("IDAT", deflateSync(raw)),
-      box("IEND", Buffer.alloc(0)),
+      chunk("IHDR", ihdr),
+      chunk("IDAT", deflateSync(raw)),
+      chunk("IEND", Buffer.alloc(0)),
     ]);
     const back = decodePng(png);
     assert.equal(back.w, 2);

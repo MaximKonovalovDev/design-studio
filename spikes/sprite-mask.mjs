@@ -4,8 +4,8 @@
 // scratch — no code copied. License-clean: only node builtins (zlib).
 // Credit: spriten by Chris95Hua (MIT), sprite-gen idea by sahwar.
 // Usage: node spikes/sprite-mask.mjs --seed 7 --out out.png [--size 8] [--palette gameboy] [--variant 0-7] [--scale 16]
-import { deflateSync } from "node:zlib";
 import { writeFileSync } from "node:fs";
+import { encodePng } from "../tools/png.mjs";
 
 export const PALETTES = {
   gameboy: ["#00000000", "#0f380f", "#306230", "#8bac0f", "#9bbc0f"],
@@ -69,47 +69,19 @@ const hex = (s) => [
   parseInt(s.slice(5, 7), 16), s.length > 7 ? parseInt(s.slice(7, 9), 16) : 255,
 ];
 
-// Minimal PNG writer (truecolor+alpha), node builtins only.
-const CRC_TABLE = (() => {
-  const t = new Int32Array(256);
-  for (let n = 0; n < 256; n++) {
-    let c = n;
-    for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
-    t[n] = c;
-  }
-  return t;
-})();
-const crc = (buf) => {
-  let c = -1;
-  for (const b of buf) c = CRC_TABLE[(c ^ b) & 255] ^ (c >>> 8);
-  return (c ^ -1) >>> 0;
-};
-const chunk = (type, data) => {
-  const len = Buffer.alloc(4);
-  len.writeUInt32BE(data.length);
-  const td = Buffer.concat([Buffer.from(type, "ascii"), data]);
-  const sum = Buffer.alloc(4);
-  sum.writeUInt32BE(crc(td));
-  return Buffer.concat([len, td, sum]);
-};
-
+// PNG bytes come from the one shared codec, tools/png.mjs (truecolor+alpha).
 export function toPNG(grid, paletteName = "gameboy", scale = 16) {
   const pal = (PALETTES[paletteName] ?? PALETTES.gameboy).map(hex);
   const W = grid.w * scale, H = grid.h * scale;
-  const raw = Buffer.alloc((W * 4 + 1) * H);
+  const rgba = new Uint8Array(W * H * 4);
   for (let y = 0; y < H; y++) {
-    raw[y * (W * 4 + 1)] = 0;
     for (let x = 0; x < W; x++) {
       const v = grid.cells[Math.floor(y / scale) * grid.w + Math.floor(x / scale)];
       const px = pal[v] ?? pal[0];
-      px && raw.set(px, y * (W * 4 + 1) + 1 + x * 4);
+      if (px) rgba.set(px, (y * W + x) * 4);
     }
   }
-  const ihdr = Buffer.alloc(13);
-  ihdr.writeUInt32BE(W, 0); ihdr.writeUInt32BE(H, 4);
-  ihdr[8] = 8; ihdr[9] = 6;
-  const sig = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
-  return Buffer.concat([sig, chunk("IHDR", ihdr), chunk("IDAT", deflateSync(raw)), chunk("IEND", Buffer.alloc(0))]);
+  return encodePng(W, H, rgba);
 }
 
 if (process.argv[1]?.endsWith("sprite-mask.mjs")) {

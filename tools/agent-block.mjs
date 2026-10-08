@@ -28,7 +28,7 @@ import { fileURLToPath } from "node:url";
 import { pngDims, render as realRender, buildFreePrompt, FREE_TERMS_NOTE } from "./render.mjs";
 import { auditBrief } from "./audit.mjs";
 import { RUBRIC_ID, SHIP_FLOOR, judgeSample, writeReview } from "./judge.mjs";
-import { chunk } from "./png.mjs";
+import { PNG_MAGIC, chunk } from "./png.mjs";
 
 export const ROW = "DS-05";
 export const BLOCK_ID = "ds-agent-block-v1";
@@ -61,7 +61,7 @@ export function syntheticPng(size) {
   ihdr[8] = 8;
   ihdr[9] = 2;
   const parts = [
-    Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]),
+    PNG_MAGIC,
     chunk("IHDR", ihdr),
     chunk("IDAT", deflateSync(raw)),
   ];
