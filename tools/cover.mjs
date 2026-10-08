@@ -57,9 +57,19 @@ const BASE_CSS = `
 `;
 
 // The sizes one order ships: a store cover is 1280x720 + 630x500; a spec may name its own (post visuals).
+// Multi-output shape (shot-scraper multi idea only, 0 lines copied, no new
+// dep): one --out per size, first size keeps the base name, the rest add -WxH.
+export function outForSize(base, size, isFirst) {
+  if (isFirst) return base;
+  const b = String(base);
+  const i = b.lastIndexOf(".");
+  const stem = i >= 0 ? b.slice(0, i) : b;
+  const ext = i >= 0 ? b.slice(i) : ".png";
+  return `${stem}-${size.w}x${size.h}${ext}`;
+}
 function sizeList(spec) {
-  if (spec.sizes) return spec.sizes.map((z, i) => ({ w: z.w, h: z.h, file: i === 0 ? "out.png" : `out-${z.w}x${z.h}.png` }));
-  return [{ w: 1280, h: 720, file: "out.png" }, { w: 630, h: 500, file: "out-630x500.png" }];
+  if (spec.sizes) return spec.sizes.map((z, i) => ({ w: z.w, h: z.h, file: outForSize("out.png", z, i === 0) }));
+  return [{ w: 1280, h: 720, file: "out.png" }, { w: 630, h: 500, file: outForSize("out.png", { w: 630, h: 500 }, false) }];
 }
 
 // Template lane: <order> is an id under designs/, or an absolute folder path (tools/template.mjs preview/build stamp outside designs/; proven by TEMPLATE PASS, out of compose scope).

@@ -26,6 +26,9 @@ const PATH_NAMES = ["msedge.exe", "chrome.exe", "chromium.exe"];
 
 const POWERSHELL = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe";
 
+// Edge-first browser lookup (puppeteer executable-path idea only, 0 lines
+// copied, no new dep): BROWSER_BIN wins, then fixed Edge paths, then PATH;
+// Edge names come before Chrome/Chromium in every list below.
 export function findBrowser() {
   const env = process.env.BROWSER_BIN;
   if (env && existsSync(env)) return env;
