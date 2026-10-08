@@ -1,0 +1,76 @@
+{
+  "product": "cover:itch/wildflowers-vol1-refresh",
+  "from_repo": "factory",
+  "storeName": "itch.io",
+  "title": "Wildflower Embroidery Bundle",
+  "pick": "kraft",
+  "template": "covers/sheet-fan",
+  "kicker": "Botanical hand motifs",
+  "claim": "36 botanicals x 4 hoop sizes with stitch guide",
+  "chips": [
+    "36 motifs",
+    "4 hoop sizes 4/5/6/7 in",
+    "Stitch guide PDF"
+  ],
+  "badge": "$9 one-time",
+  "tokens": {
+    "bg": "#ead7b7",
+    "bg-2": "#dcc194",
+    "ink": "#2a1a10",
+    "muted": "#573f2f",
+    "accent": "#b3261e",
+    "accent-ink": "#96190f",
+    "on-accent": "#fff4e0",
+    "chip-bg": "#f8ecd6",
+    "chip-ink": "#2a1a10",
+    "chip-line": "#96190f"
+  },
+  "fonts": {
+    "display": "'Palatino Linotype', 'Book Antiqua', Georgia, serif",
+    "body": "'Trebuchet MS', 'Segoe UI', Arial, sans-serif",
+    "mono": "'Courier New', Consolas, monospace"
+  },
+  "titlePx": 96,
+  "titlePxCard": 54,
+  "titleWeight": 700,
+  "titleTrack": "-0.015em",
+  "titleWrapWide": [
+    "Wildflower",
+    "Embroidery",
+    "Bundle"
+  ],
+  "titleWrapCard": [
+    "Wildflower",
+    "Embroidery Bundle"
+  ],
+  "chipR": "2px",
+  "copyW": "52%",
+  "claimW": "560px",
+  "vars": {
+    "sheet-ar": "0.72",
+    "sheet-w": "322px",
+    "sheet-w-card": "188px"
+  },
+  "listing": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/listing/itch.md",
+  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/covers/from-design-studio/O-071/out-630x500.png",
+  "theirsPx256": 17.6,
+  "landing": "products/print-niche/wildflowers-vol1/covers/from-design-studio/O-089/",
+  "assetsFrom": "the product's own preview/ pictures",
+  "assets": [
+    {
+      "name": "sheet-1.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/preview/motifs-sheet-1920.png",
+      "what": "the customer's own picture motifs-sheet-1920.png"
+    },
+    {
+      "name": "sheet-2.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/preview/stitched-sample.png",
+      "what": "the customer's own picture stitched-sample.png"
+    },
+    {
+      "name": "sheet-3.png",
+      "src": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/preview/cover-b.png",
+      "what": "the customer's own picture cover-b.png"
+    }
+  ]
+}
