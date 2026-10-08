@@ -1,0 +1,47 @@
+# design-studio: map for AI agents
+
+Autonomous AI design studio: brief.json -> page -> PNG -> design audit.
+Read in this order: AGENTS.md (rules), VISION.md (goal), FINISH-LINE.md (finish bars).
+
+## Entry points
+- AGENTS.md: the loop rules for every agent. Read first.
+- CLAUDE.md: imports AGENTS.md, so Claude Code reads the same rules.
+- README.md: quickstart and where the samples live.
+- tools/check.mjs: the proof. Run `node tools/check.mjs` (11 samples, RESULT PASS).
+- samples/cover/brief.json: the brief this run renders. Start here.
+
+## Root files
+- VISION.md: what the studio is for, in one page.
+- VISION-TABLES.md: research tables behind the vision.
+- FINISH-LINE.md: the finish bars D1 to D5.
+- HANDOFF-ADOPT.md: the handoff for factory covers O-043 to O-055.
+- orders.csv: the order book, one row per order.
+- arsenal.json: this repo's tool list for other repos (`node arsenal.mjs --list`).
+- opencode.jsonc: OpenCode settings.
+- package.json: Node dependencies. The proof is tools/check.mjs.
+- design-audit.json: an audit record left at the root. Not a source file.
+- LICENSE: licence.
+
+## Folders
+- .opencode/: the loop. agents/, commands/ (sprint.md), plugin/ (loop-keeper.js), skills/. repomap.md is the file map.
+- archive/: old text. Searches skip it. Open by path only.
+- brand-kits/: brand kit files (studio, factory-clean, engine2040-ui1) and registry.json.
+- canvas/: canvas templates and placeholders.json. out/ is generated.
+- convert/: game export variants, plan.json and export-game.mjs.
+- covers/: cover images, sorted in a-m, b and n-z.
+- designs/: delivered designs, one folder per order (designs/<order_id>/).
+- docs/: TOOLCHAIN.md, the tools and pipeline.
+- fonts/: font packages (heebo, inter, rubik, frank-ruhl-libre), fonts.css and fonts.json. Made by tools/fonts.mjs.
+- kits/: kit library. game-ui/ is the HUD, menu and button kit.
+- knowledge/: lane notes (career, game, lab, social, store) and tool-orders.md.
+- packs/: pack library (vol0/, plan-assemble-o040/, donors/).
+- research/: research notes. donors/ holds the donor clones (gitignored).
+- samples/: one folder per brief (cover, cover-b, story, hebrew-hero, jobhunt, cv, ads/, and more). Each has brief.json, page.html, out.png and design-audit.json.
+- spikes/: small experiments (sprite-mask).
+- sprint/: the loop files. board.md (work), handoff.md (lead position), inbox.md (asks), queue/, notes/.
+- taste/: library.json, the taste reference.
+- templates/: page templates by channel (covers, email, framer, game, print, social, web) and palettes.json.
+- tests/: the *.test.mjs files for the scripts.
+- tokens/: token builders (a06-cards.mjs, g07-build.mjs).
+- tools/: all the scripts. Open tools/README.md first.
+- node_modules/: installed packages. Do not read.
