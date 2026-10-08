@@ -8,7 +8,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { crc32, deflateSync } from "node:zlib";
+import { encodePng as encodeRgbaPng } from "./png.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, "designs", "O-023");
@@ -28,12 +28,9 @@ export class Img {
   clear(x, y) { this.set(x, y, [0, 0, 0, 0]); }
 }
 
+// The Img wrapper over the shared codec in tools/png.mjs (kept so tests/ui-pack.test.mjs keeps its call).
 export function encodePng(img) {
-  const raw = Buffer.alloc((img.w * 4 + 1) * img.h);
-  for (let y = 0; y < img.h; y++) { raw[y * (img.w * 4 + 1)] = 0; Buffer.from(img.d.buffer, y * img.w * 4, img.w * 4).copy(raw, y * (img.w * 4 + 1) + 1); }
-  const chunk = (type, data) => { const len = Buffer.alloc(4); len.writeUInt32BE(data.length); const td = Buffer.concat([Buffer.from(type), data]); const crc = Buffer.alloc(4); crc.writeUInt32BE(crc32(td) >>> 0); return Buffer.concat([len, td, crc]); };
-  const ihdr = Buffer.alloc(13); ihdr.writeUInt32BE(img.w, 0); ihdr.writeUInt32BE(img.h, 4); ihdr[8] = 8; ihdr[9] = 6;
-  return Buffer.concat([Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), chunk("IHDR", ihdr), chunk("IDAT", deflateSync(raw, { level: 9 })), chunk("IEND", Buffer.alloc(0))]);
+  return encodeRgbaPng(img.w, img.h, img.d);
 }
 
 // ---------- palette (same values as kits/game-ui/tokens.css, plus derived light and dark edges) ----------

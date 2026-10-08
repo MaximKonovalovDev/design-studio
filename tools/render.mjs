@@ -15,6 +15,8 @@ import { spawnSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { dirname, resolve, sep } from "node:path";
 import { pathToFileURL, fileURLToPath } from "node:url";
+import { pngDims } from "./png.mjs";
+export { pngDims };
 
 const FIXED_BROWSERS = [
   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
@@ -54,15 +56,7 @@ export function parseSize(text) {
   return { w, h };
 }
 
-// PNG: 8-byte magic, then IHDR with width/height as big-endian uint32 at 16/20.
-export function pngDims(buf) {
-  const magic = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
-  if (!Buffer.isBuffer(buf) || buf.length < 24 || !buf.subarray(0, 8).equals(magic)) {
-    throw new Error("not a PNG file");
-  }
-  return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
-}
-
+// pngDims lives in tools/png.mjs (one PNG codec); re-exported here so existing callers keep working.
 // DS-23 S01 one-to-many size matrix from a single brief (idea-only, no deps).
 // Consumer slots measured here: 1280x720 cover, 1080x1080 square, 1200x628
 // social. tools/audit.mjs re-passes title legibility + fits per size.

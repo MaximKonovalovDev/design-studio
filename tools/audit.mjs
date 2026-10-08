@@ -6,11 +6,11 @@
 // RTL gate. Every FAIL carries a next: hint for the aimed re-prompt. Taste stays in review.
 import { existsSync, mkdirSync, readFileSync, writeFileSync, mkdtempSync, readdirSync } from "node:fs";
 import { createHash } from "node:crypto";
-import { inflateSync } from "node:zlib";
 import { tmpdir } from "node:os";
 import { dirname, resolve, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { pngDims, SIZE_MATRIX } from "./render.mjs";
+import { pngDims, decodePngPixels } from "./png.mjs";
+import { SIZE_MATRIX } from "./render.mjs";
 // Self-checks live in ./audit-checks.mjs (split, same behavior); re-exported
 // here so `import ... from "./audit.mjs"` callers keep working.
 import {
@@ -308,80 +308,6 @@ export function pngPixelDiff(aBuf, bBuf) {
   for (let i = 0; i < rawA.data.length; i++) if (rawA.data[i] !== rawB.data[i]) diff++;
   const pct = rawA.data.length ? (diff / rawA.data.length) * 100 : 100;
   return { equal: diff === 0, diffBytes: diff, totalBytes: rawA.data.length, pct, shaA, shaB };
-}
-
-function decodePngPixels(buf) {
-  const magic = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
-  if (!Buffer.isBuffer(buf) || buf.length < 24 || !buf.subarray(0, 8).equals(magic)) throw new Error("not a PNG file");
-  let off = 8;
-  let w = 0;
-  let h = 0;
-  let bitDepth = 0;
-  let colorType = 0;
-  let compression = 0;
-  let filter = 0;
-  let interlace = 0;
-  const idat = [];
-  while (off + 8 <= buf.length) {
-    const len = buf.readUInt32BE(off);
-    const type = buf.subarray(off + 4, off + 8).toString("ascii");
-    const data = buf.subarray(off + 8, off + 8 + len);
-    if (type === "IHDR") {
-      w = data.readUInt32BE(0);
-      h = data.readUInt32BE(4);
-      bitDepth = data[8];
-      colorType = data[9];
-      compression = data[10];
-      filter = data[11];
-      interlace = data[12];
-    } else if (type === "IDAT") {
-      idat.push(data);
-    } else if (type === "IEND") {
-      break;
-    }
-    off += 12 + len;
-  }
-  if (!w || !h) throw new Error("PNG missing IHDR");
-  if (compression !== 0 || filter !== 0 || interlace !== 0) throw new Error("unsupported PNG (interlaced or filtered at IHDR)");
-  if (bitDepth !== 8) throw new Error(`unsupported bit depth ${bitDepth}`);
-  const channels = { 0: 1, 2: 3, 3: 1, 4: 2, 6: 4 }[colorType];
-  if (!channels) throw new Error(`unsupported color type ${colorType}`);
-  const bpp = channels;
-  const stride = w * bpp;
-  const raw = inflateSync(Buffer.concat(idat));
-  if (raw.length !== h * (stride + 1)) throw new Error(`unexpected IDAT length ${raw.length} for ${w}x${h}`);
-  const out = Buffer.alloc(h * stride);
-  let prev = Buffer.alloc(stride);
-  for (let y = 0; y < h; y++) {
-    const f = raw[y * (stride + 1)];
-    const cur = raw.subarray(y * (stride + 1) + 1, (y + 1) * (stride + 1));
-    const row = out.subarray(y * stride, (y + 1) * stride);
-    if (f === 0) {
-      cur.copy(row);
-    } else if (f === 1) {
-      for (let i = 0; i < stride; i++) row[i] = (cur[i] + (i >= bpp ? row[i - bpp] : 0)) & 255;
-    } else if (f === 2) {
-      for (let i = 0; i < stride; i++) row[i] = (cur[i] + prev[i]) & 255;
-    } else if (f === 3) {
-      for (let i = 0; i < stride; i++) row[i] = (cur[i] + (((i >= bpp ? row[i - bpp] : 0) + prev[i]) >> 1)) & 255;
-    } else if (f === 4) {
-      for (let i = 0; i < stride; i++) {
-        const a = i >= bpp ? row[i - bpp] : 0;
-        const b = prev[i];
-        const c = i >= bpp ? prev[i - bpp] : 0;
-        const p = a + b - c;
-        const pa = Math.abs(p - a);
-        const pb = Math.abs(p - b);
-        const pc = Math.abs(p - c);
-        const pr = pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
-        row[i] = (cur[i] + pr) & 255;
-      }
-    } else {
-      throw new Error(`unsupported filter ${f}`);
-    }
-    prev = Buffer.from(row);
-  }
-  return { w, h, data: out };
 }
 
 // Exported for tools/check.mjs winner line plus unit tests. Takes the same

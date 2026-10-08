@@ -6,14 +6,13 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { deflateSync } from "node:zlib";
 import {
-  decodePng,
-  encodePng,
   nextPow2,
   packRects,
   parseArgs,
   runAtlas,
   verifyLayout,
 } from "../tools/atlas.mjs";
+import { decodePng, encodePng } from "../tools/png.mjs";
 
 function solid(w, h, r, g, b, a = 255) {
   const d = new Uint8Array(w * h * 4);

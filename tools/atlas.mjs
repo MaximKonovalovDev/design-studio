@@ -10,8 +10,8 @@
 // soimy/maxrects-packer v2.7.3, file src/maxrects-bin.ts, pinned commit
 // 848b260b05b2c51cf53c6814b2d996d1c5043ebe, MIT licence (licence spdx MIT in
 // the repo record; credit stays in this header; the simplification to a
-// fixed growing bin with no rotation is ours). PNG codec is our own
-// (filter-0 rows + zlib, same pattern as tools/ui-pack.mjs): pure node, no
+// fixed growing bin with no rotation is ours). PNG codec: tools/png.mjs (one
+// shared copy): pure node, no
 // npm package, no network, works on the screenshots tools/render.mjs writes.
 //
 //   node tools/atlas.mjs <a.png> [b.png ...] --out atlas.png [--json atlas.json] [--pad 1] [--max 2048] [--pot]
@@ -21,123 +21,10 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import { tmpdir } from "node:os";
 import { basename, dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { crc32, deflateSync, inflateSync } from "node:zlib";
+import { decodePng, encodePng } from "./png.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CREDIT = "soimy/maxrects-packer v2.7.3 (848b260, src/maxrects-bin.ts), MIT";
-
-// ---------- PNG codec (8-bit, non-interlaced, color types 0/2/6) ----------
-function chunk(type, data) {
-  const len = Buffer.alloc(4);
-  len.writeUInt32BE(data.length);
-  const td = Buffer.concat([Buffer.from(type, "ascii"), data]);
-  const crc = Buffer.alloc(4);
-  crc.writeUInt32BE(crc32(td) >>> 0);
-  return Buffer.concat([len, td, crc]);
-}
-
-export function encodePng(w, h, rgba) {
-  const src = Buffer.from(rgba.buffer, rgba.byteOffset, w * h * 4);
-  const raw = Buffer.alloc((w * 4 + 1) * h);
-  for (let y = 0; y < h; y++) {
-    raw[y * (w * 4 + 1)] = 0;
-    src.copy(raw, y * (w * 4 + 1) + 1, y * w * 4, (y + 1) * w * 4);
-  }
-  const ihdr = Buffer.alloc(13);
-  ihdr.writeUInt32BE(w, 0);
-  ihdr.writeUInt32BE(h, 4);
-  ihdr[8] = 8;
-  ihdr[9] = 6;
-  return Buffer.concat([
-    Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]),
-    chunk("IHDR", ihdr),
-    chunk("IDAT", deflateSync(raw, { level: 9 })),
-    chunk("IEND", Buffer.alloc(0)),
-  ]);
-}
-
-function paeth(a, b, c) {
-  const p = a + b - c;
-  const pa = Math.abs(p - a);
-  const pb = Math.abs(p - b);
-  const pc = Math.abs(p - c);
-  return pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
-}
-
-// Decodes an 8-bit non-interlaced PNG (gray, RGB, RGBA) to { w, h, data RGBA }.
-// Fail-closed: anything else (palette, 16-bit, interlaced, bad CRC layout)
-// throws instead of guessing pixels.
-export function decodePng(buf) {
-  const b = Buffer.from(buf);
-  if (b.length < 33 || b[0] !== 137 || b[1] !== 80 || b[2] !== 78 || b[3] !== 71) {
-    throw new Error("not a PNG (bad signature)");
-  }
-  let pos = 8;
-  let w = 0;
-  let h = 0;
-  let bitDepth = 0;
-  let colorType = -1;
-  let interlace = 0;
-  const idat = [];
-  while (pos + 8 <= b.length) {
-    const len = b.readUInt32BE(pos);
-    const type = b.toString("ascii", pos + 4, pos + 8);
-    const data = b.subarray(pos + 8, pos + 8 + len);
-    if (type === "IHDR") {
-      w = data.readUInt32BE(0);
-      h = data.readUInt32BE(4);
-      bitDepth = data[8];
-      colorType = data[9];
-      interlace = data[12];
-    } else if (type === "IDAT") {
-      idat.push(data);
-    } else if (type === "IEND") {
-      break;
-    }
-    pos += 12 + len;
-  }
-  if (!w || !h) throw new Error("PNG has no IHDR");
-  if (bitDepth !== 8) throw new Error(`unsupported bit depth ${bitDepth} (want 8)`);
-  if (interlace !== 0) throw new Error("interlaced PNG not supported (save non-interlaced)");
-  const ch = colorType === 6 ? 4 : colorType === 2 ? 3 : colorType === 0 ? 1 : -1;
-  if (ch < 0) throw new Error(`unsupported color type ${colorType} (want 0, 2 or 6)`);
-  const raw = inflateSync(Buffer.concat(idat));
-  const stride = w * ch;
-  const out = new Uint8Array(w * h * 4);
-  let p = 0;
-  for (let y = 0; y < h; y++) {
-    const filter = raw[p++];
-    for (let x = 0; x < w; x++) {
-      for (let c = 0; c < ch; c++) {
-        const i = y * stride + x * ch + c;
-        const v = raw[p++];
-        const a = x > 0 ? out[(y * w + x - 1) * 4 + (c < 4 ? c : 3)] : 0;
-        const bb = y > 0 ? out[((y - 1) * w + x) * 4 + (c < 4 ? c : 3)] : 0;
-        const cc = x > 0 && y > 0 ? out[((y - 1) * w + x - 1) * 4 + (c < 4 ? c : 3)] : 0;
-        let r;
-        if (filter === 0) r = v;
-        else if (filter === 1) r = (v + a) & 255;
-        else if (filter === 2) r = (v + bb) & 255;
-        else if (filter === 3) r = (v + ((a + bb) >> 1)) & 255;
-        else if (filter === 4) r = (v + paeth(a, bb, cc)) & 255;
-        else throw new Error(`bad filter byte ${filter} on row ${y}`);
-        const o = (y * w + x) * 4;
-        if (ch === 4) out[o + c] = r;
-        else if (ch === 3) {
-          if (c < 2) out[o + c] = r;
-          else {
-            out[o + 2] = r;
-            out[o + 3] = 255;
-          }
-        } else {
-          out[o] = out[o + 1] = out[o + 2] = r;
-          out[o + 3] = 255;
-        }
-      }
-    }
-  }
-  return { w, h, data: out };
-}
 
 // ---------- MaxRects bin (adapted, see header credit) ----------
 function contains(a, b) {

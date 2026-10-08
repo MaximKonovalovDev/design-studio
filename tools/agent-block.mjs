@@ -28,6 +28,7 @@ import { fileURLToPath } from "node:url";
 import { pngDims, render as realRender, buildFreePrompt, FREE_TERMS_NOTE } from "./render.mjs";
 import { auditBrief } from "./audit.mjs";
 import { RUBRIC_ID, SHIP_FLOOR, judgeSample, writeReview } from "./judge.mjs";
+import { chunk } from "./png.mjs";
 
 export const ROW = "DS-05";
 export const BLOCK_ID = "ds-agent-block-v1";
@@ -41,32 +42,6 @@ const readText = (f) => {
     return null;
   }
 };
-
-// ---- CRC32 (for the synthetic placeholder PNG) ----
-const CRC_TABLE = (() => {
-  const t = new Uint32Array(256);
-  for (let n = 0; n < 256; n++) {
-    let c = n;
-    for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
-    t[n] = c >>> 0;
-  }
-  return t;
-})();
-
-function crc32(buf) {
-  let c = 0xffffffff;
-  for (let i = 0; i < buf.length; i++) c = CRC_TABLE[(c ^ buf[i]) & 0xff] ^ (c >>> 8);
-  return (c ^ 0xffffffff) >>> 0;
-}
-
-function chunk(type, data) {
-  const len = Buffer.alloc(4);
-  len.writeUInt32BE(data.length, 0);
-  const body = Buffer.concat([Buffer.from(type, "ascii"), data]);
-  const crc = Buffer.alloc(4);
-  crc.writeUInt32BE(crc32(body), 0);
-  return Buffer.concat([len, body, crc]);
-}
 
 // Synthetic placeholder PNG with TRUE dims (solid paper #faf7f0), padded so
 // audit/judge `non-trivial >= 4096B` passes. Never labelled a screenshot.
