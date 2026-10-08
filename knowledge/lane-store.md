@@ -1,27 +1,9 @@
 # lane-store: what worked or failed per order (one line each, 30 words max)
 
-O-025: pre-template CSS-only cover, palette clean-developer (retired id); count unrecorded at build; zero product pictures; SHIP 10/10.
-O-026: pre-template CSS-only cover, palette clean-developer (retired id); count unrecorded at build; 2 real pictures; SHIP 10/10.
-O-033: covers/app-window + developer, 0 hand-typed; app-window clean, 1 shot; light beats dark; SHIP 10/10.
-O-034: covers/app-window + clean-professional, 0 hand-typed; app-window clean, 1 shot; light beats dark; SHIP 10/10.
-O-035: covers/item-board + pixel, 0 hand-typed; sheet-fan era, 1-8 shots; light beats dark; SHIP 10/10.
-O-036: covers/sheet-fan + kraft, 0 hand-typed; sheet-fan clean, 3 shots; light beats dark; SHIP 10/10.
-O-037: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 shots; light beats dark; SHIP 10/10.
-O-043: covers/app-window + clean-professional, 0 hand-typed; app-window clean, 1 shot, true-price badge; 20.8px wins; SHIP 10/10.
-O-045: covers/app-window + clean-professional, 0 hand-typed; app-window clean, 1 shot, true-price badge; 20.8px wins; SHIP 10/10.
-O-048: covers/app-window + clean-professional, 0 hand-typed; app-window clean, 1 shot, true-price badge; 20.8px wins; SHIP 10/10.
-O-050: covers/app-window + clean-professional, 0 hand-typed; app-window clean, 1 shot, true-price badge; 20.8px wins; SHIP 10/10.
-O-051: covers/app-window + clean-professional, 0 hand-typed; app-window clean, 1 shot, true-price badge; 20.8px wins; SHIP 10/10.
-O-044: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 shots, count stamps, honest badges; 17.6-20.8px; SHIP 10/10.
-O-047: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 shots, count stamps, honest badges; 17.6-20.8px; SHIP 10/10.
-O-049: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 shots, count stamps, honest badges; 17.6-20.8px; SHIP 10/10.
-O-052: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 shots, count stamps, honest badges; 17.6-20.8px; SHIP 10/10.
-O-059: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 shots, count stamps, honest badges; 17.6-20.8px; SHIP 10/10.
-O-058: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 buyer-asset slides, $25 + retype limit; 17.6px beats; SHIP 10/10.
-O-060: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 shots, $7.49 badge; Inter OFL; 17.6-20.8px wins; SHIP 10/10.
-O-061: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 renders, $9 badge; Inter OFL; 17.6-20.8px wins; SHIP 10/10.
-O-062: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 real shots, true-price badges; 17.6-20.8px wins; SHIP 10/10.
-O-063: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 real shots, true-price badges; 17.6-20.8px wins; SHIP 10/10.
-O-064: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 real shots, true-price badges; 20.0-20.8px wins; SHIP 10/10.
-O-065: covers/sheet-fan + clean-professional, 0 hand-typed; sheet-fan clean, 3 real shots, true-price badges; 20.0-20.8px wins; SHIP 10/10.
-O-066: covers/item-board + clean-professional, 0 hand-typed; item-board clean, 8 real sprites, true $19, no engines; verified BUILT 16/16 SHIP 10/10.
+O-025/026: pre-template CSS covers, retired palette; 0-2 pics; SHIP 10/10.
+O-033/034: app-window, 0 hand-typed, 1 shot; light beats dark; SHIP 10/10.
+O-035: item-board+pixel, 1-8 shots; SHIP 10/10.
+O-036/037/044/047/049/052/058/059/060/061/062/063/064/065: sheet-fan (kraft suits printables), 0 hand-typed, 3 real shots, true-price badges; 17.6-20.8px wins; SHIP 10/10.
+O-043/045/048/050/051: app-window+clean-professional, 0 hand-typed, 1 shot, true-price badge; 20.8px wins; SHIP 10/10.
+O-066: item-board+clean-professional, 0 hand-typed, 8 real sprites, true $19, no engines; BUILT 16/16 SHIP 10/10.
+O-089: sheet-fan+kraft, 0 hand-typed, 3 real shots, true $9; 19.2px beats O-071 17.6px; SHIP 10/10.
