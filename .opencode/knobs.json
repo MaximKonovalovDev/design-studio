@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-08T16:12:27Z",
+  "updated": "2026-10-08T19:36:39Z",
   "knobs": {
     "width": {"value":2,"min":1,"max":30,"step":1,"why":"helpers in one batch"},
     "dispatch": {"value":"foreground","why":"owner 2026-09-28: every helper seen live"},
@@ -39,6 +39,7 @@
     {"at":"2026-10-06T14:04:37Z","knob":"width","from":1,"to":3,"by":"Maxim (Loop Boss)"},
     {"at":"2026-10-08T06:17:43Z","knob":"mcp:github.enabled","from":"on","to":"off","by":"Maxim"},
     {"at":"2026-10-08T06:18:15Z","knob":"mcp:arxiv.enabled","from":"on","to":"off","by":"Maxim"},
-    {"at":"2026-10-08T16:12:27Z","knob":"width","from":3,"to":2,"by":"Maxim (Loop Boss)"}
+    {"at":"2026-10-08T16:12:27Z","knob":"width","from":3,"to":2,"by":"Maxim (Loop Boss)"},
+    {"at":"2026-10-08T19:36:39Z","knob":"agent:builder.variant","from":"high","to":"xhigh","by":"Maxim"}
   ]
 }
