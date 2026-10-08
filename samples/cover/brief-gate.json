@@ -43,5 +43,5 @@
     "sizes well-formed: sizes must be a non-empty array of {w,h} exact pixels — next: set sizes e.g. [{\"w\":1280,\"h\":720,\"name\":\"hero\"}]",
     "facts source exists: no facts source: declare brief.facts (a path on disk) or brief.order matching orders.csv — next: add \"facts\": \"<listing file>\""
   ],
-  "at": "2026-10-06"
+  "at": "2026-10-08"
 }

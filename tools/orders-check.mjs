@@ -21,6 +21,7 @@ import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { pngDims } from "./render.mjs"; // single shared PNG-dims copy (home: tools/render.mjs)
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 export const HEADER = "order_id,from_repo,product,brief,status,delivered_path,adopted,date,adopted_commit";
@@ -170,11 +171,7 @@ export function readVerdict(id, designsDir = join(ROOT, "designs")) {
 export const BUILT_FILES = ["brief.json", "page.html", "tokens.css", "thumb-256.png", "design-audit.json", "DESIGN-REVIEW.md", "DELIVERY.md"];
 export const VERDICT_LABELS = ["BEATS", "PICTURE", "FACTS", "FIT", "LANE"];
 
-function pngDims(buf) {
-  const magic = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
-  if (!Buffer.isBuffer(buf) || buf.length < 24 || !buf.subarray(0, 8).equals(magic)) throw new Error("not a PNG file");
-  return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
-}
+// pngDims: single shared copy lives in ./render.mjs (imported above).
 
 function expectedPngs(brief) {
   const main = brief?.size;

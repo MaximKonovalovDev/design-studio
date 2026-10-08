@@ -35,6 +35,7 @@ import { copyFileSync, createWriteStream, existsSync, mkdirSync, readFileSync, r
 import { createHash } from "node:crypto";
 import { basename, dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { pngDims } from "./render.mjs"; // single shared PNG-dims copy (home: tools/render.mjs)
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DONORS = join(ROOT, "packs", "donors");
@@ -42,10 +43,10 @@ export const GIT_KEEP_BYTES = 2 * 1024 * 1024;
 
 const utcDate = () => new Date().toISOString().slice(0, 10);
 
-// --- picture dimensions without a dependency: PNG IHDR, GIF header, JPEG SOF ---
+// --- picture dimensions: PNG via the single shared copy in ./render.mjs; GIF/JPEG readers stay local ---
+// parsePngDims keeps its historic name (tests + callers) and delegates, so behavior stays identical.
 export function parsePngDims(buf) {
-  if (buf.length < 24 || buf.readUInt32BE(0) !== 0x89504e47) throw new Error("not a PNG");
-  return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
+  return pngDims(buf);
 }
 export function parseGifDims(buf) {
   if (buf.length < 10 || String(buf.subarray(0, 3)) !== "GIF") throw new Error("not a GIF");
