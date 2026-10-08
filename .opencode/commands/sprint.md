@@ -162,10 +162,10 @@ keeper yourself.
 ## 6. Stop
 
 Ending a turn is not a stop: the keeper sends the next continue. The loop stops
-only for `sprint/halt`, every ready row blocked on the owner (list them), or
+only for `sprint/halt`, or
 `node tools/check.mjs` passing with every Scorecard row of ours at 100. Then write the
 handoff, say VERDICT: PASS, PARTIAL or BLOCKED in chat, release the lock and
 end with a line `LOOP STOP: <reason>`. A loop-side stop is final: the keeper
 sends no review before it (overseer retired 2026-10-02).
-`[loop-keeper]` messages are not the owner; an owner question pauses the loop
-until the owner says GO.
+`[loop-keeper]` messages are not the owner. Never stop for an owner row: write it as an OWNER row, then take any other row or replan. An owner question does not pause the loop
+it keeps working on other rows.
