@@ -7,3 +7,4 @@ O-036/037/044/047/049/052/058/059/060/061/062/063/064/065: sheet-fan (kraft suit
 O-043/045/048/050/051: app-window+clean-professional, 0 hand-typed, 1 shot, true-price badge; 20.8px wins; SHIP 10/10.
 O-066: item-board+clean-professional, 0 hand-typed, 8 real sprites, true $19, no engines; BUILT 16/16 SHIP 10/10.
 O-089: sheet-fan+kraft, 0 hand-typed, 3 real shots, true $9; 19.2px beats O-071 17.6px; SHIP 10/10.
+O-088: sheet-fan+clean, 0 hand-typed, 3 real slides, true $25; 20.8px beats O-070 17.6px; SHIP 10/10.

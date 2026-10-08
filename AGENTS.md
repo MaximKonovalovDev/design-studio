@@ -26,3 +26,7 @@ S80 (Maxim 2026-10-03): only maker of covers, post visuals, CV layouts for the o
 - Judge PASS comes from the keeper's review (`chain/review.md`, five checks, `VERDICT.md`). Then the deliverer seat runs `node tools/orders-check.mjs --deliver <id>` (Maxim 2026-10-04: delivered = a file in the customer repo): it copies the folder into the customer repo under `from-design-studio/<id>/` (factory: `<product folder>/covers/from-design-studio/<id>/`, Maxim S84), writes `DELIVERED.json` and sets `status` delivered + `delivered_path`. The lead commits `designs/<id>` and `orders.csv` here and that customer folder by path, and sends one inbox item naming it (`node C:/Users/me/Desktop/center/empire.mjs inbox <repo> add ...`, S50). Until `--deliver` lands (tool sprint packet 0b) the lead does these steps by hand. Never edit a customer file outside `from-design-studio/`.
 - Adopted = customer commits identical bytes and points its listing/post/tool at it; verify `git -C <customer repo> log -1 --format=%h -- <file>`, then set `adopted` yes, `status` adopted, hash in `adopted_commit`.
 - Proof: `node tools/orders-check.mjs`, `--covers` for D5, `node C:/Users/me/Desktop/center/finish.mjs design-studio` for D1-D5.
+
+## Stage (Maxim 2026-10-08)
+
+The empire is at its START. Never cite sales, revenue or "0 sales" as a finding, verdict, score or reason (audits, Lead 2, steals, reviews, inbox plans). Judge work by what it builds and whether it works.
