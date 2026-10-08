@@ -135,7 +135,7 @@
         "node",
         "C:/Users/me/Desktop/center/mcp/github-mcp.mjs"
       ],
-      "enabled": true,
+      "enabled": false,
       "timeout": 20000
     },
     "arxiv": {
@@ -145,7 +145,7 @@
         "--storage-path",
         "C:/Users/me/.config/opencode/mcp/arxiv-papers"
       ],
-      "enabled": true,
+      "enabled": false,
       "timeout": 30000
     }
   },
