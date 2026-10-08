@@ -20,4 +20,4 @@ Maxim's GO 2026-10-03 ("others also need a finish line"); drafted by Claude Code
 ## Rules
 
 - Work the lowest open bar first. A `todo` proof is the first job: build it, then write the real proof here (center's vision check FAILs until every bar has one).
-- Never edit a proof to make it pass. Changing a bar needs Maxim's word.
+- A loop may RAISE a bar or fix a broken proof with a judge PASS and a written reason here (Maxim 2026-10-08). Never lower a bar, and never edit a proof to make it pass: that needs Maxim's word. `node C:/Users/me/Desktop/center/finish.mjs design-studio --lowered` exits 1 on a lower number.
