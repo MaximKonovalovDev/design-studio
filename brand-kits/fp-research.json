@@ -1,0 +1,83 @@
+{
+  "id": "fp-research",
+  "name": "FP Research Developer",
+  "source": "Promoted from templates palette developer (DS-78d): picked 2x by fp-research (O-027 print/one-pager, O-028 print/deck, brief.json palette fields). Same hex, kit shape; palette is dark so paletteDark repeats it.",
+  "palette": {
+    "paper": "#0f1320",
+    "panel": "#1a2140",
+    "ink": "#f4f6ff",
+    "muted": "#c3cbe8",
+    "accent": "#3f5bf0",
+    "on-accent": "#ffffff",
+    "line": "#4f6bff"
+  },
+  "paletteDark": {
+    "paper": "#0f1320",
+    "panel": "#1a2140",
+    "ink": "#f4f6ff",
+    "muted": "#c3cbe8",
+    "accent": "#3f5bf0",
+    "on-accent": "#ffffff",
+    "line": "#4f6bff"
+  },
+  "type": {
+    "display": "Consolas, 'Lucida Console', 'Courier New', monospace",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif",
+    "hebrew": "'Heebo', 'Assistant', 'Noto Sans Hebrew', 'Segoe UI', Arial, sans-serif"
+  },
+  "spacing": {
+    "xs": "8px",
+    "sm": "16px",
+    "md": "24px",
+    "lg": "48px",
+    "xl": "64px"
+  },
+  "voice": {
+    "tone": "Plain and technical, numbers only from the scoreboard. Names the method and the date.",
+    "tagline": "Terminal-navy developer look, monospace headlines.",
+    "cta": "How to adopt: DELIVERY.md"
+  },
+  "slots": {
+    "heroKicker": "FP-RESEARCH DEVELOPER",
+    "heroTitle": "Title here",
+    "heroSub": "One measured claim, proof box with method and date.",
+    "ctaLabel": "How to adopt: DELIVERY.md"
+  },
+  "lockup": {
+    "wordmark": "FP-RESEARCH DEVELOPER",
+    "stack": "wordmark over tagline, accent rule on top",
+    "css": ".eb-lockup{border-block-start:6px solid var(--accent);color:var(--ink);font-family:var(--font-display)}"
+  },
+  "tokens": {
+    "colors": {
+      "paper": "#0f1320",
+      "panel": "#1a2140",
+      "ink": "#f4f6ff",
+      "muted": "#c3cbe8",
+      "accent": "#3f5bf0",
+      "on-accent": "#ffffff",
+      "line": "#4f6bff"
+    },
+    "colorsDark": {
+      "paper": "#0f1320",
+      "panel": "#1a2140",
+      "ink": "#f4f6ff",
+      "muted": "#c3cbe8",
+      "accent": "#3f5bf0",
+      "on-accent": "#ffffff",
+      "line": "#4f6bff"
+    },
+    "fonts": {
+      "display": "Consolas, 'Lucida Console', 'Courier New', monospace",
+      "body": "'Segoe UI', Verdana, Arial, sans-serif",
+      "hebrew": "'Heebo', 'Assistant', 'Noto Sans Hebrew', 'Segoe UI', Arial, sans-serif"
+    },
+    "spacing": {
+      "xs": "8px",
+      "sm": "16px",
+      "md": "24px",
+      "lg": "48px",
+      "xl": "64px"
+    }
+  }
+}

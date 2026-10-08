@@ -1,0 +1,83 @@
+{
+  "id": "skillworks",
+  "name": "Skillworks Developer",
+  "source": "Promoted from templates palette developer (DS-78d): picked 2x by skillworks (O-029 print/one-pager brief.json palette, O-033 covers/app-window cover.json pick). Same hex, kit shape; palette is dark so paletteDark repeats it.",
+  "palette": {
+    "paper": "#0f1320",
+    "panel": "#1a2140",
+    "ink": "#f4f6ff",
+    "muted": "#c3cbe8",
+    "accent": "#3f5bf0",
+    "on-accent": "#ffffff",
+    "line": "#4f6bff"
+  },
+  "paletteDark": {
+    "paper": "#0f1320",
+    "panel": "#1a2140",
+    "ink": "#f4f6ff",
+    "muted": "#c3cbe8",
+    "accent": "#3f5bf0",
+    "on-accent": "#ffffff",
+    "line": "#4f6bff"
+  },
+  "type": {
+    "display": "Consolas, 'Lucida Console', 'Courier New', monospace",
+    "body": "'Segoe UI', Verdana, Arial, sans-serif",
+    "hebrew": "'Heebo', 'Assistant', 'Noto Sans Hebrew', 'Segoe UI', Arial, sans-serif"
+  },
+  "spacing": {
+    "xs": "8px",
+    "sm": "16px",
+    "md": "24px",
+    "lg": "48px",
+    "xl": "64px"
+  },
+  "voice": {
+    "tone": "Plain and tested, facts only from the listing. Names commands buyers actually run.",
+    "tagline": "Terminal-navy developer look, monospace headlines.",
+    "cta": "How to adopt: DELIVERY.md"
+  },
+  "slots": {
+    "heroKicker": "SKILLWORKS DEVELOPER",
+    "heroTitle": "Title here",
+    "heroSub": "One tested claim, facts only from the listing.",
+    "ctaLabel": "How to adopt: DELIVERY.md"
+  },
+  "lockup": {
+    "wordmark": "SKILLWORKS DEVELOPER",
+    "stack": "wordmark over tagline, accent rule on top",
+    "css": ".eb-lockup{border-block-start:6px solid var(--accent);color:var(--ink);font-family:var(--font-display)}"
+  },
+  "tokens": {
+    "colors": {
+      "paper": "#0f1320",
+      "panel": "#1a2140",
+      "ink": "#f4f6ff",
+      "muted": "#c3cbe8",
+      "accent": "#3f5bf0",
+      "on-accent": "#ffffff",
+      "line": "#4f6bff"
+    },
+    "colorsDark": {
+      "paper": "#0f1320",
+      "panel": "#1a2140",
+      "ink": "#f4f6ff",
+      "muted": "#c3cbe8",
+      "accent": "#3f5bf0",
+      "on-accent": "#ffffff",
+      "line": "#4f6bff"
+    },
+    "fonts": {
+      "display": "Consolas, 'Lucida Console', 'Courier New', monospace",
+      "body": "'Segoe UI', Verdana, Arial, sans-serif",
+      "hebrew": "'Heebo', 'Assistant', 'Noto Sans Hebrew', 'Segoe UI', Arial, sans-serif"
+    },
+    "spacing": {
+      "xs": "8px",
+      "sm": "16px",
+      "md": "24px",
+      "lg": "48px",
+      "xl": "64px"
+    }
+  }
+}

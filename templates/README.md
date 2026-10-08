@@ -2,7 +2,9 @@
 
 Start every order from a template. Never type a palette, a page shell or an art layer from an empty file.
 
-1. See what exists: `node tools/template.mjs list` (14 templates, 8 palettes; pictures: `templates/palettes.png` and each `preview.png`).
+Template-first rule (DS-78a): every order starts from `node tools/template.mjs new`; record its template id, palette id and hand-typed line count (0 when stamped-clean) in `knowledge/lane-<lane>.md`, one line per order. A palette picked twice by one customer family becomes that customer's brand kit.
+
+1. See what exists: `node tools/template.mjs list` (15 templates, 8 palettes; pictures: `templates/palettes.png` and each `preview.png`).
 2. Stamp an order: `node tools/template.mjs new <order> --template <family>/<id> --palette <id> TITLE="..." KICKER="..." --asset <name>=<the customer's own picture>`. It writes `designs/<order>/` and never overwrites a folder. It prints the slots that still hold sample text and the placeholder pictures still to replace.
 3. Build: a cover with `node tools/cover.mjs all <order>`, a page with `node tools/template.mjs build <order>` (every size, PDFs, thumb, audit, judge).
 4. After a change here: `node tools/template.mjs --check` and `node --test tests/template.test.mjs`; new pictures with `node tools/template.mjs preview --all`.

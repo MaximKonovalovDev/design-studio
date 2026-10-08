@@ -3,6 +3,33 @@
   "kits": [
     { "id": "studio", "name": "Design Studio", "file": "studio.json" },
     { "id": "engine2040-ui1", "name": "Engine2040 UI-1", "file": "engine2040-ui1.json" },
-    { "id": "factory-clean", "name": "Factory Clean", "file": "factory-clean.json" }
-  ]
+    { "id": "factory-clean", "name": "Factory Clean", "file": "factory-clean.json" },
+    { "id": "fp-research", "name": "FP Research Developer", "file": "fp-research.json" },
+    { "id": "skillworks", "name": "Skillworks Developer", "file": "skillworks.json" }
+  ],
+  "note": "DS-78d: developer picked 2x by fp-research (O-027, O-028) and 2x by skillworks (O-029, O-033), hence the two new kits; factory clean-professional x48 already has factory-clean; no other family qualifies.",
+  "paletteCounts": {
+    "factory|bold": 1,
+    "factory|clean-developer": 1,
+    "factory|clean-geometric": 1,
+    "factory|clean-modern": 1,
+    "factory|clean-professional": 48,
+    "factory|developer": 1,
+    "factory|editorial": 2,
+    "factory|epic": 1,
+    "factory|friendly": 1,
+    "factory|kraft": 1,
+    "factory|modern": 1,
+    "factory|neon": 2,
+    "factory|pixel": 1,
+    "factory|pixel-playful": 1,
+    "factory|warm-editorial": 1,
+    "forge|neon-pixel": 1,
+    "fp-research|developer": 2,
+    "jobhunt|clean": 1,
+    "jobhunt|clean-professional": 1,
+    "marketing-studio|bold": 1,
+    "skillworks|clean-developer": 1,
+    "skillworks|developer": 2
+  }
 }

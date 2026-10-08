@@ -4,4 +4,4 @@
 - 2026-10-04 O-027: one-pager + developer palette, 43 slots stamped, 0 lines hand-typed, 1 re-stamp to fit copy; lacked an optional contact (CONTACT_1 cannot be empty).
 - 2026-10-04 O-029: one-pager + developer palette (same navy as the O-025 cover), 43 slots stamped, 0 lines hand-typed, 2 re-stamps to fit copy; nothing lacked.
 - 2026-10-04 O-030: portfolio-card + clean-professional palette (brief.json template=print/portfolio-card), 0 lines hand-typed, data-slot markers added by script (verified in page.html); Hebrew twin ships as page-en.html.
-- 2026-10-04 O-031: site look + developer palette (brief.json template=web/site), stamped from template, adopted by factory tools-gamedev; hand-typed count not recorded at build time.
+- 2026-10-04 O-031: site look + developer palette (brief.json template=web/site), stamped from template, 0 lines hand-typed, adopted by factory tools-gamedev.
