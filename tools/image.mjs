@@ -138,8 +138,8 @@ export function imageReceipt(base, { model, cost = null, mediaType = "image/png"
 
 // The free image lane (tool 2): the live model list decides what is free, never
 // the snapshot. A model is free when its pricing block exists and every price
-// field is 0. No agent calls a key: --free without one only lists and waits;
-// the first real call waits for Maxim's word.
+// field is 0. Lane ON for covers (Maxim 2026-10-08): the builder seat may run one
+// render per cover; --free without a key only lists, and a paid cost aborts.
 export const MODELS_URL = "https://openrouter.ai/api/v1/models";
 export function filterFreeModels(data) {
   const list = Array.isArray(data) ? data : data?.data ?? [];

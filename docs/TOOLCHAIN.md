@@ -54,7 +54,7 @@ Proof of the whole lane: `node tools/check.mjs` (RESULT PASS = loop check plus
 Windows lead box: lanes 1-10 and 12-13 (CPU only, no GPU). No model runs on this
 PC (Maxim 2026-10-04: no local image models, so no ComfyUI and no Stable
 Diffusion; rows 11 and 15 are gone). Keyed art (#14) and the free OpenRouter image
-lane (`tools/image.mjs`, opt-in only, zero-network --check; a call runs only with keys saved by Maxim, read from env
+lane (`tools/image.mjs`, ON for covers since Maxim 2026-10-08: the builder seat runs it for a cover background only; cost must be 0 or it aborts; zero-network --check; a call needs keys saved by Maxim, read from env
 `OPENROUTER_API_KEY` or, when that is empty, the files
 `%USERPROFILE%\.empire\secrets\openrouter.txt` and `openrouter2.txt` (the next key
 is tried once on HTTP 429 or a credit error), never in the repo, never printed. The free vision-model fallback list in `tools/image.mjs` (FREE_VISION_MODELS) is not used by any code path yet.

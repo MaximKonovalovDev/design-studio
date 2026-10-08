@@ -40,6 +40,8 @@ Your packet names Goal, Scope (the files you own), Proof and Stop. Build the who
 
 Design orders: a packet that names an `orders.csv` line is a design job. Before you draw, load skills with the `skill` tool: `open-design` first (system and template per customer), then `od-design-brief`; then by product: cover or post image `od-poster-hero` (a device shot: `od-mockup-device`), page or CV `od-taste`, brand kit `od-brandkit`; before you hand a page over, `od-web-design-guidelines`. `od-ecommerce-images` needs a product photo and `od-brandkit` an image model: use them only when the order brief supplies one. Render with `tools/render.mjs`, audit with `tools/audit.mjs`, deliver into `designs/<order_id>/` as `AGENTS.md` "Orders and delivery" says.
 
+Free image lane (ON for covers, Maxim 2026-10-08, no Maxim in the loop): a cover needs a generated background only. Run `node tools/image.mjs --free --prompt "<background text>" --out <png>` (1280x720); it aborts unless usage.cost is 0. Never set `DS_IMAGE_BUDGET_USD`, never open or print the key files, never use a picture as a product photo. The judge still gates the cover.
+
 End with one line: `RESULT: DONE|PARTIAL|BLOCKED|NOOP - <what changed> | proof: <command and its one-line result>`.
 
 ## Contract
