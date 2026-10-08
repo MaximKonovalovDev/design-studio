@@ -1,25 +1,24 @@
-# design-studio handoff - round 309 (token 208c)
+# design-studio handoff - round 310 (token 208c)
 
-Round: 309
-Written: 2026-10-07T21:05Z by lead (token 208c; TAKEOVER from 8073 left by closed app, lock replaced 21:01Z; inbox 0 open).
-Knobs: width 3, heavy_max 3, foreground. Keeper batch sent whole: 3 judges (137 review-2 + O-042 + O-043), all PASS.
-ROUND: real yes | built 55 | judged 36 | delivered 27 | adopted 39 | tools 16 | unjudged-oldest none | in-flight 0.
+Round: 310
+Written: 2026-10-08T11:15Z by lead (token 208c; lock refreshed, same token; inbox 0 open after rowing 7).
+Knobs: width 3, heavy_max 3, foreground. Keeper batch sent whole: pilot lead2 DONE + judge O-045 PASS + builder system-lead PARTIAL.
+ROUND: real yes | built 76 | judged 57 | delivered 11 | adopted 76 | tools 16 | unjudged-oldest O-088 | in-flight 3.
 
 ## Heading
-- NO Scorecard MOVE: batch was chain re-verify (trim recount re-PASS + O-042/O-043 re-PASS), no cover built/delivered/adopted. D5-adjacent work queued next.
-- Trim note stands at fd6258d (55 VERDICT / 36 DELIVERED re-sourced). O-042/O-043 VERDICTs stand at 8c6b5ee (round 303).
+- NO Scorecard MOVE: system floor work (DS-78 template-first rule + 2 brand kits) + O-045 re-PASS + 7 new rows; no cover built/delivered/adopted. Desk now build 3 (O-088..O-090) + eye 1.
+- ORDERS FAIL (in HEAD via e5b8a06): O-027/O-028 adopted-yes-while-delivered, 4 problems. Rowed as DS-109; fix is next round's first one-off.
 
 ## Done
-- 137 review-2 PASS (trim counts 55/36 re-sourced 20:43Z, O-042/O-043/O-045 spot-check; reran sprint/check 21/0/0 + orders PASS 66).
-- O-042 VERDICT PASS (game-ui kit, BUILT 14/14 re-verified, SHIP 10/10, no file change).
-- O-043 VERDICT PASS (store cover, BUILT 16/16 re-verified, 17.6px vs ~7px at 256, no file change).
-- Lead proofs: sprint/check RESULT PASS 21/0/0; orders-check ORDERS PASS 66; tools/check RESULT PASS; vision-check RESULT PASS.
+- O-045 VERDICT PASS (judge re-verified, --built 16/16 PASS; verdict already landed cc8da7a + delivered e419694 by parallel sessions, nothing to commit).
+- System-lead 264a411 (TEMPLATE PASS 15 templates 8 palettes; sprint 21/0/0; registry +2 kits fp-research/skillworks, palette counts, template-first rule).
+- 7 inbox asks rowed DS-103..DS-109 ff36747 (S73 judgepath, S74 staledeliver, S75 trialjudge, S76 coverjson, S77 entryhelp, S78 structindex, S88 csvfix).
+- Lead proofs: sprint/check RESULT PASS 21/0/0; --built O-045 BUILT PASS 16/16.
 
 ## Blockers and notes
-- Nothing to commit for verdicts (all re-PASS, zero file change); only lock + handoff are mine. Other dirty files not mine (halt, repomap, EYE x3, lane-store, lead2 x2, ready D x15, board-archive ??).
-- maker-store-r2-review (O-045) READY, not in this batch (width 3); tops next batch with the eye seat.
-- Desk eye row EYE-2026-10-07 still READY (daily sweep over 0 open orders). DS-86 O-023 still READY (forge repo absent).
+- Left dirty (not mine): docs/TOOLCHAIN, samples audits, tools/assets+orders-check, O-042 brief-gate, campaign notes + READMEs + lead2-gap test (parallel sessions' work, unreviewed).
+- Halt was set at lead2 10:55Z, absent at 09:48Z check; only the owner removes it — flagging, not touching.
 - No OWNER rows. No KNOB PROPOSAL. Not a retro round.
 
 ## Next
-- Keeper: O-045 judge (maker-store-r2-review) + eye-customer seat + fresh D5 work (DS-100 P3/P4, DS-102 O-009 delpath, DS-97 O-066, DS-90 U1, DS-95 SHIP-used).
+- Keeper: csvfix one-off (DS-109, failing check first) + BLD O-088..O-090 makers + eye seat + DS-103..108 builder rows.
