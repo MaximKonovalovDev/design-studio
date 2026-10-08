@@ -1,5 +1,5 @@
 # repomap: design-studio
-_generated 2026-10-07T19:50:59.806Z | 7054 files mapped | 50 hot (commits, last 14d) | cap 25KB_
+_generated 2026-10-08T08:20:50.098Z | 7408 files mapped | 52 hot (commits, last 14d) | cap 25KB__
 
 ## tree
 - `.env` - 1 file
@@ -20,7 +20,7 @@ _generated 2026-10-07T19:50:59.806Z | 7054 files mapped | 50 hot (commits, last 
 - `convert/` - 4 files
 - `covers/` - 127 files
 - `design-audit.json` - 1 file
-- `designs/` - 1322 files
+- `designs/` - 1673 files
 - `docs/` - 1 file
 - `fonts/` - 18 files
 - `kits/` - 14 files
@@ -32,16 +32,17 @@ _generated 2026-10-07T19:50:59.806Z | 7054 files mapped | 50 hot (commits, last 
 - `packs/` - 57 files
 - `research/` - 5147 files
 - `samples/` - 97 files
-- `sprint/` - 25 files
+- `sprint/` - 26 files
 - `taste/` - 1 file
 - `templates/` - 67 files
-- `tests/` - 37 files
+- `tests/` - 38 files
 - `tokens/` - 2 files
-- `tools/` - 44 files
+- `tools/` - 45 files
 
 ## symbols (hot first, xN = commits last 14d)
-### `.opencode/plugin/loop-keeper.js` x22 (180KB) - loop-keeper: continues THIS repo's /sprint when its session goes idle, and
-### `tools/audit.mjs` x10 (40KB)
+### `.opencode/plugin/loop-keeper.js` x24 (185KB) - loop-keeper: continues THIS repo's /sprint when its session goes idle, and
+### `tools/audit.mjs` x11 (25KB)
+- `export {rtlSelfCheck, sizeMatrixSelfCheck, adSquareReflowSelfCheck, listingWidthSelfCheck}`
 - `function titleChars`
 - `function luminance`
 - `function contrastRatio`
@@ -51,10 +52,6 @@ _generated 2026-10-07T19:50:59.806Z | 7054 files mapped | 50 hot (commits, last 
 - `function auditBrief`
 - `function pngPixelDiff`
 - `function checkReferenceParity`
-- `function rtlSelfCheck`
-- `function sizeMatrixSelfCheck`
-- `function adSquareReflowSelfCheck`
-- `function listingWidthSelfCheck`
 ### `tools/check.mjs` x9 (11KB)
 - `function checkReceipt`
 - `function pickWinner`
@@ -203,6 +200,13 @@ _generated 2026-10-07T19:50:59.806Z | 7054 files mapped | 50 hot (commits, last 
 - `function buildDocs`
 - `function checkTokens`
 - `function buildAll`
+### `sprint/notes/trim-plan-2026-10-07.md` x4 (6.4KB)
+- # TRIM-D1 execution plan (DS-100) — 2026-10-07, numbers only
+- ## 1. Board before / after (bytes, measured 2026-10-07)
+- ## 2. Hot / cold split (designs/, measured 2026-10-07)
+- ## 3. Ten most-viewed live factory listings without an adopted cover
+- ## 4. Cold-move candidate list (adopted AND older than 7 days)
+- ## 5. Exact follow-up packets (moves first, covers second)
 ### `tools/figma.mjs` x4 (4.8KB)
 - `const ROW`
 - `const WHAT`
@@ -411,6 +415,15 @@ _generated 2026-10-07T19:50:59.806Z | 7054 files mapped | 50 hot (commits, last 
 - `function collectInputs`
 - `function runAtlas`
 - `function selfCheck`
+### `tools/audit-checks.mjs` x1 (16KB)
+- `function rtlSelfCheck`
+- `function finishSelf`
+- `function sizeMatrixSelfCheck`
+- `function finishSizes`
+- `function adSquareReflowSelfCheck`
+- `function finishAdSquare`
+- `function listingWidthSelfCheck`
+- `function finishListing`
 ### `tools/batch-covers-2026-10-06.mjs` x1 (3.2KB)
 - `function runBatch`
 ### `tools/brand-cards/cards.py` x1 (3.6KB)
@@ -813,13 +826,5 @@ _generated 2026-10-07T19:50:59.806Z | 7054 files mapped | 50 hot (commits, last 
 ### `research/donors/open-design/design-templates/last30days/scripts/lib/fanout.py` (3.2KB)
 - `def _log`
 - `def run_competitor_fanout`
-### `research/donors/open-design/design-templates/last30days/scripts/lib/fusion.py` (8.6KB)
-- `def _candidate_sort_key`
-- `def _normalize_url`
-- `def candidate_key`
-- `def _extract_author`
-- `def _apply_per_author_cap`
-- `def _diversify_pool`
-- `def weighted_rrf`
 
 _89 cold files dropped to fit cap_
