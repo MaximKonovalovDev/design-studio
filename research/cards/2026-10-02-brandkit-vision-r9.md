@@ -11,7 +11,7 @@ Proof (links plus proof outputs):
 - Rival note: Canva Magic Studio https://www.canva.com/magic-studio/ fetch 2026-10-02 returned no readable content; prior VISION G1 read 2026-10-02 stands (templates+resize, proprietary idea-only) — not re-cited as fresh.
 - Riser live 2026-10-02: https://elementor.com/ — "22M+ websites built", "AI how you want it: prompt full pages and sections", "matched to your site's design system", global styles/pixel-perfect editing; proprietary idea-only.
 - Sibling donor (reused, not re-read): style-dictionary/style-dictionary Apache-2.0 per `research/cards/2026-10-02-s12.md` (LICENSE SHA 8318dc07, `lib/StyleDictionary.js` SHA a96ac6d5, main SHA a5b1a8a9 read live 2026-10-02) — transform/resolve fixpoint stays the DS-33 steal-next.
-- Local proofs run 2026-10-02 in `C:\Users\me\Desktop\design-studio`:
+- Local proofs run 2026-10-02 in `C:\empire\design-studio`:
   - `node tools/tokens.mjs --check` → `TOKENS PASS: tokens.json -> tokens.css + docs, 0 hardcoded colors` (16/16: 6 colors, ink/paper 16.27:1, muted/paper 7.13:1, on-accent/accent 5.18:1, dark 6 overrides + dark pairs 16.35/7.73:1, diff in sync).
   - `node tools/brandkit.mjs --check` → `BRANDKIT PASS: name to palette, type, voice, lockup plus tokens export` (16/16: 1 kit `studio`, pairs 16.27/7.13/5.18, lockup var(--*) no hex, tokens.colors == palette).
   - `node tools/taste.mjs --check` → `TASTE PASS: 20 exemplars with tokens` (20/20 ids unique, each 5+ hex + 2 pairs ≥4.5:1 + type + spacing).

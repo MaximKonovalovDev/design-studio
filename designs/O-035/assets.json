@@ -3,56 +3,56 @@
   "assets": [
     {
       "file": "assets/item-1.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/hero_walk.png",
+      "from": "C:/empire/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/hero_walk.png",
       "what": "the customer's own picture hero_walk.png",
       "bytes": 971,
       "sha256": "d775bd9f360634bf34bcc189fc6ef1f9dbb71c47b702cf9af6c79189f4c0ef7b"
     },
     {
       "file": "assets/item-2.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/enemy_big_walk.png",
+      "from": "C:/empire/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/enemy_big_walk.png",
       "what": "the customer's own picture enemy_big_walk.png",
       "bytes": 755,
       "sha256": "1c0bc8f9b2f29f08ffd08ba148629e7ba06b430e2ca9500f1f88438c2ca22fa9"
     },
     {
       "file": "assets/item-3.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/creature_flyer.png",
+      "from": "C:/empire/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/creature_flyer.png",
       "what": "the customer's own picture creature_flyer.png",
       "bytes": 506,
       "sha256": "ec2d66a14c09b7bd91435db2ecb7b11994f15b3213865ef53d960f926d6ca837"
     },
     {
       "file": "assets/item-4.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/item_chest.png",
+      "from": "C:/empire/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/item_chest.png",
       "what": "the customer's own picture item_chest.png",
       "bytes": 254,
       "sha256": "8bba47cb6b5350cee716183a53b30eb0fc54c84ea9e360536a0844506e43e081"
     },
     {
       "file": "assets/item-5.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/item_coin.png",
+      "from": "C:/empire/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/item_coin.png",
       "what": "the customer's own picture item_coin.png",
       "bytes": 313,
       "sha256": "12784169be03205590a5855f18921a79eb24d276bf185cfde06da3d597d1d996"
     },
     {
       "file": "assets/item-6.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/item_potion.png",
+      "from": "C:/empire/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/item_potion.png",
       "what": "the customer's own picture item_potion.png",
       "bytes": 281,
       "sha256": "0d8bc0b0c7a383cb04b81c47ff45609cde58a505625db553c14ab358b9f9f2ff"
     },
     {
       "file": "assets/item-7.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/fx_explosion.png",
+      "from": "C:/empire/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/sprites/fx_explosion.png",
       "what": "the customer's own picture fx_explosion.png",
       "bytes": 977,
       "sha256": "a616701c77f37122108ba599f76cccca5895b8408413bab78991953d4f9cad5b"
     },
     {
       "file": "assets/item-8.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/tiles/props/prop_01_torch.png",
+      "from": "C:/empire/autonomous-factory/products/game-suite/indie-game-suite/out/ember-hollow-knight/tiles/props/prop_01_torch.png",
       "what": "the customer's own picture prop_01_torch.png",
       "bytes": 248,
       "sha256": "dbeb4439e2bb0b64c1e41a7d879d99c1a35dcd548a653830c98fbff0f64d7e38"

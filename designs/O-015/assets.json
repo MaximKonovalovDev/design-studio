@@ -3,67 +3,67 @@
   "assets": [
     {
       "file": "assets/knight.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/idle/s_0.png",
+      "from": "C:/empire/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/idle/s_0.png",
       "what": "knight idle, facing S, 64x64 frame from the zip",
       "bytes": 645
     },
     {
       "file": "assets/footman.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/footman/idle/s_0.png",
+      "from": "C:/empire/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/footman/idle/s_0.png",
       "what": "footman idle, facing S, 64x64 frame from the zip",
       "bytes": 603
     },
     {
       "file": "assets/archer.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/archer/idle/s_0.png",
+      "from": "C:/empire/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/archer/idle/s_0.png",
       "what": "archer idle, facing S, 64x64 frame from the zip",
       "bytes": 616
     },
     {
       "file": "assets/walk-s.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/s_0.png",
+      "from": "C:/empire/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/s_0.png",
       "what": "knight walk facing S, frame 0 of 4",
       "bytes": 648
     },
     {
       "file": "assets/walk-se.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/se_0.png",
+      "from": "C:/empire/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/se_0.png",
       "what": "knight walk facing SE, frame 0 of 4",
       "bytes": 649
     },
     {
       "file": "assets/walk-e.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/e_0.png",
+      "from": "C:/empire/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/e_0.png",
       "what": "knight walk facing E, frame 0 of 4",
       "bytes": 646
     },
     {
       "file": "assets/walk-ne.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/ne_0.png",
+      "from": "C:/empire/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/ne_0.png",
       "what": "knight walk facing NE, frame 0 of 4",
       "bytes": 634
     },
     {
       "file": "assets/walk-n.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/n_0.png",
+      "from": "C:/empire/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/n_0.png",
       "what": "knight walk facing N, frame 0 of 4",
       "bytes": 638
     },
     {
       "file": "assets/walk-nw.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/nw_0.png",
+      "from": "C:/empire/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/nw_0.png",
       "what": "knight walk facing NW, frame 0 of 4",
       "bytes": 632
     },
     {
       "file": "assets/walk-w.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/w_0.png",
+      "from": "C:/empire/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/w_0.png",
       "what": "knight walk facing W, frame 0 of 4",
       "bytes": 636
     },
     {
       "file": "assets/walk-sw.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/sw_0.png",
+      "from": "C:/empire/autonomous-factory/products/character-animation-studio/medieval-warriors-vol4/assets/frames/knight/walk/sw_0.png",
       "what": "knight walk facing SW, frame 0 of 4",
       "bytes": 641
     }

@@ -3,13 +3,13 @@
   "assets": [
     {
       "file": "assets/preview-high.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/packs/products/pdf-tables-excel/demo/sample-HIGH-lined.preview.html",
+      "from": "C:/empire/autonomous-factory/packs/products/pdf-tables-excel/demo/sample-HIGH-lined.preview.html",
       "what": "preview page of demo/sample-HIGH-lined.pdf (table graded HIGH) (the tool's own preview page rendered by the browser, cropped, 3x zoom)",
       "bytes": 45092
     },
     {
       "file": "assets/preview-low.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/packs/products/pdf-tables-excel/demo/sample-LOW-scan.preview.html",
+      "from": "C:/empire/autonomous-factory/packs/products/pdf-tables-excel/demo/sample-LOW-scan.preview.html",
       "what": "preview page of demo/sample-LOW-scan.pdf (scanned page, table graded LOW) (the tool's own preview page rendered by the browser, cropped, 3x zoom)",
       "bytes": 46534
     }

@@ -3,19 +3,19 @@
   "assets": [
     {
       "file": "assets/sheet-1.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/screenshot-templates.png",
+      "from": "C:/empire/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/screenshot-templates.png",
       "what": "the customer's own picture screenshot-templates.png",
       "bytes": 192147
     },
     {
       "file": "assets/sheet-2.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/screenshot-pipeline.png",
+      "from": "C:/empire/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/screenshot-pipeline.png",
       "what": "the customer's own picture screenshot-pipeline.png",
       "bytes": 156255
     },
     {
       "file": "assets/sheet-3.gif",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/demo.gif",
+      "from": "C:/empire/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/demo.gif",
       "what": "the customer's own picture demo.gif",
       "bytes": 106002
     }

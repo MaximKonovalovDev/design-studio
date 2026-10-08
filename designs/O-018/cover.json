@@ -49,49 +49,49 @@
   "copyW": "50%",
   "claimW": "540px",
   "chipR": "999px",
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/preview/cover-od-r3-1280x720.png",
+  "listing": "C:/empire/autonomous-factory/products/game-dev-2d/vtracer-polish/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/game-dev-2d/vtracer-polish/preview/cover-od-r3-1280x720.png",
   "landing": "products/game-dev-2d/vtracer-polish/covers/from-design-studio/O-018/",
   "assetsFrom": "the product's own assets/png/ sprites",
   "assets": [
     {
       "name": "coin-001-f40338fed939.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/coin-001-f40338fed939.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/coin-001-f40338fed939.png",
       "what": "sprite coin (256x256 RGBA PNG) shipped in the zip"
     },
     {
       "name": "gem-065-024d0598b573.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/gem-065-024d0598b573.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/gem-065-024d0598b573.png",
       "what": "sprite gem (256x256 RGBA PNG) shipped in the zip"
     },
     {
       "name": "potion-129-9f62528eb8f8.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/potion-129-9f62528eb8f8.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/potion-129-9f62528eb8f8.png",
       "what": "sprite potion (256x256 RGBA PNG) shipped in the zip"
     },
     {
       "name": "sword-193-d899f4949367.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/sword-193-d899f4949367.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/sword-193-d899f4949367.png",
       "what": "sprite sword (256x256 RGBA PNG) shipped in the zip"
     },
     {
       "name": "shield-257-d46065e8b657.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/shield-257-d46065e8b657.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/shield-257-d46065e8b657.png",
       "what": "sprite shield (256x256 RGBA PNG) shipped in the zip"
     },
     {
       "name": "slime-321-8d1812bfb968.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/slime-321-8d1812bfb968.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/slime-321-8d1812bfb968.png",
       "what": "sprite slime (256x256 RGBA PNG) shipped in the zip"
     },
     {
       "name": "tile-385-28556e18f93d.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/tile-385-28556e18f93d.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/tile-385-28556e18f93d.png",
       "what": "sprite tile (256x256 RGBA PNG) shipped in the zip"
     },
     {
       "name": "rune-449-a8cec2f102ce.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/rune-449-a8cec2f102ce.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/vtracer-polish/assets/png/rune-449-a8cec2f102ce.png",
       "what": "sprite rune (256x256 RGBA PNG) shipped in the zip"
     }
   ],

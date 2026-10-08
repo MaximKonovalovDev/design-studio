@@ -36,24 +36,24 @@
   "titleTrack": "-0.02em",
   "copyW": "54%",
   "claimW": "620px",
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/book-forge-pro/book-forge-pro/listing/gumroad.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/book-forge-pro/book-forge-pro/preview/cover-od-1600x900.png",
+  "listing": "C:/empire/autonomous-factory/products/book-forge-pro/book-forge-pro/listing/gumroad.md",
+  "toBeat": "C:/empire/autonomous-factory/products/book-forge-pro/book-forge-pro/preview/cover-od-1600x900.png",
   "landing": "products/book-forge-pro/book-forge-pro/covers/from-design-studio/O-001/",
   "assetsFrom": "the product's own assets/ and preview/ files",
   "assets": [
     {
       "name": "front-day.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/book-forge-pro/book-forge-pro/assets/cover-6x9-front.png",
+      "src": "C:/empire/autonomous-factory/products/book-forge-pro/book-forge-pro/assets/cover-6x9-front.png",
       "what": "day front-cover template shipped in the zip (1200x1800)"
     },
     {
       "name": "front-midnight.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/book-forge-pro/book-forge-pro/assets/cover-6x9-front-midnight.png",
+      "src": "C:/empire/autonomous-factory/products/book-forge-pro/book-forge-pro/assets/cover-6x9-front-midnight.png",
       "what": "midnight front-cover template shipped in the zip (1200x1800)"
     },
     {
       "name": "spread.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/book-forge-pro/book-forge-pro/assets/cover-6x9-full-spread-200pp-cream.png",
+      "src": "C:/empire/autonomous-factory/products/book-forge-pro/book-forge-pro/assets/cover-6x9-full-spread-200pp-cream.png",
       "what": "back + spine + front spread for 200pp cream 6x9 shipped in the zip (1912x1387)"
     }
   ],

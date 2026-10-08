@@ -53,14 +53,14 @@
     "shot-x": "0%",
     "shot-y": "0%"
   },
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/preview/cover-1280x720.png",
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/listing/gumroad.md",
+  "toBeat": "C:/empire/autonomous-factory/products/game-suite/indie-game-suite/preview/cover-1280x720.png",
+  "listing": "C:/empire/autonomous-factory/products/game-suite/indie-game-suite/listing/gumroad.md",
   "landing": "products/game-suite/indie-game-suite/covers/from-design-studio/O-048/",
   "assetsFrom": "the product's own preview/screenshot-pack-sheet-1280x800.png (Ember Hollow pack sheet)",
   "assets": [
     {
       "name": "shot.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-suite/indie-game-suite/preview/screenshot-pack-sheet-1280x800.png",
+      "src": "C:/empire/autonomous-factory/products/game-suite/indie-game-suite/preview/screenshot-pack-sheet-1280x800.png",
       "what": "the customer's own picture screenshot-pack-sheet-1280x800.png (Ember Hollow pack sheet: sprites and tiles in one 27-color palette)"
     }
   ]

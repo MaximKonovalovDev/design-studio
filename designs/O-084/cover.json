@@ -51,14 +51,14 @@
     "shot-x": "0%",
     "shot-y": "0%"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/woodland-vol2/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/woodland-vol2/preview/cover.png",
+  "listing": "C:/empire/autonomous-factory/products/print-niche/woodland-vol2/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/print-niche/woodland-vol2/preview/cover.png",
   "landing": "products/print-niche/woodland-vol2/covers/from-design-studio/O-084/",
   "assetsFrom": "the product's own preview/ pictures",
   "assets": [
     {
       "name": "shot.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/woodland-vol2/preview/motifs-sheet.png",
+      "src": "C:/empire/autonomous-factory/products/print-niche/woodland-vol2/preview/motifs-sheet.png",
       "what": "the customer's own picture motifs-sheet.png"
     }
   ]

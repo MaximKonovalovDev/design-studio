@@ -3,19 +3,19 @@
   "assets": [
     {
       "file": "assets/sheet-1.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/services/content-engine-service/preview/shot-flagship.png",
+      "from": "C:/empire/autonomous-factory/products/services/content-engine-service/preview/shot-flagship.png",
       "what": "the customer's own picture shot-flagship.png",
       "bytes": 48425
     },
     {
       "file": "assets/sheet-2.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/services/content-engine-service/preview/shot-matrix.png",
+      "from": "C:/empire/autonomous-factory/products/services/content-engine-service/preview/shot-matrix.png",
       "what": "the customer's own picture shot-matrix.png",
       "bytes": 47564
     },
     {
       "file": "assets/sheet-3.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/services/content-engine-service/preview/shot-outputs.png",
+      "from": "C:/empire/autonomous-factory/products/services/content-engine-service/preview/shot-outputs.png",
       "what": "the customer's own picture shot-outputs.png",
       "bytes": 40166
     }

@@ -3,21 +3,21 @@
   "assets": [
     {
       "file": "assets/sheet-1.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/preview/motifs-sheet-1920.png",
+      "from": "C:/empire/autonomous-factory/products/print-niche/wildflowers-vol1/preview/motifs-sheet-1920.png",
       "what": "the customer's own picture motifs-sheet-1920.png",
       "bytes": 642645,
       "sha256": "375b9102cffc4d446f22abb7122fd3bbf182802cb2ee5847c9fa3337965f191f"
     },
     {
       "file": "assets/sheet-2.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/preview/stitched-sample.png",
+      "from": "C:/empire/autonomous-factory/products/print-niche/wildflowers-vol1/preview/stitched-sample.png",
       "what": "the customer's own picture stitched-sample.png",
       "bytes": 80544,
       "sha256": "6341a9cc65efbd8ec348b4b4ad23288fce081a5c01f6b566b36dde3d46f9670e"
     },
     {
       "file": "assets/sheet-3.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/preview/cover-b.png",
+      "from": "C:/empire/autonomous-factory/products/print-niche/wildflowers-vol1/preview/cover-b.png",
       "what": "the customer's own picture cover-b.png",
       "bytes": 120459,
       "sha256": "52449fbf6cc592eec1b254e83c9ba1b86ba9c296c7342e68e83b5668d0052f2c"

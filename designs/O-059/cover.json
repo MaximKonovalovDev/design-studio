@@ -51,8 +51,8 @@
     "sheet-w": "322px",
     "sheet-w-card": "188px"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/services/content-engine-service/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/services/content-engine-service/preview/cover-1280x720.png",
+  "listing": "C:/empire/autonomous-factory/products/services/content-engine-service/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/services/content-engine-service/preview/cover-1280x720.png",
   "theirsPx256": 6.4,
   "beatNote": "their headline cap-height ~32px at 1280w by pixel measure -> 6.4px at 256w; ours 17.6px; light sheet-fan vs dark navy/amber",
   "landing": "products/services/content-engine-service/covers/from-design-studio/O-059/",
@@ -60,17 +60,17 @@
   "assets": [
     {
       "name": "sheet-1.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/content-engine-service/preview/shot-flagship.png",
+      "src": "C:/empire/autonomous-factory/products/services/content-engine-service/preview/shot-flagship.png",
       "what": "the customer's own picture shot-flagship.png"
     },
     {
       "name": "sheet-2.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/content-engine-service/preview/shot-matrix.png",
+      "src": "C:/empire/autonomous-factory/products/services/content-engine-service/preview/shot-matrix.png",
       "what": "the customer's own picture shot-matrix.png"
     },
     {
       "name": "sheet-3.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/content-engine-service/preview/shot-outputs.png",
+      "src": "C:/empire/autonomous-factory/products/services/content-engine-service/preview/shot-outputs.png",
       "what": "the customer's own picture shot-outputs.png"
     }
   ]

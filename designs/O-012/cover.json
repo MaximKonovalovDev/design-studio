@@ -47,19 +47,19 @@
   },
   "copyW": "50%",
   "claimW": "560px",
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-neon/listing/gumroad.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-neon/preview/cover-1280x720.png",
+  "listing": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-neon/listing/gumroad.md",
+  "toBeat": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-neon/preview/cover-1280x720.png",
   "landing": "products/game-dev-2d/tiks-neon/covers/from-design-studio/O-012/",
   "assetsFrom": "the product's own preview/ captures of its synth and themed sets",
   "assets": [
     {
       "name": "synth.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-neon/preview/synth-screenshot.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-neon/preview/synth-screenshot.png",
       "what": "real capture of the offline browser synth that ships in the zip"
     },
     {
       "name": "sets.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-neon/preview/sets-showcase.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-neon/preview/sets-showcase.png",
       "what": "real capture of the 3 themed sets (sci-fi weapons, fantasy magic, haunted dungeon)"
     }
   ],

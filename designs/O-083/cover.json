@@ -50,14 +50,14 @@
     "shot-x": "0%",
     "shot-y": "0%"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-3d-props/spring-40-prop-pack/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-3d-props/spring-40-prop-pack/preview/cover_630x500.png",
+  "listing": "C:/empire/autonomous-factory/products/seasonal-3d-props/spring-40-prop-pack/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/seasonal-3d-props/spring-40-prop-pack/preview/cover_630x500.png",
   "landing": "products/seasonal-3d-props/spring-40-prop-pack/covers/from-design-studio/O-083/",
   "assetsFrom": "the product's own preview/ pictures",
   "assets": [
     {
       "name": "shot.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-3d-props/spring-40-prop-pack/preview/screenshot_garden_bloom_1920x1080.png",
+      "src": "C:/empire/autonomous-factory/products/seasonal-3d-props/spring-40-prop-pack/preview/screenshot_garden_bloom_1920x1080.png",
       "what": "the customer's own picture screenshot_garden_bloom_1920x1080.png"
     }
   ]

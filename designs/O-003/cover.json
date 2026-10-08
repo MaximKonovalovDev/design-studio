@@ -43,34 +43,34 @@
   ],
   "copyW": "50%",
   "claimW": "560px",
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/listing/gumroad.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/preview/cover-b-1280x720.png",
+  "listing": "C:/empire/autonomous-factory/products/clip-repurpose/episode-clips-vol1/listing/gumroad.md",
+  "toBeat": "C:/empire/autonomous-factory/products/clip-repurpose/episode-clips-vol1/preview/cover-b-1280x720.png",
   "landing": "products/clip-repurpose/episode-clips-vol1/covers/from-design-studio/O-003/",
   "assetsFrom": "the product's own assets/covers/ templates",
   "assets": [
     {
       "name": "cover1-minimal.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover01-minimal.png",
+      "src": "C:/empire/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover01-minimal.png",
       "what": "cover template 1 (minimal) shipped in the zip, 1080x1920"
     },
     {
       "name": "cover2-neon.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover02-neon.png",
+      "src": "C:/empire/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover02-neon.png",
       "what": "cover template 2 (neon) shipped in the zip, 1080x1920"
     },
     {
       "name": "cover3-retro.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover03-retro.png",
+      "src": "C:/empire/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover03-retro.png",
       "what": "cover template 3 (retro) shipped in the zip, 1080x1920"
     },
     {
       "name": "cover4-fitness.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover04-fitness.png",
+      "src": "C:/empire/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover04-fitness.png",
       "what": "cover template 4 (fitness) shipped in the zip, 1080x1920"
     },
     {
       "name": "cover5-educator.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover05-educator.png",
+      "src": "C:/empire/autonomous-factory/products/clip-repurpose/episode-clips-vol1/assets/covers/cover05-educator.png",
       "what": "cover template 5 (educator) shipped in the zip, 1080x1920"
     }
   ],

@@ -55,14 +55,14 @@
       "min": 4.5
     }
   ],
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/listing/free-magnet/itch-free.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/cover-630x500.png",
+  "listing": "C:/empire/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/listing/free-magnet/itch-free.md",
+  "toBeat": "C:/empire/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/cover-630x500.png",
   "landing": "products/marketing-studio/aeo-visibility-audit-kit/covers/from-design-studio/O-021/",
   "assetsFrom": "the kit's own preview/ render of its probe banks (a 5-probe excerpt per category)",
   "assets": [
     {
       "name": "banks.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-banks-1280x800.png",
+      "src": "C:/empire/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-banks-1280x800.png",
       "fit": 900,
       "what": "probe banks excerpt: 5 shown per category (real kit file)"
     }

@@ -3,19 +3,19 @@
   "assets": [
     {
       "file": "assets/sheet-1.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/screenshot-log.png",
+      "from": "C:/empire/autonomous-factory/products/seasonal-tax/mileage-kit/preview/screenshot-log.png",
       "what": "the customer's own picture screenshot-log.png",
       "bytes": 53182
     },
     {
       "file": "assets/sheet-2.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/screenshot-summary.png",
+      "from": "C:/empire/autonomous-factory/products/seasonal-tax/mileage-kit/preview/screenshot-summary.png",
       "what": "the customer's own picture screenshot-summary.png",
       "bytes": 36526
     },
     {
       "file": "assets/sheet-3.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/cover-etsy.png",
+      "from": "C:/empire/autonomous-factory/products/seasonal-tax/mileage-kit/preview/cover-etsy.png",
       "what": "the customer's own picture cover-etsy.png",
       "bytes": 139795
     }

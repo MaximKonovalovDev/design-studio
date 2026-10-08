@@ -3,19 +3,19 @@
   "assets": [
     {
       "file": "assets/log.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/printables-kit/preview/screenshot-01.png",
+      "from": "C:/empire/autonomous-factory/products/print-niche/printables-kit/preview/screenshot-01.png",
       "what": "true render of 01-machine-maintenance-log.pdf (downscaled copy, 560px wide, same picture)",
       "bytes": 28648
     },
     {
       "file": "assets/grid.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/printables-kit/preview/screenshot-02.png",
+      "from": "C:/empire/autonomous-factory/products/print-niche/printables-kit/preview/screenshot-02.png",
       "what": "true render of 02-material-settings-test-grid.pdf (downscaled copy, 560px wide, same picture)",
       "bytes": 29395
     },
     {
       "file": "assets/safety.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/printables-kit/preview/screenshot-03.png",
+      "from": "C:/empire/autonomous-factory/products/print-niche/printables-kit/preview/screenshot-03.png",
       "what": "true render of 10-safety-preflight-checklist.pdf (downscaled copy, 560px wide, same picture)",
       "bytes": 50924
     }

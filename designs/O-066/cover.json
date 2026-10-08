@@ -50,49 +50,49 @@
     "item-size-card": "48px",
     "item-render": "pixelated"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/cover.png",
+  "listing": "C:/empire/autonomous-factory/products/character-animation-studio/roman-legion-vol3/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/cover.png",
   "landing": "products/character-animation-studio/roman-legion-vol3/covers/from-design-studio/O-066/",
   "assetsFrom": "the product's own preview/ sprite renders (5 action close-ups + 3 legionary idles)",
   "assets": [
     {
       "name": "item-1.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-walk.png",
+      "src": "C:/empire/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-walk.png",
       "what": "the customer's own picture od-act-walk.png (hastatus walk close-up)"
     },
     {
       "name": "item-2.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-run.png",
+      "src": "C:/empire/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-run.png",
       "what": "the customer's own picture od-act-run.png (hastatus run close-up)"
     },
     {
       "name": "item-3.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-attack.png",
+      "src": "C:/empire/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-attack.png",
       "what": "the customer's own picture od-act-attack.png (hastatus attack close-up)"
     },
     {
       "name": "item-4.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-idle.png",
+      "src": "C:/empire/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-idle.png",
       "what": "the customer's own picture od-act-idle.png (hastatus idle close-up)"
     },
     {
       "name": "item-5.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-hurt.png",
+      "src": "C:/empire/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-act-hurt.png",
       "what": "the customer's own picture od-act-hurt.png (hastatus hurt close-up)"
     },
     {
       "name": "item-6.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-idle-hastatus.png",
+      "src": "C:/empire/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-idle-hastatus.png",
       "what": "the customer's own picture od-idle-hastatus.png (hastatus legionary)"
     },
     {
       "name": "item-7.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-idle-centurion.png",
+      "src": "C:/empire/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-idle-centurion.png",
       "what": "the customer's own picture od-idle-centurion.png (centurion legionary)"
     },
     {
       "name": "item-8.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-idle-archer.png",
+      "src": "C:/empire/autonomous-factory/products/character-animation-studio/roman-legion-vol3/preview/od-idle-archer.png",
       "what": "the customer's own picture od-idle-archer.png (archer legionary)"
     }
   ]

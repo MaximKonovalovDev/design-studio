@@ -3,19 +3,19 @@
   "assets": [
     {
       "file": "assets/sheet-1.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-1-vector.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-1-vector.png",
       "what": "the customer's own picture screenshot-1-vector.png (512 vector sprites grid)",
       "bytes": 33350
     },
     {
       "file": "assets/sheet-2.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-3-waveforms.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-3-waveforms.png",
       "what": "the customer's own picture screenshot-3-waveforms.png (990 retro SFX waveform grid)",
       "bytes": 109290
     },
     {
       "file": "assets/sheet-3.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-2-sheets.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-2-sheets.png",
       "what": "the customer's own picture screenshot-2-sheets.png (290 animated sheets close-up)",
       "bytes": 246758
     }

@@ -51,49 +51,49 @@
   "copyW": "48%",
   "claimW": "520px",
   "chipR": "10px",
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/preview/cover-od.png",
+  "listing": "C:/empire/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/preview/cover-od.png",
   "landing": "products/figma-ui-kit/ui-component-kit-generator/covers/from-design-studio/O-022/",
   "assetsFrom": "the kit's own sample/ SVG components (byte copies)",
   "assets": [
     {
       "name": "alerts-01.svg",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/alerts-01.svg",
+      "src": "C:/empire/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/alerts-01.svg",
       "what": "real shipped sample component alerts-01 (400x140 SVG)"
     },
     {
       "name": "badges-01.svg",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/badges-01.svg",
+      "src": "C:/empire/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/badges-01.svg",
       "what": "real shipped sample component badges-01 (400x140 SVG)"
     },
     {
       "name": "buttons-02.svg",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/buttons-02.svg",
+      "src": "C:/empire/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/buttons-02.svg",
       "what": "real shipped sample component buttons-02 (400x140 SVG)"
     },
     {
       "name": "cards-01.svg",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/cards-01.svg",
+      "src": "C:/empire/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/cards-01.svg",
       "what": "real shipped sample component cards-01 (400x140 SVG)"
     },
     {
       "name": "forms-01.svg",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/forms-01.svg",
+      "src": "C:/empire/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/forms-01.svg",
       "what": "real shipped sample component forms-01 (400x140 SVG)"
     },
     {
       "name": "inputs-01.svg",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/inputs-01.svg",
+      "src": "C:/empire/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/inputs-01.svg",
       "what": "real shipped sample component inputs-01 (400x140 SVG)"
     },
     {
       "name": "modals-01.svg",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/modals-01.svg",
+      "src": "C:/empire/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/modals-01.svg",
       "what": "real shipped sample component modals-01 (400x140 SVG)"
     },
     {
       "name": "navbars-01.svg",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/navbars-01.svg",
+      "src": "C:/empire/autonomous-factory/products/figma-ui-kit/ui-component-kit-generator/sample/navbars-01.svg",
       "what": "real shipped sample component navbars-01 (400x140 SVG)"
     }
   ],

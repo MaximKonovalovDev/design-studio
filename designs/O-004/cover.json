@@ -47,19 +47,19 @@
   },
   "copyW": "50%",
   "claimW": "560px",
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/listing/gumroad.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/cover-1280x720.png",
+  "listing": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/listing/gumroad.md",
+  "toBeat": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/cover-1280x720.png",
   "landing": "products/game-dev-2d/tiks-sfx-factory/covers/from-design-studio/O-004/",
   "assetsFrom": "the product's own preview/ renders of its real waveforms",
   "assets": [
     {
       "name": "waveforms.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/waveform-grid.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/waveform-grid.png",
       "what": "real waveforms of the 8 Vol 1 genres, rendered from the pack's own WAV files"
     },
     {
       "name": "vol2.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/vol2-waveforms.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/vol2-waveforms.png",
       "what": "real waveforms of Vol 2 sci-fi and magic sounds, rendered from the pack's own WAV files"
     }
   ],

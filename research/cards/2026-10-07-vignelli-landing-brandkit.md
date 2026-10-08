@@ -7,7 +7,7 @@ License: Copyrighted (Vignelli died 2014; works and manuals still in copyright) 
 What it really does: Vignelli (1931-2014), Italian modernist, Unimark + Vignelli Associates with wife Lella, defined graphic design as the organisation of information — semantically correct, syntactically consistent, pragmatically understandable — visually powerful, intellectually elegant, timeless; the 1972 NYC subway diagram abstracts geography into color-coded lines with white dot stations set in Helvetica, and the NPS Unigrid system (1977) puts every brochure on one modular grid with one typeface and black-white plus one accent color. Page-level read only, no code.
 Take: 5 idea-only patterns, each rebuilt as tokens/grid/CSS, never traced or copied.
 Avoid: copying subway-map artwork, Unigrid sheets, or Vignelli book scans (all copyrighted); rigid grid at thumb size that kills the title; low-contrast gray text on white.
-First experiment in center: C:\Users\me\Desktop\design-studio\brand-kits\vignelli-tokens.json | Brand-kit consistency 5/5 holds + 1 landing hero on the 3-col grid with 0 hex | done when `node tools/tokens.mjs --check` TOKENS PASS and `node tools/brandkit.mjs --check` BRANDKIT PASS and `node tools/registry.mjs --check` REGISTRY PASS on the demo sample
+First experiment in center: C:\empire\design-studio\brand-kits\vignelli-tokens.json | Brand-kit consistency 5/5 holds + 1 landing hero on the 3-col grid with 0 hex | done when `node tools/tokens.mjs --check` TOKENS PASS and `node tools/brandkit.mjs --check` BRANDKIT PASS and `node tools/registry.mjs --check` REGISTRY PASS on the demo sample
 Status: CANDIDATE
 
 ## Source + license

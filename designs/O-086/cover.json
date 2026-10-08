@@ -49,14 +49,14 @@
     "shot-x": "0%",
     "shot-y": "0%"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/rpgmaker-import-fixer/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/rpgmaker-import-fixer/preview/cover.png",
+  "listing": "C:/empire/autonomous-factory/products/game-dev-2d/rpgmaker-import-fixer/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/game-dev-2d/rpgmaker-import-fixer/preview/cover.png",
   "landing": "products/game-dev-2d/rpgmaker-import-fixer/covers/from-design-studio/O-086/",
   "assetsFrom": "the product's own preview/ pictures",
   "assets": [
     {
       "name": "shot.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/rpgmaker-import-fixer/preview/screenshot_fix.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/rpgmaker-import-fixer/preview/screenshot_fix.png",
       "what": "the customer's own picture screenshot_fix.png"
     }
   ]

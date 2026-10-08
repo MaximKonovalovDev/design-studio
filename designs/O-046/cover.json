@@ -51,14 +51,14 @@
     "shot-x": "0%",
     "shot-y": "0%"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/services/forge-engine2040-launch-system/listing/gumroad.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/services/forge-engine2040-launch-system/preview/cover-1280x720.png",
+  "listing": "C:/empire/autonomous-factory/products/services/forge-engine2040-launch-system/listing/gumroad.md",
+  "toBeat": "C:/empire/autonomous-factory/products/services/forge-engine2040-launch-system/preview/cover-1280x720.png",
   "landing": "products/services/forge-engine2040-launch-system/covers/from-design-studio/O-046/",
   "assetsFrom": "the product's own preview/ pictures",
   "assets": [
     {
       "name": "shot.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/forge-engine2040-launch-system/preview/shot-channels.png",
+      "src": "C:/empire/autonomous-factory/products/services/forge-engine2040-launch-system/preview/shot-channels.png",
       "what": "the customer's own picture shot-channels.png"
     }
   ]

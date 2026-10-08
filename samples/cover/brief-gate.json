@@ -5,7 +5,7 @@
     {
       "name": "brief.json exists",
       "pass": true,
-      "detail": "C:\\Users\\me\\Desktop\\design-studio\\samples\\cover\\brief.json"
+      "detail": "C:\\empire\\design-studio\\samples\\cover\\brief.json"
     },
     {
       "name": "brief.json parses",

@@ -50,24 +50,24 @@
     "sheet-w": "322px",
     "sheet-w-card": "188px"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/cover.png",
+  "listing": "C:/empire/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/cover.png",
   "landing": "products/game-dev-bundle/ui-kit-vol1/covers/from-design-studio/O-065/",
   "assetsFrom": "the product's own preview/ screenshots (shot-hud, shot-inventory, shot-dialogue)",
   "assets": [
     {
       "name": "sheet-1.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/shot-hud.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/shot-hud.png",
       "what": "the customer's own picture shot-hud.png"
     },
     {
       "name": "sheet-2.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/shot-inventory.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/shot-inventory.png",
       "what": "the customer's own picture shot-inventory.png"
     },
     {
       "name": "sheet-3.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/shot-dialogue.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/shot-dialogue.png",
       "what": "the customer's own picture shot-dialogue.png"
     }
   ]

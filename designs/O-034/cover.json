@@ -49,14 +49,14 @@
     "shot-x": "0%",
     "shot-y": "0%"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/engine-data/gameplay-data-kit/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/engine-data/gameplay-data-kit/preview/cover-1280x720.png",
+  "listing": "C:/empire/autonomous-factory/products/engine-data/gameplay-data-kit/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/engine-data/gameplay-data-kit/preview/cover-1280x720.png",
   "landing": "products/engine-data/gameplay-data-kit/covers/from-design-studio/O-034/",
   "assetsFrom": "the product's own preview/ pictures",
   "assets": [
     {
       "name": "shot.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/engine-data/gameplay-data-kit/preview/screenshot-verify-1280x800.png",
+      "src": "C:/empire/autonomous-factory/products/engine-data/gameplay-data-kit/preview/screenshot-verify-1280x800.png",
       "what": "the customer's own picture screenshot-verify-1280x800.png"
     }
   ]

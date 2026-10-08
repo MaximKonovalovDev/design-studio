@@ -55,24 +55,24 @@
     "sheet-w": "322px",
     "sheet-w-card": "188px"
   },
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/cover.png",
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/listing/Gumroad.md",
+  "toBeat": "C:/empire/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/cover.png",
+  "listing": "C:/empire/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/listing/Gumroad.md",
   "landing": "products/niche-business-system/consultant-starter-kit-vol2/covers/from-design-studio/O-044/",
   "assetsFrom": "the product's own preview/ pages (retainer terms, SOW strategy sprint, retainer billing invoice)",
   "assets": [
     {
       "name": "sheet-1.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/shot-01.png",
+      "src": "C:/empire/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/shot-01.png",
       "what": "the customer's own picture shot-01.png (Advisory Retainer Terms page)"
     },
     {
       "name": "sheet-2.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/shot-02.png",
+      "src": "C:/empire/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/shot-02.png",
       "what": "the customer's own picture shot-02.png (SOW Strategy Sprint page)"
     },
     {
       "name": "sheet-3.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/shot-03.png",
+      "src": "C:/empire/autonomous-factory/products/niche-business-system/consultant-starter-kit-vol2/preview/shot-03.png",
       "what": "the customer's own picture shot-03.png (Invoice Retainer Billing page)"
     }
   ]

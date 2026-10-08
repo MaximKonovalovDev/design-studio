@@ -3,7 +3,7 @@
   "assets": [
     {
       "file": "assets/waveforms.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/waveform-grid.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/waveform-grid.png",
       "what": "real waveforms of the 8 Vol 1 genres, rendered from the pack's own WAV files",
       "bytes": 17506,
       "sha256": "6420b1c68e15b35b6097aa351fe081fdf62dee8f46810789adfd4faac18e7692",
@@ -11,7 +11,7 @@
     },
     {
       "file": "assets/vol2.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/vol2-waveforms.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/vol2-waveforms.png",
       "what": "real waveforms of Vol 2 sci-fi and magic sounds, rendered from the pack's own WAV files",
       "bytes": 60976,
       "sha256": "47fd451a15592fd2269273132801d94e8919814dc95094d5eee8c77f51421eb3",
@@ -19,7 +19,7 @@
     },
     {
       "file": "assets/shot-r7-1-genres-1280x720.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/shot-r7-1-genres-1280x720.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/shot-r7-1-genres-1280x720.png",
       "what": "real product picture from O-004's own preview/ folder",
       "sha256": "ac9825e8734e9403f318332c656ca1c37689d1784a854d68ff7ea6c136094a87",
       "bytes": 66370,
@@ -27,7 +27,7 @@
     },
     {
       "file": "assets/shot-r7-2-vol2-1280x720.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/shot-r7-2-vol2-1280x720.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview/shot-r7-2-vol2-1280x720.png",
       "what": "real product picture from O-004's own preview/ folder",
       "sha256": "f0963e3c4cecdb72cd01654de1cdeb50596df48cd8c3b233d9183da26e2a2026",
       "bytes": 64935,
@@ -35,6 +35,6 @@
     }
   ],
   "order": "O-004",
-  "preview_dir": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview",
+  "preview_dir": "C:/empire/autonomous-factory/products/game-dev-2d/tiks-sfx-factory/preview",
   "date": "2026-10-04"
 }

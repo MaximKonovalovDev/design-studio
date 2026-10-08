@@ -70,14 +70,14 @@
       "min": 4.5
     }
   ],
-  "listing": "C:/Users/me/Desktop/autonomous-factory/packs/products/pdf-tables-excel/STORE_LISTING.md",
+  "listing": "C:/empire/autonomous-factory/packs/products/pdf-tables-excel/STORE_LISTING.md",
   "toBeat": null,
   "landing": "packs/products/pdf-tables-excel/covers/from-design-studio/O-017/",
   "assetsFrom": "the tool's own demo/ preview pages",
   "assets": [
     {
       "name": "preview-high.png",
-      "html": "C:/Users/me/Desktop/autonomous-factory/packs/products/pdf-tables-excel/demo/sample-HIGH-lined.preview.html",
+      "html": "C:/empire/autonomous-factory/packs/products/pdf-tables-excel/demo/sample-HIGH-lined.preview.html",
       "crop": {
         "x": 18,
         "y": 186,
@@ -89,7 +89,7 @@
     },
     {
       "name": "preview-low.png",
-      "html": "C:/Users/me/Desktop/autonomous-factory/packs/products/pdf-tables-excel/demo/sample-LOW-scan.preview.html",
+      "html": "C:/empire/autonomous-factory/packs/products/pdf-tables-excel/demo/sample-LOW-scan.preview.html",
       "crop": {
         "x": 18,
         "y": 186,

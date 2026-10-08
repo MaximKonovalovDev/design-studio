@@ -55,19 +55,19 @@
     "sheet-w": "322px",
     "sheet-w-card": "188px"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-income-seekers/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-income-seekers/preview/cover-1280x720.png",
+  "listing": "C:/empire/autonomous-factory/products/services/niche-playbook-income-seekers/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/services/niche-playbook-income-seekers/preview/cover-1280x720.png",
   "landing": "products/services/niche-playbook-income-seekers/covers/from-design-studio/O-037/",
   "assetsFrom": "the product's own preview/ screenshots plus a faithful price-ladder render of its own assets/price-ladder-10.md",
   "assets": [
     {
       "name": "sheet-1.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-income-seekers/preview/shot-pains-1280x800.png",
+      "src": "C:/empire/autonomous-factory/products/services/niche-playbook-income-seekers/preview/shot-pains-1280x800.png",
       "what": "the customer's own picture shot-pains-1280x800.png"
     },
     {
       "name": "sheet-2.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-income-seekers/preview/shot-places-1280x800.png",
+      "src": "C:/empire/autonomous-factory/products/services/niche-playbook-income-seekers/preview/shot-places-1280x800.png",
       "what": "the customer's own picture shot-places-1280x800.png"
     },
     {

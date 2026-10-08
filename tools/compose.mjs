@@ -177,7 +177,7 @@ export function selfCheck() {
   ok("svg size falls back to viewBox", s2.w === 100 && s2.h === 50, `${s2.w}x${s2.h}`);
   try {
     const ours = join(ROOT, "designs", "O-026", "out.png");
-    const theirs = "C:/Users/me/Desktop/autonomous-factory/products/skill-pack/fleet-pack/preview/cover-1280x720.png";
+    const theirs = "C:/empire/autonomous-factory/products/skill-pack/fleet-pack/preview/cover-1280x720.png";
     if (!existsSync(ours) || !existsSync(theirs)) throw new Error("O-026 fixtures missing");
     const { html } = buildCompareHtml(ours, theirs, [256, 315]);
     ok(

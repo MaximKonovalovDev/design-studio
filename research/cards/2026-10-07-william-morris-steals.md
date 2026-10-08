@@ -7,7 +7,7 @@ License: Public domain (Morris died 1896; works published 1860s-1890s) | modern 
 What it really does: Morris (1834-1896) built repeating wallpaper/textile motifs from nature (Strawberry Thief 1883: thrushes stealing strawberries at Kelmscott Manor), printed in flat limited natural dyes (indigo blue ground + alizarin red + weld yellow via discharge printing, days per run); Kelmscott Press paired heavy ornament borders with plain readable type. Page-level read only, no code.
 Take: 4 idea-only patterns, each redrawn as SVG/CSS, never traced bitmaps.
 Avoid: copying V&A/museum photos or vendor redraws (rights differ); fussy Victorian density at thumb size; muddy low-contrast natural inks on screen — raise contrast to pass audit gates.
-First experiment in center: C:\Users\me\Desktop\design-studio\brand-kits\morris-tokens.json | Brand-kit consistency 5/5 holds + 1 new Morris demo page with 0 hex | done when `node tools/tokens.mjs --check` TOKENS PASS and `node tools/brandkit.mjs --check` BRANDKIT PASS and `node tools/check.mjs` RESULT PASS on the demo sample
+First experiment in center: C:\empire\design-studio\brand-kits\morris-tokens.json | Brand-kit consistency 5/5 holds + 1 new Morris demo page with 0 hex | done when `node tools/tokens.mjs --check` TOKENS PASS and `node tools/brandkit.mjs --check` BRANDKIT PASS and `node tools/check.mjs` RESULT PASS on the demo sample
 Status: CANDIDATE
 
 ## Source + license

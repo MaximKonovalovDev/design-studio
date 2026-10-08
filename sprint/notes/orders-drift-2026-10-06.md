@@ -1,7 +1,7 @@
 # Orders drift verify-only — 2026-10-06 (factory disk check, O-015 / O-056 / O-057)
 
 Verify-only. No edit to `orders.csv`, no customer file touched. Working tree only.
-Read-only sources: `orders.csv` rows below + factory disk under `C:/Users/me/Desktop/autonomous-factory`.
+Read-only sources: `orders.csv` rows below + factory disk under `C:/empire/autonomous-factory`.
 
 ## orders.csv claims (read 2026-10-06, NOT edited)
 - O-015: `cover:itch/medieval-warriors-vol4`, status=adopted, delivered_path=designs/O-015, adopted=yes, adopted_commit=disk

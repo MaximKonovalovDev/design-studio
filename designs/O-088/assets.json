@@ -3,19 +3,19 @@
   "assets": [
     {
       "file": "assets/sheet-1.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/saas-carousel-studio/preview/shot-mobile.png",
+      "from": "C:/empire/autonomous-factory/products/social-media-carousel/saas-carousel-studio/preview/shot-mobile.png",
       "what": "the customer's own picture shot-mobile.png",
       "bytes": 63820
     },
     {
       "file": "assets/sheet-2.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/saas-carousel-studio/preview/shot-customize.png",
+      "from": "C:/empire/autonomous-factory/products/social-media-carousel/saas-carousel-studio/preview/shot-customize.png",
       "what": "the customer's own picture shot-customize.png",
       "bytes": 121118
     },
     {
       "file": "assets/sheet-3.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/saas-carousel-studio/preview/shot-od-1-1280x720.png",
+      "from": "C:/empire/autonomous-factory/products/social-media-carousel/saas-carousel-studio/preview/shot-od-1-1280x720.png",
       "what": "the customer's own picture shot-od-1-1280x720.png",
       "bytes": 122754
     }

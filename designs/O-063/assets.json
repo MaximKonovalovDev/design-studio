@@ -3,19 +3,19 @@
   "assets": [
     {
       "file": "assets/sheet-1.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-sprites.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-sprites.png",
       "what": "the customer's own picture screenshot-sprites.png",
       "bytes": 10700
     },
     {
       "file": "assets/sheet-2.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-waveforms.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-waveforms.png",
       "what": "the customer's own picture screenshot-waveforms.png",
       "bytes": 15880
     },
     {
       "file": "assets/sheet-3.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-bundle.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-bundle.png",
       "what": "the customer's own picture screenshot-bundle.png",
       "bytes": 23799
     }

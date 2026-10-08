@@ -51,14 +51,14 @@
     "shot-x": "0%",
     "shot-y": "0%"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-indie-flax/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-indie-flax/preview/cover-630x500.png",
+  "listing": "C:/empire/autonomous-factory/products/services/niche-playbook-indie-flax/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/services/niche-playbook-indie-flax/preview/cover-630x500.png",
   "landing": "products/services/niche-playbook-indie-flax/covers/from-design-studio/O-078/",
   "assetsFrom": "the product's own preview/ pictures",
   "assets": [
     {
       "name": "shot.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/services/niche-playbook-indie-flax/preview/shot-plan.png",
+      "src": "C:/empire/autonomous-factory/products/services/niche-playbook-indie-flax/preview/shot-plan.png",
       "what": "the customer's own picture shot-plan.png"
     }
   ]

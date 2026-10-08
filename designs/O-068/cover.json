@@ -49,14 +49,14 @@
     "shot-x": "0%",
     "shot-y": "0%"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tileset-overworld-pack/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tileset-overworld-pack/preview/cover.png",
+  "listing": "C:/empire/autonomous-factory/products/game-dev-2d/tileset-overworld-pack/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/game-dev-2d/tileset-overworld-pack/preview/cover.png",
   "landing": "products/game-dev-2d/tileset-overworld-pack/covers/from-design-studio/O-068/",
   "assetsFrom": "the product's own preview/ pictures",
   "assets": [
     {
       "name": "shot.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/tileset-overworld-pack/preview/shot-map.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/tileset-overworld-pack/preview/shot-map.png",
       "what": "the customer's own picture shot-map.png"
     }
   ]

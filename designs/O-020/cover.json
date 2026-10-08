@@ -49,26 +49,26 @@
   ],
   "copyW": "50%",
   "claimW": "540px",
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/cover-630x500.png",
+  "listing": "C:/empire/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/cover-630x500.png",
   "landing": "products/marketing-studio/aeo-visibility-audit-kit/covers/from-design-studio/O-020/",
   "assetsFrom": "the product's own preview/ renders of its kit files",
   "assets": [
     {
       "name": "banks.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-banks-1280x800.png",
+      "src": "C:/empire/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-banks-1280x800.png",
       "fit": 720,
       "what": "the 200 probe questions: 4 categories x 50 (excerpt of the real kit file)"
     },
     {
       "name": "checklist.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-checklist-1280x800.png",
+      "src": "C:/empire/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-checklist-1280x800.png",
       "fit": 720,
       "what": "the 20-point fix checklist (real kit file)"
     },
     {
       "name": "report.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-report-1280x800.png",
+      "src": "C:/empire/autonomous-factory/products/marketing-studio/aeo-visibility-audit-kit/preview/screenshot-report-1280x800.png",
       "fit": 720,
       "what": "the worked audit report (real kit file)"
     }

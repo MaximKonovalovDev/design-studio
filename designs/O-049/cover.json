@@ -50,24 +50,24 @@
     "sheet-w": "322px",
     "sheet-w-card": "188px"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/listing/gumroad.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/cover-gumroad.png",
+  "listing": "C:/empire/autonomous-factory/products/seasonal-tax/mileage-kit/listing/gumroad.md",
+  "toBeat": "C:/empire/autonomous-factory/products/seasonal-tax/mileage-kit/preview/cover-gumroad.png",
   "landing": "products/seasonal-tax/mileage-kit/covers/from-design-studio/O-049/",
   "assetsFrom": "product preview/ screenshots plus alt cover (gumroad.md Images 1-4)",
   "assets": [
     {
       "name": "sheet-1.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/screenshot-log.png",
+      "src": "C:/empire/autonomous-factory/products/seasonal-tax/mileage-kit/preview/screenshot-log.png",
       "what": "the customer's own picture screenshot-log.png"
     },
     {
       "name": "sheet-2.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/screenshot-summary.png",
+      "src": "C:/empire/autonomous-factory/products/seasonal-tax/mileage-kit/preview/screenshot-summary.png",
       "what": "the customer's own picture screenshot-summary.png"
     },
     {
       "name": "sheet-3.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/cover-etsy.png",
+      "src": "C:/empire/autonomous-factory/products/seasonal-tax/mileage-kit/preview/cover-etsy.png",
       "what": "the customer's own picture cover-etsy.png"
     }
   ]

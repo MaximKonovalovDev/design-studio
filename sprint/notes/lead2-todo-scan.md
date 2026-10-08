@@ -1,4 +1,4 @@
-# lead2-todo-scan (2026-10-08T09:52Z, repo C:/Users/me/Desktop/design-studio)
+# lead2-todo-scan (2026-10-08T09:52Z, repo C:/empire/design-studio)
 
 Scope: tools/ tests/ templates/ covers/ only. Method: Grep tool (rg) with a path arg per folder, never whole-repo scans. Read-only except this file.
 Foreign-edit check first: git status --short shows edits in orders.csv, samples/*/design-audit.json, sprint/*, but NOT sprint/notes/lead2-todo-scan.md (did not exist, Test-Path False) -- safe to create.

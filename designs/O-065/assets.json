@@ -3,19 +3,19 @@
   "assets": [
     {
       "file": "assets/sheet-1.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/shot-hud.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/shot-hud.png",
       "what": "the customer's own picture shot-hud.png",
       "bytes": 39820
     },
     {
       "file": "assets/sheet-2.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/shot-inventory.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/shot-inventory.png",
       "what": "the customer's own picture shot-inventory.png",
       "bytes": 42557
     },
     {
       "file": "assets/sheet-3.png",
-      "from": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/shot-dialogue.png",
+      "from": "C:/empire/autonomous-factory/products/game-dev-bundle/ui-kit-vol1/preview/shot-dialogue.png",
       "what": "the customer's own picture shot-dialogue.png",
       "bytes": 57335
     }

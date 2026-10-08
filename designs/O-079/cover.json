@@ -49,14 +49,14 @@
     "shot-x": "0%",
     "shot-y": "0%"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/cover-od-r3-1280x720.png",
+  "listing": "C:/empire/autonomous-factory/products/seasonal-tax/mileage-kit/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/seasonal-tax/mileage-kit/preview/cover-od-r3-1280x720.png",
   "landing": "products/seasonal-tax/mileage-kit/covers/from-design-studio/O-079/",
   "assetsFrom": "the product's own preview/ pictures",
   "assets": [
     {
       "name": "shot.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/seasonal-tax/mileage-kit/preview/screenshot-log.png",
+      "src": "C:/empire/autonomous-factory/products/seasonal-tax/mileage-kit/preview/screenshot-log.png",
       "what": "the customer's own picture screenshot-log.png"
     }
   ]

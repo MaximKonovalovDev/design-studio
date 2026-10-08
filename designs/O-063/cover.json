@@ -51,8 +51,8 @@
     "sheet-w": "322px",
     "sheet-w-card": "188px"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/cover.png",
+  "listing": "C:/empire/autonomous-factory/products/game-dev-2d/game-dev-duo/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/cover.png",
   "theirsPx256": 12.0,
   "beatNote": "their caps title cap-height ~60px at 1280w by pixel measure -> ~12px at 256w; ours 17.6px; light sheet-fan vs dark neon-green; true $19 badge beats stale $29",
   "landing": "products/game-dev-2d/game-dev-duo/covers/from-design-studio/O-063/",
@@ -60,17 +60,17 @@
   "assets": [
     {
       "name": "sheet-1.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-sprites.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-sprites.png",
       "what": "the customer's own picture screenshot-sprites.png"
     },
     {
       "name": "sheet-2.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-waveforms.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-waveforms.png",
       "what": "the customer's own picture screenshot-waveforms.png"
     },
     {
       "name": "sheet-3.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-bundle.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/game-dev-duo/preview/screenshot-bundle.png",
       "what": "the customer's own picture screenshot-bundle.png"
     }
   ]

@@ -51,8 +51,8 @@
     "sheet-w": "380px",
     "sheet-w-card": "210px"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/cover-1280x720.png",
+  "listing": "C:/empire/autonomous-factory/products/video-studio/mp-turbo-video-generator/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/cover-1280x720.png",
   "theirsPx256": 11.0,
   "beatNote": "their caps headline full-width ~55px at 1280w -> ~11px at 256w; ours 20px; light sheet-fan with 3 real boards vs dark text-only; true $29 badge beats stale $9.99-$29 packs",
   "landing": "products/video-studio/mp-turbo-video-generator/covers/from-design-studio/O-064/",
@@ -60,17 +60,17 @@
   "assets": [
     {
       "name": "sheet-1.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/screenshot-templates.png",
+      "src": "C:/empire/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/screenshot-templates.png",
       "what": "the customer's own picture screenshot-templates.png"
     },
     {
       "name": "sheet-2.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/screenshot-pipeline.png",
+      "src": "C:/empire/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/screenshot-pipeline.png",
       "what": "the customer's own picture screenshot-pipeline.png"
     },
     {
       "name": "sheet-3.gif",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/demo.gif",
+      "src": "C:/empire/autonomous-factory/products/video-studio/mp-turbo-video-generator/preview/demo.gif",
       "what": "the customer's own picture demo.gif"
     }
   ]

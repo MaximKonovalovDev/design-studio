@@ -15,7 +15,7 @@ import {
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OURS = join(ROOT, "designs", "O-026", "out.png");
-const THEIRS = "C:/Users/me/Desktop/autonomous-factory/products/skill-pack/fleet-pack/preview/cover-1280x720.png";
+const THEIRS = "C:/empire/autonomous-factory/products/skill-pack/fleet-pack/preview/cover-1280x720.png";
 
 describe("compose widths", () => {
   it("defaults to 256,315", () => {

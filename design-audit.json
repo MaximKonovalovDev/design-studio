@@ -4,11 +4,11 @@
     {
       "name": "brief.json parses",
       "pass": false,
-      "detail": "ENOENT: no such file or directory, open 'C:\\Users\\me\\Desktop\\design-studio\\O-056' — next: fix JSON syntax in brief.json"
+      "detail": "ENOENT: no such file or directory, open 'C:\\empire\\design-studio\\O-056' — next: fix JSON syntax in brief.json"
     }
   ],
   "errors": [
-    "brief.json parses: ENOENT: no such file or directory, open 'C:\\Users\\me\\Desktop\\design-studio\\O-056' — next: fix JSON syntax in brief.json"
+    "brief.json parses: ENOENT: no such file or directory, open 'C:\\empire\\design-studio\\O-056' — next: fix JSON syntax in brief.json"
   ],
   "at": "2026-10-06"
 }

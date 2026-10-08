@@ -51,24 +51,24 @@
     "sheet-w": "322px",
     "sheet-w-card": "188px"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/cover.png",
+  "listing": "C:/empire/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/cover.png",
   "landing": "products/game-dev-bundle/game-dev-asset-bundle/covers/from-design-studio/O-062/",
   "assetsFrom": "the product's own preview/ screenshots (vector grid, SFX waveforms, animated sheets)",
   "assets": [
     {
       "name": "sheet-1.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-1-vector.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-1-vector.png",
       "what": "the customer's own picture screenshot-1-vector.png (512 vector sprites grid)"
     },
     {
       "name": "sheet-2.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-3-waveforms.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-3-waveforms.png",
       "what": "the customer's own picture screenshot-3-waveforms.png (990 retro SFX waveform grid)"
     },
     {
       "name": "sheet-3.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-2-sheets.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-bundle/game-dev-asset-bundle/preview/screenshot-2-sheets.png",
       "what": "the customer's own picture screenshot-2-sheets.png (290 animated sheets close-up)"
     }
   ]

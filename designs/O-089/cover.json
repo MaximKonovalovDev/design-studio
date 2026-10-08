@@ -51,25 +51,25 @@
     "sheet-w": "322px",
     "sheet-w-card": "188px"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/covers/from-design-studio/O-071/out-630x500.png",
+  "listing": "C:/empire/autonomous-factory/products/print-niche/wildflowers-vol1/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/print-niche/wildflowers-vol1/covers/from-design-studio/O-071/out-630x500.png",
   "theirsPx256": 17.6,
   "landing": "products/print-niche/wildflowers-vol1/covers/from-design-studio/O-089/",
   "assetsFrom": "the product's own preview/ pictures",
   "assets": [
     {
       "name": "sheet-1.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/preview/motifs-sheet-1920.png",
+      "src": "C:/empire/autonomous-factory/products/print-niche/wildflowers-vol1/preview/motifs-sheet-1920.png",
       "what": "the customer's own picture motifs-sheet-1920.png"
     },
     {
       "name": "sheet-2.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/preview/stitched-sample.png",
+      "src": "C:/empire/autonomous-factory/products/print-niche/wildflowers-vol1/preview/stitched-sample.png",
       "what": "the customer's own picture stitched-sample.png"
     },
     {
       "name": "sheet-3.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/print-niche/wildflowers-vol1/preview/cover-b.png",
+      "src": "C:/empire/autonomous-factory/products/print-niche/wildflowers-vol1/preview/cover-b.png",
       "what": "the customer's own picture cover-b.png"
     }
   ]

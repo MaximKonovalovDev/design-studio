@@ -18,24 +18,24 @@ const JOBS = [
     order: "O-043",
     slots: {
       TITLE: "AEO GEO Audit",
-      LISTING: "C:/Users/me/Desktop/autonomous-factory/products/services/aeo-geo-audit/listing/gumroad.md",
-      TO_BEAT: "C:/Users/me/Desktop/autonomous-factory/products/services/aeo-geo-audit/preview/cover-1280x720.png",
+      LISTING: "C:/empire/autonomous-factory/products/services/aeo-geo-audit/listing/gumroad.md",
+      TO_BEAT: "C:/empire/autonomous-factory/products/services/aeo-geo-audit/preview/cover-1280x720.png",
     },
   },
   {
     order: "O-045",
     slots: {
       TITLE: "Content Engine Service",
-      LISTING: "C:/Users/me/Desktop/autonomous-factory/products/services/content-engine-service/listing/gumroad.md",
-      TO_BEAT: "C:/Users/me/Desktop/autonomous-factory/products/services/content-engine-service/preview/cover-1280x720.png",
+      LISTING: "C:/empire/autonomous-factory/products/services/content-engine-service/listing/gumroad.md",
+      TO_BEAT: "C:/empire/autonomous-factory/products/services/content-engine-service/preview/cover-1280x720.png",
     },
   },
   {
     order: "O-046",
     slots: {
       TITLE: "Forge engine2040 Launch System",
-      LISTING: "C:/Users/me/Desktop/autonomous-factory/products/services/forge-engine2040-launch-system/listing/gumroad.md",
-      TO_BEAT: "C:/Users/me/Desktop/autonomous-factory/products/services/forge-engine2040-launch-system/preview/cover-1280x720.png",
+      LISTING: "C:/empire/autonomous-factory/products/services/forge-engine2040-launch-system/listing/gumroad.md",
+      TO_BEAT: "C:/empire/autonomous-factory/products/services/forge-engine2040-launch-system/preview/cover-1280x720.png",
     },
   },
 ];

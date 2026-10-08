@@ -23,9 +23,9 @@
   "customer": "factory",
   "note": "business tools: calm paper, navy ink, one green",
   "donor": {
-    "dir": "C:\\Users\\me\\Desktop\\design-studio\\research\\donors\\open-design\\design-systems\\clean",
-    "designMd": "C:\\Users\\me\\Desktop\\design-studio\\research\\donors\\open-design\\design-systems\\clean\\DESIGN.md",
-    "tokensCss": "C:\\Users\\me\\Desktop\\design-studio\\research\\donors\\open-design\\design-systems\\clean\\tokens.css",
+    "dir": "C:\\empire\\design-studio\\research\\donors\\open-design\\design-systems\\clean",
+    "designMd": "C:\\empire\\design-studio\\research\\donors\\open-design\\design-systems\\clean\\DESIGN.md",
+    "tokensCss": "C:\\empire\\design-studio\\research\\donors\\open-design\\design-systems\\clean\\tokens.css",
     "present": false
   },
   "at": "2026-10-04"

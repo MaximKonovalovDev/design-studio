@@ -51,14 +51,14 @@
     "shot-x": "0%",
     "shot-y": "0%"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/pixzels-8dir/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/pixzels-8dir/preview/cover_630x500.png",
+  "listing": "C:/empire/autonomous-factory/products/game-dev-2d/pixzels-8dir/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/game-dev-2d/pixzels-8dir/preview/cover_630x500.png",
   "landing": "products/game-dev-2d/pixzels-8dir/covers/from-design-studio/O-067/",
   "assetsFrom": "the product's own preview/ pictures",
   "assets": [
     {
       "name": "shot.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/game-dev-2d/pixzels-8dir/preview/gui_proof.png",
+      "src": "C:/empire/autonomous-factory/products/game-dev-2d/pixzels-8dir/preview/gui_proof.png",
       "what": "the customer's own picture gui_proof.png"
     }
   ]

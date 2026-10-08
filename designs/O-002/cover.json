@@ -47,19 +47,19 @@
   ],
   "copyW": "50%",
   "claimW": "560px",
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/gated-ads-funnel/ebook-funnel-builder/listing/gumroad.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/gated-ads-funnel/ebook-funnel-builder/preview/cover-1270x760.png",
+  "listing": "C:/empire/autonomous-factory/products/gated-ads-funnel/ebook-funnel-builder/listing/gumroad.md",
+  "toBeat": "C:/empire/autonomous-factory/products/gated-ads-funnel/ebook-funnel-builder/preview/cover-1270x760.png",
   "landing": "products/gated-ads-funnel/ebook-funnel-builder/covers/from-design-studio/O-002/",
   "assetsFrom": "the product's own preview/ browser captures",
   "assets": [
     {
       "name": "offers.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/gated-ads-funnel/ebook-funnel-builder/preview/screenshot-offers-1280x800.png",
+      "src": "C:/empire/autonomous-factory/products/gated-ads-funnel/ebook-funnel-builder/preview/screenshot-offers-1280x800.png",
       "what": "real browser capture: 5 offers, one funnel (coach-gumroad sample)"
     },
     {
       "name": "results.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/gated-ads-funnel/ebook-funnel-builder/preview/screenshot-results-1280x800.png",
+      "src": "C:/empire/autonomous-factory/products/gated-ads-funnel/ebook-funnel-builder/preview/screenshot-results-1280x800.png",
       "what": "real browser capture: worked ad-math table for all templates"
     }
   ],

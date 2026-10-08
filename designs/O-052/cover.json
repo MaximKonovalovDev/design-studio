@@ -52,24 +52,24 @@
     "sheet-w": "322px",
     "sheet-w-card": "188px"
   },
-  "listing": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/listing/itch.md",
-  "toBeat": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/preview/cover-od-1280x720.png",
+  "listing": "C:/empire/autonomous-factory/products/social-media-carousel/carousel-template-studio/listing/itch.md",
+  "toBeat": "C:/empire/autonomous-factory/products/social-media-carousel/carousel-template-studio/preview/cover-od-1280x720.png",
   "landing": "products/social-media-carousel/carousel-template-studio/covers/from-design-studio/O-052/",
   "assetsFrom": "the product's own preview/ pictures",
   "assets": [
     {
       "name": "sheet-1.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/assets/instagram-big-stat-007.png",
+      "src": "C:/empire/autonomous-factory/products/social-media-carousel/carousel-template-studio/assets/instagram-big-stat-007.png",
       "what": "the customer's own picture instagram-big-stat-007.png"
     },
     {
       "name": "sheet-2.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/sample/linkedin-before-after-058.png",
+      "src": "C:/empire/autonomous-factory/products/social-media-carousel/carousel-template-studio/sample/linkedin-before-after-058.png",
       "what": "the customer's own picture linkedin-before-after-058.png"
     },
     {
       "name": "sheet-3.png",
-      "src": "C:/Users/me/Desktop/autonomous-factory/products/social-media-carousel/carousel-template-studio/sample/tiktok-checklist-034.png",
+      "src": "C:/empire/autonomous-factory/products/social-media-carousel/carousel-template-studio/sample/tiktok-checklist-034.png",
       "what": "the customer's own picture tiktok-checklist-034.png"
     }
   ]
