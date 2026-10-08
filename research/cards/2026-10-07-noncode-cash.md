@@ -14,5 +14,5 @@ an open tool, not AI research. Source: https://nlnet.nl/funding.html read live 2
 Home: VISION-TABLES.md named in VISION.md. Bids filed from design-studio proofs.
 Fixes: more designs used by factory plus jobhunt plus marketing-studio.
 Net lines: about 30 new lines for two cash rows.
-Proof: node C:/Users/me/Desktop/center/vision-check.mjs design-studio RESULT PASS.
+Proof: node C:/empire/center/vision-check.mjs design-studio RESULT PASS.
 Effort: S to file two bids. Risk: fixed dates plus must publish work as open.

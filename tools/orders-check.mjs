@@ -29,11 +29,11 @@ export const STATUSES = ["open", "building", "delivered", "adopted", "rejected"]
 export const REPOS = ["factory", "marketing-studio", "jobhunt", "engine2040", "forge", "center", "fp-research", "skillworks"];
 const PRODUCT = /^(cover:(itch|gumroad)\/[a-z0-9-]+|post-visual:[a-z0-9-]+|cv-layout:[a-z0-9-]+|game-ui:[a-z0-9-]+|site-look:[a-z0-9-]+|page:[a-z0-9-]+|portfolio:[a-z0-9-]+|short-frame:[a-z0-9-]+|thumbnail:[a-z0-9-]+|order:[a-z0-9-]+)$/;
 const HASH = /^[0-9a-f]{7,40}$/;
-const SCOREBOARD = process.env.FACTORY_SCOREBOARD || "C:/Users/me/Desktop/autonomous-factory/board/scoreboard.json";
+const SCOREBOARD = process.env.FACTORY_SCOREBOARD || "C:/empire/autonomous-factory/board/scoreboard.json";
 
 // Packet 0a: delivered_path counts in this repo or in any customer repo
-// (dirs from C:/Users/me/Desktop/center/empire.json).
-const EMPIRE_JSON = process.env.EMPIRE_JSON || "C:/Users/me/Desktop/center/empire.json";
+// (dirs from C:/empire/center/empire.json).
+const EMPIRE_JSON = process.env.EMPIRE_JSON || "C:/empire/center/empire.json";
 let _dirs = null;
 export function customerDirs() {
   if (_dirs) return _dirs;

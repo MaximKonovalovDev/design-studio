@@ -133,7 +133,7 @@
       "type": "local",
       "command": [
         "node",
-        "C:/Users/me/Desktop/center/mcp/github-mcp.mjs"
+        "C:/empire/center/mcp/github-mcp.mjs"
       ],
       "enabled": false,
       "timeout": 20000

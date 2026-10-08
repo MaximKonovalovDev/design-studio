@@ -18,12 +18,12 @@ Applied check: our 7 rubrics (ds-speed-v1 2/2, ds-quality-v1 10/10, ds-thumb-v1 
 - VISION-TABLES.md Scorecard: 6 rows read 100% with rubric + source + date; every rival cell UNKNOWN per contract (ratings need fixed n/m + rubric ID + source artifact + date).
 - samples/cover-b/brief.json + page.html + tokens.css + out.png 1080x1080 + thumb-256.png + design-audit.json (AUDIT PASS, SHIP 10/10).
 
-## Proof outputs (run 2026-10-03, C:\Users\me\Desktop\design-studio)
+## Proof outputs (run 2026-10-03, C:\empire\design-studio)
 
 - `node tools/audit.mjs samples/cover-b/brief.json` -> AUDIT PASS: render, sizes, contrast, thumbnail, RTL gates (incl. title legible at 256px 22.8px floor 12px; listing 315px 28.0px; reference parity skipped, no reference declared).
 - `node tools/check.mjs` -> RESULT PASS: loop check plus 11 sample renders plus thumbs plus audits (cover-b path incl. winner cover-b by audit + 256px; hero-b by audit + 256px).
 - `node tools/judge.mjs samples/cover-b/brief.json` -> SHIP 10/10 (floor 8) rubric ds-quality-v1.
-- `node C:/Users/me/Desktop/center/vision-check.mjs design-studio` -> RESULT PASS: 7 pass, 0 warn, 0 fail.
+- `node C:/empire/center/vision-check.mjs design-studio` -> RESULT PASS: 7 pass, 0 warn, 0 fail.
 
 ## Card (idea-only, 0 lines copied)
 

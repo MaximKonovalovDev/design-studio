@@ -80,7 +80,7 @@ let _dirs = null;
 function customerDirs() {
   if (_dirs) return _dirs;
   _dirs = [];
-  const f = process.env.EMPIRE_JSON || "C:/Users/me/Desktop/center/empire.json";
+  const f = process.env.EMPIRE_JSON || "C:/empire/center/empire.json";
   try {
     const emp = JSON.parse(readFileSync(f, "utf8"));
     for (const r of Object.values(emp.repos ?? {})) if (r && r.dir) _dirs.push(String(r.dir));

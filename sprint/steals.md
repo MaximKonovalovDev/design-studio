@@ -1,6 +1,6 @@
 # design-studio steals
 
-Donors the scout seats found for an open finish bar (`node C:/Users/me/Desktop/center/finish.mjs design-studio`): images, skills, examples, templates, GitHub repos, tools, software. The builder lands an `open` line and marks it `landed <sha>` in that commit. At most 3 open lines per bar, none older than 7 days (center's `size-check.mjs`).
+Donors the scout seats found for an open finish bar (`node C:/empire/center/finish.mjs design-studio`): images, skills, examples, templates, GitHub repos, tools, software. The builder lands an `open` line and marks it `landed <sha>` in that commit. At most 3 open lines per bar, none older than 7 days (center's `size-check.mjs`).
 
 ## Steals
 2026-10-03 | D2 | tailwindlabs/heroicons@616b7a4dbbf3d011760af8066262cd5c6b3868f3 | MIT | kits/game-ui/hud.html | open

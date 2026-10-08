@@ -19,7 +19,7 @@ Good: no layout break and it prints on one page.
 Proof: the capture path.
 
 ## J3 Adoption
-Start: `node C:/Users/me/Desktop/center/empire.mjs orders --repo design-studio`.
+Start: `node C:/empire/center/empire.mjs orders --repo design-studio`.
 Steps: read delivered against used.
 Good: at least half of what was delivered is used.
 Proof: the counts and the oldest unused delivery.

@@ -16,12 +16,12 @@ row on the board, and the loop goes on. `round` = one round, then hand off.
 `VISION-TABLES.md`: the Scorecard (us against the best, in percent of our own final
 bar), Parts vs the best, Open gaps and the Steal map; the research seats edit that
 file. The proof that the vision is met: `node tools/check.mjs`. Every board row names
-the Scorecard row it moves. While `node C:/Users/me/Desktop/center/vision-check.mjs design-studio` FAILs,
+the Scorecard row it moves. While `node C:/empire/center/vision-check.mjs design-studio` FAILs,
 the vision is the first work: send one one-off (role `planner` or `researcher`) to fill it.
 
 ## 2. Your crew, in batches you send
 
-Standing seats in `sprint/queue/standing/` (seeds: `C:/Users/me/Desktop/center/crews/design-studio/`).
+Standing seats in `sprint/queue/standing/` (seeds: `C:/empire/center/crews/design-studio/`).
 Every order gets one maker (by customer), one judge, one delivery into the
 customer repo and one check that the customer used it. The seats wake only on
 their own rows, so nothing runs empty. `node tools/orders-check.mjs --desk`
@@ -103,7 +103,7 @@ for a build) and Goal, Scope, Proof and Stop lines, or the keeper refuses it.
    or strike it with a reason (the vision check FAILs after a day).
 3. **Crew.** Keep the seats true to the board: rewrite a seat that returned
    NOOP three runs in a row or whose area ran dry; copy a good rewrite into
-   `C:/Users/me/Desktop/center/crews/design-studio/`.
+   `C:/empire/center/crews/design-studio/`.
 4. **Checks.** A failing check the keeper names is this round's first one-off;
    name in the handoff which packet clears which.
 5. **Handoff.** First `node tools/orders-check.mjs --round --save` (exists after the
@@ -118,7 +118,7 @@ for a build) and Goal, Scope, Proof and Stop lines, or the keeper refuses it.
    then `git push origin HEAD:master`. Start the next round in the same turn.
 
 **Every 5 rounds, the retro (never in other rounds):** read
-`sprint/queue/checks.md` and the keeper log; run `node C:/Users/me/Desktop/center/empire.mjs
+`sprint/queue/checks.md` and the keeper log; run `node C:/empire/center/empire.mjs
 metrics design-studio` only once, the shell kills it at 2 minutes. Name the worst
 repeated failure with its number and write one
 `PROPOSAL: <file> | <change> | <number now>` handoff line. Center applies at

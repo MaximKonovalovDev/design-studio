@@ -6,6 +6,6 @@ Gives: thumbnail-readable covers for the factory's published listings (`samples/
 
 Takes: real briefs and orders from factory (`board/scoreboard.json`), jobhunt (CV drafts, job ads) and marketing-studio (campaign packs); part-score and skill templates from marketing-studio, jobhunt and skillworks; rule sheets, `finish.mjs` and `vision-check.mjs` from center; the engine UI formats of engine2040 and forge; donors from outside: images, skills, examples, templates, GitHub repos, tools and software (`sprint/steals.md`).
 
-Finish line: FINISH-LINE.md (node C:/Users/me/Desktop/center/finish.mjs design-studio)
+Finish line: FINISH-LINE.md (node C:/empire/center/finish.mjs design-studio)
 
 Research tables: VISION-TABLES.md
