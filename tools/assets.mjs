@@ -197,7 +197,7 @@ export function productInfo(order) {
 // --- order: briefs (NEED-10): the product cell names a pack, not a listing ---
 // Customer repo roots by orders.csv from_repo. A root that is not on disk
 // fails closed at resolve time (forge and engine2040 have no checkout here).
-export function repoRoot(fromRepo, base = "C:/Users/me/Desktop") {
+export function repoRoot(fromRepo, base = "C:/empire") {
   const map = {
     factory: "autonomous-factory",
     "marketing-studio": "marketing-studio",
