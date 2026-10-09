@@ -255,9 +255,10 @@ export function parseClampPx(clampStr, viewportPx) {
 // Palette slots every lane may use. A kit key outside this list fails closed
 // at compile time (typos never ship as silent dead vars).
 export const PALETTE_SLOTS = ["paper", "panel", "ink", "muted", "accent", "on-accent", "line", "success", "warning", "error"];
+const PALETTE_SET = new Set(PALETTE_SLOTS);
 
 export function unknownSlots(palette = {}) {
-  return Object.keys(palette ?? {}).filter((k) => !PALETTE_SLOTS.includes(k));
+  return Object.keys(palette ?? {}).filter((k) => !PALETTE_SET.has(k));
 }
 
 // Compile a brand-kit JSON (brand-kits/<id>.json shape: palette/paletteDark/
